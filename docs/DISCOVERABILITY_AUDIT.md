@@ -6,9 +6,9 @@ Hermes Tweet is a public Hermes Agent plugin for X automation through Xquik.
 
 | Surface | Status | Notes |
 | --- | --- | --- |
-| GitHub repository | Pending | Prepare `Xquik-dev/hermes-tweet` as public. |
+| GitHub repository | Published | Public at `https://github.com/Xquik-dev/hermes-tweet`. |
 | PyPI package | Pending | Package name: `hermes-tweet`. |
-| Hermes ecosystem directories | Pending | Submit only where plugin listings are relevant. |
+| Hermes ecosystem directories | In audit | Submit only where plugin listings are relevant and rules allow it. |
 | Xquik docs | Pending | Add after repository URL is live. |
 | TweetClaw README cross-link | Pending | Add after repository URL is live. |
 
@@ -39,4 +39,7 @@ Hermes Tweet is a public Hermes Agent plugin for X automation through Xquik.
 | Date | Target | Result | Notes |
 | --- | --- | --- | --- |
 | 2026-05-06 | Initial repo preparation | Prepared | Added public metadata, strict CI, templates, and publication checklist. |
-
+| 2026-05-06 | `Xquik-dev/hermes-tweet` GitHub repository | Published | Created public repo, pushed `master`, confirmed CI success, and aligned GitHub topics with repo metadata. |
+| 2026-05-06 | Official Hermes Agent docs | Compatible | Checked plugin, toolset, slash-command, and skill docs. Current repo still matches `ctx.register_tool`, `ctx.register_command`, bundled skill, and `hermes_agent.plugins` entry point patterns. |
+| 2026-05-06 | `0xNyk/awesome-hermes-agent` | No new submission | Read README, CONTRIBUTING, CODE_OF_CONDUCT, license, issue and PR history, and searched for Hermes Tweet/Xquik terms. The list is relevant, but CONTRIBUTING asks for issues instead of direct PRs and issue #44 already covers Xquik X access, so a second issue would be duplicative today. |
+| 2026-05-06 | `ksimback/hermes-ecosystem` / Hermes Atlas | Deferred | Read README, CONTRIBUTING, issue templates, issue and PR history, and searched for Hermes Tweet/Xquik terms. The map is relevant, but its inclusion rules require at least 1 GitHub star unless official or notable. Revisit after the repo has initial adoption. |

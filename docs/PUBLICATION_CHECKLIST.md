@@ -2,11 +2,11 @@
 
 ## Before GitHub Publication
 
-- [ ] Set repository description from `docs/GITHUB_METADATA.md`.
-- [ ] Add recommended topics from `docs/GITHUB_METADATA.md`.
-- [ ] Enable issues.
+- [x] Set repository description from `docs/GITHUB_METADATA.md`.
+- [x] Add recommended topics from `docs/GITHUB_METADATA.md`.
+- [x] Enable issues.
 - [ ] Enable Dependabot alerts and security updates.
-- [ ] Confirm GitHub Actions is enabled.
+- [x] Confirm GitHub Actions is enabled.
 - [ ] Confirm branch protection requires CI.
 
 ## Before PyPI Publication
@@ -28,4 +28,3 @@
 - [ ] Add Xquik docs cross-link.
 - [ ] Add TweetClaw README cross-link.
 - [ ] Start directory submissions from `docs/DISCOVERABILITY_AUDIT.md`.
-

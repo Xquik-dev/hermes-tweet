@@ -18,19 +18,24 @@ Native Hermes Agent plugin for X/Twitter automation through Xquik.
 ```text
 hermes-agent
 hermes-plugin
+hermes
 twitter
 x
 x-api
+x-automation
 xquik
 tweet
 automation
 social-media
+social-media-automation
 ai-agent
 mcp
 agent-tools
 twitter-api
 twitter-automation
 x-twitter
+apify
+python
 ```
 
 ## SEO Phrases
@@ -41,4 +46,3 @@ x-twitter
 - Hermes Twitter automation
 - Xquik Hermes plugin
 - social media automation for AI agents
-

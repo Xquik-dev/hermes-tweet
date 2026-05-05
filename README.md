@@ -136,6 +136,7 @@ Recommended GitHub description:
 
 Recommended topics:
 
-`hermes-agent`, `hermes-plugin`, `twitter`, `x`, `x-api`, `xquik`,
-`tweet`, `automation`, `social-media`, `ai-agent`, `mcp`, `agent-tools`,
-`twitter-api`, `twitter-automation`, `x-twitter`
+`hermes-agent`, `hermes-plugin`, `hermes`, `twitter`, `x`, `x-api`,
+`x-automation`, `xquik`, `tweet`, `automation`, `social-media`,
+`social-media-automation`, `ai-agent`, `mcp`, `agent-tools`, `twitter-api`,
+`twitter-automation`, `x-twitter`, `apify`, `python`
