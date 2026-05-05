@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [master, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Set up Python
+        run: uv python install 3.12
+
+      - name: Install dependencies
+        run: uv sync --python 3.12 --extra dev
+
+      - name: Format check
+        run: uv run ruff format --check .
+
+      - name: Lint
+        run: uv run ruff check .
+
+      - name: Type check
+        run: uv run basedpyright
+
+      - name: Test with coverage
+        run: uv run pytest --cov=hermes_tweet --cov=tests --cov-report=term-missing --cov-fail-under=100
+
+      - name: Security scan
+        run: uv run bandit -c pyproject.toml -r hermes_tweet scripts
+
+      - name: Dependency audit
+        run: uv run pip-audit
+
+      - name: Build package
+        run: uv run python -m build
+
+      - name: Check package metadata
+        run: uv run twine check dist/*
+
