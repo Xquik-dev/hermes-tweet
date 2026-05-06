@@ -1,6 +1,15 @@
 ---
 name: hermes-tweet
+version: 0.1.4
+author: Xquik
 description: Use Xquik from Hermes Agent for X search, posting, replies, likes, retweets, follows, DMs, monitors, extraction jobs, draws, media, and trends.
+tags:
+  - hermes-agent
+  - xquik
+  - twitter
+  - x
+  - social-media
+  - automation
 ---
 
 # Hermes Tweet
@@ -46,4 +55,3 @@ Then call `tweet_action` with:
 ```json
 {"path":"/api/v1/x/tweets","method":"POST","body":{"account":"@example","text":"Hello from Hermes Tweet"},"reason":"Post the user-approved tweet."}
 ```
-
