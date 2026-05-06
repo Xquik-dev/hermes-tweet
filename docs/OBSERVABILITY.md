@@ -60,5 +60,6 @@ tool-call probes such as `tweet_explore` and `tweet_read`.
 Do not store API keys in shell history, docs, issue comments, CI logs, PR bodies,
 or Hermes prompts. Use an ephemeral environment variable for one-off smoke tests
 or `~/.hermes/.env` for local persistent Hermes sessions. After changing
-`~/.hermes/.env` in an active Hermes session, run `/reload` before the smoke
-test so the session reads the new values.
+`~/.hermes/.env`, run `/reload` in an interactive CLI session before the smoke
+test. Gateway and cron sessions need a restart or new session so they read the
+new values.

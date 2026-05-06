@@ -15,9 +15,11 @@ XQUIK_API_KEY=xq_...
 ```
 
 If Hermes is already running after you edit `~/.hermes/.env`, use `/reload` in
-the session or start a new session before calling `tweet_read`.
+an interactive CLI session, or restart gateway and cron sessions before calling
+`tweet_read`.
 When `XQUIK_API_KEY` is missing, Hermes should expose only `tweet_explore` from
-this plugin. Set the key, then reload the session before expecting `tweet_read`.
+this plugin. Set the key, then reload the CLI or restart the gateway or cron
+process before expecting `tweet_read`.
 
 Keep actions disabled unless you are intentionally allowing account-changing
 operations:

@@ -47,7 +47,8 @@ Hermes will prompt for `XQUIK_API_KEY` during an interactive install and save it
 to `~/.hermes/.env`. In non-interactive installs the prompt is skipped; set the
 key through the environment or `~/.hermes/.env` before running `tweet_read`.
 If you edit `~/.hermes/.env` while Hermes is already running, use `/reload` in
-the session or start a new session before calling `tweet_read`.
+an interactive CLI session, or restart gateway and cron sessions before calling
+`tweet_read`.
 When `XQUIK_API_KEY` is not configured, Hermes should expose only the no-network
 `tweet_explore` tool from this plugin. That is expected safe gating, not an
 install failure.
@@ -103,7 +104,8 @@ export HERMES_TWEET_ENABLE_ACTIONS="false"
 
 Action endpoints are disabled unless `HERMES_TWEET_ENABLE_ACTIONS=true`.
 If you configure keys through `~/.hermes/.env` during an active Hermes session,
-use `/reload` so the session picks up the new values.
+use `/reload` in the interactive CLI, or restart gateway and cron sessions so
+they pick up the new values.
 
 ## Security Model
 
@@ -153,8 +155,8 @@ Expected results:
 - `tweet_explore` discovers catalog endpoints without using the API key.
 - Without `XQUIK_API_KEY`, a non-mutating Hermes probe exposes `tweet_explore`
   only.
-- After `XQUIK_API_KEY` is configured and the session is reloaded, `tweet_read`
-  can read `/api/v1/account`.
+- After `XQUIK_API_KEY` is configured and the CLI is reloaded, or the gateway
+  or cron process is restarted, `tweet_read` can read `/api/v1/account`.
 - `tweet_action` stays hidden or disabled unless `HERMES_TWEET_ENABLE_ACTIONS=true`.
 - `/xstatus` and `/xtrends` appear in the Hermes plugin command registry.
 
