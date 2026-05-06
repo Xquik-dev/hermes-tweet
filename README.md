@@ -35,25 +35,34 @@ media automation for agents, or a native Hermes toolset for X/Twitter.
 
 ## Install
 
+Recommended Hermes plugin install:
+
+```bash
+hermes plugins install Xquik-dev/hermes-tweet --enable
+```
+
+Hermes will prompt for `XQUIK_API_KEY` during an interactive install and save it
+to `~/.hermes/.env`. In non-interactive installs the prompt is skipped; set the
+key through the environment or `~/.hermes/.env` before running `tweet_read`.
+
 Install the published Python package from PyPI:
 
 ```bash
-python -m pip install hermes-tweet
+~/.hermes/hermes-agent/venv/bin/python -m pip install hermes-tweet
 hermes plugins enable hermes-tweet
 ```
 
 Use `uv` inside your Hermes Python environment:
 
 ```bash
-uv pip install hermes-tweet
+uv pip install --python ~/.hermes/hermes-agent/venv/bin/python hermes-tweet
 hermes plugins enable hermes-tweet
 ```
 
 From a local checkout:
 
 ```bash
-python -m pip install -e .
-hermes plugins enable hermes-tweet
+hermes plugins install file:///absolute/path/to/hermes-tweet --force --enable
 ```
 
 ## Python Package
@@ -117,6 +126,23 @@ giveaway audits, and draft planning. Keep `HERMES_TWEET_ENABLE_ACTIONS=false`
 for unattended cron or gateway sessions unless the workflow has an explicit
 approval step for posting, DMs, follows, monitor changes, webhook changes, or
 other account actions.
+
+Runtime smoke test:
+
+```bash
+hermes -z "Use tweet_explore, then read /api/v1/account. Do not call tweet_action." --toolsets hermes-tweet
+```
+
+Expected results:
+
+- `tweet_explore` discovers catalog endpoints without using the API key.
+- `tweet_read` can read `/api/v1/account` when `XQUIK_API_KEY` is configured.
+- `tweet_action` reports disabled unless `HERMES_TWEET_ENABLE_ACTIONS=true`.
+- `/xstatus` and `/xtrends` appear in the Hermes plugin command registry.
+
+If `hermes plugins install` runs without a TTY, Hermes cannot safely prompt for
+secrets and will skip API-key storage. This is expected; set `XQUIK_API_KEY`
+in the process environment or `~/.hermes/.env`.
 
 ## Slash Commands
 
