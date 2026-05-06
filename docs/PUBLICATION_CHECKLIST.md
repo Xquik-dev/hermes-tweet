@@ -5,9 +5,10 @@
 - [x] Set repository description from `docs/GITHUB_METADATA.md`.
 - [x] Add recommended topics from `docs/GITHUB_METADATA.md`.
 - [x] Enable issues.
-- [ ] Enable Dependabot alerts and security updates.
+- [x] Enable Dependabot alerts and security updates.
+- [x] Enable secret scanning and push protection.
 - [x] Confirm GitHub Actions is enabled.
-- [ ] Confirm branch protection requires CI.
+- [x] Confirm branch protection requires CI.
 
 ## Before PyPI Publication
 
