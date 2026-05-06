@@ -39,3 +39,7 @@ Expected behavior:
 - `/xstatus` and `/xtrends` are registered slash commands.
 - `tweet_action` stays hidden or returns a disabled error unless
   `HERMES_TWEET_ENABLE_ACTIONS=true`.
+
+For Hermes v0.12.0, do not use `hermes -z "/xstatus"` as a slash-command smoke
+test. One-shot `-z` treats that text as a model prompt. Verify slash commands in
+an active CLI or gateway session, or through the plugin registry tests.
