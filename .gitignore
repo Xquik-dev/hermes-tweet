@@ -70,7 +70,9 @@ Thumbs.db
 *.swo
 *~
 .cache/
+*.ipynb
 .ipynb_checkpoints/
+screenshots/
 .tmp/
 tmp/
 temp/
