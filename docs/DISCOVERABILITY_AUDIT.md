@@ -8,7 +8,7 @@ Hermes Tweet is a public Hermes Agent plugin for X automation through Xquik.
 | --- | --- | --- |
 | GitHub repository | Published | Public at `https://github.com/Xquik-dev/hermes-tweet`. |
 | PyPI package | Published | Public at `https://pypi.org/project/hermes-tweet/`. |
-| Hermes ecosystem directories | In progress | Hermes Atlas PR `https://github.com/ksimback/hermes-ecosystem/pull/169` is open, and Hermes Skill Atlas submission `https://github.com/codesstar/hermes-skill-atlas/issues/1` is open. |
+| Hermes ecosystem directories | In progress | Hermes Atlas PR `https://github.com/ksimback/hermes-ecosystem/pull/169`, Hermes Skill Atlas submission `https://github.com/codesstar/hermes-skill-atlas/issues/1`, and `itgoyo/hermes-skills` PR `https://github.com/itgoyo/hermes-skills/pull/1` are open. |
 | Xquik docs | Pending | Add after repository URL is live. |
 | TweetClaw README cross-link | Pending | Add after repository URL is live. |
 
@@ -46,3 +46,4 @@ Hermes Tweet is a public Hermes Agent plugin for X automation through Xquik.
 | 2026-05-06 | `amanning3390/hermeshub` | No new submission | Read README, workflows, issue and PR history, and searched for Hermes Tweet/Xquik terms. The registry accepts skill PRs, but PR #54 already proposes an Xquik X skill, so a Hermes Tweet submission would duplicate the active queue. |
 | 2026-05-06 | `ChuckSRQ/awesome-hermes-skills` | No new submission | Read README, license, repo files, and searched issues, PRs, and repository content for Hermes Tweet/Xquik terms. The repo is a curated four-skill bundle with no contribution guide, issue templates, or outside-entry list format; direct Hermes Tweet listing would be thin. Revisit only if the repo opens a general catalog section or requests third-party skill submissions. |
 | 2026-05-06 | `codesstar/hermes-skill-atlas` | Issue open | Read README, CONTRIBUTING, issue templates, license, data format, open issues, open PRs, and searched repository content for Hermes Tweet/Xquik terms. No duplicate was found. Opened skill submission issue `https://github.com/codesstar/hermes-skill-atlas/issues/1` in `通讯社交 (Comms)` with PyPI install, bundled skill, and action-gating metadata. |
+| 2026-05-06 | `itgoyo/hermes-skills` | PR open | Read README contribution rules, repo files, open issues, open PRs, and repository content for Hermes Tweet/Xquik terms. No duplicate was found. Opened PR `https://github.com/itgoyo/hermes-skills/pull/1` adding a repo-native `social-media/hermes-tweet` skill, README count entry, and `.bundled_manifest` hash. |
