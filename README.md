@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/Xquik-dev/hermes-tweet/actions/workflows/ci.yml/badge.svg)](https://github.com/Xquik-dev/hermes-tweet/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/hermes-tweet.svg)](https://pypi.org/project/hermes-tweet/)
+[![piwheels](https://img.shields.io/piwheels/v/hermes-tweet.svg)](https://www.piwheels.org/project/hermes-tweet/)
 [![Python](https://img.shields.io/pypi/pyversions/hermes-tweet.svg)](https://pypi.org/project/hermes-tweet/)
 [![PyPI Status](https://img.shields.io/pypi/status/hermes-tweet.svg)](https://pypi.org/project/hermes-tweet/)
 [![Wheel](https://img.shields.io/pypi/wheel/hermes-tweet.svg)](https://pypi.org/project/hermes-tweet/#files)
@@ -72,7 +73,8 @@ hermes plugins install file:///absolute/path/to/hermes-tweet --force --enable
 | Field | Value |
 | --- | --- |
 | PyPI | [`hermes-tweet`](https://pypi.org/project/hermes-tweet/) |
-| Latest release | [`v0.1.1`](https://github.com/Xquik-dev/hermes-tweet/releases/tag/v0.1.1) |
+| piwheels | [`hermes-tweet`](https://www.piwheels.org/project/hermes-tweet/) |
+| Latest release | [`v0.1.2`](https://github.com/Xquik-dev/hermes-tweet/releases/tag/v0.1.2) |
 | Supported Python | `>=3.11` |
 | Package format | Wheel and source distribution |
 | Hermes entry point | `hermes-tweet = hermes_tweet` |
