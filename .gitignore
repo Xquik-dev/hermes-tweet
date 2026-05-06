@@ -51,6 +51,8 @@ __pycache__/
 .basedpyright/
 .tox/
 .nox/
+playwright-report/
+test-results/
 
 # Coverage and test reports
 .coverage
