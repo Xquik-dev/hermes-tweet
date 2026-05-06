@@ -11,7 +11,7 @@ Hermes Tweet is a public Hermes Agent plugin for X automation through Xquik.
 | piwheels package | Published | Public at `https://www.piwheels.org/project/hermes-tweet/`. |
 | Hermes ecosystem directories | In progress | Hermes Atlas PR `https://github.com/ksimback/hermes-ecosystem/pull/169`, Hermes Skill Atlas submission `https://github.com/codesstar/hermes-skill-atlas/issues/1`, `itgoyo/hermes-skills` PR `https://github.com/itgoyo/hermes-skills/pull/1`, and `aliaihub/awesome-hermes-usecases` validator PR `https://github.com/aliaihub/awesome-hermes-usecases/pull/1` are open. |
 | Xquik docs | Pending | Add after repository URL is live. |
-| TweetClaw README cross-link | Pending | Add after repository URL is live. |
+| TweetClaw README cross-link | Published | Linked from `https://github.com/Xquik-dev/tweetclaw#readme`. |
 
 ## Candidate Discovery Queries
 
@@ -60,3 +60,5 @@ Hermes Tweet is a public Hermes Agent plugin for X automation through Xquik.
 | 2026-05-06 | Local Hermes tools diagnostics | Applied locally | Runtime check showed bare `hermes tools` requires an interactive TTY, while `hermes tools list` works in non-interactive smoke tests and shows the `hermes-tweet` toolset. Updated README and observability guidance so future scripted checks use the correct command. |
 | 2026-05-06 | piwheels package surface | Applied locally | Fresh web search found `https://www.piwheels.org/project/hermes-tweet/`, which lists Hermes Tweet 0.1.1 with a built wheel and PyPI link. Added a piwheels README badge and package metadata row so Raspberry Pi and Debian-style Python users can discover the package from the public repo. |
 | 2026-05-06 | v0.1.2 registry follow-up | Applied locally | Verified PyPI project JSON, version JSON, simple index, package metadata, and fresh Python 3.12 install now expose Hermes Tweet 0.1.2. Verified the piwheels project page lists 0.1.2, while the shields piwheels badge remained cached at 0.1.1 during this poll. Open external submissions remained clean without maintainer questions. |
+| 2026-05-06 | Package and ecosystem research follow-up | No repo code change | Fresh web search still found official Hermes tools docs, Hermes Atlas, Hermes Skill Atlas-adjacent surfaces, and package indexes as the durable discovery surfaces. Direct PyPI project JSON, PyPI version JSON, PyPI simple index, and piwheels JSON show Hermes Tweet 0.1.2; stale search snippets and badge-cache behavior remain presentation lag, not a release blocker. |
+| 2026-05-06 | TweetClaw README cross-link | Merged | Read TweetClaw README, code of conduct, license, PR history, and repository content; no existing Hermes Tweet link or duplicate PR existed. Merged `https://github.com/Xquik-dev/tweetclaw/pull/2` after `npm run check:all`, adding a native Hermes Tweet pointer for OpenClaw users who land on TweetClaw first. |
