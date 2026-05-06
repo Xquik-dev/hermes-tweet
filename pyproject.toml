@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hermes-tweet"
-version = "0.1.2"
+version = "0.1.3"
 description = "Native Hermes Agent plugin for X automation through Xquik"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -51,10 +51,11 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://xquik.com"
-Documentation = "https://docs.xquik.com"
+Homepage = "https://docs.xquik.com/guides/hermes-tweet"
+Documentation = "https://docs.xquik.com/guides/hermes-tweet"
 Repository = "https://github.com/Xquik-dev/hermes-tweet"
 Issues = "https://github.com/Xquik-dev/hermes-tweet/issues"
+"Xquik Platform" = "https://xquik.com"
 
 [project.entry-points."hermes_agent.plugins"]
 hermes-tweet = "hermes_tweet"
