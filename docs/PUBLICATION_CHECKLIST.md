@@ -60,6 +60,5 @@ registry-oriented `version`, `author`, and `tags` frontmatter. Local Hermes
 Agent v0.12.0 installed the committed branch as plugin version 0.1.4, loaded
 the `hermes-tweet` toolset, verified the bundled plugin skill metadata, ran
 `tweet_explore` in a one-shot tool probe, and confirmed `tweet_action` returns
-disabled while `HERMES_TWEET_ENABLE_ACTIONS` is unset. piwheels JSON still
-reported 0.1.3 during the release poll, so recheck it in the next run as cache
-or build lag rather than a PyPI release failure.
+disabled while `HERMES_TWEET_ENABLE_ACTIONS` is unset. piwheels JSON initially
+lagged at 0.1.3, then reported 0.1.4 before the run ended.
