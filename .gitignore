@@ -1,9 +1,65 @@
+# Secrets and local environment
 .env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.token
+*.secret
+
+# Python environments and tooling
 .venv/
+venv/
+env/
+.python-version
 __pycache__/
+*.py[cod]
+*$py.class
 .pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.pyright/
+.basedpyright/
+.tox/
+.nox/
+
+# Coverage and test reports
 .coverage
+.coverage.*
+coverage.xml
 htmlcov/
-*.egg-info/
+.hypothesis/
+.benchmarks/
+junit*.xml
+
+# Build and package artifacts
 build/
 dist/
+*.egg-info/
+*.egg
+pip-wheel-metadata/
+
+# Hermes, Codex, and local agent state
+.hermes/
+.codex/
+.agents/
+sessions/
+logs/
+*.log
+*.log.*
+
+# OS, editor, and temporary files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.cache/
+.tmp/
+tmp/
+temp/
