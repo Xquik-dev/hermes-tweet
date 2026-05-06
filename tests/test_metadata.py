@@ -44,6 +44,7 @@ EXPECTED_PUBLIC_IGNORE_PATTERNS = [
     ".hermes/",
     ".codex/",
     ".agents/",
+    ".playwright-cli/",
     "sessions/",
     "logs/",
     "*.log",

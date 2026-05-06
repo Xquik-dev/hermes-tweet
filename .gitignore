@@ -53,6 +53,7 @@ pip-wheel-metadata/
 .hermes/
 .codex/
 .agents/
+.playwright-cli/
 sessions/
 logs/
 *.log
