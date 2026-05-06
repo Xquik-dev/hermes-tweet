@@ -48,6 +48,9 @@ to `~/.hermes/.env`. In non-interactive installs the prompt is skipped; set the
 key through the environment or `~/.hermes/.env` before running `tweet_read`.
 If you edit `~/.hermes/.env` while Hermes is already running, use `/reload` in
 the session or start a new session before calling `tweet_read`.
+When `XQUIK_API_KEY` is not configured, Hermes should expose only the no-network
+`tweet_explore` tool from this plugin. That is expected safe gating, not an
+install failure.
 
 Install the published Python package from PyPI:
 
@@ -130,7 +133,8 @@ show and manage those tools through its normal `hermes tools` and platform
 toolset flows, so teams can keep X automation available only where it belongs.
 For non-interactive smoke tests and CI-style diagnostics, use
 `hermes tools list`; bare `hermes tools` opens the interactive tool UI and
-requires a TTY.
+requires a TTY. In Hermes v0.12.0, `hermes tools list` reports plugin toolsets,
+not every individual plugin tool name.
 
 Use the read-only path for social listening, trend research, account checks,
 giveaway audits, and draft planning. Keep `HERMES_TWEET_ENABLE_ACTIONS=false`
@@ -147,8 +151,11 @@ hermes -z "Use tweet_explore, then read /api/v1/account. Do not call tweet_actio
 Expected results:
 
 - `tweet_explore` discovers catalog endpoints without using the API key.
-- `tweet_read` can read `/api/v1/account` when `XQUIK_API_KEY` is configured.
-- `tweet_action` reports disabled unless `HERMES_TWEET_ENABLE_ACTIONS=true`.
+- Without `XQUIK_API_KEY`, a non-mutating Hermes probe exposes `tweet_explore`
+  only.
+- After `XQUIK_API_KEY` is configured and the session is reloaded, `tweet_read`
+  can read `/api/v1/account`.
+- `tweet_action` stays hidden or disabled unless `HERMES_TWEET_ENABLE_ACTIONS=true`.
 - `/xstatus` and `/xtrends` appear in the Hermes plugin command registry.
 
 If `hermes plugins install` runs without a TTY, Hermes cannot safely prompt for

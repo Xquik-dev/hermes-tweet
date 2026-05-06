@@ -13,7 +13,8 @@ Hermes plugin logs, and slash commands.
 - `hermes plugins list` shows whether the plugin is installed and enabled.
 - `hermes tools list` shows the `hermes-tweet` toolset in non-interactive
   terminals. Bare `hermes tools` opens the interactive tool UI and requires a
-  TTY.
+  TTY. Hermes v0.12.0 lists plugin toolsets there, not every individual plugin
+  tool name.
 - The Hermes plugin registry exposes loaded tools, slash commands, and bundled
   plugin skills for deterministic runtime smoke tests.
 
@@ -43,8 +44,10 @@ hermes -z "Use tweet_explore, then read /api/v1/account. Do not call tweet_actio
 Record only sanitized outcomes:
 
 - Catalog exploration succeeded.
-- Account read succeeded or returned a status code.
-- `tweet_action` stayed disabled when `HERMES_TWEET_ENABLE_ACTIONS` was unset.
+- Without `XQUIK_API_KEY`, Hermes exposed only `tweet_explore` from this plugin.
+- With `XQUIK_API_KEY`, account read succeeded or returned a status code.
+- `tweet_action` stayed hidden or disabled when `HERMES_TWEET_ENABLE_ACTIONS`
+  was unset.
 - `/xstatus` and `/xtrends` were registered.
 
 Do not store API keys in shell history, docs, issue comments, CI logs, PR bodies,
