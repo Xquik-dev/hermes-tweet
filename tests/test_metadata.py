@@ -4,6 +4,7 @@ import tomllib
 from pathlib import Path
 from typing import cast
 
+import pytest
 import yaml
 
 ROOT = Path(__file__).parents[1]
@@ -16,6 +17,37 @@ def load_mapping(path: Path) -> dict[str, object]:
     data = yaml.safe_load(path.read_text())
     assert isinstance(data, dict)
     return cast("dict[str, object]", data)
+
+
+def load_object_mapping(path: Path) -> dict[object, object]:
+    data = yaml.safe_load(path.read_text())
+    assert isinstance(data, dict)
+    return cast("dict[object, object]", data)
+
+
+def require_mapping(value: object) -> dict[str, object]:
+    assert isinstance(value, dict)
+    return cast("dict[str, object]", value)
+
+
+def require_list(value: object) -> list[object]:
+    assert isinstance(value, list)
+    return cast("list[object]", value)
+
+
+def find_step(steps: list[object], name: str) -> dict[str, object]:
+    for step in steps:
+        step_mapping = require_mapping(step)
+        if step_mapping.get("name") == name:
+            return step_mapping
+
+    message = f"No workflow step named {name!r}."
+    raise AssertionError(message)
+
+
+def test_find_step_reports_missing_workflow_step() -> None:
+    with pytest.raises(AssertionError, match=r"No workflow step named 'Publish'\."):
+        find_step([], "Publish")
 
 
 def test_release_metadata_surfaces_stay_aligned() -> None:
@@ -54,3 +86,42 @@ def test_plugin_manifests_keep_install_prompt_contract() -> None:
             "secret": True,
         }
     ]
+
+
+def test_publish_workflow_requires_version_matched_release_tag() -> None:
+    workflow = load_object_mapping(ROOT / ".github" / "workflows" / "publish.yml")
+
+    # PyYAML 1.1 treats the GitHub Actions "on" key as boolean true.
+    on_config = require_mapping(workflow[True])
+    release = require_mapping(on_config["release"])
+    assert release["types"] == ["published"]
+
+    workflow_dispatch = require_mapping(on_config["workflow_dispatch"])
+    inputs = require_mapping(workflow_dispatch["inputs"])
+    ref_input = require_mapping(inputs["ref"])
+    assert ref_input["required"] is True
+    assert ref_input["description"] == "Release tag to publish, such as v0.1.3"
+    assert "default" not in ref_input
+
+    jobs = require_mapping(workflow["jobs"])
+    build = require_mapping(jobs["build"])
+    build_steps = require_list(build["steps"])
+
+    checkout_step = find_step(build_steps, "Checkout")
+    checkout_config = require_mapping(checkout_step["with"])
+    assert checkout_config["ref"] == "${{ github.event.inputs.ref || github.ref_name }}"
+
+    validate_step = find_step(build_steps, "Validate release tag")
+    validate_env = require_mapping(validate_step["env"])
+    assert validate_env["RELEASE_REF"] == "${{ github.event.inputs.ref || github.ref_name }}"
+
+    validate_script = validate_step["run"]
+    assert isinstance(validate_script, str)
+    assert "pyproject.toml" in validate_script
+    assert 'expected_ref = f"v{version}"' in validate_script
+    assert 'actual_ref = os.environ["RELEASE_REF"]' in validate_script
+    assert "pyproject version tag" in validate_script
+
+    publish = require_mapping(jobs["publish"])
+    publish_permissions = require_mapping(publish["permissions"])
+    assert publish_permissions == {"contents": "read", "id-token": "write"}
