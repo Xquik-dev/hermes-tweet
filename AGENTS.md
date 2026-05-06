@@ -13,6 +13,7 @@ uv run --python 3.12 --extra dev bandit -c pyproject.toml -r hermes_tweet script
 uv run --python 3.12 --extra dev pip-audit
 uv run --python 3.12 --extra dev python -m build
 uv run --python 3.12 --extra dev twine check dist/*
+actionlint .github/workflows/*.yml
 python scripts/build_catalog.py ../xquik/openapi.yaml
 ```
 
