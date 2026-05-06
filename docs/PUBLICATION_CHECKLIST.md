@@ -31,3 +31,6 @@
 - [ ] Add Xquik docs cross-link.
 - [ ] Add TweetClaw README cross-link.
 - [x] Start directory submissions from `docs/DISCOVERABILITY_AUDIT.md`.
+
+Runtime verification note: local `hermes` CLI was not available during the
+2026-05-06 heartbeat, so the plugin enable/load checks remain open.

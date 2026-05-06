@@ -106,6 +106,18 @@ and write-like endpoints go through `tweet_action`, which is hidden unless
 Use `tweet_explore` first, then call `tweet_read` or `tweet_action` with a
 concrete `/api/v1/...` path.
 
+## Hermes Runtime Fit
+
+Hermes Tweet registers a dedicated `hermes-tweet` plugin toolset. Hermes can
+show and manage those tools through its normal `hermes tools` and platform
+toolset flows, so teams can keep X automation available only where it belongs.
+
+Use the read-only path for social listening, trend research, account checks,
+giveaway audits, and draft planning. Keep `HERMES_TWEET_ENABLE_ACTIONS=false`
+for unattended cron or gateway sessions unless the workflow has an explicit
+approval step for posting, DMs, follows, monitor changes, webhook changes, or
+other account actions.
+
 ## Slash Commands
 
 | Command | Purpose |
