@@ -81,7 +81,7 @@ hermes plugins install file:///absolute/path/to/hermes-tweet --force --enable
 | PyPI | [`hermes-tweet`](https://pypi.org/project/hermes-tweet/) |
 | Official guide | [`docs.xquik.com/guides/hermes-tweet`](https://docs.xquik.com/guides/hermes-tweet) |
 | piwheels | [`hermes-tweet`](https://www.piwheels.org/project/hermes-tweet/) |
-| Latest release | [`v0.1.3`](https://github.com/Xquik-dev/hermes-tweet/releases/tag/v0.1.3) |
+| Latest release | [`v0.1.4`](https://github.com/Xquik-dev/hermes-tweet/releases/tag/v0.1.4) |
 | Supported Python | `>=3.11` |
 | Package format | Wheel and source distribution |
 | Hermes entry point | `hermes-tweet = hermes_tweet` |

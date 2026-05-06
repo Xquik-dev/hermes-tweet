@@ -11,6 +11,14 @@ ROOT = Path(__file__).parents[1]
 GUIDE_URL = "https://docs.xquik.com/guides/hermes-tweet"
 EXPECTED_TOOLS = ["tweet_explore", "tweet_read", "tweet_action"]
 EXPECTED_OPTIONAL_ENV = ["XQUIK_BASE_URL", "HERMES_TWEET_ENABLE_ACTIONS"]
+EXPECTED_SKILL_TAGS = [
+    "hermes-agent",
+    "xquik",
+    "twitter",
+    "x",
+    "social-media",
+    "automation",
+]
 SETUP_UV_ACTION = "astral-sh/setup-uv@v8.1.0"
 ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
 EXPECTED_PUBLIC_IGNORE_PATTERNS = [
@@ -80,6 +88,15 @@ def require_list(value: object) -> list[object]:
     return cast("list[object]", value)
 
 
+def load_skill_frontmatter(path: Path) -> dict[str, object]:
+    content = path.read_text()
+    assert content.startswith("---\n")
+    _, frontmatter, _ = content.split("---", 2)
+    data = yaml.safe_load(frontmatter)
+    assert isinstance(data, dict)
+    return cast("dict[str, object]", data)
+
+
 def find_step(steps: list[object], name: str) -> dict[str, object]:
     for step in steps:
         step_mapping = require_mapping(step)
@@ -136,8 +153,16 @@ def test_plugin_manifests_keep_install_prompt_contract() -> None:
 def test_registry_skill_mirrors_bundled_skill() -> None:
     bundled_skill = ROOT / "hermes_tweet" / "skills" / "hermes-tweet" / "SKILL.md"
     registry_skill = ROOT / "skills" / "hermes-tweet" / "SKILL.md"
+    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
+    version = pyproject["project"]["version"]
 
     assert registry_skill.read_text().rstrip() == bundled_skill.read_text().rstrip()
+
+    frontmatter = load_skill_frontmatter(bundled_skill)
+    assert frontmatter["name"] == "hermes-tweet"
+    assert str(frontmatter["version"]) == version
+    assert frontmatter["author"] == "Xquik"
+    assert frontmatter["tags"] == EXPECTED_SKILL_TAGS
 
 
 def test_public_repo_ignore_rules_cover_local_artifacts() -> None:
@@ -149,6 +174,8 @@ def test_public_repo_ignore_rules_cover_local_artifacts() -> None:
 
 def test_publish_workflow_requires_version_matched_release_tag() -> None:
     workflow = load_object_mapping(ROOT / ".github" / "workflows" / "publish.yml")
+    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
+    version = pyproject["project"]["version"]
 
     # PyYAML 1.1 treats the GitHub Actions "on" key as boolean true.
     on_config = require_mapping(workflow[True])
@@ -159,7 +186,7 @@ def test_publish_workflow_requires_version_matched_release_tag() -> None:
     inputs = require_mapping(workflow_dispatch["inputs"])
     ref_input = require_mapping(inputs["ref"])
     assert ref_input["required"] is True
-    assert ref_input["description"] == "Release tag to publish, such as v0.1.3"
+    assert ref_input["description"] == f"Release tag to publish, such as v{version}"
     assert "default" not in ref_input
 
     jobs = require_mapping(workflow["jobs"])
