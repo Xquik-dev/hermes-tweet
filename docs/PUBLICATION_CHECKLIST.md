@@ -12,22 +12,22 @@
 
 ## Before PyPI Publication
 
-- [ ] Add PyPI pending trusted publisher:
+- [x] Add PyPI pending trusted publisher:
       `hermes-tweet` / `Xquik-dev` / `hermes-tweet` / `publish.yml` / `pypi`.
-- [ ] Regenerate catalog from current Xquik OpenAPI.
-- [ ] Run the full quality gate from `AGENTS.md`.
-- [ ] Build package from a clean working tree.
-- [ ] Run `twine check dist/*`.
-- [ ] Verify wheel contains `plugin.yaml`, `catalog_data.json`, and bundled skill.
-- [ ] Publish with local PyPI auth only.
-- [ ] Verify PyPI metadata, README rendering, and install command.
+- [x] Regenerate catalog from current Xquik OpenAPI.
+- [x] Run the full quality gate from `AGENTS.md`.
+- [x] Build package from a clean working tree.
+- [x] Run `twine check dist/*`.
+- [x] Verify wheel contains `plugin.yaml`, `catalog_data.json`, and bundled skill.
+- [x] Publish through GitHub Actions trusted publishing.
+- [x] Verify PyPI metadata, README rendering, and install command.
 
 ## After Publication
 
-- [ ] Install from PyPI in a fresh environment.
+- [x] Install from PyPI in a fresh environment.
 - [ ] Run `hermes plugins enable hermes-tweet`.
 - [ ] Confirm `tweet_explore`, `tweet_read`, and slash commands load.
 - [ ] Confirm `tweet_action` is hidden unless action env is enabled.
 - [ ] Add Xquik docs cross-link.
 - [ ] Add TweetClaw README cross-link.
-- [ ] Start directory submissions from `docs/DISCOVERABILITY_AUDIT.md`.
+- [x] Start directory submissions from `docs/DISCOVERABILITY_AUDIT.md`.
