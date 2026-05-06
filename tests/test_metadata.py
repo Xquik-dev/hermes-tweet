@@ -11,6 +11,8 @@ ROOT = Path(__file__).parents[1]
 GUIDE_URL = "https://docs.xquik.com/guides/hermes-tweet"
 EXPECTED_TOOLS = ["tweet_explore", "tweet_read", "tweet_action"]
 EXPECTED_OPTIONAL_ENV = ["XQUIK_BASE_URL", "HERMES_TWEET_ENABLE_ACTIONS"]
+SETUP_UV_ACTION = "astral-sh/setup-uv@v8.1.0"
+ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
 
 
 def load_mapping(path: Path) -> dict[str, object]:
@@ -107,6 +109,9 @@ def test_publish_workflow_requires_version_matched_release_tag() -> None:
     build = require_mapping(jobs["build"])
     build_steps = require_list(build["steps"])
 
+    install_uv_step = find_step(build_steps, "Install uv")
+    assert install_uv_step["uses"] == SETUP_UV_ACTION
+
     checkout_step = find_step(build_steps, "Checkout")
     checkout_config = require_mapping(checkout_step["with"])
     assert checkout_config["ref"] == "${{ github.event.inputs.ref || github.ref_name }}"
@@ -125,3 +130,31 @@ def test_publish_workflow_requires_version_matched_release_tag() -> None:
     publish = require_mapping(jobs["publish"])
     publish_permissions = require_mapping(publish["permissions"])
     assert publish_permissions == {"contents": "read", "id-token": "write"}
+
+
+def test_ci_workflow_runs_actionlint_before_python_checks() -> None:
+    workflow = load_object_mapping(ROOT / ".github" / "workflows" / "ci.yml")
+
+    # PyYAML 1.1 treats the GitHub Actions "on" key as boolean true.
+    on_config = require_mapping(workflow[True])
+    assert "pull_request" in on_config
+    assert "workflow_dispatch" in on_config
+
+    jobs = require_mapping(workflow["jobs"])
+    check = require_mapping(jobs["check"])
+    steps = require_list(check["steps"])
+
+    step_names = [require_mapping(step)["name"] for step in steps]
+    assert step_names.index("Workflow lint") < step_names.index("Install uv")
+    assert step_names.index("Workflow lint") < step_names.index("Test with coverage")
+
+    setup_go_step = find_step(steps, "Set up Go")
+    assert setup_go_step["uses"] == "actions/setup-go@v6"
+    setup_go_config = require_mapping(setup_go_step["with"])
+    assert setup_go_config["go-version"] == "stable"
+
+    workflow_lint_step = find_step(steps, "Workflow lint")
+    assert workflow_lint_step["run"] == f"go run {ACTIONLINT_MODULE}"
+
+    install_uv_step = find_step(steps, "Install uv")
+    assert install_uv_step["uses"] == SETUP_UV_ACTION

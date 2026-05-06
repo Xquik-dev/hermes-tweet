@@ -10,10 +10,10 @@
 - [ ] `uv run --python 3.12 --extra dev pip-audit`
 - [ ] `uv run --python 3.12 --extra dev python -m build`
 - [ ] `uv run --python 3.12 --extra dev twine check dist/*`
+- [ ] `actionlint .github/workflows/*.yml`
 
 ## Public Safety
 
 - [ ] No secrets, tokens, cookies, private screenshots, or private implementation details.
 - [ ] Write-like endpoints remain gated.
 - [ ] Public claims are source-verified.
-
