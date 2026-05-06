@@ -43,4 +43,6 @@ Record only sanitized outcomes:
 
 Do not store API keys in shell history, docs, issue comments, CI logs, PR bodies,
 or Hermes prompts. Use an ephemeral environment variable for one-off smoke tests
-or `~/.hermes/.env` for local persistent Hermes sessions.
+or `~/.hermes/.env` for local persistent Hermes sessions. After changing
+`~/.hermes/.env` in an active Hermes session, run `/reload` before the smoke
+test so the session reads the new values.

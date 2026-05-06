@@ -14,6 +14,9 @@ For persistent Hermes sessions, add it to `~/.hermes/.env`:
 XQUIK_API_KEY=xq_...
 ```
 
+If Hermes is already running after you edit `~/.hermes/.env`, use `/reload` in
+the session or start a new session before calling `tweet_read`.
+
 Keep actions disabled unless you are intentionally allowing account-changing
 operations:
 

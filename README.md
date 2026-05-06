@@ -44,6 +44,8 @@ hermes plugins install Xquik-dev/hermes-tweet --enable
 Hermes will prompt for `XQUIK_API_KEY` during an interactive install and save it
 to `~/.hermes/.env`. In non-interactive installs the prompt is skipped; set the
 key through the environment or `~/.hermes/.env` before running `tweet_read`.
+If you edit `~/.hermes/.env` while Hermes is already running, use `/reload` in
+the session or start a new session before calling `tweet_read`.
 
 Install the published Python package from PyPI:
 
@@ -93,6 +95,8 @@ export HERMES_TWEET_ENABLE_ACTIONS="false"
 ```
 
 Action endpoints are disabled unless `HERMES_TWEET_ENABLE_ACTIONS=true`.
+If you configure keys through `~/.hermes/.env` during an active Hermes session,
+use `/reload` so the session picks up the new values.
 
 ## Security Model
 
