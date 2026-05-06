@@ -2,6 +2,8 @@
 .env
 .env.*
 !.env.example
+.envrc
+.direnv/
 .npmrc
 .pypirc
 *.pem
@@ -36,6 +38,9 @@ htmlcov/
 .hypothesis/
 .benchmarks/
 junit*.xml
+*.prof
+*.sarif
+reports/
 
 # Build and package artifacts
 build/
@@ -52,6 +57,9 @@ sessions/
 logs/
 *.log
 *.log.*
+*.db
+*.sqlite
+*.sqlite3
 
 # OS, editor, and temporary files
 .DS_Store
@@ -62,6 +70,7 @@ Thumbs.db
 *.swo
 *~
 .cache/
+.ipynb_checkpoints/
 .tmp/
 tmp/
 temp/
