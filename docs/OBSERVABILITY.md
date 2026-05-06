@@ -28,6 +28,8 @@ Hermes plugin logs, and slash commands.
 
 Public CI runs formatting, linting, type checking, tests, coverage, security
 scan, dependency audit, package build, and package metadata validation.
+The release workflow uses current artifact actions so trusted-publishing runs
+stay ahead of GitHub Actions runtime deprecations.
 
 ## Runtime Smoke Test
 
