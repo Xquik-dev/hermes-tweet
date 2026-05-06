@@ -28,7 +28,7 @@ media automation for agents, or a native Hermes toolset for X/Twitter.
 - Published Python package with a native Hermes plugin entry point.
 - Installable from PyPI as `hermes-tweet`.
 - 99 agent-callable Xquik endpoints generated from OpenAPI.
-- 32 MPP-tagged read endpoints in the bundled catalog.
+- 31 MPP-tagged read endpoints in the bundled catalog.
 - Read and action tools are split for least-privilege operation.
 - Action endpoints are disabled by default.
 - Bundled Hermes skill for agent-facing usage guidance.

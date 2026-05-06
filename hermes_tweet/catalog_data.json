@@ -204,7 +204,7 @@
       {
         "name": "format",
         "in": "query",
-        "required": false,
+        "required": true,
         "type": "string",
         "description": "Export output format"
       },
@@ -407,7 +407,7 @@
       {
         "name": "format",
         "in": "query",
-        "required": false,
+        "required": true,
         "type": "string",
         "description": "Export file format"
       }
@@ -597,7 +597,7 @@
         "in": "body",
         "required": true,
         "type": "object",
-        "description": "Event type list or active state for the keyword monitor."
+        "description": "Event type list or active state for the account monitor."
       }
     ],
     "path": "/api/v1/monitors/{id}",
@@ -630,7 +630,7 @@
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Lookback window in hours (1-168, default 24)."
+        "description": "Lookback window in hours (1-72, default 6)."
       },
       {
         "name": "limit",
@@ -644,7 +644,7 @@
         "in": "query",
         "required": false,
         "type": "string",
-        "description": "Region filter (us, global, etc.)"
+        "description": "Region filter. Use `global` or a region code such as `US`, `GB`, `TR`, or `ES`."
       },
       {
         "name": "source",
@@ -685,7 +685,7 @@
       }
     ],
     "path": "/api/v1/styles",
-    "responseShape": "Style profile created",
+    "responseShape": "Fresh cached style profile returned",
     "summary": "Analyze writing style from recent tweets"
   },
   {
@@ -1313,7 +1313,7 @@
         "in": "body",
         "required": true,
         "type": "object",
-        "description": "Account, message text, and optional media or reply-to parameters."
+        "description": "Account, message text, and an optional one-item media attachment."
       }
     ],
     "path": "/api/v1/x/dm/{userId}",
@@ -1516,7 +1516,7 @@
         "in": "body",
         "required": true,
         "type": "object",
-        "description": "Account, media file, and optional long-video flag."
+        "description": "Upload media with multipart form data, or provide a JSON URL for server-side download."
       }
     ],
     "path": "/api/v1/x/media",
@@ -1528,17 +1528,14 @@
     "category": "media",
     "free": false,
     "method": "POST",
-    "mpp": {
-      "intent": "session",
-      "price": "$0.00015/call"
-    },
+    "mpp": null,
     "parameters": [
       {
         "name": "body",
         "in": "body",
         "required": true,
         "type": "object",
-        "description": "Single tweet URL/ID or array of up to 50 tweet URLs/IDs for bulk download."
+        "description": "Single tweet URL/ID, accepted aliases, or array of up to 50 tweet URLs/IDs for bulk download. When `tweetIds` contains at least one string value, bulk mode is used."
       }
     ],
     "path": "/api/v1/x/media/download",
@@ -1557,7 +1554,7 @@
         "in": "query",
         "required": false,
         "type": "string",
-        "description": "Notification type filter"
+        "description": "Notification type filter. Unrecognized values fall back to All."
       },
       {
         "name": "cursor",
@@ -1602,7 +1599,7 @@
         "in": "body",
         "required": true,
         "type": "object",
-        "description": "Account and avatar image file (max 716 KB)."
+        "description": "Account and avatar image file or HTTPS image URL (max 700 KB)."
       }
     ],
     "path": "/api/v1/x/profile/avatar",
@@ -1621,7 +1618,7 @@
         "in": "body",
         "required": true,
         "type": "object",
-        "description": "Account and banner image file (max 2 MB)."
+        "description": "Account and banner image file or HTTPS image URL (max 2 MB)."
       }
     ],
     "path": "/api/v1/x/profile/banner",
@@ -1640,7 +1637,7 @@
         "in": "query",
         "required": false,
         "type": "string",
-        "description": "Comma-separated tweet IDs to exclude from results"
+        "description": "Comma-separated tweet IDs to exclude from results. Empty entries are ignored."
       },
       {
         "name": "cursor",

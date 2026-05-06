@@ -27,6 +27,10 @@ PROHIBITED_STATIC = {
     ("POST", "/api/v1/x/accounts/bulk-retry"),
 }
 
+PAID_STATIC = {
+    ("POST", "/api/v1/x/media/download"),
+}
+
 ACTION_PREFIXES = (
     "/api/v1/events",
     "/api/v1/webhooks",
@@ -170,7 +174,8 @@ def build(source: Path) -> list[JsonDict]:
                 {
                     "action": _action(method, path),
                     "category": _category(operation_dict.get("tags")),
-                    "free": "x-payment-info" not in operation_dict,
+                    "free": "x-payment-info" not in operation_dict
+                    and (method, path) not in PAID_STATIC,
                     "method": method,
                     "mpp": _mpp(operation_dict),
                     "parameters": _parameters(path_item_dict, operation_dict),
