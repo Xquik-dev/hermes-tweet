@@ -13,6 +13,48 @@ EXPECTED_TOOLS = ["tweet_explore", "tweet_read", "tweet_action"]
 EXPECTED_OPTIONAL_ENV = ["XQUIK_BASE_URL", "HERMES_TWEET_ENABLE_ACTIONS"]
 SETUP_UV_ACTION = "astral-sh/setup-uv@v8.1.0"
 ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
+EXPECTED_PUBLIC_IGNORE_PATTERNS = [
+    ".env",
+    ".env.*",
+    "!.env.example",
+    ".envrc",
+    ".direnv/",
+    ".npmrc",
+    ".pypirc",
+    "*.pem",
+    "*.key",
+    "*.token",
+    "*.secret",
+    ".pytest_cache/",
+    ".ruff_cache/",
+    ".mypy_cache/",
+    ".pyright/",
+    ".basedpyright/",
+    ".coverage",
+    ".coverage.*",
+    "coverage.xml",
+    "htmlcov/",
+    "junit*.xml",
+    "*.prof",
+    "*.sarif",
+    "reports/",
+    "build/",
+    "dist/",
+    "*.egg-info/",
+    ".hermes/",
+    ".codex/",
+    ".agents/",
+    "sessions/",
+    "logs/",
+    "*.log",
+    "*.log.*",
+    "*.db",
+    "*.sqlite",
+    "*.sqlite3",
+    "*.ipynb",
+    ".ipynb_checkpoints/",
+    "screenshots/",
+]
 
 
 def load_mapping(path: Path) -> dict[str, object]:
@@ -88,6 +130,13 @@ def test_plugin_manifests_keep_install_prompt_contract() -> None:
             "secret": True,
         }
     ]
+
+
+def test_public_repo_ignore_rules_cover_local_artifacts() -> None:
+    ignore_patterns = set((ROOT / ".gitignore").read_text().splitlines())
+    missing_patterns = sorted(set(EXPECTED_PUBLIC_IGNORE_PATTERNS) - ignore_patterns)
+
+    assert missing_patterns == []
 
 
 def test_publish_workflow_requires_version_matched_release_tag() -> None:
