@@ -158,6 +158,11 @@ Expected results:
 - `tweet_action` stays hidden or disabled unless `HERMES_TWEET_ENABLE_ACTIONS=true`.
 - `/xstatus` and `/xtrends` appear in the Hermes plugin command registry.
 
+Hermes v0.12.0 one-shot `hermes -z "/xstatus"` runs as a model prompt, not as
+the interactive slash-command dispatcher. Verify slash commands in an active CLI
+or gateway session, or through the plugin registry tests, and use `hermes -z`
+for tool-call probes.
+
 If `hermes plugins install` runs without a TTY, Hermes cannot safely prompt for
 secrets and will skip API-key storage. This is expected; set `XQUIK_API_KEY`
 in the process environment or `~/.hermes/.env`.

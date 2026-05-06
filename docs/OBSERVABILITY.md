@@ -51,6 +51,12 @@ Record only sanitized outcomes:
   was unset.
 - `/xstatus` and `/xtrends` were registered.
 
+Hermes v0.12.0 does not provide a reliable non-interactive slash-command probe
+through `hermes -z "/xstatus"` or `hermes -z "/xtrends"`; that text can route as
+a model prompt. Verify slash-command registration in an active CLI or gateway
+session, or through the plugin registry tests. Use one-shot `hermes -z` for
+tool-call probes such as `tweet_explore` and `tweet_read`.
+
 Do not store API keys in shell history, docs, issue comments, CI logs, PR bodies,
 or Hermes prompts. Use an ephemeral environment variable for one-off smoke tests
 or `~/.hermes/.env` for local persistent Hermes sessions. After changing
