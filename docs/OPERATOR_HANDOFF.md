@@ -17,7 +17,7 @@ surfaces already:
 - First-party Xquik docs and TweetClaw links are current.
 - Local Hermes v0.12.0 exposes the `hermes-tweet` plugin toolset.
 
-## Optional Signed-In Submissions
+## Optional Manual Submissions
 
 These are useful but not blocking.
 
@@ -42,6 +42,16 @@ npx sundial-hub push skills/hermes-tweet --skill-version 0.1.5 --visibility publ
 - Before submission, confirm categories and changelog with the operator.
 - Do not open a direct `sundial-org/skills` PR unless maintainers document a
   third-party contribution route.
+
+### Skills.Rest
+
+- Route: `https://skills.rest/contribute`
+- Submit: `skills/hermes-tweet/SKILL.md` or the public GitHub tree URL.
+- Why manual: the published page says GitHub PRs go through
+  `github.com/skills-rest/submissions`, but that repository currently returns
+  404; the remaining visible routes are email/form review.
+- Do not email maintainers or submit a package without operator approval for the
+  outbound message, categories, and changelog.
 
 ## Local Secret Needed
 
