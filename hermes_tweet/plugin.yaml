@@ -1,5 +1,5 @@
 name: hermes-tweet
-version: 0.1.0
+version: 0.1.1
 description: "Native Hermes Agent plugin for X automation through Xquik"
 author: Xquik
 requires_env:
@@ -14,4 +14,3 @@ provides_tools:
   - tweet_explore
   - tweet_read
   - tweet_action
-
