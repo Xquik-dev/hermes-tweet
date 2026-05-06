@@ -54,17 +54,18 @@ When `XQUIK_API_KEY` is not configured, Hermes should expose only the no-network
 `tweet_explore` tool from this plugin. That is expected safe gating, not an
 install failure.
 
-Install the published Python package from PyPI:
-
-```bash
-~/.hermes/hermes-agent/venv/bin/python -m pip install hermes-tweet
-hermes plugins enable hermes-tweet
-```
-
-Use `uv` inside your Hermes Python environment:
+Install the published Python package from PyPI into the Hermes Python
+environment:
 
 ```bash
 uv pip install --python ~/.hermes/hermes-agent/venv/bin/python hermes-tweet
+hermes plugins enable hermes-tweet
+```
+
+If your Hermes venv includes `pip`, this path is also valid:
+
+```bash
+~/.hermes/hermes-agent/venv/bin/python -m pip install hermes-tweet
 hermes plugins enable hermes-tweet
 ```
 
@@ -81,7 +82,7 @@ hermes plugins install file:///absolute/path/to/hermes-tweet --force --enable
 | PyPI | [`hermes-tweet`](https://pypi.org/project/hermes-tweet/) |
 | Official guide | [`docs.xquik.com/guides/hermes-tweet`](https://docs.xquik.com/guides/hermes-tweet) |
 | piwheels | [`hermes-tweet`](https://www.piwheels.org/project/hermes-tweet/) |
-| Latest release | [`v0.1.4`](https://github.com/Xquik-dev/hermes-tweet/releases/tag/v0.1.4) |
+| Latest release | [`v0.1.5`](https://github.com/Xquik-dev/hermes-tweet/releases/tag/v0.1.5) |
 | Supported Python | `>=3.11` |
 | Package format | Wheel and source distribution |
 | Hermes entry point | `hermes-tweet = hermes_tweet` |
