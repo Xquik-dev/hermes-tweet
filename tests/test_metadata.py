@@ -132,6 +132,13 @@ def test_plugin_manifests_keep_install_prompt_contract() -> None:
     ]
 
 
+def test_registry_skill_mirrors_bundled_skill() -> None:
+    bundled_skill = ROOT / "hermes_tweet" / "skills" / "hermes-tweet" / "SKILL.md"
+    registry_skill = ROOT / "skills" / "hermes-tweet" / "SKILL.md"
+
+    assert registry_skill.read_text().rstrip() == bundled_skill.read_text().rstrip()
+
+
 def test_public_repo_ignore_rules_cover_local_artifacts() -> None:
     ignore_patterns = set((ROOT / ".gitignore").read_text().splitlines())
     missing_patterns = sorted(set(EXPECTED_PUBLIC_IGNORE_PATTERNS) - ignore_patterns)
