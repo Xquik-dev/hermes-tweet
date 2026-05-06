@@ -12,6 +12,8 @@
 
 ## Before PyPI Publication
 
+- [ ] Add PyPI pending trusted publisher:
+      `hermes-tweet` / `Xquik-dev` / `hermes-tweet` / `publish.yml` / `pypi`.
 - [ ] Regenerate catalog from current Xquik OpenAPI.
 - [ ] Run the full quality gate from `AGENTS.md`.
 - [ ] Build package from a clean working tree.
