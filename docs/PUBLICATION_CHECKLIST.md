@@ -25,12 +25,17 @@
 ## After Publication
 
 - [x] Install from PyPI in a fresh environment.
-- [ ] Run `hermes plugins enable hermes-tweet`.
-- [ ] Confirm `tweet_explore`, `tweet_read`, and slash commands load.
-- [ ] Confirm `tweet_action` is hidden unless action env is enabled.
+- [x] Run `hermes plugins enable hermes-tweet`.
+- [x] Confirm `tweet_explore`, `tweet_read`, and slash commands load.
+- [x] Confirm `tweet_action` is blocked unless action env is enabled.
 - [ ] Add Xquik docs cross-link.
 - [ ] Add TweetClaw README cross-link.
 - [x] Start directory submissions from `docs/DISCOVERABILITY_AUDIT.md`.
 
-Runtime verification note: local `hermes` CLI was not available during the
-2026-05-06 heartbeat, so the plugin enable/load checks remain open.
+Runtime verification note: on 2026-05-06, local Hermes Agent v0.12.0 loaded
+Hermes Tweet from a git install, registered `tweet_explore`, `tweet_read`,
+`tweet_action`, `/xstatus`, `/xtrends`, and `hermes-tweet:hermes-tweet`, ran a
+real `tweet_read` call against `/api/v1/account`, and confirmed
+`tweet_action` returns disabled while `HERMES_TWEET_ENABLE_ACTIONS` is unset.
+The runtime check also found and fixed directory-plugin namespace import issues
+in the root loader and catalog resource lookup.

@@ -7,7 +7,6 @@ from typing import Any, cast
 
 DEFAULT_LIMIT = 25
 MAX_LIMIT = 100
-PACKAGE_NAME = "hermes_tweet"
 
 
 @dataclass(frozen=True)
@@ -41,7 +40,11 @@ class Endpoint:
 
 
 def _load_raw() -> list[dict[str, Any]]:
-    text = files(PACKAGE_NAME).joinpath("catalog_data.json").read_text(encoding="utf-8")
+    text = (
+        files(__package__ or "hermes_tweet")
+        .joinpath("catalog_data.json")
+        .read_text(encoding="utf-8")
+    )
     data = cast("object", json.loads(text))
     items = cast("list[object]", data if isinstance(data, list) else [])
     return [cast("dict[str, Any]", item) for item in items if isinstance(item, dict)]
