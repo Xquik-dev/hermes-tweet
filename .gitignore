@@ -5,6 +5,11 @@
 .envrc
 .direnv/
 .npmrc
+.npmrc.*
+.yarnrc
+.pnpmrc
+.netrc
+.netrc.*
 .pypirc
 *.pem
 *.key
@@ -13,6 +18,23 @@
 *.pfx
 *.token
 *.secret
+*.credentials
+*.credentials.*
+auth.json
+auth.*.json
+credentials.json
+credentials.*.json
+secret.json
+secret.*.json
+secrets.json
+secrets.*.json
+token.json
+token.*.json
+tokens.json
+tokens.*.json
+.context7/
+context7.local.json
+context7.*.local.json
 
 # Python environments and tooling
 .venv/
@@ -33,6 +55,7 @@ __pycache__/
 # Coverage and test reports
 .coverage
 .coverage.*
+coverage/
 coverage.xml
 htmlcov/
 .hypothesis/
@@ -41,13 +64,26 @@ junit*.xml
 *.prof
 *.sarif
 reports/
+secret-scan/
+secret-scan-results/
+secret-scan-report.*
+gitleaks-report.*
+trufflehog-report.*
 
 # Build and package artifacts
 build/
 dist/
+package/
+*.tgz
+*.tar
+*.tar.gz
+*.zip
 *.egg-info/
 *.egg
 pip-wheel-metadata/
+node_modules/
+.turbo/
+.next/
 
 # Hermes, Codex, and local agent state
 .hermes/
