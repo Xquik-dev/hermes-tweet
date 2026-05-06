@@ -16,6 +16,8 @@ XQUIK_API_KEY=xq_...
 
 If Hermes is already running after you edit `~/.hermes/.env`, use `/reload` in
 the session or start a new session before calling `tweet_read`.
+When `XQUIK_API_KEY` is missing, Hermes should expose only `tweet_explore` from
+this plugin. Set the key, then reload the session before expecting `tweet_read`.
 
 Keep actions disabled unless you are intentionally allowing account-changing
 operations:
@@ -35,4 +37,5 @@ Expected behavior:
 - `tweet_explore` loads without an API call.
 - `tweet_read` works when `XQUIK_API_KEY` is set.
 - `/xstatus` and `/xtrends` are registered slash commands.
-- `tweet_action` returns a disabled error unless `HERMES_TWEET_ENABLE_ACTIONS=true`.
+- `tweet_action` stays hidden or returns a disabled error unless
+  `HERMES_TWEET_ENABLE_ACTIONS=true`.
