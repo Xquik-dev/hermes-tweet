@@ -62,3 +62,18 @@ the `hermes-tweet` toolset, verified the bundled plugin skill metadata, ran
 `tweet_explore` in a one-shot tool probe, and confirmed `tweet_action` returns
 disabled while `HERMES_TWEET_ENABLE_ACTIONS` is unset. piwheels JSON initially
 lagged at 0.1.3, then reported 0.1.4 before the run ended.
+
+Release verification note: on 2026-05-06, v0.1.5 published through GitHub
+Actions trusted publishing after PR #55 and master CI passed. PyPI direct
+version JSON, project JSON, and the simple index exposed 0.1.5 after brief
+cache lag. A fresh Python 3.12 install with `--refresh-package hermes-tweet`
+verified the wheel metadata, `plugin.yaml`, `catalog_data.json`, and bundled
+`hermes-tweet` skill with nested registry metadata. Local Hermes Agent v0.12.0
+installed the built wheel with
+`uv pip install --python ~/.hermes/hermes-agent/venv/bin/python`, because that
+Hermes venv does not expose `python -m pip`. The runtime loaded the
+`hermes-tweet` toolset, registered `tweet_explore`, `tweet_read`,
+`tweet_action`, `/xstatus`, `/xtrends`, and the bundled skill, verified
+`tweet_explore`, and confirmed API/action gates stay closed while
+`XQUIK_API_KEY` is unset. piwheels JSON and page still lagged at 0.1.4 during
+this verification window; treat that as registry cache lag unless it persists.
