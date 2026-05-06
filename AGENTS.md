@@ -36,5 +36,5 @@ python scripts/build_catalog.py ../xquik/openapi.yaml
 2. Run all checks above.
 3. Build the package and run `twine check dist/*`.
 4. Verify `plugin.yaml`, `pyproject.toml`, README, and bundled skill version.
-5. Publish only from a clean working tree with PyPI auth configured locally.
-
+5. Publish through GitHub Actions trusted publishing from a clean, tagged release.
+6. Use local PyPI auth only as a fallback, and never print or commit credentials.
