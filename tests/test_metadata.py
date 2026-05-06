@@ -209,6 +209,7 @@ def test_ci_workflow_runs_actionlint_before_python_checks() -> None:
     assert setup_go_step["uses"] == "actions/setup-go@v6"
     setup_go_config = require_mapping(setup_go_step["with"])
     assert setup_go_config["go-version"] == "stable"
+    assert setup_go_config["cache"] is False
 
     workflow_lint_step = find_step(steps, "Workflow lint")
     assert workflow_lint_step["run"] == f"go run {ACTIONLINT_MODULE}"

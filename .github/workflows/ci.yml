@@ -20,6 +20,7 @@ jobs:
         uses: actions/setup-go@v6
         with:
           go-version: stable
+          cache: false
 
       - name: Workflow lint
         run: go run github.com/rhysd/actionlint/cmd/actionlint@v1.7.12
