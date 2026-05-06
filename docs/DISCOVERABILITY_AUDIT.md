@@ -10,7 +10,7 @@ Hermes Tweet is a public Hermes Agent plugin for X automation through Xquik.
 | PyPI package | Published | Public at `https://pypi.org/project/hermes-tweet/`. |
 | piwheels package | Published | Public at `https://www.piwheels.org/project/hermes-tweet/`. |
 | Hermes ecosystem directories | In progress | Hermes Atlas PR `https://github.com/ksimback/hermes-ecosystem/pull/169`, Hermes Skill Atlas submission `https://github.com/codesstar/hermes-skill-atlas/issues/1`, `itgoyo/hermes-skills` PR `https://github.com/itgoyo/hermes-skills/pull/1`, and `aliaihub/awesome-hermes-usecases` validator PR `https://github.com/aliaihub/awesome-hermes-usecases/pull/1` are open. |
-| Xquik docs | Pending | Add after repository URL is live. |
+| Xquik docs | Published | Linked from `https://docs.xquik.com/guides/hermes-tweet` and reciprocally referenced from the TweetClaw guide. |
 | TweetClaw README cross-link | Published | Linked from `https://github.com/Xquik-dev/tweetclaw#readme`. |
 
 ## Candidate Discovery Queries
@@ -62,3 +62,4 @@ Hermes Tweet is a public Hermes Agent plugin for X automation through Xquik.
 | 2026-05-06 | v0.1.2 registry follow-up | Applied locally | Verified PyPI project JSON, version JSON, simple index, package metadata, and fresh Python 3.12 install now expose Hermes Tweet 0.1.2. Verified the piwheels project page lists 0.1.2, while the shields piwheels badge remained cached at 0.1.1 during this poll. Open external submissions remained clean without maintainer questions. |
 | 2026-05-06 | Package and ecosystem research follow-up | No repo code change | Fresh web search still found official Hermes tools docs, Hermes Atlas, Hermes Skill Atlas-adjacent surfaces, and package indexes as the durable discovery surfaces. Direct PyPI project JSON, PyPI version JSON, PyPI simple index, and piwheels JSON show Hermes Tweet 0.1.2; stale search snippets and badge-cache behavior remain presentation lag, not a release blocker. |
 | 2026-05-06 | TweetClaw README cross-link | Merged | Read TweetClaw README, code of conduct, license, PR history, and repository content; no existing Hermes Tweet link or duplicate PR existed. Merged `https://github.com/Xquik-dev/tweetclaw/pull/2` after `npm run check:all`, adding a native Hermes Tweet pointer for OpenClaw users who land on TweetClaw first. |
+| 2026-05-06 | Xquik docs Hermes guides | Merged | Read xquik-docs CONTRIBUTING, code of conduct, license, existing Hermes Tweet and TweetClaw guides, and PR history. Merged `https://github.com/Xquik-dev/xquik-docs/pull/12` after docs tests, Mintlify validation, broken-link checks, and PR checks; refreshed Hermes Tweet to 0.1.2, TweetClaw to 1.6.14, `/reload`, `hermes tools list`, `tools.alsoAllow`, and reciprocal guide links. |

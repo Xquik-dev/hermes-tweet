@@ -28,7 +28,7 @@
 - [x] Run `hermes plugins enable hermes-tweet`.
 - [x] Confirm `tweet_explore`, `tweet_read`, and slash commands load.
 - [x] Confirm `tweet_action` is blocked unless action env is enabled.
-- [ ] Add Xquik docs cross-link.
+- [x] Add Xquik docs cross-link.
 - [x] Add TweetClaw README cross-link.
 - [x] Start directory submissions from `docs/DISCOVERABILITY_AUDIT.md`.
 
