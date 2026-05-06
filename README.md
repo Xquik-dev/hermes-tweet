@@ -3,6 +3,10 @@
 [![CI](https://github.com/Xquik-dev/hermes-tweet/actions/workflows/ci.yml/badge.svg)](https://github.com/Xquik-dev/hermes-tweet/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/hermes-tweet.svg)](https://pypi.org/project/hermes-tweet/)
 [![Python](https://img.shields.io/pypi/pyversions/hermes-tweet.svg)](https://pypi.org/project/hermes-tweet/)
+[![PyPI Status](https://img.shields.io/pypi/status/hermes-tweet.svg)](https://pypi.org/project/hermes-tweet/)
+[![Wheel](https://img.shields.io/pypi/wheel/hermes-tweet.svg)](https://pypi.org/project/hermes-tweet/#files)
+[![Downloads](https://img.shields.io/pypi/dm/hermes-tweet.svg)](https://pypi.org/project/hermes-tweet/)
+[![Release](https://img.shields.io/github/v/release/Xquik-dev/hermes-tweet?sort=semver)](https://github.com/Xquik-dev/hermes-tweet/releases)
 [![Apify Actor](https://apify.com/actor-badge?actor=xquik/x-tweet-scraper)](https://apify.com/xquik/x-tweet-scraper)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -18,7 +22,8 @@ media automation for agents, or a native Hermes toolset for X/Twitter.
 
 ## Highlights
 
-- Native Hermes plugin with `plugin.yaml` and pip entry point.
+- Published Python package with a native Hermes plugin entry point.
+- Installable from PyPI as `hermes-tweet`.
 - 99 agent-callable Xquik endpoints generated from OpenAPI.
 - 32 MPP-tagged read endpoints in the bundled catalog.
 - Read and action tools are split for least-privilege operation.
@@ -30,19 +35,38 @@ media automation for agents, or a native Hermes toolset for X/Twitter.
 
 ## Install
 
+Install the published Python package from PyPI:
+
+```bash
+python -m pip install hermes-tweet
+hermes plugins enable hermes-tweet
+```
+
+Use `uv` inside your Hermes Python environment:
+
+```bash
+uv pip install hermes-tweet
+hermes plugins enable hermes-tweet
+```
+
 From a local checkout:
 
 ```bash
-pip install -e .
+python -m pip install -e .
 hermes plugins enable hermes-tweet
 ```
 
-For public distribution:
+## Python Package
 
-```bash
-pip install hermes-tweet
-hermes plugins enable hermes-tweet
-```
+| Field | Value |
+| --- | --- |
+| PyPI | [`hermes-tweet`](https://pypi.org/project/hermes-tweet/) |
+| Latest release | [`v0.1.0`](https://github.com/Xquik-dev/hermes-tweet/releases/tag/v0.1.0) |
+| Supported Python | `>=3.11` |
+| Package format | Wheel and source distribution |
+| Hermes entry point | `hermes-tweet = hermes_tweet` |
+| Entry point group | `hermes_agent.plugins` |
+| Included assets | `plugin.yaml`, `catalog_data.json`, bundled Hermes skill |
 
 ## Configure
 
