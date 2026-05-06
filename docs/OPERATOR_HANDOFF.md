@@ -13,6 +13,7 @@ surfaces already:
   expose `0.1.5`.
 - SKILLS.re lists Hermes Tweet.
 - AgentSkill lists Hermes Tweet and serves the agent install API.
+- ClawHub lists Hermes Tweet with clean moderation.
 - First-party Xquik docs and TweetClaw links are current.
 - Local Hermes v0.12.0 exposes the `hermes-tweet` plugin toolset.
 
@@ -41,22 +42,6 @@ npx sundial-hub push skills/hermes-tweet --skill-version 0.1.5 --visibility publ
 - Before submission, confirm categories and changelog with the operator.
 - Do not open a direct `sundial-org/skills` PR unless maintainers document a
   third-party contribution route.
-
-### ClawHub
-
-- Route: `https://clawhub.ai/skills/hermes-tweet`
-- Current state: the registry already lists `hermes-tweet` under owner `xquik`,
-  but the listed copy is stale at version `1.0.0`, omits the current 0.1.5
-  metadata, and is marked `SUSPICIOUS`.
-- Why manual: repairing the existing listing requires authenticated owner or
-  publisher access for `xquik`, and ClawHub publishes skills under MIT-0.
-- Do not create a duplicate listing. Update the existing `hermes-tweet` slug or
-  appeal moderation from the owner account instead.
-- Candidate owner update command, after operator approval:
-
-```bash
-npx clawhub skill publish skills/hermes-tweet --owner xquik --slug hermes-tweet --name "Hermes Tweet" --version 0.1.5 --tags latest,hermes-agent,xquik,twitter,x,social-media,automation --changelog "Update Hermes Tweet to v0.1.5 registry metadata and runtime guidance."
-```
 
 ## Local Secret Needed
 
