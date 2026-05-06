@@ -75,5 +75,5 @@ Hermes venv does not expose `python -m pip`. The runtime loaded the
 `hermes-tweet` toolset, registered `tweet_explore`, `tweet_read`,
 `tweet_action`, `/xstatus`, `/xtrends`, and the bundled skill, verified
 `tweet_explore`, and confirmed API/action gates stay closed while
-`XQUIK_API_KEY` is unset. piwheels JSON and page still lagged at 0.1.4 during
-this verification window; treat that as registry cache lag unless it persists.
+`XQUIK_API_KEY` is unset. piwheels JSON and page initially lagged at 0.1.4, then
+exposed 0.1.5 before final verification ended.
