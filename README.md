@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/Xquik-dev/hermes-tweet/actions/workflows/ci.yml/badge.svg)](https://github.com/Xquik-dev/hermes-tweet/actions/workflows/ci.yml)
 [![Docs](https://img.shields.io/badge/docs-xquik.com-blue.svg)](https://docs.xquik.com/guides/hermes-tweet)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Xquik-dev/hermes-tweet)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg?url=https%3A%2F%2Fgithub.com%2FXquik-dev%2Fhermes-tweet)](https://deepwiki.com/Xquik-dev/hermes-tweet)
 [![PyPI](https://img.shields.io/pypi/v/hermes-tweet.svg)](https://pypi.org/project/hermes-tweet/)
 [![piwheels](https://img.shields.io/piwheels/v/hermes-tweet.svg)](https://www.piwheels.org/project/hermes-tweet/)
 [![Python](https://img.shields.io/pypi/pyversions/hermes-tweet.svg)](https://pypi.org/project/hermes-tweet/)
