@@ -32,6 +32,14 @@
 - [x] Add TweetClaw README cross-link.
 - [x] Start directory submissions from `docs/DISCOVERABILITY_AUDIT.md`.
 
+## Manual Operator Actions
+
+See `docs/OPERATOR_HANDOFF.md` for optional signed-in submissions, local-secret
+smoke tests, and maintainer-blocked directory routes. No urgent manual action is
+required after the v0.1.5 release; the remaining useful manual paths are
+SkillRegistry.io upload, Sundial authenticated publish, and local
+`XQUIK_API_KEY` smoke testing.
+
 Runtime verification note: on 2026-05-06, local Hermes Agent v0.12.0 loaded
 Hermes Tweet from a git install, registered `tweet_explore`, `tweet_read`,
 `tweet_action`, `/xstatus`, `/xtrends`, and `hermes-tweet:hermes-tweet`, ran a
