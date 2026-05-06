@@ -124,6 +124,9 @@ concrete `/api/v1/...` path.
 Hermes Tweet registers a dedicated `hermes-tweet` plugin toolset. Hermes can
 show and manage those tools through its normal `hermes tools` and platform
 toolset flows, so teams can keep X automation available only where it belongs.
+For non-interactive smoke tests and CI-style diagnostics, use
+`hermes tools list`; bare `hermes tools` opens the interactive tool UI and
+requires a TTY.
 
 Use the read-only path for social listening, trend research, account checks,
 giveaway audits, and draft planning. Keep `HERMES_TWEET_ENABLE_ACTIONS=false`

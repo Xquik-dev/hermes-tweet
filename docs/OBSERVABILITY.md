@@ -11,6 +11,9 @@ Hermes plugin logs, and slash commands.
 - API failures include HTTP status and response payload without exposing
   credentials.
 - `hermes plugins list` shows whether the plugin is installed and enabled.
+- `hermes tools list` shows the `hermes-tweet` toolset in non-interactive
+  terminals. Bare `hermes tools` opens the interactive tool UI and requires a
+  TTY.
 - The Hermes plugin registry exposes loaded tools, slash commands, and bundled
   plugin skills for deterministic runtime smoke tests.
 
@@ -31,6 +34,7 @@ scan, dependency audit, package build, and package metadata validation.
 Use this check after installing or updating Hermes Tweet:
 
 ```bash
+hermes tools list
 hermes -z "Use tweet_explore, then read /api/v1/account. Do not call tweet_action." --toolsets hermes-tweet
 ```
 
