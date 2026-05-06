@@ -164,6 +164,11 @@ def test_registry_skill_mirrors_bundled_skill() -> None:
     assert frontmatter["author"] == "Xquik"
     assert frontmatter["tags"] == EXPECTED_SKILL_TAGS
 
+    marketplace_metadata = require_mapping(frontmatter["metadata"])
+    assert str(marketplace_metadata["version"]) == version
+    assert marketplace_metadata["author"] == "Xquik"
+    assert marketplace_metadata["tags"] == EXPECTED_SKILL_TAGS
+
 
 def test_public_repo_ignore_rules_cover_local_artifacts() -> None:
     ignore_patterns = set((ROOT / ".gitignore").read_text().splitlines())

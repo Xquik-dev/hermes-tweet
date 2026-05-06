@@ -1,6 +1,6 @@
 ---
 name: hermes-tweet
-version: 0.1.4
+version: 0.1.5
 author: Xquik
 description: Use Xquik from Hermes Agent for X search, posting, replies, likes, retweets, follows, DMs, monitors, extraction jobs, draws, media, and trends.
 tags:
@@ -10,17 +10,52 @@ tags:
   - x
   - social-media
   - automation
+metadata:
+  version: 0.1.5
+  author: Xquik
+  tags:
+    - hermes-agent
+    - xquik
+    - twitter
+    - x
+    - social-media
+    - automation
 ---
 
 # Hermes Tweet
 
 Use Hermes Tweet when the user wants to automate or inspect X through Xquik.
 
+## When to Use
+
+Use this skill for Hermes Agent sessions that need X/Twitter data or controlled
+X actions through the Hermes Tweet plugin.
+
+Use `tweet_explore` first when the user asks for a capability, endpoint, route,
+or Xquik API surface. Use `tweet_read` only after a read-only endpoint is known.
+Use `tweet_action` only after the user requests a write, private read, monitor,
+webhook, extraction job, giveaway draw, or media operation that requires action
+permissions.
+
 ## Workflow
 
 1. Use `tweet_explore` to find the endpoint.
 2. Use `tweet_read` for public read-only endpoints.
 3. Use `tweet_action` only for writes or private reads after stating the exact endpoint and payload.
+
+## Decision Rules
+
+- IF the task is endpoint discovery, THEN call `tweet_explore` with a short
+  query.
+- IF the endpoint method is `GET` and the catalog does not mark it as an
+  action, THEN call `tweet_read`.
+- IF the endpoint method is not `GET`, or the route touches private account
+  state, THEN call `tweet_action` only when actions are enabled and the user has
+  approved the operation.
+- IF `tweet_action` is unavailable or disabled, THEN explain that action tools
+  are intentionally gated by `HERMES_TWEET_ENABLE_ACTIONS=true`.
+- IF `XQUIK_API_KEY` is missing, THEN ask the user to set it in the Hermes
+  runtime environment without requesting the key value in chat.
 
 ## Safety
 
@@ -29,6 +64,18 @@ Use Hermes Tweet when the user wants to automate or inspect X through Xquik.
 - Use only catalog-listed `/api/v1/...` endpoints.
 - Do not use account connection, re-authentication, API key, billing, credit top-up, or support-ticket endpoints.
 - For posting, deleting, following, DMs, profile changes, monitors, webhooks, extraction jobs, and draws, summarize the action before calling `tweet_action`.
+
+## Pitfalls
+
+- Do not guess endpoint paths. Always use the catalog returned by `tweet_explore`.
+- Do not treat a slash command prompt as proof that Hermes registered the
+  command. Verify slash commands through an active Hermes session or plugin
+  registry test.
+- Do not use bare `hermes tools` for scripted diagnostics. Run
+  `hermes tools list` instead.
+- Do not retry writes through alternate routes after a policy, auth, or account
+  state error.
+- Do not include secrets in examples, logs, prompts, issue bodies, or tool input.
 
 ## Examples
 
@@ -55,3 +102,25 @@ Then call `tweet_action` with:
 ```json
 {"path":"/api/v1/x/tweets","method":"POST","body":{"account":"@example","text":"Hello from Hermes Tweet"},"reason":"Post the user-approved tweet."}
 ```
+
+## Testing
+
+After installing or upgrading the plugin in Hermes Agent:
+
+1. Run `hermes plugins enable hermes-tweet`.
+2. Run `hermes tools list` and confirm the `hermes-tweet` toolset is enabled.
+3. Confirm `tweet_explore` is available without `XQUIK_API_KEY`.
+4. Confirm `tweet_read` appears only when `XQUIK_API_KEY` is configured.
+5. Confirm `tweet_action` stays hidden or disabled unless `HERMES_TWEET_ENABLE_ACTIONS=true`.
+
+Useful CLI checks:
+
+```bash
+hermes plugins enable hermes-tweet
+hermes tools list
+```
+
+## Version History
+
+- 0.1.5: Add registry-compatible nested metadata and clearer Hermes runtime guidance.
+- 0.1.4: Add public registry frontmatter for skill directory discovery.
