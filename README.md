@@ -87,6 +87,7 @@ hermes plugins install file:///absolute/path/to/hermes-tweet --force --enable
 | Hermes entry point | `hermes-tweet = hermes_tweet` |
 | Entry point group | `hermes_agent.plugins` |
 | Included assets | `plugin.yaml`, `catalog_data.json`, bundled Hermes skill |
+| Registry skill path | [`skills/hermes-tweet/SKILL.md`](skills/hermes-tweet/SKILL.md) |
 
 ## Configure
 
