@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       ref:
-        description: "Release tag to publish, such as v0.1.5"
+        description: "Release tag to publish, such as v0.1.6"
         required: true
 
 permissions:

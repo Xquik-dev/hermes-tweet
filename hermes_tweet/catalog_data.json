@@ -1313,7 +1313,7 @@
         "in": "body",
         "required": true,
         "type": "object",
-        "description": "Account, message text, and an optional one-item media attachment."
+        "description": "Account, message text, and an optional media attachment."
       }
     ],
     "path": "/api/v1/x/dm/{userId}",

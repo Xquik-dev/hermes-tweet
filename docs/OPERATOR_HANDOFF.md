@@ -35,7 +35,7 @@ These are useful but not blocking.
 - Submit command after authentication:
 
 ```bash
-npx sundial-hub push skills/hermes-tweet --skill-version 0.1.5 --visibility public --categories social-media,automation,developer-tools
+npx sundial-hub push skills/hermes-tweet --skill-version 0.1.6 --visibility public --categories social-media,automation,developer-tools
 ```
 
 - Why manual: local `sundial-hub` auth is not configured.
