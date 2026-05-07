@@ -59,6 +59,16 @@ Real `tweet_read` smoke tests require `XQUIK_API_KEY` in the Hermes runtime.
 
 Do not paste the key into chat, issue bodies, PR bodies, logs, or command text.
 Set it locally through an ephemeral environment variable or `~/.hermes/.env`.
+If a maintainer has stored the key in macOS Keychain as service
+`xquik-api-key` and account `hermes-tweet`, prefer hydrating it only for the
+smoke-test process:
+
+```bash
+XQUIK_API_KEY="$(security find-generic-password -a hermes-tweet -s xquik-api-key -w)" \
+  hermes -z "Use tweet_explore, then read /api/v1/account. Do not call tweet_action." \
+  --toolsets hermes-tweet
+```
+
 After editing `~/.hermes/.env`, run `/reload` in an active Hermes CLI session.
 Gateway and cron sessions need a restart or new session.
 
