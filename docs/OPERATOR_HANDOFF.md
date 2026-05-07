@@ -3,15 +3,14 @@
 This file tracks tasks that need a signed-in human account, a local secret, or a
 maintainer response before Hermes Tweet can move forward.
 
-## No Urgent Manual Action
+## No Package Release Blocker
 
 Hermes Tweet is published, installed, and discoverable across the primary
 surfaces already:
 
 - GitHub repository and docs homepage are public.
 - PyPI, direct PyPI version JSON, and the simple index expose `0.1.6`.
-- piwheels JSON and page may briefly lag at `0.1.5` after the `0.1.6`
-  release.
+- piwheels JSON and page expose `0.1.6`.
 - SKILLS.re lists Hermes Tweet.
 - AgentSkill lists Hermes Tweet and serves the agent install API.
 - ClawHub lists Hermes Tweet with clean moderation and current `0.1.6`

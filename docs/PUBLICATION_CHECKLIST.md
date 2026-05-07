@@ -35,11 +35,10 @@
 ## Manual Operator Actions
 
 See `docs/OPERATOR_HANDOFF.md` for optional signed-in submissions, local-secret
-smoke tests, and maintainer-blocked directory routes. No urgent manual action is
-required after the v0.1.6 release; the remaining useful manual paths are
+smoke tests, and maintainer-blocked directory routes. No package release
+blocker remains after the v0.1.6 release; the useful manual paths are
 SkillRegistry.io upload, Sundial authenticated publish, optional Skills.Rest
-outreach after operator approval, and local
-`XQUIK_API_KEY` smoke testing.
+outreach after operator approval, and local `XQUIK_API_KEY` smoke testing.
 
 Runtime verification note: on 2026-05-06, local Hermes Agent v0.12.0 loaded
 Hermes Tweet from a git install, registered `tweet_explore`, `tweet_read`,
@@ -108,6 +107,7 @@ installed the published PyPI wheel with
 loaded the `hermes-tweet` toolset, ran a live one-shot `tweet_read` against
 `/api/v1/account` without echoing the Keychain-loaded API key, and confirmed
 `tweet_action` remains disabled while `HERMES_TWEET_ENABLE_ACTIONS` is unset.
-ClawHub was updated to registry version `1.0.2` with hosted 0.1.6 metadata and
-clean moderation. piwheels JSON and page still lagged at 0.1.5 during this
-verification pass.
+ClawHub was updated to registry version `1.0.2` with hosted 0.1.6 metadata.
+After a short asynchronous moderation delay and owner rescan, ClawHub returned
+to clean moderation. piwheels JSON and page initially lagged at 0.1.5, then
+exposed 0.1.6 before final verification ended.
