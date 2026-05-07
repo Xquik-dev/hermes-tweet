@@ -1,6 +1,6 @@
 ---
 name: hermes-tweet
-version: 0.1.5
+version: 0.1.6
 author: Xquik
 description: Use Xquik from Hermes Agent for X search, posting, replies, likes, retweets, follows, DMs, monitors, extraction jobs, draws, media, and trends.
 tags:
@@ -11,7 +11,7 @@ tags:
   - social-media
   - automation
 metadata:
-  version: 0.1.5
+  version: 0.1.6
   author: Xquik
   tags:
     - hermes-agent
@@ -122,5 +122,6 @@ hermes tools list
 
 ## Version History
 
+- 0.1.6: Refresh catalog wording from current Xquik OpenAPI.
 - 0.1.5: Add registry-compatible nested metadata and clearer Hermes runtime guidance.
 - 0.1.4: Add public registry frontmatter for skill directory discovery.
