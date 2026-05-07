@@ -9,11 +9,13 @@ Hermes Tweet is published, installed, and discoverable across the primary
 surfaces already:
 
 - GitHub repository and docs homepage are public.
-- PyPI, direct PyPI version JSON, simple index, piwheels JSON, and piwheels page
-  expose `0.1.5`.
+- PyPI, direct PyPI version JSON, and the simple index expose `0.1.6`.
+- piwheels JSON and page may briefly lag at `0.1.5` after the `0.1.6`
+  release.
 - SKILLS.re lists Hermes Tweet.
 - AgentSkill lists Hermes Tweet and serves the agent install API.
-- ClawHub lists Hermes Tweet with clean moderation.
+- ClawHub lists Hermes Tweet with clean moderation and current `0.1.6`
+  metadata.
 - First-party Xquik docs and TweetClaw links are current.
 - Local Hermes v0.12.0 exposes the `hermes-tweet` plugin toolset.
 
