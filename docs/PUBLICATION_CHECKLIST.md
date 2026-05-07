@@ -37,7 +37,8 @@
 See `docs/OPERATOR_HANDOFF.md` for optional signed-in submissions, local-secret
 smoke tests, and maintainer-blocked directory routes. No urgent manual action is
 required after the v0.1.5 release; the remaining useful manual paths are
-SkillRegistry.io upload, Sundial authenticated publish, and local
+SkillRegistry.io upload, Sundial authenticated publish, optional Skills.Rest
+outreach after operator approval, and local
 `XQUIK_API_KEY` smoke testing.
 
 Runtime verification note: on 2026-05-06, local Hermes Agent v0.12.0 loaded
@@ -47,6 +48,16 @@ real `tweet_read` call against `/api/v1/account`, and confirmed
 `tweet_action` returns disabled while `HERMES_TWEET_ENABLE_ACTIONS` is unset.
 The runtime check also found and fixed directory-plugin namespace import issues
 in the root loader and catalog resource lookup.
+
+Runtime verification note: on 2026-05-07, a live smoke test used an ephemeral
+`XQUIK_API_KEY` from the maintainer's macOS Keychain, not repo files, command
+text, PRs, issues, logs, CI, or `~/.hermes/.env`. Direct Xquik probes returned
+HTTP 200 for `/api/v1/account`, `/api/v1/radar`, `/api/v1/trends`,
+`/api/v1/x/users/search`, and `/api/v1/x/tweets/search`. Local Hermes Agent
+v0.12.0 loaded the enabled `hermes-tweet` toolset, a one-shot `tweet_read`
+against `/api/v1/account` returned `LIVE_ACCOUNT_READ_OK` without echoing the
+key, and `tweet_action` stayed disabled while
+`HERMES_TWEET_ENABLE_ACTIONS` was unset.
 
 Release verification note: on 2026-05-06, v0.1.3 published through GitHub
 Actions trusted publishing. PyPI direct version JSON exposed the dedicated
