@@ -36,7 +36,7 @@
 
 See `docs/OPERATOR_HANDOFF.md` for optional signed-in submissions, local-secret
 smoke tests, and maintainer-blocked directory routes. No urgent manual action is
-required after the v0.1.5 release; the remaining useful manual paths are
+required after the v0.1.6 release; the remaining useful manual paths are
 SkillRegistry.io upload, Sundial authenticated publish, optional Skills.Rest
 outreach after operator approval, and local
 `XQUIK_API_KEY` smoke testing.
@@ -96,3 +96,18 @@ Hermes venv does not expose `python -m pip`. The runtime loaded the
 `tweet_explore`, and confirmed API/action gates stay closed while
 `XQUIK_API_KEY` is unset. piwheels JSON and page initially lagged at 0.1.4, then
 exposed 0.1.5 before final verification ended.
+
+Release verification note: on 2026-05-07, v0.1.6 published through GitHub
+Actions trusted publishing after PR #66 and master CI passed. PyPI direct
+version JSON, project JSON, and the simple index expose 0.1.6. A fresh Python
+3.12 install verified the published wheel metadata, `plugin.yaml`,
+`catalog_data.json`, and bundled `hermes-tweet` skill with the refreshed
+`/api/v1/x/dm/{userId}` request-body description. Local Hermes Agent v0.12.0
+installed the published PyPI wheel with
+`uv pip install --python ~/.hermes/hermes-agent/venv/bin/python --refresh --index-url https://pypi.org/simple 'hermes-tweet==0.1.6'`,
+loaded the `hermes-tweet` toolset, ran a live one-shot `tweet_read` against
+`/api/v1/account` without echoing the Keychain-loaded API key, and confirmed
+`tweet_action` remains disabled while `HERMES_TWEET_ENABLE_ACTIONS` is unset.
+ClawHub was updated to registry version `1.0.2` with hosted 0.1.6 metadata and
+clean moderation. piwheels JSON and page still lagged at 0.1.5 during this
+verification pass.
