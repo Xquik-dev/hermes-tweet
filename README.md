@@ -81,6 +81,7 @@ hermes plugins install file:///absolute/path/to/hermes-tweet --force --enable
 | --- | --- |
 | PyPI | [`hermes-tweet`](https://pypi.org/project/hermes-tweet/) |
 | Official guide | [`docs.xquik.com/guides/hermes-tweet`](https://docs.xquik.com/guides/hermes-tweet) |
+| Context7 | [`context7.com/xquik-dev/hermes-tweet`](https://context7.com/xquik-dev/hermes-tweet) |
 | piwheels | [`hermes-tweet`](https://www.piwheels.org/project/hermes-tweet/) |
 | Latest release | [`v0.1.6`](https://github.com/Xquik-dev/hermes-tweet/releases/tag/v0.1.6) |
 | Supported Python | `>=3.11` |
@@ -89,6 +90,7 @@ hermes plugins install file:///absolute/path/to/hermes-tweet --force --enable
 | Entry point group | `hermes_agent.plugins` |
 | Included assets | `plugin.yaml`, `catalog_data.json`, bundled Hermes skill |
 | Registry skill path | [`skills/hermes-tweet/SKILL.md`](skills/hermes-tweet/SKILL.md) |
+| Context7 guide | [`docs/CONTEXT7.md`](docs/CONTEXT7.md) |
 
 ## Configure
 
