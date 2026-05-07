@@ -1,4 +1,15 @@
 {
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "Hermes Tweet",
+  "description": "Native Hermes Agent plugin for Xquik's X/Twitter API: search, read, publish, monitor, and automate X workflows through structured tools.",
+  "branch": "master",
+  "rules": [
+    "Use README.md for install, configuration, tool usage, security model, and runtime smoke tests.",
+    "Use docs.xquik.com/guides/hermes-tweet for end-to-end Hermes setup.",
+    "Use tweet_explore before tweet_read or tweet_action; tweet_action is disabled unless explicitly enabled.",
+    "Use pyproject.toml and the PyPI package hermes-tweet for package metadata and supported Python versions.",
+    "Do not ask users to pass credentials through tool arguments; use environment configuration."
+  ],
   "url": "https://context7.com/xquik-dev/hermes-tweet",
   "public_key": "pk_oCPeRRqZFJsY4cCUSotDD"
 }
