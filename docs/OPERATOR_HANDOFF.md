@@ -81,6 +81,8 @@ this plugin. That is expected safe gating.
 Do not duplicate these routes:
 
 - `aliaihub/awesome-hermes-usecases#2` is open and verified.
+- `0xNyk/awesome-hermes-agent#65` is open. That repo requires issue-first
+  resource recommendations instead of direct list PRs.
 - `Karanjot786/agent-skills-cli#11` tracks the single-skill submit 404.
 - `skillsgate/skillsgate#8` tracks the macOS arm64 package wrapper failure.
 - `diegosouzapw/awesome-omni-skill#5` tracks public submit and browse API 403s.
