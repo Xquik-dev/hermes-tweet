@@ -54,6 +54,20 @@ npx sundial-hub push skills/hermes-tweet --skill-version 0.1.6 --visibility publ
 - Do not email maintainers or submit a package without operator approval for the
   outbound message, categories, and changelog.
 
+### SkillDock.io
+
+- Route: `https://skilldock.io/`
+- Submit path: authenticated `skilldock skill upload` publish flow, not a
+  repo-native listing PR.
+- Why manual: publishing requires a SkillDock account token or browser-backed
+  login plus namespace ownership.
+- Public repo note: `chigwell/skilldock.io` documents CLI upload and install
+  flows but does not expose a documented GitHub catalog submission path for
+  third-party skills.
+- Do not open a repo issue or PR just to request listing. Use the documented
+  upload flow only after operator approval for namespace, visibility, tags, and
+  release version.
+
 ## Local Secret Needed
 
 Real `tweet_read` smoke tests require `XQUIK_API_KEY` in the Hermes runtime.

@@ -42,6 +42,7 @@ Do not duplicate these active submissions or blocker threads:
 These require sign-in, operator approval, or maintainer policy clarification:
 
 - SkillRegistry.io upload: <https://skillregistry.io/upload>
+- SkillDock authenticated publish: <https://skilldock.io/>
 - Sundial authenticated publish: <https://www.sundialhub.com/>
 - Skills.Rest review route: <https://skills.rest/contribute>
 
