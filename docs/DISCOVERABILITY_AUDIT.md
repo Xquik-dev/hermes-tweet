@@ -31,6 +31,7 @@ Do not duplicate these active submissions or blocker threads:
 - Awesome Hermes Use Cases: <https://github.com/aliaihub/awesome-hermes-usecases/pull/2>
 - HermesHub skills catalog: <https://github.com/amanning3390/hermeshub/pull/54>
 - Community Hermes docs plugin examples: <https://github.com/mudrii/hermes-agent-docs/pull/2>
+- Chinese Hermes ecosystem mirror: <https://github.com/jefferyjob/awesome-hermes-agent-zh/issues/1>
 - Hermes Optimization Guide: <https://github.com/OnlyTerp/hermes-optimization-guide/pull/10>
 - Agent Skills CLI submit 404: <https://github.com/Karanjot786/agent-skills-cli/issues/11>
 - SkillsGate package wrapper issue: <https://github.com/skillsgate/skillsgate/issues/8>

@@ -100,6 +100,9 @@ Do not duplicate these routes:
 - `amanning3390/hermeshub#54` is already open for `xquik-x` and
   `hermes-tweet`. Current blocker is an authorization-gated Vercel preview, so
   wait for maintainer action instead of resubmitting.
+- `jefferyjob/awesome-hermes-agent-zh#1` is open. It is the Chinese mirror of
+  the Hermes awesome list and uses the same issue-first resource recommendation
+  flow.
 - `mudrii/hermes-agent-docs#2` is open. It proposes a small `plugins.md`
   examples section that includes Hermes Tweet among concrete community plugin
   references.
