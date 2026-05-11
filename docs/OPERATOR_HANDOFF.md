@@ -109,6 +109,10 @@ Do not duplicate these routes:
 - `zyd232/hermes-agent-skills#1` is open. It adds a drop-in `hermes-tweet`
   SKILL.md plus English and Chinese index entries for tweet search, reply
   reads, trend checks, monitoring, and approval-gated X/Twitter actions.
+- `liurealmax/hermes-skills#3` is open. It adds a
+  `hermes-tweet-x-automation` SKILL.md plus a README skills index entry for
+  tweet search, X user search, reply reads, followers, trends, and
+  approval-gated actions.
 - `mergisi/awesome-hermes-agent#1` is open. It adds Hermes Tweet to the
   repo's explicit Plugins & Extensions section.
 - `0xNyk/awesome-hermes-agent#65` is open. That repo requires issue-first
@@ -147,6 +151,10 @@ Do not duplicate these routes:
 - `philipbankier/awesome-agent-skills#11` already covers the adjacent
   Xquik-dev X/Twitter scraper; wait for maintainer action before proposing a
   second Xquik entry there.
+- `forgedcontextlabs/skills` was screened and intentionally skipped. The repo's
+  `SECURITY.md` says committed skills are checked for local-only command use
+  and no network exfiltration, which is not compatible with a networked
+  X/Twitter plugin workflow.
 
 ## Adoption-Gated Routes
 

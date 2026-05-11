@@ -35,6 +35,7 @@ Do not duplicate these active submissions or blocker threads:
 - Hermes Agent Fly.io deployment example: <https://github.com/fly-apps/hermes-flyio/pull/1>
 - Mercury Agent skills registry: <https://github.com/cosmicstack-labs/mercury-agent-skills/pull/1>
 - Hermes Agent skills collection by zyd232: <https://github.com/zyd232/hermes-agent-skills/pull/1>
+- Hermes Agent skills collection by liurealmax: <https://github.com/liurealmax/hermes-skills/pull/3>
 - Hermes Skill Atlas: <https://github.com/codesstar/hermes-skill-atlas/issues/1>
 - `itgoyo/hermes-skills`: <https://github.com/itgoyo/hermes-skills/pull/1>
 - Awesome Hermes Agent by mergisi: <https://github.com/mergisi/awesome-hermes-agent/pull/1>
@@ -66,6 +67,13 @@ These require sign-in, operator approval, or maintainer policy clarification:
 - Skills.Rest review route: <https://skills.rest/contribute>
 
 See `docs/OPERATOR_HANDOFF.md` before attempting manual submissions.
+
+## Blocked Or No-op Routes
+
+- `forgedcontextlabs/skills`: no Hermes Tweet duplicate was present, but the
+  repo's `SECURITY.md` says submitted skills are checked for local-only command
+  use and no network exfiltration. A networked X/Twitter plugin workflow is not
+  a fit unless that policy changes.
 
 ## Discovery Queries
 
