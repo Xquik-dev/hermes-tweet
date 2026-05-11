@@ -99,6 +99,9 @@ Do not duplicate these routes:
 - `bcdev98/recommendation#1` is open. It adds Hermes Tweet to a Hermes Agent
   use-cases repo as a social media and community workflow for tweet search,
   reply reads, trends, monitoring, and action-gated posting.
+- `fly-apps/hermes-flyio#1` is open. It adds a general optional-plugin install
+  pattern to the Fly.io Hermes deployment example, using Hermes Tweet to show
+  plugin installation, Fly secrets, and action-gated X/Twitter workflows.
 - `mergisi/awesome-hermes-agent#1` is open. It adds Hermes Tweet to the
   repo's explicit Plugins & Extensions section.
 - `0xNyk/awesome-hermes-agent#65` is open. That repo requires issue-first
