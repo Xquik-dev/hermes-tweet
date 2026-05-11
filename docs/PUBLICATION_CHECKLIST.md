@@ -31,9 +31,9 @@ Hermes Tweet is published as `hermes-tweet` on PyPI and currently released at
   `/xtrends` load.
 - [x] Confirm `tweet_action` is blocked unless
   `HERMES_TWEET_ENABLE_ACTIONS=true`.
-- [x] Confirm PyPI, piwheels, ClawHub, first-party docs, Context7, and DeepWiki
-  show current public metadata.
-- [x] Maintain external discovery status in `docs/DISCOVERABILITY_AUDIT.md`.
+- [x] Confirm PyPI, piwheels, ClawHub, first-party docs, Context7, DeepWiki,
+  and accepted ecosystem listings show current public metadata.
+- [x] Maintain accepted public ecosystem surfaces in `docs/ECOSYSTEM.md`.
 
 ## Release Gate
 
@@ -71,6 +71,7 @@ Expected result:
 
 ## Manual Operator Actions
 
-See `docs/OPERATOR_HANDOFF.md` for optional signed-in submissions, local-secret
-smoke tests, and maintainer-blocked directory routes. No package release
-blocker remains after the `0.1.6` release.
+Keep optional signed-in submissions, local-secret smoke tests, pending outreach,
+duplicate checks, and maintainer-blocked directory routes in private operator
+notes. Do not commit those operational notes to the public repository. No
+package release blocker remains after the `0.1.6` release.
