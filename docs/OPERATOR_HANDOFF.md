@@ -117,6 +117,9 @@ Do not duplicate these routes:
 - `jwangkun/hermes-agent-guide#7` is open. It suggests adding Hermes Tweet to
   the Chinese Hermes Agent guide as an X/Twitter search, trend reading, reply
   reading, and action-gated automation plugin example.
+- `xiehongyu777/hermes-agent-guide#1` is open. It suggests adding Hermes Tweet
+  to the Chinese Hermes source-learning guide as a Tool, Skills, and
+  action-gated plugin permissions case study.
 - `mudrii/hermes-agent-docs#2` is open. It proposes a small `plugins.md`
   examples section that includes Hermes Tweet among concrete community plugin
   references.
