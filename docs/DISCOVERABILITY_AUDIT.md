@@ -38,6 +38,7 @@ Do not duplicate these active submissions or blocker threads:
 - Chinese Hermes ecosystem mirror: <https://github.com/jefferyjob/awesome-hermes-agent-zh/issues/1>
 - Chinese Hermes Agent docs site: <https://github.com/zcweah1981/awesome-hermes-agent-zh/issues/5>
 - Chinese Hermes Agent tutorial: <https://github.com/xianyu110/awesome-HermesAgent-tutorial/issues/1>
+- Chinese Hermes Agent workflow tutorial: <https://github.com/xiangyugongzuoliu/hermes-agent-tutorial/issues/1>
 - Chinese Hermes Agent guide: <https://github.com/jwangkun/hermes-agent-guide/issues/7>
 - Chinese Hermes source-learning guide: <https://github.com/xiehongyu777/hermes-agent-guide/issues/1>
 - Hermes Optimization Guide: <https://github.com/OnlyTerp/hermes-optimization-guide/pull/10>
