@@ -106,6 +106,9 @@ Do not duplicate these routes:
   `x-twitter-automation` SKILL.md to a Mercury/OpenClaw/Hermes-compatible
   skills registry, with Hermes Tweet referenced as the concrete Hermes
   implementation.
+- `zyd232/hermes-agent-skills#1` is open. It adds a drop-in `hermes-tweet`
+  SKILL.md plus English and Chinese index entries for tweet search, reply
+  reads, trend checks, monitoring, and approval-gated X/Twitter actions.
 - `mergisi/awesome-hermes-agent#1` is open. It adds Hermes Tweet to the
   repo's explicit Plugins & Extensions section.
 - `0xNyk/awesome-hermes-agent#65` is open. That repo requires issue-first
