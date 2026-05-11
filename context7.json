@@ -6,9 +6,7 @@
   "excludeFolders": [".github"],
   "excludeFiles": [
     "AGENTS.md",
-    "DISCOVERABILITY_AUDIT.md",
     "GITHUB_METADATA.md",
-    "OPERATOR_HANDOFF.md",
     "PUBLICATION_CHECKLIST.md"
   ],
   "rules": [
