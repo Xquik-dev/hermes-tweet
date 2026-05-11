@@ -25,6 +25,7 @@ submission rules. Keep run logs out of this file.
 Do not duplicate these active submissions or blocker threads:
 
 - Hermes Atlas: <https://github.com/ksimback/hermes-ecosystem/pull/169>
+- Hermes Agent use cases: <https://github.com/bcdev98/recommendation/pull/1>
 - Hermes Skill Atlas: <https://github.com/codesstar/hermes-skill-atlas/issues/1>
 - `itgoyo/hermes-skills`: <https://github.com/itgoyo/hermes-skills/pull/1>
 - Awesome Hermes Agent by mergisi: <https://github.com/mergisi/awesome-hermes-agent/pull/1>
@@ -59,6 +60,10 @@ See `docs/OPERATOR_HANDOFF.md` before attempting manual submissions.
 ## Discovery Queries
 
 - `Hermes Agent plugin directory`
+- `Hermes Agent use cases`
+- `Hermes Agent usecases`
+- `Hermes Agent examples`
+- `awesome Hermes Agent`
 - `Hermes Agent Twitter plugin`
 - `Hermes Agent X plugin`
 - `Hermes Agent skills hub`
@@ -81,8 +86,8 @@ See `docs/OPERATOR_HANDOFF.md` before attempting manual submissions.
 
 ## Current Follow-Up
 
-- Prioritize GitHub-first outreach for Hermes Agent awesome lists, plugin
-  catalogs, docs repos, and skill directories.
+- Prioritize GitHub-first outreach for Hermes Agent awesome lists, use-case
+  repos, example repos, plugin catalogs, docs repos, and skill directories.
 - Recheck open external routes for maintainer questions before opening new
   submissions or PRs.
 - Retry adoption-gated awesome lists only after Hermes Tweet meets their stated
