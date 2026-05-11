@@ -16,6 +16,7 @@ surfaces already:
 - ClawHub lists Hermes Tweet with clean moderation and current `0.1.6`
   metadata.
 - First-party Xquik docs and TweetClaw links are current.
+- Awesome Skills lists Hermes Tweet under Integrations & APIs.
 - Local Hermes v0.12.0 exposes the `hermes-tweet` plugin toolset.
 
 ## Optional Manual Submissions
@@ -97,6 +98,8 @@ Do not duplicate these routes:
 - `aliaihub/awesome-hermes-usecases#2` is open and verified.
 - `0xNyk/awesome-hermes-agent#65` is open. That repo requires issue-first
   resource recommendations instead of direct list PRs.
+- `muhajirdev/awesome-hermes-agent#2` is open. That repo requires issue-first
+  resource suggestions and asks contributors not to submit direct listing PRs.
 - `amanning3390/hermeshub#54` is already open for `xquik-x` and
   `hermes-tweet`. Current blocker is an authorization-gated Vercel preview, so
   wait for maintainer action instead of resubmitting.
