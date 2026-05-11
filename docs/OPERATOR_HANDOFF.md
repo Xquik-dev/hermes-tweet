@@ -16,6 +16,7 @@ surfaces already:
 - ClawHub lists Hermes Tweet with clean moderation and current `0.1.6`
   metadata.
 - First-party Xquik docs and TweetClaw links are current.
+- Awesome Skills lists Hermes Tweet under Integrations & APIs.
 - Local Hermes v0.12.0 exposes the `hermes-tweet` plugin toolset.
 
 ## Optional Manual Submissions
@@ -54,6 +55,20 @@ npx sundial-hub push skills/hermes-tweet --skill-version 0.1.6 --visibility publ
 - Do not email maintainers or submit a package without operator approval for the
   outbound message, categories, and changelog.
 
+### SkillDock.io
+
+- Route: `https://skilldock.io/`
+- Submit path: authenticated `skilldock skill upload` publish flow, not a
+  repo-native listing PR.
+- Why manual: publishing requires a SkillDock account token or browser-backed
+  login plus namespace ownership.
+- Public repo note: `chigwell/skilldock.io` documents CLI upload and install
+  flows but does not expose a documented GitHub catalog submission path for
+  third-party skills.
+- Do not open a repo issue or PR just to request listing. Use the documented
+  upload flow only after operator approval for namespace, visibility, tags, and
+  release version.
+
 ## Local Secret Needed
 
 Real `tweet_read` smoke tests require `XQUIK_API_KEY` in the Hermes runtime.
@@ -81,6 +96,24 @@ this plugin. That is expected safe gating.
 Do not duplicate these routes:
 
 - `aliaihub/awesome-hermes-usecases#2` is open and verified.
+- `mergisi/awesome-hermes-agent#1` is open. It adds Hermes Tweet to the
+  repo's explicit Plugins & Extensions section.
+- `0xNyk/awesome-hermes-agent#65` is open. That repo requires issue-first
+  resource recommendations instead of direct list PRs.
+- `muhajirdev/awesome-hermes-agent#2` is open. That repo requires issue-first
+  resource suggestions and asks contributors not to submit direct listing PRs.
+- `amanning3390/hermeshub#54` is already open for `xquik-x` and
+  `hermes-tweet`. Current blocker is an authorization-gated Vercel preview, so
+  wait for maintainer action instead of resubmitting.
+- `jefferyjob/awesome-hermes-agent-zh#1` is open. It is the Chinese mirror of
+  the Hermes awesome list and uses the same issue-first resource recommendation
+  flow.
+- `zcweah1981/awesome-hermes-agent-zh#5` is open. It suggests adding Hermes
+  Tweet to the Chinese Hermes Agent docs site as an X/Twitter plugin or
+  workflow reference.
+- `mudrii/hermes-agent-docs#2` is open. It proposes a small `plugins.md`
+  examples section that includes Hermes Tweet among concrete community plugin
+  references.
 - `Karanjot786/agent-skills-cli#11` tracks the single-skill submit 404.
 - `skillsgate/skillsgate#8` tracks the macOS arm64 package wrapper failure.
 - `diegosouzapw/awesome-omni-skill#5` tracks public submit and browse API 403s.

@@ -17,6 +17,7 @@ submission rules. Keep run logs out of this file.
 | AgentSkill | Published | <https://agentskill.sh/@xquik-dev/hermes-tweet> |
 | ClawHub | Published | <https://clawhub.ai/skills/hermes-tweet> |
 | SKILLS.re | Published | <https://skillsre.com/> |
+| Awesome Skills | Published | <https://github.com/gmh5225/awesome-skills#readme> |
 | TweetClaw cross-link | Published | <https://github.com/Xquik-dev/tweetclaw#readme> |
 
 ## Open External Routes
@@ -26,8 +27,15 @@ Do not duplicate these active submissions or blocker threads:
 - Hermes Atlas: <https://github.com/ksimback/hermes-ecosystem/pull/169>
 - Hermes Skill Atlas: <https://github.com/codesstar/hermes-skill-atlas/issues/1>
 - `itgoyo/hermes-skills`: <https://github.com/itgoyo/hermes-skills/pull/1>
+- Awesome Hermes Agent by mergisi: <https://github.com/mergisi/awesome-hermes-agent/pull/1>
 - Awesome Hermes Agent: <https://github.com/0xarkstar/awesome-hermes-agent/issues/1>
+- Awesome Hermes Agent curated list: <https://github.com/0xNyk/awesome-hermes-agent/issues/65>
+- Awesome Hermes Agent by muhajirdev: <https://github.com/muhajirdev/awesome-hermes-agent/issues/2>
 - Awesome Hermes Use Cases: <https://github.com/aliaihub/awesome-hermes-usecases/pull/2>
+- HermesHub skills catalog: <https://github.com/amanning3390/hermeshub/pull/54>
+- Community Hermes docs plugin examples: <https://github.com/mudrii/hermes-agent-docs/pull/2>
+- Chinese Hermes ecosystem mirror: <https://github.com/jefferyjob/awesome-hermes-agent-zh/issues/1>
+- Chinese Hermes Agent docs site: <https://github.com/zcweah1981/awesome-hermes-agent-zh/issues/5>
 - Hermes Optimization Guide: <https://github.com/OnlyTerp/hermes-optimization-guide/pull/10>
 - Agent Skills CLI submit 404: <https://github.com/Karanjot786/agent-skills-cli/issues/11>
 - SkillsGate package wrapper issue: <https://github.com/skillsgate/skillsgate/issues/8>
@@ -39,6 +47,7 @@ Do not duplicate these active submissions or blocker threads:
 These require sign-in, operator approval, or maintainer policy clarification:
 
 - SkillRegistry.io upload: <https://skillregistry.io/upload>
+- SkillDock authenticated publish: <https://skilldock.io/>
 - Sundial authenticated publish: <https://www.sundialhub.com/>
 - Skills.Rest review route: <https://skills.rest/contribute>
 
@@ -69,10 +78,9 @@ See `docs/OPERATOR_HANDOFF.md` before attempting manual submissions.
 
 ## Current Follow-Up
 
-- Improve Context7 benchmark health by keeping README, `docs/CONTEXT7.md`,
-  `docs/OBSERVABILITY.md`, and the bundled skill focused on install, auth, tool
-  usage, safety, package metadata, and smoke tests.
+- Prioritize GitHub-first outreach for Hermes Agent awesome lists, plugin
+  catalogs, docs repos, and skill directories.
 - Recheck open external routes for maintainer questions before opening new
-  submissions.
+  submissions or PRs.
 - Retry adoption-gated awesome lists only after Hermes Tweet meets their stated
   quality or star thresholds.
