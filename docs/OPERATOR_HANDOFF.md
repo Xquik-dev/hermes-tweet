@@ -96,6 +96,9 @@ this plugin. That is expected safe gating.
 Do not duplicate these routes:
 
 - `aliaihub/awesome-hermes-usecases#2` is open and verified.
+- `bcdev98/recommendation#1` is open. It adds Hermes Tweet to a Hermes Agent
+  use-cases repo as a social media and community workflow for tweet search,
+  reply reads, trends, monitoring, and action-gated posting.
 - `mergisi/awesome-hermes-agent#1` is open. It adds Hermes Tweet to the
   repo's explicit Plugins & Extensions section.
 - `0xNyk/awesome-hermes-agent#65` is open. That repo requires issue-first
