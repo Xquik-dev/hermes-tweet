@@ -20,6 +20,12 @@ submission rules. Keep run logs out of this file.
 | Awesome Skills | Published | <https://github.com/gmh5225/awesome-skills#readme> |
 | TweetClaw cross-link | Published | <https://github.com/Xquik-dev/tweetclaw#readme> |
 
+## Package Quality Signals
+
+- Socket.dev org PURL lookup returned HTTP 200 with an empty response for
+  `pkg:pypi/hermes-tweet` and `pkg:pypi/hermes-tweet@0.1.6` on 2026-05-12, so
+  no live Socket package score exists to improve yet.
+
 ## Open External Routes
 
 Do not duplicate these active submissions or blocker threads:
@@ -28,6 +34,7 @@ Do not duplicate these active submissions or blocker threads:
 - Hermes Agent use cases: <https://github.com/bcdev98/recommendation/pull/1>
 - Hermes Agent Fly.io deployment example: <https://github.com/fly-apps/hermes-flyio/pull/1>
 - Mercury Agent skills registry: <https://github.com/cosmicstack-labs/mercury-agent-skills/pull/1>
+- Hermes Agent skills collection by zyd232: <https://github.com/zyd232/hermes-agent-skills/pull/1>
 - Hermes Skill Atlas: <https://github.com/codesstar/hermes-skill-atlas/issues/1>
 - `itgoyo/hermes-skills`: <https://github.com/itgoyo/hermes-skills/pull/1>
 - Awesome Hermes Agent by mergisi: <https://github.com/mergisi/awesome-hermes-agent/pull/1>
