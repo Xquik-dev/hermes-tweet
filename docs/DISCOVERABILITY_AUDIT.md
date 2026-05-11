@@ -27,6 +27,7 @@ Do not duplicate these active submissions or blocker threads:
 - Hermes Atlas: <https://github.com/ksimback/hermes-ecosystem/pull/169>
 - Hermes Agent use cases: <https://github.com/bcdev98/recommendation/pull/1>
 - Hermes Agent Fly.io deployment example: <https://github.com/fly-apps/hermes-flyio/pull/1>
+- Mercury Agent skills registry: <https://github.com/cosmicstack-labs/mercury-agent-skills/pull/1>
 - Hermes Skill Atlas: <https://github.com/codesstar/hermes-skill-atlas/issues/1>
 - `itgoyo/hermes-skills`: <https://github.com/itgoyo/hermes-skills/pull/1>
 - Awesome Hermes Agent by mergisi: <https://github.com/mergisi/awesome-hermes-agent/pull/1>

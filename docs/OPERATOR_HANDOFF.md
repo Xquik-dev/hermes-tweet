@@ -102,6 +102,10 @@ Do not duplicate these routes:
 - `fly-apps/hermes-flyio#1` is open. It adds a general optional-plugin install
   pattern to the Fly.io Hermes deployment example, using Hermes Tweet to show
   plugin installation, Fly secrets, and action-gated X/Twitter workflows.
+- `cosmicstack-labs/mercury-agent-skills#1` is open. It adds a full
+  `x-twitter-automation` SKILL.md to a Mercury/OpenClaw/Hermes-compatible
+  skills registry, with Hermes Tweet referenced as the concrete Hermes
+  implementation.
 - `mergisi/awesome-hermes-agent#1` is open. It adds Hermes Tweet to the
   repo's explicit Plugins & Extensions section.
 - `0xNyk/awesome-hermes-agent#65` is open. That repo requires issue-first
