@@ -108,6 +108,9 @@ Do not duplicate these routes:
 - `jefferyjob/awesome-hermes-agent-zh#1` is open. It is the Chinese mirror of
   the Hermes awesome list and uses the same issue-first resource recommendation
   flow.
+- `zcweah1981/awesome-hermes-agent-zh#5` is open. It suggests adding Hermes
+  Tweet to the Chinese Hermes Agent docs site as an X/Twitter plugin or
+  workflow reference.
 - `mudrii/hermes-agent-docs#2` is open. It proposes a small `plugins.md`
   examples section that includes Hermes Tweet among concrete community plugin
   references.
