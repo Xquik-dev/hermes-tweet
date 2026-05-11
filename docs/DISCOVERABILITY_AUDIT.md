@@ -77,10 +77,9 @@ See `docs/OPERATOR_HANDOFF.md` before attempting manual submissions.
 
 ## Current Follow-Up
 
-- Improve Context7 benchmark health by keeping README, `docs/CONTEXT7.md`,
-  `docs/OBSERVABILITY.md`, and the bundled skill focused on install, auth, tool
-  usage, safety, package metadata, and smoke tests.
+- Prioritize GitHub-first outreach for Hermes Agent awesome lists, plugin
+  catalogs, docs repos, and skill directories.
 - Recheck open external routes for maintainer questions before opening new
-  submissions.
+  submissions or PRs.
 - Retry adoption-gated awesome lists only after Hermes Tweet meets their stated
   quality or star thresholds.
