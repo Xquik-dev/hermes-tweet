@@ -27,6 +27,7 @@ Do not duplicate these active submissions or blocker threads:
 - Hermes Atlas: <https://github.com/ksimback/hermes-ecosystem/pull/169>
 - Hermes Skill Atlas: <https://github.com/codesstar/hermes-skill-atlas/issues/1>
 - `itgoyo/hermes-skills`: <https://github.com/itgoyo/hermes-skills/pull/1>
+- Awesome Hermes Agent by mergisi: <https://github.com/mergisi/awesome-hermes-agent/pull/1>
 - Awesome Hermes Agent: <https://github.com/0xarkstar/awesome-hermes-agent/issues/1>
 - Awesome Hermes Agent curated list: <https://github.com/0xNyk/awesome-hermes-agent/issues/65>
 - Awesome Hermes Agent by muhajirdev: <https://github.com/muhajirdev/awesome-hermes-agent/issues/2>
