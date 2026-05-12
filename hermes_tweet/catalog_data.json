@@ -943,6 +943,32 @@
     "action": true,
     "category": "x-accounts",
     "free": true,
+    "method": "POST",
+    "mpp": null,
+    "parameters": [
+      {
+        "name": "",
+        "in": "query",
+        "required": false,
+        "type": "unknown",
+        "description": ""
+      },
+      {
+        "name": "body",
+        "in": "body",
+        "required": true,
+        "type": "object",
+        "description": "Email verification code requested during account connect."
+      }
+    ],
+    "path": "/api/v1/x/account-connection-challenges/{id}/submit",
+    "responseShape": "X account connected",
+    "summary": "Submit X account email verification code"
+  },
+  {
+    "action": true,
+    "category": "x-accounts",
+    "free": true,
     "method": "GET",
     "mpp": null,
     "parameters": [],
@@ -1171,7 +1197,7 @@
       }
     ],
     "path": "/api/v1/x/communities/{id}/join",
-    "responseShape": "Left community",
+    "responseShape": "",
     "summary": "Leave community"
   },
   {
@@ -1197,7 +1223,7 @@
       }
     ],
     "path": "/api/v1/x/communities/{id}/join",
-    "responseShape": "Joined community",
+    "responseShape": "",
     "summary": "Join community"
   },
   {
@@ -1339,7 +1365,7 @@
         "in": "query",
         "required": true,
         "type": "string",
-        "description": "X handle (without the `@` prefix) of the connected X account whose session reads the conversation. The account must be a participant in the conversation - DM history cannot be routed through the shared read pool."
+        "description": "X handle (without the `@` prefix) of the connected X account used to read the conversation. The account must be a participant in the conversation."
       },
       {
         "name": "cursor",
@@ -2559,5 +2585,24 @@
     "path": "/api/v1/x/users/{id}/verified-followers",
     "responseShape": "List of verified followers",
     "summary": "List verified followers of a user"
+  },
+  {
+    "action": false,
+    "category": "x-write",
+    "free": true,
+    "method": "GET",
+    "mpp": null,
+    "parameters": [
+      {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Write action ID returned by a pending write response."
+      }
+    ],
+    "path": "/api/v1/x/write-actions/{id}",
+    "responseShape": "Write action status",
+    "summary": "Get write action status"
   }
 ]

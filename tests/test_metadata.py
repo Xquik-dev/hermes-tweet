@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import tomllib
 from pathlib import Path
 from typing import cast
@@ -19,6 +20,16 @@ EXPECTED_SKILL_TAGS = [
     "social-media",
     "automation",
 ]
+EXPECTED_AGENT_SKILL_MANIFEST_TAGS = [
+    "hermes-agent",
+    "hermes-plugin",
+    "xquik",
+    "twitter",
+    "x",
+    "social-media",
+    "automation",
+]
+EXPECTED_AGENT_SKILL_INSTALL = "hermes plugins install Xquik-dev/hermes-tweet --enable"
 SETUP_UV_ACTION = "astral-sh/setup-uv@v8.1.0"
 ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
 EXPECTED_PUBLIC_IGNORE_PATTERNS = [
@@ -168,6 +179,25 @@ def test_registry_skill_mirrors_bundled_skill() -> None:
     assert str(marketplace_metadata["version"]) == version
     assert marketplace_metadata["author"] == "Xquik"
     assert marketplace_metadata["tags"] == EXPECTED_SKILL_TAGS
+
+
+def test_agent_skill_manifest_matches_public_package_metadata() -> None:
+    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
+    project = pyproject["project"]
+    manifest = json.loads((ROOT / "skill.json").read_text())
+
+    assert manifest["name"] == project["name"]
+    assert manifest["version"] == project["version"]
+    assert manifest["author"] == "Xquik"
+    assert manifest["description"] == "Hermes Agent X/Twitter plugin for Xquik automation"
+    assert manifest["tags"] == EXPECTED_AGENT_SKILL_MANIFEST_TAGS
+    assert manifest["dependencies"] == []
+    assert manifest["conflicts"] == []
+    assert manifest["install"] == {"openclaw": EXPECTED_AGENT_SKILL_INSTALL}
+    assert manifest["homepage"] == GUIDE_URL
+    assert manifest["repository"] == project["urls"]["Repository"]
+    assert set(manifest["keywords"]).issubset(project["keywords"])
+    assert "include skill.json" in (ROOT / "MANIFEST.in").read_text().splitlines()
 
 
 def test_public_repo_ignore_rules_cover_local_artifacts() -> None:
