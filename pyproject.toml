@@ -14,14 +14,22 @@ dependencies = [
   "httpx>=0.27,<0.29",
 ]
 keywords = [
+  "agent-tools",
+  "ai-agent",
+  "automation",
   "hermes-agent",
   "hermes-plugin",
-  "twitter",
-  "x",
-  "xquik",
-  "tweet",
-  "automation",
+  "mcp",
   "social-media",
+  "tweet",
+  "twitter",
+  "twitter-api",
+  "twitter-automation",
+  "x",
+  "x-api",
+  "x-automation",
+  "x-twitter",
+  "xquik",
 ]
 classifiers = [
   "Development Status :: 3 - Alpha",
@@ -55,6 +63,10 @@ Homepage = "https://docs.xquik.com/guides/hermes-tweet"
 Documentation = "https://docs.xquik.com/guides/hermes-tweet"
 Repository = "https://github.com/Xquik-dev/hermes-tweet"
 Issues = "https://github.com/Xquik-dev/hermes-tweet/issues"
+AgentSkill = "https://agentskill.sh/@xquik-dev/hermes-tweet"
+ClawHub = "https://clawhub.ai/skills/hermes-tweet"
+DeepWiki = "https://deepwiki.com/Xquik-dev/hermes-tweet"
+piwheels = "https://www.piwheels.org/project/hermes-tweet/"
 "Xquik Platform" = "https://xquik.com"
 
 [project.entry-points."hermes_agent.plugins"]
