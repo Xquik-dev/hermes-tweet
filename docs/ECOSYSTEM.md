@@ -28,6 +28,8 @@ follow-up belong outside the public repository.
 | ClawHub | <https://clawhub.ai/skills/hermes-tweet> |
 | SKILLS.re | <https://skillsre.com/> |
 | Awesome Skills | <https://github.com/gmh5225/awesome-skills#readme> |
+| GitHub agent-skill topic | <https://github.com/topics/agent-skill> |
+| GitHub hermes-plugin topic | <https://github.com/topics/hermes-plugin> |
 | TweetClaw cross-link | <https://github.com/Xquik-dev/tweetclaw#readme> |
 
 ## Public Positioning
