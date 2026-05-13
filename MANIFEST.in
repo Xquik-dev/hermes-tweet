@@ -1,6 +1,7 @@
 include plugin.yaml
 include skill.json
 include dashboard/manifest.json
+include .hermes-eco.json
 include after-install.md
 recursive-include hermes_tweet *.yaml *.json
 recursive-include hermes_tweet/skills *.md
