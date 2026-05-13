@@ -23,6 +23,11 @@ EXPECTED_SKILL_TAGS = [
     "social-media",
     "automation",
 ]
+EXPECTED_ASK_SKILL_METADATA = {
+    "author": "Xquik",
+    "repository": "https://github.com/Xquik-dev/hermes-tweet",
+    "plugin": "hermes plugins install Xquik-dev/hermes-tweet --enable",
+}
 EXPECTED_AGENT_SKILL_MANIFEST_TAGS = [
     "hermes-agent",
     "hermes-plugin",
@@ -192,6 +197,25 @@ def test_registry_skill_mirrors_bundled_skill() -> None:
     assert str(marketplace_metadata["version"]) == version
     assert marketplace_metadata["author"] == "Xquik"
     assert marketplace_metadata["tags"] == EXPECTED_SKILL_TAGS
+
+
+def test_ask_wrapper_skill_matches_public_package_metadata() -> None:
+    ask_skill = ROOT / "registries" / "ask" / "hermes-tweet" / "SKILL.md"
+    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
+    version = pyproject["project"]["version"]
+
+    frontmatter = load_skill_frontmatter(ask_skill)
+    assert frontmatter["name"] == "hermes-tweet"
+    assert str(frontmatter["version"]) == version
+    assert frontmatter["author"] == "Xquik"
+    assert frontmatter["description"] == (
+        "Search Twitter/X, read tweet replies, look up users, monitor tweets, "
+        "export followers, and gate X actions through Xquik."
+    )
+    assert frontmatter["tags"] == EXPECTED_SKILL_TAGS
+
+    ask_metadata = require_mapping(frontmatter["metadata"])
+    assert ask_metadata == EXPECTED_ASK_SKILL_METADATA | {"version": version}
 
 
 def test_agent_skill_manifest_matches_public_package_metadata() -> None:
