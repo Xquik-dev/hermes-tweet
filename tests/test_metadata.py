@@ -34,6 +34,9 @@ EXPECTED_DASHBOARD_MANIFEST_DESCRIPTION = (
     "Hermes Agent X/Twitter plugin for searching tweets, reading replies, "
     "monitoring X, exporting followers, and approval-gated posting through Xquik."
 )
+EXPECTED_HERMES_ECO_MANIFEST_NAME = "Hermes Tweet"
+EXPECTED_HERMES_ECO_MANIFEST_TYPE = "integration"
+EXPECTED_HERMES_ECO_MANIFEST_CATEGORY = "communication"
 SETUP_UV_ACTION = "astral-sh/setup-uv@v8.1.0"
 ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
 EXPECTED_PUBLIC_IGNORE_PATTERNS = [
@@ -215,6 +218,25 @@ def test_plugin_hub_manifest_matches_public_package_metadata() -> None:
     assert manifest["description"] == EXPECTED_DASHBOARD_MANIFEST_DESCRIPTION
     assert manifest["slots"] == ["tools"]
     assert "include dashboard/manifest.json" in (ROOT / "MANIFEST.in").read_text().splitlines()
+
+
+def test_hermes_eco_manifest_matches_public_package_metadata() -> None:
+    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
+    project = pyproject["project"]
+    manifest = json.loads((ROOT / ".hermes-eco.json").read_text())
+
+    assert manifest["name"] == EXPECTED_HERMES_ECO_MANIFEST_NAME
+    assert manifest["resource_type"] == EXPECTED_HERMES_ECO_MANIFEST_TYPE
+    assert manifest["type"] == EXPECTED_HERMES_ECO_MANIFEST_TYPE
+    assert manifest["primary_category"] == EXPECTED_HERMES_ECO_MANIFEST_CATEGORY
+    assert manifest["description"] == EXPECTED_DASHBOARD_MANIFEST_DESCRIPTION
+    assert manifest["author"] == "Xquik"
+    assert manifest["repository"] == project["urls"]["Repository"]
+    assert manifest["homepage"] == GUIDE_URL
+    assert manifest["license"] == project["license"]
+    assert manifest["tags"] == EXPECTED_AGENT_SKILL_MANIFEST_TAGS
+    assert manifest["tools_used"] == EXPECTED_TOOLS
+    assert "include .hermes-eco.json" in (ROOT / "MANIFEST.in").read_text().splitlines()
 
 
 def test_public_repo_ignore_rules_cover_local_artifacts() -> None:
