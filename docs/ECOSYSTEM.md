@@ -30,6 +30,7 @@ follow-up belong outside the public repository.
 | Awesome Skills | <https://github.com/gmh5225/awesome-skills#readme> |
 | GitHub agent-skill topic | <https://github.com/topics/agent-skill> |
 | GitHub hermes-plugin topic | <https://github.com/topics/hermes-plugin> |
+| Hermes Eco crawler manifest | <https://github.com/Xquik-dev/hermes-tweet/blob/master/.hermes-eco.json> |
 | TweetClaw cross-link | <https://github.com/Xquik-dev/tweetclaw#readme> |
 
 ## Public Positioning
