@@ -1,0 +1,7 @@
+{
+  "name": "hermes-tweet",
+  "label": "Hermes Tweet",
+  "description": "Hermes Agent X/Twitter plugin for searching tweets, reading replies, monitoring X, exporting followers, and approval-gated posting through Xquik.",
+  "version": "0.1.6",
+  "slots": ["tools"]
+}

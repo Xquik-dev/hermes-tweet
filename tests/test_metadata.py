@@ -30,6 +30,10 @@ EXPECTED_AGENT_SKILL_MANIFEST_TAGS = [
     "automation",
 ]
 EXPECTED_AGENT_SKILL_INSTALL = "hermes plugins install Xquik-dev/hermes-tweet --enable"
+EXPECTED_DASHBOARD_MANIFEST_DESCRIPTION = (
+    "Hermes Agent X/Twitter plugin for searching tweets, reading replies, "
+    "monitoring X, exporting followers, and approval-gated posting through Xquik."
+)
 SETUP_UV_ACTION = "astral-sh/setup-uv@v8.1.0"
 ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
 EXPECTED_PUBLIC_IGNORE_PATTERNS = [
@@ -198,6 +202,19 @@ def test_agent_skill_manifest_matches_public_package_metadata() -> None:
     assert manifest["repository"] == project["urls"]["Repository"]
     assert set(manifest["keywords"]).issubset(project["keywords"])
     assert "include skill.json" in (ROOT / "MANIFEST.in").read_text().splitlines()
+
+
+def test_plugin_hub_manifest_matches_public_package_metadata() -> None:
+    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
+    project = pyproject["project"]
+    manifest = json.loads((ROOT / "dashboard" / "manifest.json").read_text())
+
+    assert manifest["name"] == project["name"]
+    assert manifest["label"] == "Hermes Tweet"
+    assert manifest["version"] == project["version"]
+    assert manifest["description"] == EXPECTED_DASHBOARD_MANIFEST_DESCRIPTION
+    assert manifest["slots"] == ["tools"]
+    assert "include dashboard/manifest.json" in (ROOT / "MANIFEST.in").read_text().splitlines()
 
 
 def test_public_repo_ignore_rules_cover_local_artifacts() -> None:
