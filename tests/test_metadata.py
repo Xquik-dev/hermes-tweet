@@ -11,6 +11,9 @@ import yaml
 ROOT = Path(__file__).parents[1]
 GUIDE_URL = "https://docs.xquik.com/guides/hermes-tweet"
 EXPECTED_TOOLS = ["tweet_explore", "tweet_read", "tweet_action"]
+EXPECTED_PUBLIC_PACKAGE_DESCRIPTION = (
+    "Native Hermes Agent plugin for X/Twitter automation through Xquik"
+)
 EXPECTED_OPTIONAL_ENV = ["XQUIK_BASE_URL", "HERMES_TWEET_ENABLE_ACTIONS"]
 EXPECTED_SKILL_TAGS = [
     "hermes-agent",
@@ -134,11 +137,13 @@ def test_release_metadata_surfaces_stay_aligned() -> None:
     pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
     version = pyproject["project"]["version"]
 
+    assert pyproject["project"]["description"] == EXPECTED_PUBLIC_PACKAGE_DESCRIPTION
     assert str(load_mapping(ROOT / "plugin.yaml")["version"]) == version
     assert str(load_mapping(ROOT / "hermes_tweet" / "plugin.yaml")["version"]) == version
 
     readme = (ROOT / "README.md").read_text()
     assert f"/releases/tag/v{version}" in readme
+    assert EXPECTED_PUBLIC_PACKAGE_DESCRIPTION in readme
 
     urls = pyproject["project"]["urls"]
     assert urls["Homepage"] == GUIDE_URL
