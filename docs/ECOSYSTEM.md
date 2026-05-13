@@ -31,6 +31,7 @@ follow-up belong outside the public repository.
 | GitHub agent-skill topic | <https://github.com/topics/agent-skill> |
 | GitHub hermes-plugin topic | <https://github.com/topics/hermes-plugin> |
 | Hermes Eco crawler manifest | <https://github.com/Xquik-dev/hermes-tweet/blob/master/.hermes-eco.json> |
+| OpenDirectory Twitter GTM Find skill | <https://github.com/Varnan-Tech/opendirectory/tree/main/skills/twitter-GTM-find-skill> |
 | TweetClaw cross-link | <https://github.com/Xquik-dev/tweetclaw#readme> |
 
 ## Public Positioning
