@@ -20,7 +20,6 @@ hermes-agent
 hermes-plugin
 hermes
 twitter
-x
 x-api
 x-automation
 xquik
@@ -34,7 +33,8 @@ agent-tools
 twitter-api
 twitter-automation
 x-twitter
-apify
+social-media-api
+agent-skill
 python
 ```
 
