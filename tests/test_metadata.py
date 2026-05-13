@@ -158,6 +158,7 @@ def test_plugin_manifests_keep_install_prompt_contract() -> None:
 
     assert root_manifest == package_manifest
     assert root_manifest["name"] == "hermes-tweet"
+    assert root_manifest["description"] == EXPECTED_PUBLIC_PACKAGE_DESCRIPTION
     assert root_manifest["provides_tools"] == EXPECTED_TOOLS
     assert root_manifest["optional_env"] == EXPECTED_OPTIONAL_ENV
 
