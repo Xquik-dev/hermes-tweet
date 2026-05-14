@@ -46,6 +46,7 @@ uv run --python 3.12 --extra dev basedpyright
 uv run --python 3.12 --extra dev pytest --cov=hermes_tweet --cov=tests --cov-report=term-missing --cov-fail-under=100
 uv run --python 3.12 --extra dev bandit -c pyproject.toml -r hermes_tweet scripts
 uv run --python 3.12 --extra dev pip-audit
+uv run --python 3.12 --extra dev python scripts/check_public_links.py
 uv run --python 3.12 --extra dev python -m build
 uv run --python 3.12 --extra dev twine check dist/*
 actionlint .github/workflows/*.yml
