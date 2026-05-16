@@ -31,6 +31,7 @@ follow-up belong outside the public repository.
 | GitHub agent-skill topic | <https://github.com/topics/agent-skill> |
 | GitHub hermes-plugin topic | <https://github.com/topics/hermes-plugin> |
 | Hermes Eco crawler manifest | <https://github.com/Xquik-dev/hermes-tweet/blob/master/.hermes-eco.json> |
+| Hermes Atlas project page | <https://hermesatlas.com/projects/Xquik-dev/hermes-tweet> |
 | Gaia Skill Tree Hermes Tweet named skill | <https://github.com/mbtiongson1/gaia-skill-tree/blob/main/registry/named/xquik-dev/hermes-tweet.md> |
 | Learn Hermes Agent skill-system tutorial | <https://github.com/longyunfeigu/learn-hermes-agent/blob/main/docs/en/s08-skill-system.md> |
 | OpenDirectory Twitter GTM Find skill | <https://github.com/Varnan-Tech/opendirectory/tree/main/skills/twitter-GTM-find-skill> |
