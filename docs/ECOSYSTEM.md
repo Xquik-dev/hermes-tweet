@@ -34,6 +34,7 @@ follow-up belong outside the public repository.
 | Hermes Atlas project page | <https://hermesatlas.com/projects/Xquik-dev/hermes-tweet> |
 | Gaia Skill Tree Hermes Tweet named skill | <https://github.com/mbtiongson1/gaia-skill-tree/blob/main/registry/named/xquik-dev/hermes-tweet.md> |
 | Learn Hermes Agent skill-system tutorial | <https://github.com/longyunfeigu/learn-hermes-agent/blob/main/docs/en/s08-skill-system.md> |
+| Hermes One-Click optional plugin path | <https://github.com/Devsoul2026/Hermes-One-Click#optional-hermes-tweet-xtwitter-plugin> |
 | OpenDirectory Twitter GTM Find skill | <https://github.com/Varnan-Tech/opendirectory/tree/main/skills/twitter-GTM-find-skill> |
 | TweetClaw cross-link | <https://github.com/Xquik-dev/tweetclaw#readme> |
 
