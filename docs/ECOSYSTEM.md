@@ -16,7 +16,7 @@ follow-up belong outside the public repository.
 | GitHub | <https://github.com/Xquik-dev/hermes-tweet> |
 | Xquik guide | <https://docs.xquik.com/guides/hermes-tweet> |
 | PyPI | <https://pypi.org/project/hermes-tweet/> |
-| piwheels | <https://www.piwheels.org/project/hermes-tweet/> |
+| piwheels | <https://piwheels.org/project/hermes-tweet/> |
 | DeepWiki | <https://deepwiki.com/Xquik-dev/hermes-tweet> |
 | Context7 | <https://context7.com/xquik-dev/hermes-tweet> |
 
