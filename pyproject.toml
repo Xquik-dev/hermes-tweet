@@ -66,7 +66,7 @@ Issues = "https://github.com/Xquik-dev/hermes-tweet/issues"
 AgentSkill = "https://agentskill.sh/@xquik-dev/hermes-tweet"
 ClawHub = "https://clawhub.ai/skills/hermes-tweet"
 DeepWiki = "https://deepwiki.com/Xquik-dev/hermes-tweet"
-piwheels = "https://www.piwheels.org/project/hermes-tweet/"
+piwheels = "https://piwheels.org/project/hermes-tweet/"
 "Xquik Platform" = "https://xquik.com"
 
 [project.entry-points."hermes_agent.plugins"]

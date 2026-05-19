@@ -5,7 +5,7 @@
 <a href="https://nothumansearch.ai/site/xquik.com" target="_blank" rel="noopener"><img src="https://nothumansearch.ai/badge/xquik.com.svg" alt="NHS Agentic Readiness Score" height="28"></a>
 [![Ask DeepWiki](https://deepwiki.com/badge.svg?url=https%3A%2F%2Fgithub.com%2FXquik-dev%2Fhermes-tweet)](https://deepwiki.com/Xquik-dev/hermes-tweet)
 [![PyPI](https://img.shields.io/pypi/v/hermes-tweet.svg)](https://pypi.org/project/hermes-tweet/)
-[![piwheels](https://img.shields.io/piwheels/v/hermes-tweet.svg)](https://www.piwheels.org/project/hermes-tweet/)
+[![piwheels](https://img.shields.io/piwheels/v/hermes-tweet.svg)](https://piwheels.org/project/hermes-tweet/)
 [![Python](https://img.shields.io/pypi/pyversions/hermes-tweet.svg)](https://pypi.org/project/hermes-tweet/)
 [![PyPI Status](https://img.shields.io/pypi/status/hermes-tweet.svg)](https://pypi.org/project/hermes-tweet/)
 [![Wheel](https://img.shields.io/pypi/wheel/hermes-tweet.svg)](https://pypi.org/project/hermes-tweet/#files)
@@ -83,7 +83,7 @@ hermes plugins install file:///absolute/path/to/hermes-tweet --force --enable
 | PyPI | [`hermes-tweet`](https://pypi.org/project/hermes-tweet/) |
 | Official guide | [`docs.xquik.com/guides/hermes-tweet`](https://docs.xquik.com/guides/hermes-tweet) |
 | Context7 | [`context7.com/xquik-dev/hermes-tweet`](https://context7.com/xquik-dev/hermes-tweet) |
-| piwheels | [`hermes-tweet`](https://www.piwheels.org/project/hermes-tweet/) |
+| piwheels | [`hermes-tweet`](https://piwheels.org/project/hermes-tweet/) |
 | Latest release | [`v0.1.6`](https://github.com/Xquik-dev/hermes-tweet/releases/tag/v0.1.6) |
 | Supported Python | `>=3.11` |
 | Package format | Wheel and source distribution |
