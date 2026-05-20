@@ -7,7 +7,7 @@ Use this metadata when creating or refreshing the public GitHub repository.
 - Owner: `Xquik-dev`
 - Name: `hermes-tweet`
 - Visibility: public
-- Homepage: `https://docs.xquik.com/guides/hermes-tweet`
+- Homepage: `https://github.com/Xquik-dev/hermes-tweet#readme`
 
 ## Description
 

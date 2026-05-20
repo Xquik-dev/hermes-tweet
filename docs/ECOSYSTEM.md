@@ -14,7 +14,7 @@ follow-up belong outside the public repository.
 | Surface | Link |
 | --- | --- |
 | GitHub | <https://github.com/Xquik-dev/hermes-tweet> |
-| Xquik guide | <https://docs.xquik.com/guides/hermes-tweet> |
+| Repository guide | <https://github.com/Xquik-dev/hermes-tweet#readme> |
 | PyPI | <https://pypi.org/project/hermes-tweet/> |
 | piwheels | <https://piwheels.org/project/hermes-tweet/> |
 | DeepWiki | <https://deepwiki.com/Xquik-dev/hermes-tweet> |

@@ -77,7 +77,7 @@ If you edit `~/.hermes/.env` during an active Hermes CLI session, run
 ## Public Sources
 
 - GitHub: <https://github.com/Xquik-dev/hermes-tweet>
-- Xquik guide: <https://docs.xquik.com/guides/hermes-tweet>
+- Repository guide: <https://github.com/Xquik-dev/hermes-tweet#readme>
 - PyPI: <https://pypi.org/project/hermes-tweet/>
 - DeepWiki: <https://deepwiki.com/Xquik-dev/hermes-tweet>
 - Context7: <https://context7.com/xquik-dev/hermes-tweet>

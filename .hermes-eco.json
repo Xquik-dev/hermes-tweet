@@ -6,7 +6,7 @@
   "description": "Hermes Agent X/Twitter plugin for searching tweets, reading replies, monitoring X, exporting followers, and approval-gated posting through Xquik.",
   "author": "Xquik",
   "repository": "https://github.com/Xquik-dev/hermes-tweet",
-  "homepage": "https://docs.xquik.com/guides/hermes-tweet",
+  "homepage": "https://github.com/Xquik-dev/hermes-tweet#readme",
   "license": "MIT",
   "complexity": "intermediate",
   "deployment": "local",

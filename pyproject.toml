@@ -59,8 +59,8 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://docs.xquik.com/guides/hermes-tweet"
-Documentation = "https://docs.xquik.com/guides/hermes-tweet"
+Homepage = "https://github.com/Xquik-dev/hermes-tweet#readme"
+Documentation = "https://github.com/Xquik-dev/hermes-tweet#readme"
 Repository = "https://github.com/Xquik-dev/hermes-tweet"
 Issues = "https://github.com/Xquik-dev/hermes-tweet/issues"
 AgentSkill = "https://agentskill.sh/@xquik-dev/hermes-tweet"
