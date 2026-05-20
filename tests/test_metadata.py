@@ -9,7 +9,7 @@ import pytest
 import yaml
 
 ROOT = Path(__file__).parents[1]
-GUIDE_URL = "https://docs.xquik.com/guides/hermes-tweet"
+GUIDE_URL = "https://github.com/Xquik-dev/hermes-tweet#readme"
 EXPECTED_TOOLS = ["tweet_explore", "tweet_read", "tweet_action"]
 EXPECTED_PUBLIC_PACKAGE_DESCRIPTION = (
     "Native Hermes Agent plugin for X/Twitter automation through Xquik"

@@ -1,7 +1,7 @@
 # Hermes Tweet
 
 [![CI](https://github.com/Xquik-dev/hermes-tweet/actions/workflows/ci.yml/badge.svg)](https://github.com/Xquik-dev/hermes-tweet/actions/workflows/ci.yml)
-[![Docs](https://img.shields.io/badge/docs-xquik.com-blue.svg)](https://docs.xquik.com/guides/hermes-tweet)
+[![Docs](https://img.shields.io/badge/docs-README-blue.svg)](https://github.com/Xquik-dev/hermes-tweet#readme)
 <a href="https://nothumansearch.ai/site/xquik.com" target="_blank" rel="noopener"><img src="https://nothumansearch.ai/badge/xquik.com.svg" alt="NHS Agentic Readiness Score" height="28"></a>
 [![Ask DeepWiki](https://deepwiki.com/badge.svg?url=https%3A%2F%2Fgithub.com%2FXquik-dev%2Fhermes-tweet)](https://deepwiki.com/Xquik-dev/hermes-tweet)
 [![PyPI](https://img.shields.io/pypi/v/hermes-tweet.svg)](https://pypi.org/project/hermes-tweet/)
@@ -81,7 +81,7 @@ hermes plugins install file:///absolute/path/to/hermes-tweet --force --enable
 | Field | Value |
 | --- | --- |
 | PyPI | [`hermes-tweet`](https://pypi.org/project/hermes-tweet/) |
-| Official guide | [`docs.xquik.com/guides/hermes-tweet`](https://docs.xquik.com/guides/hermes-tweet) |
+| Official guide | [`github.com/Xquik-dev/hermes-tweet#readme`](https://github.com/Xquik-dev/hermes-tweet#readme) |
 | Context7 | [`context7.com/xquik-dev/hermes-tweet`](https://context7.com/xquik-dev/hermes-tweet) |
 | piwheels | [`hermes-tweet`](https://piwheels.org/project/hermes-tweet/) |
 | Latest release | [`v0.1.6`](https://github.com/Xquik-dev/hermes-tweet/releases/tag/v0.1.6) |

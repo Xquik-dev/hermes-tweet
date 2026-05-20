@@ -12,7 +12,7 @@
   "rules": [
     "Use README.md and docs/CONTEXT7.md for install, configuration, tool usage, security model, and runtime smoke tests.",
     "Use docs/OBSERVABILITY.md for scripted Hermes runtime checks.",
-    "Use docs.xquik.com/guides/hermes-tweet for end-to-end Hermes setup.",
+    "Use github.com/Xquik-dev/hermes-tweet#readme for end-to-end Hermes setup.",
     "Use tweet_explore before tweet_read or tweet_action; tweet_action is disabled unless explicitly enabled.",
     "Use pyproject.toml and the PyPI package hermes-tweet for package metadata and supported Python versions.",
     "Do not ask users to pass credentials through tool arguments; use environment configuration."
