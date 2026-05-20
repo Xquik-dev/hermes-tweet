@@ -11,7 +11,7 @@ requires-python = ">=3.11"
 license = "MIT"
 authors = [{ name = "Xquik" }]
 dependencies = [
-  "httpx>=0.27,<0.29",
+  "httpx>=0.28.1,<0.29",
 ]
 keywords = [
   "agent-tools",
@@ -49,11 +49,11 @@ dev = [
   "bandit[toml]>=1.9.2",
   "basedpyright>=1.36.0",
   "build>=1.5.0",
-  "pip-audit>=2.9.0",
-  "PyYAML>=6.0",
+  "pip-audit>=2.10.0",
+  "PyYAML>=6.0.3",
   "pytest>=8.2",
   "pytest-cov>=7.0.0",
-  "ruff>=0.14.0",
+  "ruff>=0.15.13",
   "twine>=6.2.0",
   "types-PyYAML>=6.0.12",
 ]
