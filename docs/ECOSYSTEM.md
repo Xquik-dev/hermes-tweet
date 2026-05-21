@@ -27,6 +27,7 @@ follow-up belong outside the public repository.
 | AgentSkill | <https://agentskill.sh/@xquik-dev/hermes-tweet> |
 | ClawHub | <https://clawhub.ai/skills/hermes-tweet> |
 | SKILLS.re | <https://skills.re/> |
+| Terminal Skills xquik-twitter skill | <https://github.com/TerminalSkills/skills/blob/main/skills/xquik-twitter/SKILL.md> |
 | Awesome Skills | <https://github.com/gmh5225/awesome-skills#readme> |
 | GitHub agent-skill topic | <https://github.com/topics/agent-skill> |
 | GitHub hermes-plugin topic | <https://github.com/topics/hermes-plugin> |
