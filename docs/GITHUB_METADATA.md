@@ -11,7 +11,7 @@ Use this metadata when creating or refreshing the public GitHub repository.
 
 ## Description
 
-Native Hermes Agent plugin for X/Twitter automation through Xquik.
+Native Hermes Agent plugin for X/Twitter automation through Xquik
 
 ## Topics
 
