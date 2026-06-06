@@ -47,6 +47,7 @@ follow-up belong outside the public repository.
 | Surface | Link |
 | --- | --- |
 | GenAIwithMS Twitter MCP optional Hermes Tweet backend | <https://github.com/GenAIwithMS/twitter-mcp#readme> |
+| xpost optional Hermes Tweet topic context | <https://github.com/Hakurei-git/xpost#readme> |
 
 ## Public Positioning
 
