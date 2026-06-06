@@ -42,6 +42,12 @@ follow-up belong outside the public repository.
 | OpenDirectory Twitter GTM Find skill | <https://github.com/Varnan-Tech/opendirectory/tree/main/skills/twitter-GTM-find-skill> |
 | TweetClaw cross-link | <https://github.com/Xquik-dev/tweetclaw#readme> |
 
+## MCP And Agent Integrations
+
+| Surface | Link |
+| --- | --- |
+| GenAIwithMS Twitter MCP optional Hermes Tweet backend | <https://github.com/GenAIwithMS/twitter-mcp#readme> |
+
 ## Public Positioning
 
 Use these concrete phrases in public docs when they match the workflow:
