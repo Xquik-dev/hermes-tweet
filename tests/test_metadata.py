@@ -45,7 +45,7 @@ EXPECTED_DASHBOARD_MANIFEST_DESCRIPTION = (
 EXPECTED_HERMES_ECO_MANIFEST_NAME = "Hermes Tweet"
 EXPECTED_HERMES_ECO_MANIFEST_TYPE = "integration"
 EXPECTED_HERMES_ECO_MANIFEST_CATEGORY = "communication"
-SETUP_UV_ACTION = "astral-sh/setup-uv@v8.1.0"
+SETUP_UV_ACTION = "astral-sh/setup-uv@v8.2.0"
 ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
 EXPECTED_PUBLIC_IGNORE_PATTERNS = [
     ".env",
