@@ -43,6 +43,9 @@ jobs:
       - name: Type check
         run: uv run basedpyright
 
+      - name: Hermes Agent compatibility
+        run: uv run python scripts/check_hermes_agent_compat.py
+
       - name: Test with coverage
         run: uv run pytest --cov=hermes_tweet --cov=tests --cov-report=term-missing --cov-fail-under=100
 

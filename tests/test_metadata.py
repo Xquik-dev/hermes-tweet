@@ -47,6 +47,7 @@ EXPECTED_HERMES_ECO_MANIFEST_TYPE = "integration"
 EXPECTED_HERMES_ECO_MANIFEST_CATEGORY = "communication"
 SETUP_UV_ACTION = "astral-sh/setup-uv@v8.2.0"
 ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
+HERMES_AGENT_COMPAT_COMMAND = "uv run python scripts/check_hermes_agent_compat.py"
 EXPECTED_PUBLIC_IGNORE_PATTERNS = [
     ".env",
     ".env.*",
@@ -335,6 +336,7 @@ def test_ci_workflow_runs_actionlint_before_python_checks() -> None:
     step_names = [require_mapping(step)["name"] for step in steps]
     assert step_names.index("Workflow lint") < step_names.index("Install uv")
     assert step_names.index("Workflow lint") < step_names.index("Test with coverage")
+    assert step_names.index("Hermes Agent compatibility") < step_names.index("Test with coverage")
 
     setup_go_step = find_step(steps, "Set up Go")
     assert setup_go_step["uses"] == "actions/setup-go@v6"
@@ -347,3 +349,17 @@ def test_ci_workflow_runs_actionlint_before_python_checks() -> None:
 
     install_uv_step = find_step(steps, "Install uv")
     assert install_uv_step["uses"] == SETUP_UV_ACTION
+
+    hermes_agent_compat_step = find_step(steps, "Hermes Agent compatibility")
+    assert hermes_agent_compat_step["run"] == HERMES_AGENT_COMPAT_COMMAND
+
+
+def test_release_gate_runs_hermes_agent_compatibility_checker() -> None:
+    checklist = (ROOT / "docs" / "PUBLICATION_CHECKLIST.md").read_text()
+    agents = (ROOT / "AGENTS.md").read_text()
+
+    assert (
+        "uv run --python 3.12 --extra dev python scripts/check_hermes_agent_compat.py" in checklist
+    )
+    assert "source SHA changes" in checklist
+    assert "uv run --python 3.12 --extra dev python scripts/check_hermes_agent_compat.py" in agents
