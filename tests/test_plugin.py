@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 import importlib.util
+import inspect
 import sys
 import types
 from pathlib import Path
 from typing import Any
 
 from hermes_tweet import register
+from hermes_tweet.tools import action_enabled, check_api_available
 
 
 class DummyContext:
@@ -42,6 +44,42 @@ def test_register_wires_tools_commands_and_skill() -> None:
             Path(__file__).parents[1] / "hermes_tweet" / "skills" / "hermes-tweet" / "SKILL.md",
         )
     ]
+
+
+def test_register_keeps_official_hermes_plugin_gates_aligned() -> None:
+    ctx = DummyContext()
+
+    register(ctx)
+
+    tools = {tool["name"]: tool for tool in ctx.tools}
+    explore = tools["tweet_explore"]
+    read = tools["tweet_read"]
+    action = tools["tweet_action"]
+
+    assert "check_fn" not in explore
+    assert "requires_env" not in explore
+    assert explore["schema"]["name"] == "tweet_explore"
+    assert explore["is_async"] is False
+
+    assert read["check_fn"] is check_api_available
+    assert read["requires_env"] == ["XQUIK_API_KEY"]
+    assert read["schema"]["name"] == "tweet_read"
+    assert read["is_async"] is False
+
+    assert action["check_fn"] is action_enabled
+    assert action["requires_env"] == ["XQUIK_API_KEY", "HERMES_TWEET_ENABLE_ACTIONS"]
+    assert action["schema"]["name"] == "tweet_action"
+    assert action["is_async"] is False
+
+
+def test_registered_tool_handlers_accept_future_hermes_context_kwargs() -> None:
+    ctx = DummyContext()
+
+    register(ctx)
+
+    for tool in ctx.tools:
+        parameters = inspect.signature(tool["handler"]).parameters.values()
+        assert any(parameter.kind is inspect.Parameter.VAR_KEYWORD for parameter in parameters)
 
 
 def test_root_entrypoint_loads_as_hermes_directory_plugin() -> None:
