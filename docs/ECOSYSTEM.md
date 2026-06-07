@@ -28,6 +28,7 @@ follow-up belong outside the public repository.
 | ClawHub | <https://clawhub.ai/skills/hermes-tweet> |
 | SKILLS.re | <https://skills.re/> |
 | Terminal Skills xquik-twitter skill | <https://github.com/TerminalSkills/skills/blob/main/skills/xquik-twitter/SKILL.md> |
+| Antigravity Awesome Skills Xquik X/Twitter skill | <https://github.com/sickn33/antigravity-awesome-skills/blob/main/skills/x-twitter-scraper/SKILL.md> |
 | Awesome Skills | <https://github.com/gmh5225/awesome-skills#readme> |
 | GitHub agent-skill topic | <https://github.com/topics/agent-skill> |
 | GitHub hermes-plugin topic | <https://github.com/topics/hermes-plugin> |
@@ -40,7 +41,9 @@ follow-up belong outside the public repository.
 | Hermes Agent Chinese solution guide | <https://github.com/zcweah1981/awesome-hermes-agent-zh/blob/main/docs/02-%E7%8E%B0%E6%88%90%E6%96%B9%E6%A1%88/01-%E5%86%85%E5%AE%B9%E5%88%9B%E4%BD%9C%E4%B8%8E%E5%8F%91%E5%B8%83/05-X-Twitter%20%E5%86%85%E5%AE%B9%E4%B8%8E%E4%BA%92%E5%8A%A8%E5%8A%A9%E6%89%8B.md> |
 | Hermes One-Click optional plugin path | <https://github.com/Devsoul2026/Hermes-One-Click#optional-hermes-tweet-xtwitter-plugin> |
 | Hermes Startup Architect optional market signals | <https://github.com/dlkakbs/hermes-startup-architect#optional-xtwitter-market-signals> |
+| Mercury Agent Skills X/Twitter automation skill | <https://github.com/cosmicstack-labs/mercury-agent-skills/blob/main/categories/automation/x-twitter-automation/SKILL.md> |
 | OpenDirectory Twitter GTM Find skill | <https://github.com/Varnan-Tech/opendirectory/tree/main/skills/twitter-GTM-find-skill> |
+| Awesome Omni Skills Xquik Twitter scraper skill | <https://github.com/diegosouzapw/awesome-omni-skills/blob/main/skills/x-twitter-scraper-v2/SKILL.md> |
 | TweetClaw cross-link | <https://github.com/Xquik-dev/tweetclaw#readme> |
 
 ## MCP And Agent Integrations
