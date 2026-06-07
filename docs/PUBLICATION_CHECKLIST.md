@@ -73,6 +73,14 @@ Keep the runtime contract aligned with those sources:
 - Tool handlers accept future Hermes context keyword arguments, catch
   exceptions, and return JSON strings.
 - Bundled skills continue to register through `ctx.register_skill`.
+- Install docs explain that user and PyPI entry-point plugins are opt-in and
+  need `--enable`, `hermes plugins enable hermes-tweet`, or an explicit
+  `plugins.enabled` entry.
+- Local project-plugin docs mention `HERMES_ENABLE_PROJECT_PLUGINS=true` only
+  for trusted repositories.
+- User-facing docs keep at least one concrete Hermes Agent workflow section for
+  social listening, launch monitoring, support triage, research, audits, and
+  controlled publishing.
 
 ## Runtime Smoke Test
 
