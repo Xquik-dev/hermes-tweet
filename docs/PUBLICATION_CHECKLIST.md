@@ -52,6 +52,28 @@ uv run --python 3.12 --extra dev twine check dist/*
 actionlint .github/workflows/*.yml
 ```
 
+## Hermes Agent Compatibility Gate
+
+Before changing plugin registration, manifests, install docs, or release
+metadata, verify the current official Hermes Agent plugin docs and source:
+
+- [Build a Hermes Plugin](https://hermes-agent.nousresearch.com/docs/guides/build-a-hermes-plugin/)
+- [Plugins feature guide](https://hermes-agent.nousresearch.com/docs/user-guide/features/plugins/)
+- [`hermes_cli/plugins.py`](https://github.com/NousResearch/hermes-agent/blob/main/hermes_cli/plugins.py)
+- [`tools/registry.py`](https://github.com/NousResearch/hermes-agent/blob/main/tools/registry.py)
+- [`hermes_cli/plugins_cmd.py`](https://github.com/NousResearch/hermes-agent/blob/main/hermes_cli/plugins_cmd.py)
+
+Keep the runtime contract aligned with those sources:
+
+- `plugin.yaml` keeps the rich `XQUIK_API_KEY` `requires_env` installer prompt.
+- `tweet_explore` stays ungated and makes no network call.
+- `tweet_read` stays gated by `check_api_available` and `XQUIK_API_KEY`.
+- `tweet_action` stays gated by `action_enabled`, `XQUIK_API_KEY`, and
+  `HERMES_TWEET_ENABLE_ACTIONS`.
+- Tool handlers accept future Hermes context keyword arguments, catch
+  exceptions, and return JSON strings.
+- Bundled skills continue to register through `ctx.register_skill`.
+
 ## Runtime Smoke Test
 
 Use a local secret store or ephemeral environment variable. Never paste an API
