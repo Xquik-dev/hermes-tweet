@@ -47,6 +47,7 @@ uv run --python 3.12 --extra dev pytest --cov=hermes_tweet --cov=tests --cov-rep
 uv run --python 3.12 --extra dev bandit -c pyproject.toml -r hermes_tweet scripts
 uv run --python 3.12 --extra dev pip-audit
 uv run --python 3.12 --extra dev python scripts/check_public_links.py
+uv run --python 3.12 --extra dev python scripts/check_hermes_agent_compat.py
 uv run --python 3.12 --extra dev python -m build
 uv run --python 3.12 --extra dev twine check dist/*
 actionlint .github/workflows/*.yml
@@ -62,6 +63,16 @@ metadata, verify the current official Hermes Agent plugin docs and source:
 - [`hermes_cli/plugins.py`](https://github.com/NousResearch/hermes-agent/blob/main/hermes_cli/plugins.py)
 - [`tools/registry.py`](https://github.com/NousResearch/hermes-agent/blob/main/tools/registry.py)
 - [`hermes_cli/plugins_cmd.py`](https://github.com/NousResearch/hermes-agent/blob/main/hermes_cli/plugins_cmd.py)
+
+Run the compatibility checker before release, outreach, or plugin-facing docs
+updates:
+
+```bash
+uv run --python 3.12 --extra dev python scripts/check_hermes_agent_compat.py
+```
+
+If a locked Hermes Agent source SHA changes, review the official diff first,
+then update Hermes Tweet runtime, docs, tests, and the checker lock together.
 
 Keep the runtime contract aligned with those sources:
 
