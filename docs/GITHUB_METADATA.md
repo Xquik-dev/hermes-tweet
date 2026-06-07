@@ -46,3 +46,7 @@ python
 - Hermes Twitter automation
 - Xquik Hermes plugin
 - social media automation for AI agents
+- Hermes Agent social listening plugin
+- Hermes Agent launch monitoring
+- Hermes Agent support triage for X
+- Hermes Agent controlled X publishing

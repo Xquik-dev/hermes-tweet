@@ -2,6 +2,14 @@
 
 Hermes Tweet is enabled as the `hermes-tweet` toolset.
 
+If this plugin was installed without `--enable`, Hermes may show it as
+`not enabled` until you run:
+
+```bash
+hermes plugins enable hermes-tweet
+hermes plugins list
+```
+
 Set your Xquik API key before using read tools:
 
 ```bash

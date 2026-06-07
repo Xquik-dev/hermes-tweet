@@ -45,6 +45,12 @@ Recommended Hermes plugin install:
 hermes plugins install Xquik-dev/hermes-tweet --enable
 ```
 
+Hermes Agent treats third-party plugins as opt-in. Without `--enable`, the
+installer can discover Hermes Tweet, but it may leave the plugin in the
+`not enabled` state until you run `hermes plugins enable hermes-tweet` or toggle
+it in the interactive `hermes plugins` UI. Use `hermes plugins list` when a
+fresh install does not show the `hermes-tweet` toolset.
+
 Hermes will prompt for `XQUIK_API_KEY` during an interactive install and save it
 to `~/.hermes/.env`. In non-interactive installs the prompt is skipped; set the
 key through the environment or `~/.hermes/.env` before running `tweet_read`.
@@ -75,6 +81,11 @@ From a local checkout:
 ```bash
 hermes plugins install file:///absolute/path/to/hermes-tweet --force --enable
 ```
+
+If you are testing from a project-local `.hermes/plugins/` directory instead of
+installing the plugin into `~/.hermes/plugins/` or through the PyPI entry point,
+start Hermes with `HERMES_ENABLE_PROJECT_PLUGINS=true` only for trusted
+repositories.
 
 ## Python Package
 
@@ -134,11 +145,35 @@ and write-like endpoints go through `tweet_action`, which is hidden unless
 Use `tweet_explore` first, then call `tweet_read` or `tweet_action` with a
 concrete `/api/v1/...` path.
 
+## Hermes Agent Workflows
+
+Hermes Tweet is best used as the X context layer for Hermes Agent workflows that
+need current public signal, authenticated account context, or approval-gated
+account actions:
+
+| Workflow | Recommended Path |
+| --- | --- |
+| Social listening | Use `tweet_explore` to find search, user, trend, monitor, or radar routes, then use `tweet_read` for public reads. |
+| Launch monitoring | Keep `tweet_action` disabled, schedule Hermes cron sessions around read-only trend, mention, and account checks. |
+| Support triage | Read public mentions and user timelines, summarize issues in Hermes, then hand off account-changing responses for explicit approval. |
+| Creator or brand research | Combine X search, user profile, follower, media, and trend reads before drafting content or campaign briefs. |
+| Giveaway and community audits | Use read routes for tweet, reply, follower, list, draw, and export evidence before any action route. |
+| Controlled publishing | Enable `HERMES_TWEET_ENABLE_ACTIONS=true` only in sessions that require posting, DMs, follows, webhooks, monitors, or media changes. |
+
+For marketing or user education, position Hermes Tweet as a native Hermes Agent
+plugin, not a generic API wrapper: it ships a PyPI entry point, a `plugin.yaml`
+manifest with interactive secret prompts, slash commands for quick diagnostics,
+and a bundled skill registered through Hermes' plugin skill system.
+
 ## Hermes Runtime Fit
 
 Hermes Tweet registers a dedicated `hermes-tweet` plugin toolset. Hermes can
 show and manage those tools through its normal `hermes tools` and platform
 toolset flows, so teams can keep X automation available only where it belongs.
+Current Hermes Agent releases discover third-party plugins but do not execute
+them until they are enabled in `plugins.enabled`, through `hermes plugins enable`,
+or by installing with `--enable`. This is expected safety behavior for user and
+PyPI entry-point plugins.
 For non-interactive smoke tests and CI-style diagnostics, use
 `hermes tools list`; bare `hermes tools` opens the interactive tool UI and
 requires a TTY. In Hermes v0.12.0, `hermes tools list` reports plugin toolsets,

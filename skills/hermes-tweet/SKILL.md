@@ -31,6 +31,10 @@ Use Hermes Tweet when the user wants to automate or inspect X through Xquik.
 Use this skill for Hermes Agent sessions that need X/Twitter data or controlled
 X actions through the Hermes Tweet plugin.
 
+Use this skill especially for social listening, launch monitoring, support
+triage, creator research, brand research, giveaway audits, community audits,
+and controlled publishing workflows.
+
 Use `tweet_explore` first when the user asks for a capability, endpoint, route,
 or Xquik API surface. Use `tweet_read` only after a read-only endpoint is known.
 Use `tweet_action` only after the user requests a write, private read, monitor,
@@ -56,6 +60,14 @@ permissions.
   are intentionally gated by `HERMES_TWEET_ENABLE_ACTIONS=true`.
 - IF `XQUIK_API_KEY` is missing, THEN ask the user to set it in the Hermes
   runtime environment without requesting the key value in chat.
+- IF Hermes lists the plugin as `not enabled`, THEN tell the user to run
+  `hermes plugins enable hermes-tweet` or reinstall with `--enable`.
+- IF the plugin is installed as a project-local `.hermes/plugins/` copy, THEN
+  remind the user that Hermes requires `HERMES_ENABLE_PROJECT_PLUGINS=true` for
+  trusted repositories.
+- IF the task is unattended, scheduled, gateway-driven, or cron-driven, THEN
+  prefer `tweet_read` and keep `tweet_action` disabled unless the workflow has a
+  clear approval step.
 
 ## Safety
 
@@ -73,6 +85,8 @@ permissions.
   registry test.
 - Do not use bare `hermes tools` for scripted diagnostics. Run
   `hermes tools list` instead.
+- Do not assume installation means execution. Current Hermes Agent versions
+  discover third-party plugins before they are enabled.
 - Do not retry writes through alternate routes after a policy, auth, or account
   state error.
 - Do not include secrets in examples, logs, prompts, issue bodies, or tool input.
@@ -107,11 +121,12 @@ Then call `tweet_action` with:
 
 After installing or upgrading the plugin in Hermes Agent:
 
-1. Run `hermes plugins enable hermes-tweet`.
-2. Run `hermes tools list` and confirm the `hermes-tweet` toolset is enabled.
-3. Confirm `tweet_explore` is available without `XQUIK_API_KEY`.
-4. Confirm `tweet_read` appears only when `XQUIK_API_KEY` is configured.
-5. Confirm `tweet_action` stays hidden or disabled unless `HERMES_TWEET_ENABLE_ACTIONS=true`.
+1. Run `hermes plugins enable hermes-tweet` unless the install used `--enable`.
+2. Run `hermes plugins list` and confirm the plugin is `enabled`.
+3. Run `hermes tools list` and confirm the `hermes-tweet` toolset is enabled.
+4. Confirm `tweet_explore` is available without `XQUIK_API_KEY`.
+5. Confirm `tweet_read` appears only when `XQUIK_API_KEY` is configured.
+6. Confirm `tweet_action` stays hidden or disabled unless `HERMES_TWEET_ENABLE_ACTIONS=true`.
 
 Useful CLI checks:
 
@@ -122,6 +137,8 @@ hermes tools list
 
 ## Version History
 
+- Unreleased: Refresh current Hermes Agent opt-in plugin lifecycle guidance and
+  workflow positioning.
 - 0.1.6: Refresh catalog wording from current Xquik OpenAPI.
 - 0.1.5: Add registry-compatible nested metadata and clearer Hermes runtime guidance.
 - 0.1.4: Add public registry frontmatter for skill directory discovery.

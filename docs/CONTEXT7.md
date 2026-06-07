@@ -11,6 +11,13 @@ Install from the public GitHub repository:
 hermes plugins install Xquik-dev/hermes-tweet --enable
 ```
 
+Hermes plugins are opt-in. If the plugin was installed without `--enable`, run:
+
+```bash
+hermes plugins enable hermes-tweet
+hermes plugins list
+```
+
 Install the published Python package into the Hermes Python environment:
 
 ```bash
@@ -52,6 +59,18 @@ Use `tweet_explore` first. Then call `tweet_read` with a concrete
 `/api/v1/...` path for account checks, tweet search, user lookup, trends,
 media reads, monitors, webhooks, draws, or extraction jobs.
 
+## Hermes Agent Patterns
+
+- Treat Hermes Tweet as the X context layer for Hermes Agent research,
+  monitoring, support, launch, and content workflows.
+- Use read-only routes for cron, gateway, and unattended sessions.
+- Keep action routes for explicit user-approved posting, DMs, follows, monitor
+  edits, webhook edits, media uploads, extraction jobs, and draws.
+- Use `hermes plugins list` for enablement diagnostics because current Hermes
+  Agent versions distinguish `enabled`, `disabled`, and `not enabled` plugins.
+- Use project-local `.hermes/plugins/` copies only in trusted repositories and
+  only with `HERMES_ENABLE_PROJECT_PLUGINS=true`.
+
 Keep `HERMES_TWEET_ENABLE_ACTIONS=false` for unattended sessions. Enable actions
 only when the workflow intentionally allows posting, replies, likes, retweets,
 follows, DMs, monitor changes, webhook changes, media uploads, or other account
@@ -81,3 +100,5 @@ If you edit `~/.hermes/.env` during an active Hermes CLI session, run
 - PyPI: <https://pypi.org/project/hermes-tweet/>
 - DeepWiki: <https://deepwiki.com/Xquik-dev/hermes-tweet>
 - Context7: <https://context7.com/xquik-dev/hermes-tweet>
+- Hermes Agent plugins guide: <https://hermes-agent.nousresearch.com/docs/user-guide/features/plugins/>
+- Build a Hermes Plugin: <https://hermes-agent.nousresearch.com/docs/guides/build-a-hermes-plugin/>
