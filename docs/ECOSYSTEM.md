@@ -33,6 +33,7 @@ follow-up belong outside the public repository.
 | GitHub hermes-plugin topic | <https://github.com/topics/hermes-plugin> |
 | Hermes Eco crawler manifest | <https://github.com/Xquik-dev/hermes-tweet/blob/master/.hermes-eco.json> |
 | Hermes Atlas project page | <https://hermesatlas.com/projects/Xquik-dev/hermes-tweet> |
+| Awesome Hermes Agent plugin listing | <https://github.com/SamurAIGPT/awesome-hermes-agent#plugins> |
 | Gaia Skill Tree Hermes Tweet named skill | <https://github.com/mbtiongson1/gaia-skill-tree/blob/main/registry/named/xquik-dev/hermes-tweet.md> |
 | Awesome Hermes Use Cases X social automation use case | <https://github.com/aliaihub/awesome-hermes-usecases/blob/main/usecases/x-social-automation-toolset.md> |
 | Learn Hermes Agent skill-system tutorial | <https://github.com/longyunfeigu/learn-hermes-agent/blob/main/docs/en/s08-skill-system.md> |
