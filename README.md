@@ -34,6 +34,8 @@ media automation for agents, or a native Hermes toolset for X/Twitter.
 - Action endpoints are disabled by default.
 - Bundled Hermes skill for agent-facing usage guidance.
 - Slash commands for account status and trends.
+- Current guidance for Hermes Agent v0.16.0 Desktop, remote gateway, and
+  dashboard credential workflows.
 - Strict CI with formatting, linting, type checking, tests, coverage, security
   scan, dependency audit, and package build checks.
 
@@ -86,6 +88,13 @@ If you are testing from a project-local `.hermes/plugins/` directory instead of
 installing the plugin into `~/.hermes/plugins/` or through the PyPI entry point,
 start Hermes with `HERMES_ENABLE_PROJECT_PLUGINS=true` only for trusted
 repositories.
+
+Hermes Agent v0.16.0 adds a native desktop app and remote gateway profiles.
+For a remote gateway profile, install and enable Hermes Tweet on the remote
+Hermes host because that is where plugin code executes and where
+`XQUIK_API_KEY` must be available. The desktop app is the chat surface; it
+should not receive or store the key unless it is also running the Hermes
+runtime locally.
 
 ## Python Package
 
@@ -159,6 +168,9 @@ account actions:
 | Creator or brand research | Combine X search, user profile, follower, media, and trend reads before drafting content or campaign briefs. |
 | Giveaway and community audits | Use read routes for tweet, reply, follower, list, draw, and export evidence before any action route. |
 | Controlled publishing | Enable `HERMES_TWEET_ENABLE_ACTIONS=true` only in sessions that require posting, DMs, follows, webhooks, monitors, or media changes. |
+| Desktop operator sessions | Use Hermes Desktop for interactive review, then keep action calls explicit and approval-gated. |
+| Remote gateway teams | Install Hermes Tweet and set `XQUIK_API_KEY` on the remote gateway host, then connect Desktop profiles to that host. |
+| Dashboard-administered agents | Use the dashboard for gateway and credential operations, but keep Hermes Tweet secrets in the runtime environment. |
 
 For marketing or user education, position Hermes Tweet as a native Hermes Agent
 plugin, not a generic API wrapper: it ships a PyPI entry point, a `plugin.yaml`
@@ -174,9 +186,26 @@ Current Hermes Agent releases discover third-party plugins but do not execute
 them until they are enabled in `plugins.enabled`, through `hermes plugins enable`,
 or by installing with `--enable`. This is expected safety behavior for user and
 PyPI entry-point plugins.
+
+Hermes Agent v0.16.0 expands the surfaces where the same toolset can appear:
+the native Desktop app, remote gateway profiles, the web dashboard, the TUI,
+and the CLI can all route work to the enabled runtime. Hermes Tweet does not
+need a different plugin entry point for those surfaces. It needs the same
+enabled plugin, the same runtime environment, and the same read/action split.
+
+The v0.16.0 Desktop command palette surfaces skills and quick-command slash
+commands. Treat `/xstatus` and `/xtrends` as interactive runtime commands for
+active CLI, TUI, Desktop, or gateway sessions; keep `hermes -z` for tool-call
+smoke tests.
+
+The v0.16.0 dashboard added broader administration and credential-management
+surfaces. Those are useful for gateway operations, but Hermes Tweet still reads
+`XQUIK_API_KEY` and `HERMES_TWEET_ENABLE_ACTIONS` from the runtime environment.
+Do not paste API keys into prompts, issue bodies, PR comments, or tool inputs.
+
 For non-interactive smoke tests and CI-style diagnostics, use
 `hermes tools list`; bare `hermes tools` opens the interactive tool UI and
-requires a TTY. In Hermes v0.12.0, `hermes tools list` reports plugin toolsets,
+requires a TTY. In current Hermes Agent releases, `hermes tools list` reports plugin toolsets,
 not every individual plugin tool name.
 
 Use the read-only path for social listening, trend research, account checks,
@@ -201,10 +230,10 @@ Expected results:
 - `tweet_action` stays hidden or disabled unless `HERMES_TWEET_ENABLE_ACTIONS=true`.
 - `/xstatus` and `/xtrends` appear in the Hermes plugin command registry.
 
-Hermes v0.12.0 one-shot `hermes -z "/xstatus"` runs as a model prompt, not as
-the interactive slash-command dispatcher. Verify slash commands in an active CLI
-or gateway session, or through the plugin registry tests, and use `hermes -z`
-for tool-call probes.
+Hermes one-shot `hermes -z "/xstatus"` can run as a model prompt, not as the
+interactive slash-command dispatcher. Verify slash commands in an active CLI,
+TUI, Desktop, or gateway session, or through the plugin registry tests, and use
+`hermes -z` for tool-call probes.
 
 If `hermes plugins install` runs without a TTY, Hermes cannot safely prompt for
 secrets and will skip API-key storage. This is expected; set `XQUIK_API_KEY`
