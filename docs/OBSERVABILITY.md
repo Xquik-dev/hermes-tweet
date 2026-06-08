@@ -13,10 +13,14 @@ Hermes plugin logs, and slash commands.
 - `hermes plugins list` shows whether the plugin is installed and enabled.
 - `hermes tools list` shows the `hermes-tweet` toolset in non-interactive
   terminals. Bare `hermes tools` opens the interactive tool UI and requires a
-  TTY. Hermes v0.12.0 lists plugin toolsets there, not every individual plugin
-  tool name.
+  TTY. Current Hermes Agent releases list plugin toolsets there, not every
+  individual plugin tool name.
 - The Hermes plugin registry exposes loaded tools, slash commands, and bundled
   plugin skills for deterministic runtime smoke tests.
+- Hermes Agent v0.16.0 Desktop, TUI, CLI, and gateway sessions can all surface
+  the same enabled `hermes-tweet` runtime toolset.
+- Remote gateway profiles execute plugin code on the remote Hermes host, so
+  install state and environment variables must be verified there.
 
 ## Safety Signals
 
@@ -51,11 +55,12 @@ Record only sanitized outcomes:
   was unset.
 - `/xstatus` and `/xtrends` were registered.
 
-Hermes v0.12.0 does not provide a reliable non-interactive slash-command probe
-through `hermes -z "/xstatus"` or `hermes -z "/xtrends"`; that text can route as
-a model prompt. Verify slash-command registration in an active CLI or gateway
-session, or through the plugin registry tests. Use one-shot `hermes -z` for
-tool-call probes such as `tweet_explore` and `tweet_read`.
+Hermes one-shot runs do not provide a reliable non-interactive slash-command
+probe through `hermes -z "/xstatus"` or `hermes -z "/xtrends"`; that text can
+route as a model prompt. Verify slash-command registration in an active CLI,
+TUI, Desktop, or gateway session, or through the plugin registry tests. Use
+one-shot `hermes -z` for tool-call probes such as `tweet_explore` and
+`tweet_read`.
 
 Do not store API keys in shell history, docs, issue comments, CI logs, PR bodies,
 or Hermes prompts. Use an ephemeral environment variable for one-off smoke tests

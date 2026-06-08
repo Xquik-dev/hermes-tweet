@@ -158,6 +158,22 @@ def test_release_metadata_surfaces_stay_aligned() -> None:
     assert urls["Issues"] == "https://github.com/Xquik-dev/hermes-tweet/issues"
 
 
+def test_docs_track_current_hermes_agent_surface_release() -> None:
+    docs = "\n".join(
+        [
+            (ROOT / "README.md").read_text(),
+            (ROOT / "docs" / "CONTEXT7.md").read_text(),
+            (ROOT / "docs" / "OBSERVABILITY.md").read_text(),
+            (ROOT / "hermes_tweet" / "skills" / "hermes-tweet" / "SKILL.md").read_text(),
+        ],
+    )
+
+    assert "Hermes Agent v0.16.0" in docs
+    assert "remote gateway" in docs
+    assert "Hermes Desktop" in docs
+    assert "Hermes v0.12.0" not in docs
+
+
 def test_plugin_manifests_keep_install_prompt_contract() -> None:
     root_manifest = load_mapping(ROOT / "plugin.yaml")
     package_manifest = load_mapping(ROOT / "hermes_tweet" / "plugin.yaml")

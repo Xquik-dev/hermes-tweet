@@ -28,6 +28,11 @@ hermes plugins enable hermes-tweet
 Use the PyPI package name `hermes-tweet` and the Hermes toolset name
 `hermes-tweet`.
 
+Hermes Agent v0.16.0 includes Desktop and remote gateway profiles. For a remote
+gateway profile, install and enable Hermes Tweet on the remote Hermes host and
+set `XQUIK_API_KEY` there. The desktop app is only the client surface unless it
+also runs the Hermes runtime locally.
+
 ## Configure
 
 Create an API key in the Xquik dashboard and set it in the runtime environment:
@@ -70,6 +75,11 @@ media reads, monitors, webhooks, draws, or extraction jobs.
   Agent versions distinguish `enabled`, `disabled`, and `not enabled` plugins.
 - Use project-local `.hermes/plugins/` copies only in trusted repositories and
   only with `HERMES_ENABLE_PROJECT_PLUGINS=true`.
+- In Hermes Desktop, TUI, CLI, and gateway sessions, use `/xstatus` and
+  `/xtrends` as interactive commands. Use `hermes -z` for tool-call probes.
+- The Hermes dashboard can help administer gateway credentials and webhooks, but
+  Hermes Tweet still reads `XQUIK_API_KEY` and action gating from the runtime
+  environment.
 
 Keep `HERMES_TWEET_ENABLE_ACTIONS=false` for unattended sessions. Enable actions
 only when the workflow intentionally allows posting, replies, likes, retweets,

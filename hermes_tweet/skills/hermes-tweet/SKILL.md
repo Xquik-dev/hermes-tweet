@@ -68,6 +68,12 @@ permissions.
 - IF the task is unattended, scheduled, gateway-driven, or cron-driven, THEN
   prefer `tweet_read` and keep `tweet_action` disabled unless the workflow has a
   clear approval step.
+- IF the user is in Hermes Desktop with a remote gateway profile, THEN remind
+  them that Hermes Tweet must be installed, enabled, and configured on the
+  remote Hermes host where plugin tools execute.
+- IF the user uses the Hermes dashboard for gateway administration or
+  credentials, THEN keep Hermes Tweet secrets in the runtime environment and do
+  not ask for key values in chat.
 
 ## Safety
 
@@ -87,9 +93,25 @@ permissions.
   `hermes tools list` instead.
 - Do not assume installation means execution. Current Hermes Agent versions
   discover third-party plugins before they are enabled.
+- Do not assume the Desktop app stores plugin secrets for a remote gateway.
+  Configure `XQUIK_API_KEY` where the Hermes runtime executes.
 - Do not retry writes through alternate routes after a policy, auth, or account
   state error.
 - Do not include secrets in examples, logs, prompts, issue bodies, or tool input.
+
+## Hermes Agent v0.16.0 Surfaces
+
+Hermes Agent v0.16.0 added a native Desktop app, remote gateway profiles, a
+larger web dashboard, and a command palette that can surface skills and quick
+commands. Hermes Tweet uses the same plugin entry point on all of those
+surfaces:
+
+- Install and enable `hermes-tweet` on the Hermes runtime host.
+- Put `XQUIK_API_KEY` in the runtime environment or `~/.hermes/.env`.
+- Keep `HERMES_TWEET_ENABLE_ACTIONS=false` unless the session intentionally
+  allows account-changing actions.
+- Use Desktop, TUI, CLI, or gateway sessions for interactive slash commands such
+  as `/xstatus` and `/xtrends`.
 
 ## Examples
 
