@@ -46,6 +46,9 @@ jobs:
       - name: Hermes Agent compatibility
         run: uv run python scripts/check_hermes_agent_compat.py
 
+      - name: Public safety scan
+        run: uv run python scripts/check_public_safety.py
+
       - name: Test with coverage
         run: uv run pytest --cov=hermes_tweet --cov=tests --cov-report=term-missing --cov-fail-under=100
 

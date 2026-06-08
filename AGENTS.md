@@ -10,6 +10,7 @@ uv run --python 3.12 --extra dev ruff check .
 uv run --python 3.12 --extra dev basedpyright
 uv run --python 3.12 --extra dev pytest --cov=hermes_tweet --cov=tests --cov-report=term-missing --cov-fail-under=100
 uv run --python 3.12 --extra dev bandit -c pyproject.toml -r hermes_tweet scripts
+uv run --python 3.12 --extra dev python scripts/check_public_safety.py
 uv run --python 3.12 --extra dev pip-audit
 uv run --python 3.12 --extra dev python scripts/check_public_links.py
 uv run --python 3.12 --extra dev python scripts/check_hermes_agent_compat.py
@@ -30,6 +31,7 @@ python scripts/build_catalog.py ../xquik/openapi.yaml
 - Keep the catalog generated from Xquik OpenAPI.
 - Keep action endpoints gated behind `HERMES_TWEET_ENABLE_ACTIONS=true`.
 - Check public documentation and manifest links before publication or outreach.
+- Run the public safety scan before publication or outreach.
 - Keep Hermes Agent plugin lifecycle, source SHA locks, install guidance, and
   workflow positioning current with official Hermes Agent docs and source.
 - Do not weaken, suppress, or bypass lint, type, test, coverage, security, or

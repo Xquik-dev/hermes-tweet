@@ -55,6 +55,7 @@ EXPECTED_SUBMISSION_READINESS_LINK = (
 SETUP_UV_ACTION = "astral-sh/setup-uv@v8.2.0"
 ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
 HERMES_AGENT_COMPAT_COMMAND = "uv run python scripts/check_hermes_agent_compat.py"
+PUBLIC_SAFETY_COMMAND = "uv run python scripts/check_public_safety.py"
 EXPECTED_PUBLIC_IGNORE_PATTERNS = [
     ".env",
     ".env.*",
@@ -339,6 +340,9 @@ def test_publish_workflow_requires_version_matched_release_tag() -> None:
     install_uv_step = find_step(build_steps, "Install uv")
     assert install_uv_step["uses"] == SETUP_UV_ACTION
 
+    public_safety_step = find_step(build_steps, "Public safety scan")
+    assert public_safety_step["run"] == PUBLIC_SAFETY_COMMAND
+
     checkout_step = find_step(build_steps, "Checkout")
     checkout_config = require_mapping(checkout_step["with"])
     assert checkout_config["ref"] == "${{ github.event.inputs.ref || github.ref_name }}"
@@ -375,6 +379,7 @@ def test_ci_workflow_runs_actionlint_before_python_checks() -> None:
     assert step_names.index("Workflow lint") < step_names.index("Install uv")
     assert step_names.index("Workflow lint") < step_names.index("Test with coverage")
     assert step_names.index("Hermes Agent compatibility") < step_names.index("Test with coverage")
+    assert step_names.index("Public safety scan") < step_names.index("Test with coverage")
 
     setup_go_step = find_step(steps, "Set up Go")
     assert setup_go_step["uses"] == "actions/setup-go@v6"
@@ -391,6 +396,9 @@ def test_ci_workflow_runs_actionlint_before_python_checks() -> None:
     hermes_agent_compat_step = find_step(steps, "Hermes Agent compatibility")
     assert hermes_agent_compat_step["run"] == HERMES_AGENT_COMPAT_COMMAND
 
+    public_safety_step = find_step(steps, "Public safety scan")
+    assert public_safety_step["run"] == PUBLIC_SAFETY_COMMAND
+
 
 def test_release_gate_runs_hermes_agent_compatibility_checker() -> None:
     checklist = (ROOT / "docs" / "PUBLICATION_CHECKLIST.md").read_text()
@@ -399,5 +407,7 @@ def test_release_gate_runs_hermes_agent_compatibility_checker() -> None:
     assert (
         "uv run --python 3.12 --extra dev python scripts/check_hermes_agent_compat.py" in checklist
     )
+    assert "uv run --python 3.12 --extra dev python scripts/check_public_safety.py" in checklist
     assert "source SHA changes" in checklist
     assert "uv run --python 3.12 --extra dev python scripts/check_hermes_agent_compat.py" in agents
+    assert "uv run --python 3.12 --extra dev python scripts/check_public_safety.py" in agents
