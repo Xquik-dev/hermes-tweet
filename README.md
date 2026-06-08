@@ -113,6 +113,7 @@ runtime locally.
 | Registry skill path | [`skills/hermes-tweet/SKILL.md`](skills/hermes-tweet/SKILL.md) |
 | Context7 guide | [`docs/CONTEXT7.md`](docs/CONTEXT7.md) |
 | Hermes surface guide | [`docs/HERMES_SURFACES.md`](docs/HERMES_SURFACES.md) |
+| Integration patterns | [`docs/INTEGRATION_PATTERNS.md`](docs/INTEGRATION_PATTERNS.md) |
 
 ## Configure
 
