@@ -45,6 +45,7 @@ EXPECTED_DASHBOARD_MANIFEST_DESCRIPTION = (
 EXPECTED_HERMES_ECO_MANIFEST_NAME = "Hermes Tweet"
 EXPECTED_HERMES_ECO_MANIFEST_TYPE = "integration"
 EXPECTED_HERMES_ECO_MANIFEST_CATEGORY = "communication"
+EXPECTED_SURFACE_GUIDE_LINK = "[`docs/HERMES_SURFACES.md`](docs/HERMES_SURFACES.md)"
 SETUP_UV_ACTION = "astral-sh/setup-uv@v8.2.0"
 ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
 HERMES_AGENT_COMPAT_COMMAND = "uv run python scripts/check_hermes_agent_compat.py"
@@ -150,6 +151,7 @@ def test_release_metadata_surfaces_stay_aligned() -> None:
     readme = (ROOT / "README.md").read_text()
     assert f"/releases/tag/v{version}" in readme
     assert EXPECTED_PUBLIC_PACKAGE_DESCRIPTION in readme
+    assert EXPECTED_SURFACE_GUIDE_LINK in readme
 
     urls = pyproject["project"]["urls"]
     assert urls["Homepage"] == GUIDE_URL
@@ -163,6 +165,7 @@ def test_docs_track_current_hermes_agent_surface_release() -> None:
         [
             (ROOT / "README.md").read_text(),
             (ROOT / "docs" / "CONTEXT7.md").read_text(),
+            (ROOT / "docs" / "HERMES_SURFACES.md").read_text(),
             (ROOT / "docs" / "OBSERVABILITY.md").read_text(),
             (ROOT / "hermes_tweet" / "skills" / "hermes-tweet" / "SKILL.md").read_text(),
         ],
@@ -172,6 +175,17 @@ def test_docs_track_current_hermes_agent_surface_release() -> None:
     assert "remote gateway" in docs
     assert "Hermes Desktop" in docs
     assert "Hermes v0.12.0" not in docs
+
+
+def test_hermes_surface_guide_keeps_runtime_host_contract_visible() -> None:
+    guide = (ROOT / "docs" / "HERMES_SURFACES.md").read_text()
+
+    assert "remote Hermes host" in guide
+    assert "host that executes plugin tools" in guide
+    assert "HERMES_TWEET_ENABLE_ACTIONS=false" in guide
+    assert "HERMES_TWEET_ENABLE_ACTIONS=true" in guide
+    assert "hermes plugins install Xquik-dev/hermes-tweet --enable" in guide
+    assert 'hermes -z "/xstatus"' in guide
 
 
 def test_plugin_manifests_keep_install_prompt_contract() -> None:
