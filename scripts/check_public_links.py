@@ -17,10 +17,15 @@ HTTP_FORBIDDEN = 403
 HTTP_METHOD_NOT_ALLOWED = 405
 PUBLIC_LINK_FILES = (
     "README.md",
+    "after-install.md",
     "docs/ECOSYSTEM.md",
     "docs/CONTEXT7.md",
     "docs/GITHUB_METADATA.md",
+    "docs/HERMES_SURFACES.md",
+    "docs/INTEGRATION_PATTERNS.md",
+    "docs/OBSERVABILITY.md",
     "docs/PUBLICATION_CHECKLIST.md",
+    "docs/SUBMISSION_READINESS.md",
     "pyproject.toml",
     "plugin.yaml",
     "hermes_tweet/plugin.yaml",

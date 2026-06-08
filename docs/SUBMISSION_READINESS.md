@@ -71,8 +71,8 @@ when the PR already has current validation evidence.
 Public submissions must not include:
 
 - API keys, cookies, tokens, screenshots, logs, or private runtime artifacts
-- internal service names, private vendor names, internal cost units, or private
-  implementation details
+- nonpublic service names, restricted provider names, nonpublic pricing units,
+  or private implementation details
 - commands that require production SSH, browser login, manual legal acceptance,
   payment, or secret retrieval
 

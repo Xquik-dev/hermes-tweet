@@ -68,6 +68,9 @@ jobs:
       - name: Security scan
         run: uv run bandit -c pyproject.toml -r hermes_tweet scripts
 
+      - name: Public safety scan
+        run: uv run python scripts/check_public_safety.py
+
       - name: Dependency audit
         run: uv run pip-audit
 
