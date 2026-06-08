@@ -46,6 +46,9 @@ EXPECTED_HERMES_ECO_MANIFEST_NAME = "Hermes Tweet"
 EXPECTED_HERMES_ECO_MANIFEST_TYPE = "integration"
 EXPECTED_HERMES_ECO_MANIFEST_CATEGORY = "communication"
 EXPECTED_SURFACE_GUIDE_LINK = "[`docs/HERMES_SURFACES.md`](docs/HERMES_SURFACES.md)"
+EXPECTED_INTEGRATION_PATTERNS_LINK = (
+    "[`docs/INTEGRATION_PATTERNS.md`](docs/INTEGRATION_PATTERNS.md)"
+)
 SETUP_UV_ACTION = "astral-sh/setup-uv@v8.2.0"
 ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
 HERMES_AGENT_COMPAT_COMMAND = "uv run python scripts/check_hermes_agent_compat.py"
@@ -152,6 +155,7 @@ def test_release_metadata_surfaces_stay_aligned() -> None:
     assert f"/releases/tag/v{version}" in readme
     assert EXPECTED_PUBLIC_PACKAGE_DESCRIPTION in readme
     assert EXPECTED_SURFACE_GUIDE_LINK in readme
+    assert EXPECTED_INTEGRATION_PATTERNS_LINK in readme
 
     urls = pyproject["project"]["urls"]
     assert urls["Homepage"] == GUIDE_URL
