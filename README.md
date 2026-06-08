@@ -114,6 +114,7 @@ runtime locally.
 | Context7 guide | [`docs/CONTEXT7.md`](docs/CONTEXT7.md) |
 | Hermes surface guide | [`docs/HERMES_SURFACES.md`](docs/HERMES_SURFACES.md) |
 | Integration patterns | [`docs/INTEGRATION_PATTERNS.md`](docs/INTEGRATION_PATTERNS.md) |
+| Submission readiness | [`docs/SUBMISSION_READINESS.md`](docs/SUBMISSION_READINESS.md) |
 
 ## Configure
 
