@@ -123,10 +123,12 @@ def _segments(path: str) -> list[str]:
 
 
 def matches_path(template: str, concrete: str) -> bool:
-    if template == concrete:
+    normalized_template = template.strip()
+    normalized_concrete = concrete.strip()
+    if normalized_template == normalized_concrete:
         return True
-    template_segments = _segments(template)
-    concrete_segments = _segments(concrete)
+    template_segments = _segments(normalized_template)
+    concrete_segments = _segments(normalized_concrete)
     if len(template_segments) != len(concrete_segments):
         return False
     for template_segment, concrete_segment in zip(

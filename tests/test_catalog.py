@@ -12,6 +12,7 @@ from hermes_tweet.catalog import (
 
 def test_matches_openapi_path_parameters() -> None:
     assert matches_path("/api/v1/x/tweets/{id}", "/api/v1/x/tweets/123") is True
+    assert matches_path(" /api/v1/x/tweets/{id} ", " /api/v1/x/tweets/123 ") is True
     assert matches_path("/api/v1/x/tweets/:id", "/api/v1/x/tweets/123") is True
     assert matches_path("/api/v1/x/tweets/{id}/extra", "/api/v1/x/tweets//extra") is False
     assert matches_path("/api/v1/x/tweets/:id/extra", "/api/v1/x/tweets//extra") is False
