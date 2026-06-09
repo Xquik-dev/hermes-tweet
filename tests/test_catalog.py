@@ -25,6 +25,7 @@ def test_catalog_contains_tweet_search() -> None:
     endpoint = find_endpoint("GET", "/api/v1/x/tweets/search")
     assert endpoint is not None
     assert endpoint.action is False
+    assert find_endpoint(" get ", " /api/v1/x/tweets/search ") == endpoint
     assert find_endpoint("GET", "/api/v1/missing") is None
 
 
