@@ -295,9 +295,11 @@ def test_slash_commands(monkeypatch: pytest.MonkeyPatch) -> None:
 
     monkeypatch.setattr(tools, "call_read", fake_call_read)
 
-    assert tools.xstatus("ignored") == '{"ok": true}'
-    assert tools.xtrends("tech") == '{"ok": true}'
+    assert tools.xstatus(None) == '{"ok": true}'
+    assert tools.xtrends(" tech ") == '{"ok": true}'
+    assert tools.xtrends(None) == '{"ok": true}'
     assert calls == [
         {"path": "/api/v1/account"},
         {"path": "/api/v1/x/trends", "query": {"category": "tech"}},
+        {"path": "/api/v1/x/trends", "query": None},
     ]

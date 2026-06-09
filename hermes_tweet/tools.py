@@ -40,6 +40,12 @@ def _path(value: Any) -> str:
     return value.strip()
 
 
+def _raw_text(value: Any) -> str:
+    if not isinstance(value, str):
+        return ""
+    return value.strip()
+
+
 def explore(args: Any, **_: Any) -> str:
     try:
         tool_args = _args(args)
@@ -113,13 +119,13 @@ def call_action(args: Any, **_: Any) -> str:
         return dumps({"success": False, "error": str(exc)})
 
 
-def xstatus(raw_args: str = "") -> str:
+def xstatus(raw_args: Any = "") -> str:
     _ = raw_args
     return call_read({"path": "/api/v1/account"})
 
 
-def xtrends(raw_args: str = "") -> str:
-    category = raw_args.strip()
+def xtrends(raw_args: Any = "") -> str:
+    category = _raw_text(raw_args)
     query = {"category": category} if category else None
     return call_read({"path": "/api/v1/x/trends", "query": query})
 
