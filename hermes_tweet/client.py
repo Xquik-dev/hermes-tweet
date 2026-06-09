@@ -73,7 +73,7 @@ def request(
             response = client.request(
                 method=normalized_method,
                 url=url,
-                params=query,
+                params=query or None,
                 json=body,
                 headers=build_headers(key, has_body=body is not None),
             )
