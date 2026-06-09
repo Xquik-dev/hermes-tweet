@@ -7,6 +7,8 @@ from .catalog import explore as explore_catalog
 from .catalog import find_endpoint, normalize_method
 from .client import action_enabled, check_api_available, dumps, request
 
+ARGS_ERROR = "Tool arguments must be a JSON object."
+
 
 def _query(value: Any) -> dict[str, str] | None:
     if not isinstance(value, dict):
@@ -22,22 +24,38 @@ def _query(value: Any) -> dict[str, str] | None:
     return output
 
 
+def _args(value: Any) -> dict[str, Any] | None:
+    if not isinstance(value, dict):
+        return None
+    return cast("dict[str, Any]", value)
+
+
+def _args_error() -> str:
+    return dumps({"success": False, "error": ARGS_ERROR})
+
+
 def _path(value: Any) -> str:
     if not isinstance(value, str):
         return ""
     return value.strip()
 
 
-def explore(args: dict[str, Any], **_: Any) -> str:
+def explore(args: Any, **_: Any) -> str:
     try:
-        return dumps({"success": True, "endpoints": explore_catalog(args)})
+        tool_args = _args(args)
+        if tool_args is None:
+            return _args_error()
+        return dumps({"success": True, "endpoints": explore_catalog(tool_args)})
     except Exception as exc:
         return dumps({"success": False, "error": str(exc)})
 
 
-def call_read(args: dict[str, Any], **_: Any) -> str:
+def call_read(args: Any, **_: Any) -> str:
     try:
-        path = _path(args.get("path"))
+        tool_args = _args(args)
+        if tool_args is None:
+            return _args_error()
+        path = _path(tool_args.get("path"))
         endpoint = find_endpoint("GET", path)
         if endpoint is None:
             return dumps(
@@ -53,13 +71,16 @@ def call_read(args: dict[str, Any], **_: Any) -> str:
                     "error": "Use tweet_action for private or write-like endpoints.",
                 }
             )
-        return dumps(request("GET", path, query=_query(args.get("query"))))
+        return dumps(request("GET", path, query=_query(tool_args.get("query"))))
     except Exception as exc:
         return dumps({"success": False, "error": str(exc)})
 
 
-def call_action(args: dict[str, Any], **_: Any) -> str:
+def call_action(args: Any, **_: Any) -> str:
     try:
+        tool_args = _args(args)
+        if tool_args is None:
+            return _args_error()
         if not action_enabled():
             return dumps(
                 {
@@ -70,8 +91,8 @@ def call_action(args: dict[str, Any], **_: Any) -> str:
                     ),
                 }
             )
-        method = normalize_method(args.get("method"), default="POST")
-        path = _path(args.get("path"))
+        method = normalize_method(tool_args.get("method"), default="POST")
+        path = _path(tool_args.get("path"))
         endpoint = find_endpoint(method, path)
         if endpoint is None:
             return dumps(
@@ -84,8 +105,8 @@ def call_action(args: dict[str, Any], **_: Any) -> str:
             request(
                 method,
                 path,
-                query=_query(args.get("query")),
-                body=args.get("body"),
+                query=_query(tool_args.get("query")),
+                body=tool_args.get("body"),
             )
         )
     except Exception as exc:
