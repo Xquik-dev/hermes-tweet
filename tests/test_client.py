@@ -127,6 +127,17 @@ def test_request_returns_json_response(monkeypatch: pytest.MonkeyPatch) -> None:
     assert FakeClient.last_request["headers"] == {"x-api-key": "xq_test"}
 
 
+def test_request_normalizes_path_whitespace(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("XQUIK_API_KEY", "xq_test")
+    monkeypatch.setattr(client.httpx, "Client", FakeClient)
+    FakeClient.response = _response(200, json_data={"ok": True})
+    FakeClient.error = None
+
+    assert client.request("GET", " /api/v1/account ") == {"ok": True}
+    assert FakeClient.last_request is not None
+    assert FakeClient.last_request["url"] == "https://xquik.com/api/v1/account"
+
+
 def test_request_returns_text_response(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("XQUIK_API_KEY", "token")
     monkeypatch.setattr(client.httpx, "Client", FakeClient)
