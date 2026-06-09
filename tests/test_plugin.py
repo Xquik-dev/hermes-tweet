@@ -55,6 +55,7 @@ def test_register_keeps_official_hermes_plugin_gates_aligned() -> None:
     explore = tools["tweet_explore"]
     read = tools["tweet_read"]
     action = tools["tweet_action"]
+    nonblank_property_names = {"minLength": 1, "pattern": "\\S"}
 
     assert "check_fn" not in explore
     assert "requires_env" not in explore
@@ -68,6 +69,7 @@ def test_register_keeps_official_hermes_plugin_gates_aligned() -> None:
     read_parameters = read["schema"]["parameters"]
     assert read_parameters["properties"]["path"]["minLength"] == len("/api/v1/")
     assert read_parameters["properties"]["path"]["pattern"] == "^/api/v1/"
+    assert read_parameters["properties"]["query"]["propertyNames"] == nonblank_property_names
 
     assert action["check_fn"] is action_enabled
     assert action["requires_env"] == ["XQUIK_API_KEY", "HERMES_TWEET_ENABLE_ACTIONS"]
@@ -77,6 +79,7 @@ def test_register_keeps_official_hermes_plugin_gates_aligned() -> None:
     assert action_parameters["required"] == ["path", "reason"]
     assert action_parameters["properties"]["path"]["minLength"] == len("/api/v1/")
     assert action_parameters["properties"]["path"]["pattern"] == "^/api/v1/"
+    assert action_parameters["properties"]["query"]["propertyNames"] == nonblank_property_names
     assert action_parameters["properties"]["method"]["default"] == "POST"
     assert action_parameters["properties"]["reason"]["minLength"] == 1
     assert action_parameters["properties"]["reason"]["pattern"] == "\\S"
