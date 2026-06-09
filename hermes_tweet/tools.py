@@ -24,7 +24,7 @@ def _query(value: Any) -> dict[str, str] | None:
             output[raw_key] = str(item).lower()
         elif isinstance(item, (str, int)) or (isinstance(item, float) and isfinite(item)):
             output[raw_key] = str(item)
-    return output
+    return output or None
 
 
 def _args(value: Any) -> dict[str, Any] | None:
