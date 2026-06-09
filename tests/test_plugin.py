@@ -65,6 +65,9 @@ def test_register_keeps_official_hermes_plugin_gates_aligned() -> None:
     assert read["requires_env"] == ["XQUIK_API_KEY"]
     assert read["schema"]["name"] == "tweet_read"
     assert read["is_async"] is False
+    read_parameters = read["schema"]["parameters"]
+    assert read_parameters["properties"]["path"]["minLength"] == len("/api/v1/")
+    assert read_parameters["properties"]["path"]["pattern"] == "^/api/v1/"
 
     assert action["check_fn"] is action_enabled
     assert action["requires_env"] == ["XQUIK_API_KEY", "HERMES_TWEET_ENABLE_ACTIONS"]
@@ -72,6 +75,8 @@ def test_register_keeps_official_hermes_plugin_gates_aligned() -> None:
     assert action["is_async"] is False
     action_parameters = action["schema"]["parameters"]
     assert action_parameters["required"] == ["path", "reason"]
+    assert action_parameters["properties"]["path"]["minLength"] == len("/api/v1/")
+    assert action_parameters["properties"]["path"]["pattern"] == "^/api/v1/"
     assert action_parameters["properties"]["method"]["default"] == "POST"
     assert action_parameters["properties"]["reason"]["minLength"] == 1
     assert action_parameters["properties"]["reason"]["pattern"] == "\\S"

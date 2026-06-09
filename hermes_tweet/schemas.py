@@ -53,7 +53,12 @@ TWEET_READ = {
     "parameters": {
         "type": "object",
         "properties": {
-            "path": {"type": "string", "description": "Concrete /api/v1/... endpoint path."},
+            "path": {
+                "type": "string",
+                "minLength": 8,
+                "pattern": "^/api/v1/",
+                "description": "Concrete /api/v1/... endpoint path.",
+            },
             "query": {
                 "type": "object",
                 "description": "Query parameters as string, number, or boolean values.",
@@ -75,7 +80,12 @@ TWEET_ACTION = {
     "parameters": {
         "type": "object",
         "properties": {
-            "path": {"type": "string", "description": "Concrete /api/v1/... endpoint path."},
+            "path": {
+                "type": "string",
+                "minLength": 8,
+                "pattern": "^/api/v1/",
+                "description": "Concrete /api/v1/... endpoint path.",
+            },
             "method": {"type": "string", "enum": _METHOD_ENUM, "default": "POST"},
             "query": {
                 "type": "object",
