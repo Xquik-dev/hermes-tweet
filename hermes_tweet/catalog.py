@@ -147,8 +147,9 @@ def matches_path(template: str, concrete: str) -> bool:
 
 def find_endpoint(method: str, path: str) -> Endpoint | None:
     normalized = normalize_method(method)
+    normalized_path = path.strip()
     for endpoint in ENDPOINTS:
-        if endpoint.method == normalized and matches_path(endpoint.path, path):
+        if endpoint.method == normalized and matches_path(endpoint.path, normalized_path):
             return endpoint
     return None
 
