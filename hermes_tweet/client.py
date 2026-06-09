@@ -20,6 +20,12 @@ def _env_text(name: str, default: str = "") -> str:
     return normalized or default
 
 
+def _request_text(value: Any) -> str:
+    if not isinstance(value, str):
+        return ""
+    return value.strip()
+
+
 def base_url() -> str:
     return _env_text("XQUIK_BASE_URL", DEFAULT_BASE_URL).rstrip("/") + "/"
 
@@ -48,13 +54,13 @@ def build_headers(key: str, *, has_body: bool) -> dict[str, str]:
 
 
 def request(
-    method: str,
-    path: str,
+    method: Any,
+    path: Any,
     query: dict[str, str] | None = None,
     body: Any | None = None,
 ) -> Any:
-    normalized_method = method.strip().upper() or "GET"
-    normalized_path = path.strip()
+    normalized_method = _request_text(method).upper() or "GET"
+    normalized_path = _request_text(path)
     if not normalized_path.startswith(API_V1_PREFIX):
         return {"success": False, "error": f"Path must start with {API_V1_PREFIX}"}
     if "?" in normalized_path or "#" in normalized_path:
