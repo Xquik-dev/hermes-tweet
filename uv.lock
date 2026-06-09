@@ -41,14 +41,14 @@ wheels = [
 
 [[package]]
 name = "basedpyright"
-version = "1.39.6"
+version = "1.39.7"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "nodejs-wheel-binaries" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/7a/1a/48296b4479ccc9051eb9617a6507a69a68f5b68693fb6a118cfe08199270/basedpyright-1.39.6.tar.gz", hash = "sha256:d00ec5f8ba4e1a67dfc2fa3a9474229c89f61f207d14c02d320db78f57aa16ef", size = 25504244, upload-time = "2026-05-24T07:44:41.864Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/2f/e5/0d685b5808436c628ab8b9edad6810b889d11044a962bc42b128543910ea/basedpyright-1.39.7.tar.gz", hash = "sha256:688d913a19c417870c164c630ed9cdd83a8d8b484b30ab8e99f5dec4ae9604a6", size = 25503256, upload-time = "2026-06-07T11:33:27.266Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d4/07/6d1b3192715d42e8c9887876684a941eff28ec5d79c23a0f3758377e2182/basedpyright-1.39.6-py3-none-any.whl", hash = "sha256:5e0b9befbae6b26d0fbcc6645ac26923725e749d1224539e24f05ab07f9365ad", size = 13182122, upload-time = "2026-05-24T07:44:47.086Z" },
+    { url = "https://files.pythonhosted.org/packages/a1/f4/5b1e8ea279ce8f97a6bb1518c84fa25f5794022053ce10eab22ad3f0b51b/basedpyright-1.39.7-py3-none-any.whl", hash = "sha256:81266deb6044c9be98fb4555e4b7b1a521d8aee06b66e80858d183b0e3991140", size = 13182666, upload-time = "2026-06-07T11:33:24.119Z" },
 ]
 
 [[package]]
@@ -457,8 +457,8 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "bandit", extras = ["toml"], marker = "extra == 'dev'", specifier = ">=1.9.2" },
-    { name = "basedpyright", marker = "extra == 'dev'", specifier = ">=1.39.6" },
+    { name = "bandit", extras = ["toml"], marker = "extra == 'dev'", specifier = ">=1.9.4" },
+    { name = "basedpyright", marker = "extra == 'dev'", specifier = ">=1.39.7" },
     { name = "build", marker = "extra == 'dev'", specifier = ">=1.5.0" },
     { name = "httpx", specifier = ">=0.28.1,<0.29" },
     { name = "pip", marker = "extra == 'dev'", specifier = ">=26.1.2" },
@@ -468,7 +468,7 @@ requires-dist = [
     { name = "pyyaml", marker = "extra == 'dev'", specifier = ">=6.0.3" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.15.16" },
     { name = "twine", marker = "extra == 'dev'", specifier = ">=6.2.0" },
-    { name = "types-pyyaml", marker = "extra == 'dev'", specifier = ">=6.0.12" },
+    { name = "types-pyyaml", marker = "extra == 'dev'", specifier = ">=6.0.12.20260518" },
 ]
 provides-extras = ["dev"]
 
@@ -1187,11 +1187,11 @@ wheels = [
 
 [[package]]
 name = "types-pyyaml"
-version = "6.0.12.20260408"
+version = "6.0.12.20260518"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/74/73/b759b1e413c31034cc01ecdfb96b38115d0ab4db55a752a3929f0cd449fd/types_pyyaml-6.0.12.20260408.tar.gz", hash = "sha256:92a73f2b8d7f39ef392a38131f76b970f8c66e4c42b3125ae872b7c93b556307", size = 17735, upload-time = "2026-04-08T04:30:50.974Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/b8/83/4a1afc3fbfcf5b8d46fc390cd95ed6b0dc9010a265f4e9f46314efffa37a/types_pyyaml-6.0.12.20260518.tar.gz", hash = "sha256:d917f83fb38462550338c1297faedd860b3ec83912b96b1e3d73255f7473e466", size = 17850, upload-time = "2026-05-18T06:01:58.675Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/1c/f0/c391068b86abb708882c6d75a08cd7d25b2c7227dab527b3a3685a3c635b/types_pyyaml-6.0.12.20260408-py3-none-any.whl", hash = "sha256:fbc42037d12159d9c801ebfcc79ebd28335a7c13b08a4cfbc6916df78fee9384", size = 20339, upload-time = "2026-04-08T04:30:50.113Z" },
+    { url = "https://files.pythonhosted.org/packages/06/a2/c01db32be2ae7d6a1689972f3c492b149ee4e164b12fdfd9f64b50888215/types_pyyaml-6.0.12.20260518-py3-none-any.whl", hash = "sha256:d2150f75a231c9fe9c7463bd29487d93e60bac90400287351384bc2284eba7cd", size = 20312, upload-time = "2026-05-18T06:01:57.368Z" },
 ]
 
 [[package]]
