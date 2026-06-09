@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from math import isfinite
 from typing import Any, cast
 
 from .catalog import explore as explore_catalog
@@ -16,7 +17,7 @@ def _query(value: Any) -> dict[str, str] | None:
             continue
         if isinstance(item, bool):
             output[key] = str(item).lower()
-        elif isinstance(item, (str, int, float)):
+        elif isinstance(item, (str, int)) or (isinstance(item, float) and isfinite(item)):
             output[key] = str(item)
     return output
 
