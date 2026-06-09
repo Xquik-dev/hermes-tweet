@@ -104,6 +104,19 @@ def _optional_bool(value: Any) -> bool | None:
     return None
 
 
+def _optional_text(value: Any) -> str:
+    if not isinstance(value, str):
+        return ""
+    return value.strip()
+
+
+def _optional_method(value: Any) -> str | None:
+    normalized = _optional_text(value)
+    if not normalized:
+        return None
+    return normalize_method(normalized)
+
+
 def _segments(path: str) -> list[str]:
     normalized = path.removesuffix("/")
     return normalized.split("/")
@@ -156,10 +169,10 @@ def _matches_query(endpoint: Endpoint, query: str) -> bool:
 
 
 def explore(args: dict[str, Any]) -> list[dict[str, Any]]:
-    method = normalize_method(args.get("method")) if args.get("method") else None
-    category = str(args.get("category", "")).strip().lower()
-    path = str(args.get("path", "")).strip()
-    query = str(args.get("query", "")).strip()
+    method = _optional_method(args.get("method"))
+    category = _optional_text(args.get("category")).lower()
+    path = _optional_text(args.get("path"))
+    query = _optional_text(args.get("query"))
     limit = normalize_limit(args.get("limit"))
     include_actions = _optional_bool(args.get("include_actions")) is True
 
