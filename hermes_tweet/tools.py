@@ -12,7 +12,11 @@ def _query(value: Any) -> dict[str, str] | None:
         return None
     output: dict[str, str] = {}
     for key, item in cast("dict[object, object]", value).items():
-        if isinstance(key, str) and isinstance(item, (str, int, float, bool)):
+        if not isinstance(key, str):
+            continue
+        if isinstance(item, bool):
+            output[key] = str(item).lower()
+        elif isinstance(item, (str, int, float)):
             output[key] = str(item)
     return output
 
