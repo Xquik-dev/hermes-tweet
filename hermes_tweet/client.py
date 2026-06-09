@@ -53,9 +53,10 @@ def request(
     query: dict[str, str] | None = None,
     body: Any | None = None,
 ) -> Any:
-    if not path.startswith(API_V1_PREFIX):
+    normalized_path = path.strip()
+    if not normalized_path.startswith(API_V1_PREFIX):
         return {"success": False, "error": f"Path must start with {API_V1_PREFIX}"}
-    if "?" in path or "#" in path:
+    if "?" in normalized_path or "#" in normalized_path:
         return {
             "success": False,
             "error": "Pass query parameters through the query object, not in the path.",
@@ -65,7 +66,7 @@ def request(
     if not key:
         return {"success": False, "error": "XQUIK_API_KEY is not configured."}
 
-    url = urljoin(base_url(), path.lstrip("/"))
+    url = urljoin(base_url(), normalized_path.lstrip("/"))
     try:
         with httpx.Client(timeout=TIMEOUT_SECONDS) as client:
             response = client.request(
