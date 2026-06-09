@@ -73,9 +73,12 @@ def test_read_success(monkeypatch: pytest.MonkeyPatch) -> None:
                 "query": {
                     1: "ignored",
                     "bad": [],
+                    "bad_inf": float("inf"),
+                    "bad_nan": float("nan"),
                     "include": True,
                     "limit": 2,
                     "q": "ai",
+                    "ratio": 1.5,
                     "verified": False,
                 },
             }
@@ -86,7 +89,13 @@ def test_read_success(monkeypatch: pytest.MonkeyPatch) -> None:
         "body": None,
         "method": "GET",
         "path": "/api/v1/x/tweets/search",
-        "query": {"include": "true", "limit": "2", "q": "ai", "verified": "false"},
+        "query": {
+            "include": "true",
+            "limit": "2",
+            "q": "ai",
+            "ratio": "1.5",
+            "verified": "false",
+        },
     }
 
 
