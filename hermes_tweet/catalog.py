@@ -72,8 +72,11 @@ def _endpoint(item: dict[str, Any]) -> Endpoint:
 ENDPOINTS: tuple[Endpoint, ...] = tuple(_endpoint(item) for item in _load_raw())
 
 
-def normalize_method(method: str | None) -> str:
-    return (method or "GET").upper()
+def normalize_method(method: Any, *, default: str = "GET") -> str:
+    if not isinstance(method, str):
+        return default.upper()
+    normalized = method.strip().upper()
+    return normalized or default.upper()
 
 
 def normalize_limit(value: Any) -> int:
