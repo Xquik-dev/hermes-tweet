@@ -149,6 +149,17 @@ def test_request_normalizes_method_whitespace(monkeypatch: pytest.MonkeyPatch) -
     assert FakeClient.last_request["method"] == "GET"
 
 
+def test_request_defaults_blank_method_to_get(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("XQUIK_API_KEY", "xq_test")
+    monkeypatch.setattr(client.httpx, "Client", FakeClient)
+    FakeClient.response = _response(200, json_data={"ok": True})
+    FakeClient.error = None
+
+    assert client.request("  ", "/api/v1/account") == {"ok": True}
+    assert FakeClient.last_request is not None
+    assert FakeClient.last_request["method"] == "GET"
+
+
 def test_request_returns_text_response(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("XQUIK_API_KEY", "token")
     monkeypatch.setattr(client.httpx, "Client", FakeClient)
