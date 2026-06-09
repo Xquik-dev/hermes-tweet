@@ -70,7 +70,14 @@ def test_read_success(monkeypatch: pytest.MonkeyPatch) -> None:
         call_read(
             {
                 "path": "/api/v1/x/tweets/search",
-                "query": {"q": "ai", "limit": 2, "include": True, "bad": []},
+                "query": {
+                    1: "ignored",
+                    "bad": [],
+                    "include": True,
+                    "limit": 2,
+                    "q": "ai",
+                    "verified": False,
+                },
             }
         )
     )
@@ -79,7 +86,7 @@ def test_read_success(monkeypatch: pytest.MonkeyPatch) -> None:
         "body": None,
         "method": "GET",
         "path": "/api/v1/x/tweets/search",
-        "query": {"include": "True", "limit": "2", "q": "ai"},
+        "query": {"include": "true", "limit": "2", "q": "ai", "verified": "false"},
     }
 
 
@@ -151,7 +158,7 @@ def test_action_success(monkeypatch: pytest.MonkeyPatch) -> None:
                 "body": {"text": "hello"},
                 "method": "POST",
                 "path": "/api/v1/x/tweets",
-                "query": {"dry": True},
+                "query": {"dry": True, "preview": False},
                 "reason": "test",
             }
         )
@@ -161,7 +168,7 @@ def test_action_success(monkeypatch: pytest.MonkeyPatch) -> None:
         "body": {"text": "hello"},
         "method": "POST",
         "path": "/api/v1/x/tweets",
-        "query": {"dry": "True"},
+        "query": {"dry": "true", "preview": "false"},
     }
 
 
