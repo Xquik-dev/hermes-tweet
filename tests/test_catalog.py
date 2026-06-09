@@ -83,12 +83,21 @@ def test_explore_filters_catalog() -> None:
 
 
 def test_normalizers() -> None:
+    truthy_limit = True
+    falsey_limit = False
+
     assert normalize_method(None) == "GET"
     assert normalize_method("post") == "POST"
     assert normalize_limit(None) == 25
+    assert normalize_limit(truthy_limit) == 25
+    assert normalize_limit(falsey_limit) == 25
     assert normalize_limit(0) == 1
+    assert normalize_limit("0") == 1
+    assert normalize_limit(" 7 ") == 7
     assert normalize_limit(101) == 100
+    assert normalize_limit("101") == 100
     assert normalize_limit(7) == 7
+    assert normalize_limit("seven") == 25
 
 
 def test_endpoint_to_dict_includes_optional_fields() -> None:
