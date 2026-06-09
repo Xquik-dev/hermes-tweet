@@ -21,6 +21,12 @@ def _query(value: Any) -> dict[str, str] | None:
     return output
 
 
+def _path(value: Any) -> str:
+    if not isinstance(value, str):
+        return ""
+    return value.strip()
+
+
 def explore(args: dict[str, Any], **_: Any) -> str:
     try:
         return dumps({"success": True, "endpoints": explore_catalog(args)})
@@ -30,7 +36,7 @@ def explore(args: dict[str, Any], **_: Any) -> str:
 
 def call_read(args: dict[str, Any], **_: Any) -> str:
     try:
-        path = str(args.get("path", ""))
+        path = _path(args.get("path"))
         endpoint = find_endpoint("GET", path)
         if endpoint is None:
             return dumps(
@@ -64,7 +70,7 @@ def call_action(args: dict[str, Any], **_: Any) -> str:
                 }
             )
         method = normalize_method(args.get("method"), default="POST")
-        path = str(args.get("path", ""))
+        path = _path(args.get("path"))
         endpoint = find_endpoint(method, path)
         if endpoint is None:
             return dumps(
