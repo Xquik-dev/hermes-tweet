@@ -31,6 +31,25 @@ def test_env_helpers(monkeypatch: pytest.MonkeyPatch) -> None:
     assert client.action_enabled() is True
 
 
+def test_env_helpers_normalize_whitespace(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("XQUIK_BASE_URL", "  https://example.com/api/  ")
+    monkeypatch.setenv("XQUIK_API_KEY", "  xq_test  ")
+    monkeypatch.setenv("HERMES_TWEET_ENABLE_ACTIONS", "  true  ")
+
+    assert client.base_url() == "https://example.com/api/"
+    assert client.api_key() == "xq_test"
+    assert client.check_api_available() is True
+    assert client.action_enabled() is True
+
+
+def test_env_helpers_use_default_base_url_for_blank_value(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setenv("XQUIK_BASE_URL", "  ")
+
+    assert client.base_url() == "https://xquik.com/"
+
+
 def test_env_helpers_when_unconfigured(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.delenv("XQUIK_BASE_URL", raising=False)
     monkeypatch.delenv("XQUIK_API_KEY", raising=False)

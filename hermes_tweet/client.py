@@ -12,12 +12,20 @@ DEFAULT_BASE_URL = "https://xquik.com"
 TIMEOUT_SECONDS = 30.0
 
 
+def _env_text(name: str, default: str = "") -> str:
+    value = os.getenv(name)
+    if value is None:
+        return default
+    normalized = value.strip()
+    return normalized or default
+
+
 def base_url() -> str:
-    return os.getenv("XQUIK_BASE_URL", DEFAULT_BASE_URL).rstrip("/") + "/"
+    return _env_text("XQUIK_BASE_URL", DEFAULT_BASE_URL).rstrip("/") + "/"
 
 
 def api_key() -> str:
-    return os.getenv("XQUIK_API_KEY", "")
+    return _env_text("XQUIK_API_KEY")
 
 
 def check_api_available() -> bool:
@@ -25,7 +33,7 @@ def check_api_available() -> bool:
 
 
 def action_enabled() -> bool:
-    return check_api_available() and os.getenv("HERMES_TWEET_ENABLE_ACTIONS", "").lower() == "true"
+    return check_api_available() and _env_text("HERMES_TWEET_ENABLE_ACTIONS").lower() == "true"
 
 
 def build_headers(key: str, *, has_body: bool) -> dict[str, str]:
