@@ -88,6 +88,8 @@ TWEET_ACTION = {
             },
             "reason": {
                 "type": "string",
+                "minLength": 1,
+                "pattern": "\\S",
                 "description": "Brief user-visible reason for the action.",
             },
         },
