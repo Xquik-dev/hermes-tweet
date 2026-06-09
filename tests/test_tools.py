@@ -150,6 +150,38 @@ def test_read_success_without_query_dict(monkeypatch: pytest.MonkeyPatch) -> Non
     }
 
 
+def test_read_ignores_empty_query_after_normalization(monkeypatch: pytest.MonkeyPatch) -> None:
+    def fake_request(
+        method: str,
+        path: str,
+        query: dict[str, str] | None = None,
+        body: object | None = None,
+    ) -> dict[str, object]:
+        return {"method": method, "path": path, "query": query, "body": body}
+
+    monkeypatch.setattr(tools, "request", fake_request)
+
+    assert json.loads(
+        call_read(
+            {
+                "path": "/api/v1/account",
+                "query": {
+                    1: "ignored",
+                    "  ": "ignored",
+                    "bad": [],
+                    "bad_inf": float("inf"),
+                    "bad_nan": float("nan"),
+                },
+            }
+        )
+    ) == {
+        "body": None,
+        "method": "GET",
+        "path": "/api/v1/account",
+        "query": None,
+    }
+
+
 def test_read_returns_handler_error(monkeypatch: pytest.MonkeyPatch) -> None:
     def fail(_method: str, _path: str) -> object:
         raise ValueError("catalog failed")
