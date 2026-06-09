@@ -77,6 +77,13 @@ def normalize_method(method: str | None) -> str:
 
 
 def normalize_limit(value: Any) -> int:
+    if isinstance(value, bool):
+        return DEFAULT_LIMIT
+    if isinstance(value, str):
+        value = value.strip()
+        if not value.isdecimal():
+            return DEFAULT_LIMIT
+        return normalize_limit(int(value))
     if not isinstance(value, int):
         return DEFAULT_LIMIT
     return min(max(value, 1), MAX_LIMIT)
