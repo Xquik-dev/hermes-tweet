@@ -47,6 +47,14 @@ def test_explore_returns_error(monkeypatch: pytest.MonkeyPatch) -> None:
     assert json.loads(explore({})) == {"success": False, "error": "broken"}
 
 
+def test_handlers_reject_non_object_arguments() -> None:
+    error = {"success": False, "error": "Tool arguments must be a JSON object."}
+
+    assert json.loads(explore([])) == error
+    assert json.loads(call_read(None)) == error
+    assert json.loads(call_action("bad")) == error
+
+
 def test_read_missing_endpoint() -> None:
     result = json.loads(call_read({"path": "/api/v1/missing"}))
     assert result == {
