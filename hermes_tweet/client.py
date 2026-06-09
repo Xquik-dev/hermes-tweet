@@ -2,7 +2,8 @@ from __future__ import annotations
 
 import json
 import os
-from typing import Any
+from math import isfinite
+from typing import Any, cast
 from urllib.parse import urljoin
 
 import httpx
@@ -24,6 +25,23 @@ def _request_text(value: Any) -> str:
     if not isinstance(value, str):
         return ""
     return value.strip()
+
+
+def _query_params(value: Any) -> dict[str, str] | None:
+    if not isinstance(value, dict):
+        return None
+    output: dict[str, str] = {}
+    for key, item in cast("dict[object, object]", value).items():
+        if not isinstance(key, str):
+            continue
+        normalized_key = key.strip()
+        if not normalized_key:
+            continue
+        if isinstance(item, bool):
+            output[normalized_key] = str(item).lower()
+        elif isinstance(item, (str, int)) or (isinstance(item, float) and isfinite(item)):
+            output[normalized_key] = str(item)
+    return output or None
 
 
 def base_url() -> str:
@@ -56,11 +74,12 @@ def build_headers(key: str, *, has_body: bool) -> dict[str, str]:
 def request(
     method: Any,
     path: Any,
-    query: dict[str, str] | None = None,
+    query: Any = None,
     body: Any | None = None,
 ) -> Any:
     normalized_method = _request_text(method).upper() or "GET"
     normalized_path = _request_text(path)
+    params = _query_params(query)
     if not normalized_path.startswith(API_V1_PREFIX):
         return {"success": False, "error": f"Path must start with {API_V1_PREFIX}"}
     if "?" in normalized_path or "#" in normalized_path:
@@ -79,7 +98,7 @@ def request(
             response = client.request(
                 method=normalized_method,
                 url=url,
-                params=query or None,
+                params=params,
                 json=body,
                 headers=build_headers(key, has_body=body is not None),
             )
