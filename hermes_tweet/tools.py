@@ -19,13 +19,7 @@ def _args_error() -> str:
     return dumps({"success": False, "error": ARGS_ERROR})
 
 
-def _path(value: Any) -> str:
-    if not isinstance(value, str):
-        return ""
-    return value.strip()
-
-
-def _raw_text(value: Any) -> str:
+def _text(value: Any) -> str:
     if not isinstance(value, str):
         return ""
     return value.strip()
@@ -46,7 +40,7 @@ def call_read(args: Any, **_: Any) -> str:
         tool_args = _args(args)
         if tool_args is None:
             return _args_error()
-        path = _path(tool_args.get("path"))
+        path = _text(tool_args.get("path"))
         endpoint = find_endpoint("GET", path)
         if endpoint is None:
             return dumps(
@@ -83,7 +77,7 @@ def call_action(args: Any, **_: Any) -> str:
                 }
             )
         method = normalize_method(tool_args.get("method"), default="POST")
-        path = _path(tool_args.get("path"))
+        path = _text(tool_args.get("path"))
         endpoint = find_endpoint(method, path)
         if endpoint is None:
             return dumps(
@@ -110,7 +104,7 @@ def xstatus(raw_args: Any = "") -> str:
 
 
 def xtrends(raw_args: Any = "") -> str:
-    category = _raw_text(raw_args)
+    category = _text(raw_args)
     query = {"category": category} if category else None
     return call_read({"path": "/api/v1/x/trends", "query": query})
 
