@@ -17,10 +17,13 @@ def _query(value: Any) -> dict[str, str] | None:
     for key, item in cast("dict[object, object]", value).items():
         if not isinstance(key, str):
             continue
+        raw_key = key.strip()
+        if not raw_key:
+            continue
         if isinstance(item, bool):
-            output[key] = str(item).lower()
+            output[raw_key] = str(item).lower()
         elif isinstance(item, (str, int)) or (isinstance(item, float) and isfinite(item)):
-            output[key] = str(item)
+            output[raw_key] = str(item)
     return output
 
 
