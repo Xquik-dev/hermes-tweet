@@ -1,30 +1,12 @@
 from __future__ import annotations
 
-from math import isfinite
 from typing import Any, cast
 
 from .catalog import explore as explore_catalog
 from .catalog import find_endpoint, normalize_method
-from .client import action_enabled, check_api_available, dumps, request
+from .client import action_enabled, check_api_available, dumps, normalize_query_params, request
 
 ARGS_ERROR = "Tool arguments must be a JSON object."
-
-
-def _query(value: Any) -> dict[str, str] | None:
-    if not isinstance(value, dict):
-        return None
-    output: dict[str, str] = {}
-    for key, item in cast("dict[object, object]", value).items():
-        if not isinstance(key, str):
-            continue
-        raw_key = key.strip()
-        if not raw_key:
-            continue
-        if isinstance(item, bool):
-            output[raw_key] = str(item).lower()
-        elif isinstance(item, (str, int)) or (isinstance(item, float) and isfinite(item)):
-            output[raw_key] = str(item)
-    return output or None
 
 
 def _args(value: Any) -> dict[str, Any] | None:
@@ -80,7 +62,7 @@ def call_read(args: Any, **_: Any) -> str:
                     "error": "Use tweet_action for private or write-like endpoints.",
                 }
             )
-        return dumps(request("GET", path, query=_query(tool_args.get("query"))))
+        return dumps(request("GET", path, query=normalize_query_params(tool_args.get("query"))))
     except Exception as exc:
         return dumps({"success": False, "error": str(exc)})
 
@@ -114,7 +96,7 @@ def call_action(args: Any, **_: Any) -> str:
             request(
                 method,
                 path,
-                query=_query(tool_args.get("query")),
+                query=normalize_query_params(tool_args.get("query")),
                 body=tool_args.get("body"),
             )
         )
