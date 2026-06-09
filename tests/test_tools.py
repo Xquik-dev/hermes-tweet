@@ -172,6 +172,37 @@ def test_action_success(monkeypatch: pytest.MonkeyPatch) -> None:
     }
 
 
+def test_action_defaults_malformed_method_to_post(monkeypatch: pytest.MonkeyPatch) -> None:
+    def fake_request(
+        method: str,
+        path: str,
+        query: dict[str, str] | None = None,
+        body: object | None = None,
+    ) -> dict[str, object]:
+        return {"method": method, "path": path, "query": query, "body": body}
+
+    monkeypatch.setattr(tools, "action_enabled", lambda: True)
+    monkeypatch.setattr(tools, "request", fake_request)
+
+    result = json.loads(
+        call_action(
+            {
+                "body": {"text": "hello"},
+                "method": None,
+                "path": "/api/v1/compose",
+                "reason": "test",
+            }
+        )
+    )
+
+    assert result == {
+        "body": {"text": "hello"},
+        "method": "POST",
+        "path": "/api/v1/compose",
+        "query": None,
+    }
+
+
 def test_action_returns_handler_error(monkeypatch: pytest.MonkeyPatch) -> None:
     def fail() -> bool:
         raise ValueError("env failed")

@@ -88,6 +88,10 @@ def test_normalizers() -> None:
 
     assert normalize_method(None) == "GET"
     assert normalize_method("post") == "POST"
+    assert normalize_method(" post ") == "POST"
+    assert normalize_method("") == "GET"
+    assert normalize_method(123) == "GET"
+    assert normalize_method(None, default="POST") == "POST"
     assert normalize_limit(None) == 25
     assert normalize_limit(truthy_limit) == 25
     assert normalize_limit(falsey_limit) == 25

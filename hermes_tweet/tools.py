@@ -63,7 +63,7 @@ def call_action(args: dict[str, Any], **_: Any) -> str:
                     ),
                 }
             )
-        method = normalize_method(str(args.get("method", "POST")))
+        method = normalize_method(args.get("method"), default="POST")
         path = str(args.get("path", ""))
         endpoint = find_endpoint(method, path)
         if endpoint is None:
