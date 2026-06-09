@@ -65,6 +65,24 @@ def test_explore_ignores_unknown_boolean_filter_strings() -> None:
     assert unknown_free == unfiltered
 
 
+def test_explore_ignores_malformed_optional_text_filters() -> None:
+    unfiltered = explore({"include_actions": True, "limit": 100})
+    malformed = explore(
+        {
+            "category": 123,
+            "include_actions": True,
+            "limit": 100,
+            "method": True,
+            "path": False,
+            "query": [],
+        }
+    )
+    blank_method = explore({"include_actions": True, "limit": 100, "method": "  "})
+
+    assert malformed == unfiltered
+    assert blank_method == unfiltered
+
+
 def test_explore_filters_catalog() -> None:
     results = explore(
         {
