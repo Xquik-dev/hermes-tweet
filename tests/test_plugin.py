@@ -73,6 +73,8 @@ def test_register_keeps_official_hermes_plugin_gates_aligned() -> None:
     action_parameters = action["schema"]["parameters"]
     assert action_parameters["required"] == ["path", "reason"]
     assert action_parameters["properties"]["method"]["default"] == "POST"
+    assert action_parameters["properties"]["reason"]["minLength"] == 1
+    assert action_parameters["properties"]["reason"]["pattern"] == "\\S"
 
 
 def test_registered_tool_handlers_accept_future_hermes_context_kwargs() -> None:
