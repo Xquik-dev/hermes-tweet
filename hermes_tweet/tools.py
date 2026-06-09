@@ -7,6 +7,7 @@ from .catalog import find_endpoint, normalize_method
 from .client import action_enabled, check_api_available, dumps, normalize_query_params, request
 
 ARGS_ERROR = "Tool arguments must be a JSON object."
+ACTION_REASON_ERROR = "Action reason is required."
 
 
 def _args(value: Any) -> dict[str, Any] | None:
@@ -76,6 +77,8 @@ def call_action(args: Any, **_: Any) -> str:
                     ),
                 }
             )
+        if not _text(tool_args.get("reason")):
+            return dumps({"success": False, "error": ACTION_REASON_ERROR})
         method = normalize_method(tool_args.get("method"), default="POST")
         path = _text(tool_args.get("path"))
         endpoint = find_endpoint(method, path)

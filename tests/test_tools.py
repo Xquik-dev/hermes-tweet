@@ -213,6 +213,22 @@ def test_action_missing_endpoint(monkeypatch: pytest.MonkeyPatch) -> None:
     }
 
 
+def test_action_requires_reason_when_enabled(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(tools, "action_enabled", lambda: True)
+
+    error = {"success": False, "error": "Action reason is required."}
+
+    assert json.loads(call_action({"path": "/api/v1/x/tweets", "method": "POST"})) == error
+    assert (
+        json.loads(call_action({"path": "/api/v1/x/tweets", "method": "POST", "reason": "  "}))
+        == error
+    )
+    assert (
+        json.loads(call_action({"path": "/api/v1/x/tweets", "method": "POST", "reason": None}))
+        == error
+    )
+
+
 def test_action_success(monkeypatch: pytest.MonkeyPatch) -> None:
     def fake_request(
         method: str,
