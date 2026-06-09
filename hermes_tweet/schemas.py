@@ -91,7 +91,7 @@ TWEET_ACTION = {
                 "description": "Brief user-visible reason for the action.",
             },
         },
-        "required": ["path", "method", "reason"],
+        "required": ["path", "reason"],
         "additionalProperties": False,
     },
 }

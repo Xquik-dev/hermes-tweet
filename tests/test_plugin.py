@@ -70,6 +70,9 @@ def test_register_keeps_official_hermes_plugin_gates_aligned() -> None:
     assert action["requires_env"] == ["XQUIK_API_KEY", "HERMES_TWEET_ENABLE_ACTIONS"]
     assert action["schema"]["name"] == "tweet_action"
     assert action["is_async"] is False
+    action_parameters = action["schema"]["parameters"]
+    assert action_parameters["required"] == ["path", "reason"]
+    assert action_parameters["properties"]["method"]["default"] == "POST"
 
 
 def test_registered_tool_handlers_accept_future_hermes_context_kwargs() -> None:
