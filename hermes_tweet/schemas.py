@@ -62,6 +62,7 @@ TWEET_READ = {
             "query": {
                 "type": "object",
                 "description": "Query parameters as string, number, or boolean values.",
+                "propertyNames": {"minLength": 1, "pattern": "\\S"},
                 "additionalProperties": {"type": ["string", "number", "boolean"]},
             },
         },
@@ -90,6 +91,7 @@ TWEET_ACTION = {
             "query": {
                 "type": "object",
                 "description": "Query parameters as string, number, or boolean values.",
+                "propertyNames": {"minLength": 1, "pattern": "\\S"},
                 "additionalProperties": {"type": ["string", "number", "boolean"]},
             },
             "body": {
