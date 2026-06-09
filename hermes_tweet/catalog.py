@@ -82,6 +82,18 @@ def normalize_limit(value: Any) -> int:
     return min(max(value, 1), MAX_LIMIT)
 
 
+def _optional_bool(value: Any) -> bool | None:
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, str):
+        normalized = value.strip().lower()
+        if normalized == "true":
+            return True
+        if normalized == "false":
+            return False
+    return None
+
+
 def _segments(path: str) -> list[str]:
     normalized = path.removesuffix("/")
     return normalized.split("/")
@@ -139,7 +151,7 @@ def explore(args: dict[str, Any]) -> list[dict[str, Any]]:
     path = str(args.get("path", "")).strip()
     query = str(args.get("query", "")).strip()
     limit = normalize_limit(args.get("limit"))
-    include_actions = bool(args.get("include_actions", False))
+    include_actions = _optional_bool(args.get("include_actions")) is True
 
     endpoints = ENDPOINTS
     if method:
@@ -156,12 +168,12 @@ def explore(args: dict[str, Any]) -> list[dict[str, Any]]:
         )
     if query:
         endpoints = tuple(endpoint for endpoint in endpoints if _matches_query(endpoint, query))
-    if "free" in args:
-        endpoints = tuple(endpoint for endpoint in endpoints if endpoint.free is bool(args["free"]))
-    if "mpp" in args:
-        endpoints = tuple(
-            endpoint for endpoint in endpoints if (endpoint.mpp is not None) is bool(args["mpp"])
-        )
+    free = _optional_bool(args.get("free"))
+    if free is not None:
+        endpoints = tuple(endpoint for endpoint in endpoints if endpoint.free is free)
+    mpp = _optional_bool(args.get("mpp"))
+    if mpp is not None:
+        endpoints = tuple(endpoint for endpoint in endpoints if (endpoint.mpp is not None) is mpp)
     if not include_actions:
         endpoints = tuple(endpoint for endpoint in endpoints if not endpoint.action)
     return [endpoint.to_dict() for endpoint in endpoints[:limit]]

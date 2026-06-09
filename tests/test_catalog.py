@@ -37,6 +37,34 @@ def test_explore_hides_actions_by_default() -> None:
     assert all(item["action"] is False for item in results)
 
 
+def test_explore_parses_string_boolean_filters() -> None:
+    hidden_actions = explore({"include_actions": "false", "query": "compose", "limit": 100})
+    visible_actions = explore({"include_actions": "true", "query": "compose", "limit": 100})
+    paid = explore({"free": "false", "include_actions": "true", "limit": 100})
+    mpp_disabled = explore({"include_actions": "true", "limit": 100, "mpp": "false"})
+
+    assert all(item["action"] is False for item in hidden_actions)
+    assert any(item["action"] is True for item in visible_actions)
+    assert paid
+    assert all(item["free"] is False for item in paid)
+    assert mpp_disabled
+    assert all("mpp" not in item for item in mpp_disabled)
+
+
+def test_explore_ignores_unknown_boolean_filter_strings() -> None:
+    unfiltered = explore({"category": "tweets", "include_actions": True, "limit": 100})
+    unknown_free = explore(
+        {
+            "category": "tweets",
+            "free": "maybe",
+            "include_actions": True,
+            "limit": 100,
+        }
+    )
+
+    assert unknown_free == unfiltered
+
+
 def test_explore_filters_catalog() -> None:
     results = explore(
         {
