@@ -138,6 +138,55 @@ def test_request_ignores_empty_query(monkeypatch: pytest.MonkeyPatch) -> None:
     assert FakeClient.last_request["params"] is None
 
 
+def test_request_normalizes_query_params(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("XQUIK_API_KEY", "xq_test")
+    monkeypatch.setattr(client.httpx, "Client", FakeClient)
+    FakeClient.response = _response(200, json_data={"ok": True})
+    FakeClient.error = None
+
+    assert client.request(
+        "GET",
+        "/api/v1/account",
+        query={
+            1: "ignored",
+            "  ": "ignored",
+            "bad": [],
+            "bad_inf": float("inf"),
+            "bad_nan": float("nan"),
+            "flag": True,
+            "limit": 2,
+            " q ": "ai",
+            "ratio": 1.5,
+            "verified": False,
+        },
+    ) == {"ok": True}
+    assert FakeClient.last_request is not None
+    assert FakeClient.last_request["params"] == {
+        "flag": "true",
+        "limit": "2",
+        "q": "ai",
+        "ratio": "1.5",
+        "verified": "false",
+    }
+
+
+def test_request_ignores_empty_query_after_normalization(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setenv("XQUIK_API_KEY", "xq_test")
+    monkeypatch.setattr(client.httpx, "Client", FakeClient)
+    FakeClient.response = _response(200, json_data={"ok": True})
+    FakeClient.error = None
+
+    assert client.request(
+        "GET",
+        "/api/v1/account",
+        query={1: "ignored", "  ": "ignored", "bad": [], "bad_nan": float("nan")},
+    ) == {"ok": True}
+    assert FakeClient.last_request is not None
+    assert FakeClient.last_request["params"] is None
+
+
 def test_request_normalizes_path_whitespace(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("XQUIK_API_KEY", "xq_test")
     monkeypatch.setattr(client.httpx, "Client", FakeClient)
