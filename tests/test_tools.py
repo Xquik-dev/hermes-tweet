@@ -245,7 +245,9 @@ def test_action_success(monkeypatch: pytest.MonkeyPatch) -> None:
     }
 
 
-def test_action_defaults_malformed_method_to_post(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_action_defaults_missing_or_malformed_method_to_post(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     def fake_request(
         method: str,
         path: str,
@@ -256,6 +258,21 @@ def test_action_defaults_malformed_method_to_post(monkeypatch: pytest.MonkeyPatc
 
     monkeypatch.setattr(tools, "action_enabled", lambda: True)
     monkeypatch.setattr(tools, "request", fake_request)
+
+    assert json.loads(
+        call_action(
+            {
+                "body": {"text": "hello"},
+                "path": "/api/v1/compose",
+                "reason": "test",
+            }
+        )
+    ) == {
+        "body": {"text": "hello"},
+        "method": "POST",
+        "path": "/api/v1/compose",
+        "query": None,
+    }
 
     result = json.loads(
         call_action(
