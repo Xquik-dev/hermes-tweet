@@ -53,6 +53,7 @@ def request(
     query: dict[str, str] | None = None,
     body: Any | None = None,
 ) -> Any:
+    normalized_method = method.strip().upper()
     normalized_path = path.strip()
     if not normalized_path.startswith(API_V1_PREFIX):
         return {"success": False, "error": f"Path must start with {API_V1_PREFIX}"}
@@ -70,7 +71,7 @@ def request(
     try:
         with httpx.Client(timeout=TIMEOUT_SECONDS) as client:
             response = client.request(
-                method=method,
+                method=normalized_method,
                 url=url,
                 params=query,
                 json=body,
