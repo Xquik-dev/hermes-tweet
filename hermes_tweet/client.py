@@ -27,7 +27,7 @@ def _request_text(value: Any) -> str:
     return value.strip()
 
 
-def _query_params(value: Any) -> dict[str, str] | None:
+def normalize_query_params(value: Any) -> dict[str, str] | None:
     if not isinstance(value, dict):
         return None
     output: dict[str, str] = {}
@@ -79,7 +79,7 @@ def request(
 ) -> Any:
     normalized_method = _request_text(method).upper() or "GET"
     normalized_path = _request_text(path)
-    params = _query_params(query)
+    params = normalize_query_params(query)
     if not normalized_path.startswith(API_V1_PREFIX):
         return {"success": False, "error": f"Path must start with {API_V1_PREFIX}"}
     if "?" in normalized_path or "#" in normalized_path:
