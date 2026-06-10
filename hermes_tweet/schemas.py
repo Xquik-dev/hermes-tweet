@@ -13,18 +13,30 @@ TWEET_EXPLORE = {
         "properties": {
             "query": {
                 "type": "string",
+                "minLength": 1,
+                "pattern": "\\S",
                 "description": (
                     "Keyword search across endpoint paths, summaries, parameters, "
                     "and response shapes."
                 ),
             },
-            "category": {"type": "string", "description": "Endpoint category filter."},
+            "category": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S",
+                "description": "Endpoint category filter.",
+            },
             "method": {
                 "type": "string",
                 "enum": _METHOD_ENUM,
                 "description": "HTTP method filter.",
             },
-            "path": {"type": "string", "description": "Exact or partial /api/v1 path filter."},
+            "path": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S",
+                "description": "Exact or partial /api/v1 path filter.",
+            },
             "free": {"type": "boolean", "description": "Filter free or paid endpoints."},
             "mpp": {"type": "boolean", "description": "Filter MPP eligible endpoints."},
             "include_actions": {
