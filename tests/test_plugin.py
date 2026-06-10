@@ -61,6 +61,10 @@ def test_register_keeps_official_hermes_plugin_gates_aligned() -> None:
     assert "requires_env" not in explore
     assert explore["schema"]["name"] == "tweet_explore"
     assert explore["is_async"] is False
+    explore_parameters = explore["schema"]["parameters"]
+    for filter_name in ("query", "category", "path"):
+        assert explore_parameters["properties"][filter_name]["minLength"] == 1
+        assert explore_parameters["properties"][filter_name]["pattern"] == "\\S"
 
     assert read["check_fn"] is check_api_available
     assert read["requires_env"] == ["XQUIK_API_KEY"]
