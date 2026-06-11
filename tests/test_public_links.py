@@ -6,6 +6,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
+import httpx
+
 if TYPE_CHECKING:
     import pytest
 
@@ -34,13 +36,17 @@ class FakeResponse:
 
 
 class FakeClient:
-    def __init__(self, status_codes: list[int]) -> None:
-        self._status_codes = status_codes
+    def __init__(self, responses: list[int | httpx.HTTPError]) -> None:
+        self._responses = responses
         self.requests: list[tuple[str, str]] = []
 
     def request(self, method: str, url: str) -> FakeResponse:
         self.requests.append((method, url))
-        return FakeResponse(self._status_codes.pop(0))
+        response = self._responses.pop(0)
+        if isinstance(response, httpx.HTTPError):
+            raise response
+
+        return FakeResponse(response)
 
 
 def test_strip_trailing_url_punctuation_keeps_url_body() -> None:
@@ -160,6 +166,32 @@ def test_check_public_url_falls_back_from_head_405_to_get_success() -> None:
     failure = check_public_links.check_public_url(client, "https://example.com")
 
     assert failure is None
+    assert client.requests == [("HEAD", "https://example.com"), ("GET", "https://example.com")]
+
+
+def test_check_public_url_falls_back_from_head_error_to_get_success() -> None:
+    client = FakeClient([httpx.ConnectError("head failed"), 200])
+
+    failure = check_public_links.check_public_url(client, "https://example.com")
+
+    assert failure is None
+    assert client.requests == [("HEAD", "https://example.com"), ("GET", "https://example.com")]
+
+
+def test_check_public_url_reports_last_request_error() -> None:
+    client = FakeClient(
+        [
+            httpx.ConnectError("head failed"),
+            httpx.ConnectError("get failed"),
+        ],
+    )
+
+    failure = check_public_links.check_public_url(client, "https://example.com")
+
+    assert failure == check_public_links.LinkFailure(
+        url="https://example.com",
+        reason="ConnectError",
+    )
     assert client.requests == [("HEAD", "https://example.com"), ("GET", "https://example.com")]
 
 
