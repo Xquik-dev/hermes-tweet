@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import inspect
+import re
 import sys
 import types
 from pathlib import Path
@@ -93,6 +94,22 @@ def test_register_keeps_official_hermes_plugin_gates_aligned() -> None:
     assert action_parameters["properties"]["method"]["default"] == "POST"
     assert action_parameters["properties"]["reason"]["minLength"] == 1
     assert action_parameters["properties"]["reason"]["pattern"] == "\\S"
+
+
+def test_registered_path_schema_allows_only_api_paths_and_urls() -> None:
+    ctx = DummyContext()
+
+    register(ctx)
+
+    tools = {tool["name"]: tool for tool in ctx.tools}
+    for tool_name in ("tweet_read", "tweet_action"):
+        path_schema = tools[tool_name]["schema"]["parameters"]["properties"]["path"]
+        pattern = re.compile(path_schema["pattern"])
+
+        assert pattern.search("/api/v1/account") is not None
+        assert pattern.search("https://xquik.com/api/v1/account") is not None
+        assert pattern.search("https://xquik.com/not-api/account") is None
+        assert pattern.search("/not-api/account") is None
 
 
 def test_registered_tool_handlers_accept_future_hermes_context_kwargs() -> None:
