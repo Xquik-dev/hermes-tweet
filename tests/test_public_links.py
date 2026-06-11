@@ -160,6 +160,17 @@ def test_main_reports_targeted_link_failures(
     assert captured.err == ""
 
 
+def test_main_rejects_unregistered_targets(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    result = check_public_links.main(("private-notes.md",))
+    captured = capsys.readouterr()
+
+    assert result == 1
+    assert captured.out == "unregistered public files: private-notes.md\n"
+    assert captured.err == ""
+
+
 def test_check_public_url_falls_back_from_head_405_to_get_success() -> None:
     client = FakeClient([405, 200])
 

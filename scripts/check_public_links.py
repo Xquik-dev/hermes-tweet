@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING
 
 import httpx
 
-from public_surfaces import PUBLIC_SURFACE_FILES
+from public_surfaces import PUBLIC_SURFACE_FILES, select_public_surface_files
 
 if TYPE_CHECKING:
     from collections.abc import Iterable, Sequence
@@ -85,7 +85,12 @@ def check_public_links(urls: Iterable[str]) -> list[LinkFailure]:
 
 
 def main(argv: Sequence[str] | None = None) -> int:
-    files = tuple(argv) if argv else PUBLIC_LINK_FILES
+    try:
+        files = select_public_surface_files(argv)
+    except ValueError as error:
+        print(error)
+        return 1
+
     urls = collect_public_urls(files)
     failures = check_public_links(urls)
 

@@ -167,3 +167,14 @@ def test_public_safety_main_reports_targeted_findings(
     assert result == 1
     assert captured.out == "checked=1 findings=1\nREADME.md:1: github-token\n"
     assert captured.err == ""
+
+
+def test_public_safety_main_rejects_unregistered_targets(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    result = check_public_safety.main(("private-notes.md",))
+    captured = capsys.readouterr()
+
+    assert result == 1
+    assert captured.out == "unregistered public files: private-notes.md\n"
+    assert captured.err == ""

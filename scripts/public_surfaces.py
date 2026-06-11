@@ -1,5 +1,10 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Sequence
+
 PUBLIC_SURFACE_FILES = (
     ".github/CONTRIBUTING.md",
     ".github/FUNDING.yml",
@@ -32,3 +37,17 @@ PUBLIC_SURFACE_FILES = (
     "hermes_tweet/skills/hermes-tweet/SKILL.md",
     "registries/ask/hermes-tweet/SKILL.md",
 )
+
+
+def select_public_surface_files(argv: Sequence[str] | None) -> tuple[str, ...]:
+    if not argv:
+        return PUBLIC_SURFACE_FILES
+
+    public_files = set(PUBLIC_SURFACE_FILES)
+    unknown_files = tuple(file_name for file_name in argv if file_name not in public_files)
+    if unknown_files:
+        unknown_list = ", ".join(unknown_files)
+        message = f"unregistered public files: {unknown_list}"
+        raise ValueError(message)
+
+    return tuple(argv)

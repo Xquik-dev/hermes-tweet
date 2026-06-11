@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import TYPE_CHECKING
 
-from public_surfaces import PUBLIC_SURFACE_FILES
+from public_surfaces import PUBLIC_SURFACE_FILES, select_public_surface_files
 
 if TYPE_CHECKING:
     from collections.abc import Iterable, Sequence
@@ -78,7 +78,12 @@ def format_finding(finding: PublicSafetyFinding) -> str:
 
 
 def main(argv: Sequence[str] | None = None) -> int:
-    files = tuple(argv) if argv else PUBLIC_TEXT_FILES
+    try:
+        files = select_public_surface_files(argv)
+    except ValueError as error:
+        print(error)
+        return 1
+
     findings = scan_public_files(files)
     print(f"checked={len(files)} findings={len(findings)}")
     for finding in findings:
