@@ -7,6 +7,8 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).parents[1]
+SCRIPTS_DIR = ROOT / "scripts"
+sys.path.insert(0, str(SCRIPTS_DIR))
 
 
 def load_public_links_module() -> Any:
