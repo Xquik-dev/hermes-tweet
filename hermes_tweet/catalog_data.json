@@ -48,11 +48,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
+        "name": "limit",
         "in": "query",
         "required": false,
-        "type": "unknown",
-        "description": ""
+        "type": "integer",
+        "description": "Maximum number of items to return (1-100, default 50). For paid per-result endpoints, the returned count may be lower when remaining credits cannot cover the requested page. If zero paid results are affordable, the endpoint returns 402 insufficient_credits."
       },
       {
         "name": "afterCursor",
@@ -93,11 +93,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Resource ID returned by the matching create or list endpoint."
       }
     ],
     "path": "/api/v1/drafts/{id}",
@@ -112,11 +112,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Resource ID returned by the matching create or list endpoint."
       }
     ],
     "path": "/api/v1/drafts/{id}",
@@ -131,18 +131,18 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
+        "name": "limit",
         "in": "query",
         "required": false,
-        "type": "unknown",
-        "description": ""
+        "type": "integer",
+        "description": "Maximum number of items to return (1-100, default 50). For paid per-result endpoints, the returned count may be lower when remaining credits cannot cover the requested page. If zero paid results are affordable, the endpoint returns 402 insufficient_credits."
       },
       {
-        "name": "",
+        "name": "cursor",
         "in": "query",
         "required": false,
-        "type": "unknown",
-        "description": ""
+        "type": "string",
+        "description": "Cursor for keyset pagination from prior response next_cursor"
       }
     ],
     "path": "/api/v1/draws",
@@ -176,11 +176,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Draw public ID returned by create and list draw responses."
       }
     ],
     "path": "/api/v1/draws/{id}",
@@ -195,11 +195,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Draw public ID returned by create and list draw responses."
       },
       {
         "name": "format",
@@ -228,18 +228,18 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
+        "name": "limit",
         "in": "query",
         "required": false,
-        "type": "unknown",
-        "description": ""
+        "type": "integer",
+        "description": "Maximum number of items to return (1-100, default 50). For paid per-result endpoints, the returned count may be lower when remaining credits cannot cover the requested page. If zero paid results are affordable, the endpoint returns 402 insufficient_credits."
       },
       {
-        "name": "",
+        "name": "cursor",
         "in": "query",
         "required": false,
-        "type": "unknown",
-        "description": ""
+        "type": "string",
+        "description": "Cursor for keyset pagination from prior response next_cursor"
       },
       {
         "name": "monitorId",
@@ -268,11 +268,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Resource ID returned by the matching create or list endpoint."
       }
     ],
     "path": "/api/v1/events/{id}",
@@ -287,18 +287,18 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
+        "name": "limit",
         "in": "query",
         "required": false,
-        "type": "unknown",
-        "description": ""
+        "type": "integer",
+        "description": "Maximum number of items to return (1-100, default 50). For paid per-result endpoints, the returned count may be lower when remaining credits cannot cover the requested page. If zero paid results are affordable, the endpoint returns 402 insufficient_credits."
       },
       {
-        "name": "",
+        "name": "cursor",
         "in": "query",
         "required": false,
-        "type": "unknown",
-        "description": ""
+        "type": "string",
+        "description": "Cursor for keyset pagination from prior response next_cursor"
       },
       {
         "name": "toolType",
@@ -379,11 +379,11 @@
         "description": "Maximum number of results to return (1-1000, default 100)"
       },
       {
-        "name": "",
+        "name": "cursor",
         "in": "query",
         "required": false,
-        "type": "unknown",
-        "description": ""
+        "type": "string",
+        "description": "Cursor for keyset pagination from prior response next_cursor"
       }
     ],
     "path": "/api/v1/extractions/{id}",
@@ -484,11 +484,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Resource ID returned by the matching create or list endpoint."
       }
     ],
     "path": "/api/v1/monitors/keywords/{id}",
@@ -503,11 +503,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Resource ID returned by the matching create or list endpoint."
       }
     ],
     "path": "/api/v1/monitors/keywords/{id}",
@@ -522,11 +522,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Resource ID returned by the matching create or list endpoint."
       },
       {
         "name": "body",
@@ -548,11 +548,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Resource ID returned by the matching create or list endpoint."
       }
     ],
     "path": "/api/v1/monitors/{id}",
@@ -567,11 +567,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Resource ID returned by the matching create or list endpoint."
       }
     ],
     "path": "/api/v1/monitors/{id}",
@@ -586,11 +586,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Resource ID returned by the matching create or list endpoint."
       },
       {
         "name": "body",
@@ -722,11 +722,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Style profile ID or X username"
       }
     ],
     "path": "/api/v1/styles/{id}",
@@ -741,11 +741,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Style profile ID or X username"
       }
     ],
     "path": "/api/v1/styles/{id}",
@@ -760,11 +760,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Style profile ID or X username"
       },
       {
         "name": "body",
@@ -786,11 +786,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Style profile ID or X username"
       }
     ],
     "path": "/api/v1/styles/{id}/performance",
@@ -864,11 +864,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Resource ID returned by the matching create or list endpoint."
       }
     ],
     "path": "/api/v1/webhooks/{id}",
@@ -883,11 +883,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Resource ID returned by the matching create or list endpoint."
       },
       {
         "name": "body",
@@ -909,11 +909,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Resource ID returned by the matching create or list endpoint."
       }
     ],
     "path": "/api/v1/webhooks/{id}/deliveries",
@@ -928,11 +928,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Resource ID returned by the matching create or list endpoint."
       }
     ],
     "path": "/api/v1/webhooks/{id}/test",
@@ -947,11 +947,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Resource ID returned by the matching create or list endpoint."
       },
       {
         "name": "body",
@@ -1134,11 +1134,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Resource ID returned by the matching create or list endpoint."
       },
       {
         "name": "body",
@@ -1182,11 +1182,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Resource ID returned by the matching create or list endpoint."
       },
       {
         "name": "body",
@@ -1208,11 +1208,11 @@
     "mpp": null,
     "parameters": [
       {
-        "name": "",
-        "in": "query",
-        "required": false,
-        "type": "unknown",
-        "description": ""
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "type": "string",
+        "description": "Resource ID returned by the matching create or list endpoint."
       },
       {
         "name": "body",
@@ -1795,11 +1795,228 @@
         "required": false,
         "type": "integer",
         "description": "Max tweets to return (server paginates internally). Omit for single page (~20). This is an upper bound for paid authenticated calls: remaining credits can reduce the returned page size, and zero affordable results returns 402 insufficient_credits."
+      },
+      {
+        "name": "fromUser",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter by author username."
+      },
+      {
+        "name": "toUser",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter replies sent to a username."
+      },
+      {
+        "name": "mentioning",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter tweets mentioning a username."
+      },
+      {
+        "name": "language",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Language code filter, e.g. en or tr."
+      },
+      {
+        "name": "sinceDate",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Start date in YYYY-MM-DD format."
+      },
+      {
+        "name": "untilDate",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "End date in YYYY-MM-DD format."
+      },
+      {
+        "name": "mediaType",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter by media type."
+      },
+      {
+        "name": "minFaves",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum likes threshold."
+      },
+      {
+        "name": "minRetweets",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum retweets threshold."
+      },
+      {
+        "name": "minReplies",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum replies threshold."
+      },
+      {
+        "name": "minQuotes",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum quote count threshold."
+      },
+      {
+        "name": "verifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return tweets from verified authors."
+      },
+      {
+        "name": "replies",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Reply mode."
+      },
+      {
+        "name": "retweets",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Retweet mode."
+      },
+      {
+        "name": "quotes",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Quote mode."
+      },
+      {
+        "name": "exactPhrase",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Exact phrase to match."
+      },
+      {
+        "name": "excludeWords",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Words or quoted phrases to exclude. Separate with spaces, commas, or lines."
+      },
+      {
+        "name": "anyWords",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Words or quoted phrases where any one can match. Separate with spaces, commas, or lines."
+      },
+      {
+        "name": "hashtags",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Hashtags separated by spaces, commas, or lines."
+      },
+      {
+        "name": "cashtags",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Cashtags separated by spaces, commas, or lines."
+      },
+      {
+        "name": "url",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "URL substring or domain filter."
+      },
+      {
+        "name": "conversationId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Conversation ID filter."
+      },
+      {
+        "name": "inReplyToTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only replies to this tweet ID."
+      },
+      {
+        "name": "quotesOfTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only quotes of this tweet ID."
+      },
+      {
+        "name": "retweetsOfTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only retweets of this tweet ID."
+      },
+      {
+        "name": "listId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Search within a list ID."
+      },
+      {
+        "name": "place",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Search within a place ID."
+      },
+      {
+        "name": "placeCountry",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Search within a country code."
+      },
+      {
+        "name": "pointRadius",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Geo point radius, e.g. -73.99 40.73 25mi."
+      },
+      {
+        "name": "boundingBox",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Geo bounding box, e.g. -74.1 40.6 -73.9 40.8."
+      },
+      {
+        "name": "advancedQuery",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Raw advanced search query appended as-is."
       }
     ],
     "path": "/api/v1/x/tweets/search",
     "responseShape": "Search results",
-    "summary": "Search tweets with X query operators and pagination"
+    "summary": "Search tweets by query, Tweet ID, X status URL, or account date window"
   },
   {
     "action": true,
@@ -1974,6 +2191,181 @@
         "required": false,
         "type": "boolean",
         "description": "Include reply quotes (default false)"
+      },
+      {
+        "name": "fromUser",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter by author username."
+      },
+      {
+        "name": "toUser",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter replies sent to a username."
+      },
+      {
+        "name": "mentioning",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter tweets mentioning a username."
+      },
+      {
+        "name": "language",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Language code filter, e.g. en or tr."
+      },
+      {
+        "name": "sinceDate",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Start date in YYYY-MM-DD format."
+      },
+      {
+        "name": "untilDate",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "End date in YYYY-MM-DD format."
+      },
+      {
+        "name": "mediaType",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter by media type."
+      },
+      {
+        "name": "minFaves",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum likes threshold."
+      },
+      {
+        "name": "minRetweets",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum retweets threshold."
+      },
+      {
+        "name": "minReplies",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum replies threshold."
+      },
+      {
+        "name": "minQuotes",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum quote count threshold."
+      },
+      {
+        "name": "verifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return tweets from verified authors."
+      },
+      {
+        "name": "replies",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Reply mode."
+      },
+      {
+        "name": "retweets",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Retweet mode."
+      },
+      {
+        "name": "quotes",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Quote mode."
+      },
+      {
+        "name": "exactPhrase",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Exact phrase to match."
+      },
+      {
+        "name": "excludeWords",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Words or quoted phrases to exclude. Separate with spaces, commas, or lines."
+      },
+      {
+        "name": "anyWords",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Words or quoted phrases where any one can match. Separate with spaces, commas, or lines."
+      },
+      {
+        "name": "hashtags",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Hashtags separated by spaces, commas, or lines."
+      },
+      {
+        "name": "cashtags",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Cashtags separated by spaces, commas, or lines."
+      },
+      {
+        "name": "url",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "URL substring or domain filter."
+      },
+      {
+        "name": "conversationId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Conversation ID filter."
+      },
+      {
+        "name": "inReplyToTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only replies to this tweet ID."
+      },
+      {
+        "name": "quotesOfTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only quotes of this tweet ID."
+      },
+      {
+        "name": "retweetsOfTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only retweets of this tweet ID."
       }
     ],
     "path": "/api/v1/x/tweets/{id}/quotes",
@@ -2017,6 +2409,181 @@
         "required": false,
         "type": "string",
         "description": "Unix timestamp - return replies posted before this time"
+      },
+      {
+        "name": "fromUser",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter by author username."
+      },
+      {
+        "name": "toUser",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter replies sent to a username."
+      },
+      {
+        "name": "mentioning",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter tweets mentioning a username."
+      },
+      {
+        "name": "language",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Language code filter, e.g. en or tr."
+      },
+      {
+        "name": "sinceDate",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Start date in YYYY-MM-DD format."
+      },
+      {
+        "name": "untilDate",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "End date in YYYY-MM-DD format."
+      },
+      {
+        "name": "mediaType",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter by media type."
+      },
+      {
+        "name": "minFaves",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum likes threshold."
+      },
+      {
+        "name": "minRetweets",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum retweets threshold."
+      },
+      {
+        "name": "minReplies",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum replies threshold."
+      },
+      {
+        "name": "minQuotes",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum quote count threshold."
+      },
+      {
+        "name": "verifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return tweets from verified authors."
+      },
+      {
+        "name": "replies",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Reply mode."
+      },
+      {
+        "name": "retweets",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Retweet mode."
+      },
+      {
+        "name": "quotes",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Quote mode."
+      },
+      {
+        "name": "exactPhrase",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Exact phrase to match."
+      },
+      {
+        "name": "excludeWords",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Words or quoted phrases to exclude. Separate with spaces, commas, or lines."
+      },
+      {
+        "name": "anyWords",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Words or quoted phrases where any one can match. Separate with spaces, commas, or lines."
+      },
+      {
+        "name": "hashtags",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Hashtags separated by spaces, commas, or lines."
+      },
+      {
+        "name": "cashtags",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Cashtags separated by spaces, commas, or lines."
+      },
+      {
+        "name": "url",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "URL substring or domain filter."
+      },
+      {
+        "name": "conversationId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Conversation ID filter."
+      },
+      {
+        "name": "inReplyToTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only replies to this tweet ID."
+      },
+      {
+        "name": "quotesOfTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only quotes of this tweet ID."
+      },
+      {
+        "name": "retweetsOfTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only retweets of this tweet ID."
       }
     ],
     "path": "/api/v1/x/tweets/{id}/replies",
@@ -2410,6 +2977,181 @@
         "required": false,
         "type": "string",
         "description": "Pagination cursor for liked tweets"
+      },
+      {
+        "name": "fromUser",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter by author username."
+      },
+      {
+        "name": "toUser",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter replies sent to a username."
+      },
+      {
+        "name": "mentioning",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter tweets mentioning a username."
+      },
+      {
+        "name": "language",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Language code filter, e.g. en or tr."
+      },
+      {
+        "name": "sinceDate",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Start date in YYYY-MM-DD format."
+      },
+      {
+        "name": "untilDate",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "End date in YYYY-MM-DD format."
+      },
+      {
+        "name": "mediaType",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter by media type."
+      },
+      {
+        "name": "minFaves",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum likes threshold."
+      },
+      {
+        "name": "minRetweets",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum retweets threshold."
+      },
+      {
+        "name": "minReplies",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum replies threshold."
+      },
+      {
+        "name": "minQuotes",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum quote count threshold."
+      },
+      {
+        "name": "verifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return tweets from verified authors."
+      },
+      {
+        "name": "replies",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Reply mode."
+      },
+      {
+        "name": "retweets",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Retweet mode."
+      },
+      {
+        "name": "quotes",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Quote mode."
+      },
+      {
+        "name": "exactPhrase",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Exact phrase to match."
+      },
+      {
+        "name": "excludeWords",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Words or quoted phrases to exclude. Separate with spaces, commas, or lines."
+      },
+      {
+        "name": "anyWords",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Words or quoted phrases where any one can match. Separate with spaces, commas, or lines."
+      },
+      {
+        "name": "hashtags",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Hashtags separated by spaces, commas, or lines."
+      },
+      {
+        "name": "cashtags",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Cashtags separated by spaces, commas, or lines."
+      },
+      {
+        "name": "url",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "URL substring or domain filter."
+      },
+      {
+        "name": "conversationId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Conversation ID filter."
+      },
+      {
+        "name": "inReplyToTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only replies to this tweet ID."
+      },
+      {
+        "name": "quotesOfTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only quotes of this tweet ID."
+      },
+      {
+        "name": "retweetsOfTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only retweets of this tweet ID."
       }
     ],
     "path": "/api/v1/x/users/{id}/likes",
@@ -2439,6 +3181,181 @@
         "required": false,
         "type": "string",
         "description": "Pagination cursor for media tweets"
+      },
+      {
+        "name": "fromUser",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter by author username."
+      },
+      {
+        "name": "toUser",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter replies sent to a username."
+      },
+      {
+        "name": "mentioning",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter tweets mentioning a username."
+      },
+      {
+        "name": "language",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Language code filter, e.g. en or tr."
+      },
+      {
+        "name": "sinceDate",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Start date in YYYY-MM-DD format."
+      },
+      {
+        "name": "untilDate",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "End date in YYYY-MM-DD format."
+      },
+      {
+        "name": "mediaType",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter by media type."
+      },
+      {
+        "name": "minFaves",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum likes threshold."
+      },
+      {
+        "name": "minRetweets",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum retweets threshold."
+      },
+      {
+        "name": "minReplies",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum replies threshold."
+      },
+      {
+        "name": "minQuotes",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum quote count threshold."
+      },
+      {
+        "name": "verifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return tweets from verified authors."
+      },
+      {
+        "name": "replies",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Reply mode."
+      },
+      {
+        "name": "retweets",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Retweet mode."
+      },
+      {
+        "name": "quotes",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Quote mode."
+      },
+      {
+        "name": "exactPhrase",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Exact phrase to match."
+      },
+      {
+        "name": "excludeWords",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Words or quoted phrases to exclude. Separate with spaces, commas, or lines."
+      },
+      {
+        "name": "anyWords",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Words or quoted phrases where any one can match. Separate with spaces, commas, or lines."
+      },
+      {
+        "name": "hashtags",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Hashtags separated by spaces, commas, or lines."
+      },
+      {
+        "name": "cashtags",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Cashtags separated by spaces, commas, or lines."
+      },
+      {
+        "name": "url",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "URL substring or domain filter."
+      },
+      {
+        "name": "conversationId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Conversation ID filter."
+      },
+      {
+        "name": "inReplyToTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only replies to this tweet ID."
+      },
+      {
+        "name": "quotesOfTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only quotes of this tweet ID."
+      },
+      {
+        "name": "retweetsOfTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only retweets of this tweet ID."
       }
     ],
     "path": "/api/v1/x/users/{id}/media",
@@ -2482,6 +3399,181 @@
         "required": false,
         "type": "string",
         "description": "Unix timestamp - return mentions before this time"
+      },
+      {
+        "name": "fromUser",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter by author username."
+      },
+      {
+        "name": "toUser",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter replies sent to a username."
+      },
+      {
+        "name": "mentioning",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter tweets mentioning a username."
+      },
+      {
+        "name": "language",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Language code filter, e.g. en or tr."
+      },
+      {
+        "name": "sinceDate",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Start date in YYYY-MM-DD format."
+      },
+      {
+        "name": "untilDate",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "End date in YYYY-MM-DD format."
+      },
+      {
+        "name": "mediaType",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter by media type."
+      },
+      {
+        "name": "minFaves",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum likes threshold."
+      },
+      {
+        "name": "minRetweets",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum retweets threshold."
+      },
+      {
+        "name": "minReplies",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum replies threshold."
+      },
+      {
+        "name": "minQuotes",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum quote count threshold."
+      },
+      {
+        "name": "verifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return tweets from verified authors."
+      },
+      {
+        "name": "replies",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Reply mode."
+      },
+      {
+        "name": "retweets",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Retweet mode."
+      },
+      {
+        "name": "quotes",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Quote mode."
+      },
+      {
+        "name": "exactPhrase",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Exact phrase to match."
+      },
+      {
+        "name": "excludeWords",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Words or quoted phrases to exclude. Separate with spaces, commas, or lines."
+      },
+      {
+        "name": "anyWords",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Words or quoted phrases where any one can match. Separate with spaces, commas, or lines."
+      },
+      {
+        "name": "hashtags",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Hashtags separated by spaces, commas, or lines."
+      },
+      {
+        "name": "cashtags",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Cashtags separated by spaces, commas, or lines."
+      },
+      {
+        "name": "url",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "URL substring or domain filter."
+      },
+      {
+        "name": "conversationId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Conversation ID filter."
+      },
+      {
+        "name": "inReplyToTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only replies to this tweet ID."
+      },
+      {
+        "name": "quotesOfTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only quotes of this tweet ID."
+      },
+      {
+        "name": "retweetsOfTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only retweets of this tweet ID."
       }
     ],
     "path": "/api/v1/x/users/{id}/mentions",
@@ -2551,6 +3643,181 @@
         "required": false,
         "type": "boolean",
         "description": "Include parent tweet for replies"
+      },
+      {
+        "name": "fromUser",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter by author username."
+      },
+      {
+        "name": "toUser",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter replies sent to a username."
+      },
+      {
+        "name": "mentioning",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter tweets mentioning a username."
+      },
+      {
+        "name": "language",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Language code filter, e.g. en or tr."
+      },
+      {
+        "name": "sinceDate",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Start date in YYYY-MM-DD format."
+      },
+      {
+        "name": "untilDate",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "End date in YYYY-MM-DD format."
+      },
+      {
+        "name": "mediaType",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter by media type."
+      },
+      {
+        "name": "minFaves",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum likes threshold."
+      },
+      {
+        "name": "minRetweets",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum retweets threshold."
+      },
+      {
+        "name": "minReplies",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum replies threshold."
+      },
+      {
+        "name": "minQuotes",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum quote count threshold."
+      },
+      {
+        "name": "verifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return tweets from verified authors."
+      },
+      {
+        "name": "replies",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Reply mode."
+      },
+      {
+        "name": "retweets",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Retweet mode."
+      },
+      {
+        "name": "quotes",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Quote mode."
+      },
+      {
+        "name": "exactPhrase",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Exact phrase to match."
+      },
+      {
+        "name": "excludeWords",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Words or quoted phrases to exclude. Separate with spaces, commas, or lines."
+      },
+      {
+        "name": "anyWords",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Words or quoted phrases where any one can match. Separate with spaces, commas, or lines."
+      },
+      {
+        "name": "hashtags",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Hashtags separated by spaces, commas, or lines."
+      },
+      {
+        "name": "cashtags",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Cashtags separated by spaces, commas, or lines."
+      },
+      {
+        "name": "url",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "URL substring or domain filter."
+      },
+      {
+        "name": "conversationId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Conversation ID filter."
+      },
+      {
+        "name": "inReplyToTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only replies to this tweet ID."
+      },
+      {
+        "name": "quotesOfTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only quotes of this tweet ID."
+      },
+      {
+        "name": "retweetsOfTweetId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Only retweets of this tweet ID."
       }
     ],
     "path": "/api/v1/x/users/{id}/tweets",
