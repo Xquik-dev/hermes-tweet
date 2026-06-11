@@ -11,7 +11,7 @@ import httpx
 from public_surfaces import PUBLIC_SURFACE_FILES
 
 if TYPE_CHECKING:
-    from collections.abc import Iterable
+    from collections.abc import Iterable, Sequence
 
 ROOT = Path(__file__).parents[1]
 HTTP_BAD_REQUEST = 400
@@ -84,8 +84,9 @@ def check_public_links(urls: Iterable[str]) -> list[LinkFailure]:
     return failures
 
 
-def main() -> int:
-    urls = collect_public_urls()
+def main(argv: Sequence[str] | None = None) -> int:
+    files = tuple(argv) if argv else PUBLIC_LINK_FILES
+    urls = collect_public_urls(files)
     failures = check_public_links(urls)
 
     print(f"checked={len(urls)} failures={len(failures)}")
@@ -96,4 +97,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(main(sys.argv[1:]))
