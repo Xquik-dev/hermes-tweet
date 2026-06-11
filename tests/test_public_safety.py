@@ -73,6 +73,17 @@ def test_public_safety_scan_includes_github_community_docs() -> None:
     assert expected_files <= set(check_public_safety.PUBLIC_TEXT_FILES)
 
 
+def test_public_safety_scan_includes_github_repository_config() -> None:
+    expected_files = {
+        ".github/FUNDING.yml",
+        ".github/dependabot.yml",
+        ".github/workflows/ci.yml",
+        ".github/workflows/publish.yml",
+    }
+
+    assert expected_files <= set(check_public_safety.PUBLIC_TEXT_FILES)
+
+
 def test_scan_public_files_reports_relative_paths(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,

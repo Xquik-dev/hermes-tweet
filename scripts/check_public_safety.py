@@ -12,10 +12,14 @@ if TYPE_CHECKING:
 ROOT = Path(__file__).parents[1]
 PUBLIC_TEXT_FILES = (
     ".github/CONTRIBUTING.md",
+    ".github/FUNDING.yml",
     ".github/ISSUE_TEMPLATE/bug_report.md",
     ".github/ISSUE_TEMPLATE/feature_request.md",
     ".github/PULL_REQUEST_TEMPLATE.md",
     ".github/SECURITY.md",
+    ".github/dependabot.yml",
+    ".github/workflows/ci.yml",
+    ".github/workflows/publish.yml",
     "AGENTS.md",
     "CODE_OF_CONDUCT.md",
     "README.md",
