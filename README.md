@@ -156,6 +156,8 @@ and write-like endpoints go through `tweet_action`, which is hidden unless
 
 Use `tweet_explore` first, then call `tweet_read` or `tweet_action` with a
 concrete `/api/v1/...` path.
+Copied endpoint URLs are accepted, but Hermes Tweet matches only catalog-listed
+paths.
 
 ## Hermes Agent Workflows
 
