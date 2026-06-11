@@ -7,6 +7,8 @@ from typing import cast
 
 import pytest
 import yaml
+from packaging.requirements import Requirement
+from packaging.utils import canonicalize_name
 
 ROOT = Path(__file__).parents[1]
 GUIDE_URL = "https://github.com/Xquik-dev/hermes-tweet#readme"
@@ -123,6 +125,36 @@ def require_list(value: object) -> list[object]:
     return cast("list[object]", value)
 
 
+def normalize_requirement(requirement: str) -> tuple[str, dict[str, object]]:
+    parsed = Requirement(requirement)
+    return (
+        canonicalize_name(parsed.name),
+        {"extras": sorted(parsed.extras), "specifier": str(parsed.specifier)},
+    )
+
+
+def normalize_locked_requirement(requirement: object) -> tuple[str, dict[str, object]]:
+    requirement_data = require_mapping(requirement)
+    extras = require_list(requirement_data.get("extras", []))
+    return (
+        canonicalize_name(str(requirement_data["name"])),
+        {
+            "extras": sorted(str(extra) for extra in extras),
+            "specifier": str(requirement_data["specifier"]),
+        },
+    )
+
+
+def find_locked_package(packages: list[object], name: str) -> dict[str, object]:
+    for package in packages:
+        package_data = require_mapping(package)
+        if package_data["name"] == name:
+            return package_data
+
+    message = f"No lockfile package named {name!r}."
+    raise AssertionError(message)
+
+
 def load_skill_frontmatter(path: Path) -> dict[str, object]:
     content = path.read_text()
     assert content.startswith("---\n")
@@ -147,6 +179,11 @@ def test_find_step_reports_missing_workflow_step() -> None:
         find_step([], "Publish")
 
 
+def test_find_locked_package_reports_missing_package() -> None:
+    with pytest.raises(AssertionError, match=r"No lockfile package named 'hermes-tweet'\."):
+        find_locked_package([], "hermes-tweet")
+
+
 def test_release_metadata_surfaces_stay_aligned() -> None:
     pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
     version = pyproject["project"]["version"]
@@ -167,6 +204,27 @@ def test_release_metadata_surfaces_stay_aligned() -> None:
     assert urls["Documentation"] == GUIDE_URL
     assert urls["Repository"] == "https://github.com/Xquik-dev/hermes-tweet"
     assert urls["Issues"] == "https://github.com/Xquik-dev/hermes-tweet/issues"
+
+
+def test_uv_lock_tracks_dev_dependency_constraints() -> None:
+    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
+    lockfile = tomllib.loads((ROOT / "uv.lock").read_text())
+
+    expected = dict(
+        normalize_requirement(requirement)
+        for requirement in pyproject["project"]["optional-dependencies"]["dev"]
+    )
+    packages = require_list(lockfile["package"])
+    package = find_locked_package(packages, "hermes-tweet")
+    requires_dist = require_list(require_mapping(package["metadata"])["requires-dist"])
+    locked: dict[str, dict[str, object]] = {}
+    for requirement in requires_dist:
+        requirement_data = require_mapping(requirement)
+        if requirement_data.get("marker") == "extra == 'dev'":
+            name, metadata = normalize_locked_requirement(requirement_data)
+            locked[name] = metadata
+
+    assert locked == expected
 
 
 def test_docs_track_current_hermes_agent_surface_release() -> None:
