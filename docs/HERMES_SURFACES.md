@@ -21,6 +21,7 @@ CI-style smoke tests. The difference is where the Hermes runtime executes.
 - Confirm `hermes plugins list` shows `hermes-tweet` as enabled.
 - Confirm `hermes tools list` shows the `hermes-tweet` toolset.
 - Use `tweet_explore` first; it does not need `XQUIK_API_KEY`.
+- Use only catalog-listed paths; copied endpoint URLs must resolve to one.
 - Set `XQUIK_API_KEY` only on the host that executes plugin tools.
 - Keep `HERMES_TWEET_ENABLE_ACTIONS=false` for research, monitoring, support,
   launch checks, and other unattended sessions.

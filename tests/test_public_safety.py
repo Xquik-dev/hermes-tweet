@@ -117,14 +117,23 @@ def test_copied_catalog_url_rule_stays_in_public_skill_surfaces() -> None:
     readme_expected = (
         "Copied endpoint URLs are accepted, but Hermes Tweet matches only catalog-listed\npaths."
     )
+    integration_expected = (
+        "Copied endpoint URLs are fine, but Hermes Tweet matches only catalog-listed\n  paths."
+    )
+    surfaces = {
+        "README.md": readme_expected,
+        "docs/CONTEXT7.md": (
+            "Copied endpoint URLs are accepted only when they resolve to catalog-listed\npaths."
+        ),
+        "docs/HERMES_SURFACES.md": "copied endpoint URLs must resolve to one",
+        "docs/INTEGRATION_PATTERNS.md": integration_expected,
+        "skills/hermes-tweet/SKILL.md": expected,
+        "hermes_tweet/skills/hermes-tweet/SKILL.md": expected,
+        "registries/ask/hermes-tweet/SKILL.md": expected,
+    }
 
-    assert readme_expected in (ROOT / "README.md").read_text(encoding="utf-8")
-    for file_name in (
-        "skills/hermes-tweet/SKILL.md",
-        "hermes_tweet/skills/hermes-tweet/SKILL.md",
-        "registries/ask/hermes-tweet/SKILL.md",
-    ):
-        assert expected in (ROOT / file_name).read_text(encoding="utf-8")
+    for file_name, text in surfaces.items():
+        assert text in (ROOT / file_name).read_text(encoding="utf-8")
 
 
 def test_scan_public_files_reports_relative_paths(
