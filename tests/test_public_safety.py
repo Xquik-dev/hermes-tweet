@@ -127,6 +127,12 @@ def test_copied_catalog_url_rule_stays_in_public_skill_surfaces() -> None:
         ),
         "docs/HERMES_SURFACES.md": "copied endpoint URLs must resolve to one",
         "docs/INTEGRATION_PATTERNS.md": integration_expected,
+        "docs/OBSERVABILITY.md": (
+            "Copied endpoint URLs resolved only to catalog-listed `/api/v1/...` paths."
+        ),
+        "docs/PUBLICATION_CHECKLIST.md": (
+            "Copied endpoint URLs resolve only to catalog-listed `/api/v1/...` paths."
+        ),
         "after-install.md": (
             "Copied endpoint\nURLs are accepted only when they resolve to catalog-listed paths."
         ),
