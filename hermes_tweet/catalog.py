@@ -4,6 +4,7 @@ import json
 from dataclasses import dataclass
 from importlib.resources import files
 from typing import Any, cast
+from urllib.parse import urlsplit
 
 DEFAULT_LIMIT = 25
 MAX_LIMIT = 100
@@ -122,9 +123,13 @@ def _segments(path: str) -> list[str]:
     return normalized.split("/")
 
 
+def normalize_path(path: str) -> str:
+    return urlsplit(path.strip()).path
+
+
 def matches_path(template: str, concrete: str) -> bool:
-    normalized_template = template.strip()
-    normalized_concrete = concrete.strip()
+    normalized_template = normalize_path(template)
+    normalized_concrete = normalize_path(concrete)
     if normalized_template == normalized_concrete:
         return True
     template_segments = _segments(normalized_template)
@@ -149,7 +154,7 @@ def matches_path(template: str, concrete: str) -> bool:
 
 def find_endpoint(method: str, path: str) -> Endpoint | None:
     normalized = normalize_method(method)
-    normalized_path = path.strip()
+    normalized_path = normalize_path(path)
     for endpoint in ENDPOINTS:
         if endpoint.method == normalized and matches_path(endpoint.path, normalized_path):
             return endpoint
