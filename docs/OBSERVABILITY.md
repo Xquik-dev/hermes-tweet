@@ -49,6 +49,7 @@ hermes -z "Use tweet_explore, then read /api/v1/account. Do not call tweet_actio
 Record only sanitized outcomes:
 
 - Catalog exploration succeeded.
+- Copied endpoint URLs resolved only to catalog-listed `/api/v1/...` paths.
 - Without `XQUIK_API_KEY`, Hermes exposed only `tweet_explore` from this plugin.
 - With `XQUIK_API_KEY`, account read succeeded or returned a status code.
 - `tweet_action` stayed hidden or disabled when `HERMES_TWEET_ENABLE_ACTIONS`

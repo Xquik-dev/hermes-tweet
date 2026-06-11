@@ -107,6 +107,7 @@ hermes -z "Use tweet_explore, then read /api/v1/account. Do not call tweet_actio
 Expected result:
 
 - `tweet_explore` loads without an API call.
+- Copied endpoint URLs resolve only to catalog-listed `/api/v1/...` paths.
 - `tweet_read` works when `XQUIK_API_KEY` is configured.
 - `tweet_action` stays hidden or returns a disabled error unless actions are
   explicitly enabled.
