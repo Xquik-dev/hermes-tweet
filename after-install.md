@@ -42,6 +42,9 @@ Quick smoke test:
 hermes -z "Use tweet_explore, then read /api/v1/account. Do not call tweet_action." --toolsets hermes-tweet
 ```
 
+Use catalog-listed `/api/v1/...` paths from `tweet_explore`. Copied endpoint
+URLs are accepted only when they resolve to catalog-listed paths.
+
 Expected behavior:
 
 - `tweet_explore` loads without an API call.
