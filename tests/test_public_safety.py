@@ -127,6 +127,9 @@ def test_copied_catalog_url_rule_stays_in_public_skill_surfaces() -> None:
         ),
         "docs/HERMES_SURFACES.md": "copied endpoint URLs must resolve to one",
         "docs/INTEGRATION_PATTERNS.md": integration_expected,
+        "after-install.md": (
+            "Copied endpoint\nURLs are accepted only when they resolve to catalog-listed paths."
+        ),
         "skills/hermes-tweet/SKILL.md": expected,
         "hermes_tweet/skills/hermes-tweet/SKILL.md": expected,
         "registries/ask/hermes-tweet/SKILL.md": expected,
