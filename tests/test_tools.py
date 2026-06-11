@@ -154,6 +154,17 @@ def test_read_normalizes_copied_endpoint_url_before_request(
     }
 
 
+def test_read_rejects_non_catalog_copied_url_before_request(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(tools, "request", None)
+
+    assert json.loads(call_read({"path": "https://xquik.com/not-api/account"})) == {
+        "success": False,
+        "error": "Endpoint is not in the Hermes Tweet catalog: GET https://xquik.com/not-api/account",
+    }
+
+
 def test_read_success_without_query_dict(monkeypatch: pytest.MonkeyPatch) -> None:
     def fake_request(
         method: str,
@@ -391,6 +402,29 @@ def test_action_normalizes_copied_endpoint_url_before_request(
         "method": "POST",
         "path": "/api/v1/x/tweets",
         "query": None,
+    }
+
+
+def test_action_rejects_non_catalog_copied_url_before_request(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(tools, "action_enabled", lambda: True)
+    monkeypatch.setattr(tools, "request", None)
+
+    assert json.loads(
+        call_action(
+            {
+                "method": "POST",
+                "path": "https://dashboard.xquik.com/not-api/tweet",
+                "reason": "test",
+            }
+        )
+    ) == {
+        "success": False,
+        "error": (
+            "Endpoint is not in the Hermes Tweet catalog: "
+            "POST https://dashboard.xquik.com/not-api/tweet"
+        ),
     }
 
 
