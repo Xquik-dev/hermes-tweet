@@ -96,6 +96,26 @@ def test_public_link_scan_includes_github_repository_config() -> None:
     assert expected_files <= set(check_public_links.PUBLIC_LINK_FILES)
 
 
+def test_main_accepts_targeted_public_files(tmp_path: Path, monkeypatch: Any) -> None:
+    public_doc = tmp_path / "README.md"
+    public_doc.write_text("Docs https://example.com/readme", encoding="utf-8")
+    ignored_doc = tmp_path / "after-install.md"
+    ignored_doc.write_text("Docs https://example.com/ignored", encoding="utf-8")
+    checked_urls: list[str] = []
+
+    def fake_check_public_links(urls: list[str]) -> list[Any]:
+        checked_urls.extend(urls)
+        return []
+
+    monkeypatch.setattr(check_public_links, "ROOT", tmp_path)
+    monkeypatch.setattr(check_public_links, "check_public_links", fake_check_public_links)
+
+    result = check_public_links.main(("README.md",))
+
+    assert result == 0
+    assert checked_urls == ["https://example.com/readme"]
+
+
 def test_check_public_url_falls_back_from_head_405_to_get_success() -> None:
     client = FakeClient([405, 200])
 
