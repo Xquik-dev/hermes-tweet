@@ -45,6 +45,7 @@ Prefer concise wording that explains where Hermes Tweet fits:
 - compatible with Hermes Desktop, remote gateway, TUI, CLI, dashboard, cron, and
   CI smoke-test surfaces
 - complementary to local browser-cookie or direct OAuth examples
+- copied endpoint URLs resolve only to catalog-listed `/api/v1/...` paths
 
 Avoid wording that implies Hermes Tweet replaces the target project, fixes a
 target bug, bypasses platform rules, removes user approval, or requires secrets

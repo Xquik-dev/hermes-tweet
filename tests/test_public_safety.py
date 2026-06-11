@@ -133,6 +133,9 @@ def test_copied_catalog_url_rule_stays_in_public_skill_surfaces() -> None:
         "docs/PUBLICATION_CHECKLIST.md": (
             "Copied endpoint URLs resolve only to catalog-listed `/api/v1/...` paths."
         ),
+        "docs/SUBMISSION_READINESS.md": (
+            "copied endpoint URLs resolve only to catalog-listed `/api/v1/...` paths"
+        ),
         "after-install.md": (
             "Copied endpoint\nURLs are accepted only when they resolve to catalog-listed paths."
         ),
