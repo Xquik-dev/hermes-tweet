@@ -198,6 +198,9 @@ def test_release_metadata_surfaces_stay_aligned() -> None:
     assert EXPECTED_SURFACE_GUIDE_LINK in readme
     assert EXPECTED_INTEGRATION_PATTERNS_LINK in readme
     assert EXPECTED_SUBMISSION_READINESS_LINK in readme
+    assert "docs/SUBMISSION_READINESS.md" in (ROOT / "docs" / "PUBLICATION_CHECKLIST.md").read_text(
+        encoding="utf-8"
+    )
 
     urls = pyproject["project"]["urls"]
     assert urls["Homepage"] == GUIDE_URL

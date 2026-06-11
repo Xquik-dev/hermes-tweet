@@ -34,6 +34,8 @@ Hermes Tweet is published as `hermes-tweet` on PyPI and currently released at
 - [x] Confirm PyPI, piwheels, ClawHub, first-party docs, Context7, DeepWiki,
   and accepted ecosystem listings show current public metadata.
 - [x] Maintain accepted public ecosystem surfaces in `docs/ECOSYSTEM.md`.
+- [x] Use `docs/SUBMISSION_READINESS.md` before public skill, plugin, catalog,
+  registry, awesome-list, or integration submissions.
 
 ## Release Gate
 
