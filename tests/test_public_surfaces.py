@@ -38,6 +38,17 @@ def test_public_surface_selection_normalizes_dot_slash_targets() -> None:
     assert files == ("README.md", "docs/ECOSYSTEM.md")
 
 
+def test_public_surface_selection_normalizes_absolute_targets() -> None:
+    readme_path = ROOT / "README.md"
+    ecosystem_path = ROOT / "docs" / "ECOSYSTEM.md"
+
+    files = public_surfaces.select_public_surface_files(
+        (str(readme_path), str(ecosystem_path)),
+    )
+
+    assert files == ("README.md", "docs/ECOSYSTEM.md")
+
+
 def test_public_surface_selection_rejects_unknown_targets() -> None:
     with pytest.raises(
         ValueError,
