@@ -25,8 +25,7 @@ python scripts/build_catalog.py ../xquik/openapi.yaml
 - Public repo: never commit secrets, tokens, cookies, private screenshots, or
   private implementation details.
 - Keep external communication generic and public-safe.
-- Never mention internal service names, internal cost units, or private vendor
-  architecture.
+- Never mention nonpublic service names, pricing units, or vendor architecture.
 - Preserve user changes and avoid unrelated refactors.
 - Keep the catalog generated from Xquik OpenAPI.
 - Keep action endpoints gated behind `HERMES_TWEET_ENABLE_ACTIONS=true`.

@@ -11,6 +11,7 @@ if TYPE_CHECKING:
 
 ROOT = Path(__file__).parents[1]
 PUBLIC_TEXT_FILES = (
+    "AGENTS.md",
     "README.md",
     "after-install.md",
     "docs/CONTEXT7.md",
