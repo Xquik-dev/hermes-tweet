@@ -70,17 +70,35 @@ def _schema_type(schema: JsonDict) -> str:
     return "unknown"
 
 
-def _parameters(path_item: JsonDict, operation: JsonDict) -> list[JsonDict]:
+def _resolve_parameter_ref(parameter: JsonDict, parameter_components: JsonDict) -> JsonDict:
+    ref = parameter.get("$ref")
+    if not isinstance(ref, str) or not ref.startswith("#/components/parameters/"):
+        return parameter
+    name = ref.removeprefix("#/components/parameters/")
+    return _as_dict(parameter_components.get(name))
+
+
+def _parameters(
+    path_item: JsonDict,
+    operation: JsonDict,
+    parameter_components: JsonDict,
+) -> list[JsonDict]:
     merged: list[JsonDict] = []
     for source in (path_item.get("parameters"), operation.get("parameters")):
-        merged.extend(_as_dict(item) for item in _as_list(source))
+        merged.extend(
+            _resolve_parameter_ref(_as_dict(item), parameter_components)
+            for item in _as_list(source)
+        )
 
     output: list[JsonDict] = []
     for parameter in merged:
+        name = str(parameter.get("name", "")).strip()
+        if not name:
+            continue
         schema = _as_dict(parameter.get("schema"))
         output.append(
             {
-                "name": str(parameter.get("name", "")),
+                "name": name,
                 "in": str(parameter.get("in", "query")),
                 "required": bool(parameter.get("required", False)),
                 "type": _schema_type(schema),
@@ -152,6 +170,8 @@ def _action(method: str, path: str) -> bool:
 def build(source: Path) -> list[JsonDict]:
     spec = _as_dict(cast("object", yaml.safe_load(source.read_text(encoding="utf-8"))))
     paths = _as_dict(spec.get("paths"))
+    components = _as_dict(spec.get("components"))
+    parameter_components = _as_dict(components.get("parameters"))
     output: list[JsonDict] = []
 
     for raw_path, path_item in sorted(paths.items()):
@@ -178,7 +198,7 @@ def build(source: Path) -> list[JsonDict]:
                     and (method, path) not in PAID_STATIC,
                     "method": method,
                     "mpp": _mpp(operation_dict),
-                    "parameters": _parameters(path_item_dict, operation_dict),
+                    "parameters": _parameters(path_item_dict, operation_dict, parameter_components),
                     "path": path,
                     "responseShape": _response_shape(operation_dict),
                     "summary": str(

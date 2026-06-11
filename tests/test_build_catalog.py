@@ -136,6 +136,53 @@ def test_build_extracts_parameters_request_body_response_and_payment(
     }
 
 
+def test_build_resolves_referenced_parameters_and_skips_unnamed_entries(
+    tmp_path: Path,
+) -> None:
+    source = tmp_path / "openapi.yaml"
+    source.write_text(
+        yaml.safe_dump(
+            {
+                "components": {
+                    "parameters": {
+                        "Cursor": {
+                            "name": "cursor",
+                            "in": "query",
+                            "description": "Pagination cursor",
+                            "schema": {"type": "string"},
+                        }
+                    }
+                },
+                "paths": {
+                    "/x/tweets/search": {
+                        "get": {
+                            "summary": "Search tweets",
+                            "parameters": [
+                                {"$ref": "#/components/parameters/Cursor"},
+                                {"$ref": "#/components/parameters/Missing"},
+                                {},
+                            ],
+                        }
+                    }
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    [endpoint] = build_catalog.build(source)
+
+    assert endpoint["parameters"] == [
+        {
+            "name": "cursor",
+            "in": "query",
+            "required": False,
+            "type": "string",
+            "description": "Pagination cursor",
+        }
+    ]
+
+
 def test_build_defaults_empty_metadata(tmp_path: Path) -> None:
     source = write_openapi(
         tmp_path,
