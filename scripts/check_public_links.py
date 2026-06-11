@@ -16,6 +16,13 @@ HTTP_BAD_REQUEST = 400
 HTTP_FORBIDDEN = 403
 HTTP_METHOD_NOT_ALLOWED = 405
 PUBLIC_LINK_FILES = (
+    ".github/CONTRIBUTING.md",
+    ".github/ISSUE_TEMPLATE/bug_report.md",
+    ".github/ISSUE_TEMPLATE/feature_request.md",
+    ".github/PULL_REQUEST_TEMPLATE.md",
+    ".github/SECURITY.md",
+    "AGENTS.md",
+    "CODE_OF_CONDUCT.md",
     "README.md",
     "after-install.md",
     "docs/ECOSYSTEM.md",
