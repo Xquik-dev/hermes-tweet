@@ -83,6 +83,17 @@ def test_public_link_scan_includes_github_community_docs() -> None:
     assert expected_files <= set(check_public_links.PUBLIC_LINK_FILES)
 
 
+def test_public_link_scan_includes_github_repository_config() -> None:
+    expected_files = {
+        ".github/FUNDING.yml",
+        ".github/dependabot.yml",
+        ".github/workflows/ci.yml",
+        ".github/workflows/publish.yml",
+    }
+
+    assert expected_files <= set(check_public_links.PUBLIC_LINK_FILES)
+
+
 def test_check_public_url_falls_back_from_head_405_to_get_success() -> None:
     client = FakeClient([405, 200])
 
