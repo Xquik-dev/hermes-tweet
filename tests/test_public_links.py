@@ -4,7 +4,10 @@ import importlib.util
 import sys
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    import pytest
 
 ROOT = Path(__file__).parents[1]
 SCRIPTS_DIR = ROOT / "scripts"
@@ -96,7 +99,11 @@ def test_public_link_scan_includes_github_repository_config() -> None:
     assert expected_files <= set(check_public_links.PUBLIC_LINK_FILES)
 
 
-def test_main_accepts_targeted_public_files(tmp_path: Path, monkeypatch: Any) -> None:
+def test_main_accepts_targeted_public_files(
+    capsys: pytest.CaptureFixture[str],
+    tmp_path: Path,
+    monkeypatch: Any,
+) -> None:
     public_doc = tmp_path / "README.md"
     public_doc.write_text("Docs https://example.com/readme", encoding="utf-8")
     ignored_doc = tmp_path / "after-install.md"
@@ -111,9 +118,40 @@ def test_main_accepts_targeted_public_files(tmp_path: Path, monkeypatch: Any) ->
     monkeypatch.setattr(check_public_links, "check_public_links", fake_check_public_links)
 
     result = check_public_links.main(("README.md",))
+    captured = capsys.readouterr()
 
     assert result == 0
     assert checked_urls == ["https://example.com/readme"]
+    assert captured.out == "checked=1 failures=0\n"
+    assert captured.err == ""
+
+
+def test_main_reports_targeted_link_failures(
+    capsys: pytest.CaptureFixture[str],
+    tmp_path: Path,
+    monkeypatch: Any,
+) -> None:
+    public_doc = tmp_path / "README.md"
+    public_doc.write_text("Docs https://example.com/missing", encoding="utf-8")
+
+    def fake_check_public_links(urls: list[str]) -> list[Any]:
+        assert urls == ["https://example.com/missing"]
+        return [
+            check_public_links.LinkFailure(
+                url="https://example.com/missing",
+                reason="HTTP 404",
+            ),
+        ]
+
+    monkeypatch.setattr(check_public_links, "ROOT", tmp_path)
+    monkeypatch.setattr(check_public_links, "check_public_links", fake_check_public_links)
+
+    result = check_public_links.main(("README.md",))
+    captured = capsys.readouterr()
+
+    assert result == 1
+    assert captured.out == "checked=1 failures=1\nHTTP 404 https://example.com/missing\n"
+    assert captured.err == ""
 
 
 def test_check_public_url_falls_back_from_head_405_to_get_success() -> None:
