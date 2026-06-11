@@ -1,6 +1,10 @@
 from __future__ import annotations
 
 _METHOD_ENUM = ["GET", "POST", "PATCH", "PUT", "DELETE"]
+_API_PATH_PATTERN = r"^(?:/api/v1/|https?://[^/]+/api/v1/)"
+_API_PATH_DESCRIPTION = (
+    "Concrete /api/v1/... endpoint path or copied API URL whose path starts with /api/v1/."
+)
 
 TWEET_EXPLORE = {
     "name": "tweet_explore",
@@ -68,8 +72,8 @@ TWEET_READ = {
             "path": {
                 "type": "string",
                 "minLength": 8,
-                "pattern": "^/api/v1/",
-                "description": "Concrete /api/v1/... endpoint path.",
+                "pattern": _API_PATH_PATTERN,
+                "description": _API_PATH_DESCRIPTION,
             },
             "query": {
                 "type": "object",
@@ -96,8 +100,8 @@ TWEET_ACTION = {
             "path": {
                 "type": "string",
                 "minLength": 8,
-                "pattern": "^/api/v1/",
-                "description": "Concrete /api/v1/... endpoint path.",
+                "pattern": _API_PATH_PATTERN,
+                "description": _API_PATH_DESCRIPTION,
             },
             "method": {"type": "string", "enum": _METHOD_ENUM, "default": "POST"},
             "query": {

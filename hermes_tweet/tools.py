@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from .catalog import explore as explore_catalog
-from .catalog import find_endpoint, normalize_method
+from .catalog import find_endpoint, normalize_method, normalize_path
 from .client import action_enabled, check_api_available, dumps, normalize_query_params, request
 
 ARGS_ERROR = "Tool arguments must be a JSON object."
@@ -42,7 +42,8 @@ def call_read(args: Any, **_: Any) -> str:
         if tool_args is None:
             return _args_error()
         path = _text(tool_args.get("path"))
-        endpoint = find_endpoint("GET", path)
+        catalog_path = normalize_path(path)
+        endpoint = find_endpoint("GET", catalog_path)
         if endpoint is None:
             return dumps(
                 {
@@ -57,7 +58,9 @@ def call_read(args: Any, **_: Any) -> str:
                     "error": "Use tweet_action for private or write-like endpoints.",
                 }
             )
-        return dumps(request("GET", path, query=normalize_query_params(tool_args.get("query"))))
+        return dumps(
+            request("GET", catalog_path, query=normalize_query_params(tool_args.get("query")))
+        )
     except Exception as exc:
         return dumps({"success": False, "error": str(exc)})
 
@@ -81,7 +84,8 @@ def call_action(args: Any, **_: Any) -> str:
             return dumps({"success": False, "error": ACTION_REASON_ERROR})
         method = normalize_method(tool_args.get("method"), default="POST")
         path = _text(tool_args.get("path"))
-        endpoint = find_endpoint(method, path)
+        catalog_path = normalize_path(path)
+        endpoint = find_endpoint(method, catalog_path)
         if endpoint is None:
             return dumps(
                 {
@@ -92,7 +96,7 @@ def call_action(args: Any, **_: Any) -> str:
         return dumps(
             request(
                 method,
-                path,
+                catalog_path,
                 query=normalize_query_params(tool_args.get("query")),
                 body=tool_args.get("body"),
             )
