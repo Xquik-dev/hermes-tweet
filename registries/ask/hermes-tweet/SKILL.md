@@ -58,6 +58,7 @@ Use Hermes Tweet for:
 - Never ask for API keys, passwords, cookies, or TOTP secrets.
 - Never pass credentials in tool arguments.
 - Use only catalog-listed `/api/v1/...` endpoints.
+- Copied endpoint URLs are accepted only when they resolve to catalog-listed paths.
 - Keep write actions gated behind `HERMES_TWEET_ENABLE_ACTIONS=true`.
 - Summarize the exact action before posting, replying, sending DMs, or changing
   account state.

@@ -80,6 +80,7 @@ permissions.
 - Never ask for or reveal API keys, signing keys, passwords, cookies, or TOTP secrets.
 - Never pass credentials in tool arguments.
 - Use only catalog-listed `/api/v1/...` endpoints.
+- Copied endpoint URLs are accepted only when they resolve to catalog-listed paths.
 - Do not use account connection, re-authentication, API key, billing, credit top-up, or support-ticket endpoints.
 - For posting, deleting, following, DMs, profile changes, monitors, webhooks, extraction jobs, and draws, summarize the action before calling `tweet_action`.
 
