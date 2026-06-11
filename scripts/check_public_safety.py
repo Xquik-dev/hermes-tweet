@@ -11,7 +11,13 @@ if TYPE_CHECKING:
 
 ROOT = Path(__file__).parents[1]
 PUBLIC_TEXT_FILES = (
+    ".github/CONTRIBUTING.md",
+    ".github/ISSUE_TEMPLATE/bug_report.md",
+    ".github/ISSUE_TEMPLATE/feature_request.md",
+    ".github/PULL_REQUEST_TEMPLATE.md",
+    ".github/SECURITY.md",
     "AGENTS.md",
+    "CODE_OF_CONDUCT.md",
     "README.md",
     "after-install.md",
     "docs/CONTEXT7.md",
@@ -81,7 +87,9 @@ def scan_line(path: Path, line_number: int, line: str) -> list[PublicSafetyFindi
     return findings
 
 
-def scan_public_files(files: Iterable[str] = PUBLIC_TEXT_FILES) -> list[PublicSafetyFinding]:
+def scan_public_files(
+    files: Iterable[str] = PUBLIC_TEXT_FILES,
+) -> list[PublicSafetyFinding]:
     findings: list[PublicSafetyFinding] = []
     for file_name in files:
         path = ROOT / file_name

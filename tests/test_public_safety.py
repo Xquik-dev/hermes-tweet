@@ -60,6 +60,19 @@ def test_public_safety_scan_includes_agent_instructions() -> None:
     assert "AGENTS.md" in check_public_safety.PUBLIC_TEXT_FILES
 
 
+def test_public_safety_scan_includes_github_community_docs() -> None:
+    expected_files = {
+        ".github/CONTRIBUTING.md",
+        ".github/ISSUE_TEMPLATE/bug_report.md",
+        ".github/ISSUE_TEMPLATE/feature_request.md",
+        ".github/PULL_REQUEST_TEMPLATE.md",
+        ".github/SECURITY.md",
+        "CODE_OF_CONDUCT.md",
+    }
+
+    assert expected_files <= set(check_public_safety.PUBLIC_TEXT_FILES)
+
+
 def test_scan_public_files_reports_relative_paths(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
