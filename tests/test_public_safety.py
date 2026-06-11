@@ -22,7 +22,19 @@ def load_public_safety_module() -> Any:
     return module
 
 
+def load_public_links_module() -> Any:
+    module_path = ROOT / "scripts" / "check_public_links.py"
+    spec = importlib.util.spec_from_file_location("check_public_links_for_safety", module_path)
+    assert spec is not None
+    assert spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
 check_public_safety = load_public_safety_module()
+check_public_links = load_public_links_module()
 
 
 def finding_labels(findings: list[Any]) -> list[str]:
@@ -82,6 +94,10 @@ def test_public_safety_scan_includes_github_repository_config() -> None:
     }
 
     assert expected_files <= set(check_public_safety.PUBLIC_TEXT_FILES)
+
+
+def test_public_link_and_safety_surfaces_stay_aligned() -> None:
+    assert set(check_public_safety.PUBLIC_TEXT_FILES) == set(check_public_links.PUBLIC_LINK_FILES)
 
 
 def test_scan_public_files_reports_relative_paths(
