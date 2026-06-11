@@ -112,6 +112,21 @@ def test_public_surface_registry_has_unique_existing_files() -> None:
     assert missing_files == []
 
 
+def test_copied_catalog_url_rule_stays_in_public_skill_surfaces() -> None:
+    expected = "Copied endpoint URLs are accepted only when they resolve to catalog-listed paths."
+    readme_expected = (
+        "Copied endpoint URLs are accepted, but Hermes Tweet matches only catalog-listed\npaths."
+    )
+
+    assert readme_expected in (ROOT / "README.md").read_text(encoding="utf-8")
+    for file_name in (
+        "skills/hermes-tweet/SKILL.md",
+        "hermes_tweet/skills/hermes-tweet/SKILL.md",
+        "registries/ask/hermes-tweet/SKILL.md",
+    ):
+        assert expected in (ROOT / file_name).read_text(encoding="utf-8")
+
+
 def test_scan_public_files_reports_relative_paths(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
