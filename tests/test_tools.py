@@ -131,6 +131,29 @@ def test_read_normalizes_path_values(monkeypatch: pytest.MonkeyPatch) -> None:
     }
 
 
+def test_read_normalizes_copied_endpoint_url_before_request(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def fake_request(
+        method: str,
+        path: str,
+        query: dict[str, str] | None = None,
+        body: object | None = None,
+    ) -> dict[str, object]:
+        return {"method": method, "path": path, "query": query, "body": body}
+
+    monkeypatch.setattr(tools, "request", fake_request)
+
+    assert json.loads(
+        call_read({"path": "https://xquik.com/api/v1/account?ignored=true#section"})
+    ) == {
+        "body": None,
+        "method": "GET",
+        "path": "/api/v1/account",
+        "query": None,
+    }
+
+
 def test_read_success_without_query_dict(monkeypatch: pytest.MonkeyPatch) -> None:
     def fake_request(
         method: str,
@@ -333,6 +356,37 @@ def test_action_normalizes_path_values(monkeypatch: pytest.MonkeyPatch) -> None:
     )
 
     assert result == {
+        "body": {"text": "hello"},
+        "method": "POST",
+        "path": "/api/v1/x/tweets",
+        "query": None,
+    }
+
+
+def test_action_normalizes_copied_endpoint_url_before_request(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def fake_request(
+        method: str,
+        path: str,
+        query: dict[str, str] | None = None,
+        body: object | None = None,
+    ) -> dict[str, object]:
+        return {"method": method, "path": path, "query": query, "body": body}
+
+    monkeypatch.setattr(tools, "action_enabled", lambda: True)
+    monkeypatch.setattr(tools, "request", fake_request)
+
+    assert json.loads(
+        call_action(
+            {
+                "body": {"text": "hello"},
+                "method": "POST",
+                "path": "https://dashboard.xquik.com/api/v1/x/tweets?ignored=true#section",
+                "reason": "test",
+            }
+        )
+    ) == {
         "body": {"text": "hello"},
         "method": "POST",
         "path": "/api/v1/x/tweets",

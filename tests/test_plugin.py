@@ -72,7 +72,10 @@ def test_register_keeps_official_hermes_plugin_gates_aligned() -> None:
     assert read["is_async"] is False
     read_parameters = read["schema"]["parameters"]
     assert read_parameters["properties"]["path"]["minLength"] == len("/api/v1/")
-    assert read_parameters["properties"]["path"]["pattern"] == "^/api/v1/"
+    assert read_parameters["properties"]["path"]["pattern"] == (
+        "^(?:/api/v1/|https?://[^/]+/api/v1/)"
+    )
+    assert "copied API URL" in read_parameters["properties"]["path"]["description"]
     assert read_parameters["properties"]["query"]["propertyNames"] == nonblank_property_names
 
     assert action["check_fn"] is action_enabled
@@ -82,7 +85,10 @@ def test_register_keeps_official_hermes_plugin_gates_aligned() -> None:
     action_parameters = action["schema"]["parameters"]
     assert action_parameters["required"] == ["path", "reason"]
     assert action_parameters["properties"]["path"]["minLength"] == len("/api/v1/")
-    assert action_parameters["properties"]["path"]["pattern"] == "^/api/v1/"
+    assert action_parameters["properties"]["path"]["pattern"] == (
+        "^(?:/api/v1/|https?://[^/]+/api/v1/)"
+    )
+    assert "copied API URL" in action_parameters["properties"]["path"]["description"]
     assert action_parameters["properties"]["query"]["propertyNames"] == nonblank_property_names
     assert action_parameters["properties"]["method"]["default"] == "POST"
     assert action_parameters["properties"]["reason"]["minLength"] == 1
