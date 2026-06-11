@@ -102,6 +102,14 @@ def test_public_link_and_safety_surfaces_stay_aligned() -> None:
     assert check_public_safety.PUBLIC_TEXT_FILES is check_public_links.PUBLIC_LINK_FILES
 
 
+def test_public_surface_registry_has_unique_existing_files() -> None:
+    files = check_public_safety.PUBLIC_TEXT_FILES
+    missing_files = [file_name for file_name in files if not (ROOT / file_name).is_file()]
+
+    assert len(files) == len(set(files))
+    assert missing_files == []
+
+
 def test_scan_public_files_reports_relative_paths(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
