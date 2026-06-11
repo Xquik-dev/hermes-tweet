@@ -39,15 +39,42 @@ PUBLIC_SURFACE_FILES = (
 )
 
 
+def normalize_public_surface_file(file_name: str) -> str:
+    normalized = file_name
+    while normalized.startswith("./"):
+        normalized = normalized[2:]
+    return normalized
+
+
+def find_duplicate_files(files: Sequence[str]) -> tuple[str, ...]:
+    seen_files: set[str] = set()
+    duplicate_files: list[str] = []
+    for file_name in files:
+        if file_name in seen_files:
+            duplicate_files.append(file_name)
+            continue
+        seen_files.add(file_name)
+    return tuple(duplicate_files)
+
+
 def select_public_surface_files(argv: Sequence[str] | None) -> tuple[str, ...]:
     if not argv:
         return PUBLIC_SURFACE_FILES
 
+    requested_files = tuple(normalize_public_surface_file(file_name) for file_name in argv)
     public_files = set(PUBLIC_SURFACE_FILES)
-    unknown_files = tuple(file_name for file_name in argv if file_name not in public_files)
+    unknown_files = tuple(
+        file_name for file_name in requested_files if file_name not in public_files
+    )
     if unknown_files:
         unknown_list = ", ".join(unknown_files)
         message = f"unregistered public files: {unknown_list}"
         raise ValueError(message)
 
-    return tuple(argv)
+    duplicate_files = find_duplicate_files(requested_files)
+    if duplicate_files:
+        duplicate_list = ", ".join(duplicate_files)
+        message = f"duplicate public files: {duplicate_list}"
+        raise ValueError(message)
+
+    return requested_files
