@@ -6,6 +6,8 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
+    from collections.abc import Iterable
+
     import pytest
 
 ROOT = Path(__file__).parents[1]
@@ -123,3 +125,45 @@ def test_scan_public_files_reports_relative_paths(
 
     assert len(findings) == 1
     assert check_public_safety.format_finding(findings[0]) == "docs/example.md:1: bearer-token"
+
+
+def test_public_safety_main_accepts_targeted_files(
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    scanned_files: tuple[str, ...] = ()
+
+    def fake_scan_public_files(files: Iterable[str]) -> list[Any]:
+        nonlocal scanned_files
+        scanned_files = tuple(files)
+        return []
+
+    monkeypatch.setattr(check_public_safety, "scan_public_files", fake_scan_public_files)
+
+    result = check_public_safety.main(("README.md",))
+    captured = capsys.readouterr()
+
+    assert result == 0
+    assert scanned_files == ("README.md",)
+    assert captured.out == "checked=1 findings=0\n"
+    assert captured.err == ""
+
+
+def test_public_safety_main_reports_targeted_findings(
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    finding = check_public_safety.PublicSafetyFinding(Path("README.md"), 1, "github-token")
+
+    def fake_scan_public_files(files: Iterable[str]) -> list[Any]:
+        assert tuple(files) == ("README.md",)
+        return [finding]
+
+    monkeypatch.setattr(check_public_safety, "scan_public_files", fake_scan_public_files)
+
+    result = check_public_safety.main(("README.md",))
+    captured = capsys.readouterr()
+
+    assert result == 1
+    assert captured.out == "checked=1 findings=1\nREADME.md:1: github-token\n"
+    assert captured.err == ""
