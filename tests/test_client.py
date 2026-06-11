@@ -73,6 +73,10 @@ def test_request_validates_path(monkeypatch: pytest.MonkeyPatch) -> None:
         "success": False,
         "error": "Pass query parameters through the query object, not in the path.",
     }
+    assert client.request("GET", "https://xquik.com/api/v1/account") == {
+        "success": False,
+        "error": "Path must start with /api/v1/",
+    }
 
 
 def test_request_requires_api_key(monkeypatch: pytest.MonkeyPatch) -> None:
