@@ -69,6 +69,20 @@ def test_collect_public_urls_deduplicates_and_strips_punctuation(
     ]
 
 
+def test_public_link_scan_includes_github_community_docs() -> None:
+    expected_files = {
+        ".github/CONTRIBUTING.md",
+        ".github/ISSUE_TEMPLATE/bug_report.md",
+        ".github/ISSUE_TEMPLATE/feature_request.md",
+        ".github/PULL_REQUEST_TEMPLATE.md",
+        ".github/SECURITY.md",
+        "AGENTS.md",
+        "CODE_OF_CONDUCT.md",
+    }
+
+    assert expected_files <= set(check_public_links.PUBLIC_LINK_FILES)
+
+
 def test_check_public_url_falls_back_from_head_405_to_get_success() -> None:
     client = FakeClient([405, 200])
 
