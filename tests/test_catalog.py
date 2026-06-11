@@ -12,8 +12,16 @@ from hermes_tweet.catalog import (
 
 def test_matches_openapi_path_parameters() -> None:
     assert matches_path("/api/v1/x/tweets/{id}", "/api/v1/x/tweets/123") is True
+    assert matches_path("/api/v1/x/tweets/{id}", "/api/v1/x/tweets/123?expand=author") is True
     assert matches_path(" /api/v1/x/tweets/{id} ", " /api/v1/x/tweets/123 ") is True
     assert matches_path("/api/v1/x/tweets/:id", "/api/v1/x/tweets/123") is True
+    assert (
+        matches_path(
+            "/api/v1/x/tweets/:id",
+            "https://api.xquik.com/api/v1/x/tweets/123#metrics",
+        )
+        is True
+    )
     assert matches_path("/api/v1/x/tweets/{id}/extra", "/api/v1/x/tweets//extra") is False
     assert matches_path("/api/v1/x/tweets/:id/extra", "/api/v1/x/tweets//extra") is False
     assert matches_path("/api/v1/x/tweets/{id}", "/api/v1/x/tweets/") is False
@@ -27,6 +35,8 @@ def test_catalog_contains_tweet_search() -> None:
     assert endpoint is not None
     assert endpoint.action is False
     assert find_endpoint(" get ", " /api/v1/x/tweets/search ") == endpoint
+    assert find_endpoint("GET", "/api/v1/x/tweets/search?q=ai") == endpoint
+    assert find_endpoint("GET", "https://api.xquik.com/api/v1/x/tweets/search?q=ai") == endpoint
     assert find_endpoint("GET", "/api/v1/missing") is None
 
 
@@ -95,6 +105,18 @@ def test_explore_filters_catalog() -> None:
             "mpp": True,
             "path": "/api/v1/x/tweets/search",
             "query": "search",
+        }
+    )
+
+    assert results
+    assert results[0]["path"] == "/api/v1/x/tweets/search"
+
+
+def test_explore_filters_catalog_with_copied_url_path() -> None:
+    results = explore(
+        {
+            "include_actions": True,
+            "path": "https://api.xquik.com/api/v1/x/tweets/search?q=ai#results",
         }
     )
 
