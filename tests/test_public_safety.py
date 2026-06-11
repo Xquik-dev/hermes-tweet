@@ -9,6 +9,8 @@ if TYPE_CHECKING:
     import pytest
 
 ROOT = Path(__file__).parents[1]
+SCRIPTS_DIR = ROOT / "scripts"
+sys.path.insert(0, str(SCRIPTS_DIR))
 
 
 def load_public_safety_module() -> Any:
@@ -97,7 +99,7 @@ def test_public_safety_scan_includes_github_repository_config() -> None:
 
 
 def test_public_link_and_safety_surfaces_stay_aligned() -> None:
-    assert set(check_public_safety.PUBLIC_TEXT_FILES) == set(check_public_links.PUBLIC_LINK_FILES)
+    assert check_public_safety.PUBLIC_TEXT_FILES is check_public_links.PUBLIC_LINK_FILES
 
 
 def test_scan_public_files_reports_relative_paths(
