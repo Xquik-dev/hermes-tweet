@@ -55,6 +55,8 @@ optional backend notes.
 - Use `tweet_explore` first when a user asks what Hermes Tweet can do.
 - Use `tweet_read` for public or account read routes that the catalog marks as
   read-safe.
+- Copied endpoint URLs are fine, but Hermes Tweet matches only catalog-listed
+  paths.
 - Use `tweet_action` only when the user asks for posting, replies, DMs,
   follows, monitor changes, webhook changes, media changes, extraction jobs, or
   draw actions and actions are explicitly enabled.

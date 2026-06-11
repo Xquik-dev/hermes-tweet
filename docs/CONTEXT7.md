@@ -63,6 +63,8 @@ expected safe gating.
 Use `tweet_explore` first. Then call `tweet_read` with a concrete
 `/api/v1/...` path for account checks, tweet search, user lookup, trends,
 media reads, monitors, webhooks, draws, or extraction jobs.
+Copied endpoint URLs are accepted only when they resolve to catalog-listed
+paths.
 
 ## Hermes Agent Patterns
 
