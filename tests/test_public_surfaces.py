@@ -44,6 +44,12 @@ def test_public_surface_registry_files_exist() -> None:
         assert (ROOT / file_name).is_file()
 
 
+def test_public_surface_registry_has_unique_files() -> None:
+    files = public_surfaces.PUBLIC_SURFACE_FILES
+
+    assert len(files) == len(set(files))
+
+
 def test_public_surface_selection_normalizes_dot_slash_targets() -> None:
     files = public_surfaces.select_public_surface_files(
         ("./README.md", "./docs/ECOSYSTEM.md"),
