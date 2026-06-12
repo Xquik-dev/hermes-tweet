@@ -1,6 +1,8 @@
 # GitHub Metadata
 
 Use this metadata when creating or refreshing the public GitHub repository.
+Before reusing it for public submissions, validate the target with
+`docs/SUBMISSION_READINESS.md`.
 
 ## Repository
 
