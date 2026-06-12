@@ -31,6 +31,14 @@ def test_default_public_surface_selection_uses_registry() -> None:
     assert files is public_surfaces.PUBLIC_SURFACE_FILES
 
 
+def test_public_surface_registry_uses_normalized_relative_files() -> None:
+    for file_name in public_surfaces.PUBLIC_SURFACE_FILES:
+        path = Path(file_name)
+        assert not path.is_absolute()
+        assert not file_name.startswith("./")
+        assert ".." not in path.parts
+
+
 def test_public_surface_selection_normalizes_dot_slash_targets() -> None:
     files = public_surfaces.select_public_surface_files(
         ("./README.md", "./docs/ECOSYSTEM.md"),
