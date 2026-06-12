@@ -75,3 +75,12 @@ def test_public_surface_selection_rejects_unknown_targets() -> None:
 def test_public_surface_selection_rejects_duplicate_targets() -> None:
     with pytest.raises(ValueError, match=r"duplicate public files: README\.md"):
         public_surfaces.select_public_surface_files(("README.md", "./README.md"))
+
+
+def test_public_surface_selection_reports_each_duplicate_once() -> None:
+    with pytest.raises(ValueError, match=r"duplicate public files: README\.md") as exc_info:
+        public_surfaces.select_public_surface_files(
+            ("README.md", "./README.md", "docs/ECOSYSTEM.md", "README.md"),
+        )
+
+    assert str(exc_info.value) == "duplicate public files: README.md"

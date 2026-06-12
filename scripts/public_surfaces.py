@@ -57,9 +57,13 @@ def normalize_public_surface_file(file_name: str) -> str:
 
 def find_duplicate_files(files: Sequence[str]) -> tuple[str, ...]:
     seen_files: set[str] = set()
+    reported_files: set[str] = set()
     duplicate_files: list[str] = []
     for file_name in files:
         if file_name in seen_files:
+            if file_name in reported_files:
+                continue
+            reported_files.add(file_name)
             duplicate_files.append(file_name)
             continue
         seen_files.add(file_name)
