@@ -51,9 +51,8 @@ EXPECTED_SURFACE_GUIDE_LINK = "[`docs/HERMES_SURFACES.md`](docs/HERMES_SURFACES.
 EXPECTED_INTEGRATION_PATTERNS_LINK = (
     "[`docs/INTEGRATION_PATTERNS.md`](docs/INTEGRATION_PATTERNS.md)"
 )
-EXPECTED_SUBMISSION_READINESS_LINK = (
-    "[`docs/SUBMISSION_READINESS.md`](docs/SUBMISSION_READINESS.md)"
-)
+SUBMISSION_READINESS_PATH = "docs/SUBMISSION_READINESS.md"
+EXPECTED_SUBMISSION_READINESS_LINK = f"[`{SUBMISSION_READINESS_PATH}`]({SUBMISSION_READINESS_PATH})"
 EXPECTED_SUBMISSION_READINESS_SURFACES = (
     "docs/PUBLICATION_CHECKLIST.md",
     "docs/HERMES_SURFACES.md",
@@ -206,7 +205,7 @@ def test_release_metadata_surfaces_stay_aligned() -> None:
     assert EXPECTED_INTEGRATION_PATTERNS_LINK in readme
     assert EXPECTED_SUBMISSION_READINESS_LINK in readme
     for surface in EXPECTED_SUBMISSION_READINESS_SURFACES:
-        assert "docs/SUBMISSION_READINESS.md" in (ROOT / surface).read_text(encoding="utf-8")
+        assert SUBMISSION_READINESS_PATH in (ROOT / surface).read_text(encoding="utf-8")
 
     urls = pyproject["project"]["urls"]
     assert urls["Homepage"] == GUIDE_URL
