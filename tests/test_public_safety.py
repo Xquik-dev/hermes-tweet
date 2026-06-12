@@ -64,6 +64,18 @@ def test_scan_line_allows_documented_placeholders() -> None:
     assert findings == []
 
 
+def test_scan_line_placeholder_does_not_hide_secret_token() -> None:
+    token = "ghp_" + ("A" * 24)
+    line = f"Set XQUIK_API_KEY=xq_your_key; never publish token={token}."
+
+    findings = check_public_safety.scan_line(Path("README.md"), 9, line)
+
+    assert finding_labels(findings) == ["github-token"]
+    rendered_finding = check_public_safety.format_finding(findings[0])
+    assert rendered_finding == "README.md:9: github-token"
+    assert token not in rendered_finding
+
+
 def test_scan_line_placeholder_does_not_hide_private_wording() -> None:
     line = f"Set XQUIK_API_KEY=xq_your_key; never document {'internal'} {'cost'}."
 
