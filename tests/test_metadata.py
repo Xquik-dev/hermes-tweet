@@ -54,6 +54,13 @@ EXPECTED_INTEGRATION_PATTERNS_LINK = (
 EXPECTED_SUBMISSION_READINESS_LINK = (
     "[`docs/SUBMISSION_READINESS.md`](docs/SUBMISSION_READINESS.md)"
 )
+EXPECTED_SUBMISSION_READINESS_SURFACES = (
+    "docs/PUBLICATION_CHECKLIST.md",
+    "docs/HERMES_SURFACES.md",
+    "docs/INTEGRATION_PATTERNS.md",
+    "docs/ECOSYSTEM.md",
+    "docs/GITHUB_METADATA.md",
+)
 SETUP_UV_ACTION = "astral-sh/setup-uv@v8.2.0"
 ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
 HERMES_AGENT_COMPAT_COMMAND = "uv run python scripts/check_hermes_agent_compat.py"
@@ -198,21 +205,8 @@ def test_release_metadata_surfaces_stay_aligned() -> None:
     assert EXPECTED_SURFACE_GUIDE_LINK in readme
     assert EXPECTED_INTEGRATION_PATTERNS_LINK in readme
     assert EXPECTED_SUBMISSION_READINESS_LINK in readme
-    assert "docs/SUBMISSION_READINESS.md" in (ROOT / "docs" / "PUBLICATION_CHECKLIST.md").read_text(
-        encoding="utf-8"
-    )
-    assert "docs/SUBMISSION_READINESS.md" in (ROOT / "docs" / "HERMES_SURFACES.md").read_text(
-        encoding="utf-8"
-    )
-    assert "docs/SUBMISSION_READINESS.md" in (ROOT / "docs" / "INTEGRATION_PATTERNS.md").read_text(
-        encoding="utf-8"
-    )
-    assert "docs/SUBMISSION_READINESS.md" in (ROOT / "docs" / "ECOSYSTEM.md").read_text(
-        encoding="utf-8"
-    )
-    assert "docs/SUBMISSION_READINESS.md" in (ROOT / "docs" / "GITHUB_METADATA.md").read_text(
-        encoding="utf-8"
-    )
+    for surface in EXPECTED_SUBMISSION_READINESS_SURFACES:
+        assert "docs/SUBMISSION_READINESS.md" in (ROOT / surface).read_text(encoding="utf-8")
 
     urls = pyproject["project"]["urls"]
     assert urls["Homepage"] == GUIDE_URL
