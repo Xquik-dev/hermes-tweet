@@ -64,6 +64,14 @@ def test_scan_line_allows_documented_placeholders() -> None:
     assert findings == []
 
 
+def test_scan_line_placeholder_does_not_hide_private_wording() -> None:
+    line = f"Set XQUIK_API_KEY=xq_your_key; never document {'internal'} {'cost'}."
+
+    findings = check_public_safety.scan_line(Path("README.md"), 9, line)
+
+    assert finding_labels(findings) == ["internal-cost"]
+
+
 def test_scan_line_flags_private_public_wording() -> None:
     line = f"Remove {'internal'} {'cost'} and {'private'} {'vendor'} wording."
 
