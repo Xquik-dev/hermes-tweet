@@ -171,6 +171,19 @@ def test_main_rejects_unregistered_targets(
     assert captured.err == ""
 
 
+def test_main_rejects_absolute_targets_outside_repo(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    outside_path = ROOT.parent / "private-notes.md"
+
+    result = check_public_links.main((str(outside_path),))
+    captured = capsys.readouterr()
+
+    assert result == 1
+    assert captured.out == f"unregistered public files: {outside_path}\n"
+    assert captured.err == ""
+
+
 def test_check_public_url_falls_back_from_head_405_to_get_success() -> None:
     client = FakeClient([405, 200])
 

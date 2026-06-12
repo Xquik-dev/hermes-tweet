@@ -214,3 +214,16 @@ def test_public_safety_main_rejects_unregistered_targets(
     assert result == 1
     assert captured.out == "unregistered public files: private-notes.md\n"
     assert captured.err == ""
+
+
+def test_public_safety_main_rejects_absolute_targets_outside_repo(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    outside_path = ROOT.parent / "private-notes.md"
+
+    result = check_public_safety.main((str(outside_path),))
+    captured = capsys.readouterr()
+
+    assert result == 1
+    assert captured.out == f"unregistered public files: {outside_path}\n"
+    assert captured.err == ""
