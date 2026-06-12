@@ -43,12 +43,12 @@ PUBLIC_SURFACE_FILES = (
 
 def normalize_public_surface_file(file_name: str) -> str:
     path = Path(file_name)
-    normalized = file_name
-    if path.is_absolute():
-        try:
-            normalized = path.relative_to(ROOT).as_posix()
-        except ValueError:
-            normalized = file_name
+    root = ROOT.resolve()
+    candidate = path if path.is_absolute() else ROOT / path
+    try:
+        return candidate.resolve(strict=False).relative_to(root).as_posix()
+    except ValueError:
+        normalized = file_name
 
     while normalized.startswith("./"):
         normalized = normalized[2:]

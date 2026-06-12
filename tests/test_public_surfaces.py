@@ -50,6 +50,14 @@ def test_public_surface_selection_normalizes_absolute_targets() -> None:
     assert files == ("README.md", "docs/ECOSYSTEM.md")
 
 
+def test_public_surface_selection_normalizes_relative_parent_segments() -> None:
+    files = public_surfaces.select_public_surface_files(
+        ("docs/../README.md", "docs/../docs/ECOSYSTEM.md"),
+    )
+
+    assert files == ("README.md", "docs/ECOSYSTEM.md")
+
+
 def test_public_surface_selection_rejects_absolute_targets_outside_repo() -> None:
     outside_path = ROOT.parent / "private-notes.md"
 
@@ -60,6 +68,14 @@ def test_public_surface_selection_rejects_absolute_targets_outside_repo() -> Non
         public_surfaces.select_public_surface_files((str(outside_path),))
 
     assert str(exc_info.value) == f"unregistered public files: {outside_path}"
+
+
+def test_public_surface_selection_rejects_relative_targets_outside_repo() -> None:
+    with pytest.raises(
+        ValueError,
+        match=r"unregistered public files: \.\./private-notes\.md",
+    ):
+        public_surfaces.select_public_surface_files(("../private-notes.md",))
 
 
 def test_public_surface_selection_rejects_unknown_targets() -> None:
