@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -47,6 +48,18 @@ def test_public_surface_selection_normalizes_absolute_targets() -> None:
     )
 
     assert files == ("README.md", "docs/ECOSYSTEM.md")
+
+
+def test_public_surface_selection_rejects_absolute_targets_outside_repo() -> None:
+    outside_path = ROOT.parent / "private-notes.md"
+
+    with pytest.raises(
+        ValueError,
+        match=rf"unregistered public files: {re.escape(str(outside_path))}",
+    ) as exc_info:
+        public_surfaces.select_public_surface_files((str(outside_path),))
+
+    assert str(exc_info.value) == f"unregistered public files: {outside_path}"
 
 
 def test_public_surface_selection_rejects_unknown_targets() -> None:
