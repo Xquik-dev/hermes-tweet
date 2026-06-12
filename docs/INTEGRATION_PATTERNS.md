@@ -48,7 +48,9 @@ and Hermes plugin enablement.
 Skill catalogs and awesome lists:
 Keep them for discovery and comparison. Add Hermes Tweet when the listing
 accepts Hermes Agent plugins, X/Twitter skills, social automation tools, or
-optional backend notes.
+optional backend notes. Before opening a public submission, use
+`docs/SUBMISSION_READINESS.md` to check fit, duplicates, wording, validation,
+and public-safety requirements.
 
 ## Tool Choice
 
