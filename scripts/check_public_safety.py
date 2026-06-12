@@ -41,18 +41,21 @@ class PublicSafetyFinding:
     label: str
 
 
-def is_safe_placeholder(line: str) -> bool:
-    return any(placeholder in line for placeholder in SAFE_PLACEHOLDERS)
+def line_without_safe_placeholders(line: str) -> str:
+    sanitized_line = line
+    for placeholder in SAFE_PLACEHOLDERS:
+        sanitized_line = sanitized_line.replace(placeholder, "")
+    return sanitized_line
 
 
 def scan_line(path: Path, line_number: int, line: str) -> list[PublicSafetyFinding]:
     findings: list[PublicSafetyFinding] = []
-    if not is_safe_placeholder(line):
-        findings.extend(
-            PublicSafetyFinding(path, line_number, label)
-            for label, pattern in SECRET_PATTERNS
-            if pattern.search(line)
-        )
+    secret_line = line_without_safe_placeholders(line)
+    findings.extend(
+        PublicSafetyFinding(path, line_number, label)
+        for label, pattern in SECRET_PATTERNS
+        if pattern.search(secret_line)
+    )
 
     findings.extend(
         PublicSafetyFinding(path, line_number, label)
