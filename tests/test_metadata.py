@@ -210,6 +210,9 @@ def test_release_metadata_surfaces_stay_aligned() -> None:
     assert "docs/SUBMISSION_READINESS.md" in (ROOT / "docs" / "ECOSYSTEM.md").read_text(
         encoding="utf-8"
     )
+    assert "docs/SUBMISSION_READINESS.md" in (ROOT / "docs" / "GITHUB_METADATA.md").read_text(
+        encoding="utf-8"
+    )
 
     urls = pyproject["project"]["urls"]
     assert urls["Homepage"] == GUIDE_URL
