@@ -44,6 +44,13 @@ def test_public_surface_registry_files_exist() -> None:
         assert (ROOT / file_name).is_file()
 
 
+def test_public_surface_registry_files_are_utf8_text() -> None:
+    for file_name in public_surfaces.PUBLIC_SURFACE_FILES:
+        content = (ROOT / file_name).read_text(encoding="utf-8")
+
+        assert "\x00" not in content
+
+
 def test_public_surface_registry_has_unique_files() -> None:
     files = public_surfaces.PUBLIC_SURFACE_FILES
 
