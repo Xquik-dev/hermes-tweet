@@ -43,6 +43,7 @@ EXPECTED_CLAUDE_PLUGIN_DESCRIPTION = (
     "Native Hermes Agent X/Twitter plugin for Xquik automation with read-first "
     "workflows and approval-gated actions."
 )
+EXPECTED_CODEX_PLUGIN_KEYWORDS = [*EXPECTED_AGENT_SKILL_MANIFEST_TAGS, "codex-plugin"]
 EXPECTED_AGENT_SKILL_INSTALL = "hermes plugins install Xquik-dev/hermes-tweet --enable"
 EXPECTED_DASHBOARD_MANIFEST_DESCRIPTION = (
     "Hermes Agent X/Twitter plugin for searching tweets, reading replies, "
@@ -65,6 +66,10 @@ EXPECTED_SUBMISSION_READINESS_SURFACES = (
     ROOT / "docs" / "GITHUB_METADATA.md",
 )
 SETUP_UV_ACTION = "astral-sh/setup-uv@v8.2.0"
+CHECKOUT_ACTION_SHA = "actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10"
+HOL_PLUGIN_SCANNER_ACTION_SHA = (
+    "hashgraph-online/ai-plugin-scanner-action@049f135bbda5f993c3564ce2b97d72ff595c7a1e"
+)
 ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
 HERMES_AGENT_COMPAT_COMMAND = "uv run python scripts/check_hermes_agent_compat.py"
 PUBLIC_SAFETY_COMMAND = "uv run python scripts/check_public_safety.py"
@@ -274,6 +279,9 @@ def test_integration_patterns_classify_marketplace_bridges() -> None:
     assert "compatibility routes, not as catalog targets" in guide
     assert "`hermes plugins install Xquik-dev/hermes-tweet --enable`" in guide
     assert "`.claude-plugin/plugin.json` metadata" in guide
+    assert "Codex marketplace bridges:" in guide
+    assert "`.codex-plugin/plugin.json` metadata" in guide
+    assert "HOL Plugin Scanner evidence" in guide
 
 
 def test_plugin_manifests_keep_install_prompt_contract() -> None:
@@ -370,6 +378,77 @@ def test_claude_plugin_manifest_matches_public_package_metadata() -> None:
     assert manifest["repository"] == project["urls"]["Repository"]
     assert manifest["keywords"] == EXPECTED_AGENT_SKILL_MANIFEST_TAGS
     assert "include .claude-plugin/plugin.json" in (ROOT / "MANIFEST.in").read_text().splitlines()
+
+
+def test_codex_plugin_manifest_matches_public_package_metadata() -> None:
+    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
+    project = pyproject["project"]
+    manifest = json.loads((ROOT / ".codex-plugin" / "plugin.json").read_text())
+
+    assert manifest["name"] == project["name"]
+    assert manifest["version"] == project["version"]
+    assert manifest["description"] == EXPECTED_CLAUDE_PLUGIN_DESCRIPTION
+    assert manifest["author"] == {"name": "Xquik", "url": "https://github.com/Xquik-dev"}
+    assert manifest["license"] == project["license"]
+    assert manifest["homepage"] == GUIDE_URL
+    assert manifest["repository"] == project["urls"]["Repository"]
+    assert manifest["keywords"] == EXPECTED_CODEX_PLUGIN_KEYWORDS
+    assert manifest["skills"] == "./skills/"
+
+    interface = require_mapping(manifest["interface"])
+    assert interface["displayName"] == "Hermes Tweet"
+    assert interface["developerName"] == "Xquik"
+    assert interface["category"] == "Productivity"
+    assert interface["capabilities"] == ["Interactive", "Read", "Write"]
+    assert interface["websiteURL"] == GUIDE_URL
+    assert (
+        interface["privacyPolicyURL"] == "https://github.com/Xquik-dev/hermes-tweet/security/policy"
+    )
+    assert interface["termsOfServiceURL"] == (
+        "https://github.com/Xquik-dev/hermes-tweet/blob/master/LICENSE"
+    )
+    assert interface["composerIcon"] == "./assets/icon.svg"
+
+    manifest_lines = (ROOT / "MANIFEST.in").read_text().splitlines()
+    assert "include .codex-plugin/plugin.json" in manifest_lines
+    assert "include SECURITY.md" in manifest_lines
+    assert "include assets/icon.svg" in manifest_lines
+
+
+def test_root_security_policy_matches_github_security_policy() -> None:
+    assert (ROOT / "SECURITY.md").read_text().rstrip() == (
+        ROOT / ".github" / "SECURITY.md"
+    ).read_text().rstrip()
+
+
+def test_hol_plugin_scanner_workflow_matches_codex_catalog_requirements() -> None:
+    workflow = load_object_mapping(ROOT / ".github" / "workflows" / "hol-plugin-scanner.yml")
+
+    on_config = require_mapping(workflow[True])
+    assert "pull_request" in on_config
+    assert require_mapping(on_config["push"])["branches"] == ["master", "main"]
+    assert on_config["workflow_dispatch"] is None
+    assert require_mapping(workflow["permissions"]) == {
+        "contents": "read",
+        "security-events": "write",
+    }
+
+    jobs = require_mapping(workflow["jobs"])
+    scan = require_mapping(jobs["scan"])
+    assert scan["runs-on"] == "ubuntu-latest"
+    steps = require_list(scan["steps"])
+    assert find_step(steps, "Checkout")["uses"] == CHECKOUT_ACTION_SHA
+
+    scanner = find_step(steps, "HOL Plugin Scanner")
+    assert scanner["uses"] == HOL_PLUGIN_SCANNER_ACTION_SHA
+    assert require_mapping(scanner["with"]) == {
+        "plugin_dir": ".",
+        "mode": "scan",
+        "min_score": 80,
+        "fail_on_severity": "high",
+        "format": "sarif",
+        "upload_sarif": True,
+    }
 
 
 def test_plugin_hub_manifest_matches_public_package_metadata() -> None:

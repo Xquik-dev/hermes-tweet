@@ -53,6 +53,12 @@ list. Otherwise, point bridge users to
 `hermes plugins install Xquik-dev/hermes-tweet --enable` and the source-native
 `.claude-plugin/plugin.json` metadata.
 
+Codex marketplace bridges:
+Keep Codex plugin catalogs as source-readiness routes when they require
+`.codex-plugin/plugin.json` metadata, a root security policy, local icon, and
+HOL Plugin Scanner evidence before listing. Add Hermes Tweet only after those
+source gates are present and target duplicate checks are clean.
+
 Skill catalogs and awesome lists:
 Keep them for discovery and comparison. Add Hermes Tweet when the listing
 accepts Hermes Agent plugins, X/Twitter skills, social automation tools, or
