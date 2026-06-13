@@ -110,6 +110,7 @@ runtime locally.
 | Hermes entry point | `hermes-tweet = hermes_tweet` |
 | Entry point group | `hermes_agent.plugins` |
 | Included assets | `plugin.yaml`, `catalog_data.json`, bundled Hermes skill |
+| Claude plugin manifest | [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) |
 | Registry skill path | [`skills/hermes-tweet/SKILL.md`](skills/hermes-tweet/SKILL.md) |
 | Context7 guide | [`docs/CONTEXT7.md`](docs/CONTEXT7.md) |
 | Hermes surface guide | [`docs/HERMES_SURFACES.md`](docs/HERMES_SURFACES.md) |

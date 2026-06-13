@@ -13,6 +13,8 @@ these surfaces:
 - X/Twitter, tweet, social listening, monitoring, digest, or publishing tools
 - MCP servers that document optional Hermes Agent backends
 - OpenClaw or ClawHub skills that accept complementary backend guidance
+- Claude Code plugin catalogs that accept source repositories with
+  `.claude-plugin` metadata
 - Skill registries, plugin catalogs, awesome lists, or ecosystem directories
 
 Do not submit when the target is only a browser-cookie workflow, only a
@@ -44,6 +46,8 @@ Prefer concise wording that explains where Hermes Tweet fits:
 - read-only by default, with explicit action gating
 - compatible with Hermes Desktop, remote gateway, TUI, CLI, dashboard, cron, and
   CI smoke-test surfaces
+- source-native `.claude-plugin/plugin.json` metadata for catalogs that install
+  plugins directly from a repository
 - complementary to local browser-cookie or direct OAuth examples
 - copied endpoint URLs resolve only to catalog-listed `/api/v1/...` paths
 

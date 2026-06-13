@@ -17,6 +17,7 @@ PUBLIC_SURFACE_FILES = (
     ".github/dependabot.yml",
     ".github/workflows/ci.yml",
     ".github/workflows/publish.yml",
+    ".claude-plugin/plugin.json",
     "AGENTS.md",
     "CODE_OF_CONDUCT.md",
     "README.md",
