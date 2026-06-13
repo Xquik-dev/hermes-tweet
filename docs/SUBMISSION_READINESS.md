@@ -15,6 +15,8 @@ these surfaces:
 - OpenClaw or ClawHub skills that accept complementary backend guidance
 - Claude Code plugin catalogs that accept source repositories with
   `.claude-plugin` metadata
+- Codex plugin catalogs that accept source repositories with `.codex-plugin`
+  metadata, a root security policy, local icon, and scanner evidence
 - Skill registries, plugin catalogs, awesome lists, or ecosystem directories
 
 Do not submit when the target is only a browser-cookie workflow, only a
@@ -51,6 +53,8 @@ Prefer concise wording that explains where Hermes Tweet fits:
   CI smoke-test surfaces
 - source-native `.claude-plugin/plugin.json` metadata for catalogs that install
   plugins directly from a repository
+- source-native `.codex-plugin/plugin.json` metadata with HOL Plugin Scanner
+  evidence for Codex plugin catalogs
 - complementary to local browser-cookie or direct OAuth examples
 - copied endpoint URLs resolve only to catalog-listed `/api/v1/...` paths
 

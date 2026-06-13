@@ -36,6 +36,8 @@ Hermes Tweet is published as `hermes-tweet` on PyPI and currently released at
 - [x] Maintain accepted public ecosystem surfaces in `docs/ECOSYSTEM.md`.
 - [x] Use `docs/SUBMISSION_READINESS.md` before public skill, plugin, catalog,
   registry, awesome-list, or integration submissions.
+- [x] Keep Codex plugin metadata, root security policy, local icon, and scanner
+  workflow ready for Codex catalog submissions.
 
 ## Release Gate
 

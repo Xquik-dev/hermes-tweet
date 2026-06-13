@@ -109,13 +109,18 @@ runtime locally.
 | Package format | Wheel and source distribution |
 | Hermes entry point | `hermes-tweet = hermes_tweet` |
 | Entry point group | `hermes_agent.plugins` |
-| Included assets | `plugin.yaml`, `catalog_data.json`, bundled Hermes skill |
+| Included assets | `plugin.yaml`, `catalog_data.json`, bundled Hermes skill, Codex/Claude manifests |
 | Claude plugin manifest | [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) |
+| Codex plugin manifest | [`.codex-plugin/plugin.json`](.codex-plugin/plugin.json) |
 | Registry skill path | [`skills/hermes-tweet/SKILL.md`](skills/hermes-tweet/SKILL.md) |
 | Context7 guide | [`docs/CONTEXT7.md`](docs/CONTEXT7.md) |
 | Hermes surface guide | [`docs/HERMES_SURFACES.md`](docs/HERMES_SURFACES.md) |
 | Integration patterns | [`docs/INTEGRATION_PATTERNS.md`](docs/INTEGRATION_PATTERNS.md) |
 | Submission readiness | [`docs/SUBMISSION_READINESS.md`](docs/SUBMISSION_READINESS.md) |
+
+Hermes Tweet also ships source-native `.codex-plugin` metadata, a root
+security policy, a local composer icon, and a HOL Plugin Scanner workflow for
+Codex plugin catalogs that require local validation evidence before listing.
 
 ## Configure
 
