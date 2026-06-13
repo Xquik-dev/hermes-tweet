@@ -32,6 +32,9 @@ Before opening or refreshing a submission:
   target's own format.
 - Trace fork parents before using a personal fork, and use a renamed fork only
   when the normal fork name is already occupied by another parent.
+- Respect target contribution docs. If a target requires issue-first
+  submissions or maintainer-curated additions, update the existing issue or
+  open a new issue instead of opening a direct PR.
 
 If a target already has a live Hermes Tweet entry, do not open another one.
 Refresh only when it fixes a concrete merge blocker, stale target-native
