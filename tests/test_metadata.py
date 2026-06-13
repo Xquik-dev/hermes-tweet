@@ -267,6 +267,15 @@ def test_hermes_surface_guide_keeps_runtime_host_contract_visible() -> None:
     assert 'hermes -z "/xstatus"' in guide
 
 
+def test_integration_patterns_classify_marketplace_bridges() -> None:
+    guide = (ROOT / "docs" / "INTEGRATION_PATTERNS.md").read_text()
+
+    assert "Claude marketplace bridges:" in guide
+    assert "compatibility routes, not as catalog targets" in guide
+    assert "`hermes plugins install Xquik-dev/hermes-tweet --enable`" in guide
+    assert "`.claude-plugin/plugin.json` metadata" in guide
+
+
 def test_plugin_manifests_keep_install_prompt_contract() -> None:
     root_manifest = load_mapping(ROOT / "plugin.yaml")
     package_manifest = load_mapping(ROOT / "hermes_tweet" / "plugin.yaml")

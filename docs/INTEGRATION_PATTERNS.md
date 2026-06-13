@@ -45,6 +45,14 @@ Keep them for MCP-native clients and tool schemas. Add Hermes Tweet when the
 user wants a native Hermes plugin with slash commands, bundled skill guidance,
 and Hermes plugin enablement.
 
+Claude marketplace bridges:
+Keep bridges that install Claude plugin marketplaces from a different agent
+runtime as compatibility routes, not as catalog targets. Add Hermes Tweet to a
+bridge only when the bridge has its own public marketplace or recommended-source
+list. Otherwise, point bridge users to
+`hermes plugins install Xquik-dev/hermes-tweet --enable` and the source-native
+`.claude-plugin/plugin.json` metadata.
+
 Skill catalogs and awesome lists:
 Keep them for discovery and comparison. Add Hermes Tweet when the listing
 accepts Hermes Agent plugins, X/Twitter skills, social automation tools, or
