@@ -1,4 +1,5 @@
 include plugin.yaml
+include .claude-plugin/plugin.json
 include skill.json
 include dashboard/manifest.json
 include .hermes-eco.json

@@ -39,6 +39,10 @@ EXPECTED_AGENT_SKILL_MANIFEST_TAGS = [
     "social-media",
     "automation",
 ]
+EXPECTED_CLAUDE_PLUGIN_DESCRIPTION = (
+    "Native Hermes Agent X/Twitter plugin for Xquik automation with read-first "
+    "workflows and approval-gated actions."
+)
 EXPECTED_AGENT_SKILL_INSTALL = "hermes plugins install Xquik-dev/hermes-tweet --enable"
 EXPECTED_DASHBOARD_MANIFEST_DESCRIPTION = (
     "Hermes Agent X/Twitter plugin for searching tweets, reading replies, "
@@ -341,6 +345,22 @@ def test_agent_skill_manifest_matches_public_package_metadata() -> None:
     assert manifest["repository"] == project["urls"]["Repository"]
     assert set(manifest["keywords"]).issubset(project["keywords"])
     assert "include skill.json" in (ROOT / "MANIFEST.in").read_text().splitlines()
+
+
+def test_claude_plugin_manifest_matches_public_package_metadata() -> None:
+    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
+    project = pyproject["project"]
+    manifest = json.loads((ROOT / ".claude-plugin" / "plugin.json").read_text())
+
+    assert manifest["name"] == project["name"]
+    assert manifest["version"] == project["version"]
+    assert manifest["description"] == EXPECTED_CLAUDE_PLUGIN_DESCRIPTION
+    assert manifest["author"] == {"name": "Xquik", "url": "https://github.com/Xquik-dev"}
+    assert manifest["license"] == project["license"]
+    assert manifest["homepage"] == GUIDE_URL
+    assert manifest["repository"] == project["urls"]["Repository"]
+    assert manifest["keywords"] == EXPECTED_AGENT_SKILL_MANIFEST_TAGS
+    assert "include .claude-plugin/plugin.json" in (ROOT / "MANIFEST.in").read_text().splitlines()
 
 
 def test_plugin_hub_manifest_matches_public_package_metadata() -> None:
