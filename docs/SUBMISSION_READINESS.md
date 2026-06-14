@@ -27,6 +27,9 @@ for a Hermes Tweet update on an existing route. Reject personal or
 product-owned marketplaces that describe themselves as owner-specific,
 team-specific, or closed to random additions unless their docs clearly invite
 third-party Hermes Tweet submissions.
+Reject source-packet, evidence-packet, handoff-guide, Xquik toolkit,
+xquik-twitter-data, or Xquik API integration submissions when they do not add a
+target-native Hermes Tweet entry.
 
 ## Duplicate Gate
 
@@ -43,6 +46,10 @@ Before opening or refreshing a submission:
 - Require the PR or issue title and summary to name `Hermes Tweet` or
   `hermes-tweet`. Do not submit or refresh routes titled only for `Xquik`,
   `TweetClaw`, `OpenClaw`, or other adjacent projects.
+- Reject slugs, package names, plugin names, or catalog keys centered on
+  `xquik-*`, `tweetclaw-*`, `openclaw-*`, `source-packets`, or
+  `evidence-packets` unless the same submission clearly installs or indexes
+  Hermes Tweet as the native entry.
 - Check accepted examples so the wording, file layout, and validation match the
   target's own format.
 - Trace fork parents before using a personal fork, and use a renamed fork only
