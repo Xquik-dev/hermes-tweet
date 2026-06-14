@@ -300,6 +300,10 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
     assert "maintainer has already asked" in checklist
     assert "product-owned marketplaces" in checklist
     assert "closed to random additions" in checklist
+    assert "root license files such as `LICENSE`, `LICENSE.md`" in checklist
+    assert "read it before rejecting" in checklist
+    assert "claim form, upload UI, or account-gated directory" in checklist
+    assert "source, catalog, or registry file that can be changed by PR" in checklist
     assert "Xquik toolkit" in checklist
     assert "xquik-twitter-data" in checklist
     assert "target-native Hermes Tweet entry" in checklist

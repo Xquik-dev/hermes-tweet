@@ -27,6 +27,13 @@ for a Hermes Tweet update on an existing route. Reject personal or
 product-owned marketplaces that describe themselves as owner-specific,
 team-specific, or closed to random additions unless their docs clearly invite
 third-party Hermes Tweet submissions.
+Treat the contribution license as detectable only after checking both GitHub
+metadata and obvious root license files such as `LICENSE`, `LICENSE.md`,
+`COPYING`, or `NOTICE`. When metadata is empty but a root license file exists,
+read it before rejecting; accept only clear OSI-style permission text.
+Reject crawler or indexer directories whose submission path is only a hosted
+claim form, upload UI, or account-gated directory unless the repository exposes
+a seed, source, catalog, or registry file that can be changed by PR.
 Reject source-packet, evidence-packet, handoff-guide, Xquik toolkit,
 xquik-twitter-data, or Xquik API integration submissions when they do not add a
 target-native Hermes Tweet entry.
