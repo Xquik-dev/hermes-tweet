@@ -137,6 +137,11 @@ If the target has no CI and the submission repairs a conflict or review
 request, leave at most one concise validation comment. Do not repeat comments
 when the PR already has current validation evidence.
 
+When creating PRs or issues from a shell, write Markdown bodies through a
+reviewed file or another non-interpolating path. Verify the rendered body keeps
+repository names, backticked literals, and validation commands intact before
+waiting on checks or asking maintainers to review.
+
 ## Public-Safety Gate
 
 Public submissions must not include:
