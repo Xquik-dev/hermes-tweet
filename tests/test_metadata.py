@@ -76,6 +76,16 @@ EXPECTED_LIVE_ECOSYSTEM_SURFACES = (
         "https://github.com/open-jarvis/OpenJarvis/blob/main/docs/user-guide/skills.md",
     ),
     (
+        "Claude Skill Registry Hermes Tweet skill",
+        "https://github.com/majiayu000/claude-skill-registry/blob/main/skills/api/"
+        "hermes-tweet/SKILL.md",
+    ),
+    (
+        "Claude Skill Registry Data Hermes Tweet archive",
+        "https://github.com/majiayu000/claude-skill-registry-data/blob/main/api/"
+        "hermes-tweet/SKILL.md",
+    ),
+    (
         "Freya Hermes Tweet skill install example",
         "https://github.com/willtanoe/freya/blob/xtr/docs/user-guide/skills.md",
     ),

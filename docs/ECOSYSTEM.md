@@ -36,6 +36,8 @@ follow-up belong outside the public repository. Use
 | Hermes Atlas project page | <https://hermesatlas.com/projects/Xquik-dev/hermes-tweet> |
 | Awesome Hermes Agent plugin listing | <https://github.com/SamurAIGPT/awesome-hermes-agent#plugins> |
 | Gaia Skill Tree Hermes Tweet named skill | <https://github.com/mbtiongson1/gaia-skill-tree/blob/main/registry/named/xquik-dev/hermes-tweet.md> |
+| Claude Skill Registry Hermes Tweet skill | <https://github.com/majiayu000/claude-skill-registry/blob/main/skills/api/hermes-tweet/SKILL.md> |
+| Claude Skill Registry Data Hermes Tweet archive | <https://github.com/majiayu000/claude-skill-registry-data/blob/main/api/hermes-tweet/SKILL.md> |
 | CorpusIQ Hermes skills marketplace X/Twitter skill | <https://github.com/CorpusIQ/corpusiq-docs/blob/main/hermes/skills/marketplace/new-june14-2026/index.md> |
 | Awesome Hermes Use Cases X social automation use case | <https://github.com/aliaihub/awesome-hermes-usecases/blob/main/usecases/x-social-automation-toolset.md> |
 | Learn Hermes Agent skill-system tutorial | <https://github.com/longyunfeigu/learn-hermes-agent/blob/main/docs/en/s08-skill-system.md> |
