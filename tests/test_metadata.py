@@ -335,8 +335,11 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
         "closed prior Hermes Tweet PR",
         "target-specific blocker",
         "resubmit with the same evidence",
+        "write Markdown bodies through a reviewed file",
+        "non-interpolating path",
+        "repository names, backticked literals, and validation commands",
     ):
-        assert phrase in checklist
+        assert phrase in normalized_checklist
     assert "Xquik toolkit" in checklist
     assert "xquik-twitter-data" in checklist
     assert "target-native Hermes Tweet entry" in checklist
