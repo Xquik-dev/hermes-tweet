@@ -58,6 +58,11 @@ file intended for external additions. Topic metadata such as `agent-skills`,
 `claude-code-plugin`, `mcp-server`, or `awesome-list` is discovery evidence
 only; it is not a native submission route without an editable third-party entry
 surface.
+Reject embedded `.agents`, `.agent`, `.antigravity`, project-template, and
+copied skill directories inside application repositories unless the repository
+itself documents a third-party skill catalog, registry, or contribution lane.
+Treat those hits as downstream copies or mirrors, not fresh Hermes Tweet
+submission routes.
 Reject catalogs whose contribution rules require measurable community usage,
 maturity, a minimum star count, or a maintainer-curated quality bar until Hermes
 Tweet visibly satisfies that target's stated threshold or a maintainer
