@@ -55,6 +55,10 @@ Reject generated catalog or marketplace files unless target docs identify them
 as the canonical edit surface. When a target builds indexes from another source,
 submit only through the documented source file or generator input; skip the
 route when that source cannot carry a target-native Hermes Tweet entry.
+Reject official-directory snapshot lists whose contribution rules only accept
+plugins already published in an upstream official catalog. Treat them as status
+mirrors until Hermes Tweet is already listed in that upstream catalog, then
+record the live surface instead of opening a speculative PR.
 Reject topic-search hits that are only source repositories, standalone
 skills/plugins, framework examples, or product implementations unless the target
 exposes a documented third-party catalog, registry, marketplace, or showcase
