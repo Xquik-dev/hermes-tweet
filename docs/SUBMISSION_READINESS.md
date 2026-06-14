@@ -21,7 +21,9 @@ these surfaces:
 
 Do not submit when the target is only a browser-cookie workflow, only a
 TweetClaw route, a generic Xquik MCP server data entry, unrelated to X/Twitter
-or Hermes Agent, archived, or not licensed for contribution.
+or Hermes Agent, archived, or not licensed for contribution. Reject targets
+without a detectable contribution license unless a maintainer has already asked
+for a Hermes Tweet update on an existing route.
 
 ## Duplicate Gate
 
