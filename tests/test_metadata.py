@@ -286,6 +286,7 @@ def test_integration_patterns_classify_marketplace_bridges() -> None:
 
 def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
     checklist = (ROOT / "docs" / "SUBMISSION_READINESS.md").read_text()
+    normalized_checklist = " ".join(checklist.split())
 
     assert "`TweetClaw`, `OpenClaw`" in checklist
     assert "`SocialClaw`, `x-twitter-scraper`, and Xquik-only proposals" in checklist
@@ -300,6 +301,12 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
     assert "maintainer has already asked" in checklist
     assert "product-owned marketplaces" in checklist
     assert "closed to random additions" in checklist
+    assert "branded Claude plugin catalogs" in checklist
+    assert "describe themselves as the official catalog" in normalized_checklist
+    assert "one vendor, team, or product family" in normalized_checklist
+    assert "plugin updates flow from that owner's source repositories" in normalized_checklist
+    assert "compatibility example, not a third-party submission route" in normalized_checklist
+    assert "explicitly accept outside source repositories" in normalized_checklist
     assert "root license files such as `LICENSE`, `LICENSE.md`" in checklist
     assert "read it before rejecting" in checklist
     assert "claim form, upload UI, or account-gated directory" in checklist
