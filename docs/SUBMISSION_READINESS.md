@@ -75,6 +75,9 @@ Before opening or refreshing a submission:
 - Search the target README, docs, manifests, examples, skills, and indexes for
   `Hermes Tweet`, `hermes-tweet`, `Xquik`, and the repository URL.
 - Check open and closed PRs and issues for prior Hermes Tweet proposals.
+- Treat a closed prior Hermes Tweet issue as a completed or rejected submission
+  route. Do not reopen the same target with a PR unless a maintainer asks for a
+  new PR, conversion, or updated evidence.
 - Search open and closed PRs and issues for adjacent `TweetClaw`, `OpenClaw`,
   `SocialClaw`, `x-twitter-scraper`, and Xquik-only proposals before treating a
   target as fresh.
