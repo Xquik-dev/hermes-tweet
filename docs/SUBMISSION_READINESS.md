@@ -32,6 +32,10 @@ catalog for one vendor, team, or product family. If the catalog says plugin
 updates flow from that owner's source repositories, treat it as a compatibility
 example, not a third-party submission route, unless the docs explicitly accept
 outside source repositories.
+A `source.github` or similar repository-pointer schema is not enough by itself:
+when the marketplace instructions say it is the canonical hub for the owner's
+own skills, reject it unless the contribution docs explicitly invite outside
+source repositories.
 Treat the contribution license as detectable only after checking both GitHub
 metadata and obvious root license files such as `LICENSE`, `LICENSE.md`,
 `COPYING`, or `NOTICE`. When metadata is empty but a root license file exists,
