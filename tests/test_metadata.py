@@ -291,6 +291,10 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
     assert "`SocialClaw`, `x-twitter-scraper`, and Xquik-only proposals" in checklist
     assert "Treat adjacent-only PR history as a conflict signal" in checklist
     assert "separate native Hermes Tweet route" in checklist
+    assert "open authored PR in the target" in checklist
+    assert "treat the target as saturated" in checklist
+    assert "MCP-data-only" in checklist
+    assert "Hermes Tweet conversion" in checklist
     assert "generic Xquik MCP server data entry" in checklist
     assert "without a detectable contribution license" in checklist
     assert "maintainer has already asked" in checklist

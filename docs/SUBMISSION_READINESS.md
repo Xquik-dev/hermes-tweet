@@ -43,6 +43,11 @@ Before opening or refreshing a submission:
   target as fresh.
 - Treat adjacent-only PR history as a conflict signal unless the target docs
   show a separate native Hermes Tweet route.
+- If any open authored PR in the target is Xquik-only, TweetClaw-only,
+  OpenClaw-only, source-packet-only, evidence-packet-only, MCP-data-only, or
+  otherwise adjacent-only, treat the target as saturated. Do not open another
+  submission there unless a maintainer explicitly asks for a target-specific
+  Hermes Tweet conversion or separate native Hermes Tweet entry.
 - Require the PR or issue title and summary to name `Hermes Tweet` or
   `hermes-tweet`. Do not submit or refresh routes titled only for `Xquik`,
   `TweetClaw`, `OpenClaw`, or other adjacent projects.
