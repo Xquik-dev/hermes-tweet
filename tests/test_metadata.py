@@ -338,6 +338,8 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
         "write Markdown bodies through a reviewed file",
         "non-interpolating path",
         "repository names, backticked literals, and validation commands",
+        "`source.github` or similar repository-pointer schema",
+        "canonical hub for the owner's own skills",
     ):
         assert phrase in normalized_checklist
     assert "Xquik toolkit" in checklist
