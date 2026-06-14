@@ -408,6 +408,10 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
         "accepted default-branch listing",
         "record it in `docs/ECOSYSTEM.md`",
         "opening a duplicate submission",
+        "official-directory snapshot lists",
+        "plugins already published in an upstream official catalog",
+        "status mirrors",
+        "already listed in that upstream catalog",
     ):
         assert phrase in normalized_checklist
     assert "Xquik toolkit" in checklist
