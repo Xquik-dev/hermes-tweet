@@ -327,6 +327,16 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
     assert "Topic metadata such as `agent-skills`" in checklist
     assert "discovery evidence only" in normalized_checklist
     assert "editable third-party entry surface" in normalized_checklist
+    for phrase in (
+        "contribution rules require measurable community usage",
+        "minimum star count",
+        "maintainer-curated quality bar",
+        "target's stated threshold",
+        "closed prior Hermes Tweet PR",
+        "target-specific blocker",
+        "resubmit with the same evidence",
+    ):
+        assert phrase in checklist
     assert "Xquik toolkit" in checklist
     assert "xquik-twitter-data" in checklist
     assert "target-native Hermes Tweet entry" in checklist

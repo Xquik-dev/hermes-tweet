@@ -50,6 +50,12 @@ file intended for external additions. Topic metadata such as `agent-skills`,
 `claude-code-plugin`, `mcp-server`, or `awesome-list` is discovery evidence
 only; it is not a native submission route without an editable third-party entry
 surface.
+Reject catalogs whose contribution rules require measurable community usage,
+maturity, a minimum star count, or a maintainer-curated quality bar until Hermes
+Tweet visibly satisfies that target's stated threshold or a maintainer
+explicitly asks for another submission. Treat a closed prior Hermes Tweet PR for
+maturity, usage, or quality-bar reasons as a target-specific blocker, not as an
+invitation to resubmit with the same evidence.
 Reject source-packet, evidence-packet, handoff-guide, Xquik toolkit,
 xquik-twitter-data, or Xquik API integration submissions when they do not add a
 target-native Hermes Tweet entry.
