@@ -43,6 +43,10 @@ read it before rejecting; accept only clear OSI-style permission text.
 Reject crawler or indexer directories whose submission path is only a hosted
 claim form, upload UI, or account-gated directory unless the repository exposes
 a seed, source, catalog, or registry file that can be changed by PR.
+Reject distro installers, runtime stacks, or bundle repos that only vendor or
+symlink local skills/plugins unless they expose a documented external plugin
+reference list, package source field, or third-party catalog entry. Do not
+vendor Hermes Tweet code into another installer just to create a listing.
 Reject generated catalog or marketplace files unless target docs identify them
 as the canonical edit surface. When a target builds indexes from another source,
 submit only through the documented source file or generator input; skip the
@@ -95,6 +99,10 @@ Before opening or refreshing a submission:
   Hermes Tweet as the native entry.
 - Check accepted examples so the wording, file layout, and validation match the
   target's own format.
+- For translated or mirrored awesome lists, check the upstream source list and
+  translation issue tracker. If either already has a live Hermes Tweet entry,
+  open Hermes Tweet PR, or open Hermes Tweet issue, treat the mirror as
+  duplicate unless the maintainer asks for an independent localized submission.
 - Trace fork parents before using a personal fork, and use a renamed fork only
   when the normal fork name is already occupied by another parent.
 - Respect target contribution docs. If a target requires issue-first
