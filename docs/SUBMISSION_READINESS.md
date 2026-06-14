@@ -43,6 +43,13 @@ Reject generated catalog or marketplace files unless target docs identify them
 as the canonical edit surface. When a target builds indexes from another source,
 submit only through the documented source file or generator input; skip the
 route when that source cannot carry a target-native Hermes Tweet entry.
+Reject topic-search hits that are only source repositories, standalone
+skills/plugins, framework examples, or product implementations unless the target
+exposes a documented third-party catalog, registry, marketplace, or showcase
+file intended for external additions. Topic metadata such as `agent-skills`,
+`claude-code-plugin`, `mcp-server`, or `awesome-list` is discovery evidence
+only; it is not a native submission route without an editable third-party entry
+surface.
 Reject source-packet, evidence-packet, handoff-guide, Xquik toolkit,
 xquik-twitter-data, or Xquik API integration submissions when they do not add a
 target-native Hermes Tweet entry.
