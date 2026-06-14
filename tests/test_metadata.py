@@ -340,6 +340,12 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
         "repository names, backticked literals, and validation commands",
         "`source.github` or similar repository-pointer schema",
         "canonical hub for the owner's own skills",
+        "distro installers, runtime stacks, or bundle repos",
+        "external plugin reference list",
+        "vendor Hermes Tweet code into another installer",
+        "translated or mirrored awesome lists",
+        "translation issue tracker",
+        "independent localized submission",
     ):
         assert phrase in normalized_checklist
     assert "Xquik toolkit" in checklist
