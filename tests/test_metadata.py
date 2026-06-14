@@ -284,6 +284,15 @@ def test_integration_patterns_classify_marketplace_bridges() -> None:
     assert "HOL Plugin Scanner evidence" in guide
 
 
+def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
+    checklist = (ROOT / "docs" / "SUBMISSION_READINESS.md").read_text()
+
+    assert "`TweetClaw`, `OpenClaw`" in checklist
+    assert "`SocialClaw`, `x-twitter-scraper`, and Xquik-only proposals" in checklist
+    assert "Treat adjacent-only PR history as a conflict signal" in checklist
+    assert "separate native Hermes Tweet route" in checklist
+
+
 def test_plugin_manifests_keep_install_prompt_contract() -> None:
     root_manifest = load_mapping(ROOT / "plugin.yaml")
     package_manifest = load_mapping(ROOT / "hermes_tweet" / "plugin.yaml")
