@@ -370,6 +370,11 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
     assert "discovery evidence only" in normalized_checklist
     assert "editable third-party entry surface" in normalized_checklist
     for phrase in (
+        "embedded `.agents`, `.agent`, `.antigravity`",
+        "project-template",
+        "copied skill directories inside application repositories",
+        "downstream copies or mirrors",
+        "fresh Hermes Tweet submission routes",
         "contribution rules require measurable community usage",
         "minimum star count",
         "maintainer-curated quality bar",
