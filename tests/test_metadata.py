@@ -319,6 +319,14 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
     assert "canonical edit surface" in checklist
     assert "documented source file or generator input" in checklist
     assert "source cannot carry a target-native Hermes Tweet entry" in checklist
+    assert "topic-search hits that are only source repositories" in checklist
+    assert "standalone skills/plugins" in normalized_checklist
+    assert "framework examples" in normalized_checklist
+    assert "product implementations" in normalized_checklist
+    assert "third-party catalog, registry, marketplace, or showcase file" in normalized_checklist
+    assert "Topic metadata such as `agent-skills`" in checklist
+    assert "discovery evidence only" in normalized_checklist
+    assert "editable third-party entry surface" in normalized_checklist
     assert "Xquik toolkit" in checklist
     assert "xquik-twitter-data" in checklist
     assert "target-native Hermes Tweet entry" in checklist
