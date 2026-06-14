@@ -34,6 +34,10 @@ read it before rejecting; accept only clear OSI-style permission text.
 Reject crawler or indexer directories whose submission path is only a hosted
 claim form, upload UI, or account-gated directory unless the repository exposes
 a seed, source, catalog, or registry file that can be changed by PR.
+Reject generated catalog or marketplace files unless target docs identify them
+as the canonical edit surface. When a target builds indexes from another source,
+submit only through the documented source file or generator input; skip the
+route when that source cannot carry a target-native Hermes Tweet entry.
 Reject source-packet, evidence-packet, handoff-guide, Xquik toolkit,
 xquik-twitter-data, or Xquik API integration submissions when they do not add a
 target-native Hermes Tweet entry.
