@@ -350,6 +350,9 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
         "a live Xquik, TweetClaw, OpenClaw, SocialClaw, or x-twitter-scraper entry",
         "same catalog, tool list, or awesome-list section",
         "distinct Hermes Agent plugin lane",
+        "closed prior Hermes Tweet issue",
+        "completed or rejected submission route",
+        "unless a maintainer asks for a new PR",
     ):
         assert phrase in normalized_checklist
     assert "Xquik toolkit" in checklist
