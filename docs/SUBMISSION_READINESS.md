@@ -30,6 +30,11 @@ Before opening or refreshing a submission:
 - Search the target README, docs, manifests, examples, skills, and indexes for
   `Hermes Tweet`, `hermes-tweet`, `Xquik`, and the repository URL.
 - Check open and closed PRs and issues for prior Hermes Tweet proposals.
+- Search open and closed PRs and issues for adjacent `TweetClaw`, `OpenClaw`,
+  `SocialClaw`, `x-twitter-scraper`, and Xquik-only proposals before treating a
+  target as fresh.
+- Treat adjacent-only PR history as a conflict signal unless the target docs
+  show a separate native Hermes Tweet route.
 - Check accepted examples so the wording, file layout, and validation match the
   target's own format.
 - Trace fork parents before using a personal fork, and use a renamed fork only
