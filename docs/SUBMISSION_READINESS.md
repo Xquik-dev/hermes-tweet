@@ -27,6 +27,11 @@ for a Hermes Tweet update on an existing route. Reject personal or
 product-owned marketplaces that describe themselves as owner-specific,
 team-specific, or closed to random additions unless their docs clearly invite
 third-party Hermes Tweet submissions.
+Reject branded Claude plugin catalogs that describe themselves as the official
+catalog for one vendor, team, or product family. If the catalog says plugin
+updates flow from that owner's source repositories, treat it as a compatibility
+example, not a third-party submission route, unless the docs explicitly accept
+outside source repositories.
 Treat the contribution license as detectable only after checking both GitHub
 metadata and obvious root license files such as `LICENSE`, `LICENSE.md`,
 `COPYING`, or `NOTICE`. When metadata is empty but a root license file exists,
