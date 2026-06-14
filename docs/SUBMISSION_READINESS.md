@@ -80,6 +80,10 @@ Before opening or refreshing a submission:
   target as fresh.
 - Treat adjacent-only PR history as a conflict signal unless the target docs
   show a separate native Hermes Tweet route.
+- Treat accepted adjacent entries as saturation too. If the target already has
+  a live Xquik, TweetClaw, OpenClaw, SocialClaw, or x-twitter-scraper entry in
+  the same catalog, tool list, or awesome-list section, reject another Hermes
+  Tweet submission unless the target has a distinct Hermes Agent plugin lane.
 - For awesome lists, plugin lists, and topic-search hits, treat an open
   adjacent X/social submission in the same target as saturation when the target
   has no explicit Hermes Tweet or Hermes Agent plugin lane. A generic Claude
