@@ -292,6 +292,10 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
     assert "`SocialClaw`, `x-twitter-scraper`, and Xquik-only proposals" in checklist
     assert "Treat adjacent-only PR history as a conflict signal" in checklist
     assert "separate native Hermes Tweet route" in checklist
+    assert "awesome lists, plugin lists, and topic-search hits" in checklist
+    assert "open adjacent X/social submission" in normalized_checklist
+    assert "explicit Hermes Tweet or Hermes Agent plugin lane" in normalized_checklist
+    assert "generic Claude plugin or agent-skill heading is not enough" in normalized_checklist
     assert "open authored PR in the target" in checklist
     assert "treat the target as saturated" in checklist
     assert "MCP-data-only" in checklist
