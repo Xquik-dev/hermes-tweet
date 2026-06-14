@@ -35,6 +35,9 @@ Before opening or refreshing a submission:
   target as fresh.
 - Treat adjacent-only PR history as a conflict signal unless the target docs
   show a separate native Hermes Tweet route.
+- Require the PR or issue title and summary to name `Hermes Tweet` or
+  `hermes-tweet`. Do not submit or refresh routes titled only for `Xquik`,
+  `TweetClaw`, `OpenClaw`, or other adjacent projects.
 - Check accepted examples so the wording, file layout, and validation match the
   target's own format.
 - Trace fork parents before using a personal fork, and use a renamed fork only
