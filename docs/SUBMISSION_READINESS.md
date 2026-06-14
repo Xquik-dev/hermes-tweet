@@ -74,6 +74,10 @@ Before opening or refreshing a submission:
 
 - Search the target README, docs, manifests, examples, skills, and indexes for
   `Hermes Tweet`, `hermes-tweet`, `Xquik`, and the repository URL.
+- Run a public GitHub code search for live `Hermes Tweet`, `hermes-tweet`, and
+  repository URL mentions before treating a target as fresh. If the hit is an
+  accepted default-branch listing, record it in `docs/ECOSYSTEM.md` instead of
+  opening a duplicate submission.
 - Check open and closed PRs and issues for prior Hermes Tweet proposals.
 - Treat a closed prior Hermes Tweet issue as a completed or rejected submission
   route. Do not reopen the same target with a PR unless a maintainer asks for a

@@ -395,6 +395,10 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
         "closed prior Hermes Tweet issue",
         "completed or rejected submission route",
         "unless a maintainer asks for a new PR",
+        "public GitHub code search for live `Hermes Tweet`, `hermes-tweet`",
+        "accepted default-branch listing",
+        "record it in `docs/ECOSYSTEM.md`",
+        "opening a duplicate submission",
     ):
         assert phrase in normalized_checklist
     assert "Xquik toolkit" in checklist
