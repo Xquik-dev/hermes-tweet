@@ -36,14 +36,19 @@ follow-up belong outside the public repository. Use
 | Hermes Atlas project page | <https://hermesatlas.com/projects/Xquik-dev/hermes-tweet> |
 | Awesome Hermes Agent plugin listing | <https://github.com/SamurAIGPT/awesome-hermes-agent#plugins> |
 | Gaia Skill Tree Hermes Tweet named skill | <https://github.com/mbtiongson1/gaia-skill-tree/blob/main/registry/named/xquik-dev/hermes-tweet.md> |
+| CorpusIQ Hermes skills marketplace X/Twitter skill | <https://github.com/CorpusIQ/corpusiq-docs/blob/main/hermes/skills/marketplace/new-june14-2026/index.md> |
 | Awesome Hermes Use Cases X social automation use case | <https://github.com/aliaihub/awesome-hermes-usecases/blob/main/usecases/x-social-automation-toolset.md> |
 | Learn Hermes Agent skill-system tutorial | <https://github.com/longyunfeigu/learn-hermes-agent/blob/main/docs/en/s08-skill-system.md> |
 | Hermes Agent Chinese solution guide | <https://github.com/zcweah1981/awesome-hermes-agent-zh/blob/main/docs/02-%E7%8E%B0%E6%88%90%E6%96%B9%E6%A1%88/01-%E5%86%85%E5%AE%B9%E5%88%9B%E4%BD%9C%E4%B8%8E%E5%8F%91%E5%B8%83/05-X-Twitter%20%E5%86%85%E5%AE%B9%E4%B8%8E%E4%BA%92%E5%8A%A8%E5%8A%A9%E6%89%8B.md> |
 | Hermes One-Click optional plugin path | <https://github.com/Devsoul2026/Hermes-One-Click#optional-hermes-tweet-xtwitter-plugin> |
 | Hermes Startup Architect optional market signals | <https://github.com/dlkakbs/hermes-startup-architect#optional-xtwitter-market-signals> |
+| OpenJarvis Hermes Tweet skill install example | <https://github.com/open-jarvis/OpenJarvis/blob/main/docs/user-guide/skills.md> |
+| Freya Hermes Tweet skill install example | <https://github.com/willtanoe/freya/blob/xtr/docs/user-guide/skills.md> |
 | Mercury Agent Skills X/Twitter automation skill | <https://github.com/cosmicstack-labs/mercury-agent-skills/blob/main/categories/automation/x-twitter-automation/SKILL.md> |
 | OpenDirectory Twitter GTM Find skill | <https://github.com/Varnan-Tech/opendirectory/tree/main/skills/twitter-GTM-find-skill> |
 | Awesome Omni Skills Xquik Twitter scraper skill | <https://github.com/diegosouzapw/awesome-omni-skills/blob/main/skills/x-twitter-scraper-v2/SKILL.md> |
+| Awesome Skill Forge Hermes Tweet mirror | <https://github.com/Lord1Egypt/awesome-skill-forge/blob/master/community/clawhub/h/hermes-tweet/SKILL.md> |
+| RA-Skills Hermes Tweet mirror | <https://github.com/Lord1Egypt/RA-Skills/blob/master/skills/community/clawhub/h/hermes-tweet/SKILL.md> |
 | TweetClaw cross-link | <https://github.com/Xquik-dev/tweetclaw#readme> |
 
 ## MCP And Agent Integrations

@@ -65,6 +65,31 @@ EXPECTED_SUBMISSION_READINESS_SURFACES = (
     ROOT / "docs" / "ECOSYSTEM.md",
     ROOT / "docs" / "GITHUB_METADATA.md",
 )
+EXPECTED_LIVE_ECOSYSTEM_SURFACES = (
+    (
+        "CorpusIQ Hermes skills marketplace X/Twitter skill",
+        "https://github.com/CorpusIQ/corpusiq-docs/blob/main/hermes/skills/"
+        "marketplace/new-june14-2026/index.md",
+    ),
+    (
+        "OpenJarvis Hermes Tweet skill install example",
+        "https://github.com/open-jarvis/OpenJarvis/blob/main/docs/user-guide/skills.md",
+    ),
+    (
+        "Freya Hermes Tweet skill install example",
+        "https://github.com/willtanoe/freya/blob/xtr/docs/user-guide/skills.md",
+    ),
+    (
+        "Awesome Skill Forge Hermes Tweet mirror",
+        "https://github.com/Lord1Egypt/awesome-skill-forge/blob/master/community/"
+        "clawhub/h/hermes-tweet/SKILL.md",
+    ),
+    (
+        "RA-Skills Hermes Tweet mirror",
+        "https://github.com/Lord1Egypt/RA-Skills/blob/master/skills/community/"
+        "clawhub/h/hermes-tweet/SKILL.md",
+    ),
+)
 SETUP_UV_ACTION = "astral-sh/setup-uv@v8.2.0"
 CHECKOUT_ACTION_SHA = "actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10"
 HOL_PLUGIN_SCANNER_ACTION_SHA = (
@@ -221,6 +246,13 @@ def test_release_metadata_surfaces_stay_aligned() -> None:
     assert urls["Documentation"] == GUIDE_URL
     assert urls["Repository"] == "https://github.com/Xquik-dev/hermes-tweet"
     assert urls["Issues"] == "https://github.com/Xquik-dev/hermes-tweet/issues"
+
+
+def test_ecosystem_tracks_validated_live_surfaces() -> None:
+    ecosystem = (ROOT / "docs" / "ECOSYSTEM.md").read_text()
+
+    for label, url in EXPECTED_LIVE_ECOSYSTEM_SURFACES:
+        assert f"| {label} | <{url}> |" in ecosystem
 
 
 def test_uv_lock_tracks_dev_dependency_constraints() -> None:
