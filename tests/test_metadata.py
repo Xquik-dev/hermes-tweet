@@ -292,6 +292,8 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
     assert "Treat adjacent-only PR history as a conflict signal" in checklist
     assert "separate native Hermes Tweet route" in checklist
     assert "generic Xquik MCP server data entry" in checklist
+    assert "without a detectable contribution license" in checklist
+    assert "maintainer has already asked" in checklist
     assert "title and summary to name `Hermes Tweet` or" in checklist
     assert "Do not submit or refresh routes titled only for `Xquik`" in checklist
     assert "`TweetClaw`, `OpenClaw`, or other adjacent projects" in checklist
