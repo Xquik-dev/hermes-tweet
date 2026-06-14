@@ -20,8 +20,8 @@ these surfaces:
 - Skill registries, plugin catalogs, awesome lists, or ecosystem directories
 
 Do not submit when the target is only a browser-cookie workflow, only a
-TweetClaw route, unrelated to X/Twitter or Hermes Agent, archived, or not
-licensed for contribution.
+TweetClaw route, a generic Xquik MCP server data entry, unrelated to X/Twitter
+or Hermes Agent, archived, or not licensed for contribution.
 
 ## Duplicate Gate
 
