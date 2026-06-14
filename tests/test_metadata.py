@@ -346,6 +346,10 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
         "translated or mirrored awesome lists",
         "translation issue tracker",
         "independent localized submission",
+        "accepted adjacent entries as saturation",
+        "a live Xquik, TweetClaw, OpenClaw, SocialClaw, or x-twitter-scraper entry",
+        "same catalog, tool list, or awesome-list section",
+        "distinct Hermes Agent plugin lane",
     ):
         assert phrase in normalized_checklist
     assert "Xquik toolkit" in checklist
