@@ -177,6 +177,13 @@ Kong Plugin Hub, or API gateway marketplaces when they only accept API specs,
 hosted API listings, request collections, docs workspaces, gateway plugins, or
 API management connectors instead of a source-linked Hermes Tweet package
 entry.
+Reject finance, accounting, payroll, procurement, and ERP app marketplaces
+such as QuickBooks App Store, Xero App Store, NetSuite SuiteApps, SAP Store,
+Workday Marketplace, ADP Marketplace, Stripe App Marketplace, or procurement
+app marketplaces when they only accept accounting connectors, billing apps,
+payroll automations, procurement workflows, ERP extensions, or
+platform-native financial integration packages instead of a source-linked
+Hermes Tweet package entry.
 Reject security operations, SIEM, SOAR, and observability integration catalogs
 such as Splunkbase, Elastic integrations, Datadog integrations, Grafana plugin
 catalog, New Relic Instant Observability, Sumo Logic app catalog, or Cortex
