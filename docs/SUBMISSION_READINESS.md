@@ -116,6 +116,14 @@ Reject prompt, evaluation, and observability hubs such as LangSmith Hub,
 PromptLayer, Langfuse, Braintrust, promptfoo, or OpenPipe when they only accept
 prompt templates, eval datasets, trace dashboards, eval configs, SDK snippets,
 or experiment recipes instead of a source-linked Hermes Tweet package entry.
+Reject model hubs, dataset marketplaces, annotation-template catalogs,
+synthetic-data marketplaces, and MLOps registries such as Hugging Face Spaces,
+Hugging Face model hubs, Replicate collections, Kaggle datasets, Papers With
+Code, Roboflow Universe, Label Studio templates, Scale AI marketplaces, or
+model registry catalogs when they only accept hosted models, demo spaces,
+notebooks, datasets, benchmark links, annotation tasks, labeling templates,
+synthetic-data packages, or model deployment recipes instead of a source-linked
+Hermes Tweet package entry.
 Reject RAG, retrieval, and vector-store integration catalogs such as LlamaHub,
 Pinecone Assistant, Weaviate, Qdrant, Chroma, or retriever plugin galleries
 when they only accept data loaders, vector indexes, retriever classes, ingestion
