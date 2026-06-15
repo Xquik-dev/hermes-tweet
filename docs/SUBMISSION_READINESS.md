@@ -177,6 +177,12 @@ Kong Plugin Hub, or API gateway marketplaces when they only accept API specs,
 hosted API listings, request collections, docs workspaces, gateway plugins, or
 API management connectors instead of a source-linked Hermes Tweet package
 entry.
+Reject security operations, SIEM, SOAR, and observability integration catalogs
+such as Splunkbase, Elastic integrations, Datadog integrations, Grafana plugin
+catalog, New Relic Instant Observability, Sumo Logic app catalog, or Cortex
+XSOAR content packs when they only accept dashboards, detection rules, log
+parsers, alert connectors, runbooks, incident workflows, or platform-specific
+integration packages instead of a source-linked Hermes Tweet package entry.
 Reject code-assistant extension marketplaces and developer-agent tool catalogs
 such as Amazon Q Developer, Continue, Sourcegraph Cody, JetBrains Junie, Devin,
 or Tabby when they only accept IDE extensions, editor plugins, workspace
