@@ -201,6 +201,13 @@ extensions, Alfred workflows, Setapp, iOS Shortcuts galleries, or Android app
 marketplaces when they only accept browser extensions, desktop launcher
 commands, packaged apps, mobile intents, automation shortcuts, or app-store
 listings instead of a source-linked Hermes Tweet package entry.
+Reject design, creative, whiteboard, and knowledge-app plugin marketplaces such
+as Figma Community plugins, Canva Apps Marketplace, Miro Marketplace, FigJam
+widgets, Adobe Express add-ons, Framer Marketplace, Obsidian community plugins,
+or Blender extensions when they only accept design plugins, canvas widgets,
+creative app add-ons, personal knowledge plugins, scene extensions, or
+product-native UI integrations instead of a source-linked Hermes Tweet package
+entry.
 Reject code-assistant extension marketplaces and developer-agent tool catalogs
 such as Amazon Q Developer, Continue, Sourcegraph Cody, JetBrains Junie, Devin,
 or Tabby when they only accept IDE extensions, editor plugins, workspace
