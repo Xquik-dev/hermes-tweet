@@ -134,6 +134,14 @@ NotebookLM, marimo, Hex, Deepnote, Observable Framework, or Databricks Apps when
 they only accept notebooks, magic commands, app templates, dashboards,
 workspace recipes, or data-app examples instead of a source-linked Hermes Tweet
 package entry.
+Reject data-visualization, dashboarding, charting, and BI visual marketplaces
+such as Tableau Exchange, Power BI visuals marketplace, Looker Marketplace,
+Metabase plugins, Apache Superset extensions, Observable visualization plugins,
+Chart.js plugin registries, D3 plugin catalogs, dashboard widget marketplaces,
+or reporting widget marketplaces when they only accept dashboard templates,
+visual components, chart plugins, BI connectors, metric widgets, report blocks,
+data exploration examples, or platform-native visualization packages instead of
+a source-linked Hermes Tweet package entry.
 Reject browser-automation and computer-use agent toolkits such as Browser Use,
 Stagehand, Browserbase, Hyperbrowser, Playwright agent tools, or browser-agent
 registries when they require browser task scripts, replay recipes, hosted
