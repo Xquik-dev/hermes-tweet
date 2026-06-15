@@ -136,6 +136,10 @@ route only accepts workflow templates, provider connectors, hosted app actions,
 or framework-native components. Treat those as integration surfaces unless they
 expose a PR-editable third-party source repository entry for Hermes Tweet's
 shipped package.
+Reject RPA and no-code automation marketplaces such as UiPath, Robocorp, n8n,
+Make, or Workato when they only accept bots, community nodes, workflow exports,
+automation recipes, or task templates instead of a source-linked Hermes Tweet
+package entry.
 Reject embedded `.agents`, `.agent`, `.antigravity`, project-template, and
 copied skill directories inside application repositories unless the repository
 itself documents a third-party skill catalog, registry, or contribution lane.
