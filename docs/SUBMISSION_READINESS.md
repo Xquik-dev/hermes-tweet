@@ -208,6 +208,13 @@ or Blender extensions when they only accept design plugins, canvas widgets,
 creative app add-ons, personal knowledge plugins, scene extensions, or
 product-native UI integrations instead of a source-linked Hermes Tweet package
 entry.
+Reject voice assistant, speech, meeting, and real-time communications app
+marketplaces such as Alexa Skills Store, Google Assistant Actions, Bixby
+capsules, Zoom App Marketplace, Microsoft Teams meeting apps, Slack huddle app
+surfaces, or conferencing integration catalogs when they only accept voice
+skills, assistant actions, meeting bots, call workflows, transcript tools, or
+communications app packages instead of a source-linked Hermes Tweet package
+entry.
 Reject code-assistant extension marketplaces and developer-agent tool catalogs
 such as Amazon Q Developer, Continue, Sourcegraph Cody, JetBrains Junie, Devin,
 or Tabby when they only accept IDE extensions, editor plugins, workspace
