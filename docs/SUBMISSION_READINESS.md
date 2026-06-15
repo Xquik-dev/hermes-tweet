@@ -189,6 +189,12 @@ Jenkins plugin index, Buildkite plugins, Travis CI add-ons, or pipeline
 automation marketplaces when they only accept workflow actions, CI templates,
 orb packages, build plugins, deployment automations, or source-control
 workflows instead of a source-linked Hermes Tweet package entry.
+Reject container, cloud-native, and infrastructure packaging registries such as
+Docker Hub extensions, Kubernetes operator catalogs, Helm chart repositories,
+Artifact Hub, Terraform Registry, Pulumi Registry, Crossplane package registry,
+or Backstage plugin catalogs when they only accept container images, operators,
+charts, infrastructure providers, platform plugins, or deployment packages
+instead of a source-linked Hermes Tweet package entry.
 Reject code-assistant extension marketplaces and developer-agent tool catalogs
 such as Amazon Q Developer, Continue, Sourcegraph Cody, JetBrains Junie, Devin,
 or Tabby when they only accept IDE extensions, editor plugins, workspace
