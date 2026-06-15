@@ -158,6 +158,13 @@ Webflow App Marketplace, Wix App Market, or Squarespace Extensions when they
 only accept CMS plugins, theme extensions, site widgets, publishing
 automations, form handlers, or website-builder app packages instead of a
 source-linked Hermes Tweet package entry.
+Reject social listening, brand monitoring, and marketing analytics app
+directories such as Hootsuite App Directory, Buffer integrations, Sprout Social
+app directory, Semrush App Center, brand-monitoring integration galleries, or
+martech app marketplaces when they only accept dashboards, analytics connectors,
+reporting widgets, campaign automations, social inbox apps, or
+platform-specific integrations instead of a source-linked Hermes Tweet package
+entry.
 Reject code-assistant extension marketplaces and developer-agent tool catalogs
 such as Amazon Q Developer, Continue, Sourcegraph Cody, JetBrains Junie, Devin,
 or Tabby when they only accept IDE extensions, editor plugins, workspace
