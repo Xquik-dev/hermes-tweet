@@ -165,6 +165,12 @@ martech app marketplaces when they only accept dashboards, analytics connectors,
 reporting widgets, campaign automations, social inbox apps, or
 platform-specific integrations instead of a source-linked Hermes Tweet package
 entry.
+Reject LMS, documentation, and knowledge-base marketplaces such as Moodle
+Plugin Directory, Canvas LMS integrations, Blackboard app catalog, Confluence
+Marketplace, GitBook integrations, or knowledge-base app marketplaces when they
+only accept course plugins, learning-tool integrations, documentation widgets,
+space macros, help-center automations, or knowledge-base connectors instead of
+a source-linked Hermes Tweet package entry.
 Reject code-assistant extension marketplaces and developer-agent tool catalogs
 such as Amazon Q Developer, Continue, Sourcegraph Cody, JetBrains Junie, Devin,
 or Tabby when they only accept IDE extensions, editor plugins, workspace
