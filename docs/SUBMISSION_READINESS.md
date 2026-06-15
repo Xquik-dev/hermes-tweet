@@ -140,6 +140,12 @@ Marketplace, Microsoft Teams apps, Slack App Directory, Notion, Airtable,
 monday.com, or Asana when they only accept app add-ons, workspace bots,
 slash-command apps, database blocks, workspace automations, or product-specific
 integrations instead of a source-linked Hermes Tweet package entry.
+Reject CRM, support, and commerce app marketplaces such as HubSpot Marketplace,
+Salesforce AppExchange, Zendesk Marketplace, Intercom App Store, Freshworks
+Marketplace, Pipedrive Marketplace, Zoho Marketplace, or Shopify App Store when
+they only accept CRM apps, support widgets, sales automations, helpdesk macros,
+commerce app packages, or storefront integrations instead of a source-linked
+Hermes Tweet package entry.
 Reject code-assistant extension marketplaces and developer-agent tool catalogs
 such as Amazon Q Developer, Continue, Sourcegraph Cody, JetBrains Junie, Devin,
 or Tabby when they only accept IDE extensions, editor plugins, workspace
