@@ -146,6 +146,12 @@ Marketplace, Pipedrive Marketplace, Zoho Marketplace, or Shopify App Store when
 they only accept CRM apps, support widgets, sales automations, helpdesk macros,
 commerce app packages, or storefront integrations instead of a source-linked
 Hermes Tweet package entry.
+Reject community chat and bot directories such as Discord App Directory,
+Discord bot lists, Telegram bot catalogs, Matrix bot directories, Mastodon app
+directories, Reddit app directories, or Twitch Extension Marketplace when they
+only accept chat bots, server apps, slash commands, moderation workflows, social
+feed relays, or extension packages instead of a source-linked Hermes Tweet
+package entry.
 Reject code-assistant extension marketplaces and developer-agent tool catalogs
 such as Amazon Q Developer, Continue, Sourcegraph Cody, JetBrains Junie, Devin,
 or Tabby when they only accept IDE extensions, editor plugins, workspace
