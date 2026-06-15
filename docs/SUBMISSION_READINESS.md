@@ -48,6 +48,10 @@ read it before rejecting; accept only clear OSI-style permission text.
 Reject crawler or indexer directories whose submission path is only a hosted
 claim form, upload UI, or account-gated directory unless the repository exposes
 a seed, source, catalog, or registry file that can be changed by PR.
+Reject prototype marketplace applications whose README documents only API
+calls, local server setup, or monetized publish flows without a committed
+registry seed, catalog file, or source entry. A `curl` publish example is not a
+PR-native submission route.
 Reject distro installers, runtime stacks, or bundle repos that only vendor or
 symlink local skills/plugins unless they expose a documented external plugin
 reference list, package source field, or third-party catalog entry. Do not
