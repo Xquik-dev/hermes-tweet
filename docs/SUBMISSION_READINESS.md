@@ -89,6 +89,12 @@ Dify, LangGraph, LlamaIndex, AutoGen, OpenAI Agents SDK, or product-specific
 tool adapters unless the target accepts external source repositories in Hermes
 Tweet's shipped package format. Do not translate Hermes Tweet into another
 runtime package just to satisfy a framework marketplace.
+Reject hosted automation, app-action, and component galleries such as Zapier,
+Pipedream, Activepieces, Composio, Arcade, Toolhouse, or Langflow when the
+route only accepts workflow templates, provider connectors, hosted app actions,
+or framework-native components. Treat those as integration surfaces unless they
+expose a PR-editable third-party source repository entry for Hermes Tweet's
+shipped package.
 Reject embedded `.agents`, `.agent`, `.antigravity`, project-template, and
 copied skill directories inside application repositories unless the repository
 itself documents a third-party skill catalog, registry, or contribution lane.
