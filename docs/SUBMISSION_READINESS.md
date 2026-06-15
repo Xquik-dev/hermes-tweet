@@ -111,6 +111,11 @@ such as Amazon Q Developer, Continue, Sourcegraph Cody, JetBrains Junie, Devin,
 or Tabby when they only accept IDE extensions, editor plugins, workspace
 automation packs, or assistant-specific tool definitions instead of a
 PR-editable Hermes Tweet source package entry.
+Reject local coding-agent command packs, workflow recipes, and rule bundles
+such as GitHub Copilot Extensions, OpenCode commands, Aider workflows, Goose
+extensions, Kiro hooks, or Amp tools when they only accept agent-local prompts,
+commands, recipes, hooks, or editor workflows instead of a source-linked Hermes
+Tweet package entry.
 Reject hosted automation, app-action, and component galleries such as Zapier,
 Pipedream, Activepieces, Composio, Arcade, Toolhouse, or Langflow when the
 route only accepts workflow templates, provider connectors, hosted app actions,
