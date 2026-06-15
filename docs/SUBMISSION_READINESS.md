@@ -121,6 +121,11 @@ Pinecone Assistant, Weaviate, Qdrant, Chroma, or retriever plugin galleries
 when they only accept data loaders, vector indexes, retriever classes, ingestion
 pipelines, or demo notebooks instead of a source-linked Hermes Tweet package
 entry.
+Reject notebook, data-app, and BI assistant galleries such as Jupyter AI,
+NotebookLM, marimo, Hex, Deepnote, Observable Framework, or Databricks Apps when
+they only accept notebooks, magic commands, app templates, dashboards,
+workspace recipes, or data-app examples instead of a source-linked Hermes Tweet
+package entry.
 Reject browser-automation and computer-use agent toolkits such as Browser Use,
 Stagehand, Browserbase, Hyperbrowser, Playwright agent tools, or browser-agent
 registries when they require browser task scripts, replay recipes, hosted
