@@ -259,6 +259,13 @@ surfaces, or conferencing integration catalogs when they only accept voice
 skills, assistant actions, meeting bots, call workflows, transcript tools, or
 communications app packages instead of a source-linked Hermes Tweet package
 entry.
+Reject messaging, SMS, chat API, and customer communications app marketplaces
+such as Twilio Marketplace, Vonage integrations, MessageBird or Bird app
+marketplaces, Sinch integrations, WhatsApp Business app integrations, Sendbird
+marketplace, or customer communications app marketplaces when they only accept
+SMS connectors, chat widgets, messaging templates, contact-center workflows,
+conversation routing apps, notification automations, or platform-native
+communications packages instead of a source-linked Hermes Tweet package entry.
 Reject email marketing, newsletter, scheduling, event, form, and survey app
 marketplaces such as Mailchimp integrations, SendGrid integrations, Brevo app
 store, Substack app directories, Calendly integrations, Eventbrite app
