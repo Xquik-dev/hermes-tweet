@@ -215,6 +215,13 @@ surfaces, or conferencing integration catalogs when they only accept voice
 skills, assistant actions, meeting bots, call workflows, transcript tools, or
 communications app packages instead of a source-linked Hermes Tweet package
 entry.
+Reject email marketing, newsletter, scheduling, event, form, and survey app
+marketplaces such as Mailchimp integrations, SendGrid integrations, Brevo app
+store, Substack app directories, Calendly integrations, Eventbrite app
+marketplace, Typeform app marketplace, or SurveyMonkey app directories when
+they only accept email automations, newsletter connectors, booking workflows,
+event listings, form widgets, survey templates, or platform-native integration
+packages instead of a source-linked Hermes Tweet package entry.
 Reject code-assistant extension marketplaces and developer-agent tool catalogs
 such as Amazon Q Developer, Continue, Sourcegraph Cody, JetBrains Junie, Devin,
 or Tabby when they only accept IDE extensions, editor plugins, workspace
