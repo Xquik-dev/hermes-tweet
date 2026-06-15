@@ -91,10 +91,11 @@ Code, Cursor, Windsurf, Open WebUI, LibreChat, AnythingLLM, BeeAI, Rivet, or
 Langroid, AutoGPT Forge, OpenAgents, Agent Zero, SuperAGI, BabyAGI, or
 Smolagents, DSPy, Julep, MetaGPT, Qwen-Agent, PraisonAI, Swarms, or
 Letta, MemGPT, Griptape, Mirascope, Marvin AI, Agency Swarm, Phidata, Motia, or
-product-specific tool adapters unless the target accepts external source
-repositories in Hermes Tweet's shipped package format. Do not translate Hermes
-Tweet into another runtime package, tool subclass, module, framework tool,
-block, extension, or function pack just to satisfy a framework marketplace.
+Flowise, Haystack, Sema4.ai, MindsDB, or product-specific tool adapters unless
+the target accepts external source repositories in Hermes Tweet's shipped
+package format. Do not translate Hermes Tweet into another runtime package,
+tool subclass, module, framework tool, block, extension, action, pipeline, or
+function pack just to satisfy a framework marketplace.
 Reject agent-framework runtime toolkits and tool galleries such as AutoGen,
 CrewAI, LangGraph, Mastra, Letta, and Semantic Kernel when they require a
 runtime-specific tool implementation, adapter class, graph node, agent action,
