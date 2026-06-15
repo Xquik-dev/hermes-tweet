@@ -102,6 +102,10 @@ copied skill directories inside application repositories unless the repository
 itself documents a third-party skill catalog, registry, or contribution lane.
 Treat those hits as downstream copies or mirrors, not fresh Hermes Tweet
 submission routes.
+Reject personal agent memory repositories, OpenHands microagent folders, and
+hosted MCP directory profile pages such as `.openhands`, Smithery, Glama, or
+PulseMCP unless the route exposes a licensed, PR-editable source entry that can
+reference Hermes Tweet's shipped package without copying or translating it.
 Reject catalogs whose contribution rules require measurable community usage,
 maturity, a minimum star count, or a maintainer-curated quality bar until Hermes
 Tweet visibly satisfies that target's stated threshold or a maintainer
