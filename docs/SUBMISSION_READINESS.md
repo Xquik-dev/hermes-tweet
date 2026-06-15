@@ -165,6 +165,15 @@ martech app marketplaces when they only accept dashboards, analytics connectors,
 reporting widgets, campaign automations, social inbox apps, or
 platform-specific integrations instead of a source-linked Hermes Tweet package
 entry.
+Reject SEO, search-console, web analytics, and advertising partner
+marketplaces such as Google Search Console integrations, Bing Webmaster Tools
+integrations, Ahrefs app marketplace, Moz app marketplace, Similarweb
+integrations, Google Analytics integrations, Adobe Analytics Exchange, Google
+Ads marketplace, Meta Business Partner Marketplace, or adtech marketplaces
+when they only accept site-verification integrations, keyword rank trackers,
+SEO audit dashboards, tag-management connectors, campaign reporting widgets,
+conversion tracking packages, ads automation apps, or partner-program listings
+instead of a source-linked Hermes Tweet package entry.
 Reject LMS, documentation, and knowledge-base marketplaces such as Moodle
 Plugin Directory, Canvas LMS integrations, Blackboard app catalog, Confluence
 Marketplace, GitBook integrations, or knowledge-base app marketplaces when they
