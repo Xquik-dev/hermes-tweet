@@ -223,6 +223,13 @@ or Blender extensions when they only accept design plugins, canvas widgets,
 creative app add-ons, personal knowledge plugins, scene extensions, or
 product-native UI integrations instead of a source-linked Hermes Tweet package
 entry.
+Reject game engine, AR/VR, 3D asset, and creator gaming marketplaces such as
+Unity Asset Store, Unreal Engine Marketplace, Roblox Creator Store, Godot Asset
+Library, Steamworks tools, itch.io tool marketplaces, Meta Quest App Lab, or
+VRChat marketplaces when they only accept engine plugins, editor extensions,
+game assets, scripts, SDK integrations, creator tools, avatar or world
+packages, or app-store listings instead of a source-linked Hermes Tweet package
+entry.
 Reject voice assistant, speech, meeting, and real-time communications app
 marketplaces such as Alexa Skills Store, Google Assistant Actions, Bixby
 capsules, Zoom App Marketplace, Microsoft Teams meeting apps, Slack huddle app
