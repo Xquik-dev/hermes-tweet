@@ -36,6 +36,11 @@ A `source.github` or similar repository-pointer schema is not enough by itself:
 when the marketplace instructions say it is the canonical hub for the owner's
 own skills, reject it unless the contribution docs explicitly invite outside
 source repositories.
+Reject company engineering hubs, internal workflow marketplaces, and
+single-namespace catalogs whose install commands or plugin metadata are scoped
+to one organization, team, or owner. Open standards, Agent Skills compatibility,
+or Claude marketplace metadata do not make those routes eligible unless the
+target explicitly invites third-party source repositories.
 Treat the contribution license as detectable only after checking both GitHub
 metadata and obvious root license files such as `LICENSE`, `LICENSE.md`,
 `COPYING`, or `NOTICE`. When metadata is empty but a root license file exists,
