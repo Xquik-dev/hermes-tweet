@@ -184,6 +184,14 @@ app marketplaces when they only accept accounting connectors, billing apps,
 payroll automations, procurement workflows, ERP extensions, or
 platform-native financial integration packages instead of a source-linked
 Hermes Tweet package entry.
+Reject HR, recruiting, talent, benefits, and workforce app marketplaces such as
+Greenhouse integrations, Lever integrations, Ashby marketplace, Workable app
+marketplace, BambooHR app marketplace, Gusto integrations, LinkedIn Talent
+Solutions partner apps, or recruiting app marketplaces when they only accept
+ATS connectors, candidate-source automations, job board integrations,
+interview workflows, employee-directory apps, benefits connectors, onboarding
+tasks, or workforce platform packages instead of a source-linked Hermes Tweet
+package entry.
 Reject healthcare, EHR, FHIR, telehealth, wellness, and fitness app
 marketplaces such as Epic App Orchard, Oracle Health App Gallery, SMART App
 Gallery, FHIR app galleries, athenahealth Marketplace, telehealth app
