@@ -111,6 +111,11 @@ apps, OpenAI Apps SDK examples, GPT action directories, MCP UI registries,
 Vercel AI SDK templates, or LangChain Hub snippets when they require app
 manifests, UI widgets, action schemas, SDK demos, or hub snippets instead of a
 source-linked Hermes Tweet package entry.
+Reject browser-automation and computer-use agent toolkits such as Browser Use,
+Stagehand, Browserbase, Hyperbrowser, Playwright agent tools, or browser-agent
+registries when they require browser task scripts, replay recipes, hosted
+browser workflows, DOM automation examples, or computer-use action packs instead
+of a source-linked Hermes Tweet package entry.
 Reject enterprise hosted-agent surfaces such as Google Vertex AI Agent Builder,
 Salesforce Agentforce, ServiceNow AI Agent Studio, Oracle AI Agent Studio,
 Slack agent platform tools, and Mistral agent connectors when they only accept
