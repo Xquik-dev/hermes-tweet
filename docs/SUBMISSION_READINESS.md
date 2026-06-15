@@ -122,6 +122,10 @@ Before opening or refreshing a submission:
 - Require the PR or issue title and summary to name `Hermes Tweet` or
   `hermes-tweet`. Do not submit or refresh routes titled only for `Xquik`,
   `TweetClaw`, `OpenClaw`, or other adjacent projects.
+- Before waiting on checks, reread the outbound title, summary, and added
+  lines. If the branch or PR is Xquik-only, TweetClaw-only, OpenClaw-only, or
+  otherwise adjacent-only, close it immediately with a short scope comment
+  instead of leaving off-scope outreach open.
 - Reject slugs, package names, plugin names, or catalog keys centered on
   `xquik-*`, `tweetclaw-*`, `openclaw-*`, `source-packets`, or
   `evidence-packets` unless the same submission clearly installs or indexes

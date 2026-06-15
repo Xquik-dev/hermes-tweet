@@ -416,6 +416,9 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
         "plugins already published in an upstream official catalog",
         "status mirrors",
         "already listed in that upstream catalog",
+        "Before waiting on checks, reread the outbound title, summary, and added lines",
+        "close it immediately with a short scope comment",
+        "off-scope outreach open",
     ):
         assert phrase in normalized_checklist
     assert "Xquik toolkit" in checklist
