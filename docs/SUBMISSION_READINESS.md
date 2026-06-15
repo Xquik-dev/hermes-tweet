@@ -84,12 +84,13 @@ file intended for external additions. Topic metadata such as `agent-skills`,
 `claude-code-plugin`, `mcp-server`, or `awesome-list` is discovery evidence
 only; it is not a native submission route without an editable third-party entry
 surface.
-Reject framework-specific plugin marketplaces, single-app tool collections, or
-SDK tool packages such as Dify, LangGraph, LlamaIndex, AutoGen, OpenAI Agents
-SDK, Open WebUI, LibreChat, AnythingLLM, BeeAI, Rivet, or product-specific tool
-adapters unless the target accepts external source repositories in Hermes
-Tweet's shipped package format. Do not translate Hermes Tweet into another
-runtime package just to satisfy a framework marketplace.
+Reject framework-specific plugin marketplaces, IDE agent extension marketplaces,
+single-app tool collections, offline marketplace mirrors, or SDK tool packages
+such as Dify, LangGraph, LlamaIndex, AutoGen, OpenAI Agents SDK, Cline, Roo
+Code, Cursor, Windsurf, Open WebUI, LibreChat, AnythingLLM, BeeAI, Rivet, or
+product-specific tool adapters unless the target accepts external source
+repositories in Hermes Tweet's shipped package format. Do not translate Hermes
+Tweet into another runtime package just to satisfy a framework marketplace.
 Reject hosted automation, app-action, and component galleries such as Zapier,
 Pipedream, Activepieces, Composio, Arcade, Toolhouse, or Langflow when the
 route only accepts workflow templates, provider connectors, hosted app actions,
