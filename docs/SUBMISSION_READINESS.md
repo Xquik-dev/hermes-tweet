@@ -88,9 +88,11 @@ Reject framework-specific plugin marketplaces, IDE agent extension marketplaces,
 single-app tool collections, offline marketplace mirrors, or SDK tool packages
 such as Dify, LangGraph, LlamaIndex, AutoGen, OpenAI Agents SDK, Cline, Roo
 Code, Cursor, Windsurf, Open WebUI, LibreChat, AnythingLLM, BeeAI, Rivet, or
+Langroid, AutoGPT Forge, OpenAgents, Agent Zero, SuperAGI, BabyAGI, or
 product-specific tool adapters unless the target accepts external source
 repositories in Hermes Tweet's shipped package format. Do not translate Hermes
-Tweet into another runtime package just to satisfy a framework marketplace.
+Tweet into another runtime package, block, extension, or function pack just to
+satisfy a framework marketplace.
 Reject hosted automation, app-action, and component galleries such as Zapier,
 Pipedream, Activepieces, Composio, Arcade, Toolhouse, or Langflow when the
 route only accepts workflow templates, provider connectors, hosted app actions,
