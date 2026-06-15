@@ -106,6 +106,11 @@ Reject enterprise hosted-agent surfaces such as Google Vertex AI Agent Builder,
 Salesforce Agentforce, ServiceNow AI Agent Studio, Oracle AI Agent Studio,
 Slack agent platform tools, and Mistral agent connectors when they only accept
 platform-native extensions, connectors, actions, or managed-agent definitions.
+Reject code-assistant extension marketplaces and developer-agent tool catalogs
+such as Amazon Q Developer, Continue, Sourcegraph Cody, JetBrains Junie, Devin,
+or Tabby when they only accept IDE extensions, editor plugins, workspace
+automation packs, or assistant-specific tool definitions instead of a
+PR-editable Hermes Tweet source package entry.
 Reject hosted automation, app-action, and component galleries such as Zapier,
 Pipedream, Activepieces, Composio, Arcade, Toolhouse, or Langflow when the
 route only accepts workflow templates, provider connectors, hosted app actions,
