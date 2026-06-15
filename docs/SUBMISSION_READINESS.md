@@ -177,6 +177,13 @@ Kong Plugin Hub, or API gateway marketplaces when they only accept API specs,
 hosted API listings, request collections, docs workspaces, gateway plugins, or
 API management connectors instead of a source-linked Hermes Tweet package
 entry.
+Reject data warehouse, ETL, reverse ETL, and customer data platform
+marketplaces such as Snowflake Marketplace, dbt Package Hub, Airbyte
+connectors, Fivetran connectors, Hightouch destinations, Census integrations,
+Segment integrations, or data integration catalogs when they only accept data
+connectors, warehouse apps, transform packages, destination syncs, ingestion
+pipelines, customer profile activations, or platform-native data app packages
+instead of a source-linked Hermes Tweet package entry.
 Reject finance, accounting, payroll, procurement, and ERP app marketplaces
 such as QuickBooks App Store, Xero App Store, NetSuite SuiteApps, SAP Store,
 Workday Marketplace, ADP Marketplace, Stripe App Marketplace, or procurement
