@@ -95,6 +95,13 @@ product-specific tool adapters unless the target accepts external source
 repositories in Hermes Tweet's shipped package format. Do not translate Hermes
 Tweet into another runtime package, tool subclass, module, framework tool,
 block, extension, or function pack just to satisfy a framework marketplace.
+Reject hosted agent builder, assistant builder, toolgroup, and action-group
+catalogs such as Chainlit, Microsoft PromptFlow, Llama Stack, CopilotKit, Rasa
+CALM, or AWS Bedrock Agents when the route only accepts app-native tools,
+workflow nodes, declarative action groups, prompt-flow components, or
+runtime-specific tool definitions. Treat these as integration targets, not
+Hermes Tweet outreach routes, unless the target exposes a licensed PR-editable
+catalog entry that links to Hermes Tweet's shipped source repository package.
 Reject hosted automation, app-action, and component galleries such as Zapier,
 Pipedream, Activepieces, Composio, Arcade, Toolhouse, or Langflow when the
 route only accepts workflow templates, provider connectors, hosted app actions,
