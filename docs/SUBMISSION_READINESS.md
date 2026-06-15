@@ -222,6 +222,14 @@ marketplace, Typeform app marketplace, or SurveyMonkey app directories when
 they only accept email automations, newsletter connectors, booking workflows,
 event listings, form widgets, survey templates, or platform-native integration
 packages instead of a source-linked Hermes Tweet package entry.
+Reject maps, geospatial, travel, mobility, logistics, and fleet app
+marketplaces such as Google Maps Platform integrations, Mapbox plugin catalog,
+ArcGIS Marketplace, QGIS plugin repository, travel booking marketplaces,
+Expedia app marketplace, Uber developer app marketplaces, or logistics and
+fleet app marketplaces when they only accept map plugins, GIS extensions,
+geospatial data connectors, travel booking widgets, ride-hailing workflows,
+fleet automations, or route-optimization packages instead of a source-linked
+Hermes Tweet package entry.
 Reject code-assistant extension marketplaces and developer-agent tool catalogs
 such as Amazon Q Developer, Continue, Sourcegraph Cody, JetBrains Junie, Devin,
 or Tabby when they only accept IDE extensions, editor plugins, workspace
