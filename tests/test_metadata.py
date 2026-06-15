@@ -368,8 +368,8 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
     assert "third-party catalog, registry, marketplace, or showcase file" in normalized_checklist
     assert "Topic metadata such as `agent-skills`" in checklist
     assert "discovery evidence only" in normalized_checklist
-    assert "editable third-party entry surface" in normalized_checklist
-    for phrase in (
+    route_rejection_phrases: tuple[str, ...] = (
+        "editable third-party entry surface",
         "framework-specific plugin marketplaces, IDE agent extension marketplaces",
         "single-app tool collections, offline marketplace mirrors",
         "Dify, LangGraph, LlamaIndex, AutoGen, OpenAI Agents SDK",
@@ -528,6 +528,18 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
         "orb packages, build plugins",
         "deployment automations",
         "source-control workflows",
+        "container, cloud-native",
+        "infrastructure packaging registries",
+        "Docker Hub extensions",
+        "Kubernetes operator catalogs",
+        "Helm chart repositories",
+        "Artifact Hub",
+        "Terraform Registry, Pulumi Registry",
+        "Crossplane package registry",
+        "Backstage plugin catalogs",
+        "container images, operators",
+        "charts, infrastructure providers",
+        "platform plugins, or deployment packages",
         "code-assistant extension marketplaces",
         "developer-agent tool catalogs",
         "Amazon Q Developer, Continue, Sourcegraph Cody",
@@ -617,7 +629,8 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
         "Before waiting on checks, reread the outbound title, summary, and added lines",
         "close it immediately with a short scope comment",
         "off-scope outreach open",
-    ):
+    )
+    for phrase in route_rejection_phrases:
         assert phrase in normalized_checklist
     assert "Xquik toolkit" in checklist
     assert "xquik-twitter-data" in checklist
