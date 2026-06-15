@@ -102,6 +102,10 @@ workflow nodes, declarative action groups, prompt-flow components, or
 runtime-specific tool definitions. Treat these as integration targets, not
 Hermes Tweet outreach routes, unless the target exposes a licensed PR-editable
 catalog entry that links to Hermes Tweet's shipped source repository package.
+Reject enterprise hosted-agent surfaces such as Google Vertex AI Agent Builder,
+Salesforce Agentforce, ServiceNow AI Agent Studio, Oracle AI Agent Studio,
+Slack agent platform tools, and Mistral agent connectors when they only accept
+platform-native extensions, connectors, actions, or managed-agent definitions.
 Reject hosted automation, app-action, and component galleries such as Zapier,
 Pipedream, Activepieces, Composio, Arcade, Toolhouse, or Langflow when the
 route only accepts workflow templates, provider connectors, hosted app actions,
