@@ -106,6 +106,11 @@ workflow nodes, declarative action groups, prompt-flow components, or
 runtime-specific tool definitions. Treat these as integration targets, not
 Hermes Tweet outreach routes, unless the target exposes a licensed PR-editable
 catalog entry that links to Hermes Tweet's shipped source repository package.
+Reject hosted AI app directories and assistant action galleries such as ChatGPT
+apps, OpenAI Apps SDK examples, GPT action directories, MCP UI registries,
+Vercel AI SDK templates, or LangChain Hub snippets when they require app
+manifests, UI widgets, action schemas, SDK demos, or hub snippets instead of a
+source-linked Hermes Tweet package entry.
 Reject enterprise hosted-agent surfaces such as Google Vertex AI Agent Builder,
 Salesforce Agentforce, ServiceNow AI Agent Studio, Oracle AI Agent Studio,
 Slack agent platform tools, and Mistral agent connectors when they only accept
