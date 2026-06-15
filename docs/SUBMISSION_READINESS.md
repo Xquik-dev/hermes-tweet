@@ -195,6 +195,12 @@ Artifact Hub, Terraform Registry, Pulumi Registry, Crossplane package registry,
 or Backstage plugin catalogs when they only accept container images, operators,
 charts, infrastructure providers, platform plugins, or deployment packages
 instead of a source-linked Hermes Tweet package entry.
+Reject browser, desktop, launcher, shortcut, and mobile app extension stores
+such as Chrome Web Store, Firefox Add-ons, Microsoft Edge Add-ons, Raycast
+extensions, Alfred workflows, Setapp, iOS Shortcuts galleries, or Android app
+marketplaces when they only accept browser extensions, desktop launcher
+commands, packaged apps, mobile intents, automation shortcuts, or app-store
+listings instead of a source-linked Hermes Tweet package entry.
 Reject code-assistant extension marketplaces and developer-agent tool catalogs
 such as Amazon Q Developer, Continue, Sourcegraph Cody, JetBrains Junie, Devin,
 or Tabby when they only accept IDE extensions, editor plugins, workspace
