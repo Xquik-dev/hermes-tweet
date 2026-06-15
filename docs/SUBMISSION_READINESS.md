@@ -183,6 +183,12 @@ catalog, New Relic Instant Observability, Sumo Logic app catalog, or Cortex
 XSOAR content packs when they only accept dashboards, detection rules, log
 parsers, alert connectors, runbooks, incident workflows, or platform-specific
 integration packages instead of a source-linked Hermes Tweet package entry.
+Reject CI/CD, DevOps automation, and pipeline extension marketplaces such as
+GitHub Marketplace Actions, GitLab CI/CD Catalog, CircleCI orb registry,
+Jenkins plugin index, Buildkite plugins, Travis CI add-ons, or pipeline
+automation marketplaces when they only accept workflow actions, CI templates,
+orb packages, build plugins, deployment automations, or source-control
+workflows instead of a source-linked Hermes Tweet package entry.
 Reject code-assistant extension marketplaces and developer-agent tool catalogs
 such as Amazon Q Developer, Continue, Sourcegraph Cody, JetBrains Junie, Devin,
 or Tabby when they only accept IDE extensions, editor plugins, workspace
