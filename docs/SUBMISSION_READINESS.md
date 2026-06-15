@@ -152,6 +152,12 @@ directories, Reddit app directories, or Twitch Extension Marketplace when they
 only accept chat bots, server apps, slash commands, moderation workflows, social
 feed relays, or extension packages instead of a source-linked Hermes Tweet
 package entry.
+Reject CMS, content publishing, and creator platform marketplaces such as
+WordPress Plugin Directory, Drupal module directory, Ghost integrations,
+Webflow App Marketplace, Wix App Market, or Squarespace Extensions when they
+only accept CMS plugins, theme extensions, site widgets, publishing
+automations, form handlers, or website-builder app packages instead of a
+source-linked Hermes Tweet package entry.
 Reject code-assistant extension marketplaces and developer-agent tool catalogs
 such as Amazon Q Developer, Continue, Sourcegraph Cody, JetBrains Junie, Devin,
 or Tabby when they only accept IDE extensions, editor plugins, workspace
