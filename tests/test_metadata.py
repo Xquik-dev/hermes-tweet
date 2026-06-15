@@ -370,8 +370,10 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
     assert "discovery evidence only" in normalized_checklist
     assert "editable third-party entry surface" in normalized_checklist
     for phrase in (
-        "framework-specific plugin marketplaces, single-app tool collections",
+        "framework-specific plugin marketplaces, IDE agent extension marketplaces",
+        "single-app tool collections, offline marketplace mirrors",
         "Dify, LangGraph, LlamaIndex, AutoGen, OpenAI Agents SDK",
+        "Cline, Roo Code, Cursor, Windsurf",
         "Open WebUI, LibreChat, AnythingLLM, BeeAI, Rivet",
         "Hermes Tweet's shipped package format",
         "translate Hermes Tweet into another runtime package",
