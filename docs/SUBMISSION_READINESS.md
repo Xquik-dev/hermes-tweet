@@ -80,6 +80,11 @@ file intended for external additions. Topic metadata such as `agent-skills`,
 `claude-code-plugin`, `mcp-server`, or `awesome-list` is discovery evidence
 only; it is not a native submission route without an editable third-party entry
 surface.
+Reject framework-specific plugin marketplaces or SDK tool packages such as
+Dify, LangGraph, LlamaIndex, AutoGen, OpenAI Agents SDK, or product-specific
+tool adapters unless the target accepts external source repositories in Hermes
+Tweet's shipped package format. Do not translate Hermes Tweet into another
+runtime package just to satisfy a framework marketplace.
 Reject embedded `.agents`, `.agent`, `.antigravity`, project-template, and
 copied skill directories inside application repositories unless the repository
 itself documents a third-party skill catalog, registry, or contribution lane.
