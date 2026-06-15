@@ -148,6 +148,14 @@ Marketplace, Microsoft Teams apps, Slack App Directory, Notion, Airtable,
 monday.com, or Asana when they only accept app add-ons, workspace bots,
 slash-command apps, database blocks, workspace automations, or product-specific
 integrations instead of a source-linked Hermes Tweet package entry.
+Reject localization, translation-management, i18n, and CAT-tool marketplaces
+such as Crowdin Marketplace, Lokalise app marketplace, Phrase integrations,
+Transifex integrations, Weblate add-ons, Smartling marketplace, DeepL app
+marketplace, or Google Translate integrations when they only accept translation
+memory connectors, glossary sync apps, localization workflow automations,
+machine-translation plugins, string extraction tools, project webhooks, or
+translation-provider extensions instead of a source-linked Hermes Tweet package
+entry.
 Reject CRM, support, and commerce app marketplaces such as HubSpot Marketplace,
 Salesforce AppExchange, Zendesk Marketplace, Intercom App Store, Freshworks
 Marketplace, Pipedrive Marketplace, Zoho Marketplace, or Shopify App Store when
