@@ -184,6 +184,14 @@ app marketplaces when they only accept accounting connectors, billing apps,
 payroll automations, procurement workflows, ERP extensions, or
 platform-native financial integration packages instead of a source-linked
 Hermes Tweet package entry.
+Reject healthcare, EHR, FHIR, telehealth, wellness, and fitness app
+marketplaces such as Epic App Orchard, Oracle Health App Gallery, SMART App
+Gallery, FHIR app galleries, athenahealth Marketplace, telehealth app
+marketplaces, wellness app marketplaces, or fitness app marketplaces when they
+only accept EHR integrations, clinical apps, FHIR launch apps, patient portal
+widgets, care workflows, wellness programs, device integrations, or
+platform-native health app packages instead of a source-linked Hermes Tweet
+package entry.
 Reject security operations, SIEM, SOAR, and observability integration catalogs
 such as Splunkbase, Elastic integrations, Datadog integrations, Grafana plugin
 catalog, New Relic Instant Observability, Sumo Logic app catalog, or Cortex
