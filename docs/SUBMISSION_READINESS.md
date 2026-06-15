@@ -41,6 +41,10 @@ single-namespace catalogs whose install commands or plugin metadata are scoped
 to one organization, team, or owner. Open standards, Agent Skills compatibility,
 or Claude marketplace metadata do not make those routes eligible unless the
 target explicitly invites third-party source repositories.
+Do not treat a `third-party`, `vendor`, `upstream`, or `external` directory name
+as an invitation by itself. If the marketplace is branded as one owner's
+official catalog, require contribution docs that explicitly accept unrelated
+external source repositories before submitting Hermes Tweet.
 Treat the contribution license as detectable only after checking both GitHub
 metadata and obvious root license files such as `LICENSE`, `LICENSE.md`,
 `COPYING`, or `NOTICE`. When metadata is empty but a root license file exists,
