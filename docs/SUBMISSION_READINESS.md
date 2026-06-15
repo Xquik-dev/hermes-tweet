@@ -55,6 +55,11 @@ Reject generated catalog or marketplace files unless target docs identify them
 as the canonical edit surface. When a target builds indexes from another source,
 submit only through the documented source file or generator input; skip the
 route when that source cannot carry a target-native Hermes Tweet entry.
+Reject marketplace contribution workflows that require creating a local
+`<plugin>/.claude-plugin/plugin.json` inside the target repository unless they
+also document an external source-repository entry for third-party plugins. Do
+not copy, vendor, or repackage Hermes Tweet into a local target plugin folder to
+satisfy a registry generator.
 Reject official-directory snapshot lists whose contribution rules only accept
 plugins already published in an upstream official catalog. Treat them as status
 mirrors until Hermes Tweet is already listed in that upstream catalog, then
