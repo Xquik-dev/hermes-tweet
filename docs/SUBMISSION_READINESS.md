@@ -171,6 +171,12 @@ Marketplace, GitBook integrations, or knowledge-base app marketplaces when they
 only accept course plugins, learning-tool integrations, documentation widgets,
 space macros, help-center automations, or knowledge-base connectors instead of
 a source-linked Hermes Tweet package entry.
+Reject API marketplaces, public API networks, and developer portal catalogs
+such as RapidAPI, Postman Public API Network, SwaggerHub, Stoplight, ReadMe,
+Kong Plugin Hub, or API gateway marketplaces when they only accept API specs,
+hosted API listings, request collections, docs workspaces, gateway plugins, or
+API management connectors instead of a source-linked Hermes Tweet package
+entry.
 Reject code-assistant extension marketplaces and developer-agent tool catalogs
 such as Amazon Q Developer, Continue, Sourcegraph Cody, JetBrains Junie, Devin,
 or Tabby when they only accept IDE extensions, editor plugins, workspace
