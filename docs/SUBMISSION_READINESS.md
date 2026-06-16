@@ -551,6 +551,14 @@ only accept EHR integrations, clinical apps, FHIR launch apps, patient portal
 widgets, care workflows, wellness programs, device integrations, or
 platform-native health app packages instead of a source-linked Hermes Tweet
 package entry.
+Reject dental, orthodontic, dental lab, DSO, dental imaging, and dental
+practice management app marketplaces such as Dentrix Marketplace, Open Dental
+integrations, Eaglesoft integrations, CareStack marketplaces, Curve Dental
+integrations, dental lab marketplaces, or dental imaging app catalogs when
+they only accept patient chart connectors, appointment recall workflows,
+treatment plan templates, claim attachments, imaging viewers, lab case
+tickets, or platform-native dental packages instead of a source-linked Hermes
+Tweet package entry.
 Reject pharmacy, drugstore, PBM, e-prescribing, prescription management, 340B,
 and pharmacy point-of-sale app marketplaces such as PioneerRx integrations,
 QS/1 integrations, NCPDP app catalogs, CoverMyMeds integrations, Surescripts

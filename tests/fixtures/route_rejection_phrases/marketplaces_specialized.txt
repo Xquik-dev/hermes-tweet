@@ -173,6 +173,23 @@ patient portal widgets
 care workflows, wellness programs
 device integrations
 platform-native health app packages
+dental, orthodontic, dental lab
+DSO, dental imaging
+dental practice management app marketplaces
+Dentrix Marketplace
+Open Dental integrations
+Eaglesoft integrations
+CareStack marketplaces
+Curve Dental integrations
+dental lab marketplaces
+dental imaging app catalogs
+patient chart connectors
+appointment recall workflows
+treatment plan templates
+claim attachments
+imaging viewers
+lab case tickets
+platform-native dental packages
 pharmacy, drugstore, PBM
 e-prescribing, prescription management
 340B
