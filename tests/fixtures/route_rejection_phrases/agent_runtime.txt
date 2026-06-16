@@ -83,6 +83,32 @@ lab instrument integrations
 genomic analysis packages
 chemistry tool plugins
 platform-native lab automation packages
+pharmaceutical, life sciences
+clinical trial, patient recruitment
+pharmacovigilance, drug safety
+regulatory affairs, eTMF, EDC
+trial operations marketplaces
+Veeva integrations
+Medidata app marketplaces
+Oracle Clinical integrations
+Florence eBinders integrations
+Castor EDC integrations
+Trialbee integrations
+Saama marketplaces
+ArisGlobal integrations
+clinical trial app marketplaces
+pharmacovigilance marketplaces
+regulatory affairs software marketplaces
+trial data connectors
+study startup workflows
+patient recruitment widgets
+adverse event intake forms
+safety case dashboards
+regulatory submission templates
+site monitoring tools
+eTMF binders
+EDC form extensions
+platform-native life sciences packages
 RAG, retrieval, and vector-store integration catalogs
 LlamaHub
 Pinecone Assistant, Weaviate, Qdrant
