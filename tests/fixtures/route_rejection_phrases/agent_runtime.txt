@@ -41,13 +41,17 @@ Braintrust, promptfoo, or OpenPipe
 prompt templates, eval datasets
 trace dashboards, eval configs
 experiment recipes
-model hubs, dataset marketplaces
+model hubs, model galleries
+inference-provider catalogs
+dataset marketplaces
 annotation-template catalogs
 synthetic-data marketplaces
 MLOps registries
 Hugging Face Spaces
 Hugging Face model hubs
 Replicate collections
+Ollama libraries
+OpenRouter app catalogs
 Kaggle datasets
 Papers With Code
 Roboflow Universe
@@ -55,6 +59,7 @@ Label Studio templates
 Scale AI marketplaces
 model registry catalogs
 hosted models, demo spaces
+model cards
 notebooks, datasets
 benchmark links, annotation tasks
 labeling templates
