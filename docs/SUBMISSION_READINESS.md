@@ -253,6 +253,16 @@ connectors, claims workflows, broker-management integrations, policy lifecycle
 tools, underwriting dashboards, actuarial models, risk-scoring templates,
 document intake automations, or platform-native insurance packages instead of
 a source-linked Hermes Tweet package entry.
+Reject government, civic tech, municipal, public sector, open data,
+permitting, 311 service, and public records app marketplaces such as GovTech
+app marketplaces, Socrata app marketplaces, ArcGIS Hub civic integrations,
+OpenGov marketplaces, Granicus integrations, CivicPlus app marketplaces,
+public records software integrations, permitting software marketplaces, or
+municipal app marketplaces when they only accept open-data dashboards,
+resident-service forms, permitting workflows, 311 request connectors, council
+agenda tools, records-request portals, GIS story maps, procurement notices, or
+platform-native civic packages instead of a source-linked Hermes Tweet package
+entry.
 Reject nonprofit, fundraising, donor management, association management,
 membership management, church management, and ministry app marketplaces such
 as Blackbaud Marketplace, DonorPerfect integrations, Bloomerang integrations,
