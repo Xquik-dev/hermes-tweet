@@ -130,6 +130,27 @@ patient portal widgets
 care workflows, wellness programs
 device integrations
 platform-native health app packages
+veterinary, pet care, animal health
+animal shelter, kennel, boarding
+grooming app marketplaces
+IDEXX integrations
+Covetrus marketplaces
+PetDesk integrations
+Shelterluv integrations
+Chameleon shelter software integrations
+Gingr app marketplaces
+Pawfinity integrations
+veterinary practice management marketplaces
+pet grooming app marketplaces
+kennel software marketplaces
+veterinary practice connectors
+appointment reminders
+animal shelter workflows
+kennel booking widgets
+grooming schedule tools
+prescription refill integrations
+pet health records
+platform-native animal care packages
 beauty, salon, spa
 barber, appointment booking
 local services
