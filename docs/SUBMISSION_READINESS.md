@@ -647,13 +647,12 @@ integrations, Druva marketplace, Rubrik integrations, Cohesity Marketplace,
 Datto integrations, or storage replication connectors when they only accept
 backup policy templates, restore workflow automations, retention dashboards, or
 platform-native resilience packages instead of a source-linked Hermes Tweet package entry.
-Reject IoT, smart-home, industrial-device, and maker hardware marketplaces such
-as Home Assistant integrations, HACS repositories, SmartThings Edge drivers,
-Hubitat apps, Matter plugin catalogs, Node-RED flow libraries, Arduino Library
+Reject IoT, smart-home, industrial-device, edge-device, and maker hardware marketplaces such as Home Assistant integrations, HACS repositories,
+SmartThings Edge drivers, Homey apps, Hubitat apps, openHAB bindings, Matter plugin catalogs, Node-RED flow libraries, IFTTT applets, Arduino Library
 Manager, Raspberry Pi project galleries, industrial IoT app marketplaces, or
 device plugin catalogs when they only accept home automation integrations,
 device drivers, flow recipes, firmware libraries, hardware projects, sensor
-connectors, or platform-native device packages instead of a source-linked Hermes Tweet package entry.
+connectors, connected-device packages, or platform-native device packages instead of a source-linked Hermes Tweet package entry.
 Reject industrial automation, MES, SCADA, CMMS, EAM, plant operations, and
 factory automation marketplaces such as Rockwell Automation marketplaces,
 Siemens industrial app marketplaces, PTC ThingWorx marketplaces, AVEVA
