@@ -563,6 +563,16 @@ fleet app marketplaces when they only accept map plugins, GIS extensions,
 geospatial data connectors, travel booking widgets, ride-hailing workflows,
 fleet automations, or route-optimization packages instead of a source-linked
 Hermes Tweet package entry.
+Reject supply-chain, warehouse management, WMS, TMS, inventory, order
+management, fulfillment, shipping carrier, freight forwarding, returns, and
+3PL app marketplaces such as ShipStation integrations, ShipBob integrations,
+Easyship apps, Flexport integrations, Manhattan Associates marketplaces, Blue
+Yonder marketplaces, Oracle SCM integrations, SAP Logistics Business Network,
+or supply-chain app marketplaces when they only accept carrier connectors,
+warehouse pick-pack workflows, inventory sync widgets, order routing
+automations, freight booking tools, returns portals, 3PL dashboards, or
+platform-native supply-chain packages instead of a source-linked Hermes Tweet
+package entry.
 Reject aerospace, aviation, airline operations, airport operations, drone,
 UAS, maritime, rail, flight operations, and transport-operations app
 marketplaces such as ForeFlight integrations, AirMap integrations, DroneDeploy
