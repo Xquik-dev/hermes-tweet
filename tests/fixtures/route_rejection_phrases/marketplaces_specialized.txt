@@ -525,6 +525,8 @@ OEE dashboards
 machine data adapters
 platform-native industrial operations packages
 CAD, CAM, PLM, EDA
+additive manufacturing, robotics
+autonomous-systems app marketplaces
 additive manufacturing app marketplaces
 Autodesk App Store
 Fusion 360 add-ins
@@ -534,6 +536,12 @@ Altium extensions
 KiCad plugin repositories
 FreeCAD Addon Manager
 CAD plugin marketplaces
+ROS package indexes
+Gazebo plugins
+Open-RMF adapters
+PX4 extensions
+ArduPilot companion apps
+robot app catalogs
 PLM app stores
 EDA plugin catalogs
 manufacturing app marketplaces
@@ -543,6 +551,9 @@ circuit-design extensions
 CAM post-processors
 slicer integrations
 simulation templates
+ROS nodes
+robot fleet adapters
+companion-computer packages
 manufacturing workflows
 platform-native engineering packages
 construction, BIM, property
