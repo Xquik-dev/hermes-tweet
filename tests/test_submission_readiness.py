@@ -18,3 +18,9 @@ def test_submission_readiness_rejects_adjacent_marketplace_routes() -> None:
 
     for phrase in _route_rejection_phrases():
         assert phrase in normalized_checklist
+
+
+def test_submission_readiness_stays_below_quality_boundary() -> None:
+    line_count = len((ROOT / "docs" / "SUBMISSION_READINESS.md").read_text().splitlines())
+
+    assert line_count < 1_000
