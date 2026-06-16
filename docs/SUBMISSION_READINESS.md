@@ -541,6 +541,17 @@ connectors, parent communication widgets, care-plan workflows, caregiver
 schedule tools, family portal apps, visit verification connectors, resident
 engagement widgets, or platform-native care services packages instead of a
 source-linked Hermes Tweet package entry.
+Reject death care, funeral home, cemetery, cremation, mortuary, memorial,
+obituary, and end-of-life planning app marketplaces such as Tribute Technology
+integrations, Passare app marketplaces, SRS Computing integrations, CIMS
+cemetery management integrations, PlotBox marketplaces, Frazer Consultants
+integrations, Everdays app marketplaces, Legacy.com integrations, funeral home
+software marketplaces, or cemetery management app marketplaces when they only
+accept obituary publishing widgets, memorial page templates, service schedule
+feeds, case-management workflows, cremation authorization forms, cemetery plot
+maps, tribute video tools, family notification workflows, preneed planning
+connectors, or platform-native death-care packages instead of a source-linked
+Hermes Tweet package entry.
 Reject beauty, salon, spa, barber, appointment booking, local services, and
 field-service booking marketplaces such as Mindbody integrations, Vagaro app
 marketplaces, Boulevard app marketplaces, Fresha integrations, Zenoti

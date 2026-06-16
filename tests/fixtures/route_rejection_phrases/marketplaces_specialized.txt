@@ -174,6 +174,30 @@ family portal apps
 visit verification connectors
 resident engagement widgets
 platform-native care services packages
+death care, funeral home
+cemetery, cremation, mortuary
+memorial, obituary
+end-of-life planning app marketplaces
+Tribute Technology integrations
+Passare app marketplaces
+SRS Computing integrations
+CIMS cemetery management integrations
+PlotBox marketplaces
+Frazer Consultants integrations
+Everdays app marketplaces
+Legacy.com integrations
+funeral home software marketplaces
+cemetery management app marketplaces
+obituary publishing widgets
+memorial page templates
+service schedule feeds
+case-management workflows
+cremation authorization forms
+cemetery plot maps
+tribute video tools
+family notification workflows
+preneed planning connectors
+platform-native death-care packages
 beauty, salon, spa
 barber, appointment booking
 local services
