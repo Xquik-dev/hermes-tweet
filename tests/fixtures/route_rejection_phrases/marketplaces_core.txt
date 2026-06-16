@@ -26,6 +26,7 @@ gateway plugins
 API management connectors
 data warehouse, ETL, reverse ETL
 customer data platform
+data workflow orchestration marketplaces
 Snowflake Marketplace
 dbt Package Hub
 Airbyte connectors
@@ -33,12 +34,21 @@ Fivetran connectors
 Hightouch destinations
 Census integrations
 Segment integrations
+Airflow Providers
+Dagster integrations
+Prefect collections
+Mage templates
+Kestra plugins
+Meltano plugins
 data integration catalogs
 data connectors
 warehouse apps
 transform packages
 destination syncs
 ingestion pipelines
+DAG providers
+pipeline assets
+orchestration blocks
 customer profile activations
 platform-native data app packages
 database extension, cache module
