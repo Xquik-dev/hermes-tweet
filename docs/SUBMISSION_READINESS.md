@@ -771,6 +771,11 @@ marketplace, Typeform app marketplace, or SurveyMonkey app directories when
 they only accept email automations, newsletter connectors, booking workflows,
 event listings, form widgets, survey templates, or platform-native integration
 packages instead of a source-linked Hermes Tweet package entry.
+Also reject market research, survey panel, user research, and consumer insights
+app marketplaces such as Qualtrics Marketplace, UserTesting integrations,
+Dovetail integrations, panel sample connectors, product feedback repositories,
+feedback dashboards, and platform-native insights packages when they only accept
+survey distribution workflows or native research dashboards instead of a source-linked Hermes Tweet package entry.
 Reject sports, league management, fan engagement, sports ticketing, venue
 operations, stadium, and esports tournament app marketplaces such as TeamSnap
 app marketplaces, SportsEngine integrations, LeagueApps marketplaces,

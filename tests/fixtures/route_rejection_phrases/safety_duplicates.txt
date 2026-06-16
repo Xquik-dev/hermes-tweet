@@ -55,6 +55,17 @@ email automations, newsletter connectors
 booking workflows
 event listings, form widgets
 survey templates, or platform-native integration packages
+market research, survey panel
+user research, and consumer insights
+Qualtrics Marketplace
+UserTesting integrations
+Dovetail integrations
+panel sample connectors
+product feedback repositories
+feedback dashboards
+platform-native insights packages
+survey distribution workflows
+native research dashboards
 sports, league management
 fan engagement, sports ticketing
 venue operations, stadium
