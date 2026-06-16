@@ -219,6 +219,13 @@ reservation widgets, delivery workflows, online ordering automations, loyalty
 program integrations, property-management connectors, table-management tools,
 or platform-native hospitality packages instead of a source-linked Hermes Tweet
 package entry.
+Reject food safety, food manufacturing, CPG, consumer packaged goods, beverage,
+brewery, winery, and packaged-goods app marketplaces such as TraceGains
+integrations, SafetyChain marketplaces, FoodLogiQ connectors, brewery software
+marketplaces, winery software marketplaces, beverage distribution app catalogs,
+or CPG retail execution marketplaces when they only accept HACCP checklists,
+batch records, recall workflows, compliance labels, cellar management,
+distributor ordering, or platform-native food and beverage packages instead of a source-linked Hermes Tweet package entry.
 Reject community chat and bot directories such as Discord App Directory,
 Discord bot lists, Telegram bot catalogs, Matrix bot directories, Mastodon app
 directories, Reddit app directories, or Twitch Extension Marketplace when they
@@ -551,14 +558,11 @@ only accept EHR integrations, clinical apps, FHIR launch apps, patient portal
 widgets, care workflows, wellness programs, device integrations, or
 platform-native health app packages instead of a source-linked Hermes Tweet
 package entry.
-Reject dental, orthodontic, dental lab, DSO, dental imaging, and dental
-practice management app marketplaces such as Dentrix Marketplace, Open Dental
-integrations, Eaglesoft integrations, CareStack marketplaces, Curve Dental
-integrations, dental lab marketplaces, or dental imaging app catalogs when
-they only accept patient chart connectors, appointment recall workflows,
-treatment plan templates, claim attachments, imaging viewers, lab case
-tickets, or platform-native dental packages instead of a source-linked Hermes
-Tweet package entry.
+Reject dental, orthodontic, dental lab, DSO, dental imaging, and dental practice management app marketplaces
+such as Dentrix Marketplace, Open Dental integrations, Eaglesoft integrations, CareStack marketplaces,
+Curve Dental integrations, dental lab marketplaces, or dental imaging app catalogs when they only accept
+patient chart connectors, appointment recall workflows, treatment plan templates, claim attachments,
+imaging viewers, lab case tickets, or platform-native dental packages instead of a source-linked Hermes Tweet package entry.
 Reject pharmacy, drugstore, PBM, e-prescribing, prescription management, 340B,
 and pharmacy point-of-sale app marketplaces such as PioneerRx integrations,
 QS/1 integrations, NCPDP app catalogs, CoverMyMeds integrations, Surescripts

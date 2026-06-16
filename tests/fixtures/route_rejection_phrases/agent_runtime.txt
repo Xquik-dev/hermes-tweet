@@ -257,6 +257,24 @@ loyalty program integrations
 property-management connectors
 table-management tools
 platform-native hospitality packages
+food safety, food manufacturing
+CPG, consumer packaged goods
+brewery, winery
+packaged-goods app marketplaces
+TraceGains integrations
+SafetyChain marketplaces
+FoodLogiQ connectors
+brewery software marketplaces
+winery software marketplaces
+beverage distribution app catalogs
+CPG retail execution marketplaces
+HACCP checklists
+batch records
+recall workflows
+compliance labels
+cellar management
+distributor ordering
+platform-native food and beverage packages
 community chat and bot directories
 Discord App Directory
 Discord bot lists, Telegram bot catalogs
