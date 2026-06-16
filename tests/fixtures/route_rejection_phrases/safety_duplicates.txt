@@ -27,6 +27,21 @@ contact-center workflows
 conversation routing apps
 notification automations
 platform-native communications packages
+telecom, ISP, domain registrar
+DNS, CDN, edge-network
+network operations app marketplaces
+Cloudflare Apps
+Akamai Marketplace
+Fastly integrations
+registrar app directories
+cPanel extensions
+WHMCS Marketplace
+OSS/BSS integration catalogs
+DNS widgets, registrar extensions
+CDN edge apps
+hosting-panel modules
+network monitoring connectors
+platform-native telecom packages
 email marketing, newsletter
 scheduling, event, form, and survey app
 Mailchimp integrations

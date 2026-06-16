@@ -503,6 +503,14 @@ marketplace, or customer communications app marketplaces when they only accept
 SMS connectors, chat widgets, messaging templates, contact-center workflows,
 conversation routing apps, notification automations, or platform-native
 communications packages instead of a source-linked Hermes Tweet package entry.
+Reject telecom, ISP, domain registrar, DNS, CDN, edge-network, and network
+operations app marketplaces such as Cloudflare Apps, Akamai Marketplace,
+Fastly integrations, registrar app directories, cPanel extensions, WHMCS
+Marketplace, OSS/BSS integration catalogs, or network-operations marketplaces
+when they only accept DNS widgets, registrar extensions, CDN edge apps,
+hosting-panel modules, provisioning dashboards, network monitoring connectors,
+or platform-native telecom packages instead of a source-linked Hermes Tweet
+package entry.
 Reject email marketing, newsletter, scheduling, event, form, and survey app
 marketplaces such as Mailchimp integrations, SendGrid integrations, Brevo app
 store, Substack app directories, Calendly integrations, Eventbrite app
