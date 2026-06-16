@@ -253,6 +253,16 @@ connectors, claims workflows, broker-management integrations, policy lifecycle
 tools, underwriting dashboards, actuarial models, risk-scoring templates,
 document intake automations, or platform-native insurance packages instead of
 a source-linked Hermes Tweet package entry.
+Reject agriculture, farming, agritech, precision agriculture, crop analytics,
+livestock, and farm management app marketplaces such as John Deere Operations
+Center, Climate FieldView app directories, Trimble Agriculture integrations,
+Agworld integration marketplaces, Granular app marketplaces, farm management
+app marketplaces, crop analytics marketplaces, livestock management
+marketplaces, or precision agriculture catalogs when they only accept
+equipment data connectors, field operations workflows, crop scouting tools,
+yield maps, agronomy dashboards, livestock record systems, farm ERP
+integrations, or platform-native agriculture packages instead of a
+source-linked Hermes Tweet package entry.
 Reject Web3, crypto wallet, dapp, NFT, and decentralized social marketplaces
 such as MetaMask Snaps, WalletConnect AppKit plugins, Alchemy dapp galleries,
 thirdweb marketplaces, Chainlink Functions galleries, OpenSea app
