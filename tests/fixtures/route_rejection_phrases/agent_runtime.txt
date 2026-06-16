@@ -222,6 +222,23 @@ Reddit app directories, or Twitch Extension Marketplace
 chat bots, server apps
 slash commands, moderation workflows
 social feed relays, or extension packages
+dating, matchmaking, community platform
+forum, classifieds
+marketplace community app directories
+Discourse plugins
+Circle integrations
+Mighty Networks app directories
+Hivebrite integrations
+Bettermode app marketplaces
+Sharetribe integrations
+dating app marketplaces
+classifieds app marketplaces
+membership community catalogs
+profile widgets, member-directory apps
+forum plugins
+matchmaking workflows
+listing templates, marketplace seller tools
+platform-native community packages
 CMS, content publishing, and creator platform marketplaces
 WordPress Plugin Directory
 Drupal module directory, Ghost integrations
