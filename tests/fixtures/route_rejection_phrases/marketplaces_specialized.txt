@@ -173,6 +173,25 @@ patient portal widgets
 care workflows, wellness programs
 device integrations
 platform-native health app packages
+pharmacy, drugstore, PBM
+e-prescribing, prescription management
+340B
+pharmacy point-of-sale app marketplaces
+PioneerRx integrations
+QS/1 integrations
+NCPDP app catalogs
+CoverMyMeds integrations
+Surescripts integrations
+pharmacy benefit management marketplaces
+drugstore POS marketplaces
+prescription workflow marketplaces
+claim adjudication connectors
+refill workflows
+formulary lookups
+medication synchronization widgets
+prior authorization forms
+e-prescribing connectors
+platform-native pharmacy packages
 veterinary, pet care, animal health
 animal shelter, kennel, boarding
 grooming app marketplaces

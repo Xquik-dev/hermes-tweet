@@ -551,6 +551,15 @@ only accept EHR integrations, clinical apps, FHIR launch apps, patient portal
 widgets, care workflows, wellness programs, device integrations, or
 platform-native health app packages instead of a source-linked Hermes Tweet
 package entry.
+Reject pharmacy, drugstore, PBM, e-prescribing, prescription management, 340B,
+and pharmacy point-of-sale app marketplaces such as PioneerRx integrations,
+QS/1 integrations, NCPDP app catalogs, CoverMyMeds integrations, Surescripts
+integrations, pharmacy benefit management marketplaces, drugstore POS
+marketplaces, or prescription workflow marketplaces when they only accept claim
+adjudication connectors, refill workflows, formulary lookups, medication
+synchronization widgets, prior authorization forms, e-prescribing connectors,
+or platform-native pharmacy packages instead of a source-linked Hermes Tweet
+package entry.
 Reject veterinary, pet care, animal health, animal shelter, kennel, boarding,
 and grooming app marketplaces such as IDEXX integrations, Covetrus
 marketplaces, PetDesk integrations, Shelterluv integrations, Chameleon shelter
