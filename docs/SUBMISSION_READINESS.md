@@ -124,6 +124,15 @@ model registry catalogs when they only accept hosted models, demo spaces,
 notebooks, datasets, benchmark links, annotation tasks, labeling templates,
 synthetic-data packages, or model deployment recipes instead of a source-linked
 Hermes Tweet package entry.
+Reject lab, science, biotech, ELN, LIMS, bioinformatics, genomics, chemistry,
+and scientific workflow marketplaces such as Benchling app marketplaces, LabKey
+app marketplaces, Galaxy Tool Shed, JupyterHub scientific extensions, KNIME Hub
+nodes, Nextflow plugin registries, Snakemake workflow catalogs, ELN app
+marketplaces, LIMS app marketplaces, or chemistry plugin marketplaces when they
+only accept assay templates, sample-tracking connectors, workflow nodes,
+pipeline wrappers, notebook extensions, lab instrument integrations, genomic
+analysis packages, chemistry tool plugins, or platform-native lab automation
+packages instead of a source-linked Hermes Tweet package entry.
 Reject RAG, retrieval, and vector-store integration catalogs such as LlamaHub,
 Pinecone Assistant, Weaviate, Qdrant, Chroma, or retriever plugin galleries
 when they only accept data loaders, vector indexes, retriever classes, ingestion
