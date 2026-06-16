@@ -1,0 +1,250 @@
+ClassLink App Library
+Clever Library
+K-12 SIS integration catalogs
+campus app marketplaces
+edtech app marketplaces
+assignment widgets
+gradebook sync connectors
+roster sync tools
+SSO launch apps
+classroom add-ons
+SIS connectors
+parent portal workflows
+attendance dashboards
+campus services apps
+platform-native education packages
+API marketplaces, public API networks
+developer portal catalogs
+RapidAPI
+Postman Public API Network
+SwaggerHub, Stoplight, ReadMe
+Kong Plugin Hub
+API gateway marketplaces
+API specs, hosted API listings
+request collections, docs workspaces
+gateway plugins
+API management connectors
+data warehouse, ETL, reverse ETL
+customer data platform
+Snowflake Marketplace
+dbt Package Hub
+Airbyte connectors
+Fivetran connectors
+Hightouch destinations
+Census integrations
+Segment integrations
+data integration catalogs
+data connectors
+warehouse apps
+transform packages
+destination syncs
+ingestion pipelines
+customer profile activations
+platform-native data app packages
+finance, accounting, payroll
+procurement, and ERP app marketplaces
+QuickBooks App Store
+Xero App Store
+NetSuite SuiteApps
+SAP Store
+Workday Marketplace
+ADP Marketplace
+Stripe App Marketplace
+procurement app marketplaces
+accounting connectors, billing apps
+payroll automations
+procurement workflows, ERP extensions
+platform-native financial integration packages
+insurance, claims, risk
+broker, policy administration
+actuarial, and insurtech app marketplaces
+Guidewire Marketplace
+Duck Creek Content Exchange
+Applied Epic marketplaces
+Vertafore marketplaces
+insurance app marketplaces
+claims automation marketplaces
+broker management app marketplaces
+policy administration app marketplaces
+risk modeling marketplaces
+actuarial app marketplaces
+carrier connectors
+claims workflows
+broker-management integrations
+policy lifecycle tools
+underwriting dashboards
+actuarial models
+risk-scoring templates
+document intake automations
+platform-native insurance packages
+government, civic tech
+municipal, public sector
+open data
+permitting, 311 service
+public records app marketplaces
+GovTech app marketplaces
+Socrata app marketplaces
+ArcGIS Hub civic integrations
+OpenGov marketplaces
+Granicus integrations
+CivicPlus app marketplaces
+public records software integrations
+permitting software marketplaces
+municipal app marketplaces
+open-data dashboards
+resident-service forms
+permitting workflows
+311 request connectors
+council agenda tools
+records-request portals
+GIS story maps
+procurement notices
+platform-native civic packages
+nonprofit, fundraising
+donor management, association management
+membership management, church management
+ministry app marketplaces
+Blackbaud Marketplace
+DonorPerfect integrations
+Bloomerang integrations
+Neon CRM app marketplaces
+Planning Center app marketplaces
+Pushpay app marketplaces
+nonprofit app marketplaces
+fundraising app marketplaces
+donor management catalogs
+association management marketplaces
+donation widgets
+donor-sync connectors
+membership workflows
+pledge forms
+volunteer scheduling tools
+church directory integrations
+ministry communication apps
+platform-native nonprofit packages
+restaurant, hospitality
+hotel PMS, food delivery
+reservation platform
+point-of-sale
+POS integration marketplaces
+OpenTable Marketplace
+Toast integrations
+Square App Marketplace
+Clover App Market
+DoorDash developer marketplaces
+Uber Eats integration marketplaces
+hotel PMS app marketplaces
+hospitality app marketplaces
+restaurant app marketplaces
+menu sync connectors
+table reservation widgets
+ordering workflows
+kitchen display integrations
+loyalty apps
+payment terminal add-ons
+delivery dispatch connectors
+platform-native hospitality packages
+legal tech
+law practice management
+e-discovery
+contract lifecycle management
+compliance, and case management marketplaces
+Clio app directories
+MyCase app marketplaces
+PracticePanther integrations
+NetDocuments marketplaces
+iManage integrations
+DocuSign App Center
+Ironclad integrations
+Relativity App Hub
+legal app marketplaces
+matter-management connectors
+document management integrations
+e-discovery workflows
+contract review templates
+e-signature add-ons
+compliance dashboards
+time-billing connectors
+platform-native legal packages
+real estate, property management
+proptech, mortgage
+MLS, leasing
+construction management
+facilities management
+building information modeling marketplaces
+Procore App Marketplace
+AppFolio Stack
+Yardi marketplaces
+Buildium marketplaces
+Autodesk Construction Cloud app marketplaces
+real estate app marketplaces
+property management app marketplaces
+construction app marketplaces
+listing sync connectors
+lease workflows
+tenant portals
+work-order automations
+property accounting connectors
+mortgage origination integrations
+BIM content
+facilities maintenance apps
+platform-native property packages
+laboratory, LIMS
+ELN, research software
+academic, science
+lab automation
+research data management marketplaces
+Benchling App Marketplace
+LabArchives integrations
+LabWare LIMS marketplaces
+SciNote integrations
+Open Science Framework add-ons
+laboratory app marketplaces
+LIMS app marketplaces
+research software marketplaces
+instrument data connectors
+sample tracking workflows
+notebook templates
+protocol registries
+assay dashboards
+research data repositories
+grant reporting tools
+platform-native laboratory packages
+music, audio, podcast
+streaming creator, DAW plugin
+radio broadcast
+music marketing
+creator monetization marketplaces
+Spotify developer app directories
+Apple Podcasts integrations
+SoundCloud app galleries
+Bandcamp developer integrations
+Twitch Extensions
+OBS plugin marketplaces
+DAW plugin marketplaces
+podcast app marketplaces
+audio plugin marketplaces
+playback widgets
+audio processing plugins
+stream overlays
+channel extensions
+podcast hosting connectors
+artist storefront tools
+royalty reporting dashboards
+broadcast automation workflows
+platform-native media packages
+agriculture, farming, agritech
+precision agriculture, crop analytics
+livestock, and farm management app marketplaces
+John Deere Operations Center
+Climate FieldView app directories
+Trimble Agriculture integrations
+Agworld integration marketplaces
+Granular app marketplaces
+farm management app marketplaces
+crop analytics marketplaces
+livestock management marketplaces
+precision agriculture catalogs
+equipment data connectors
+field operations workflows
+crop scouting tools

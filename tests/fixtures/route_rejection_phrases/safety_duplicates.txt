@@ -1,0 +1,214 @@
+engine plugins, editor extensions
+game assets, scripts
+SDK integrations, creator tools
+avatar or world packages
+voice assistant, speech, meeting
+real-time communications app
+Alexa Skills Store
+Google Assistant Actions, Bixby
+Zoom App Marketplace
+Microsoft Teams meeting apps
+Slack huddle app
+conferencing integration catalogs
+voice skills, assistant actions
+meeting bots, call workflows
+transcript tools, or communications app packages
+messaging, SMS, chat API
+customer communications app marketplaces
+Twilio Marketplace
+Vonage integrations
+MessageBird or Bird app
+Sinch integrations
+WhatsApp Business app integrations
+Sendbird marketplace
+SMS connectors
+chat widgets, messaging templates
+contact-center workflows
+conversation routing apps
+notification automations
+platform-native communications packages
+email marketing, newsletter
+scheduling, event, form, and survey app
+Mailchimp integrations
+SendGrid integrations, Brevo
+Substack app directories
+Calendly integrations
+Eventbrite app
+Typeform app marketplace
+SurveyMonkey app directories
+email automations, newsletter connectors
+booking workflows
+event listings, form widgets
+survey templates, or platform-native integration packages
+sports, league management
+fan engagement, sports ticketing
+venue operations, stadium
+esports tournament app marketplaces
+TeamSnap app marketplaces
+SportsEngine integrations
+LeagueApps marketplaces
+Ticketmaster app marketplaces
+SeatGeek integrations
+fan engagement app marketplaces
+sports league management catalogs
+esports tournament marketplaces
+team roster connectors
+schedule widgets
+ticketing workflows
+venue operations tools
+stadium experience apps
+fan data dashboards
+tournament brackets
+platform-native sports packages
+library, museum, archive
+cultural heritage
+digital collections
+exhibit management
+museum ticketing
+ILS, and library management app
+Koha plugin catalogs
+ArchivesSpace integrations
+Omeka plugin marketplaces
+MuseumPlus integrations
+Tessitura app marketplaces
+Blackbaud Altru integrations
+library app marketplaces
+museum app marketplaces
+archive app marketplaces
+catalog widgets
+collections dashboards
+exhibit workflows
+ticketing connectors
+donor CRM integrations
+digitization tools
+finding-aid templates
+patron account portals
+platform-native cultural heritage packages
+maps, geospatial, travel
+mobility, logistics, and fleet app
+Google Maps Platform integrations
+Mapbox plugin catalog
+ArcGIS Marketplace
+QGIS plugin repository
+travel booking marketplaces
+Expedia app marketplace
+Uber developer app marketplaces
+logistics and fleet app marketplaces
+map plugins, GIS extensions
+geospatial data connectors
+travel booking widgets
+ride-hailing workflows
+fleet automations, or route-optimization packages
+automotive, car dealership
+auto repair, vehicle service
+auto parts
+connected car
+dealer management system
+DMS app marketplaces
+CDK Global marketplaces
+Reynolds and Reynolds integrations
+Dealertrack app marketplaces
+Mitchell 1 integrations
+ALLDATA integrations
+Shopmonkey app marketplaces
+Tekmetric integrations
+automotive app marketplaces
+car dealership app marketplaces
+auto repair shop marketplaces
+inventory sync connectors
+service scheduling workflows
+repair-order dashboards
+parts catalog integrations
+VIN lookup widgets
+customer-pay portals
+connected-vehicle telemetry
+platform-native automotive packages
+code-assistant extension marketplaces
+developer-agent tool catalogs
+Amazon Q Developer, Continue, Sourcegraph Cody
+JetBrains Junie, Devin
+IDE extensions, editor plugins
+workspace automation packs
+assistant-specific tool definitions
+PR-editable Hermes Tweet source package entry
+local coding-agent command packs
+workflow recipes, and rule bundles
+GitHub Copilot Extensions, OpenCode commands
+Aider workflows, Goose
+Kiro hooks, or Amp tools
+agent-local prompts
+commands, recipes, hooks, or editor workflows
+source-linked Hermes Tweet package entry
+hosted automation, app-action, and component galleries
+Zapier, Pipedream, Activepieces, Composio, Arcade, Toolhouse, or Langflow
+workflow templates, provider connectors, hosted app actions
+PR-editable third-party source repository entry
+RPA and no-code automation marketplaces
+UiPath, Robocorp, n8n
+Make, or Workato
+bots, community nodes, workflow exports
+automation recipes, or task templates
+embedded `.agents`, `.agent`, `.antigravity`
+project-template
+copied skill directories inside application repositories
+downstream copies or mirrors
+fresh Hermes Tweet submission routes
+personal agent memory repositories
+OpenHands microagent folders
+hosted MCP directory profile pages
+`.openhands`, Smithery, Glama, or PulseMCP
+licensed, PR-editable source entry
+contribution rules require measurable community usage
+minimum star count
+maintainer-curated quality bar
+target's stated threshold
+closed prior Hermes Tweet PR
+target-specific blocker
+resubmit with the same evidence
+write Markdown bodies through a reviewed file
+non-interpolating path
+repository names, backticked literals, and validation commands
+`source.github` or similar repository-pointer schema
+canonical hub for the owner's own skills
+prototype marketplace applications
+README documents only API calls
+`curl` publish example is not a PR-native submission route
+company engineering hubs
+internal workflow marketplaces
+single-namespace catalogs
+Open standards, Agent Skills compatibility
+`third-party`, `vendor`, `upstream`, or `external` directory name
+branded as one owner's official catalog
+explicitly accept unrelated external source repositories
+distro installers, runtime stacks, or bundle repos
+external plugin reference list
+vendor Hermes Tweet code into another installer
+runtime bridges or installer extensions
+only help another agent consume Claude plugin marketplaces
+compatibility surfaces
+editable catalog entry for third-party plugins or source repositories
+translated or mirrored awesome lists
+translation issue tracker
+independent localized submission
+accepted adjacent entries as saturation
+a live Xquik, TweetClaw, OpenClaw, SocialClaw, or x-twitter-scraper entry
+same catalog, tool list, or awesome-list section
+distinct Hermes Agent plugin lane
+closed prior Hermes Tweet issue
+completed or rejected submission route
+unless a maintainer asks for a new PR
+public GitHub code search for live `Hermes Tweet`, `hermes-tweet`
+accepted default-branch listing
+record it in `docs/ECOSYSTEM.md`
+opening a duplicate submission
+local `<plugin>/.claude-plugin/plugin.json` inside the target repository
+external source-repository entry for third-party plugins
+copy, vendor, or repackage Hermes Tweet
+local target plugin folder
+official-directory snapshot lists
+plugins already published in an upstream official catalog
+status mirrors
+already listed in that upstream catalog
+Before waiting on checks, reread the outbound title, summary, and added lines
+close it immediately with a short scope comment
+off-scope outreach open

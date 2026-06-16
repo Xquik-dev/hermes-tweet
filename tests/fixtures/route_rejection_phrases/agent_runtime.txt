@@ -1,0 +1,250 @@
+editable third-party entry surface
+framework-specific plugin marketplaces, IDE agent extension marketplaces
+single-app tool collections, offline marketplace mirrors
+Dify, LangGraph, LlamaIndex, AutoGen, OpenAI Agents SDK
+Cline, Roo Code, Cursor, Windsurf
+Open WebUI, LibreChat, AnythingLLM, BeeAI, Rivet
+Langroid, AutoGPT Forge, OpenAgents, Agent Zero, SuperAGI, BabyAGI
+Smolagents, DSPy, Julep, MetaGPT, Qwen-Agent, PraisonAI, Swarms
+Letta, MemGPT, Griptape, Mirascope, Marvin AI, Agency Swarm, Phidata, Motia
+Flowise, Haystack, Sema4.ai, MindsDB
+Hermes Tweet's shipped package format
+tool subclass, module, framework tool
+extension, action, pipeline
+agent-framework runtime toolkits
+AutoGen, CrewAI, LangGraph
+Mastra, Letta, and Semantic Kernel
+runtime-specific tool implementation
+adapter class, graph node, agent action
+plugin function instead of a source-linked
+hosted agent builder, assistant builder, toolgroup, and action-group
+Chainlit, Microsoft PromptFlow, Llama Stack, CopilotKit, Rasa
+CALM, or AWS Bedrock Agents
+app-native tools
+declarative action groups
+prompt-flow components
+runtime-specific tool definitions
+integration targets, not Hermes Tweet outreach routes
+licensed PR-editable catalog entry
+Hermes Tweet's shipped source repository package
+hosted AI app directories
+assistant action galleries
+ChatGPT apps, OpenAI Apps SDK examples
+GPT action directories, MCP UI registries
+Vercel AI SDK templates
+LangChain Hub snippets
+app manifests, UI widgets, action schemas
+SDK demos, or hub snippets
+prompt, evaluation, and observability hubs
+LangSmith Hub, PromptLayer, Langfuse
+Braintrust, promptfoo, or OpenPipe
+prompt templates, eval datasets
+trace dashboards, eval configs
+experiment recipes
+model hubs, dataset marketplaces
+annotation-template catalogs
+synthetic-data marketplaces
+MLOps registries
+Hugging Face Spaces
+Hugging Face model hubs
+Replicate collections
+Kaggle datasets
+Papers With Code
+Roboflow Universe
+Label Studio templates
+Scale AI marketplaces
+model registry catalogs
+hosted models, demo spaces
+notebooks, datasets
+benchmark links, annotation tasks
+labeling templates
+synthetic-data packages
+model deployment recipes
+lab, science, biotech
+ELN, LIMS, bioinformatics
+genomics, chemistry
+scientific workflow marketplaces
+Benchling app marketplaces
+LabKey app marketplaces
+Galaxy Tool Shed
+JupyterHub scientific extensions
+KNIME Hub nodes
+Nextflow plugin registries
+Snakemake workflow catalogs
+ELN app marketplaces
+LIMS app marketplaces
+chemistry plugin marketplaces
+assay templates
+sample-tracking connectors
+workflow nodes
+pipeline wrappers
+notebook extensions
+lab instrument integrations
+genomic analysis packages
+chemistry tool plugins
+platform-native lab automation packages
+RAG, retrieval, and vector-store integration catalogs
+LlamaHub
+Pinecone Assistant, Weaviate, Qdrant
+data loaders, vector indexes
+retriever classes, ingestion pipelines
+notebook, data-app, and BI assistant galleries
+Jupyter AI
+NotebookLM, marimo, Hex, Deepnote
+Observable Framework, or Databricks Apps
+notebooks, magic commands
+workspace recipes, or data-app examples
+data-visualization, dashboarding
+charting, and BI visual marketplaces
+Tableau Exchange
+Power BI visuals marketplace
+Looker Marketplace
+Metabase plugins
+Apache Superset extensions
+Observable visualization plugins
+Chart.js plugin registries
+D3 plugin catalogs
+dashboard widget marketplaces
+reporting widget marketplaces
+dashboard templates
+visual components, chart plugins
+BI connectors, metric widgets
+report blocks
+data exploration examples
+platform-native visualization packages
+browser-automation and computer-use agent toolkits
+Browser Use
+Stagehand, Browserbase, Hyperbrowser
+Playwright agent tools
+browser task scripts
+replay recipes, hosted browser workflows
+DOM automation examples
+computer-use action packs
+enterprise hosted-agent surfaces
+Google Vertex AI Agent Builder
+Salesforce Agentforce
+ServiceNow AI Agent Studio
+Oracle AI Agent Studio
+Slack agent platform tools
+Mistral agent connectors
+platform-native extensions
+managed-agent definitions
+productivity and workspace app directories
+Google Workspace
+Microsoft Teams apps, Slack App Directory
+Notion, Airtable
+monday.com, or Asana
+app add-ons, workspace bots
+slash-command apps, database blocks
+workspace automations, or product-specific integrations
+localization, translation-management
+i18n, and CAT-tool marketplaces
+Crowdin Marketplace
+Lokalise app marketplace
+Phrase integrations
+Transifex integrations
+Weblate add-ons
+Smartling marketplace
+DeepL app marketplace
+Google Translate integrations
+translation memory connectors
+glossary sync apps
+localization workflow automations
+machine-translation plugins
+string extraction tools
+project webhooks
+translation-provider extensions
+CRM, support, and commerce app marketplaces
+HubSpot Marketplace
+Salesforce AppExchange, Zendesk Marketplace
+Intercom App Store, Freshworks
+Pipedrive Marketplace, Zoho Marketplace
+Shopify App Store
+CRM apps, support widgets
+sales automations, helpdesk macros
+commerce app packages, or storefront integrations
+restaurant, hospitality, hotel
+reservation, food delivery
+online ordering, retail POS
+point-of-sale app marketplaces
+Toast Partner Connect
+Square App Marketplace
+Clover App Market
+Lightspeed integrations
+OpenTable integrations
+DoorDash developer apps
+Uber Eats integrations
+hotel PMS app marketplaces
+hospitality app marketplaces
+restaurant POS app marketplaces
+menu sync connectors
+payment terminal apps
+reservation widgets
+delivery workflows
+online ordering automations
+loyalty program integrations
+property-management connectors
+table-management tools
+platform-native hospitality packages
+community chat and bot directories
+Discord App Directory
+Discord bot lists, Telegram bot catalogs
+Matrix bot directories, Mastodon app
+Reddit app directories, or Twitch Extension Marketplace
+chat bots, server apps
+slash commands, moderation workflows
+social feed relays, or extension packages
+CMS, content publishing, and creator platform marketplaces
+WordPress Plugin Directory
+Drupal module directory, Ghost integrations
+Webflow App Marketplace, Wix App Market
+Squarespace Extensions
+CMS plugins, theme extensions
+site widgets, publishing automations
+website-builder app packages
+social listening, brand monitoring
+marketing analytics app
+Hootsuite App Directory
+Buffer integrations, Sprout Social
+Semrush App Center
+brand-monitoring integration galleries
+dashboards, analytics connectors
+campaign automations, social inbox apps
+platform-specific integrations
+SEO, search-console, web analytics
+advertising partner marketplaces
+Google Search Console integrations
+Bing Webmaster Tools integrations
+Ahrefs app marketplace
+Moz app marketplace
+Similarweb integrations
+Google Analytics integrations
+Adobe Analytics Exchange
+Google Ads marketplace
+Meta Business Partner Marketplace
+adtech marketplaces
+site-verification integrations
+keyword rank trackers
+SEO audit dashboards
+tag-management connectors
+conversion tracking packages
+ads automation apps
+partner-program listings
+LMS, documentation, and knowledge-base marketplaces
+Moodle Plugin Directory
+Canvas LMS integrations, Blackboard
+Confluence Marketplace
+GitBook integrations
+knowledge-base app marketplaces
+course plugins, learning-tool integrations
+documentation widgets, space macros
+help-center automations
+knowledge-base connectors
+education, edtech, classroom
+school administration
+student information
+campus, university, and district app
+Google Classroom add-ons
+Schoology App Center
+PowerSchool App Marketplace
+Infinite Campus integrations

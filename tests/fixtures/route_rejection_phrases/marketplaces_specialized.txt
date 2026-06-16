@@ -1,0 +1,250 @@
+yield maps, agronomy dashboards
+livestock record systems
+farm ERP integrations
+platform-native agriculture packages
+Web3, crypto wallet, dapp
+NFT, and decentralized social marketplaces
+MetaMask Snaps
+WalletConnect AppKit plugins
+Alchemy dapp galleries
+thirdweb marketplaces
+Chainlink Functions galleries
+OpenSea app marketplaces
+Farcaster frame catalogs
+Lens Protocol app directories
+wallet plugin marketplaces
+wallet extensions, dapp templates
+smart-contract functions
+NFT storefront apps
+blockchain connectors
+decentralized social frames
+token-gated app packages
+energy, utilities, climate
+sustainability, ESG, carbon accounting
+EV charging, solar, and smart-grid app marketplaces
+utility data integrations
+Green Button app directories
+OpenADR integration catalogs
+ChargePoint app integrations
+solar monitoring app marketplaces
+carbon accounting app marketplaces
+ESG reporting app catalogs
+climate-tech app marketplaces
+building energy management app marketplaces
+meter-data connectors
+demand-response workflows
+charging station integrations
+solar monitoring connectors
+carbon-reporting dashboards
+ESG workflow templates
+smart-grid adapters
+building energy controls
+platform-native sustainability packages
+HR, recruiting, talent
+benefits, and workforce app marketplaces
+Greenhouse integrations
+Lever integrations
+Ashby marketplace
+Workable app marketplace
+BambooHR app marketplace
+Gusto integrations
+LinkedIn Talent Solutions partner apps
+recruiting app marketplaces
+ATS connectors
+candidate-source automations
+job board integrations
+interview workflows
+employee-directory apps
+benefits connectors
+onboarding tasks
+workforce platform packages
+healthcare, EHR, FHIR
+telehealth, wellness, and fitness app
+Epic App Orchard
+Oracle Health App Gallery
+SMART App Gallery
+FHIR app galleries
+athenahealth Marketplace
+telehealth app marketplaces
+wellness app marketplaces
+fitness app marketplaces
+EHR integrations, clinical apps
+FHIR launch apps
+patient portal widgets
+care workflows, wellness programs
+device integrations
+platform-native health app packages
+legal, compliance, e-signature
+identity, KYC, contract automation
+eDiscovery, GRC, and privacy automation app marketplaces
+Clio App Directory
+DocuSign App Center
+Adobe Acrobat Sign integrations
+Okta Integration Network
+Auth0 Marketplace
+OneTrust app catalogs
+Vanta integrations
+Drata integrations
+Relativity app directories
+contract lifecycle marketplaces
+compliance automation marketplaces
+legaltech connectors
+e-signature connectors
+identity integrations
+compliance controls
+audit workflows
+eDiscovery workflows
+contract templates
+trust-center automations
+KYC checks
+privacy assessments
+platform-native governance apps
+security operations, SIEM, SOAR
+observability integration catalogs
+Splunkbase, Elastic integrations
+Datadog integrations
+Grafana plugin catalog
+New Relic Instant Observability
+Sumo Logic app catalog
+Cortex XSOAR content packs
+dashboards, detection rules
+log parsers, alert connectors
+runbooks, incident workflows
+platform-specific integration packages
+CI/CD, DevOps automation
+pipeline extension marketplaces
+GitHub Marketplace Actions
+GitLab CI/CD Catalog
+CircleCI orb registry
+Jenkins plugin index
+Buildkite plugins
+Travis CI add-ons
+pipeline automation marketplaces
+workflow actions, CI templates
+orb packages, build plugins
+deployment automations
+source-control workflows
+container, cloud-native
+infrastructure packaging registries
+Docker Hub extensions
+Kubernetes operator catalogs
+Helm chart repositories
+Artifact Hub
+Terraform Registry, Pulumi Registry
+Crossplane package registry
+Backstage plugin catalogs
+container images, operators
+charts, infrastructure providers
+platform plugins, or deployment packages
+IoT, smart-home, industrial-device
+maker hardware marketplaces
+Home Assistant integrations
+HACS repositories
+SmartThings Edge drivers
+Hubitat apps
+Matter plugin catalogs
+Node-RED flow libraries
+Arduino Library Manager
+Raspberry Pi project galleries
+industrial IoT app marketplaces
+device plugin catalogs
+home automation integrations
+device drivers, flow recipes
+firmware libraries
+hardware projects, sensor connectors
+platform-native device packages
+industrial automation, MES, SCADA
+CMMS, EAM, plant operations
+factory automation marketplaces
+Rockwell Automation marketplaces
+Siemens industrial app marketplaces
+PTC ThingWorx marketplaces
+AVEVA marketplaces
+Ignition Exchange
+maintenance management app stores
+plant operations catalogs
+PLC connectors
+historian dashboards
+HMI modules
+production-line workflows
+asset maintenance tools
+work-order automations
+OEE dashboards
+machine data adapters
+platform-native industrial operations packages
+CAD, CAM, PLM, EDA
+additive manufacturing app marketplaces
+Autodesk App Store
+Fusion 360 add-ins
+SolidWorks marketplace
+Onshape App Store
+Altium extensions
+KiCad plugin repositories
+FreeCAD Addon Manager
+CAD plugin marketplaces
+PLM app stores
+EDA plugin catalogs
+manufacturing app marketplaces
+engineering add-ins
+CAD toolbars, model plugins
+circuit-design extensions
+CAM post-processors
+slicer integrations
+simulation templates
+manufacturing workflows
+platform-native engineering packages
+construction, BIM, property
+facilities, and real estate app marketplaces
+Procore Marketplace
+Autodesk Construction Cloud apps
+BIM 360 app stores
+Revit add-in marketplaces
+SketchUp Extension Warehouse
+Archicad add-ons
+construction app marketplaces
+BIM plugin marketplaces
+property management app marketplaces
+facilities management app marketplaces
+real estate app marketplaces
+project-management connectors
+BIM model plugins
+drawing workflows
+field-report forms
+building operations integrations
+lease or listing apps
+facility work-order tools
+platform-native construction packages
+browser, desktop, launcher
+shortcut, and mobile app extension stores
+Chrome Web Store
+Firefox Add-ons
+Microsoft Edge Add-ons
+Raycast extensions
+Alfred workflows
+iOS Shortcuts galleries
+Android app marketplaces
+browser extensions, desktop launcher
+mobile intents, automation shortcuts
+app-store listings
+design, creative, whiteboard
+knowledge-app plugin marketplaces
+Figma Community plugins
+Canva Apps Marketplace
+Miro Marketplace
+FigJam widgets
+Adobe Express add-ons
+Framer Marketplace
+Obsidian community plugins
+Blender extensions
+design plugins, canvas widgets
+personal knowledge plugins
+game engine, AR/VR, 3D asset
+creator gaming marketplaces
+Unity Asset Store
+Unreal Engine Marketplace
+Roblox Creator Store
+Godot Asset Library
+Steamworks tools
+itch.io tool marketplaces
+Meta Quest App Lab
+VRChat marketplaces
