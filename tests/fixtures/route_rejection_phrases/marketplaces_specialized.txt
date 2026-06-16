@@ -253,6 +253,17 @@ family portal apps
 visit verification connectors
 resident engagement widgets
 platform-native care services packages
+accessibility, assistive technology
+disability services, screen reader
+captioning, and WCAG testing app marketplaces
+Deque integrations
+Level Access integrations
+UserWay widgets
+accessiBe integrations
+audio description tools
+captioning workflows
+ARIA audit dashboards
+platform-native accessibility packages
 death care, funeral home
 cemetery, cremation, mortuary
 memorial, obituary

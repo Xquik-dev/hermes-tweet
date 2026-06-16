@@ -582,16 +582,17 @@ connectors, appointment reminders, animal shelter workflows, kennel booking
 widgets, grooming schedule tools, prescription refill integrations, pet health
 records, or platform-native animal care packages instead of a source-linked
 Hermes Tweet package entry.
-Reject senior care, elder care, home care, assisted living, childcare, daycare,
-nanny, babysitting, and caregiving app marketplaces such as Brightwheel
-integrations, Procare integrations, Kinderlime app marketplaces, ChildcareCRM
-integrations, Care.com integrations, WellSky Personal Care integrations,
-AlayaCare integrations, ClearCare integrations, senior care app marketplaces,
-or home care agency marketplaces when they only accept childcare attendance
-connectors, parent communication widgets, care-plan workflows, caregiver
-schedule tools, family portal apps, visit verification connectors, resident
-engagement widgets, or platform-native care services packages instead of a
-source-linked Hermes Tweet package entry.
+Reject senior care, elder care, home care, assisted living, childcare, daycare, nanny, babysitting, and caregiving app marketplaces
+such as Brightwheel integrations, Procare integrations, Kinderlime app marketplaces, ChildcareCRM integrations, Care.com integrations,
+WellSky Personal Care integrations, AlayaCare integrations, ClearCare integrations, senior care app marketplaces, or home care agency marketplaces
+when they only accept childcare attendance connectors, parent communication widgets, care-plan workflows, caregiver schedule tools,
+family portal apps, visit verification connectors, resident engagement widgets, or platform-native care services packages
+instead of a source-linked Hermes Tweet package entry.
+Reject accessibility, assistive technology, disability services, screen reader,
+captioning, and WCAG testing app marketplaces such as Deque integrations, Level
+Access integrations, UserWay widgets, accessiBe integrations, audio description
+tools, captioning workflows, ARIA audit dashboards, or platform-native
+accessibility packages instead of a source-linked Hermes Tweet package entry.
 Reject death care, funeral home, cemetery, cremation, mortuary, memorial,
 obituary, and end-of-life planning app marketplaces such as Tribute Technology
 integrations, Passare app marketplaces, SRS Computing integrations, CIMS
