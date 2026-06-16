@@ -281,6 +281,16 @@ accept matter-management connectors, document management integrations,
 e-discovery workflows, contract review templates, e-signature add-ons,
 compliance dashboards, time-billing connectors, or platform-native legal
 packages instead of a source-linked Hermes Tweet package entry.
+Reject real estate, property management, proptech, mortgage, MLS, leasing,
+construction management, facilities management, and building information
+modeling marketplaces such as Procore App Marketplace, AppFolio Stack, Yardi
+marketplaces, Buildium marketplaces, Autodesk Construction Cloud app
+marketplaces, real estate app marketplaces, property management app
+marketplaces, or construction app marketplaces when they only accept listing
+sync connectors, lease workflows, tenant portals, work-order automations,
+property accounting connectors, mortgage origination integrations, BIM
+content, facilities maintenance apps, or platform-native property packages
+instead of a source-linked Hermes Tweet package entry.
 Reject agriculture, farming, agritech, precision agriculture, crop analytics,
 livestock, and farm management app marketplaces such as John Deere Operations
 Center, Climate FieldView app directories, Trimble Agriculture integrations,
