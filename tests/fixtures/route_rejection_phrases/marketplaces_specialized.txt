@@ -135,6 +135,26 @@ dashboards, detection rules
 log parsers, alert connectors
 runbooks, incident workflows
 platform-specific integration packages
+physical security, CCTV, VMS
+access control, visitor management
+alarm, badge, and workplace safety app marketplaces
+Verkada integrations
+Genetec app marketplaces
+Milestone Marketplace
+Axis Communications integrations
+Avigilon integrations
+LenelS2 partner apps
+Brivo integrations
+Kisi integrations
+Envoy visitor-management apps
+camera device connectors
+video analytics plugins
+door access workflows
+badge provisioning automations
+visitor kiosk widgets
+incident response dashboards
+alarm panel integrations
+platform-native physical security packages
 CI/CD, DevOps automation
 pipeline extension marketplaces
 GitHub Marketplace Actions
