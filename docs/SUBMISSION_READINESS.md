@@ -679,6 +679,16 @@ marketplaces when they only accept team roster connectors, schedule widgets,
 ticketing workflows, venue operations tools, stadium experience apps, fan data
 dashboards, tournament brackets, or platform-native sports packages instead of
 a source-linked Hermes Tweet package entry.
+Reject sports betting, casino, lottery, sportsbook, fantasy sports, iGaming,
+odds-data, and gaming compliance app marketplaces such as DraftKings developer
+integrations, FanDuel integrations, Sportradar marketplaces, Genius Sports data
+integrations, OpenBet marketplaces, BetConstruct integrations, casino software
+marketplaces, lottery platform marketplaces, sportsbook app marketplaces, or
+odds API catalogs when they only accept odds feeds, bet-slip widgets, player
+account connectors, affiliate-tracking pixels, responsible-gaming workflows,
+fantasy lineup tools, lottery draw widgets, trading dashboards, risk and
+compliance connectors, or platform-native wagering packages instead of a
+source-linked Hermes Tweet package entry.
 Reject library, museum, archive, cultural heritage, digital collections,
 exhibit management, museum ticketing, ILS, and library management app
 marketplaces such as Koha plugin catalogs, ArchivesSpace integrations, Omeka

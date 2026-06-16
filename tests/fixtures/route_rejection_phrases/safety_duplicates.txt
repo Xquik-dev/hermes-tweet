@@ -75,6 +75,29 @@ stadium experience apps
 fan data dashboards
 tournament brackets
 platform-native sports packages
+sports betting, casino
+lottery, sportsbook
+fantasy sports, iGaming
+odds-data, and gaming compliance app
+DraftKings developer integrations
+FanDuel integrations
+Sportradar marketplaces
+Genius Sports data integrations
+OpenBet marketplaces
+BetConstruct integrations
+casino software marketplaces
+lottery platform marketplaces
+sportsbook app marketplaces
+odds API catalogs
+odds feeds, bet-slip widgets
+player account connectors
+affiliate-tracking pixels
+responsible-gaming workflows
+fantasy lineup tools
+lottery draw widgets
+trading dashboards
+risk and compliance connectors
+platform-native wagering packages
 library, museum, archive
 cultural heritage
 digital collections
