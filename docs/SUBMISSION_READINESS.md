@@ -417,6 +417,17 @@ integrations, solar monitoring connectors, carbon-reporting dashboards, ESG
 workflow templates, smart-grid adapters, building energy controls, or
 platform-native sustainability packages instead of a source-linked Hermes Tweet
 package entry.
+Reject natural resources, mining, oil and gas, petroleum, water utility, waste
+management, geoscience, and pipeline operations app marketplaces such as
+mining software marketplaces, oilfield app stores, petroleum data marketplaces,
+water utility integration catalogs, waste management app marketplaces, geology
+plugin catalogs, geoscience app marketplaces, pipeline operations catalogs, or
+environmental operations marketplaces when they only accept mine-planning
+plugins, well log connectors, reservoir dashboards, field operations forms,
+meter data integrations, waste collection routing, geology model plugins,
+pipeline integrity tools, environmental reporting workflows, or
+platform-native resource operations packages instead of a source-linked Hermes
+Tweet package entry.
 Reject HR, recruiting, talent, benefits, and workforce app marketplaces such as
 Greenhouse integrations, Lever integrations, Ashby marketplace, Workable app
 marketplace, BambooHR app marketplace, Gusto integrations, LinkedIn Talent
