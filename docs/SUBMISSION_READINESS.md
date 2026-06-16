@@ -449,6 +449,15 @@ catalog, New Relic Instant Observability, Sumo Logic app catalog, or Cortex
 XSOAR content packs when they only accept dashboards, detection rules, log
 parsers, alert connectors, runbooks, incident workflows, or platform-specific
 integration packages instead of a source-linked Hermes Tweet package entry.
+Reject physical security, CCTV, VMS, access control, visitor management,
+alarm, badge, and workplace safety app marketplaces such as Verkada
+integrations, Genetec app marketplaces, Milestone Marketplace, Axis
+Communications integrations, Avigilon integrations, LenelS2 partner apps,
+Brivo integrations, Kisi integrations, or Envoy visitor-management apps when
+they only accept camera device connectors, video analytics plugins, door access
+workflows, badge provisioning automations, visitor kiosk widgets, incident
+response dashboards, alarm panel integrations, or platform-native physical
+security packages instead of a source-linked Hermes Tweet package entry.
 Reject CI/CD, DevOps automation, and pipeline extension marketplaces such as
 GitHub Marketplace Actions, GitLab CI/CD Catalog, CircleCI orb registry,
 Jenkins plugin index, Buildkite plugins, Travis CI add-ons, or pipeline
