@@ -275,6 +275,15 @@ Segment integrations, or data integration catalogs when they only accept data
 connectors, warehouse apps, transform packages, destination syncs, ingestion
 pipelines, customer profile activations, or platform-native data app packages
 instead of a source-linked Hermes Tweet package entry.
+Reject database extension, cache module, search engine plugin, message queue,
+event-streaming connector, and graph database app marketplaces such as
+PostgreSQL extension registries, pgxn distributions, MySQL plugin directories,
+MongoDB integrations, Redis modules, Elasticsearch plugin catalogs, OpenSearch
+plugin catalogs, Kafka connector hubs, RabbitMQ plugin directories, or Neo4j
+Graph App Gallery when they only accept SQL extensions, database operators,
+cache modules, search analyzers, connector plugins, stream processors, queue
+adapters, graph widgets, or platform-native data infrastructure packages
+instead of a source-linked Hermes Tweet package entry.
 Reject finance, accounting, payroll, procurement, and ERP app marketplaces
 such as QuickBooks App Store, Xero App Store, NetSuite SuiteApps, SAP Store,
 Workday Marketplace, ADP Marketplace, Stripe App Marketplace, or procurement
