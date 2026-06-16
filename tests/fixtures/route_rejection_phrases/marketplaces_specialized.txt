@@ -2,6 +2,29 @@ yield maps, agronomy dashboards
 livestock record systems
 farm ERP integrations
 platform-native agriculture packages
+cannabis, dispensary
+seed-to-sale, cultivation
+cannabis point of sale
+cannabis delivery, hemp
+regulated retail app marketplaces
+Dutchie integrations
+Flowhub marketplaces
+Treez integrations
+Cova Software integrations
+Jane integrations
+BioTrack integrations
+METRC connector marketplaces
+cannabis compliance marketplaces
+cultivation management app marketplaces
+dispensary delivery marketplaces
+menu sync widgets
+seed-to-sale records
+inventory compliance connectors
+delivery dispatch workflows
+age-verification checks
+cultivation room dashboards
+label-printing templates
+platform-native cannabis retail packages
 Web3, crypto wallet, dapp
 NFT, and decentralized social marketplaces
 MetaMask Snaps
