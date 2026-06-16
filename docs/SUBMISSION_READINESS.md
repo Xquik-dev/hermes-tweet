@@ -359,6 +359,16 @@ accept matter-management connectors, document management integrations,
 e-discovery workflows, contract review templates, e-signature add-ons,
 compliance dashboards, time-billing connectors, or platform-native legal
 packages instead of a source-linked Hermes Tweet package entry.
+Reject intellectual property, patent, trademark, copyright, legal research,
+prior art, docketing, and patent analytics marketplaces such as Anaqua app
+marketplaces, PatSnap integrations, Clarivate IP integrations, LexisNexis legal
+research integrations, Westlaw integrations, FoundationIP marketplaces,
+Alt Legal integrations, trademark docketing catalogs, patent analytics app
+stores, or legal research app marketplaces when they only accept patent docket
+connectors, prior-art search widgets, trademark filing workflows, IP portfolio
+dashboards, legal citation tools, matter sync templates, office action
+workflows, or platform-native IP management packages instead of a source-linked
+Hermes Tweet package entry.
 Reject real estate, property management, proptech, mortgage, MLS, leasing,
 construction management, facilities management, and building information
 modeling marketplaces such as Procore App Marketplace, AppFolio Stack, Yardi
