@@ -75,6 +75,30 @@ accounting connectors, billing apps
 payroll automations
 procurement workflows, ERP extensions
 platform-native financial integration packages
+banking, lending, mortgage
+credit union, wealth management
+financial advisor, loan origination
+core banking, and fintech app marketplaces
+Plaid integrations
+nCino marketplaces
+Blend integrations
+Encompass partner integrations
+Jack Henry marketplaces
+Fiserv app marketplaces
+Temenos Exchange
+Q2 partner integrations
+banking app marketplaces
+lending software marketplaces
+account data connectors
+loan origination workflows
+credit decisioning templates
+mortgage application widgets
+advisor CRM syncs
+digital banking widgets
+KYC workflow connectors
+payment rail adapters
+portfolio reporting dashboards
+platform-native banking packages
 insurance, claims, risk
 broker, policy administration
 actuarial, and insurtech app marketplaces
