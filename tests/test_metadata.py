@@ -98,7 +98,7 @@ EXPECTED_LIVE_ECOSYSTEM_SURFACES = (
 SETUP_UV_ACTION = "astral-sh/setup-uv@v8.2.0"
 CHECKOUT_ACTION_SHA = "actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10"
 HOL_PLUGIN_SCANNER_ACTION_SHA = (
-    "hashgraph-online/ai-plugin-scanner-action@049f135bbda5f993c3564ce2b97d72ff595c7a1e"
+    "hashgraph-online/ai-plugin-scanner-action@7efab6be3cc2e2b020492c77f769963070905d6e"
 )
 ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
 HERMES_AGENT_COMPAT_COMMAND = "uv run python scripts/check_hermes_agent_compat.py"
