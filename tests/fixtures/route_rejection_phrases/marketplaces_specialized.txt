@@ -222,6 +222,30 @@ service catalog sync
 location availability widgets
 provider calendar workflows
 platform-native appointment packages
+field service management, warranty
+appliance repair, home services
+maintenance dispatch, service scheduling
+technician routing, and repair operations app marketplaces
+ServiceTitan integrations
+Jobber app marketplaces
+Housecall Pro integrations
+FieldPulse integrations
+Workiz integrations
+Service Fusion integrations
+Dispatch integrations
+Zuper marketplaces
+Syncron warranty integrations
+ServiceMax marketplaces
+technician schedules
+dispatch boards
+warranty claim workflows
+work-order syncs
+route optimization widgets
+service estimate templates
+customer appointment portals
+parts inventory connectors
+inspection forms
+platform-native field service packages
 legal, compliance, e-signature
 identity, KYC, contract automation
 eDiscovery, GRC, and privacy automation app marketplaces

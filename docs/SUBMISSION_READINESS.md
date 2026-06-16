@@ -562,6 +562,17 @@ sync, intake forms, client profile connectors, point-of-sale add-ons,
 membership automations, service catalog sync, location availability widgets,
 provider calendar workflows, or platform-native appointment packages instead
 of a source-linked Hermes Tweet package entry.
+Reject field service management, warranty, appliance repair, home services,
+maintenance dispatch, service scheduling, technician routing, and repair
+operations app marketplaces such as ServiceTitan integrations, Jobber app
+marketplaces, Housecall Pro integrations, FieldPulse integrations, Workiz
+integrations, Service Fusion integrations, Dispatch integrations, Zuper
+marketplaces, Syncron warranty integrations, or ServiceMax marketplaces when
+they only accept technician schedules, dispatch boards, warranty claim
+workflows, work-order syncs, route optimization widgets, service estimate
+templates, customer appointment portals, parts inventory connectors,
+inspection forms, or platform-native field service packages instead of a
+source-linked Hermes Tweet package entry.
 Reject legal, compliance, e-signature, identity, KYC, contract automation,
 eDiscovery, GRC, and privacy automation app marketplaces such as Clio App
 Directory, DocuSign App Center, Adobe Acrobat Sign integrations, Okta
