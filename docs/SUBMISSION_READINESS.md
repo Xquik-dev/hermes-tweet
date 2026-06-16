@@ -224,6 +224,14 @@ app marketplaces when they only accept accounting connectors, billing apps,
 payroll automations, procurement workflows, ERP extensions, or
 platform-native financial integration packages instead of a source-linked
 Hermes Tweet package entry.
+Reject Web3, crypto wallet, dapp, NFT, and decentralized social marketplaces
+such as MetaMask Snaps, WalletConnect AppKit plugins, Alchemy dapp galleries,
+thirdweb marketplaces, Chainlink Functions galleries, OpenSea app
+marketplaces, Farcaster frame catalogs, Lens Protocol app directories, or
+wallet plugin marketplaces when they only accept wallet extensions, dapp
+templates, smart-contract functions, NFT storefront apps, blockchain
+connectors, decentralized social frames, or token-gated app packages instead of
+a source-linked Hermes Tweet package entry.
 Reject HR, recruiting, talent, benefits, and workforce app marketplaces such as
 Greenhouse integrations, Lever integrations, Ashby marketplace, Workable app
 marketplace, BambooHR app marketplace, Gusto integrations, LinkedIn Talent
