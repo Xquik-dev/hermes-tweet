@@ -284,6 +284,14 @@ device plugin catalogs when they only accept home automation integrations,
 device drivers, flow recipes, firmware libraries, hardware projects, sensor
 connectors, or platform-native device packages instead of a source-linked
 Hermes Tweet package entry.
+Reject CAD, CAM, PLM, EDA, and additive manufacturing app marketplaces such as
+Autodesk App Store, Fusion 360 add-ins, SolidWorks marketplace, Onshape App
+Store, Altium extensions, KiCad plugin repositories, FreeCAD Addon Manager, CAD
+plugin marketplaces, PLM app stores, EDA plugin catalogs, or manufacturing app
+marketplaces when they only accept engineering add-ins, CAD toolbars, model
+plugins, circuit-design extensions, CAM post-processors, slicer integrations,
+simulation templates, manufacturing workflows, or platform-native engineering
+packages instead of a source-linked Hermes Tweet package entry.
 Reject browser, desktop, launcher, shortcut, and mobile app extension stores
 such as Chrome Web Store, Firefox Add-ons, Microsoft Edge Add-ons, Raycast
 extensions, Alfred workflows, Setapp, iOS Shortcuts galleries, or Android app
