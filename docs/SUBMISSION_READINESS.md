@@ -339,8 +339,7 @@ app marketplaces, petition platform marketplaces, or advocacy platform app
 stores when they only accept canvassing workflows, voter-file syncs, phone bank
 tools, text banking automations, petition forms, donation widgets, volunteer
 mobilization tools, ballot lookup widgets, constituent email workflows, or
-platform-native campaign packages instead of a source-linked Hermes Tweet
-package entry.
+platform-native campaign packages instead of a source-linked Hermes Tweet package entry.
 Reject weather, meteorology, emergency management, disaster response, public
 safety, 911 software, mass notification, emergency alerting, incident command,
 wildfire response, flood alert, and earthquake alert app marketplaces such as
@@ -397,8 +396,7 @@ Alt Legal integrations, trademark docketing catalogs, patent analytics app
 stores, or legal research app marketplaces when they only accept patent docket
 connectors, prior-art search widgets, trademark filing workflows, IP portfolio
 dashboards, legal citation tools, matter sync templates, office action
-workflows, or platform-native IP management packages instead of a source-linked
-Hermes Tweet package entry.
+workflows, or platform-native IP management packages instead of a source-linked Hermes Tweet package entry.
 Reject real estate, property management, proptech, mortgage, MLS, leasing,
 construction management, facilities management, and building information
 modeling marketplaces such as Procore App Marketplace, AppFolio Stack, Yardi
@@ -482,8 +480,7 @@ marketplaces, or building energy management app marketplaces when they only
 accept meter-data connectors, demand-response workflows, charging station
 integrations, solar monitoring connectors, carbon-reporting dashboards, ESG
 workflow templates, smart-grid adapters, building energy controls, or
-platform-native sustainability packages instead of a source-linked Hermes Tweet
-package entry.
+platform-native sustainability packages instead of a source-linked Hermes Tweet package entry.
 Reject natural resources, mining, oil and gas, petroleum, water utility, waste
 management, geoscience, and pipeline operations app marketplaces such as
 mining software marketplaces, oilfield app stores, petroleum data marketplaces,
@@ -512,8 +509,7 @@ EveryoneSocial integrations, or recruiting app marketplaces when they only
 accept ATS connectors, candidate-source automations, job board integrations,
 interview workflows, employee-directory apps, benefits connectors, onboarding
 tasks, employee advocacy workflows, intranet widgets, internal announcement
-feeds, or workforce platform packages instead of a source-linked Hermes Tweet
-package entry.
+feeds, or workforce platform packages instead of a source-linked Hermes Tweet package entry.
 Reject freelancer, gig economy, contractor, creator marketplace, talent
 marketplace, service marketplace, work marketplace, and job board app
 directories such as Upwork Marketplace, Fiverr integrations, Toptal partner
@@ -523,16 +519,14 @@ Dribbble hiring integrations, or job board app marketplaces when they only
 accept hiring widgets, contractor onboarding workflows, talent profile syncs,
 service listing templates, project brief automations, escrow payment
 connectors, creator portfolio widgets, job posting feeds, or platform-native
-work marketplace packages instead of a source-linked Hermes Tweet package
-entry.
+work marketplace packages instead of a source-linked Hermes Tweet package entry.
 Reject healthcare, EHR, FHIR, telehealth, wellness, and fitness app
 marketplaces such as Epic App Orchard, Oracle Health App Gallery, SMART App
 Gallery, FHIR app galleries, athenahealth Marketplace, telehealth app
 marketplaces, wellness app marketplaces, or fitness app marketplaces when they
 only accept EHR integrations, clinical apps, FHIR launch apps, patient portal
 widgets, care workflows, wellness programs, device integrations, or
-platform-native health app packages instead of a source-linked Hermes Tweet
-package entry.
+platform-native health app packages instead of a source-linked Hermes Tweet package entry.
 Reject dental, orthodontic, dental lab, DSO, dental imaging, and dental practice management app marketplaces
 such as Dentrix Marketplace, Open Dental integrations, Eaglesoft integrations, CareStack marketplaces,
 Curve Dental integrations, dental lab marketplaces, or dental imaging app catalogs when they only accept
@@ -545,8 +539,7 @@ integrations, pharmacy benefit management marketplaces, drugstore POS
 marketplaces, or prescription workflow marketplaces when they only accept claim
 adjudication connectors, refill workflows, formulary lookups, medication
 synchronization widgets, prior authorization forms, e-prescribing connectors,
-or platform-native pharmacy packages instead of a source-linked Hermes Tweet
-package entry.
+or platform-native pharmacy packages instead of a source-linked Hermes Tweet package entry.
 Reject veterinary, pet care, animal health, animal shelter, kennel, boarding,
 and grooming app marketplaces such as IDEXX integrations, Covetrus
 marketplaces, PetDesk integrations, Shelterluv integrations, Chameleon shelter
