@@ -276,6 +276,14 @@ Artifact Hub, Terraform Registry, Pulumi Registry, Crossplane package registry,
 or Backstage plugin catalogs when they only accept container images, operators,
 charts, infrastructure providers, platform plugins, or deployment packages
 instead of a source-linked Hermes Tweet package entry.
+Reject IoT, smart-home, industrial-device, and maker hardware marketplaces such
+as Home Assistant integrations, HACS repositories, SmartThings Edge drivers,
+Hubitat apps, Matter plugin catalogs, Node-RED flow libraries, Arduino Library
+Manager, Raspberry Pi project galleries, industrial IoT app marketplaces, or
+device plugin catalogs when they only accept home automation integrations,
+device drivers, flow recipes, firmware libraries, hardware projects, sensor
+connectors, or platform-native device packages instead of a source-linked
+Hermes Tweet package entry.
 Reject browser, desktop, launcher, shortcut, and mobile app extension stores
 such as Chrome Web Store, Firefox Add-ons, Microsoft Edge Add-ons, Raycast
 extensions, Alfred workflows, Setapp, iOS Shortcuts galleries, or Android app
