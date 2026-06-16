@@ -100,6 +100,33 @@ records-request portals
 GIS story maps
 procurement notices
 platform-native civic packages
+weather, meteorology
+emergency management
+disaster response, public safety
+911 software
+mass notification
+emergency alerting
+incident command
+wildfire response
+flood alert
+earthquake alert app marketplaces
+NOAA weather integrations
+Everbridge integrations
+OnSolve integrations
+Rave Mobile Safety integrations
+AlertMedia integrations
+Veoci app marketplaces
+WebEOC integrations
+CivicReady integrations
+weather widgets
+hazard data feeds
+emergency alert templates
+incident command dashboards
+dispatch connectors
+mass-notification workflows
+evacuation maps
+preparedness forms
+platform-native emergency operations packages
 nonprofit, fundraising
 donor management, association management
 membership management, church management

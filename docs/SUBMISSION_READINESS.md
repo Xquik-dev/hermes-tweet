@@ -272,6 +272,16 @@ resident-service forms, permitting workflows, 311 request connectors, council
 agenda tools, records-request portals, GIS story maps, procurement notices, or
 platform-native civic packages instead of a source-linked Hermes Tweet package
 entry.
+Reject weather, meteorology, emergency management, disaster response, public
+safety, 911 software, mass notification, emergency alerting, incident command,
+wildfire response, flood alert, and earthquake alert app marketplaces such as
+NOAA weather integrations, Everbridge integrations, OnSolve integrations, Rave
+Mobile Safety integrations, AlertMedia integrations, Veoci app marketplaces,
+WebEOC integrations, or CivicReady integrations when they only accept weather
+widgets, hazard data feeds, emergency alert templates, incident command
+dashboards, dispatch connectors, mass-notification workflows, evacuation maps,
+preparedness forms, or platform-native emergency operations packages instead
+of a source-linked Hermes Tweet package entry.
 Reject nonprofit, fundraising, donor management, association management,
 membership management, church management, and ministry app marketplaces such
 as Blackbaud Marketplace, DonorPerfect integrations, Bloomerang integrations,
