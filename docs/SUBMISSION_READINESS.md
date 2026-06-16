@@ -232,6 +232,17 @@ wallet plugin marketplaces when they only accept wallet extensions, dapp
 templates, smart-contract functions, NFT storefront apps, blockchain
 connectors, decentralized social frames, or token-gated app packages instead of
 a source-linked Hermes Tweet package entry.
+Reject energy, utilities, climate, sustainability, ESG, carbon accounting, EV
+charging, solar, and smart-grid app marketplaces such as utility data
+integrations, Green Button app directories, OpenADR integration catalogs,
+ChargePoint app integrations, solar monitoring app marketplaces, carbon
+accounting app marketplaces, ESG reporting app catalogs, climate-tech app
+marketplaces, or building energy management app marketplaces when they only
+accept meter-data connectors, demand-response workflows, charging station
+integrations, solar monitoring connectors, carbon-reporting dashboards, ESG
+workflow templates, smart-grid adapters, building energy controls, or
+platform-native sustainability packages instead of a source-linked Hermes Tweet
+package entry.
 Reject HR, recruiting, talent, benefits, and workforce app marketplaces such as
 Greenhouse integrations, Lever integrations, Ashby marketplace, Workable app
 marketplace, BambooHR app marketplace, Gusto integrations, LinkedIn Talent
