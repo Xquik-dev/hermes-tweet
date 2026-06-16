@@ -402,6 +402,15 @@ marketplace, Typeform app marketplace, or SurveyMonkey app directories when
 they only accept email automations, newsletter connectors, booking workflows,
 event listings, form widgets, survey templates, or platform-native integration
 packages instead of a source-linked Hermes Tweet package entry.
+Reject sports, league management, fan engagement, sports ticketing, venue
+operations, stadium, and esports tournament app marketplaces such as TeamSnap
+app marketplaces, SportsEngine integrations, LeagueApps marketplaces,
+Ticketmaster app marketplaces, SeatGeek integrations, fan engagement app
+marketplaces, sports league management catalogs, or esports tournament
+marketplaces when they only accept team roster connectors, schedule widgets,
+ticketing workflows, venue operations tools, stadium experience apps, fan data
+dashboards, tournament brackets, or platform-native sports packages instead of
+a source-linked Hermes Tweet package entry.
 Reject maps, geospatial, travel, mobility, logistics, and fleet app
 marketplaces such as Google Maps Platform integrations, Mapbox plugin catalog,
 ArcGIS Marketplace, QGIS plugin repository, travel booking marketplaces,
