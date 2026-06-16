@@ -561,6 +561,17 @@ legaltech connectors, e-signature connectors, identity integrations, compliance
 controls, audit workflows, eDiscovery workflows, contract templates,
 trust-center automations, KYC checks, privacy assessments, or platform-native
 governance apps instead of a source-linked Hermes Tweet package entry.
+Reject quality management, QMS, CAPA, audit management, document control,
+nonconformance, inspection, ISO compliance, and quality assurance app
+marketplaces such as MasterControl integrations, ETQ Reliance marketplaces,
+Greenlight Guru integrations, Qualio integrations, Arena QMS integrations,
+Intellect QMS marketplaces, audit management software marketplaces, document
+control app marketplaces, CAPA software marketplaces, or quality compliance
+catalogs when they only accept audit checklists, document approval workflows,
+nonconformance intake forms, corrective action trackers, inspection templates,
+supplier quality dashboards, training record connectors, ISO evidence packs, or
+platform-native quality management packages instead of a source-linked Hermes
+Tweet package entry.
 Reject security operations, SIEM, SOAR, and observability integration catalogs
 such as Splunkbase, Elastic integrations, Datadog integrations, Grafana plugin
 catalog, New Relic Instant Observability, Sumo Logic app catalog, or Cortex
