@@ -207,6 +207,15 @@ directories, Reddit app directories, or Twitch Extension Marketplace when they
 only accept chat bots, server apps, slash commands, moderation workflows, social
 feed relays, or extension packages instead of a source-linked Hermes Tweet
 package entry.
+Reject dating, matchmaking, community platform, forum, classifieds, and
+marketplace community app directories such as Discourse plugins, Circle
+integrations, Mighty Networks app directories, Hivebrite integrations, Tribe
+or Bettermode app marketplaces, Sharetribe integrations, dating app
+marketplaces, classifieds app marketplaces, or membership community catalogs
+when they only accept profile widgets, member-directory apps, forum plugins,
+moderation extensions, matchmaking workflows, listing templates, marketplace
+seller tools, or platform-native community packages instead of a source-linked
+Hermes Tweet package entry.
 Reject CMS, content publishing, and creator platform marketplaces such as
 WordPress Plugin Directory, Drupal module directory, Ghost integrations,
 Webflow App Marketplace, Wix App Market, or Squarespace Extensions when they
