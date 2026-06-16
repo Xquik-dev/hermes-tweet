@@ -663,14 +663,12 @@ PLC connectors, historian dashboards, HMI modules, production-line workflows,
 asset maintenance tools, work-order automations, OEE dashboards, machine data
 adapters, or platform-native industrial operations packages instead of a
 source-linked Hermes Tweet package entry.
-Reject CAD, CAM, PLM, EDA, and additive manufacturing app marketplaces such as
-Autodesk App Store, Fusion 360 add-ins, SolidWorks marketplace, Onshape App
-Store, Altium extensions, KiCad plugin repositories, FreeCAD Addon Manager, CAD
-plugin marketplaces, PLM app stores, EDA plugin catalogs, or manufacturing app
-marketplaces when they only accept engineering add-ins, CAD toolbars, model
-plugins, circuit-design extensions, CAM post-processors, slicer integrations,
-simulation templates, manufacturing workflows, or platform-native engineering
-packages instead of a source-linked Hermes Tweet package entry.
+Reject CAD, CAM, PLM, EDA, additive manufacturing, robotics, and
+autonomous-systems app marketplaces, including additive manufacturing app
+marketplaces such as Autodesk App Store, Fusion 360 add-ins, SolidWorks marketplace, Onshape App Store, Altium extensions, KiCad
+plugin repositories, FreeCAD Addon Manager, CAD plugin marketplaces, PLM app
+stores, EDA plugin catalogs, ROS package indexes, Gazebo plugins, Open-RMF adapters, PX4 extensions, ArduPilot
+companion apps, robot app catalogs, or manufacturing app marketplaces when they only accept engineering add-ins, CAD toolbars, model plugins, circuit-design extensions, CAM post-processors, slicer integrations, simulation templates, ROS nodes, robot fleet adapters, companion-computer packages, manufacturing workflows, or platform-native engineering packages instead of a source-linked Hermes Tweet package entry.
 Reject construction, BIM, property, facilities, and real estate app
 marketplaces such as Procore Marketplace, Autodesk Construction Cloud apps, BIM
 360 app stores, Revit add-in marketplaces, SketchUp Extension Warehouse,
