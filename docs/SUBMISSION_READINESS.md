@@ -300,6 +300,16 @@ instrument data connectors, sample tracking workflows, notebook templates,
 protocol registries, assay dashboards, research data repositories, grant
 reporting tools, or platform-native laboratory packages instead of a
 source-linked Hermes Tweet package entry.
+Reject music, audio, podcast, streaming creator, DAW plugin, radio broadcast,
+music marketing, and creator monetization marketplaces such as Spotify
+developer app directories, Apple Podcasts integrations, SoundCloud app
+galleries, Bandcamp developer integrations, Twitch Extensions, OBS plugin
+marketplaces, DAW plugin marketplaces, podcast app marketplaces, or audio
+plugin marketplaces when they only accept playback widgets, audio processing
+plugins, stream overlays, channel extensions, podcast hosting connectors,
+artist storefront tools, royalty reporting dashboards, broadcast automation
+workflows, or platform-native media packages instead of a source-linked Hermes
+Tweet package entry.
 Reject agriculture, farming, agritech, precision agriculture, crop analytics,
 livestock, and farm management app marketplaces such as John Deere Operations
 Center, Climate FieldView app directories, Trimble Agriculture integrations,
