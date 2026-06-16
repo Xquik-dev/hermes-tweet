@@ -99,6 +99,30 @@ geospatial data connectors
 travel booking widgets
 ride-hailing workflows
 fleet automations, or route-optimization packages
+aerospace, aviation
+airline operations
+airport operations, drone
+UAS, maritime, rail
+flight operations
+transport-operations app marketplaces
+ForeFlight integrations
+AirMap integrations
+DroneDeploy app marketplaces
+DJI developer marketplaces
+SITA aviation marketplaces
+Amadeus travel platform integrations
+Sabre marketplaces
+maritime logistics integrations
+railway operations integrations
+flight planning widgets
+airspace data connectors
+drone mission packages
+aircraft maintenance workflows
+airport operations dashboards
+crew scheduling tools
+vessel tracking connectors
+rail timetable feeds
+platform-native transport operations packages
 automotive, car dealership
 auto repair, vehicle service
 auto parts
