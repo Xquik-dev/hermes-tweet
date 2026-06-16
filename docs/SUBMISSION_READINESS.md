@@ -491,6 +491,15 @@ Artifact Hub, Terraform Registry, Pulumi Registry, Crossplane package registry,
 or Backstage plugin catalogs when they only accept container images, operators,
 charts, infrastructure providers, platform plugins, or deployment packages
 instead of a source-linked Hermes Tweet package entry.
+Reject cloud software, SaaS procurement, reseller, and hyperscaler marketplace
+routes such as AWS Marketplace, Azure Marketplace, Google Cloud Marketplace,
+Microsoft AppSource, Oracle Cloud Marketplace, Salesforce AppExchange, Atlassian
+Marketplace, ServiceNow Store, cloud partner catalogs, SaaS marketplace
+listings, software procurement portals, or reseller app marketplaces when they
+only accept VM images, managed service listings, private offers, transactable
+SaaS plans, admin center add-ons, enterprise procurement connectors, or
+platform-native cloud marketplace packages instead of a source-linked Hermes
+Tweet package entry.
 Reject IoT, smart-home, industrial-device, and maker hardware marketplaces such
 as Home Assistant integrations, HACS repositories, SmartThings Edge drivers,
 Hubitat apps, Matter plugin catalogs, Node-RED flow libraries, Arduino Library
