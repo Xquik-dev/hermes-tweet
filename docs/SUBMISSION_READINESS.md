@@ -486,6 +486,16 @@ fleet app marketplaces when they only accept map plugins, GIS extensions,
 geospatial data connectors, travel booking widgets, ride-hailing workflows,
 fleet automations, or route-optimization packages instead of a source-linked
 Hermes Tweet package entry.
+Reject automotive, car dealership, auto repair, vehicle service, auto parts,
+connected car, dealer management system, and DMS app marketplaces such as CDK
+Global marketplaces, Reynolds and Reynolds integrations, Dealertrack app
+marketplaces, Mitchell 1 integrations, ALLDATA integrations, Shopmonkey app
+marketplaces, Tekmetric integrations, automotive app marketplaces, car
+dealership app marketplaces, or auto repair shop marketplaces when they only
+accept inventory sync connectors, service scheduling workflows, repair-order
+dashboards, parts catalog integrations, VIN lookup widgets, customer-pay
+portals, connected-vehicle telemetry, or platform-native automotive packages
+instead of a source-linked Hermes Tweet package entry.
 Reject code-assistant extension marketplaces and developer-agent tool catalogs
 such as Amazon Q Developer, Continue, Sourcegraph Cody, JetBrains Junie, Devin,
 or Tabby when they only accept IDE extensions, editor plugins, workspace
