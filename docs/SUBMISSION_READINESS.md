@@ -262,8 +262,7 @@ integrations, FullStory integrations, Hotjar integrations, Heap integrations,
 or customer journey analytics catalogs when they only accept event tracking
 connectors, experiment templates, feature flag SDK packages, session recording
 widgets, heatmap snippets, funnel dashboards, cohort reports, or
-platform-native growth analytics packages instead of a source-linked Hermes
-Tweet package entry.
+platform-native growth analytics packages instead of a source-linked Hermes Tweet package entry.
 Reject SEO, search-console, web analytics, and advertising partner
 marketplaces such as Google Search Console integrations, Bing Webmaster Tools
 integrations, Ahrefs app marketplace, Moz app marketplace, Similarweb
@@ -335,8 +334,7 @@ marketplaces, policy administration app marketplaces, risk modeling
 marketplaces, or actuarial app marketplaces when they only accept carrier
 connectors, claims workflows, broker-management integrations, policy lifecycle
 tools, underwriting dashboards, actuarial models, risk-scoring templates,
-document intake automations, or platform-native insurance packages instead of
-a source-linked Hermes Tweet package entry.
+document intake automations, or platform-native insurance packages instead of a source-linked Hermes Tweet package entry.
 Reject government, civic tech, municipal, public sector, open data,
 permitting, 311 service, and public records app marketplaces such as GovTech
 app marketplaces, Socrata app marketplaces, ArcGIS Hub civic integrations,
@@ -366,8 +364,7 @@ Mobile Safety integrations, AlertMedia integrations, Veoci app marketplaces,
 WebEOC integrations, or CivicReady integrations when they only accept weather
 widgets, hazard data feeds, emergency alert templates, incident command
 dashboards, dispatch connectors, mass-notification workflows, evacuation maps,
-preparedness forms, or platform-native emergency operations packages instead
-of a source-linked Hermes Tweet package entry.
+preparedness forms, or platform-native emergency operations packages instead of a source-linked Hermes Tweet package entry.
 Reject defense, military, law enforcement, first responder, CAD, RMS,
 body-camera, evidence management, records management, and public safety
 software marketplaces such as Axon integrations, Motorola Solutions
@@ -378,8 +375,7 @@ marketplaces, or evidence management app catalogs when they only accept
 computer-aided dispatch connectors, records management workflows, body-camera
 ingest tools, evidence vault connectors, incident reporting templates,
 case-management syncs, radio system integrations, responder rostering tools,
-or platform-native public safety packages instead of a source-linked Hermes
-Tweet package entry.
+or platform-native public safety packages instead of a source-linked Hermes Tweet package entry.
 Reject nonprofit, fundraising, donor management, association management,
 membership management, church management, and ministry app marketplaces such
 as Blackbaud Marketplace, DonorPerfect integrations, Bloomerang integrations,
@@ -477,8 +473,7 @@ app marketplaces, crop analytics marketplaces, livestock management
 marketplaces, or precision agriculture catalogs when they only accept
 equipment data connectors, field operations workflows, crop scouting tools,
 yield maps, agronomy dashboards, livestock record systems, farm ERP
-integrations, or platform-native agriculture packages instead of a
-source-linked Hermes Tweet package entry.
+integrations, or platform-native agriculture packages instead of a source-linked Hermes Tweet package entry.
 Reject cannabis, dispensary, seed-to-sale, cultivation, cannabis point of
 sale, cannabis delivery, hemp, and regulated retail app marketplaces such as
 Dutchie integrations, Flowhub marketplaces, Treez integrations, Cova Software
@@ -487,16 +482,14 @@ marketplaces, cannabis compliance marketplaces, cultivation management app
 marketplaces, or dispensary delivery marketplaces when they only accept menu
 sync widgets, seed-to-sale records, inventory compliance connectors, delivery
 dispatch workflows, age-verification checks, cultivation room dashboards,
-label-printing templates, or platform-native cannabis retail packages instead
-of a source-linked Hermes Tweet package entry.
+label-printing templates, or platform-native cannabis retail packages instead of a source-linked Hermes Tweet package entry.
 Reject Web3, crypto wallet, dapp, NFT, and decentralized social marketplaces
 such as MetaMask Snaps, WalletConnect AppKit plugins, Alchemy dapp galleries,
 thirdweb marketplaces, Chainlink Functions galleries, OpenSea app
 marketplaces, Farcaster frame catalogs, Lens Protocol app directories, or
 wallet plugin marketplaces when they only accept wallet extensions, dapp
 templates, smart-contract functions, NFT storefront apps, blockchain
-connectors, decentralized social frames, or token-gated app packages instead of
-a source-linked Hermes Tweet package entry.
+connectors, decentralized social frames, or token-gated app packages instead of a source-linked Hermes Tweet package entry.
 Reject energy, utilities, climate, sustainability, ESG, carbon accounting, EV
 charging, solar, and smart-grid app marketplaces such as utility data
 integrations, Green Button app directories, OpenADR integration catalogs,
@@ -517,8 +510,7 @@ environmental operations marketplaces when they only accept mine-planning
 plugins, well log connectors, reservoir dashboards, field operations forms,
 meter data integrations, waste collection routing, geology model plugins,
 pipeline integrity tools, environmental reporting workflows, or
-platform-native resource operations packages instead of a source-linked Hermes
-Tweet package entry.
+platform-native resource operations packages instead of a source-linked Hermes Tweet package entry.
 Reject forestry, timber, logging, sawmill, lumber yard, wood products, forest
 management, and harvest planning app marketplaces such as Trimble Forestry
 integrations, Remsoft marketplaces, Forest Metrix integrations, Log Inventory
@@ -644,8 +636,7 @@ control app marketplaces, CAPA software marketplaces, or quality compliance
 catalogs when they only accept audit checklists, document approval workflows,
 nonconformance intake forms, corrective action trackers, inspection templates,
 supplier quality dashboards, training record connectors, ISO evidence packs, or
-platform-native quality management packages instead of a source-linked Hermes
-Tweet package entry.
+platform-native quality management packages instead of a source-linked Hermes Tweet package entry.
 Reject security operations, SIEM, SOAR, and observability integration catalogs
 such as Splunkbase, Elastic integrations, Datadog integrations, Grafana plugin
 catalog, New Relic Instant Observability, Sumo Logic app catalog, or Cortex
@@ -783,8 +774,7 @@ Ticketmaster app marketplaces, SeatGeek integrations, fan engagement app
 marketplaces, sports league management catalogs, or esports tournament
 marketplaces when they only accept team roster connectors, schedule widgets,
 ticketing workflows, venue operations tools, stadium experience apps, fan data
-dashboards, tournament brackets, or platform-native sports packages instead of
-a source-linked Hermes Tweet package entry.
+dashboards, tournament brackets, or platform-native sports packages instead of a source-linked Hermes Tweet package entry.
 Reject sports betting, casino, lottery, sportsbook, fantasy sports, iGaming,
 odds-data, and gaming compliance app marketplaces such as DraftKings developer
 integrations, FanDuel integrations, Sportradar marketplaces, Genius Sports data
@@ -851,8 +841,7 @@ PR-editable Hermes Tweet source package entry.
 Reject local coding-agent command packs, workflow recipes, and rule bundles
 such as GitHub Copilot Extensions, OpenCode commands, Aider workflows, Goose
 extensions, Kiro hooks, or Amp tools when they only accept agent-local prompts,
-commands, recipes, hooks, or editor workflows instead of a source-linked Hermes
-Tweet package entry.
+commands, recipes, hooks, or editor workflows instead of a source-linked Hermes Tweet package entry.
 Reject hosted automation, app-action, and component galleries such as Zapier,
 Pipedream, Activepieces, Composio, Arcade, Toolhouse, or Langflow when the
 route only accepts workflow templates, provider connectors, hosted app actions,

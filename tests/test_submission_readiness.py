@@ -23,7 +23,7 @@ def test_submission_readiness_rejects_adjacent_marketplace_routes() -> None:
 def test_submission_readiness_stays_below_quality_boundary() -> None:
     line_count = len((ROOT / "docs" / "SUBMISSION_READINESS.md").read_text().splitlines())
 
-    assert line_count < 1_000
+    assert line_count <= 990
 
 
 def test_route_rejection_phrase_fixtures_stay_explicit() -> None:
