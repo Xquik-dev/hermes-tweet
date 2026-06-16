@@ -425,6 +425,17 @@ ATS connectors, candidate-source automations, job board integrations,
 interview workflows, employee-directory apps, benefits connectors, onboarding
 tasks, or workforce platform packages instead of a source-linked Hermes Tweet
 package entry.
+Reject freelancer, gig economy, contractor, creator marketplace, talent
+marketplace, service marketplace, work marketplace, and job board app
+directories such as Upwork Marketplace, Fiverr integrations, Toptal partner
+integrations, Contra integrations, Freelancer integrations, Guru integrations,
+Taskrabbit integrations, Thumbtack integrations, Behance creator tools,
+Dribbble hiring integrations, or job board app marketplaces when they only
+accept hiring widgets, contractor onboarding workflows, talent profile syncs,
+service listing templates, project brief automations, escrow payment
+connectors, creator portfolio widgets, job posting feeds, or platform-native
+work marketplace packages instead of a source-linked Hermes Tweet package
+entry.
 Reject healthcare, EHR, FHIR, telehealth, wellness, and fitness app
 marketplaces such as Epic App Orchard, Oracle Health App Gallery, SMART App
 Gallery, FHIR app galleries, athenahealth Marketplace, telehealth app
