@@ -151,6 +151,29 @@ grooming schedule tools
 prescription refill integrations
 pet health records
 platform-native animal care packages
+senior care, elder care
+home care, assisted living
+childcare, daycare
+nanny, babysitting
+caregiving app marketplaces
+Brightwheel integrations
+Procare integrations
+Kinderlime app marketplaces
+ChildcareCRM integrations
+Care.com integrations
+WellSky Personal Care integrations
+AlayaCare integrations
+ClearCare integrations
+senior care app marketplaces
+home care agency marketplaces
+childcare attendance connectors
+parent communication widgets
+care-plan workflows
+caregiver schedule tools
+family portal apps
+visit verification connectors
+resident engagement widgets
+platform-native care services packages
 beauty, salon, spa
 barber, appointment booking
 local services
