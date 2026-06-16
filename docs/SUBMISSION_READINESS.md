@@ -438,13 +438,16 @@ meter data integrations, waste collection routing, geology model plugins,
 pipeline integrity tools, environmental reporting workflows, or
 platform-native resource operations packages instead of a source-linked Hermes
 Tweet package entry.
-Reject HR, recruiting, talent, benefits, and workforce app marketplaces such as
-Greenhouse integrations, Lever integrations, Ashby marketplace, Workable app
-marketplace, BambooHR app marketplace, Gusto integrations, LinkedIn Talent
-Solutions partner apps, or recruiting app marketplaces when they only accept
-ATS connectors, candidate-source automations, job board integrations,
+Reject HR, recruiting, talent, benefits, workforce, employee advocacy, and
+internal communications app marketplaces such as Greenhouse integrations, Lever
+integrations, Ashby marketplace, Workable app marketplace, BambooHR app
+marketplace, Gusto integrations, LinkedIn Talent Solutions partner apps,
+Simpplr integrations, Staffbase app marketplaces, Haiilo integrations,
+EveryoneSocial integrations, or recruiting app marketplaces when they only
+accept ATS connectors, candidate-source automations, job board integrations,
 interview workflows, employee-directory apps, benefits connectors, onboarding
-tasks, or workforce platform packages instead of a source-linked Hermes Tweet
+tasks, employee advocacy workflows, intranet widgets, internal announcement
+feeds, or workforce platform packages instead of a source-linked Hermes Tweet
 package entry.
 Reject freelancer, gig economy, contractor, creator marketplace, talent
 marketplace, service marketplace, work marketplace, and job board app

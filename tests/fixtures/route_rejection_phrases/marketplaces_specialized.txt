@@ -64,7 +64,8 @@ pipeline integrity tools
 environmental reporting workflows
 platform-native resource operations packages
 HR, recruiting, talent
-benefits, and workforce app marketplaces
+benefits, workforce, employee advocacy
+internal communications app marketplaces
 Greenhouse integrations
 Lever integrations
 Ashby marketplace
@@ -72,6 +73,10 @@ Workable app marketplace
 BambooHR app marketplace
 Gusto integrations
 LinkedIn Talent Solutions partner apps
+Simpplr integrations
+Staffbase app marketplaces
+Haiilo integrations
+EveryoneSocial integrations
 recruiting app marketplaces
 ATS connectors
 candidate-source automations
@@ -80,6 +85,9 @@ interview workflows
 employee-directory apps
 benefits connectors
 onboarding tasks
+employee advocacy workflows
+intranet widgets
+internal announcement feeds
 workforce platform packages
 freelancer, gig economy
 contractor, creator marketplace
