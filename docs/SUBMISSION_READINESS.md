@@ -477,6 +477,16 @@ only accept EHR integrations, clinical apps, FHIR launch apps, patient portal
 widgets, care workflows, wellness programs, device integrations, or
 platform-native health app packages instead of a source-linked Hermes Tweet
 package entry.
+Reject veterinary, pet care, animal health, animal shelter, kennel, boarding,
+and grooming app marketplaces such as IDEXX integrations, Covetrus
+marketplaces, PetDesk integrations, Shelterluv integrations, Chameleon shelter
+software integrations, Gingr app marketplaces, Pawfinity integrations,
+veterinary practice management marketplaces, pet grooming app marketplaces, or
+kennel software marketplaces when they only accept veterinary practice
+connectors, appointment reminders, animal shelter workflows, kennel booking
+widgets, grooming schedule tools, prescription refill integrations, pet health
+records, or platform-native animal care packages instead of a source-linked
+Hermes Tweet package entry.
 Reject beauty, salon, spa, barber, appointment booking, local services, and
 field-service booking marketplaces such as Mindbody integrations, Vagaro app
 marketplaces, Boulevard app marketplaces, Fresha integrations, Zenoti
