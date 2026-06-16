@@ -291,6 +291,15 @@ sync connectors, lease workflows, tenant portals, work-order automations,
 property accounting connectors, mortgage origination integrations, BIM
 content, facilities maintenance apps, or platform-native property packages
 instead of a source-linked Hermes Tweet package entry.
+Reject laboratory, LIMS, ELN, research software, academic, science, lab
+automation, and research data management marketplaces such as Benchling App
+Marketplace, LabArchives integrations, LabWare LIMS marketplaces, SciNote
+integrations, Open Science Framework add-ons, laboratory app marketplaces,
+LIMS app marketplaces, or research software marketplaces when they only accept
+instrument data connectors, sample tracking workflows, notebook templates,
+protocol registries, assay dashboards, research data repositories, grant
+reporting tools, or platform-native laboratory packages instead of a
+source-linked Hermes Tweet package entry.
 Reject agriculture, farming, agritech, precision agriculture, crop analytics,
 livestock, and farm management app marketplaces such as John Deere Operations
 Center, Climate FieldView app directories, Trimble Agriculture integrations,
