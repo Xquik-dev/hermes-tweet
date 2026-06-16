@@ -170,6 +170,16 @@ Marketplace, Pipedrive Marketplace, Zoho Marketplace, or Shopify App Store when
 they only accept CRM apps, support widgets, sales automations, helpdesk macros,
 commerce app packages, or storefront integrations instead of a source-linked
 Hermes Tweet package entry.
+Reject restaurant, hospitality, hotel, reservation, food delivery, online
+ordering, retail POS, and point-of-sale app marketplaces such as Toast Partner
+Connect, Square App Marketplace, Clover App Market, Lightspeed integrations,
+OpenTable integrations, DoorDash developer apps, Uber Eats integrations, hotel
+PMS app marketplaces, hospitality app marketplaces, or restaurant POS app
+marketplaces when they only accept menu sync connectors, payment terminal apps,
+reservation widgets, delivery workflows, online ordering automations, loyalty
+program integrations, property-management connectors, table-management tools,
+or platform-native hospitality packages instead of a source-linked Hermes Tweet
+package entry.
 Reject community chat and bot directories such as Discord App Directory,
 Discord bot lists, Telegram bot catalogs, Matrix bot directories, Mastodon app
 directories, Reddit app directories, or Twitch Extension Marketplace when they
