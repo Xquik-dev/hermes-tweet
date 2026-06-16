@@ -122,8 +122,7 @@ Hugging Face model hubs, Replicate collections, Kaggle datasets, Papers With
 Code, Roboflow Universe, Label Studio templates, Scale AI marketplaces, or
 model registry catalogs when they only accept hosted models, demo spaces,
 notebooks, datasets, benchmark links, annotation tasks, labeling templates,
-synthetic-data packages, or model deployment recipes instead of a source-linked
-Hermes Tweet package entry.
+synthetic-data packages, or model deployment recipes instead of a source-linked Hermes Tweet package entry.
 Reject lab, science, biotech, ELN, LIMS, bioinformatics, genomics, chemistry,
 and scientific workflow marketplaces such as Benchling app marketplaces, LabKey
 app marketplaces, Galaxy Tool Shed, JupyterHub scientific extensions, KNIME Hub
@@ -136,13 +135,11 @@ packages instead of a source-linked Hermes Tweet package entry.
 Reject RAG, retrieval, and vector-store integration catalogs such as LlamaHub,
 Pinecone Assistant, Weaviate, Qdrant, Chroma, or retriever plugin galleries
 when they only accept data loaders, vector indexes, retriever classes, ingestion
-pipelines, or demo notebooks instead of a source-linked Hermes Tweet package
-entry.
+pipelines, or demo notebooks instead of a source-linked Hermes Tweet package entry.
 Reject notebook, data-app, and BI assistant galleries such as Jupyter AI,
 NotebookLM, marimo, Hex, Deepnote, Observable Framework, or Databricks Apps when
 they only accept notebooks, magic commands, app templates, dashboards,
-workspace recipes, or data-app examples instead of a source-linked Hermes Tweet
-package entry.
+workspace recipes, or data-app examples instead of a source-linked Hermes Tweet package entry.
 Reject data-visualization, dashboarding, charting, and BI visual marketplaces
 such as Tableau Exchange, Power BI visuals marketplace, Looker Marketplace,
 Metabase plugins, Apache Superset extensions, Observable visualization plugins,
@@ -171,8 +168,7 @@ ClickUp App Center, Shortcut integrations, GitHub Issues extensions, GitLab
 issue integrations, Azure DevOps Marketplace, or product-roadmap marketplaces
 when they only accept board widgets, task automations, issue sync connectors,
 sprint dashboards, roadmap cards, service-desk macros, incident workflows, or
-platform-native project packages instead of a source-linked Hermes Tweet
-package entry.
+platform-native project packages instead of a source-linked Hermes Tweet package entry.
 Reject localization, translation-management, i18n, and CAT-tool marketplaces
 such as Crowdin Marketplace, Lokalise app marketplace, Phrase integrations,
 Transifex integrations, Weblate add-ons, Smartling marketplace, DeepL app
@@ -184,8 +180,7 @@ Reject CRM, support, and commerce app marketplaces such as HubSpot Marketplace,
 Salesforce AppExchange, Zendesk Marketplace, Intercom App Store, Freshworks
 Marketplace, Pipedrive Marketplace, Zoho Marketplace, or Shopify App Store when
 they only accept CRM apps, support widgets, sales automations, helpdesk macros,
-commerce app packages, or storefront integrations instead of a source-linked
-Hermes Tweet package entry.
+commerce app packages, or storefront integrations instead of a source-linked Hermes Tweet package entry.
 Reject PIM, DAM, product catalog, fashion, apparel, luxury retail,
 merchandising, brand asset, and retail content app marketplaces such as Akeneo
 App Store, Salsify integrations, Syndigo integrations, Contentful Marketplace,
@@ -214,8 +209,7 @@ PMS app marketplaces, hospitality app marketplaces, or restaurant POS app
 marketplaces when they only accept menu sync connectors, payment terminal apps,
 reservation widgets, delivery workflows, online ordering automations, loyalty
 program integrations, property-management connectors, table-management tools,
-or platform-native hospitality packages instead of a source-linked Hermes Tweet
-package entry.
+or platform-native hospitality packages instead of a source-linked Hermes Tweet package entry.
 Reject food safety, food manufacturing, CPG, consumer packaged goods, beverage,
 brewery, winery, and packaged-goods app marketplaces such as TraceGains
 integrations, SafetyChain marketplaces, FoodLogiQ connectors, brewery software
@@ -227,8 +221,7 @@ Reject community chat and bot directories such as Discord App Directory,
 Discord bot lists, Telegram bot catalogs, Matrix bot directories, Mastodon app
 directories, Reddit app directories, or Twitch Extension Marketplace when they
 only accept chat bots, server apps, slash commands, moderation workflows, social
-feed relays, or extension packages instead of a source-linked Hermes Tweet
-package entry.
+feed relays, or extension packages instead of a source-linked Hermes Tweet package entry.
 Reject dating, matchmaking, community platform, forum, classifieds, and
 marketplace community app directories such as Discourse plugins, Circle
 integrations, Mighty Networks app directories, Hivebrite integrations, Tribe
@@ -236,8 +229,7 @@ or Bettermode app marketplaces, Sharetribe integrations, dating app
 marketplaces, classifieds app marketplaces, or membership community catalogs
 when they only accept profile widgets, member-directory apps, forum plugins,
 moderation extensions, matchmaking workflows, listing templates, marketplace
-seller tools, or platform-native community packages instead of a source-linked
-Hermes Tweet package entry.
+seller tools, or platform-native community packages instead of a source-linked Hermes Tweet package entry.
 Reject CMS, content publishing, and creator platform marketplaces such as
 WordPress Plugin Directory, Drupal module directory, Ghost integrations,
 Webflow App Marketplace, Wix App Market, or Squarespace Extensions when they
@@ -287,8 +279,7 @@ Reject API marketplaces, public API networks, and developer portal catalogs
 such as RapidAPI, Postman Public API Network, SwaggerHub, Stoplight, ReadMe,
 Kong Plugin Hub, or API gateway marketplaces when they only accept API specs,
 hosted API listings, request collections, docs workspaces, gateway plugins, or
-API management connectors instead of a source-linked Hermes Tweet package
-entry.
+API management connectors instead of a source-linked Hermes Tweet package entry.
 Reject data warehouse, ETL, reverse ETL, and customer data platform
 marketplaces such as Snowflake Marketplace, dbt Package Hub, Airbyte
 connectors, Fivetran connectors, Hightouch destinations, Census integrations,
@@ -310,8 +301,7 @@ such as QuickBooks App Store, Xero App Store, NetSuite SuiteApps, SAP Store,
 Workday Marketplace, ADP Marketplace, Stripe App Marketplace, or procurement
 app marketplaces when they only accept accounting connectors, billing apps,
 payroll automations, procurement workflows, ERP extensions, or
-platform-native financial integration packages instead of a source-linked
-Hermes Tweet package entry.
+platform-native financial integration packages instead of a source-linked Hermes Tweet package entry.
 Reject banking, lending, mortgage, credit union, wealth management, financial
 advisor, loan origination, core banking, and fintech app marketplaces such as
 Plaid integrations, nCino marketplaces, Blend integrations, Encompass partner
