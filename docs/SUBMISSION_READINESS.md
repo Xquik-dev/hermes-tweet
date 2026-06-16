@@ -461,6 +461,16 @@ equipment data connectors, field operations workflows, crop scouting tools,
 yield maps, agronomy dashboards, livestock record systems, farm ERP
 integrations, or platform-native agriculture packages instead of a
 source-linked Hermes Tweet package entry.
+Reject cannabis, dispensary, seed-to-sale, cultivation, cannabis point of
+sale, cannabis delivery, hemp, and regulated retail app marketplaces such as
+Dutchie integrations, Flowhub marketplaces, Treez integrations, Cova Software
+integrations, Jane integrations, BioTrack integrations, METRC connector
+marketplaces, cannabis compliance marketplaces, cultivation management app
+marketplaces, or dispensary delivery marketplaces when they only accept menu
+sync widgets, seed-to-sale records, inventory compliance connectors, delivery
+dispatch workflows, age-verification checks, cultivation room dashboards,
+label-printing templates, or platform-native cannabis retail packages instead
+of a source-linked Hermes Tweet package entry.
 Reject Web3, crypto wallet, dapp, NFT, and decentralized social marketplaces
 such as MetaMask Snaps, WalletConnect AppKit plugins, Alchemy dapp galleries,
 thirdweb marketplaces, Chainlink Functions galleries, OpenSea app
