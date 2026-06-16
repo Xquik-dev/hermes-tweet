@@ -330,6 +330,17 @@ resident-service forms, permitting workflows, 311 request connectors, council
 agenda tools, records-request portals, GIS story maps, procurement notices, or
 platform-native civic packages instead of a source-linked Hermes Tweet package
 entry.
+Reject political campaign, election, voter outreach, canvassing, petition,
+civic advocacy, constituent outreach, ballot, and campaign management app
+marketplaces such as NGP VAN integrations, NationBuilder app marketplaces,
+Action Network integrations, Ecanvasser integrations, Mobilize integrations,
+EveryAction app marketplaces, campaign management marketplaces, voter outreach
+app marketplaces, petition platform marketplaces, or advocacy platform app
+stores when they only accept canvassing workflows, voter-file syncs, phone bank
+tools, text banking automations, petition forms, donation widgets, volunteer
+mobilization tools, ballot lookup widgets, constituent email workflows, or
+platform-native campaign packages instead of a source-linked Hermes Tweet
+package entry.
 Reject weather, meteorology, emergency management, disaster response, public
 safety, 911 software, mass notification, emergency alerting, incident command,
 wildfire response, flood alert, and earthquake alert app marketplaces such as

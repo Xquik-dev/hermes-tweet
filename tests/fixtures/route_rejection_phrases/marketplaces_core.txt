@@ -120,6 +120,31 @@ records-request portals
 GIS story maps
 procurement notices
 platform-native civic packages
+political campaign, election
+voter outreach, canvassing
+petition, civic advocacy
+constituent outreach
+ballot, and campaign management app
+NGP VAN integrations
+NationBuilder app marketplaces
+Action Network integrations
+Ecanvasser integrations
+Mobilize integrations
+EveryAction app marketplaces
+campaign management marketplaces
+voter outreach app marketplaces
+petition platform marketplaces
+advocacy platform app stores
+canvassing workflows
+voter-file syncs
+phone bank tools
+text banking automations
+petition forms
+donation widgets
+volunteer mobilization tools
+ballot lookup widgets
+constituent email workflows
+platform-native campaign packages
 weather, meteorology
 emergency management
 disaster response, public safety
