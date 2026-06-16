@@ -179,6 +179,18 @@ Marketplace, Pipedrive Marketplace, Zoho Marketplace, or Shopify App Store when
 they only accept CRM apps, support widgets, sales automations, helpdesk macros,
 commerce app packages, or storefront integrations instead of a source-linked
 Hermes Tweet package entry.
+Reject printing, print-on-demand, packaging, signage, label printing, prepress,
+wide-format printing, print shop software, product customization, shipping
+label, and print fulfillment app marketplaces such as Printful app
+marketplaces, Printify integrations, Gelato print integrations, Lulu publishing
+integrations, Moo integrations, VistaPrint integrations, Shippo label printing
+integrations, EasyPost label integrations, Packhelp integrations, Zakeke
+product customizer integrations, or PrintNode integrations when they only
+accept print product catalogs, fulfillment connectors, shipping label
+workflows, package design templates, prepress automation, proofing widgets,
+wide-format job tickets, product personalization widgets, or platform-native
+print fulfillment packages instead of a source-linked Hermes Tweet package
+entry.
 Reject restaurant, hospitality, hotel, reservation, food delivery, online
 ordering, retail POS, and point-of-sale app marketplaces such as Toast Partner
 Connect, Square App Marketplace, Clover App Market, Lightspeed integrations,

@@ -163,6 +163,34 @@ Shopify App Store
 CRM apps, support widgets
 sales automations, helpdesk macros
 commerce app packages, or storefront integrations
+printing, print-on-demand
+packaging, signage
+label printing, prepress
+wide-format printing
+print shop software
+product customization
+shipping label
+print fulfillment app marketplaces
+Printful app marketplaces
+Printify integrations
+Gelato print integrations
+Lulu publishing integrations
+Moo integrations
+VistaPrint integrations
+Shippo label printing integrations
+EasyPost label integrations
+Packhelp integrations
+Zakeke product customizer integrations
+PrintNode integrations
+print product catalogs
+fulfillment connectors
+shipping label workflows
+package design templates
+prepress automation
+proofing widgets
+wide-format job tickets
+product personalization widgets
+platform-native print fulfillment packages
 restaurant, hospitality, hotel
 reservation, food delivery
 online ordering, retail POS
