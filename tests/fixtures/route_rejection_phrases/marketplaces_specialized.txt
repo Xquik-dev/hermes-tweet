@@ -484,13 +484,17 @@ restore workflow automations
 retention dashboards
 platform-native resilience packages
 IoT, smart-home, industrial-device
+edge-device, and maker hardware
 maker hardware marketplaces
 Home Assistant integrations
 HACS repositories
 SmartThings Edge drivers
+Homey apps
 Hubitat apps
+openHAB bindings
 Matter plugin catalogs
 Node-RED flow libraries
+IFTTT applets
 Arduino Library Manager
 Raspberry Pi project galleries
 industrial IoT app marketplaces
@@ -499,6 +503,7 @@ home automation integrations
 device drivers, flow recipes
 firmware libraries
 hardware projects, sensor connectors
+connected-device packages
 platform-native device packages
 industrial automation, MES, SCADA
 CMMS, EAM, plant operations
