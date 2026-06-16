@@ -67,11 +67,6 @@ EXPECTED_SUBMISSION_READINESS_SURFACES = (
 )
 EXPECTED_LIVE_ECOSYSTEM_SURFACES = (
     (
-        "CorpusIQ Hermes skills marketplace X/Twitter skill",
-        "https://github.com/CorpusIQ/corpusiq-docs/blob/main/hermes/skills/"
-        "marketplace/new-june14-2026/index.md",
-    ),
-    (
         "OpenJarvis Hermes Tweet skill install example",
         "https://github.com/open-jarvis/OpenJarvis/blob/main/docs/user-guide/skills.md",
     ),
