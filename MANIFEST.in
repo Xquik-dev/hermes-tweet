@@ -9,3 +9,4 @@ include SECURITY.md
 include assets/icon.svg
 recursive-include hermes_tweet *.yaml *.json
 recursive-include hermes_tweet/skills *.md
+recursive-include tests/fixtures *.txt
