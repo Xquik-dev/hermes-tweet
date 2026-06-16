@@ -460,6 +460,20 @@ private offers, transactable SaaS plans
 admin center add-ons
 enterprise procurement connectors
 platform-native cloud marketplace packages
+backup, disaster recovery
+data protection, business continuity
+ransomware recovery marketplaces
+Veeam integrations
+Acronis integrations
+Druva marketplace
+Rubrik integrations
+Cohesity Marketplace
+Datto integrations
+storage replication connectors
+backup policy templates
+restore workflow automations
+retention dashboards
+platform-native resilience packages
 IoT, smart-home, industrial-device
 maker hardware marketplaces
 Home Assistant integrations
