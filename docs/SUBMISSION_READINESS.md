@@ -334,6 +334,15 @@ device plugin catalogs when they only accept home automation integrations,
 device drivers, flow recipes, firmware libraries, hardware projects, sensor
 connectors, or platform-native device packages instead of a source-linked
 Hermes Tweet package entry.
+Reject industrial automation, MES, SCADA, CMMS, EAM, plant operations, and
+factory automation marketplaces such as Rockwell Automation marketplaces,
+Siemens industrial app marketplaces, PTC ThingWorx marketplaces, AVEVA
+marketplaces, Ignition Exchange, maintenance management app stores, plant
+operations catalogs, or factory automation marketplaces when they only accept
+PLC connectors, historian dashboards, HMI modules, production-line workflows,
+asset maintenance tools, work-order automations, OEE dashboards, machine data
+adapters, or platform-native industrial operations packages instead of a
+source-linked Hermes Tweet package entry.
 Reject CAD, CAM, PLM, EDA, and additive manufacturing app marketplaces such as
 Autodesk App Store, Fusion 360 add-ins, SolidWorks marketplace, Onshape App
 Store, Altium extensions, KiCad plugin repositories, FreeCAD Addon Manager, CAD
