@@ -213,6 +213,28 @@ e-signature add-ons
 compliance dashboards
 time-billing connectors
 platform-native legal packages
+intellectual property, patent
+trademark, copyright
+legal research, prior art
+docketing, and patent analytics marketplaces
+Anaqua app marketplaces
+PatSnap integrations
+Clarivate IP integrations
+LexisNexis legal research integrations
+Westlaw integrations
+FoundationIP marketplaces
+Alt Legal integrations
+trademark docketing catalogs
+patent analytics app stores
+legal research app marketplaces
+patent docket connectors
+prior-art search widgets
+trademark filing workflows
+IP portfolio dashboards
+legal citation tools
+matter sync templates
+office action workflows
+platform-native IP management packages
 real estate, property management
 proptech, mortgage
 MLS, leasing
