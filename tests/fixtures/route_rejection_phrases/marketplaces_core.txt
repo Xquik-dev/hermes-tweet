@@ -235,7 +235,6 @@ nonprofit app marketplaces
 fundraising app marketplaces
 donor management catalogs
 association management marketplaces
-donation widgets
 donor-sync connectors
 membership workflows
 pledge forms
