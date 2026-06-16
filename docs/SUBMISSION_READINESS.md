@@ -421,6 +421,17 @@ sync connectors, lease workflows, tenant portals, work-order automations,
 property accounting connectors, mortgage origination integrations, BIM
 content, facilities maintenance apps, or platform-native property packages
 instead of a source-linked Hermes Tweet package entry.
+Reject homeowner association, HOA, condo, condominium, strata, co-op,
+community association, resident portal, board portal, and property association
+app marketplaces such as Vantaca integrations, CINC Systems marketplaces,
+Condo Control integrations, TOPS integrations, Enumerate marketplaces,
+TownSq integrations, AppFolio association integrations, HOA software
+marketplaces, condo management app marketplaces, or strata management
+marketplaces when they only accept dues payment connectors, violation
+workflows, architectural review queues, amenity booking widgets, resident
+portals, board packet templates, maintenance requests, or platform-native
+community management packages instead of a source-linked Hermes Tweet package
+entry.
 Reject laboratory, LIMS, ELN, research software, academic, science, lab
 automation, and research data management marketplaces such as Benchling App
 Marketplace, LabArchives integrations, LabWare LIMS marketplaces, SciNote

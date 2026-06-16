@@ -354,6 +354,29 @@ mortgage origination integrations
 BIM content
 facilities maintenance apps
 platform-native property packages
+homeowner association, HOA
+condo, condominium, strata
+co-op, community association
+resident portal, board portal
+property association app marketplaces
+Vantaca integrations
+CINC Systems marketplaces
+Condo Control integrations
+TOPS integrations
+Enumerate marketplaces
+TownSq integrations
+AppFolio association integrations
+HOA software marketplaces
+condo management app marketplaces
+strata management marketplaces
+dues payment connectors
+violation workflows
+architectural review queues
+amenity booking widgets
+resident portals
+board packet templates
+maintenance requests
+platform-native community management packages
 laboratory, LIMS
 ELN, research software
 academic, science
