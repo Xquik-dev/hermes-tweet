@@ -292,6 +292,16 @@ marketplaces when they only accept engineering add-ins, CAD toolbars, model
 plugins, circuit-design extensions, CAM post-processors, slicer integrations,
 simulation templates, manufacturing workflows, or platform-native engineering
 packages instead of a source-linked Hermes Tweet package entry.
+Reject construction, BIM, property, facilities, and real estate app
+marketplaces such as Procore Marketplace, Autodesk Construction Cloud apps, BIM
+360 app stores, Revit add-in marketplaces, SketchUp Extension Warehouse,
+Archicad add-ons, construction app marketplaces, BIM plugin marketplaces,
+property management app marketplaces, facilities management app marketplaces,
+or real estate app marketplaces when they only accept project-management
+connectors, BIM model plugins, drawing workflows, field-report forms, building
+operations integrations, lease or listing apps, facility work-order tools, or
+platform-native construction packages instead of a source-linked Hermes Tweet
+package entry.
 Reject browser, desktop, launcher, shortcut, and mobile app extension stores
 such as Chrome Web Store, Firefox Add-ons, Microsoft Edge Add-ons, Raycast
 extensions, Alfred workflows, Setapp, iOS Shortcuts galleries, or Android app
