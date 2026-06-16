@@ -478,6 +478,16 @@ marketplaces when they only accept team roster connectors, schedule widgets,
 ticketing workflows, venue operations tools, stadium experience apps, fan data
 dashboards, tournament brackets, or platform-native sports packages instead of
 a source-linked Hermes Tweet package entry.
+Reject library, museum, archive, cultural heritage, digital collections,
+exhibit management, museum ticketing, ILS, and library management app
+marketplaces such as Koha plugin catalogs, ArchivesSpace integrations, Omeka
+plugin marketplaces, MuseumPlus integrations, Tessitura app marketplaces,
+Blackbaud Altru integrations, library app marketplaces, museum app
+marketplaces, or archive app marketplaces when they only accept catalog
+widgets, collections dashboards, exhibit workflows, ticketing connectors,
+donor CRM integrations, digitization tools, finding-aid templates, patron
+account portals, or platform-native cultural heritage packages instead of a
+source-linked Hermes Tweet package entry.
 Reject maps, geospatial, travel, mobility, logistics, and fleet app
 marketplaces such as Google Maps Platform integrations, Mapbox plugin catalog,
 ArcGIS Marketplace, QGIS plugin repository, travel booking marketplaces,
