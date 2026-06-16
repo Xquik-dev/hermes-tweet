@@ -400,6 +400,30 @@ building operations integrations
 lease or listing apps
 facility work-order tools
 platform-native construction packages
+equipment rental, tool rental
+self-storage, parking management
+facility booking, venue booking
+desk booking, and space reservation app marketplaces
+Booqable integrations
+EZRentOut marketplaces
+Rentman integrations
+Point of Rental integrations
+Storable integrations
+SiteLink app marketplaces
+ParkMobile integrations
+Flash Parking integrations
+Skedda integrations
+Robin workplace integrations
+inventory availability widgets
+rental checkout workflows
+storage-unit portals
+parking permit connectors
+access-code automations
+booking calendars
+occupancy dashboards
+desk maps
+venue availability feeds
+platform-native rental and space-management packages
 browser, desktop, launcher
 shortcut, and mobile app extension stores
 Chrome Web Store
