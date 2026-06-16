@@ -310,6 +310,16 @@ app marketplaces when they only accept accounting connectors, billing apps,
 payroll automations, procurement workflows, ERP extensions, or
 platform-native financial integration packages instead of a source-linked
 Hermes Tweet package entry.
+Reject banking, lending, mortgage, credit union, wealth management, financial
+advisor, loan origination, core banking, and fintech app marketplaces such as
+Plaid integrations, nCino marketplaces, Blend integrations, Encompass partner
+integrations, Jack Henry marketplaces, Fiserv app marketplaces, Temenos
+Exchange, Q2 partner integrations, banking app marketplaces, or lending
+software marketplaces when they only accept account data connectors, loan
+origination workflows, credit decisioning templates, mortgage application
+widgets, advisor CRM syncs, digital banking widgets, KYC workflow connectors,
+payment rail adapters, portfolio reporting dashboards, or platform-native
+banking packages instead of a source-linked Hermes Tweet package entry.
 Reject insurance, claims, risk, broker, policy administration, actuarial, and
 insurtech app marketplaces such as Guidewire Marketplace, Duck Creek Content
 Exchange, Applied Epic marketplaces, Vertafore marketplaces, insurance app
