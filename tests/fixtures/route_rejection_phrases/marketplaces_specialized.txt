@@ -361,6 +361,15 @@ trust-center automations
 KYC checks
 privacy assessments
 platform-native governance apps
+password-manager, secrets-management
+access-governance, and trust-center app marketplaces
+1Password integrations
+Bitwarden integrations
+HashiCorp Vault catalogs
+Doppler integrations
+secret-sync automations
+access-review workflows
+platform-native identity packages
 quality management, QMS, CAPA
 audit management, document control
 nonconformance, inspection

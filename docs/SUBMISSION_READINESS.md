@@ -548,8 +548,7 @@ veterinary practice management marketplaces, pet grooming app marketplaces, or
 kennel software marketplaces when they only accept veterinary practice
 connectors, appointment reminders, animal shelter workflows, kennel booking
 widgets, grooming schedule tools, prescription refill integrations, pet health
-records, or platform-native animal care packages instead of a source-linked
-Hermes Tweet package entry.
+records, or platform-native animal care packages instead of a source-linked Hermes Tweet package entry.
 Reject senior care, elder care, home care, assisted living, childcare, daycare, nanny, babysitting, and caregiving app marketplaces
 such as Brightwheel integrations, Procare integrations, Kinderlime app marketplaces, ChildcareCRM integrations, Care.com integrations,
 WellSky Personal Care integrations, AlayaCare integrations, ClearCare integrations, senior care app marketplaces, or home care agency marketplaces
@@ -570,8 +569,7 @@ software marketplaces, or cemetery management app marketplaces when they only
 accept obituary publishing widgets, memorial page templates, service schedule
 feeds, case-management workflows, cremation authorization forms, cemetery plot
 maps, tribute video tools, family notification workflows, preneed planning
-connectors, or platform-native death-care packages instead of a source-linked
-Hermes Tweet package entry.
+connectors, or platform-native death-care packages instead of a source-linked Hermes Tweet package entry.
 Reject beauty, salon, spa, barber, appointment booking, local services, and
 field-service booking marketplaces such as Mindbody integrations, Vagaro app
 marketplaces, Boulevard app marketplaces, Fresha integrations, Zenoti
@@ -603,6 +601,13 @@ legaltech connectors, e-signature connectors, identity integrations, compliance
 controls, audit workflows, eDiscovery workflows, contract templates,
 trust-center automations, KYC checks, privacy assessments, or platform-native
 governance apps instead of a source-linked Hermes Tweet package entry.
+Reject password-manager, secrets-management, access-governance, and
+trust-center app marketplaces such as 1Password integrations, Bitwarden
+integrations, HashiCorp Vault catalogs, Doppler integrations, Okta Integration
+Network, Auth0 Marketplace, Vanta integrations, or Drata integrations when they
+only accept vault connectors, SSO apps, secret-sync automations, policy evidence
+exports, access-review workflows, or platform-native identity packages instead
+of a source-linked Hermes Tweet package entry.
 Reject quality management, QMS, CAPA, audit management, document control,
 nonconformance, inspection, ISO compliance, and quality assurance app
 marketplaces such as MasterControl integrations, ETQ Reliance marketplaces,
@@ -641,16 +646,14 @@ ransomware recovery marketplaces such as Veeam integrations, Acronis
 integrations, Druva marketplace, Rubrik integrations, Cohesity Marketplace,
 Datto integrations, or storage replication connectors when they only accept
 backup policy templates, restore workflow automations, retention dashboards, or
-platform-native resilience packages instead of a source-linked Hermes Tweet
-package entry.
+platform-native resilience packages instead of a source-linked Hermes Tweet package entry.
 Reject IoT, smart-home, industrial-device, and maker hardware marketplaces such
 as Home Assistant integrations, HACS repositories, SmartThings Edge drivers,
 Hubitat apps, Matter plugin catalogs, Node-RED flow libraries, Arduino Library
 Manager, Raspberry Pi project galleries, industrial IoT app marketplaces, or
 device plugin catalogs when they only accept home automation integrations,
 device drivers, flow recipes, firmware libraries, hardware projects, sensor
-connectors, or platform-native device packages instead of a source-linked
-Hermes Tweet package entry.
+connectors, or platform-native device packages instead of a source-linked Hermes Tweet package entry.
 Reject industrial automation, MES, SCADA, CMMS, EAM, plant operations, and
 factory automation marketplaces such as Rockwell Automation marketplaces,
 Siemens industrial app marketplaces, PTC ThingWorx marketplaces, AVEVA
@@ -676,8 +679,7 @@ property management app marketplaces, facilities management app marketplaces,
 or real estate app marketplaces when they only accept project-management
 connectors, BIM model plugins, drawing workflows, field-report forms, building
 operations integrations, lease or listing apps, facility work-order tools, or
-platform-native construction packages instead of a source-linked Hermes Tweet
-package entry.
+platform-native construction packages instead of a source-linked Hermes Tweet package entry.
 Reject equipment rental, tool rental, self-storage, parking management,
 facility booking, venue booking, desk booking, and space reservation app
 marketplaces such as Booqable integrations, EZRentOut marketplaces, Rentman
@@ -726,8 +728,7 @@ Fastly integrations, registrar app directories, cPanel extensions, WHMCS
 Marketplace, OSS/BSS integration catalogs, or network-operations marketplaces
 when they only accept DNS widgets, registrar extensions, CDN edge apps,
 hosting-panel modules, provisioning dashboards, network monitoring connectors,
-or platform-native telecom packages instead of a source-linked Hermes Tweet
-package entry.
+or platform-native telecom packages instead of a source-linked Hermes Tweet package entry.
 Reject email marketing, newsletter, scheduling, event, form, and survey app
 marketplaces such as Mailchimp integrations, SendGrid integrations, Brevo app
 store, Substack app directories, Calendly integrations, Eventbrite app
@@ -774,8 +775,7 @@ ArcGIS Marketplace, QGIS plugin repository, travel booking marketplaces,
 Expedia app marketplace, Uber developer app marketplaces, or logistics and
 fleet app marketplaces when they only accept map plugins, GIS extensions,
 geospatial data connectors, travel booking widgets, ride-hailing workflows,
-fleet automations, or route-optimization packages instead of a source-linked
-Hermes Tweet package entry.
+fleet automations, or route-optimization packages instead of a source-linked Hermes Tweet package entry.
 Reject supply-chain, warehouse management, WMS, TMS, inventory, order
 management, fulfillment, shipping carrier, freight forwarding, returns, and
 3PL app marketplaces such as ShipStation integrations, ShipBob integrations,
@@ -784,8 +784,7 @@ Yonder marketplaces, Oracle SCM integrations, SAP Logistics Business Network,
 or supply-chain app marketplaces when they only accept carrier connectors,
 warehouse pick-pack workflows, inventory sync widgets, order routing
 automations, freight booking tools, returns portals, 3PL dashboards, or
-platform-native supply-chain packages instead of a source-linked Hermes Tweet
-package entry.
+platform-native supply-chain packages instead of a source-linked Hermes Tweet package entry.
 Reject aerospace, aviation, airline operations, airport operations, drone,
 UAS, maritime, rail, flight operations, and transport-operations app
 marketplaces such as ForeFlight integrations, AirMap integrations, DroneDeploy
@@ -823,8 +822,7 @@ expose a PR-editable third-party source repository entry for Hermes Tweet's
 shipped package.
 Reject RPA and no-code automation marketplaces such as UiPath, Robocorp, n8n,
 Make, or Workato when they only accept bots, community nodes, workflow exports,
-automation recipes, or task templates instead of a source-linked Hermes Tweet
-package entry.
+automation recipes, or task templates instead of a source-linked Hermes Tweet package entry.
 Reject embedded `.agents`, `.agent`, `.antigravity`, project-template, and
 copied skill directories inside application repositories unless the repository
 itself documents a third-party skill catalog, registry, or contribution lane.
