@@ -169,6 +169,28 @@ volunteer scheduling tools
 church directory integrations
 ministry communication apps
 platform-native nonprofit packages
+PIM, DAM, product catalog
+fashion, apparel, luxury retail
+merchandising, brand asset
+retail content app marketplaces
+Akeneo App Store
+Salsify integrations
+Syndigo integrations
+Contentful Marketplace
+Bynder integrations
+Brandfolder integrations
+Shopify product feeds
+fashion retail app marketplaces
+apparel merchandising catalogs
+product catalog marketplaces
+product information connectors
+digital asset widgets
+catalog enrichment workflows
+merchandising dashboards
+SKU sync tools
+product-feed automations
+brand-asset portals
+platform-native retail content packages
 restaurant, hospitality
 hotel PMS, food delivery
 reservation platform

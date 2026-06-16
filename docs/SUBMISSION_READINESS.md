@@ -188,6 +188,15 @@ Marketplace, Pipedrive Marketplace, Zoho Marketplace, or Shopify App Store when
 they only accept CRM apps, support widgets, sales automations, helpdesk macros,
 commerce app packages, or storefront integrations instead of a source-linked
 Hermes Tweet package entry.
+Reject PIM, DAM, product catalog, fashion, apparel, luxury retail,
+merchandising, brand asset, and retail content app marketplaces such as Akeneo
+App Store, Salsify integrations, Syndigo integrations, Contentful Marketplace,
+Bynder integrations, Brandfolder integrations, Shopify product feeds, fashion
+retail app marketplaces, apparel merchandising catalogs, or product catalog
+marketplaces when they only accept product information connectors, digital
+asset widgets, catalog enrichment workflows, merchandising dashboards, SKU sync
+tools, product-feed automations, brand-asset portals, or platform-native retail
+content packages instead of a source-linked Hermes Tweet package entry.
 Reject printing, print-on-demand, packaging, signage, label printing, prepress,
 wide-format printing, print shop software, product customization, shipping
 label, and print fulfillment app marketplaces such as Printful app
