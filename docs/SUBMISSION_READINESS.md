@@ -512,6 +512,15 @@ meter data integrations, waste collection routing, geology model plugins,
 pipeline integrity tools, environmental reporting workflows, or
 platform-native resource operations packages instead of a source-linked Hermes
 Tweet package entry.
+Reject forestry, timber, logging, sawmill, lumber yard, wood products, forest
+management, and harvest planning app marketplaces such as Trimble Forestry
+integrations, Remsoft marketplaces, Forest Metrix integrations, Log Inventory
+marketplaces, lumber yard point-of-sale marketplaces, sawmill planning
+marketplaces, timber ERP app catalogs, or wood products marketplaces when they
+only accept stand inventory forms, harvest scheduling tools, log yard
+connectors, timber sale records, scaling tickets, sawmill optimization
+dashboards, lumber inventory sync, or platform-native forestry packages
+instead of a source-linked Hermes Tweet package entry.
 Reject HR, recruiting, talent, benefits, workforce, employee advocacy, and
 internal communications app marketplaces such as Greenhouse integrations, Lever
 integrations, Ashby marketplace, Workable app marketplace, BambooHR app

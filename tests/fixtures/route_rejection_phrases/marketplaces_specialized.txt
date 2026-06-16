@@ -86,6 +86,26 @@ geology model plugins
 pipeline integrity tools
 environmental reporting workflows
 platform-native resource operations packages
+forestry, timber, logging
+sawmill, lumber yard
+wood products, forest management
+harvest planning app marketplaces
+Trimble Forestry integrations
+Remsoft marketplaces
+Forest Metrix integrations
+Log Inventory marketplaces
+lumber yard point-of-sale marketplaces
+sawmill planning marketplaces
+timber ERP app catalogs
+wood products marketplaces
+stand inventory forms
+harvest scheduling tools
+log yard connectors
+timber sale records
+scaling tickets
+sawmill optimization dashboards
+lumber inventory sync
+platform-native forestry packages
 HR, recruiting, talent
 benefits, workforce, employee advocacy
 internal communications app marketplaces
