@@ -374,6 +374,16 @@ only accept EHR integrations, clinical apps, FHIR launch apps, patient portal
 widgets, care workflows, wellness programs, device integrations, or
 platform-native health app packages instead of a source-linked Hermes Tweet
 package entry.
+Reject beauty, salon, spa, barber, appointment booking, local services, and
+field-service booking marketplaces such as Mindbody integrations, Vagaro app
+marketplaces, Boulevard app marketplaces, Fresha integrations, Zenoti
+integrations, GlossGenius integrations, Square Appointments integrations,
+Acuity Scheduling integrations, Booksy app marketplaces, or wellness
+appointment marketplaces when they only accept booking widgets, staff schedule
+sync, intake forms, client profile connectors, point-of-sale add-ons,
+membership automations, service catalog sync, location availability widgets,
+provider calendar workflows, or platform-native appointment packages instead
+of a source-linked Hermes Tweet package entry.
 Reject legal, compliance, e-signature, identity, KYC, contract automation,
 eDiscovery, GRC, and privacy automation app marketplaces such as Clio App
 Directory, DocuSign App Center, Adobe Acrobat Sign integrations, Okta

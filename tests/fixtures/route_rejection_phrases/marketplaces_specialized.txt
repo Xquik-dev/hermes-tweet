@@ -74,6 +74,30 @@ patient portal widgets
 care workflows, wellness programs
 device integrations
 platform-native health app packages
+beauty, salon, spa
+barber, appointment booking
+local services
+field-service booking marketplaces
+Mindbody integrations
+Vagaro app marketplaces
+Boulevard app marketplaces
+Fresha integrations
+Zenoti integrations
+GlossGenius integrations
+Square Appointments integrations
+Acuity Scheduling integrations
+Booksy app marketplaces
+wellness appointment marketplaces
+booking widgets
+staff schedule sync
+intake forms
+client profile connectors
+point-of-sale add-ons
+membership automations
+service catalog sync
+location availability widgets
+provider calendar workflows
+platform-native appointment packages
 legal, compliance, e-signature
 identity, KYC, contract automation
 eDiscovery, GRC, and privacy automation app marketplaces
