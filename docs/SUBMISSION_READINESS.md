@@ -248,13 +248,16 @@ only accept EHR integrations, clinical apps, FHIR launch apps, patient portal
 widgets, care workflows, wellness programs, device integrations, or
 platform-native health app packages instead of a source-linked Hermes Tweet
 package entry.
-Reject legal, compliance, e-signature, identity, and KYC app marketplaces such
-as DocuSign App Center, Adobe Acrobat Sign integrations, Okta Integration
-Network, Auth0 Marketplace, OneTrust app catalogs, Vanta integrations, Drata
-integrations, or compliance automation marketplaces when they only accept
-e-signature connectors, identity integrations, compliance controls, audit
-workflows, trust-center automations, KYC checks, or platform-native governance
-apps instead of a source-linked Hermes Tweet package entry.
+Reject legal, compliance, e-signature, identity, KYC, contract automation,
+eDiscovery, GRC, and privacy automation app marketplaces such as Clio App
+Directory, DocuSign App Center, Adobe Acrobat Sign integrations, Okta
+Integration Network, Auth0 Marketplace, OneTrust app catalogs, Vanta
+integrations, Drata integrations, Relativity app directories, contract lifecycle
+marketplaces, or compliance automation marketplaces when they only accept
+legaltech connectors, e-signature connectors, identity integrations, compliance
+controls, audit workflows, eDiscovery workflows, contract templates,
+trust-center automations, KYC checks, privacy assessments, or platform-native
+governance apps instead of a source-linked Hermes Tweet package entry.
 Reject security operations, SIEM, SOAR, and observability integration catalogs
 such as Splunkbase, Elastic integrations, Datadog integrations, Grafana plugin
 catalog, New Relic Instant Observability, Sumo Logic app catalog, or Cortex
