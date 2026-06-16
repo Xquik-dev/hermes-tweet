@@ -58,6 +58,31 @@ employee-directory apps
 benefits connectors
 onboarding tasks
 workforce platform packages
+freelancer, gig economy
+contractor, creator marketplace
+talent marketplace, service marketplace
+work marketplace
+job board app directories
+Upwork Marketplace
+Fiverr integrations
+Toptal partner integrations
+Contra integrations
+Freelancer integrations
+Guru integrations
+Taskrabbit integrations
+Thumbtack integrations
+Behance creator tools
+Dribbble hiring integrations
+job board app marketplaces
+hiring widgets
+contractor onboarding workflows
+talent profile syncs
+service listing templates
+project brief automations
+escrow payment connectors
+creator portfolio widgets
+job posting feeds
+platform-native work marketplace packages
 healthcare, EHR, FHIR
 telehealth, wellness, and fitness app
 Epic App Orchard
