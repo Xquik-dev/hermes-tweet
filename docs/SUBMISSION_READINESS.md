@@ -165,6 +165,15 @@ Marketplace, Microsoft Teams apps, Slack App Directory, Notion, Airtable,
 monday.com, or Asana when they only accept app add-ons, workspace bots,
 slash-command apps, database blocks, workspace automations, or product-specific
 integrations instead of a source-linked Hermes Tweet package entry.
+Reject project management, task management, agile, product roadmap, issue
+tracker, bug tracker, ITSM, and service-desk app marketplaces such as
+Atlassian Marketplace, Jira apps, Trello Power-Ups, Linear integrations,
+ClickUp App Center, Shortcut integrations, GitHub Issues extensions, GitLab
+issue integrations, Azure DevOps Marketplace, or product-roadmap marketplaces
+when they only accept board widgets, task automations, issue sync connectors,
+sprint dashboards, roadmap cards, service-desk macros, incident workflows, or
+platform-native project packages instead of a source-linked Hermes Tweet
+package entry.
 Reject localization, translation-management, i18n, and CAT-tool marketplaces
 such as Crowdin Marketplace, Lokalise app marketplace, Phrase integrations,
 Transifex integrations, Weblate add-ons, Smartling marketplace, DeepL app

@@ -137,6 +137,23 @@ monday.com, or Asana
 app add-ons, workspace bots
 slash-command apps, database blocks
 workspace automations, or product-specific integrations
+project management, task management
+agile, product roadmap
+issue tracker, bug tracker
+ITSM, and service-desk app marketplaces
+Atlassian Marketplace
+Jira apps, Trello Power-Ups
+Linear integrations
+ClickUp App Center
+Shortcut integrations
+GitHub Issues extensions
+Azure DevOps Marketplace
+product-roadmap marketplaces
+board widgets, task automations
+issue sync connectors
+sprint dashboards, roadmap cards
+service-desk macros, incident workflows
+platform-native project packages
 localization, translation-management
 i18n, and CAT-tool marketplaces
 Crowdin Marketplace
