@@ -515,6 +515,16 @@ fleet app marketplaces when they only accept map plugins, GIS extensions,
 geospatial data connectors, travel booking widgets, ride-hailing workflows,
 fleet automations, or route-optimization packages instead of a source-linked
 Hermes Tweet package entry.
+Reject aerospace, aviation, airline operations, airport operations, drone,
+UAS, maritime, rail, flight operations, and transport-operations app
+marketplaces such as ForeFlight integrations, AirMap integrations, DroneDeploy
+app marketplaces, DJI developer marketplaces, SITA aviation marketplaces,
+Amadeus travel platform integrations, Sabre marketplaces, maritime logistics
+integrations, or railway operations integrations when they only accept flight
+planning widgets, airspace data connectors, drone mission packages, aircraft
+maintenance workflows, airport operations dashboards, crew scheduling tools,
+vessel tracking connectors, rail timetable feeds, or platform-native transport
+operations packages instead of a source-linked Hermes Tweet package entry.
 Reject automotive, car dealership, auto repair, vehicle service, auto parts,
 connected car, dealer management system, and DMS app marketplaces such as CDK
 Global marketplaces, Reynolds and Reynolds integrations, Dealertrack app
