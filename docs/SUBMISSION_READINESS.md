@@ -272,6 +272,15 @@ when they only accept menu sync connectors, table reservation widgets,
 ordering workflows, kitchen display integrations, loyalty apps, payment
 terminal add-ons, delivery dispatch connectors, or platform-native hospitality
 packages instead of a source-linked Hermes Tweet package entry.
+Reject legal tech, law practice management, e-discovery, contract lifecycle
+management, compliance, and case management marketplaces such as Clio app
+directories, MyCase app marketplaces, PracticePanther integrations,
+NetDocuments marketplaces, iManage integrations, DocuSign App Center, Ironclad
+integrations, Relativity App Hub, or legal app marketplaces when they only
+accept matter-management connectors, document management integrations,
+e-discovery workflows, contract review templates, e-signature add-ons,
+compliance dashboards, time-billing connectors, or platform-native legal
+packages instead of a source-linked Hermes Tweet package entry.
 Reject agriculture, farming, agritech, precision agriculture, crop analytics,
 livestock, and farm management app marketplaces such as John Deere Operations
 Center, Climate FieldView app directories, Trimble Agriculture integrations,
