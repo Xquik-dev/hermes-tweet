@@ -243,6 +243,16 @@ app marketplaces when they only accept accounting connectors, billing apps,
 payroll automations, procurement workflows, ERP extensions, or
 platform-native financial integration packages instead of a source-linked
 Hermes Tweet package entry.
+Reject insurance, claims, risk, broker, policy administration, actuarial, and
+insurtech app marketplaces such as Guidewire Marketplace, Duck Creek Content
+Exchange, Applied Epic marketplaces, Vertafore marketplaces, insurance app
+marketplaces, claims automation marketplaces, broker management app
+marketplaces, policy administration app marketplaces, risk modeling
+marketplaces, or actuarial app marketplaces when they only accept carrier
+connectors, claims workflows, broker-management integrations, policy lifecycle
+tools, underwriting dashboards, actuarial models, risk-scoring templates,
+document intake automations, or platform-native insurance packages instead of
+a source-linked Hermes Tweet package entry.
 Reject Web3, crypto wallet, dapp, NFT, and decentralized social marketplaces
 such as MetaMask Snaps, WalletConnect AppKit plugins, Alchemy dapp galleries,
 thirdweb marketplaces, Chainlink Functions galleries, OpenSea app
