@@ -238,6 +238,16 @@ martech app marketplaces when they only accept dashboards, analytics connectors,
 reporting widgets, campaign automations, social inbox apps, or
 platform-specific integrations instead of a source-linked Hermes Tweet package
 entry.
+Reject product analytics, session replay, heatmap, feature flag,
+experimentation, A/B testing, customer journey, and growth analytics app
+marketplaces such as Amplitude integrations, Mixpanel integrations, PostHog
+apps, LaunchDarkly integrations, Optimizely app marketplaces, VWO
+integrations, FullStory integrations, Hotjar integrations, Heap integrations,
+or customer journey analytics catalogs when they only accept event tracking
+connectors, experiment templates, feature flag SDK packages, session recording
+widgets, heatmap snippets, funnel dashboards, cohort reports, or
+platform-native growth analytics packages instead of a source-linked Hermes
+Tweet package entry.
 Reject SEO, search-console, web analytics, and advertising partner
 marketplaces such as Google Search Console integrations, Bing Webmaster Tools
 integrations, Ahrefs app marketplace, Moz app marketplace, Similarweb
