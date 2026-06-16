@@ -253,6 +253,16 @@ connectors, claims workflows, broker-management integrations, policy lifecycle
 tools, underwriting dashboards, actuarial models, risk-scoring templates,
 document intake automations, or platform-native insurance packages instead of
 a source-linked Hermes Tweet package entry.
+Reject nonprofit, fundraising, donor management, association management,
+membership management, church management, and ministry app marketplaces such
+as Blackbaud Marketplace, DonorPerfect integrations, Bloomerang integrations,
+Neon CRM app marketplaces, Planning Center app marketplaces, Pushpay app
+marketplaces, nonprofit app marketplaces, fundraising app marketplaces, donor
+management catalogs, or association management marketplaces when they only
+accept donation widgets, donor-sync connectors, membership workflows, pledge
+forms, volunteer scheduling tools, church directory integrations, ministry
+communication apps, or platform-native nonprofit packages instead of a
+source-linked Hermes Tweet package entry.
 Reject agriculture, farming, agritech, precision agriculture, crop analytics,
 livestock, and farm management app marketplaces such as John Deere Operations
 Center, Climate FieldView app directories, Trimble Agriculture integrations,
