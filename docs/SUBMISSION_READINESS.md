@@ -223,6 +223,15 @@ Marketplace, GitBook integrations, or knowledge-base app marketplaces when they
 only accept course plugins, learning-tool integrations, documentation widgets,
 space macros, help-center automations, or knowledge-base connectors instead of
 a source-linked Hermes Tweet package entry.
+Reject education, edtech, classroom, school administration, student information
+system, campus, university, and district app marketplaces such as Google
+Classroom add-ons, Schoology App Center, PowerSchool App Marketplace, Infinite
+Campus integrations, ClassLink App Library, Clever Library, K-12 SIS
+integration catalogs, campus app marketplaces, or edtech app marketplaces when
+they only accept assignment widgets, gradebook sync connectors, roster sync
+tools, SSO launch apps, classroom add-ons, SIS connectors, parent portal
+workflows, attendance dashboards, campus services apps, or platform-native
+education packages instead of a source-linked Hermes Tweet package entry.
 Reject API marketplaces, public API networks, and developer portal catalogs
 such as RapidAPI, Postman Public API Network, SwaggerHub, Stoplight, ReadMe,
 Kong Plugin Hub, or API gateway marketplaces when they only accept API specs,
