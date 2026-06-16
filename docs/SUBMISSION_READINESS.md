@@ -263,6 +263,15 @@ accept donation widgets, donor-sync connectors, membership workflows, pledge
 forms, volunteer scheduling tools, church directory integrations, ministry
 communication apps, or platform-native nonprofit packages instead of a
 source-linked Hermes Tweet package entry.
+Reject restaurant, hospitality, hotel PMS, food delivery, reservation platform,
+point-of-sale, and POS integration marketplaces such as OpenTable Marketplace,
+Toast integrations, Square App Marketplace, Clover App Market, DoorDash
+developer marketplaces, Uber Eats integration marketplaces, hotel PMS app
+marketplaces, hospitality app marketplaces, or restaurant app marketplaces
+when they only accept menu sync connectors, table reservation widgets,
+ordering workflows, kitchen display integrations, loyalty apps, payment
+terminal add-ons, delivery dispatch connectors, or platform-native hospitality
+packages instead of a source-linked Hermes Tweet package entry.
 Reject agriculture, farming, agritech, precision agriculture, crop analytics,
 livestock, and farm management app marketplaces such as John Deere Operations
 Center, Climate FieldView app directories, Trimble Agriculture integrations,
