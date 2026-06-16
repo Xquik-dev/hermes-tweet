@@ -205,6 +205,25 @@ Backstage plugin catalogs
 container images, operators
 charts, infrastructure providers
 platform plugins, or deployment packages
+cloud software, SaaS procurement
+reseller, and hyperscaler marketplace
+AWS Marketplace
+Azure Marketplace
+Google Cloud Marketplace
+Microsoft AppSource
+Oracle Cloud Marketplace
+Salesforce AppExchange
+Atlassian Marketplace
+ServiceNow Store
+cloud partner catalogs
+SaaS marketplace listings
+software procurement portals
+reseller app marketplaces
+VM images, managed service listings
+private offers, transactable SaaS plans
+admin center add-ons
+enterprise procurement connectors
+platform-native cloud marketplace packages
 IoT, smart-home, industrial-device
 maker hardware marketplaces
 Home Assistant integrations
