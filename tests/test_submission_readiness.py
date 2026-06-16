@@ -24,3 +24,11 @@ def test_submission_readiness_stays_below_quality_boundary() -> None:
     line_count = len((ROOT / "docs" / "SUBMISSION_READINESS.md").read_text().splitlines())
 
     assert line_count < 1_000
+
+
+def test_route_rejection_phrase_fixtures_stay_explicit() -> None:
+    for path in sorted(PHRASE_DIR.glob("*.txt")):
+        phrases = path.read_text().splitlines()
+
+        assert all(phrase for phrase in phrases)
+        assert len(phrases) == len(set(phrases))
