@@ -114,6 +114,27 @@ geospatial data connectors
 travel booking widgets
 ride-hailing workflows
 fleet automations, or route-optimization packages
+supply-chain, warehouse management
+WMS, TMS, inventory
+order management, fulfillment
+shipping carrier, freight forwarding
+returns, and 3PL app marketplaces
+ShipStation integrations
+ShipBob integrations
+Easyship apps
+Flexport integrations
+Manhattan Associates marketplaces
+Blue Yonder marketplaces
+Oracle SCM integrations
+SAP Logistics Business Network
+supply-chain app marketplaces
+carrier connectors
+warehouse pick-pack workflows
+inventory sync widgets
+order routing automations
+freight booking tools
+returns portals, 3PL dashboards
+platform-native supply-chain packages
 aerospace, aviation
 airline operations
 airport operations, drone
