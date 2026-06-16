@@ -430,6 +430,17 @@ instrument data connectors, sample tracking workflows, notebook templates,
 protocol registries, assay dashboards, research data repositories, grant
 reporting tools, or platform-native laboratory packages instead of a
 source-linked Hermes Tweet package entry.
+Reject pharmaceutical, life sciences, clinical trial, patient recruitment,
+pharmacovigilance, drug safety, regulatory affairs, eTMF, EDC, and trial
+operations marketplaces such as Veeva integrations, Medidata app marketplaces,
+Oracle Clinical integrations, Florence eBinders integrations, Castor EDC
+integrations, Trialbee integrations, Saama marketplaces, ArisGlobal
+integrations, clinical trial app marketplaces, pharmacovigilance marketplaces,
+or regulatory affairs software marketplaces when they only accept trial data
+connectors, study startup workflows, patient recruitment widgets, adverse
+event intake forms, safety case dashboards, regulatory submission templates,
+site monitoring tools, eTMF binders, EDC form extensions, or platform-native
+life sciences packages instead of a source-linked Hermes Tweet package entry.
 Reject music, audio, podcast, streaming creator, DAW plugin, radio broadcast,
 music marketing, and creator monetization marketplaces such as Spotify
 developer app directories, Apple Podcasts integrations, SoundCloud app
