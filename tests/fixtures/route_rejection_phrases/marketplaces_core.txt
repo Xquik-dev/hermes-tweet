@@ -172,6 +172,31 @@ mass-notification workflows
 evacuation maps
 preparedness forms
 platform-native emergency operations packages
+defense, military
+law enforcement, first responder
+CAD, RMS
+body-camera, evidence management
+records management
+public safety software marketplaces
+Axon integrations
+Motorola Solutions marketplaces
+Mark43 integrations
+Tyler Technologies public safety marketplaces
+CentralSquare integrations
+Versaterm integrations
+defense software marketplaces
+law enforcement app marketplaces
+dispatch software marketplaces
+evidence management app catalogs
+computer-aided dispatch connectors
+records management workflows
+body-camera ingest tools
+evidence vault connectors
+incident reporting templates
+case-management syncs
+radio system integrations
+responder rostering tools
+platform-native public safety packages
 nonprofit, fundraising
 donor management, association management
 membership management, church management

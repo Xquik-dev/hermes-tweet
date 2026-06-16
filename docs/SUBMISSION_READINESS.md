@@ -351,6 +351,18 @@ widgets, hazard data feeds, emergency alert templates, incident command
 dashboards, dispatch connectors, mass-notification workflows, evacuation maps,
 preparedness forms, or platform-native emergency operations packages instead
 of a source-linked Hermes Tweet package entry.
+Reject defense, military, law enforcement, first responder, CAD, RMS,
+body-camera, evidence management, records management, and public safety
+software marketplaces such as Axon integrations, Motorola Solutions
+marketplaces, Mark43 integrations, Tyler Technologies public safety
+marketplaces, CentralSquare integrations, Versaterm integrations, defense
+software marketplaces, law enforcement app marketplaces, dispatch software
+marketplaces, or evidence management app catalogs when they only accept
+computer-aided dispatch connectors, records management workflows, body-camera
+ingest tools, evidence vault connectors, incident reporting templates,
+case-management syncs, radio system integrations, responder rostering tools,
+or platform-native public safety packages instead of a source-linked Hermes
+Tweet package entry.
 Reject nonprofit, fundraising, donor management, association management,
 membership management, church management, and ministry app marketplaces such
 as Blackbaud Marketplace, DonorPerfect integrations, Bloomerang integrations,
