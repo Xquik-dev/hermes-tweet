@@ -200,15 +200,15 @@ marketplaces when they only accept product information connectors, digital
 asset widgets, catalog enrichment workflows, merchandising dashboards, SKU sync
 tools, product-feed automations, brand-asset portals, or platform-native retail
 content packages instead of a source-linked Hermes Tweet package entry.
-Reject printing, print-on-demand, packaging, signage, digital signage, kiosk display, DOOH,
-retail media network, label printing, prepress, wide-format printing, print shop software,
-product customization, shipping label, print fulfillment app marketplaces, signage CMS, and digital menu board app marketplaces such as Printful app
-marketplaces, Printify integrations, Gelato print integrations, Lulu publishing integrations, Moo integrations, VistaPrint integrations,
-Shippo label printing integrations, EasyPost label integrations, Packhelp integrations, Zakeke product customizer integrations,
-PrintNode integrations, Screenly app marketplaces, Yodeck integrations, BrightSign Network apps, or Xibo CMS modules when they
-only accept print product catalogs, fulfillment connectors, shipping label workflows, package design templates, prepress automation,
-proofing widgets, wide-format job tickets, product personalization widgets, digital signage playlists, kiosk screen widgets,
-screen-network schedulers, retail media placements, or platform-native signage packages instead of a source-linked Hermes Tweet package entry.
+Reject printing, print-on-demand, ebook, self-publishing, author platform, book distribution, packaging, signage,
+digital signage, kiosk display, DOOH, retail media network, label printing, prepress, wide-format printing,
+print shop software, product customization, shipping label, print fulfillment app marketplaces, signage CMS, digital menu board app marketplaces,
+Kindle Direct Publishing tools, IngramSpark integrations, Kobo Writing Life tools, Draft2Digital connectors, Reedsy marketplaces,
+Wattpad app catalogs, Printful app marketplaces, Printify integrations, Gelato print integrations, Lulu publishing integrations, Moo integrations,
+VistaPrint integrations, Shippo label printing integrations, EasyPost label integrations, Packhelp integrations, Zakeke product customizer integrations,
+PrintNode integrations, Screenly app marketplaces, Yodeck integrations, BrightSign Network apps, or Xibo CMS modules when they only accept
+ebook conversion jobs, author profile widgets, royalty dashboards, print product catalogs, fulfillment connectors, shipping label workflows, package design templates,
+prepress automation, proofing widgets, wide-format job tickets, product personalization widgets, digital signage playlists, kiosk screen widgets, screen-network schedulers, retail media placements, or platform-native signage packages instead of a source-linked Hermes Tweet package entry.
 Reject restaurant, hospitality, hotel, reservation, food delivery, online
 ordering, retail POS, and point-of-sale app marketplaces such as Toast Partner
 Connect, Square App Marketplace, Clover App Market, Lightspeed integrations,
