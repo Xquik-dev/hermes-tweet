@@ -575,7 +575,9 @@ mobile intents, automation shortcuts
 clipping workflows
 app-store listings
 design, creative, whiteboard
-knowledge-app plugin marketplaces
+knowledge-app, font, icon
+stock-media, template
+digital-asset marketplaces
 Figma Community plugins
 Canva Apps Marketplace
 Miro Marketplace
