@@ -291,7 +291,9 @@ platform-native public safety packages
 nonprofit, fundraising
 donor management, association management
 membership management, church management
-ministry, labor union
+ministry, faith community
+synagogue, mosque
+worship planning, labor union
 collective bargaining
 worker organization
 member-advocacy app marketplaces
@@ -305,6 +307,10 @@ nonprofit app marketplaces
 fundraising app marketplaces
 donor management catalogs
 association management marketplaces
+faith community app marketplaces
+synagogue management app marketplaces
+mosque community app marketplaces
+worship planning software marketplaces
 union management integrations
 dues management marketplaces
 grievance workflow catalogs
@@ -314,6 +320,9 @@ pledge forms
 volunteer scheduling tools
 church directory integrations
 ministry communication apps
+worship roster tools
+sermon media workflows
+congregation messaging connectors
 collective bargaining workflows
 dues collection portals
 grievance case forms
