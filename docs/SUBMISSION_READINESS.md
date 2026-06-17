@@ -59,7 +59,9 @@ Reject prototype marketplace applications whose README documents only API
 calls, local server setup, or monetized publish flows without a committed
 registry seed, catalog file, or source entry. A `curl` publish example is not a
 PR-native submission route.
-Reject distro installers, runtime stacks, or bundle repos that only vendor or
+Reject distro installers, runtime stacks, OS package indexes, package-manager
+recipes, or bundle repos such as Debian packages, Fedora RPMs, Arch AUR,
+Nixpkgs, Guix packages, Snapcraft, Flathub, or winget that only vendor or
 symlink local skills/plugins unless they expose a documented external plugin
 reference list, package source field, or third-party catalog entry. Do not
 vendor Hermes Tweet code into another installer just to create a listing.

@@ -369,7 +369,15 @@ Open standards, Agent Skills compatibility
 `third-party`, `vendor`, `upstream`, or `external` directory name
 branded as one owner's official catalog
 explicitly accept unrelated external source repositories
-distro installers, runtime stacks, or bundle repos
+distro installers, runtime stacks
+OS package indexes
+package-manager recipes
+Debian packages
+Fedora RPMs
+Arch AUR
+Nixpkgs
+Guix packages
+Snapcraft, Flathub, or winget
 external plugin reference list
 vendor Hermes Tweet code into another installer
 runtime bridges or installer extensions
