@@ -620,12 +620,12 @@ catalogs when they only accept audit checklists, document approval workflows,
 nonconformance intake forms, corrective action trackers, inspection templates,
 supplier quality dashboards, training record connectors, ISO evidence packs, or
 platform-native quality management packages instead of a source-linked Hermes Tweet package entry.
-Reject security operations, SIEM, SOAR, and observability integration catalogs
-such as Splunkbase, Elastic integrations, Datadog integrations, Grafana plugin
-catalog, New Relic Instant Observability, Sumo Logic app catalog, or Cortex
-XSOAR content packs when they only accept dashboards, detection rules, log
-parsers, alert connectors, runbooks, incident workflows, or platform-specific
-integration packages instead of a source-linked Hermes Tweet package entry.
+Reject security operations, SIEM, SOAR, and observability integration catalogs,
+plus security awareness, phishing simulation, cyber range, and attack simulation training marketplaces such as Splunkbase, Elastic integrations, Datadog integrations, Grafana plugin
+catalog, New Relic Instant Observability, Sumo Logic app catalog, Cortex XSOAR content packs, KnowBe4 integrations, Proofpoint security awareness catalogs, Cofense integrations, Immersive Labs catalogs, or RangeForce content catalogs when they only accept
+dashboards, detection rules, log parsers, alert connectors, runbooks, incident workflows, phishing templates, awareness modules,
+cyber-range labs, breach simulation scenarios, human-risk dashboards, or platform-specific integration packages instead of a source-linked
+Hermes Tweet package entry.
 Reject QA testing, browser testing, synthetic monitoring, and test automation extension marketplaces such as BrowserStack integrations, Sauce Labs integrations, Cypress plugins, Selenium plugin indexes, Playwright plugin catalogs, Checkly integrations, Pingdom extensions, or Datadog Synthetic Monitoring integrations when they only accept test runners, browser automation fixtures, synthetic checks, uptime monitors, assertion dashboards, or platform-native QA packages instead of a source-linked Hermes Tweet package entry.
 Reject physical security, CCTV, VMS, access control, visitor management,
 alarm, badge, and workplace safety app marketplaces such as Verkada
