@@ -279,6 +279,9 @@ creator campaign briefs
 rewards program connectors
 commerce app packages, or storefront integrations
 printing, print-on-demand
+ebook, self-publishing
+author platform
+book distribution
 packaging, signage
 digital signage, kiosk display
 DOOH
@@ -291,6 +294,12 @@ shipping label
 print fulfillment app marketplaces
 signage CMS
 digital menu board app marketplaces
+Kindle Direct Publishing tools
+IngramSpark integrations
+Kobo Writing Life tools
+Draft2Digital connectors
+Reedsy marketplaces
+Wattpad app catalogs
 Printful app marketplaces
 Printify integrations
 Gelato print integrations
@@ -306,6 +315,9 @@ Screenly app marketplaces
 Yodeck integrations
 BrightSign Network apps
 Xibo CMS modules
+ebook conversion jobs
+author profile widgets
+royalty dashboards
 print product catalogs
 fulfillment connectors
 shipping label workflows
