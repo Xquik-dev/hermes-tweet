@@ -484,15 +484,17 @@ integrations, solar monitoring connectors, carbon-reporting dashboards, ESG
 workflow templates, smart-grid adapters, building energy controls, or
 platform-native sustainability packages instead of a source-linked Hermes Tweet package entry.
 Reject natural resources, mining, oil and gas, petroleum, water utility, waste
-management, geoscience, and pipeline operations app marketplaces such as
-mining software marketplaces, oilfield app stores, petroleum data marketplaces,
-water utility integration catalogs, waste management app marketplaces, geology
-plugin catalogs, geoscience app marketplaces, pipeline operations catalogs, or
-environmental operations marketplaces when they only accept mine-planning
-plugins, well log connectors, reservoir dashboards, field operations forms,
-meter data integrations, waste collection routing, geology model plugins,
-pipeline integrity tools, environmental reporting workflows, or
-platform-native resource operations packages instead of a source-linked Hermes Tweet package entry.
+management, geoscience, and pipeline operations app marketplaces, plus aquaculture, fisheries,
+seafood traceability, and marine farming marketplaces such as mining software marketplaces,
+oilfield app stores, petroleum data marketplaces, water utility integration catalogs,
+waste management app marketplaces, geology plugin catalogs, geoscience app marketplaces,
+pipeline operations catalogs, environmental operations marketplaces, aquaculture app marketplaces,
+fishery management catalogs, or seafood supply-chain app marketplaces when they only accept
+mine-planning plugins, well log connectors, reservoir dashboards, field operations forms,
+meter data integrations, waste collection routing, geology model plugins, pipeline integrity tools,
+environmental reporting workflows, fish farm records, marine harvest dashboards,
+seafood traceability forms, fisheries data feeds, or platform-native resource operations packages
+instead of a source-linked Hermes Tweet package entry.
 Reject forestry, timber, logging, sawmill, lumber yard, wood products, forest
 management, and harvest planning app marketplaces such as Trimble Forestry
 integrations, Remsoft marketplaces, Forest Metrix integrations, Log Inventory
