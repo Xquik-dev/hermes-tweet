@@ -343,6 +343,11 @@ write Markdown bodies through a reviewed file
 non-interpolating path
 repository names, backticked literals, and validation commands
 `source.github` or similar repository-pointer schema
+generic AI tools, startup, SaaS
+Product Hunt alternatives
+Futurepedia, Toolify
+There's An AI For That
+PR-editable source
 canonical hub for the owner's own skills
 prototype marketplace applications
 README documents only API calls

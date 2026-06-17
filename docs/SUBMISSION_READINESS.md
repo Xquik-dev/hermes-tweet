@@ -52,6 +52,9 @@ read it before rejecting; accept only clear OSI-style permission text.
 Reject crawler or indexer directories whose submission path is only a hosted
 claim form, upload UI, or account-gated directory unless the repository exposes
 a seed, source, catalog, or registry file that can be changed by PR.
+Treat generic AI tools, startup, SaaS, product-launch, and app directories such
+as Product Hunt alternatives, Futurepedia, Toolify, or There's An AI For That
+as crawler or indexer directories unless they expose that PR-editable source.
 Reject prototype marketplace applications whose README documents only API
 calls, local server setup, or monetized publish flows without a committed
 registry seed, catalog file, or source entry. A `curl` publish example is not a
