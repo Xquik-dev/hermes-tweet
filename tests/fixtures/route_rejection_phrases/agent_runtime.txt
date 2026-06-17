@@ -393,13 +393,27 @@ CMS plugins, theme extensions
 site widgets, publishing automations
 website-builder app packages
 social listening, brand monitoring
+public relations, media relations
+press release, newsroom
+journalist database
 marketing analytics app
 Hootsuite App Directory
 Buffer integrations, Sprout Social
 Semrush App Center
 brand-monitoring integration galleries
+Muck Rack integrations
+Cision app marketplaces
+Prowly integrations
+Meltwater integrations
+press release distribution catalogs
+newsroom app marketplaces
 dashboards, analytics connectors
 campaign automations, social inbox apps
+press release templates
+media lists
+journalist outreach workflows
+newsroom widgets
+earned-media reports
 platform-specific integrations
 product analytics, session replay
 heatmap, feature flag
