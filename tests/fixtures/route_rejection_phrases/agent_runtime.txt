@@ -7,13 +7,14 @@ Open WebUI, LibreChat, AnythingLLM, BeeAI, Rivet
 Langroid, AutoGPT Forge, OpenAgents, Agent Zero, SuperAGI, BabyAGI
 Smolagents, DSPy, Julep, MetaGPT, Qwen-Agent, PraisonAI, Swarms
 Letta, MemGPT, Griptape, Mirascope, Marvin AI, Agency Swarm, Phidata, Motia
+Pydantic AI, AG2, CAMEL AI, Agno
 Flowise, Haystack, Sema4.ai, MindsDB
 Hermes Tweet's shipped package format
 tool subclass, module, framework tool
 extension, action, pipeline
 agent-framework runtime toolkits
 AutoGen, CrewAI, LangGraph
-Mastra, Letta, and Semantic Kernel
+Mastra, Letta, Semantic Kernel, Pydantic AI, AG2, CAMEL AI, and Agno
 runtime-specific tool implementation
 adapter class, graph node, agent action
 plugin function instead of a source-linked
