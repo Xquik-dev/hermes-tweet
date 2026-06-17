@@ -370,6 +370,10 @@ charts, infrastructure providers
 platform plugins, or deployment packages
 cloud software, SaaS procurement
 reseller, and hyperscaler marketplace
+FinOps, cloud-cost optimization
+cloud billing, Kubernetes cost
+spend management, cost governance
+usage analytics marketplace routes
 AWS Marketplace
 Azure Marketplace
 Google Cloud Marketplace
@@ -382,10 +386,20 @@ cloud partner catalogs
 SaaS marketplace listings
 software procurement portals
 reseller app marketplaces
+CloudHealth integrations
+Cloudability integrations
+Infracost integrations
+OpenCost plugins
+Kubecost integrations
 VM images, managed service listings
 private offers, transactable SaaS plans
 admin center add-ons
 enterprise procurement connectors
+cloud billing dashboards
+reserved-instance reports
+savings-plan recommendations
+cost allocation tags
+Kubernetes cost dashboards
 platform-native cloud marketplace packages
 backup, disaster recovery
 data protection, business continuity
