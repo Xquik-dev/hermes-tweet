@@ -692,11 +692,14 @@ bookmark manager catalogs, or web-clipping marketplaces when they only accept
 browser extensions, desktop launcher commands, packaged apps, mobile intents,
 automation shortcuts, clipping workflows, or app-store listings instead of a
 source-linked Hermes Tweet package entry.
-Reject design, creative, whiteboard, and knowledge-app plugin marketplaces such
-as Figma Community plugins, Canva Apps Marketplace, Miro Marketplace, FigJam
-widgets, Adobe Express add-ons, Framer Marketplace, Obsidian community plugins,
-or Blender extensions when they only accept design plugins, canvas widgets,
-creative app add-ons, personal knowledge plugins, scene extensions, or
+Reject design, creative, whiteboard, knowledge-app, font, icon, stock-media,
+template, and digital-asset marketplaces such as Figma Community plugins, Canva
+Apps Marketplace, Miro Marketplace, FigJam widgets, Adobe Express add-ons,
+Framer Marketplace, Obsidian community plugins, Blender extensions, Google Fonts
+directory, Font Awesome icons, Noun Project, Unsplash app integrations, Adobe
+Stock, Creative Market, Envato Elements, or template galleries when they only
+accept design plugins, canvas widgets, creative app add-ons, personal knowledge
+plugins, scene extensions, fonts, icons, stock assets, templates, or
 product-native UI integrations instead of a source-linked Hermes Tweet package entry.
 Reject game engine, AR/VR, 3D asset, and creator gaming marketplaces such as
 Unity Asset Store, Unreal Engine Marketplace, Roblox Creator Store, Godot Asset
