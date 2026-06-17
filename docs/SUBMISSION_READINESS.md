@@ -688,12 +688,13 @@ availability widgets, rental checkout workflows, storage-unit portals, parking
 permit connectors, access-code automations, booking calendars, occupancy
 dashboards, desk maps, venue availability feeds, or platform-native rental and
 space-management packages instead of a source-linked Hermes Tweet package entry.
-Reject browser, desktop, launcher, shortcut, and mobile app extension stores
-such as Chrome Web Store, Firefox Add-ons, Microsoft Edge Add-ons, Raycast
-extensions, Alfred workflows, Setapp, iOS Shortcuts galleries, or Android app
-marketplaces when they only accept browser extensions, desktop launcher
-commands, packaged apps, mobile intents, automation shortcuts, or app-store
-listings instead of a source-linked Hermes Tweet package entry.
+Reject browser, desktop, launcher, shortcut, read-it-later, and mobile app
+extension stores such as Chrome Web Store, Firefox Add-ons, Microsoft Edge
+Add-ons, Raycast extensions, Alfred workflows, Setapp, iOS Shortcuts galleries,
+bookmark manager catalogs, or web-clipping marketplaces when they only accept
+browser extensions, desktop launcher commands, packaged apps, mobile intents,
+automation shortcuts, clipping workflows, or app-store listings instead of a
+source-linked Hermes Tweet package entry.
 Reject design, creative, whiteboard, and knowledge-app plugin marketplaces such
 as Figma Community plugins, Canva Apps Marketplace, Miro Marketplace, FigJam
 widgets, Adobe Express add-ons, Framer Marketplace, Obsidian community plugins,

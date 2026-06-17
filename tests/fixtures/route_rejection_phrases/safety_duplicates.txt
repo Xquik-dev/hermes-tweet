@@ -59,6 +59,10 @@ static-site, blog, RSS
 Hugo modules, Jekyll plugins, Astro integrations
 theme add-ons, feed actions, content snippets
 site-generator packages
+read-it-later
+bookmark manager catalogs
+web-clipping marketplaces
+clipping workflows
 market research, survey panel
 user research, and consumer insights
 Qualtrics Marketplace
