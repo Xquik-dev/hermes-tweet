@@ -234,12 +234,17 @@ workspace automation packs
 assistant-specific tool definitions
 PR-editable Hermes Tweet source package entry
 local coding-agent command packs
-workflow recipes, and rule bundles
+workflow recipes, terminal or shell
+plugin indexes, and rule bundles
 GitHub Copilot Extensions, OpenCode commands
-Aider workflows, Goose
-Kiro hooks, or Amp tools
+Aider workflows, Goose extensions
+Kiro hooks, Amp tools
+Oh My Zsh plugins
+fish shell plugins
+terminal assistant catalogs
 agent-local prompts
-commands, recipes, hooks, or editor workflows
+commands, recipes, hooks, shell integrations
+editor workflows
 source-linked Hermes Tweet package entry
 hosted automation, app-action, and component galleries
 Zapier, Pipedream, Activepieces, Composio, Arcade, Toolhouse, or Langflow
