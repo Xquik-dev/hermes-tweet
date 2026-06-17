@@ -177,6 +177,16 @@ order routing automations
 freight booking tools
 returns portals, 3PL dashboards
 platform-native supply-chain packages
+aquaculture, fisheries
+seafood traceability
+marine farming marketplaces
+aquaculture app marketplaces
+fishery management catalogs
+seafood supply-chain app marketplaces
+fish farm records
+marine harvest dashboards
+seafood traceability forms
+fisheries data feeds
 aerospace, aviation
 airline operations
 airport operations, drone
