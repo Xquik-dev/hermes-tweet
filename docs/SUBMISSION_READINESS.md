@@ -680,16 +680,8 @@ or real estate app marketplaces when they only accept project-management
 connectors, BIM model plugins, drawing workflows, field-report forms, building
 operations integrations, lease or listing apps, facility work-order tools, or
 platform-native construction packages instead of a source-linked Hermes Tweet package entry.
-Reject equipment rental, tool rental, self-storage, parking management,
-facility booking, venue booking, desk booking, and space reservation app
-marketplaces such as Booqable integrations, EZRentOut marketplaces, Rentman
-integrations, Point of Rental integrations, Storable integrations, SiteLink app
-marketplaces, ParkMobile integrations, Flash Parking integrations, Skedda
-integrations, or Robin workplace integrations when they only accept inventory
-availability widgets, rental checkout workflows, storage-unit portals, parking
-permit connectors, access-code automations, booking calendars, occupancy
-dashboards, desk maps, venue availability feeds, or platform-native rental and
-space-management packages instead of a source-linked Hermes Tweet package entry.
+Reject equipment rental, tool rental, self-storage, parking management, facility booking, venue booking, desk booking, and space reservation app marketplaces,
+parks recreation app marketplaces, campground reservation app marketplaces, marina management app marketplaces, golf course management marketplaces, country club management marketplaces, resort activity booking app marketplaces, outdoor recreation software marketplaces, and parks department app marketplaces such as Booqable integrations, EZRentOut marketplaces, Rentman integrations, Point of Rental integrations, Storable integrations, SiteLink app marketplaces, ParkMobile integrations, Flash Parking integrations, Skedda integrations, Robin workplace integrations, RecDesk app marketplaces, CampLife integrations, Dockwa marina integrations, ForeUp integrations, Clubessential marketplaces, and resort activity catalogs when they only accept inventory availability widgets, rental checkout workflows, storage-unit portals, parking permit connectors, access-code automations, booking calendars, occupancy dashboards, desk maps, venue availability feeds, campground availability feeds, slip reservation widgets, tee-time booking tools, member portal apps, activity waivers, parks permit forms, or platform-native rental and space-management packages instead of a source-linked Hermes Tweet package entry.
 Reject browser, desktop, launcher, shortcut, read-it-later, and mobile app
 extension stores such as Chrome Web Store, Firefox Add-ons, Microsoft Edge
 Add-ons, Raycast extensions, Alfred workflows, Setapp, iOS Shortcuts galleries,
