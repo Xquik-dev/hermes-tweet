@@ -237,12 +237,12 @@ Webflow App Marketplace, Wix App Market, or Squarespace Extensions when they
 only accept CMS plugins, theme extensions, site widgets, publishing
 automations, form handlers, or website-builder app packages instead of a
 source-linked Hermes Tweet package entry.
-Reject social listening, brand monitoring, and marketing analytics app
-directories such as Hootsuite App Directory, Buffer integrations, Sprout Social
-app directory, Semrush App Center, brand-monitoring integration galleries, or
-martech app marketplaces when they only accept dashboards, analytics connectors,
-reporting widgets, campaign automations, social inbox apps, or
-platform-specific integrations instead of a source-linked Hermes Tweet package entry.
+Reject social listening, brand monitoring, public relations, media relations, press release, newsroom, journalist database, and marketing analytics app
+directories such as Hootsuite App Directory, Buffer integrations, Sprout Social app directory, Semrush App Center, brand-monitoring integration galleries,
+Muck Rack integrations, Cision app marketplaces, Prowly integrations, Meltwater integrations, press release distribution catalogs, newsroom app
+marketplaces, or martech app marketplaces when they only accept dashboards, analytics connectors, reporting widgets, campaign automations, social inbox
+apps, press release templates, media lists, journalist outreach workflows, newsroom widgets, earned-media reports, or platform-specific integrations
+instead of a source-linked Hermes Tweet package entry.
 Reject product analytics, session replay, heatmap, feature flag,
 experimentation, A/B testing, customer journey, and growth analytics app
 marketplaces such as Amplitude integrations, Mixpanel integrations, PostHog
