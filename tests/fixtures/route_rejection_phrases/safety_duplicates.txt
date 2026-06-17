@@ -99,6 +99,9 @@ read-it-later
 link-in-bio
 URL shortener
 QR code, microsite builder
+digital business card
+email signature
+vCard, contact-card
 creator landing-page
 bookmark manager catalogs
 web-clipping marketplaces
@@ -106,11 +109,16 @@ Linktree integrations
 Carrd plugins
 Beacons app marketplaces
 Bitly integrations
+HiHello integrations
+Blinq integrations
+Popl integrations
 QR code generator marketplaces
 landing-page builder app stores
 clipping workflows
 bio-page widgets
 short-link dashboards
+signature banners
+vCard landing pages
 QR landing pages
 profile-card templates
 market research, survey panel
