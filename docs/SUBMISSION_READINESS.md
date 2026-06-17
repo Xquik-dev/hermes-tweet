@@ -115,10 +115,10 @@ runtime-specific tool definitions. Treat these as integration targets, not
 Hermes Tweet outreach routes, unless the target exposes a licensed PR-editable
 catalog entry that links to Hermes Tweet's shipped source repository package.
 Reject hosted AI app directories and assistant action galleries such as ChatGPT
-apps, OpenAI Apps SDK examples, GPT action directories, MCP UI registries,
-Vercel AI SDK templates, or LangChain Hub snippets when they require app
-manifests, UI widgets, action schemas, SDK demos, or hub snippets instead of a
-source-linked Hermes Tweet package entry.
+apps, OpenAI Apps SDK examples, GPT Store listings, custom GPT directories, assistant store catalogs, Gemini Gems galleries,
+Poe bot marketplaces, Character.AI bot directories, GPT action directories, MCP UI registries, Vercel AI SDK templates, or LangChain Hub snippets
+when they require app manifests, UI widgets, action schemas, custom assistant prompts, bot persona cards, SDK demos, or hub snippets instead
+of a source-linked Hermes Tweet package entry.
 Reject prompt, evaluation, and observability hubs such as LangSmith Hub,
 PromptLayer, Langfuse, Braintrust, promptfoo, or OpenPipe when they only accept
 prompt templates, eval datasets, trace dashboards, eval configs, SDK snippets,

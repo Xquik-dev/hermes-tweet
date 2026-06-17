@@ -31,10 +31,18 @@ Hermes Tweet's shipped source repository package
 hosted AI app directories
 assistant action galleries
 ChatGPT apps, OpenAI Apps SDK examples
+GPT Store listings
+custom GPT directories
+assistant store catalogs
+Gemini Gems galleries
+Poe bot marketplaces
+Character.AI bot directories
 GPT action directories, MCP UI registries
 Vercel AI SDK templates
 LangChain Hub snippets
 app manifests, UI widgets, action schemas
+custom assistant prompts
+bot persona cards
 SDK demos, or hub snippets
 prompt, evaluation, and observability hubs
 LangSmith Hub, PromptLayer, Langfuse
