@@ -283,11 +283,9 @@ hosted API listings, request collections, docs workspaces, gateway plugins, or
 API management connectors instead of a source-linked Hermes Tweet package entry.
 Reject data warehouse, ETL, reverse ETL, customer data platform, and data
 workflow orchestration marketplaces such as Snowflake Marketplace, dbt Package
-Hub, Airbyte connectors, Fivetran connectors, Hightouch destinations, Census
-integrations, Segment integrations, Airflow Providers, Dagster integrations,
-Prefect collections, Mage templates, Kestra plugins, Meltano plugins, or data integration catalogs when they only accept data connectors, warehouse apps,
-transform packages, destination syncs, ingestion pipelines, DAG providers,
-pipeline assets, orchestration blocks, customer profile activations, or platform-native data app packages instead of a source-linked Hermes Tweet package entry.
+Hub, Airbyte connectors, Fivetran connectors, Hightouch destinations, Census integrations, Segment integrations, Airflow Providers, Dagster integrations,
+Prefect collections, Mage templates, Kestra plugins, Meltano Hub entries, Singer taps, or data integration catalogs when they only accept data connectors,
+warehouse apps, transform packages, destination syncs, ingestion pipelines, DAG providers, pipeline assets, orchestration blocks, customer profile activations, or platform-native data app packages instead of a source-linked Hermes Tweet package entry.
 Reject database extension, cache module, search engine plugin, message queue,
 event-streaming connector, and graph database app marketplaces such as
 PostgreSQL extension registries, pgxn distributions, MySQL plugin directories,

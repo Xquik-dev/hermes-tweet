@@ -39,7 +39,8 @@ Dagster integrations
 Prefect collections
 Mage templates
 Kestra plugins
-Meltano plugins
+Meltano Hub entries
+Singer taps
 data integration catalogs
 data connectors
 warehouse apps
