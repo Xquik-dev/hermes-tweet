@@ -338,9 +338,10 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
     assert "MCP-data-only" in checklist
     assert "Hermes Tweet conversion" in checklist
     assert "generic Xquik MCP server data entry" in checklist
-    assert "without a detectable contribution license" in checklist
-    assert "maintainer has already asked" in checklist
-    assert "product-owned marketplaces" in checklist
+    assert "explicitly incompatible with contribution" in checklist
+    assert "license metadata or an absent root license" in checklist
+    assert "an absent license alone does not disqualify" in checklist
+    assert "product-owned marketplaces" in normalized_checklist
     assert "closed to random additions" in checklist
     assert "branded Claude plugin catalogs" in checklist
     assert "describe themselves as the official catalog" in normalized_checklist
@@ -349,7 +350,7 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
     assert "compatibility example, not a third-party submission route" in normalized_checklist
     assert "explicitly accept outside source repositories" in normalized_checklist
     assert "root license files such as `LICENSE`, `LICENSE.md`" in checklist
-    assert "read it before rejecting" in checklist
+    assert "read it before deciding" in checklist
     assert "claim form, upload UI, or account-gated directory" in checklist
     assert "source, catalog, or registry file that can be changed by PR" in checklist
     assert "generated catalog or marketplace files" in checklist

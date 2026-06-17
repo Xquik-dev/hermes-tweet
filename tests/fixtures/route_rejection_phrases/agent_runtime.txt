@@ -26,7 +26,7 @@ declarative action groups
 prompt-flow components
 runtime-specific tool definitions
 integration targets, not Hermes Tweet outreach routes
-licensed PR-editable catalog entry
+PR-editable catalog entry
 Hermes Tweet's shipped source repository package
 hosted AI app directories
 assistant action galleries

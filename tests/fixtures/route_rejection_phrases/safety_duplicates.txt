@@ -363,7 +363,7 @@ personal agent memory repositories
 OpenHands microagent folders
 hosted MCP directory profile pages
 `.openhands`, Smithery, Glama, or PulseMCP
-licensed, PR-editable source entry
+PR-editable source entry
 contribution rules require measurable community usage
 minimum star count
 maintainer-curated quality bar
