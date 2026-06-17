@@ -21,12 +21,10 @@ these surfaces:
 
 Do not submit when the target is only a browser-cookie workflow, only a
 TweetClaw route, a generic Xquik MCP server data entry, unrelated to X/Twitter
-or Hermes Agent, archived, or not licensed for contribution. Reject targets
-without a detectable contribution license unless a maintainer has already asked
-for a Hermes Tweet update on an existing route. Reject personal or
-product-owned marketplaces that describe themselves as owner-specific,
-team-specific, or closed to random additions unless their docs clearly invite
-third-party Hermes Tweet submissions.
+or Hermes Agent, archived, or explicitly incompatible with contribution. Missing
+license metadata or an absent root license is review context, not a blocker.
+Note the absence when useful, but reject only explicit incompatible licenses or terms that prohibit outside contributions. Reject personal or product-owned
+marketplaces that describe themselves as owner-specific, team-specific, or closed to random additions unless their docs clearly invite third-party Hermes Tweet submissions.
 Reject branded Claude plugin catalogs that describe themselves as the official
 catalog for one vendor, team, or product family. If the catalog says plugin
 updates flow from that owner's source repositories, treat it as a compatibility
@@ -45,10 +43,10 @@ Do not treat a `third-party`, `vendor`, `upstream`, or `external` directory name
 as an invitation by itself. If the marketplace is branded as one owner's
 official catalog, require contribution docs that explicitly accept unrelated
 external source repositories before submitting Hermes Tweet.
-Treat the contribution license as detectable only after checking both GitHub
-metadata and obvious root license files such as `LICENSE`, `LICENSE.md`,
-`COPYING`, or `NOTICE`. When metadata is empty but a root license file exists,
-read it before rejecting; accept only clear OSI-style permission text.
+Review the contribution license after checking both GitHub metadata and obvious
+root license files such as `LICENSE`, `LICENSE.md`, `COPYING`, or `NOTICE`.
+When metadata is empty but a root license file exists, read it before deciding;
+an absent license alone does not disqualify an otherwise native, non-duplicate, non-spam route.
 Reject crawler or indexer directories whose submission path is only a hosted
 claim form, upload UI, or account-gated directory unless the repository exposes
 a seed, source, catalog, or registry file that can be changed by PR.
@@ -112,8 +110,8 @@ catalogs such as Chainlit, Microsoft PromptFlow, Llama Stack, CopilotKit, Rasa
 CALM, or AWS Bedrock Agents when the route only accepts app-native tools,
 workflow nodes, declarative action groups, prompt-flow components, or
 runtime-specific tool definitions. Treat these as integration targets, not
-Hermes Tweet outreach routes, unless the target exposes a licensed PR-editable
-catalog entry that links to Hermes Tweet's shipped source repository package.
+Hermes Tweet outreach routes, unless the target exposes a PR-editable catalog
+entry that links to Hermes Tweet's shipped source repository package.
 Reject hosted AI app directories and assistant action galleries such as ChatGPT
 apps, OpenAI Apps SDK examples, GPT Store listings, custom GPT directories, assistant store catalogs, Gemini Gems galleries,
 Poe bot marketplaces, Character.AI bot directories, GPT action directories, MCP UI registries, Vercel AI SDK templates, or LangChain Hub snippets
@@ -832,7 +830,7 @@ Treat those hits as downstream copies or mirrors, not fresh Hermes Tweet
 submission routes.
 Reject personal agent memory repositories, OpenHands microagent folders, and
 hosted MCP directory profile pages such as `.openhands`, Smithery, Glama, or
-PulseMCP unless the route exposes a licensed, PR-editable source entry that can
+PulseMCP unless the route exposes a PR-editable source entry that can
 reference Hermes Tweet's shipped package without copying or translating it.
 Reject catalogs whose contribution rules require measurable community usage,
 maturity, a minimum star count, or a maintainer-curated quality bar until Hermes
