@@ -252,6 +252,11 @@ or customer journey analytics catalogs when they only accept event tracking
 connectors, experiment templates, feature flag SDK packages, session recording
 widgets, heatmap snippets, funnel dashboards, cohort reports, or
 platform-native growth analytics packages instead of a source-linked Hermes Tweet package entry.
+Reject customer success app marketplaces, digital adoption platform marketplaces, product adoption app marketplaces, user onboarding app marketplaces, and
+in-app guidance catalogs such as Gainsight marketplaces, Pendo integrations, Appcues integrations, Userpilot integrations, ChurnZero marketplaces,
+WalkMe app directories, Userflow integrations, or customer education adoption catalogs when they only accept success-plan templates, health score widgets,
+onboarding checklist embeds, walkthrough scripts, in-app guides, usage telemetry dashboards, NPS automations, or platform-native adoption packages instead
+of a source-linked Hermes Tweet package entry.
 Reject SEO, search-console, web analytics, and advertising partner
 marketplaces such as Google Search Console integrations, Bing Webmaster Tools
 integrations, Ahrefs app marketplace, Moz app marketplace, Similarweb

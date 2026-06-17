@@ -422,6 +422,17 @@ session recording widgets
 heatmap snippets, funnel dashboards
 cohort reports
 platform-native growth analytics packages
+customer success app marketplaces
+digital adoption platform marketplaces
+product adoption app marketplaces
+user onboarding app marketplaces
+in-app guidance catalogs
+Gainsight marketplaces
+Pendo integrations
+Appcues integrations
+Userpilot integrations
+WalkMe app directories
+platform-native adoption packages
 SEO, search-console, web analytics
 advertising partner marketplaces
 Google Search Console integrations
