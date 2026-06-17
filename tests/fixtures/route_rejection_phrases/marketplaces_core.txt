@@ -451,7 +451,9 @@ grant reporting tools
 platform-native laboratory packages
 music, audio, podcast
 streaming creator, DAW plugin
+video production, livestreaming
 radio broadcast
+broadcast, NLE plugin
 music marketing
 creator monetization marketplaces
 Spotify developer app directories
@@ -460,14 +462,24 @@ SoundCloud app galleries
 Bandcamp developer integrations
 Twitch Extensions
 OBS plugin marketplaces
+Stream Deck plugin stores
+Elgato Marketplace
+Adobe Premiere plugin marketplaces
+DaVinci Resolve plugin catalogs
+Final Cut Pro plugin marketplaces
 DAW plugin marketplaces
 podcast app marketplaces
 audio plugin marketplaces
 playback widgets
+scene widgets
 audio processing plugins
 stream overlays
 channel extensions
 podcast hosting connectors
+encoder plugins
+control-surface actions
+NLE effects, title templates
+media-export presets
 artist storefront tools
 royalty reporting dashboards
 broadcast automation workflows
