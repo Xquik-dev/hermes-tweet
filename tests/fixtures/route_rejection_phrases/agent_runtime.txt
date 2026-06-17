@@ -251,12 +251,17 @@ sales automations, helpdesk macros
 commerce app packages, or storefront integrations
 printing, print-on-demand
 packaging, signage
+digital signage, kiosk display
+DOOH
+retail media network
 label printing, prepress
 wide-format printing
 print shop software
 product customization
 shipping label
 print fulfillment app marketplaces
+signage CMS
+digital menu board app marketplaces
 Printful app marketplaces
 Printify integrations
 Gelato print integrations
@@ -268,6 +273,10 @@ EasyPost label integrations
 Packhelp integrations
 Zakeke product customizer integrations
 PrintNode integrations
+Screenly app marketplaces
+Yodeck integrations
+BrightSign Network apps
+Xibo CMS modules
 print product catalogs
 fulfillment connectors
 shipping label workflows
@@ -276,7 +285,11 @@ prepress automation
 proofing widgets
 wide-format job tickets
 product personalization widgets
-platform-native print fulfillment packages
+digital signage playlists
+kiosk screen widgets
+screen-network schedulers
+retail media placements
+platform-native signage packages
 restaurant, hospitality, hotel
 reservation, food delivery
 online ordering, retail POS
