@@ -55,6 +55,10 @@ email automations, newsletter connectors
 booking workflows
 event listings, form widgets
 survey templates, or platform-native integration packages
+static-site, blog, RSS
+Hugo modules, Jekyll plugins, Astro integrations
+theme add-ons, feed actions, content snippets
+site-generator packages
 market research, survey panel
 user research, and consumer insights
 Qualtrics Marketplace
