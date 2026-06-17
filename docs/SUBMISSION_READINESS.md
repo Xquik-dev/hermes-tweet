@@ -636,12 +636,12 @@ they only accept camera device connectors, video analytics plugins, door access
 workflows, badge provisioning automations, visitor kiosk widgets, incident
 response dashboards, alarm panel integrations, or platform-native physical
 security packages instead of a source-linked Hermes Tweet package entry.
-Reject CI/CD, DevOps automation, and pipeline extension marketplaces such as
+Reject CI/CD, DevOps automation, DevSecOps, application security scanning, and pipeline extension marketplaces such as
 GitHub Marketplace Actions, GitLab CI/CD Catalog, CircleCI orb registry,
-Jenkins plugin index, Buildkite plugins, Travis CI add-ons, or pipeline
-automation marketplaces when they only accept workflow actions, CI templates,
-orb packages, build plugins, deployment automations, or source-control
-workflows instead of a source-linked Hermes Tweet package entry.
+Jenkins plugin index, Buildkite plugins, Travis CI add-ons, Snyk integrations, Semgrep registry entries, CodeQL packs,
+Veracode integrations, Checkmarx integrations, Mend integrations, Black Duck integrations, or pipeline
+automation marketplaces when they only accept workflow actions, CI templates, SAST rules, SCA policies, SBOM reports,
+secret scanning detectors, dependency scan jobs, container scan policies, orb packages, build plugins, deployment automations, or source-control workflows instead of a source-linked Hermes Tweet package entry.
 Reject container, cloud-native, and infrastructure packaging registries such as Docker Hub extensions, Kubernetes operator catalogs, Helm chart repositories, Artifact Hub, Terraform Registry, Pulumi Registry, Crossplane package registry, or Backstage plugin catalogs when they only accept container images, operators, charts, infrastructure providers, platform plugins, or deployment packages instead of a source-linked Hermes Tweet package entry.
 Reject cloud software, SaaS procurement, reseller, and hyperscaler marketplace routes, plus FinOps, cloud-cost optimization, cloud billing, Kubernetes cost, spend management, cost governance, and usage analytics marketplace routes such as AWS Marketplace, Azure Marketplace, Google Cloud Marketplace, Microsoft AppSource, Oracle Cloud Marketplace, Salesforce AppExchange, Atlassian Marketplace, ServiceNow Store, cloud partner catalogs, SaaS marketplace listings, software procurement portals, reseller app marketplaces, CloudHealth integrations, Cloudability integrations, Infracost integrations, OpenCost plugins, or Kubecost integrations when they only accept VM images, managed service listings, private offers, transactable SaaS plans, admin center add-ons, enterprise procurement connectors, cloud billing dashboards, reserved-instance reports, savings-plan recommendations, cost allocation tags, Kubernetes cost dashboards, or platform-native cloud marketplace packages instead of a source-linked Hermes Tweet package entry.
 Reject backup, disaster recovery, data protection, business continuity, and
