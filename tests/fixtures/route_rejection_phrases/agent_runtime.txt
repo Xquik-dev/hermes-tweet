@@ -46,6 +46,8 @@ inference-provider catalogs
 dataset marketplaces
 annotation-template catalogs
 synthetic-data marketplaces
+feature-store catalogs
+experiment-tracking hubs
 MLOps registries
 Hugging Face Spaces
 Hugging Face model hubs
@@ -57,6 +59,10 @@ Papers With Code
 Roboflow Universe
 Label Studio templates
 Scale AI marketplaces
+MLflow registries
+Weights & Biases artifacts
+Kubeflow components
+Feast feature stores
 model registry catalogs
 hosted models, demo spaces
 model cards
@@ -64,6 +70,9 @@ notebooks, datasets
 benchmark links, annotation tasks
 labeling templates
 synthetic-data packages
+feature definitions
+experiment runs
+model artifacts
 model deployment recipes
 lab, science, biotech
 ELN, LIMS, bioinformatics

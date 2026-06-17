@@ -116,14 +116,9 @@ Reject prompt, evaluation, and observability hubs such as LangSmith Hub,
 PromptLayer, Langfuse, Braintrust, promptfoo, or OpenPipe when they only accept
 prompt templates, eval datasets, trace dashboards, eval configs, SDK snippets,
 or experiment recipes instead of a source-linked Hermes Tweet package entry.
-Reject model hubs, model galleries, inference-provider catalogs, dataset
-marketplaces, annotation-template catalogs, synthetic-data marketplaces, and
-MLOps registries such as Hugging Face Spaces, Hugging Face model hubs,
-Replicate collections, Ollama libraries, OpenRouter app catalogs, Kaggle
-datasets, Papers With Code, Roboflow Universe, Label Studio templates, Scale AI
-marketplaces, or model registry catalogs when they only accept hosted models,
-demo spaces, model cards, notebooks, datasets, benchmark links, annotation
-tasks, labeling templates, synthetic-data packages, or model deployment recipes instead of a source-linked Hermes Tweet package entry.
+Reject model hubs, model galleries, inference-provider catalogs, dataset marketplaces, annotation-template catalogs, synthetic-data marketplaces, feature-store catalogs, experiment-tracking hubs, and
+MLOps registries such as Hugging Face Spaces, Hugging Face model hubs, Replicate collections, Ollama libraries, OpenRouter app catalogs, Kaggle datasets, Papers With Code, Roboflow Universe, Label Studio templates, Scale AI marketplaces, MLflow registries, Weights & Biases artifacts, Kubeflow components, Feast feature stores, or model registry catalogs when they only accept hosted models,
+demo spaces, model cards, notebooks, datasets, benchmark links, annotation tasks, labeling templates, synthetic-data packages, feature definitions, experiment runs, model artifacts, or model deployment recipes instead of a source-linked Hermes Tweet package entry.
 Reject lab, science, biotech, ELN, LIMS, bioinformatics, genomics, chemistry,
 and scientific workflow marketplaces such as Benchling app marketplaces, LabKey
 app marketplaces, Galaxy Tool Shed, JupyterHub scientific extensions, KNIME Hub
