@@ -46,6 +46,9 @@ email marketing, newsletter
 scheduling, event, form, and survey app
 wedding planning app marketplaces
 event planning software marketplaces
+webinar app marketplaces
+virtual event platform marketplaces
+conference platform integration catalogs
 catering app marketplaces
 banquet hall venue management marketplaces
 RSVP guest list app marketplaces
@@ -57,11 +60,20 @@ SendGrid integrations, Brevo
 Substack app directories
 Calendly integrations
 Eventbrite app
+Cvent app marketplaces
+Hopin app marketplaces
+Bizzabo integrations
+Airmeet integrations
+ON24 integrations
 Typeform app marketplace
 SurveyMonkey app directories
 email automations, newsletter connectors
 booking workflows
 event listings, form widgets
+webinar registration widgets
+virtual booth apps
+attendee badge sync
+agenda embeds
 survey templates, or platform-native integration packages
 static-site, blog, RSS
 Hugo modules, Jekyll plugins, Astro integrations
