@@ -96,9 +96,23 @@ lawn care landscaping marketplaces
 facility services marketplaces
 home cleaning marketplaces
 read-it-later
+link-in-bio
+URL shortener
+QR code, microsite builder
+creator landing-page
 bookmark manager catalogs
 web-clipping marketplaces
+Linktree integrations
+Carrd plugins
+Beacons app marketplaces
+Bitly integrations
+QR code generator marketplaces
+landing-page builder app stores
 clipping workflows
+bio-page widgets
+short-link dashboards
+QR landing pages
+profile-card templates
 market research, survey panel
 user research, and consumer insights
 Qualtrics Marketplace
