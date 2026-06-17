@@ -291,7 +291,10 @@ platform-native public safety packages
 nonprofit, fundraising
 donor management, association management
 membership management, church management
-ministry app marketplaces
+ministry, labor union
+collective bargaining
+worker organization
+member-advocacy app marketplaces
 Blackbaud Marketplace
 DonorPerfect integrations
 Bloomerang integrations
@@ -302,12 +305,19 @@ nonprofit app marketplaces
 fundraising app marketplaces
 donor management catalogs
 association management marketplaces
+union management integrations
+dues management marketplaces
+grievance workflow catalogs
 donor-sync connectors
 membership workflows
 pledge forms
 volunteer scheduling tools
 church directory integrations
 ministry communication apps
+collective bargaining workflows
+dues collection portals
+grievance case forms
+shop-steward rosters
 platform-native nonprofit packages
 PIM, DAM, product catalog
 fashion, apparel, luxury retail

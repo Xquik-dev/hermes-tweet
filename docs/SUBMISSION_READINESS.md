@@ -360,14 +360,14 @@ ingest tools, evidence vault connectors, incident reporting templates,
 case-management syncs, radio system integrations, responder rostering tools,
 or platform-native public safety packages instead of a source-linked Hermes Tweet package entry.
 Reject nonprofit, fundraising, donor management, association management,
-membership management, church management, and ministry app marketplaces such
-as Blackbaud Marketplace, DonorPerfect integrations, Bloomerang integrations,
-Neon CRM app marketplaces, Planning Center app marketplaces, Pushpay app
-marketplaces, nonprofit app marketplaces, fundraising app marketplaces, donor
-management catalogs, or association management marketplaces when they only
-accept donation widgets, donor-sync connectors, membership workflows, pledge
-forms, volunteer scheduling tools, church directory integrations, ministry
-communication apps, or platform-native nonprofit packages instead of a
+membership management, church management, ministry, labor union, collective bargaining,
+worker organization, and member-advocacy app marketplaces such as Blackbaud Marketplace, DonorPerfect integrations,
+Bloomerang integrations, Neon CRM app marketplaces, Planning Center app marketplaces, Pushpay app marketplaces,
+nonprofit app marketplaces, fundraising app marketplaces, donor management catalogs, association management marketplaces,
+union management integrations, dues management marketplaces, or grievance workflow catalogs when they only accept
+donation widgets, donor-sync connectors, membership workflows, pledge forms, volunteer scheduling tools,
+church directory integrations, ministry communication apps, collective bargaining workflows, dues collection portals,
+grievance case forms, shop-steward rosters, or platform-native nonprofit packages instead of a
 source-linked Hermes Tweet package entry.
 Reject restaurant, hospitality, hotel PMS, food delivery, reservation platform,
 point-of-sale, and POS integration marketplaces such as OpenTable Marketplace,
