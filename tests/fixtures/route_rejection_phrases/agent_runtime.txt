@@ -241,13 +241,33 @@ string extraction tools
 project webhooks
 translation-provider extensions
 CRM, support, and commerce app marketplaces
+customer reviews, reputation management
+loyalty marketing, referral marketing
+affiliate marketing, customer advocacy
+rewards program, and UGC marketplace routes
 HubSpot Marketplace
 Salesforce AppExchange, Zendesk Marketplace
 Intercom App Store, Freshworks
 Pipedrive Marketplace, Zoho Marketplace
 Shopify App Store
+Yotpo integrations
+Trustpilot integrations
+Reviews.io integrations
+Bazaarvoice integrations
+Smile.io integrations
+LoyaltyLion integrations
+ReferralCandy integrations
+Impact.com integrations
+customer engagement marketplaces
 CRM apps, support widgets
 sales automations, helpdesk macros
+review widgets
+reputation dashboards
+loyalty points
+referral widgets
+affiliate tracking links
+creator campaign briefs
+rewards program connectors
 commerce app packages, or storefront integrations
 printing, print-on-demand
 packaging, signage

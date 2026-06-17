@@ -174,11 +174,11 @@ marketplace, or Google Translate integrations when they only accept translation
 memory connectors, glossary sync apps, localization workflow automations,
 machine-translation plugins, string extraction tools, project webhooks, or
 translation-provider extensions instead of a source-linked Hermes Tweet package entry.
-Reject CRM, support, and commerce app marketplaces such as HubSpot Marketplace,
-Salesforce AppExchange, Zendesk Marketplace, Intercom App Store, Freshworks
-Marketplace, Pipedrive Marketplace, Zoho Marketplace, or Shopify App Store when
-they only accept CRM apps, support widgets, sales automations, helpdesk macros,
-commerce app packages, or storefront integrations instead of a source-linked Hermes Tweet package entry.
+Reject CRM, support, and commerce app marketplaces, plus customer reviews, reputation management, loyalty marketing, referral marketing, affiliate marketing, customer advocacy, rewards program, and UGC marketplace routes such as HubSpot Marketplace,
+Salesforce AppExchange, Zendesk Marketplace, Intercom App Store, Freshworks Marketplace, Pipedrive Marketplace, Zoho Marketplace, Shopify App Store,
+Yotpo integrations, Trustpilot integrations, Reviews.io integrations, Bazaarvoice integrations, Smile.io integrations, LoyaltyLion integrations, ReferralCandy integrations, Impact.com integrations, or customer engagement marketplaces when
+they only accept CRM apps, support widgets, sales automations, helpdesk macros, review widgets, reputation dashboards, loyalty points, referral widgets,
+affiliate tracking links, creator campaign briefs, rewards program connectors, commerce app packages, or storefront integrations instead of a source-linked Hermes Tweet package entry.
 Reject PIM, DAM, product catalog, fashion, apparel, luxury retail,
 merchandising, brand asset, and retail content app marketplaces such as Akeneo
 App Store, Salsify integrations, Syndigo integrations, Contentful Marketplace,
