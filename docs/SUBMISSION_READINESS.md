@@ -574,16 +574,8 @@ accept obituary publishing widgets, memorial page templates, service schedule
 feeds, case-management workflows, cremation authorization forms, cemetery plot
 maps, tribute video tools, family notification workflows, preneed planning
 connectors, or platform-native death-care packages instead of a source-linked Hermes Tweet package entry.
-Reject beauty, salon, spa, barber, appointment booking, local services, and
-field-service booking marketplaces such as Mindbody integrations, Vagaro app
-marketplaces, Boulevard app marketplaces, Fresha integrations, Zenoti
-integrations, GlossGenius integrations, Square Appointments integrations,
-Acuity Scheduling integrations, Booksy app marketplaces, or wellness
-appointment marketplaces when they only accept booking widgets, staff schedule
-sync, intake forms, client profile connectors, point-of-sale add-ons,
-membership automations, service catalog sync, location availability widgets,
-provider calendar workflows, or platform-native appointment packages instead
-of a source-linked Hermes Tweet package entry.
+Reject beauty, salon, spa, barber, appointment booking, local services, cleaning service app marketplaces, janitorial software marketplaces,
+laundry and dry cleaning app marketplaces, pest control software marketplaces, pool service app marketplaces, lawn care landscaping marketplaces, facility services marketplaces, home cleaning marketplaces, and field-service booking marketplaces such as Mindbody integrations, Vagaro app marketplaces, Boulevard app marketplaces, Fresha integrations, Zenoti integrations, GlossGenius integrations, Square Appointments integrations, Acuity Scheduling integrations, Booksy app marketplaces, wellness appointment marketplaces, Janitorial Manager integrations, CleanCloud integrations, PestPac marketplaces, Skimmer integrations, or Aspire landscaping integrations when they only accept booking widgets, staff schedule sync, intake forms, client profile connectors, point-of-sale add-ons, membership automations, service catalog sync, location availability widgets, provider calendar workflows, route sheets, service tickets, chemical logs, garment tracking, or platform-native appointment packages instead of a source-linked Hermes Tweet package entry.
 Reject field service management, warranty, appliance repair, home services,
 maintenance dispatch, service scheduling, technician routing, and repair
 operations app marketplaces such as ServiceTitan integrations, Jobber app
