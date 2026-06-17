@@ -52,6 +52,10 @@ platform-native work marketplace packages
 legal, compliance, e-signature
 identity, KYC, contract automation
 eDiscovery, GRC, and privacy automation app marketplaces
+consent management
+cookie compliance
+DSAR, CCPA
+data subject request
 environmental health and safety
 OSHA compliance
 workplace safety management
@@ -67,6 +71,11 @@ Drata integrations
 Relativity app directories
 contract lifecycle marketplaces
 compliance automation marketplaces
+Cookiebot integrations
+Didomi integrations
+TrustArc integrations
+Osano app catalogs
+Usercentrics integrations
 Intelex marketplaces
 SpheraCloud integrations
 Cority app catalogs
@@ -82,6 +91,11 @@ contract templates
 trust-center automations
 KYC checks
 privacy assessments
+consent banners
+cookie scanners
+CMP tags
+DSAR intake forms
+data subject request workflows
 EHS checklists
 OSHA logs
 near-miss forms
