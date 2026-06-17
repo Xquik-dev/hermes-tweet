@@ -181,6 +181,9 @@ aerospace, aviation
 airline operations
 airport operations, drone
 UAS, maritime, rail
+space mission, satellite data
+Earth observation, remote sensing
+orbital analytics
 flight operations
 transport-operations app marketplaces
 ForeFlight integrations
@@ -192,6 +195,9 @@ Amadeus travel platform integrations
 Sabre marketplaces
 maritime logistics integrations
 railway operations integrations
+STAC catalogs
+satellite imagery marketplaces
+mission control app marketplaces
 flight planning widgets
 airspace data connectors
 drone mission packages
@@ -200,6 +206,10 @@ airport operations dashboards
 crew scheduling tools
 vessel tracking connectors
 rail timetable feeds
+remote-sensing data products
+satellite imagery orders
+orbital ephemeris feeds
+mission-planning dashboards
 platform-native transport operations packages
 automotive, car dealership
 auto repair, vehicle service
