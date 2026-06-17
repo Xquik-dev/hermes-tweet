@@ -356,6 +356,8 @@ incident response dashboards
 alarm panel integrations
 platform-native physical security packages
 CI/CD, DevOps automation
+DevSecOps
+application security scanning
 pipeline extension marketplaces
 GitHub Marketplace Actions
 GitLab CI/CD Catalog
@@ -363,8 +365,21 @@ CircleCI orb registry
 Jenkins plugin index
 Buildkite plugins
 Travis CI add-ons
+Snyk integrations
+Semgrep registry entries
+CodeQL packs
+Veracode integrations
+Checkmarx integrations
+Mend integrations
+Black Duck integrations
 pipeline automation marketplaces
 workflow actions, CI templates
+SAST rules
+SCA policies
+SBOM reports
+secret scanning detectors
+dependency scan jobs
+container scan policies
 orb packages, build plugins
 deployment automations
 source-control workflows
