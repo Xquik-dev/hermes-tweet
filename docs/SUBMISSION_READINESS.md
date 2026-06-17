@@ -286,6 +286,7 @@ workflow orchestration marketplaces such as Snowflake Marketplace, dbt Package
 Hub, Airbyte connectors, Fivetran connectors, Hightouch destinations, Census integrations, Segment integrations, Airflow Providers, Dagster integrations,
 Prefect collections, Mage templates, Kestra plugins, Meltano Hub entries, Singer taps, or data integration catalogs when they only accept data connectors,
 warehouse apps, transform packages, destination syncs, ingestion pipelines, DAG providers, pipeline assets, orchestration blocks, customer profile activations, or platform-native data app packages instead of a source-linked Hermes Tweet package entry.
+Reject data catalog, metadata governance, data lineage, ontology, and knowledge graph marketplaces such as OpenMetadata, DataHub, Amundsen, Collibra, Alation, Atlan, ontology registries, or lineage catalogs when they only accept metadata connectors, lineage extractors, glossary packages, ontology terms, graph schemas, or platform-native governance apps instead of a source-linked Hermes Tweet package entry.
 Reject database extension, cache module, search engine plugin, message queue,
 event-streaming connector, and graph database app marketplaces such as
 PostgreSQL extension registries, pgxn distributions, MySQL plugin directories,

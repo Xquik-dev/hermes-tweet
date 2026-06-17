@@ -52,6 +52,15 @@ pipeline assets
 orchestration blocks
 customer profile activations
 platform-native data app packages
+data catalog, metadata governance
+data lineage, ontology
+knowledge graph marketplaces
+OpenMetadata, DataHub, Amundsen
+Collibra, Alation, Atlan
+metadata connectors, lineage extractors
+glossary packages, ontology terms
+graph schemas
+platform-native governance apps
 database extension, cache module
 search engine plugin, message queue
 event-streaming connector
