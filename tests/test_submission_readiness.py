@@ -3,7 +3,9 @@ from __future__ import annotations
 from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
+SUBMISSION_READINESS_PATH = ROOT / "docs" / "SUBMISSION_READINESS.md"
 PHRASE_DIR = ROOT / "tests" / "fixtures" / "route_rejection_phrases"
+MAX_SUBMISSION_READINESS_LINES = 960
 MAX_FIXTURE_LINES = 600
 
 
@@ -19,16 +21,16 @@ def _route_rejection_phrases() -> tuple[str, ...]:
 
 
 def test_submission_readiness_rejects_adjacent_marketplace_routes() -> None:
-    normalized_checklist = " ".join((ROOT / "docs" / "SUBMISSION_READINESS.md").read_text().split())
+    normalized_checklist = " ".join(SUBMISSION_READINESS_PATH.read_text().split())
 
     for phrase in _route_rejection_phrases():
         assert phrase in normalized_checklist
 
 
 def test_submission_readiness_stays_below_quality_boundary() -> None:
-    line_count = len((ROOT / "docs" / "SUBMISSION_READINESS.md").read_text().splitlines())
+    line_count = len(SUBMISSION_READINESS_PATH.read_text().splitlines())
 
-    assert line_count <= 960
+    assert line_count <= MAX_SUBMISSION_READINESS_LINES
 
 
 def test_route_rejection_phrase_fixtures_stay_explicit() -> None:
