@@ -299,15 +299,27 @@ inspection forms
 platform-native field service packages
 security operations, SIEM, SOAR
 observability integration catalogs
+security awareness, phishing simulation
+cyber range, and attack simulation training marketplaces
 Splunkbase, Elastic integrations
 Datadog integrations
 Grafana plugin catalog
 New Relic Instant Observability
 Sumo Logic app catalog
 Cortex XSOAR content packs
+KnowBe4 integrations
+Proofpoint security awareness catalogs
+Cofense integrations
+Immersive Labs catalogs
+RangeForce content catalogs
 dashboards, detection rules
 log parsers, alert connectors
 runbooks, incident workflows
+phishing templates
+awareness modules
+cyber-range labs
+breach simulation scenarios
+human-risk dashboards
 platform-specific integration packages
 QA testing, browser testing
 synthetic monitoring, and test automation extension marketplaces
