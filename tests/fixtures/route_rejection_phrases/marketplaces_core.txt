@@ -96,6 +96,23 @@ connector plugins
 stream processors, queue adapters
 graph widgets
 platform-native data infrastructure packages
+SQL client, database admin
+schema management, ERD
+migration, and ORM extension marketplaces
+DBeaver plugin catalogs
+TablePlus extensions
+DataGrip plugins
+pgAdmin tools
+Supabase integration catalogs
+Prisma generator registries
+Hasura connector catalogs
+schema-tool galleries
+query editor add-ons
+database dashboards
+schema diff tools
+ERD templates, migration helpers
+ORM generators, admin panels
+platform-native SQL tooling packages
 finance, accounting, payroll
 procurement, and ERP app marketplaces
 QuickBooks App Store
