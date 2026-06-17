@@ -450,17 +450,17 @@ event intake forms, safety case dashboards, regulatory submission templates,
 site monitoring tools, eTMF binders, EDC form extensions, or platform-native
 life sciences packages instead of a source-linked Hermes Tweet package entry.
 Reject music, audio, podcast, streaming creator, DAW plugin, video production,
-livestreaming, radio broadcast, broadcast, NLE plugin, music
-marketing, and creator monetization marketplaces such as Spotify developer app
-directories, Apple Podcasts integrations, SoundCloud app galleries, Bandcamp
-developer integrations, Twitch Extensions, OBS plugin marketplaces, Stream Deck plugin stores,
-Elgato Marketplace, Adobe Premiere plugin marketplaces, DaVinci Resolve plugin catalogs,
-Final Cut Pro plugin marketplaces, DAW plugin marketplaces, podcast app marketplaces, or audio plugin marketplaces when they
-only accept playback widgets, scene widgets, audio processing plugins, stream
-overlays, channel extensions, podcast hosting connectors, encoder plugins,
-control-surface actions, NLE effects, title templates, media-export presets,
-artist storefront tools, royalty reporting dashboards, broadcast automation
-workflows, or platform-native media packages instead of a source-linked Hermes Tweet package entry.
+livestreaming, radio broadcast, broadcast, NLE plugin, music marketing, creator monetization marketplaces, AI avatar, digital human,
+synthetic media, text-to-speech, and voice clone marketplaces such as Spotify developer app
+directories, Apple Podcasts integrations, SoundCloud app galleries, Bandcamp developer integrations, Twitch Extensions,
+OBS plugin marketplaces, Stream Deck plugin stores, Elgato Marketplace, Adobe Premiere plugin marketplaces, DaVinci Resolve plugin catalogs,
+Final Cut Pro plugin marketplaces, DAW plugin marketplaces, podcast app marketplaces, audio plugin marketplaces, HeyGen integrations,
+Synthesia app marketplaces, D-ID app directories, ElevenLabs integrations, or Tavus integrations when they
+only accept playback widgets, scene widgets, audio processing plugins, stream overlays, channel extensions,
+podcast hosting connectors, encoder plugins, control-surface actions, NLE effects, title templates,
+media-export presets, artist storefront tools, royalty reporting dashboards, broadcast automation workflows,
+avatar render jobs, talking-head templates, voice clone presets, synthetic media assets,
+or platform-native media packages instead of a source-linked Hermes Tweet package entry.
 Reject agriculture, farming, agritech, precision agriculture, crop analytics,
 livestock, and farm management app marketplaces such as John Deere Operations
 Center, Climate FieldView app directories, Trimble Agriculture integrations,

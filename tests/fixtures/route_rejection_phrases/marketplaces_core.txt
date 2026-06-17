@@ -498,6 +498,10 @@ radio broadcast
 broadcast, NLE plugin
 music marketing
 creator monetization marketplaces
+AI avatar, digital human
+synthetic media
+text-to-speech
+voice clone
 Spotify developer app directories
 Apple Podcasts integrations
 SoundCloud app galleries
@@ -512,6 +516,11 @@ Final Cut Pro plugin marketplaces
 DAW plugin marketplaces
 podcast app marketplaces
 audio plugin marketplaces
+HeyGen integrations
+Synthesia app marketplaces
+D-ID app directories
+ElevenLabs integrations
+Tavus integrations
 playback widgets
 scene widgets
 audio processing plugins
@@ -525,6 +534,10 @@ media-export presets
 artist storefront tools
 royalty reporting dashboards
 broadcast automation workflows
+avatar render jobs
+talking-head templates
+voice clone presets
+synthetic media assets
 platform-native media packages
 agriculture, farming, agritech
 precision agriculture, crop analytics
