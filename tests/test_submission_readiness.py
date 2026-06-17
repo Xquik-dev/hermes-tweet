@@ -5,6 +5,13 @@ from pathlib import Path
 ROOT = Path(__file__).parents[1]
 SUBMISSION_READINESS_PATH = ROOT / "docs" / "SUBMISSION_READINESS.md"
 PHRASE_DIR = ROOT / "tests" / "fixtures" / "route_rejection_phrases"
+EXPECTED_PHRASE_FILES = (
+    "agent_runtime.txt",
+    "marketplaces_core.txt",
+    "marketplaces_people_governance.txt",
+    "marketplaces_specialized.txt",
+    "safety_duplicates.txt",
+)
 MAX_SUBMISSION_READINESS_LINES = 960
 MAX_FIXTURE_LINES = 600
 
@@ -39,6 +46,12 @@ def test_route_rejection_phrase_fixtures_stay_explicit() -> None:
 
         assert all(phrase for phrase in phrases)
         assert len(phrases) == len(set(phrases))
+
+
+def test_route_rejection_phrase_fixtures_stay_in_reviewed_buckets() -> None:
+    fixture_names = tuple(path.name for path in _route_rejection_phrase_paths())
+
+    assert fixture_names == EXPECTED_PHRASE_FILES
 
 
 def test_route_rejection_phrase_fixtures_stay_split() -> None:
