@@ -45,6 +45,8 @@ def test_route_rejection_phrase_fixtures_stay_explicit() -> None:
         phrases = path.read_text().splitlines()
 
         assert all(phrase for phrase in phrases)
+        assert all(phrase == phrase.strip() for phrase in phrases)
+        assert all("\t" not in phrase for phrase in phrases)
         assert len(phrases) == len(set(phrases))
 
 
