@@ -746,13 +746,13 @@ Dovetail integrations, panel sample connectors, product feedback repositories,
 feedback dashboards, and platform-native insights packages when they only accept
 survey distribution workflows or native research dashboards instead of a source-linked Hermes Tweet package entry.
 Reject sports, league management, fan engagement, sports ticketing, venue
-operations, stadium, and esports tournament app marketplaces such as TeamSnap
-app marketplaces, SportsEngine integrations, LeagueApps marketplaces,
-Ticketmaster app marketplaces, SeatGeek integrations, fan engagement app
-marketplaces, sports league management catalogs, or esports tournament
-marketplaces when they only accept team roster connectors, schedule widgets,
-ticketing workflows, venue operations tools, stadium experience apps, fan data
-dashboards, tournament brackets, or platform-native sports packages instead of a source-linked Hermes Tweet package entry.
+operations, stadium, and esports tournament app marketplaces, plus performing arts, theater,
+concert, festival, box office, live entertainment, and event ticketing platform app marketplaces such as TeamSnap
+app marketplaces, SportsEngine integrations, LeagueApps marketplaces, Ticketmaster app marketplaces,
+SeatGeek integrations, fan engagement app marketplaces, sports league management catalogs, esports tournament marketplaces,
+theater ticketing marketplaces, festival management app marketplaces, box office software marketplaces, or arts venue app marketplaces when they only accept
+team roster connectors, schedule widgets, ticketing workflows, venue operations tools, stadium experience apps,
+fan data dashboards, tournament brackets, concert promotion workflows, seating maps, artist settlement reports, or platform-native sports packages instead of a source-linked Hermes Tweet package entry.
 Reject sports betting, casino, lottery, sportsbook, fantasy sports, iGaming,
 odds-data, and gaming compliance app marketplaces such as DraftKings developer
 integrations, FanDuel integrations, Sportradar marketplaces, Genius Sports data

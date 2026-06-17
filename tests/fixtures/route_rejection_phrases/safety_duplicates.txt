@@ -78,6 +78,10 @@ sports, league management
 fan engagement, sports ticketing
 venue operations, stadium
 esports tournament app marketplaces
+performing arts, theater
+concert, festival
+box office, live entertainment
+event ticketing platform app marketplaces
 TeamSnap app marketplaces
 SportsEngine integrations
 LeagueApps marketplaces
@@ -86,6 +90,10 @@ SeatGeek integrations
 fan engagement app marketplaces
 sports league management catalogs
 esports tournament marketplaces
+theater ticketing marketplaces
+festival management app marketplaces
+box office software marketplaces
+arts venue app marketplaces
 team roster connectors
 schedule widgets
 ticketing workflows
@@ -93,6 +101,9 @@ venue operations tools
 stadium experience apps
 fan data dashboards
 tournament brackets
+concert promotion workflows
+seating maps
+artist settlement reports
 platform-native sports packages
 sports betting, casino
 lottery, sportsbook
