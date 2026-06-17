@@ -114,6 +114,10 @@ ERD templates, migration helpers
 ORM generators, admin panels
 platform-native SQL tooling packages
 finance, accounting, payroll
+tax, bookkeeping, invoicing
+expense management, receipt scanning
+FP&A
+treasury, finance
 procurement, and ERP app marketplaces
 QuickBooks App Store
 Xero App Store
@@ -122,8 +126,19 @@ SAP Store
 Workday Marketplace
 ADP Marketplace
 Stripe App Marketplace
+Avalara Marketplace
+Bill.com App Center
+Expensify integrations
+Brex integrations
+Ramp app marketplace
 procurement app marketplaces
 accounting connectors, billing apps
+tax filing workflows
+receipt capture connectors
+expense approvals
+invoice sync widgets
+budget dashboards
+cash management workflows
 payroll automations
 procurement workflows, ERP extensions
 platform-native financial integration packages

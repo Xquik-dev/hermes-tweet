@@ -293,10 +293,12 @@ cache modules, search analyzers, connector plugins, stream processors, queue
 adapters, graph widgets, or platform-native data infrastructure packages
 instead of a source-linked Hermes Tweet package entry.
 Reject SQL client, database admin, schema management, ERD, migration, and ORM extension marketplaces such as DBeaver plugin catalogs, TablePlus extensions, DataGrip plugins, pgAdmin tools, Supabase integration catalogs, Prisma generator registries, Hasura connector catalogs, or schema-tool galleries when they only accept query editor add-ons, database dashboards, schema diff tools, ERD templates, migration helpers, ORM generators, admin panels, or platform-native SQL tooling packages instead of a source-linked Hermes Tweet package entry.
-Reject finance, accounting, payroll, procurement, and ERP app marketplaces
+Reject tax, bookkeeping, invoicing, expense management, receipt scanning, FP&A,
+treasury, finance, accounting, payroll, procurement, and ERP app marketplaces
 such as QuickBooks App Store, Xero App Store, NetSuite SuiteApps, SAP Store,
-Workday Marketplace, ADP Marketplace, Stripe App Marketplace, or procurement
+Workday Marketplace, ADP Marketplace, Stripe App Marketplace, Avalara Marketplace, Bill.com App Center, Expensify integrations, Brex integrations, Ramp app marketplace, or procurement
 app marketplaces when they only accept accounting connectors, billing apps,
+tax filing workflows, receipt capture connectors, expense approvals, invoice sync widgets, budget dashboards, cash management workflows,
 payroll automations, procurement workflows, ERP extensions, or
 platform-native financial integration packages instead of a source-linked Hermes Tweet package entry.
 Reject banking, lending, mortgage, credit union, wealth management, financial
