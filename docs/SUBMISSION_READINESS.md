@@ -396,16 +396,7 @@ stores, or legal research app marketplaces when they only accept patent docket
 connectors, prior-art search widgets, trademark filing workflows, IP portfolio
 dashboards, legal citation tools, matter sync templates, office action
 workflows, or platform-native IP management packages instead of a source-linked Hermes Tweet package entry.
-Reject real estate, property management, proptech, mortgage, MLS, leasing,
-construction management, facilities management, and building information
-modeling marketplaces such as Procore App Marketplace, AppFolio Stack, Yardi
-marketplaces, Buildium marketplaces, Autodesk Construction Cloud app
-marketplaces, real estate app marketplaces, property management app
-marketplaces, or construction app marketplaces when they only accept listing
-sync connectors, lease workflows, tenant portals, work-order automations,
-property accounting connectors, mortgage origination integrations, BIM
-content, facilities maintenance apps, or platform-native property packages
-instead of a source-linked Hermes Tweet package entry.
+Reject real estate, property management, proptech, mortgage, MLS, leasing, construction management, facilities management, building information modeling marketplaces, interior design app marketplaces, home improvement marketplaces, remodeling software marketplaces, renovation contractor marketplaces, furniture home decor app marketplaces, kitchen bath design software marketplaces, flooring cabinet showroom app marketplaces, and home staging app marketplaces such as Procore App Marketplace, AppFolio Stack, Yardi marketplaces, Buildium marketplaces, Autodesk Construction Cloud app marketplaces, Houzz Pro integrations, DesignFiles marketplaces, Buildertrend integrations, CoConstruct integrations, 2020 Design integrations, or construction app marketplaces when they only accept listing sync connectors, lease workflows, tenant portals, work-order automations, property accounting connectors, mortgage origination integrations, BIM content, facilities maintenance apps, mood boards, room layouts, material catalogs, contractor bid workflows, showroom quotes, staging checklists, or platform-native property packages instead of a source-linked Hermes Tweet package entry.
 Reject homeowner association, HOA, condo, condominium, strata, co-op,
 community association, resident portal, board portal, and property association
 app marketplaces such as Vantaca integrations, CINC Systems marketplaces,

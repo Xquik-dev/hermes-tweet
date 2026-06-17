@@ -422,6 +422,14 @@ MLS, leasing
 construction management
 facilities management
 building information modeling marketplaces
+interior design app marketplaces
+home improvement marketplaces
+remodeling software marketplaces
+renovation contractor marketplaces
+furniture home decor app marketplaces
+kitchen bath design software marketplaces
+flooring cabinet showroom app marketplaces
+home staging app marketplaces
 Procore App Marketplace
 AppFolio Stack
 Yardi marketplaces
