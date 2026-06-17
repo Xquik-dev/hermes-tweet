@@ -620,6 +620,7 @@ catalog, New Relic Instant Observability, Sumo Logic app catalog, or Cortex
 XSOAR content packs when they only accept dashboards, detection rules, log
 parsers, alert connectors, runbooks, incident workflows, or platform-specific
 integration packages instead of a source-linked Hermes Tweet package entry.
+Reject QA testing, browser testing, synthetic monitoring, and test automation extension marketplaces such as BrowserStack integrations, Sauce Labs integrations, Cypress plugins, Selenium plugin indexes, Playwright plugin catalogs, Checkly integrations, Pingdom extensions, or Datadog Synthetic Monitoring integrations when they only accept test runners, browser automation fixtures, synthetic checks, uptime monitors, assertion dashboards, or platform-native QA packages instead of a source-linked Hermes Tweet package entry.
 Reject physical security, CCTV, VMS, access control, visitor management,
 alarm, badge, and workplace safety app marketplaces such as Verkada
 integrations, Genetec app marketplaces, Milestone Marketplace, Axis
