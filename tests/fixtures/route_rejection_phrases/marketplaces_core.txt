@@ -24,6 +24,21 @@ API specs, hosted API listings
 request collections, docs workspaces
 gateway plugins
 API management connectors
+language package indexes
+package-manager plugin catalogs
+dependency-registry MCP servers
+PyPI plugin lists
+npm package collections
+crates.io crates
+Homebrew taps
+RubyGems
+Go module catalogs
+pub.dev MCP servers
+Hex.pm MCP servers
+lockfile advisory registries
+package metadata, formulae, crates
+dependency lookup servers
+ecosystem-native package entries
 data warehouse, ETL, reverse ETL
 customer data platform
 data workflow orchestration marketplaces

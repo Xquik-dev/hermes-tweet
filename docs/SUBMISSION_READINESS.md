@@ -281,6 +281,7 @@ such as RapidAPI, Postman Public API Network, SwaggerHub, Stoplight, ReadMe,
 Kong Plugin Hub, or API gateway marketplaces when they only accept API specs,
 hosted API listings, request collections, docs workspaces, gateway plugins, or
 API management connectors instead of a source-linked Hermes Tweet package entry.
+Reject language package indexes, package-manager plugin catalogs, and dependency-registry MCP servers such as PyPI plugin lists, npm package collections, crates.io crates, Homebrew taps, RubyGems, Go module catalogs, pub.dev MCP servers, Hex.pm MCP servers, or lockfile advisory registries when they only accept package metadata, formulae, crates, dependency lookup servers, advisory feeds, or ecosystem-native package entries instead of a source-linked Hermes Tweet package entry.
 Reject data warehouse, ETL, reverse ETL, customer data platform, and data
 workflow orchestration marketplaces such as Snowflake Marketplace, dbt Package
 Hub, Airbyte connectors, Fivetran connectors, Hightouch destinations, Census integrations, Segment integrations, Airflow Providers, Dagster integrations,
