@@ -54,6 +54,14 @@ def test_route_rejection_phrase_fixtures_stay_in_reviewed_buckets() -> None:
     assert fixture_names == EXPECTED_PHRASE_FILES
 
 
+def test_route_rejection_phrase_fixture_directory_stays_flat() -> None:
+    entries = tuple(sorted(PHRASE_DIR.iterdir()))
+    entry_names = tuple(path.name for path in entries)
+
+    assert entry_names == EXPECTED_PHRASE_FILES
+    assert all(path.is_file() for path in entries)
+
+
 def test_route_rejection_phrase_fixtures_stay_split() -> None:
     for path in _route_rejection_phrase_paths():
         line_count = len(path.read_text().splitlines())
