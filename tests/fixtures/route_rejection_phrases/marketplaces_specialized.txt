@@ -494,16 +494,18 @@ desk maps
 venue availability feeds
 platform-native rental and space-management packages
 browser, desktop, launcher
-shortcut, and mobile app extension stores
+shortcut, read-it-later, and mobile app
 Chrome Web Store
 Firefox Add-ons
 Microsoft Edge Add-ons
 Raycast extensions
 Alfred workflows
 iOS Shortcuts galleries
-Android app marketplaces
+bookmark manager catalogs
+web-clipping marketplaces
 browser extensions, desktop launcher
 mobile intents, automation shortcuts
+clipping workflows
 app-store listings
 design, creative, whiteboard
 knowledge-app plugin marketplaces
