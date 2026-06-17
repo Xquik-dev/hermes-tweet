@@ -110,6 +110,22 @@ lab instrument integrations
 genomic analysis packages
 chemistry tool plugins
 platform-native lab automation packages
+academic publishing, citation-manager
+reference-manager, scholarly workflow
+preprint template marketplaces
+Zotero plugin catalogs
+Mendeley app marketplaces
+Overleaf template galleries
+ORCID integrations
+arXiv tool lists
+Crossref app catalogs
+journal workflow marketplaces
+citation plugins, bibliography styles
+LaTeX templates
+author identifier connectors
+preprint workflows, manuscript submission widgets
+peer-review forms
+platform-native scholarly packages
 pharmaceutical, life sciences
 clinical trial, patient recruitment
 pharmacovigilance, drug safety
