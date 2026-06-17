@@ -593,13 +593,13 @@ workflows, work-order syncs, route optimization widgets, service estimate
 templates, customer appointment portals, parts inventory connectors,
 inspection forms, or platform-native field service packages instead of a
 source-linked Hermes Tweet package entry.
-Reject legal, compliance, e-signature, identity, KYC, contract automation,
-eDiscovery, GRC, and privacy automation app marketplaces, plus environmental health and safety, OSHA compliance, workplace safety management, and safety training marketplaces such as Clio App
+Reject legal, compliance, e-signature, identity, KYC, contract automation, eDiscovery, GRC, and privacy automation app marketplaces, plus consent management,
+cookie compliance, DSAR, CCPA, data subject request, environmental health and safety, OSHA compliance, workplace safety management, and safety training marketplaces such as Clio App
 Directory, DocuSign App Center, Adobe Acrobat Sign integrations, Okta Integration Network, Auth0 Marketplace, OneTrust app catalogs, Vanta
-integrations, Drata integrations, Relativity app directories, contract lifecycle marketplaces, compliance automation marketplaces, Intelex marketplaces,
-SpheraCloud integrations, Cority app catalogs, Enablon integrations, or SafetyCulture integrations when they only accept legaltech connectors,
+integrations, Drata integrations, Relativity app directories, contract lifecycle marketplaces, compliance automation marketplaces, Cookiebot integrations,
+Didomi integrations, TrustArc integrations, Osano app catalogs, Usercentrics integrations, Intelex marketplaces, SpheraCloud integrations, Cority app catalogs, Enablon integrations, or SafetyCulture integrations when they only accept legaltech connectors,
 e-signature connectors, identity integrations, compliance controls, audit workflows, eDiscovery workflows, contract templates, trust-center automations,
-KYC checks, privacy assessments, EHS checklists, OSHA logs, near-miss forms, hazard registers, risk assessment templates, safety training records,
+KYC checks, privacy assessments, consent banners, cookie scanners, CMP tags, DSAR intake forms, data subject request workflows, EHS checklists, OSHA logs, near-miss forms, hazard registers, risk assessment templates, safety training records,
 incident workflows, or platform-native governance apps instead of a source-linked Hermes Tweet package entry.
 Reject password-manager, secrets-management, access-governance, and
 trust-center app marketplaces such as 1Password integrations, Bitwarden
