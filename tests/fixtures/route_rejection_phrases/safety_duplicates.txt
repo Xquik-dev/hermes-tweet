@@ -44,6 +44,14 @@ network monitoring connectors
 platform-native telecom packages
 email marketing, newsletter
 scheduling, event, form, and survey app
+wedding planning app marketplaces
+event planning software marketplaces
+catering app marketplaces
+banquet hall venue management marketplaces
+RSVP guest list app marketplaces
+seating chart software marketplaces
+event vendor marketplaces
+wedding venue app marketplaces
 Mailchimp integrations
 SendGrid integrations, Brevo
 Substack app directories

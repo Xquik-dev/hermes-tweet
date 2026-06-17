@@ -730,16 +730,14 @@ Marketplace, OSS/BSS integration catalogs, or network-operations marketplaces
 when they only accept DNS widgets, registrar extensions, CDN edge apps,
 hosting-panel modules, provisioning dashboards, network monitoring connectors,
 or platform-native telecom packages instead of a source-linked Hermes Tweet package entry.
-Reject email marketing, newsletter, scheduling, event, form, and survey app
-marketplaces such as Mailchimp integrations, SendGrid integrations, Brevo app
-store, Substack app directories, Calendly integrations, Eventbrite app
-marketplace, Typeform app marketplace, or SurveyMonkey app directories when
-they only accept email automations, newsletter connectors, booking workflows,
-event listings, form widgets, survey templates, or platform-native integration
-packages instead of a source-linked Hermes Tweet package entry.
-Reject static-site, blog, RSS, and newsletter social-publishing plugin routes such as Hugo modules,
-Jekyll plugins, Astro integrations, RSS-to-X bots, or blog automation catalogs when they only accept
-theme add-ons, feed actions, content snippets, or site-generator packages instead of a source-linked Hermes Tweet package entry.
+Reject email marketing, newsletter, scheduling, event, form, and survey app marketplaces, plus wedding planning app marketplaces,
+event planning software marketplaces, catering app marketplaces, banquet hall venue management marketplaces, RSVP guest list app
+marketplaces, seating chart software marketplaces, event vendor marketplaces, and wedding venue app marketplaces such as Mailchimp integrations,
+SendGrid integrations, Brevo app store, Substack app directories, Calendly integrations, Eventbrite app marketplace, Typeform app marketplace,
+or SurveyMonkey app directories when they only accept email automations, newsletter connectors, booking workflows, event listings, form widgets,
+seating plans, vendor directories, survey templates, or platform-native integration packages instead of a source-linked Hermes Tweet package entry.
+Reject static-site, blog, RSS, and newsletter social-publishing plugin routes such as Hugo modules, Jekyll plugins, Astro integrations, RSS-to-X bots,
+or blog automation catalogs when they only accept theme add-ons, feed actions, content snippets, or site-generator packages instead of a source-linked Hermes Tweet package entry.
 Also reject market research, survey panel, user research, and consumer insights
 app marketplaces such as Qualtrics Marketplace, UserTesting integrations,
 Dovetail integrations, panel sample connectors, product feedback repositories,
