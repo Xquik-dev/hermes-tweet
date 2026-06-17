@@ -129,6 +129,7 @@ only accept assay templates, sample-tracking connectors, workflow nodes,
 pipeline wrappers, notebook extensions, lab instrument integrations, genomic
 analysis packages, chemistry tool plugins, or platform-native lab automation
 packages instead of a source-linked Hermes Tweet package entry.
+Reject academic publishing, citation-manager, reference-manager, scholarly workflow, and preprint template marketplaces such as Zotero plugin catalogs, Mendeley app marketplaces, Overleaf template galleries, ORCID integrations, arXiv tool lists, Crossref app catalogs, or journal workflow marketplaces when they only accept citation plugins, bibliography styles, LaTeX templates, author identifier connectors, preprint workflows, manuscript submission widgets, peer-review forms, or platform-native scholarly packages instead of a source-linked Hermes Tweet package entry.
 Reject RAG, retrieval, and vector-store integration catalogs such as LlamaHub,
 Pinecone Assistant, Weaviate, Qdrant, Chroma, or retriever plugin galleries
 when they only accept data loaders, vector indexes, retriever classes, ingestion
