@@ -107,21 +107,33 @@ sawmill optimization dashboards
 lumber inventory sync
 platform-native forestry packages
 healthcare, EHR, FHIR
+mental health, therapy
+behavioral health, EAP
 telehealth, wellness, and fitness app
 Epic App Orchard
 Oracle Health App Gallery
 SMART App Gallery
 FHIR app galleries
 athenahealth Marketplace
+SimplePractice integrations
+TherapyNotes integrations
+Headspace for Organizations
+Lyra Health integrations
 telehealth app marketplaces
+counseling and psychiatry app marketplaces
 wellness app marketplaces
 fitness app marketplaces
 EHR integrations, clinical apps
 FHIR launch apps
 patient portal widgets
+therapist directory widgets
+EAP referral workflows
+mood tracking dashboards
 care workflows, wellness programs
 device integrations
+substance use workflow connectors
 platform-native health app packages
+behavioral health packages
 dental, orthodontic, dental lab
 DSO, dental imaging
 dental practice management app marketplaces
