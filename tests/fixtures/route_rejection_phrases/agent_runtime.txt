@@ -41,6 +41,19 @@ Braintrust, promptfoo, or OpenPipe
 prompt templates, eval datasets
 trace dashboards, eval configs
 experiment recipes
+LLM security, AI guardrails
+prompt-injection scanning
+red-team evaluation, and AI safety marketplaces
+Lakera Guard integrations
+garak plugin catalogs
+Guardrails AI Hub validators
+LLM vulnerability scanners
+AI policy enforcement catalogs
+scanner rules, guardrail validators
+policy packs, red-team scenarios
+jailbreak benchmarks
+prompt-defense recipes
+safety dashboards
 model hubs, model galleries
 inference-provider catalogs
 dataset marketplaces
