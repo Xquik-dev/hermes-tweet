@@ -522,13 +522,13 @@ accept hiring widgets, contractor onboarding workflows, talent profile syncs,
 service listing templates, project brief automations, escrow payment
 connectors, creator portfolio widgets, job posting feeds, or platform-native
 work marketplace packages instead of a source-linked Hermes Tweet package entry.
-Reject healthcare, EHR, FHIR, telehealth, wellness, and fitness app
-marketplaces such as Epic App Orchard, Oracle Health App Gallery, SMART App
-Gallery, FHIR app galleries, athenahealth Marketplace, telehealth app
-marketplaces, wellness app marketplaces, or fitness app marketplaces when they
-only accept EHR integrations, clinical apps, FHIR launch apps, patient portal
-widgets, care workflows, wellness programs, device integrations, or
-platform-native health app packages instead of a source-linked Hermes Tweet package entry.
+Reject healthcare, EHR, FHIR, mental health, therapy, behavioral health, EAP, telehealth, wellness, and fitness app
+marketplaces such as Epic App Orchard, Oracle Health App Gallery, SMART App Gallery, FHIR app galleries, athenahealth Marketplace,
+SimplePractice integrations, TherapyNotes integrations, Headspace for Organizations, Lyra Health integrations, telehealth app
+marketplaces, counseling and psychiatry app marketplaces, wellness app marketplaces, or fitness app marketplaces when they only
+accept EHR integrations, clinical apps, FHIR launch apps, patient portal widgets, therapist directory widgets, EAP referral workflows,
+mood tracking dashboards, care workflows, wellness programs, device integrations, substance use workflow connectors, or
+platform-native health app packages or behavioral health packages instead of a source-linked Hermes Tweet package entry.
 Reject dental, orthodontic, dental lab, DSO, dental imaging, and dental practice management app marketplaces
 such as Dentrix Marketplace, Open Dental integrations, Eaglesoft integrations, CareStack marketplaces,
 Curve Dental integrations, dental lab marketplaces, or dental imaging app catalogs when they only accept
