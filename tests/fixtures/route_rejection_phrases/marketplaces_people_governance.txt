@@ -52,6 +52,10 @@ platform-native work marketplace packages
 legal, compliance, e-signature
 identity, KYC, contract automation
 eDiscovery, GRC, and privacy automation app marketplaces
+environmental health and safety
+OSHA compliance
+workplace safety management
+safety training marketplaces
 Clio App Directory
 DocuSign App Center
 Adobe Acrobat Sign integrations
@@ -63,6 +67,11 @@ Drata integrations
 Relativity app directories
 contract lifecycle marketplaces
 compliance automation marketplaces
+Intelex marketplaces
+SpheraCloud integrations
+Cority app catalogs
+Enablon integrations
+SafetyCulture integrations
 legaltech connectors
 e-signature connectors
 identity integrations
@@ -73,6 +82,13 @@ contract templates
 trust-center automations
 KYC checks
 privacy assessments
+EHS checklists
+OSHA logs
+near-miss forms
+hazard registers
+risk assessment templates
+safety training records
+incident workflows
 platform-native governance apps
 password-manager, secrets-management
 access-governance, and trust-center app marketplaces
