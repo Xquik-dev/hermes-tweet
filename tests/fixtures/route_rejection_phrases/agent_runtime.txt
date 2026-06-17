@@ -250,6 +250,14 @@ Salesforce AppExchange, Zendesk Marketplace
 Intercom App Store, Freshworks
 Pipedrive Marketplace, Zoho Marketplace
 Shopify App Store
+Amazon seller app marketplaces
+eBay seller tools marketplaces
+Etsy seller app marketplaces
+Walmart Marketplace seller apps
+marketplace seller tools app catalogs
+ecommerce seller operations marketplaces
+merchant app marketplaces
+social commerce seller app marketplaces
 Yotpo integrations
 Trustpilot integrations
 Reviews.io integrations
