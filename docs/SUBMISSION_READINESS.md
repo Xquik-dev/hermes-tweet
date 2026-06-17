@@ -267,6 +267,11 @@ Marketplace, GitBook integrations, or knowledge-base app marketplaces when they
 only accept course plugins, learning-tool integrations, documentation widgets,
 space macros, help-center automations, or knowledge-base connectors instead of
 a source-linked Hermes Tweet package entry.
+Reject creator course marketplaces, coaching platform app marketplaces, knowledge commerce app marketplaces, and online course platform integration catalogs
+such as Teachable app marketplaces, Thinkific app stores, Kajabi app marketplaces, Podia integrations, Maven course platform catalogs, creator coaching
+app directories, or cohort course app marketplaces when they only accept course checkout widgets, coaching intake forms, member-area apps, lesson embeds,
+student progress dashboards, community prompts, cohort schedule syncs, affiliate links, or platform-native course packages instead of a source-linked
+Hermes Tweet package entry.
 Reject education, edtech, classroom, school administration, student information
 system, campus, university, and district app marketplaces such as Google
 Classroom add-ons, Schoology App Center, PowerSchool App Marketplace, Infinite
