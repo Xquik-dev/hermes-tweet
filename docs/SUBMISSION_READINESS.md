@@ -825,6 +825,7 @@ Reject RPA and no-code automation marketplaces such as UiPath, Robocorp, n8n,
 Make, or Workato when they only accept bots, community nodes, workflow exports,
 automation recipes, or task templates instead of a source-linked Hermes Tweet package entry.
 Reject web-agent workflow libraries, browser-agent recipe libraries, automation runbook catalogs, and AI agent recipe collections when they only accept prompt-recipe collections, browser task demos, evaluation trace bundles, or platform-native action recipes instead of a PR-editable third-party Hermes Tweet package entry.
+Reject prompt-only agent repositories, persona catalogs, system-prompt libraries, and assistant profile collections when they only accept Markdown prompt files, role cards, usage examples, prompt quality checklists, or prompt templates instead of a source-linked Hermes Tweet package entry.
 Reject embedded `.agents`, `.agent`, `.antigravity`, project-template, and
 copied skill directories inside application repositories unless the repository
 itself documents a third-party skill catalog, registry, or contribution lane.
