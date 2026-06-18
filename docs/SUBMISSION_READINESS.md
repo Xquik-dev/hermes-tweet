@@ -824,11 +824,11 @@ shipped package.
 Reject RPA and no-code automation marketplaces such as UiPath, Robocorp, n8n, Make, or Workato when they only accept bots, community nodes, workflow exports, automation recipes, or task templates instead of a source-linked Hermes Tweet package entry.
 Reject web-agent workflow libraries, browser-agent recipe libraries, automation runbook catalogs, and AI agent recipe collections when they only accept prompt-recipe collections, browser task demos, evaluation trace bundles, or platform-native action recipes instead of a PR-editable third-party Hermes Tweet package entry.
 Reject prompt-only agent repositories, persona catalogs, system-prompt libraries, and assistant profile collections when they only accept Markdown prompt files, role cards, usage examples, prompt quality checklists, or prompt templates instead of a source-linked Hermes Tweet package entry.
-Reject embedded `.agents`, `.agent`, `.antigravity`, project-template, and
-copied skill directories inside application repositories unless the repository
-itself documents a third-party skill catalog, registry, or contribution lane.
-Treat those hits as downstream copies or mirrors, not fresh Hermes Tweet
-submission routes.
+Reject embedded `.agents`, `.agent`, `.antigravity`, project-template,
+brand-specific agent skill packs, and copied skill directories inside
+application repositories unless the repository itself documents a third-party
+skill catalog, registry, or contribution lane. Treat those hits as downstream
+copies or mirrors, not fresh Hermes Tweet submission routes.
 Reject personal agent memory repositories, OpenHands microagent folders, hosted MCP directory profile pages, Hermes-specific operator guides, profile playbooks, swarm specs, companion architecture repos, and owner-operated MCP plugin repositories such as `.openhands`, Smithery, Glama, PulseMCP, FrankX/Starlight, or Gumloop-hosted MCP plugin repos when they only publish owner-specific Claude/Codex plugin metadata, skills, or MCP endpoint config without a third-party catalog lane for a Hermes Tweet package listing; require a PR-editable third-party source/catalog entry that can reference Hermes Tweet's shipped package without copying, translating, or repackaging it.
 Reject tool-surface dump catalogs, catalog drift analyzers, and internal tool-registry backends such as agent app tool dumps, toolmirror-style diff tools, or organizational LLM tool registry apps when they document runtime-owned tool schemas instead of accepting source-linked third-party Hermes Tweet package entries.
 Reject agent governance registries, AI policy playbooks, moderation or safety control catalogs, and hosted first-party MCP plugin repos such as A2A governance marketplaces, context-governance playbooks, Gumloop-style hosted plugins, and agent approval workflow demos when they only accept live endpoint registrations, policy templates, risk-control evidence, owner-specific plugin metadata, or evaluation guardrails instead of a PR-editable third-party Hermes Tweet package entry.
