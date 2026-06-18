@@ -13,10 +13,15 @@ Hermes Tweet's shipped package format
 tool subclass, module, framework tool
 extension, action, pipeline
 agent-framework runtime toolkits
+A2A or agent-card registry implementations
 AutoGen, CrewAI, LangGraph
-Mastra, Letta, Semantic Kernel, Pydantic AI, AG2, CAMEL AI, and Agno
+Mastra, Letta, Semantic Kernel, Pydantic AI, AG2, CAMEL AI, Agno, allenday/a2a-registry, ericabouaf/a2a-registry, or Peer-to-Service
 runtime-specific tool implementation
 adapter class, graph node, agent action
+registry server
+sample agent card
+local demo agent
+discovery API
 plugin function instead of a source-linked
 hosted agent builder, assistant builder, toolgroup, and action-group
 Chainlit, Microsoft PromptFlow, Llama Stack, CopilotKit, Rasa
