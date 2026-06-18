@@ -337,6 +337,8 @@ cross-CLI skill libraries
 OpenClaw, Antigravity, Codex, Cursor, Claude, or Gemini marketplace mirrors
 open or merged Hermes Tweet listing
 Repair that existing route
+Hermes-native awesome/plugin catalogs
+existing Hermes Tweet listing or merged PR
 unsigned CLA or legal agreement
 close any discovered attempt
 defer the route until the account owner signs
