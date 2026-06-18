@@ -23,6 +23,7 @@ sample agent card
 local demo agent
 discovery API
 plugin function instead of a source-linked
+slash-command plugin packs, command-pack marketplaces
 hosted agent builder, assistant builder, toolgroup, and action-group
 Chainlit, Microsoft PromptFlow, Llama Stack, CopilotKit, Rasa
 CALM, or AWS Bedrock Agents

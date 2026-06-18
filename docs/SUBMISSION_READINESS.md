@@ -63,10 +63,10 @@ Nixpkgs, Guix packages, Snapcraft, Flathub, or winget that only vendor or
 symlink local skills/plugins unless they expose a documented external plugin
 reference list, package source field, or third-party catalog entry. Do not
 vendor Hermes Tweet code into another installer just to create a listing.
-Reject runtime bridges or installer extensions that only help another agent
-consume Claude plugin marketplaces. Treat them as compatibility surfaces unless
-they expose an editable catalog entry for third-party plugins or source
-repositories.
+Reject runtime bridges or installer extensions, slash-command plugin packs,
+command-pack marketplaces, or command-only plugin catalogs that only help another
+agent consume Claude plugin marketplaces. Treat them as compatibility surfaces
+unless they expose an editable catalog entry for third-party plugins or source repositories.
 Reject generated catalog or marketplace files unless target docs identify them
 as the canonical edit surface. When a target builds indexes from another source,
 submit only through the documented source file or generator input; skip the
