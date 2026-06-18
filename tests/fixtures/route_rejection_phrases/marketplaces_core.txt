@@ -39,6 +39,7 @@ lockfile advisory registries
 package metadata, formulae, crates
 dependency lookup servers
 ecosystem-native package entries
+auto-mirrored skill stores that only crawl another upstream catalog
 data warehouse, ETL, reverse ETL
 customer data platform
 data workflow orchestration marketplaces
