@@ -100,11 +100,12 @@ repositories in Hermes Tweet's shipped package format. Do not translate Hermes
 Tweet into another runtime package, tool subclass, module, framework tool,
 block, extension, action, pipeline, or function pack just to satisfy a framework
 marketplace.
-Reject agent-framework runtime toolkits and tool galleries such as AutoGen,
-CrewAI, LangGraph, Mastra, Letta, Semantic Kernel, Pydantic AI, AG2, CAMEL AI,
-and Agno when they require a runtime-specific tool implementation, adapter
-class, graph node, agent action, or plugin function instead of a source-linked
-Hermes Tweet package entry.
+Reject agent-framework runtime toolkits, A2A or agent-card registry
+implementations, and tool galleries such as AutoGen, CrewAI, LangGraph, Mastra,
+Letta, Semantic Kernel, Pydantic AI, AG2, CAMEL AI, Agno, allenday/a2a-registry,
+ericabouaf/a2a-registry, or Peer-to-Service when they require a runtime-specific tool implementation, adapter class, graph node, agent action, registry server,
+sample agent card, local demo agent, discovery API, or plugin function instead
+of a source-linked Hermes Tweet package entry.
 Reject hosted agent builder, assistant builder, toolgroup, and action-group
 catalogs such as Chainlit, Microsoft PromptFlow, Llama Stack, CopilotKit, Rasa
 CALM, or AWS Bedrock Agents when the route only accepts app-native tools,
