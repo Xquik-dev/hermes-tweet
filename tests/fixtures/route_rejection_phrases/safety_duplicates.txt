@@ -466,6 +466,7 @@ role cards
 usage examples
 prompt quality checklists
 prompt templates
+brand-specific agent skill packs
 translated or mirrored awesome lists
 translation issue tracker
 independent localized submission
