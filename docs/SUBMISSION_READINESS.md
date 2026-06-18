@@ -854,6 +854,7 @@ Before opening or refreshing a submission:
   opening a duplicate submission.
 - Check open and closed PRs and issues for prior Hermes Tweet proposals.
 - For cross-CLI skill libraries and OpenClaw, Antigravity, Codex, Cursor, Claude, or Gemini marketplace mirrors, treat any open or merged Hermes Tweet listing as duplicate saturation. Repair that existing route before opening a new listing.
+- Reject targets that require an unsigned CLA or legal agreement before mergeability; close any discovered attempt and defer the route until the account owner signs.
 - Treat a closed prior Hermes Tweet issue as a completed or rejected submission
   route. Do not reopen the same target with a PR unless a maintainer asks for a
   new PR, conversion, or updated evidence.
