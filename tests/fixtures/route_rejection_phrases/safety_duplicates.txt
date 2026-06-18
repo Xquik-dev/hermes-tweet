@@ -448,6 +448,15 @@ prompt-recipe collections
 browser task demos
 evaluation trace bundles
 platform-native action recipes
+prompt-only agent repositories
+persona catalogs
+system-prompt libraries
+assistant profile collections
+Markdown prompt files
+role cards
+usage examples
+prompt quality checklists
+prompt templates
 translated or mirrored awesome lists
 translation issue tracker
 independent localized submission
