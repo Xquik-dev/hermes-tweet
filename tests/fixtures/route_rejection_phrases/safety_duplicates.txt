@@ -381,6 +381,8 @@ non-interpolating path
 repository names, backticked literals, and validation commands
 `source.github` or similar repository-pointer schema
 generic AI tools, startup, SaaS
+creator-economy, content-creator
+influencer-marketing, AI marketing-tools
 Product Hunt alternatives
 Futurepedia, Toolify
 There's An AI For That
