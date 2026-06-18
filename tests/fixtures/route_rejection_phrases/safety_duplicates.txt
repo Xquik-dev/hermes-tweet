@@ -440,6 +440,14 @@ runtime bridges or installer extensions
 only help another agent consume Claude plugin marketplaces
 compatibility surfaces
 editable catalog entry for third-party plugins or source repositories
+web-agent workflow libraries
+browser-agent recipe libraries
+automation runbook catalogs
+AI agent recipe collections
+prompt-recipe collections
+browser task demos
+evaluation trace bundles
+platform-native action recipes
 translated or mirrored awesome lists
 translation issue tracker
 independent localized submission
