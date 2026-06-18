@@ -364,6 +364,11 @@ OpenHands microagent folders
 hosted MCP directory profile pages
 `.openhands`, Smithery, Glama, or PulseMCP
 PR-editable source entry
+owner-operated MCP plugin repositories
+Gumloop-hosted MCP plugin repos
+Claude/Codex plugin metadata
+third-party catalog lane
+Hermes Tweet package listing
 contribution rules require measurable community usage
 minimum star count
 maintainer-curated quality bar
