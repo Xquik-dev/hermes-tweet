@@ -375,6 +375,13 @@ Gumloop-hosted MCP plugin repos
 Claude/Codex plugin metadata
 third-party catalog lane
 Hermes Tweet package listing
+tool-surface dump catalogs
+catalog drift analyzers
+internal tool-registry backends
+agent app tool dumps
+toolmirror-style diff tools
+organizational LLM tool registry apps
+runtime-owned tool schemas
 contribution rules require measurable community usage
 minimum star count
 maintainer-curated quality bar
