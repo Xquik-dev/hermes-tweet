@@ -830,6 +830,7 @@ itself documents a third-party skill catalog, registry, or contribution lane.
 Treat those hits as downstream copies or mirrors, not fresh Hermes Tweet
 submission routes.
 Reject personal agent memory repositories, OpenHands microagent folders, hosted MCP directory profile pages, Hermes-specific operator guides, profile playbooks, swarm specs, companion architecture repos, and owner-operated MCP plugin repositories such as `.openhands`, Smithery, Glama, PulseMCP, FrankX/Starlight, or Gumloop-hosted MCP plugin repos when they only publish owner-specific Claude/Codex plugin metadata, skills, or MCP endpoint config without a third-party catalog lane for a Hermes Tweet package listing; require a PR-editable third-party source/catalog entry that can reference Hermes Tweet's shipped package without copying, translating, or repackaging it.
+Reject tool-surface dump catalogs, catalog drift analyzers, and internal tool-registry backends such as agent app tool dumps, toolmirror-style diff tools, or organizational LLM tool registry apps when they document runtime-owned tool schemas instead of accepting source-linked third-party Hermes Tweet package entries.
 Reject catalogs whose contribution rules require measurable community usage,
 maturity, a minimum star count, or a maintainer-curated quality bar until Hermes
 Tweet visibly satisfies that target's stated threshold or a maintainer
