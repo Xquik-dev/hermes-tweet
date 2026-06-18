@@ -362,8 +362,14 @@ fresh Hermes Tweet submission routes
 personal agent memory repositories
 OpenHands microagent folders
 hosted MCP directory profile pages
-`.openhands`, Smithery, Glama, or PulseMCP
-PR-editable source entry
+`.openhands`, Smithery, Glama, PulseMCP
+Hermes-specific operator guides
+profile playbooks
+swarm specs
+companion architecture repos
+FrankX/Starlight
+third-party source/catalog entry
+copying, translating, or repackaging it
 owner-operated MCP plugin repositories
 Gumloop-hosted MCP plugin repos
 Claude/Codex plugin metadata
