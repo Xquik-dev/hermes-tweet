@@ -337,6 +337,9 @@ cross-CLI skill libraries
 OpenClaw, Antigravity, Codex, Cursor, Claude, or Gemini marketplace mirrors
 open or merged Hermes Tweet listing
 Repair that existing route
+unsigned CLA or legal agreement
+close any discovered attempt
+defer the route until the account owner signs
 workflow recipes, terminal or shell
 plugin indexes, and rule bundles
 GitHub Copilot Extensions, OpenCode commands
