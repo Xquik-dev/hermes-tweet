@@ -392,6 +392,8 @@ agent app tool dumps
 toolmirror-style diff tools
 organizational LLM tool registry apps
 runtime-owned tool schemas
+agent protocol manifests
+capability schemas
 agent governance registries
 AI policy playbooks
 moderation or safety control catalogs
