@@ -560,7 +560,7 @@ occupancy dashboards
 desk maps
 venue availability feeds
 platform-native rental and space-management packages
-browser, desktop, launcher
+browser, AI browser extension directory, desktop
 shortcut, read-it-later, and mobile app
 Chrome Web Store
 Firefox Add-ons
