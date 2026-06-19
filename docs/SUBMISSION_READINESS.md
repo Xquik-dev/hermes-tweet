@@ -119,9 +119,9 @@ apps, OpenAI Apps SDK examples, GPT Store listings, custom GPT directories, assi
 Poe bot marketplaces, Character.AI bot directories, GPT action directories, MCP UI registries, Vercel AI SDK templates, or LangChain Hub snippets
 when they require app manifests, UI widgets, action schemas, custom assistant prompts, bot persona cards, SDK demos, or hub snippets instead
 of a source-linked Hermes Tweet package entry.
-Reject prompt, evaluation, and observability hubs such as LangSmith Hub,
+Reject prompt, evaluation, benchmark leaderboard, eval task gallery, and observability hubs such as LangSmith Hub,
 PromptLayer, Langfuse, Braintrust, promptfoo, or OpenPipe when they only accept
-prompt templates, eval datasets, trace dashboards, eval configs, SDK snippets,
+prompt templates, eval datasets, benchmark tasks, task suites, trace dashboards, eval configs, SDK snippets,
 or experiment recipes instead of a source-linked Hermes Tweet package entry.
 Reject LLM security, AI guardrails, prompt-injection scanning, red-team evaluation, and AI safety marketplaces such as Lakera Guard integrations, garak plugin catalogs, Guardrails AI Hub validators, LLM vulnerability scanners, or AI policy enforcement catalogs when they only accept scanner rules, guardrail validators, policy packs, red-team scenarios, jailbreak benchmarks, prompt-defense recipes, or safety dashboards instead of a source-linked Hermes Tweet package entry.
 Reject model hubs, model galleries, inference-provider catalogs, dataset marketplaces, annotation-template catalogs, synthetic-data marketplaces, feature-store catalogs, experiment-tracking hubs, and
