@@ -449,6 +449,7 @@ Snapcraft, Flathub, or winget
 external plugin reference list
 vendor Hermes Tweet code into another installer
 runtime bridges or installer extensions
+extension manifests
 only help another agent consume Claude plugin marketplaces
 compatibility surfaces
 editable catalog entry for third-party plugins or source repositories
