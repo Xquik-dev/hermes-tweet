@@ -50,10 +50,13 @@ app manifests, UI widgets, action schemas
 custom assistant prompts
 bot persona cards
 SDK demos, or hub snippets
-prompt, evaluation, and observability hubs
+prompt, evaluation, benchmark leaderboard, eval task gallery, and observability hubs
 LangSmith Hub, PromptLayer, Langfuse
 Braintrust, promptfoo, or OpenPipe
 prompt templates, eval datasets
+benchmark tasks, task suites
+benchmark leaderboard
+eval task gallery
 trace dashboards, eval configs
 experiment recipes
 LLM security, AI guardrails
