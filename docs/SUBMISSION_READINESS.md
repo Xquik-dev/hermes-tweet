@@ -690,7 +690,7 @@ Reject browser, desktop, launcher, shortcut, read-it-later, and mobile app exten
 QR code, microsite builder, digital business card, email signature, vCard, contact-card, and creator landing-page marketplaces such as Chrome Web Store, Firefox Add-ons, Microsoft Edge Add-ons,
 Raycast extensions, Alfred workflows, Setapp, iOS Shortcuts galleries, bookmark manager catalogs, web-clipping marketplaces,
 Linktree integrations, Carrd plugins, Beacons app marketplaces, Bitly integrations, HiHello integrations, Blinq integrations, Popl integrations, QR code generator marketplaces, or landing-page builder app stores
-when they only accept browser extensions, desktop launcher commands, packaged apps, mobile intents, automation shortcuts, clipping workflows,
+when they only accept browser extensions, extension manifests, desktop launcher commands, packaged apps, mobile intents, automation shortcuts, clipping workflows,
 bio-page widgets, short-link dashboards, signature banners, vCard landing pages, QR landing pages, profile-card templates, or app-store listings instead of a source-linked Hermes Tweet
 package entry.
 Reject design, creative, whiteboard, knowledge-app, font, icon, stock-media,

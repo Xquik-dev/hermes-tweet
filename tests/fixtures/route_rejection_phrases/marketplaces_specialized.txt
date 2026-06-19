@@ -570,7 +570,7 @@ Alfred workflows
 iOS Shortcuts galleries
 bookmark manager catalogs
 web-clipping marketplaces
-browser extensions, desktop launcher
+browser extensions, extension manifests
 mobile intents, automation shortcuts
 clipping workflows
 app-store listings
