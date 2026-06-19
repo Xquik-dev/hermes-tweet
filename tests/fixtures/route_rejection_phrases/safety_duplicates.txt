@@ -471,6 +471,9 @@ prompt-recipe collections
 browser task demos
 evaluation trace bundles
 platform-native action recipes
+agent app-store manifests
+AI assistant app directory manifests
+workflow-template marketplaces
 prompt-only agent repositories
 persona catalogs
 system-prompt libraries
