@@ -368,6 +368,10 @@ project-template
 copied skill directories inside application repositories
 downstream copies or mirrors
 fresh Hermes Tweet submission routes
+peer Hermes Agent plugin source repositories
+plugin examples, showcase repos
+demo plugin repos
+being another Hermes Agent plugin is ecosystem evidence only
 personal agent memory repositories
 agent memory pack registries
 OpenHands microagent folders
