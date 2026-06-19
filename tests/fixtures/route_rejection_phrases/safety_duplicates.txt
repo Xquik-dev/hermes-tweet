@@ -396,6 +396,8 @@ Claude/Codex plugin metadata
 third-party catalog lane
 Hermes Tweet package listing
 tool-surface dump catalogs
+agent tool indexes
+tools YAML registries
 catalog drift analyzers
 internal tool-registry backends
 agent app tool dumps
