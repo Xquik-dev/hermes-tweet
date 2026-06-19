@@ -354,9 +354,13 @@ agent-local prompts
 commands, recipes, hooks, shell integrations
 editor workflows
 source-linked Hermes Tweet package entry
-hosted automation, app-action, and component galleries
-Zapier, Pipedream, Activepieces, Composio, Arcade, Toolhouse, or Langflow
+hosted automation, app-action, chat-platform tool/function, and component galleries
+chat-platform tool/function
+Zapier, Pipedream, Activepieces, Composio, Arcade, Toolhouse, Langflow
+Open WebUI, LibreChat, Dify
+Flowise, or AnythingLLM
 workflow templates, provider connectors, hosted app actions
+tool/function manifests
 PR-editable third-party source repository entry
 RPA and no-code automation marketplaces
 UiPath, Robocorp, n8n

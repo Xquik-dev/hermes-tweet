@@ -816,10 +816,10 @@ automation packs, or assistant-specific tool definitions instead of a
 PR-editable Hermes Tweet source package entry.
 Reject local coding-agent command packs, workflow recipes, CLI extension registries, terminal or shell plugin indexes, and rule bundles such as GitHub Copilot Extensions, OpenCode
 commands, Aider workflows, Goose extensions, Kiro hooks, Amp tools, Oh My Zsh plugins, fish shell plugins, or terminal assistant catalogs when they only accept agent-local prompts, commands, recipes, hooks, shell integrations, or editor workflows instead of a source-linked Hermes Tweet package entry.
-Reject hosted automation, app-action, and component galleries such as Zapier,
-Pipedream, Activepieces, Composio, Arcade, Toolhouse, or Langflow when the
-route only accepts workflow templates, provider connectors, hosted app actions,
-or framework-native components. Treat those as integration surfaces unless they
+Reject hosted automation, app-action, chat-platform tool/function, and component galleries such as Zapier,
+Pipedream, Activepieces, Composio, Arcade, Toolhouse, Langflow, Open WebUI, LibreChat, Dify, Flowise, or AnythingLLM when the
+route only accepts workflow templates, provider connectors, hosted app actions, chat tools,
+tool/function manifests, or framework-native components. Treat those as integration surfaces unless they
 expose a PR-editable third-party source repository entry for Hermes Tweet's
 shipped package.
 Reject RPA and no-code automation marketplaces such as UiPath, Robocorp, n8n, Make, or Workato when they only accept bots, community nodes, workflow exports, automation recipes, or task templates instead of a source-linked Hermes Tweet package entry.
