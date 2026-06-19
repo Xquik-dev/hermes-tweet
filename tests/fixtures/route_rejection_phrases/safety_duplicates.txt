@@ -372,6 +372,9 @@ peer Hermes Agent plugin source repositories
 plugin examples, showcase repos
 demo plugin repos
 being another Hermes Agent plugin is ecosystem evidence only
+generic skill-registry submission guides
+onboarding docs, and wishlist issues
+PR-editable registry source file
 personal agent memory repositories
 agent memory pack registries
 OpenHands microagent folders
