@@ -369,6 +369,7 @@ copied skill directories inside application repositories
 downstream copies or mirrors
 fresh Hermes Tweet submission routes
 personal agent memory repositories
+agent memory pack registries
 OpenHands microagent folders
 hosted MCP directory profile pages
 `.openhands`, Smithery, Glama, PulseMCP
