@@ -342,7 +342,7 @@ existing Hermes Tweet listing or merged PR
 unsigned CLA or legal agreement
 close any discovered attempt
 defer the route until the account owner signs
-workflow recipes, terminal or shell
+workflow recipes, CLI extension registries
 plugin indexes, and rule bundles
 GitHub Copilot Extensions, OpenCode commands
 Aider workflows, Goose extensions
