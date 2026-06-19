@@ -353,8 +353,9 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
     assert "read it before deciding" in checklist
     assert "claim form, upload UI, or account-gated directory" in checklist
     assert "source, catalog, or registry file that can be changed by PR" in checklist
-    assert "generated catalog or marketplace files" in checklist
-    assert "canonical edit surface" in checklist
+    assert "generated catalog, marketplace" in checklist
+    assert "source-registry manifest, or installable catalog manifest files" in normalized_checklist
+    assert "canonical edit surface" in normalized_checklist
     assert "documented source file or generator input" in checklist
     assert "source cannot carry a target-native Hermes Tweet entry" in checklist
     assert "topic-search hits that are only source repositories" in checklist
