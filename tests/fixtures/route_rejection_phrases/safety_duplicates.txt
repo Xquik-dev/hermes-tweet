@@ -375,6 +375,9 @@ being another Hermes Agent plugin is ecosystem evidence only
 generic skill-registry submission guides
 onboarding docs, and wishlist issues
 PR-editable registry source file
+`catalog.json`, `registry.yaml`, `marketplaces.yml`
+seed JSON, or tools YAML
+evidence only
 personal agent memory repositories
 agent memory pack registries
 OpenHands microagent folders
