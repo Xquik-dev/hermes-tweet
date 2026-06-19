@@ -57,6 +57,10 @@ prompt templates, eval datasets
 benchmark tasks, task suites
 benchmark leaderboard
 eval task gallery
+agent workflow template galleries
+automation workflow marketplaces
+workflow example libraries
+workflow examples
 trace dashboards, eval configs
 experiment recipes
 LLM security, AI guardrails
