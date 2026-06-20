@@ -326,6 +326,9 @@ connected-vehicle telemetry
 platform-native automotive packages
 code-assistant extension marketplaces
 developer-agent tool catalogs
+local-snapshot Codex plugin marketplaces
+one-plugin product Codex marketplaces
+vendored plugin folder inside the target repository
 Amazon Q Developer, Continue, Sourcegraph Cody
 JetBrains Junie, Devin
 IDE extensions, editor plugins
