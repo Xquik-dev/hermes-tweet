@@ -36,6 +36,9 @@ PR-editable catalog entry
 Hermes Tweet's shipped source repository package
 hosted AI app directories
 assistant action galleries
+converted instruction mirrors
+AI-native learning plugin marketplaces
+training workflows
 ChatGPT apps, OpenAI Apps SDK examples
 GPT Store listings
 custom GPT directories
