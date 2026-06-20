@@ -2,6 +2,8 @@ engine plugins, editor extensions
 game assets, scripts
 SDK integrations, creator tools
 avatar or world packages
+generated named-skill listing
+repository-config catalogs with prior closed Hermes Tweet or Xquik route
 voice assistant, speech, meeting
 real-time communications app
 Alexa Skills Store

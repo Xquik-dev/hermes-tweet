@@ -23,6 +23,9 @@ sample agent card
 local demo agent
 discovery API
 plugin function instead of a source-linked
+tenant or fleet skill registries
+database-backed MCP skill registry servers
+runtime/API code without a PR-editable source catalog lane
 slash-command plugin packs, command-pack marketplaces
 hosted agent builder, assistant builder, toolgroup, and action-group
 Chainlit, Microsoft PromptFlow, Llama Stack, CopilotKit, Rasa
