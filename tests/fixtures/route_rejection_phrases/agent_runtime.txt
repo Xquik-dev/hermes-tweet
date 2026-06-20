@@ -38,6 +38,8 @@ hosted AI app directories
 assistant action galleries
 converted instruction mirrors
 AI-native learning plugin marketplaces
+skill-index import registries
+owner-specific plugin bundles
 training workflows
 ChatGPT apps, OpenAI Apps SDK examples
 GPT Store listings
