@@ -369,6 +369,7 @@ bots, community nodes, workflow exports
 automation recipes, or task templates
 embedded `.agents`, `.agent`, `.antigravity`
 project-template
+single-skill Claude templates
 copied skill directories inside application repositories
 downstream copies or mirrors
 fresh Hermes Tweet submission routes
