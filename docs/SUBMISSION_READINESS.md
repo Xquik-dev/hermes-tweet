@@ -23,8 +23,8 @@ Do not submit when the target is only a browser-cookie workflow, only a
 TweetClaw route, a generic Xquik MCP server data entry, unrelated to X/Twitter
 or Hermes Agent, archived, or explicitly incompatible with contribution. Missing
 license metadata or an absent root license is review context, not a blocker.
-Note the absence when useful, but reject only explicit incompatible licenses or terms that prohibit outside contributions. Reject personal or product-owned
-marketplaces that describe themselves as owner-specific, team-specific, or closed to random additions unless their docs clearly invite third-party Hermes Tweet submissions.
+Note the absence when useful, but reject only explicit incompatible licenses or terms that prohibit outside contributions. Reject personal Claude Code plugin marketplaces, README-only marketplace shells, or product-owned
+marketplaces that describe themselves as owner-specific, team-specific, owner-curated, or closed to random additions unless their docs clearly invite third-party Hermes Tweet submissions.
 Reject branded Claude plugin catalogs that describe themselves as the official
 catalog for one vendor, team, or product family. If the catalog says plugin
 updates flow from that owner's source repositories, treat it as a compatibility
