@@ -382,6 +382,9 @@ demo plugin repos
 being another Hermes Agent plugin is ecosystem evidence only
 generic skill-registry submission guides
 onboarding docs, and wishlist issues
+issue-first submissions
+maintainer-curated additions
+open a new issue instead of opening a direct PR
 PR-editable registry source file
 `catalog.json`, `registry.yaml`, `marketplaces.yml`
 seed JSON, or tools YAML
