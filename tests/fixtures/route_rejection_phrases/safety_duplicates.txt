@@ -462,6 +462,7 @@ README-only marketplace shells
 verified product skill catalogs
 owner-curated
 daily mirrored product skill catalogs
+release-pinned vendor catalog files
 prototype marketplace applications
 README documents only API calls
 `curl` publish example is not a PR-native submission route

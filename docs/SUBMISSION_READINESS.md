@@ -68,7 +68,7 @@ command-pack marketplaces, or command-only plugin catalogs that only help anothe
 agent consume Claude plugin marketplaces. Treat them as compatibility surfaces
 unless they expose an editable catalog entry for third-party plugins or source repositories.
 Reject generated catalog, marketplace, source-registry manifest, or installable
-catalog manifest files unless target docs identify them as the canonical edit
+catalog manifest files, including release-pinned vendor catalog files, unless target docs identify them as the canonical edit
 surface. When a target builds indexes from another source, submit only through
 the documented source file or generator input; skip it when that source cannot carry a target-native Hermes Tweet entry.
 Treat filename hits such as `catalog.json`, `registry.yaml`, `marketplaces.yml`, seed JSON, or tools YAML as evidence only; submit only when target docs mark that file as the PR-editable source for external source-linked package entries.
