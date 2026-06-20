@@ -72,11 +72,11 @@ catalog manifest files unless target docs identify them as the canonical edit
 surface. When a target builds indexes from another source, submit only through
 the documented source file or generator input; skip it when that source cannot carry a target-native Hermes Tweet entry.
 Treat filename hits such as `catalog.json`, `registry.yaml`, `marketplaces.yml`, seed JSON, or tools YAML as evidence only; submit only when target docs mark that file as the PR-editable source for external source-linked package entries.
-Reject marketplace contribution workflows that require creating a local
-`<plugin>/.claude-plugin/plugin.json` inside the target repository unless they
-also document an external source-repository entry for third-party plugins. Do
-not copy, vendor, or repackage Hermes Tweet into a local target plugin folder to
-satisfy a registry generator.
+Reject local-snapshot Codex plugin marketplaces and contribution workflows that
+require creating a local `<plugin>/.claude-plugin/plugin.json` inside the target repository or a vendored plugin
+folder inside the target repository unless they also document an external
+source-repository entry for third-party plugins. Do not copy, vendor, or
+repackage Hermes Tweet into a local target plugin folder to satisfy a registry generator.
 Reject official-directory snapshot lists whose contribution rules only accept
 plugins already published in an upstream official catalog. Treat them as status
 mirrors until Hermes Tweet is already listed in that upstream catalog, then
@@ -89,7 +89,7 @@ file intended for external additions. Topic metadata such as `agent-skills`,
 only; it is not a native submission route without an editable third-party entry
 surface.
 Reject framework-specific plugin marketplaces, IDE agent extension marketplaces,
-single-app tool collections, offline marketplace mirrors, or SDK tool packages
+single-app tool collections, offline marketplace mirrors, one-plugin product Codex marketplaces, or SDK tool packages
 such as Dify, LangGraph, LlamaIndex, AutoGen, OpenAI Agents SDK, Cline, Roo
 Code, Cursor, Windsurf, Open WebUI, LibreChat, AnythingLLM, BeeAI, Rivet, or
 Langroid, AutoGPT Forge, OpenAgents, Agent Zero, SuperAGI, BabyAGI, or
