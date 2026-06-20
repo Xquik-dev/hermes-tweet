@@ -402,6 +402,8 @@ third-party catalog lane
 Hermes Tweet package listing
 tool-surface dump catalogs
 agent tool indexes
+agent capability registries
+tool-vault directories
 tools YAML registries
 catalog drift analyzers
 internal tool-registry backends
