@@ -23,7 +23,7 @@ Do not submit when the target is only a browser-cookie workflow, only a
 TweetClaw route, a generic Xquik MCP server data entry, unrelated to X/Twitter
 or Hermes Agent, archived, or explicitly incompatible with contribution. Missing
 license metadata or an absent root license is review context, not a blocker.
-Note the absence when useful, but reject only explicit incompatible licenses or terms that prohibit outside contributions. Reject personal Claude Code plugin marketplaces, README-only marketplace shells, or product-owned
+Note the absence when useful, but reject only explicit incompatible licenses or terms that prohibit outside contributions. Reject personal Claude Code plugin marketplaces, README-only marketplace shells, verified product skill catalogs, or product-owned
 marketplaces that describe themselves as owner-specific, team-specific, owner-curated, or closed to random additions unless their docs clearly invite third-party Hermes Tweet submissions.
 Reject branded Claude plugin catalogs that describe themselves as the official
 catalog for one vendor, team, or product family. If the catalog says plugin
@@ -34,7 +34,7 @@ A `source.github` or similar repository-pointer schema is not enough by itself:
 when the marketplace instructions say it is the canonical hub for the owner's
 own skills, reject it unless the contribution docs explicitly invite outside
 source repositories.
-Reject company engineering hubs, internal workflow marketplaces, and
+Reject company engineering hubs, internal workflow marketplaces, daily mirrored product skill catalogs, and
 single-namespace catalogs whose install commands or plugin metadata are scoped
 to one organization, team, or owner. Open standards, Agent Skills compatibility,
 or Claude marketplace metadata do not make those routes eligible unless the
@@ -867,8 +867,8 @@ Before opening or refreshing a submission:
   a live Xquik, TweetClaw, OpenClaw, SocialClaw, or x-twitter-scraper entry in
   the same catalog, tool list, or awesome-list section, reject another Hermes
   Tweet submission unless the target has a distinct Hermes Agent plugin lane.
-- For awesome lists, plugin lists, and topic-search hits, treat an open
-  adjacent X/social submission in the same target as saturation when the target
+- For awesome lists, plugin lists, and topic-search hits, including universal skill hubs, treat an open
+  adjacent X/social submission or adjacent skill PR in the same target as saturation when the target
   has no explicit Hermes Tweet or Hermes Agent plugin lane. A generic Claude
   plugin or agent-skill heading is not enough by itself when the adjacent entry
   would occupy the same list slot.

@@ -459,7 +459,9 @@ PR-editable source
 canonical hub for the owner's own skills
 personal Claude Code plugin marketplaces
 README-only marketplace shells
+verified product skill catalogs
 owner-curated
+daily mirrored product skill catalogs
 prototype marketplace applications
 README documents only API calls
 `curl` publish example is not a PR-native submission route
@@ -511,6 +513,7 @@ translated or mirrored awesome lists
 translation issue tracker
 independent localized submission
 accepted adjacent entries as saturation
+adjacent skill PR
 a live Xquik, TweetClaw, OpenClaw, SocialClaw, or x-twitter-scraper entry
 same catalog, tool list, or awesome-list section
 distinct Hermes Agent plugin lane
