@@ -56,6 +56,7 @@ EXPECTED_SURFACE_GUIDE_LINK = "[`docs/HERMES_SURFACES.md`](docs/HERMES_SURFACES.
 EXPECTED_INTEGRATION_PATTERNS_LINK = (
     "[`docs/INTEGRATION_PATTERNS.md`](docs/INTEGRATION_PATTERNS.md)"
 )
+EXPECTED_MERGE_ENABLEMENT_LINK = "[`docs/MERGE_ENABLEMENT.md`](docs/MERGE_ENABLEMENT.md)"
 SUBMISSION_READINESS_PATH = "docs/SUBMISSION_READINESS.md"
 EXPECTED_SUBMISSION_READINESS_LINK = f"[`{SUBMISSION_READINESS_PATH}`]({SUBMISSION_READINESS_PATH})"
 EXPECTED_SUBMISSION_READINESS_SURFACES = (
@@ -243,6 +244,7 @@ def test_release_metadata_surfaces_stay_aligned() -> None:
     assert EXPECTED_SURFACE_GUIDE_LINK in readme
     assert EXPECTED_INTEGRATION_PATTERNS_LINK in readme
     assert EXPECTED_SUBMISSION_READINESS_LINK in readme
+    assert EXPECTED_MERGE_ENABLEMENT_LINK in readme
     for surface in EXPECTED_SUBMISSION_READINESS_SURFACES:
         assert SUBMISSION_READINESS_PATH in surface.read_text(encoding="utf-8")
 
@@ -251,6 +253,20 @@ def test_release_metadata_surfaces_stay_aligned() -> None:
     assert urls["Documentation"] == GUIDE_URL
     assert urls["Repository"] == "https://github.com/Xquik-dev/hermes-tweet"
     assert urls["Issues"] == "https://github.com/Xquik-dev/hermes-tweet/issues"
+
+
+def test_merge_enablement_guide_requires_complete_pr_coverage() -> None:
+    guide = (ROOT / "docs" / "MERGE_ENABLEMENT.md").read_text()
+    normalized_guide = " ".join(guide.split())
+
+    assert "Enumerate every open in-scope PR before discovery or outreach" in normalized_guide
+    assert "Do not treat a single capped GitHub CLI result as complete" in normalized_guide
+    assert "hermes-tweet-open-prs-<timestamp>.json" in guide
+    assert "hermes-tweet-pr-audit-<timestamp>.jsonl" in guide
+    assert "author, head owner, base repository" in normalized_guide
+    assert "unresolved review threads" in normalized_guide
+    assert "verified `kriptoburak` branches" in guide
+    assert "own-repo fallback PR" in guide
 
 
 def test_ecosystem_tracks_validated_live_surfaces() -> None:
