@@ -19,6 +19,18 @@ Write the raw enumeration and audit evidence to distinctive temporary files:
 Treat missing pages, partial JSON, API errors, rate limits, or ambiguous caps as
 incomplete coverage. Continue sharding or retrying until the audit is complete.
 
+## Shard Budget Guard
+
+Start with exact Hermes Tweet and Hermes Agent shards plus the tracked PR set
+before adding broad keyword families. Generic all-author or `xquik`, `tweet`, and
+`twitter` shards can match unrelated social-agent work across GitHub and burn API
+budget without improving in-scope coverage.
+
+If a shard expands into hundreds of endpoint reads, stop it, save a summary with
+`complete: false`, the reason, and the attempted query family, then rerun with
+narrower exact terms or date-windowed shards. Never treat an aborted broad run as
+coverage proof, even when a later bounded audit succeeds.
+
 ## Per-PR Audit
 
 For each canonical PR URL, read:
