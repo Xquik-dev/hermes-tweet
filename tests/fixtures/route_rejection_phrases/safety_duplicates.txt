@@ -381,6 +381,9 @@ plugin examples, showcase repos
 demo plugin repos
 being another Hermes Agent plugin is ecosystem evidence only
 generic skill-registry submission guides
+GitHub-topic-only discovery CLIs
+domain-specific skill bundles
+topic-based skill discovery
 onboarding docs, and wishlist issues
 issue-first submissions
 maintainer-curated additions
