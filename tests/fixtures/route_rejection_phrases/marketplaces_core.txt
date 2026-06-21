@@ -43,6 +43,8 @@ auto-mirrored skill stores that only crawl another upstream catalog
 AI toolkit storefronts
 toolhub projects
 agent-tool marketplace scaffolds
+provider scanner directories
+endpoint, env_key, auth_style, and free_limits provider fields
 data warehouse, ETL, reverse ETL
 customer data platform
 data workflow orchestration marketplaces

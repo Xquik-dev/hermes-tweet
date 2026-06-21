@@ -55,6 +55,7 @@ as Product Hunt alternatives, Futurepedia, Toolify, There's An AI For That, or a
 crawler or indexer directories unless they expose that PR-editable source.
 Reject prototype marketplace applications whose README documents only API calls, local server setup, or monetized publish flows, plus AI toolkit storefronts, toolhub projects, and agent-tool marketplace scaffolds whose repo only documents application implementations, status documents, roadmaps, or generated UIs without a committed registry seed, catalog file, source entry, PR-editable registry seed, or external source entry.
 `curl` publish example is not a PR-native submission route; storefront pages and product pages are evidence only. Require the canonical source file maintainers edit for third-party listings.
+Reject provider scanner directories when required endpoint, env_key, auth_style, and free_limits provider fields would force private endpoint, credential, or pricing claims for Hermes Tweet, or when the same target already has an open TweetClaw or adjacent social-provider PR.
 Reject distro installers, runtime stacks, OS package indexes, package-manager
 recipes, or bundle repos such as Debian packages, Fedora RPMs, Arch AUR,
 Nixpkgs, Guix packages, Snapcraft, Flathub, or winget that only vendor or
