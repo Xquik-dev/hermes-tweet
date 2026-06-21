@@ -465,6 +465,34 @@ def test_registry_skill_mirrors_bundled_skill() -> None:
     assert marketplace_metadata["tags"] == EXPECTED_SKILL_TAGS
 
 
+def test_skill_card_mirrors_bundled_skill_card() -> None:
+    registry_card = ROOT / "skills" / "hermes-tweet" / "skill-card.md"
+    bundled_card = ROOT / "hermes_tweet" / "skills" / "hermes-tweet" / "skill-card.md"
+    card_text = bundled_card.read_text()
+    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
+    version = pyproject["project"]["version"]
+
+    assert registry_card.read_text().rstrip() == card_text.rstrip()
+    assert f"- Version: {version}" in card_text
+    assert "Status: public self-assessment. Not NVIDIA-verified." in card_text
+    assert "## Owner" in card_text
+    assert "## Use Case" in card_text
+    assert "## Inputs and Configuration" in card_text
+    assert "## Capabilities" in card_text
+    assert "## Outputs" in card_text
+    assert "## Side Effects" in card_text
+    assert "## Known Risks and Mitigations" in card_text
+    assert "## Release Trust Gate" in card_text
+    assert "SkillSpector scan report" in card_text
+    assert "Tier-3 eval data" in card_text
+    assert "skill.oms.sig" in card_text
+    assert "XQUIK_API_KEY" in card_text
+    assert "HERMES_TWEET_ENABLE_ACTIONS=true" in card_text
+    assert "tweet_explore" in card_text
+    assert "tweet_read" in card_text
+    assert "tweet_action" in card_text
+
+
 def test_ask_wrapper_skill_matches_public_package_metadata() -> None:
     ask_skill = ROOT / "registries" / "ask" / "hermes-tweet" / "SKILL.md"
     ask_text = ask_skill.read_text()
