@@ -390,7 +390,11 @@ demo plugin repos
 being another Hermes Agent plugin is ecosystem evidence only
 generic skill-registry submission guides
 GitHub-topic-only discovery CLIs
+VS Code Copilot marketplace publisher extensions
+external-PR-closing plugin marketplaces
 domain-specific skill bundles
+publication tooling, external submission forms
+member-only contribution lanes
 topic-based skill discovery
 onboarding docs, and wishlist issues
 issue-first submissions
@@ -404,6 +408,7 @@ personal agent memory repositories
 agent memory pack registries
 OpenHands microagent folders
 hosted MCP directory profile pages
+live catalog MCP wrappers
 `.openhands`, Smithery, Glama, PulseMCP
 Hermes-specific operator guides
 profile playbooks
