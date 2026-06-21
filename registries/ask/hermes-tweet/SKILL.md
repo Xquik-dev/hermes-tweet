@@ -16,6 +16,30 @@ metadata:
   author: Xquik
   repository: https://github.com/Xquik-dev/hermes-tweet
   plugin: hermes plugins install Xquik-dev/hermes-tweet --enable
+capabilities:
+  shell:
+    required: false
+    justification: Optional Hermes CLI checks are used only for installation and registry diagnostics.
+  network:
+    required: true
+    justification: Hermes Tweet tools call Xquik API routes for X/Twitter reads and approved actions.
+  files:
+    required: false
+    justification: Normal use does not require local file reads or writes.
+  environment:
+    required: true
+    variables:
+      - XQUIK_API_KEY
+      - HERMES_TWEET_ENABLE_ACTIONS
+      - HERMES_ENABLE_PROJECT_PLUGINS
+    justification: Runtime configuration controls authenticated reads, gated actions, and trusted project-local plugin loading.
+  mcp:
+    required: false
+    justification: No MCP server access is required.
+  tools:
+    - tweet_explore
+    - tweet_read
+    - tweet_action
 ---
 
 # Hermes Tweet
@@ -62,3 +86,21 @@ Use Hermes Tweet for:
 - Keep write actions gated behind `HERMES_TWEET_ENABLE_ACTIONS=true`.
 - Summarize the exact action before posting, replying, sending DMs, or changing
   account state.
+
+## Permissions and Trust
+
+- Tool scope: use only `tweet_explore`, `tweet_read`, and `tweet_action` through
+  the enabled Hermes Tweet toolset.
+- Network scope: call only catalog-listed Xquik API routes through those tools.
+  Do not create direct HTTP fallbacks.
+- File scope: do not write files, logs, screenshots, cached payloads, or
+  credentials unless the user asks for an explicit export workflow.
+- Environment scope: check only whether `XQUIK_API_KEY`,
+  `HERMES_TWEET_ENABLE_ACTIONS`, and `HERMES_ENABLE_PROJECT_PLUGINS` are
+  configured. Never request or echo values.
+- Output: return concise Markdown summaries, action previews, or JSON-like tool
+  payloads. `tweet_action` may change account or workflow state only after
+  explicit approval.
+- Release gate: do not present this skill as NVIDIA-verified unless the release
+  includes a clean SkillSpector review, `skill-card.md`, Tier-3 eval data,
+  `BENCHMARK.md`, `skill.oms.sig`, and signature verification instructions.
