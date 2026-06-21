@@ -115,8 +115,8 @@ runtime-specific tool definitions. Treat these as integration targets, not
 Hermes Tweet outreach routes, unless the target exposes a PR-editable catalog
 entry that links to Hermes Tweet's shipped source repository package.
 Reject hosted AI app directories and assistant action galleries such as ChatGPT apps, OpenAI Apps SDK examples, GPT Store listings, custom GPT directories, assistant store catalogs, Gemini Gems galleries,
-Poe bot marketplaces, Character.AI bot directories, GPT action directories, MCP UI registries, MCP server discovery catalogs, official MCP registry mirrors, upstream server lists, Vercel AI SDK templates, or LangChain Hub snippets
-when they require app manifests, UI widgets, action schemas, custom assistant prompts, bot persona cards, SDK demos, or hub snippets instead
+Poe bot marketplaces, Character.AI bot directories, GPT action directories, MCP UI registries, MCP server discovery catalogs, MCP-server-only submit forms, static MCP seed marketplaces, official MCP registry mirrors, upstream server lists, Vercel AI SDK templates, or LangChain Hub snippets
+when they require app manifests, UI widgets, action schemas, custom assistant prompts, bot persona cards, SDK demos, hub snippets, or MCP server packages instead
 of a source-linked Hermes Tweet package entry, or when Hermes Tweet is not itself an MCP server and the target has no external non-MCP plugin entry surface.
 Reject prompt, evaluation, benchmark leaderboard, eval task gallery, and observability hubs such as LangSmith Hub,
 PromptLayer, Langfuse, Braintrust, promptfoo, or OpenPipe when they only accept
