@@ -50,6 +50,9 @@ owner-specific plugin bundles
 owner-only public Claude Code catalogs whose README says every plugin lives in that owner's repositories
 developer-workflow-only marketplaces without social, X/Twitter, Hermes Agent, or external source-repository lanes
 account-dependent social research skills that forbid private accounts, local credentials, or paid service dependencies
+README-only placeholder registries
+zip-only skill wrapper repos
+source-owned generated catalogs
 training workflows
 ChatGPT apps, OpenAI Apps SDK examples
 GPT Store listings
