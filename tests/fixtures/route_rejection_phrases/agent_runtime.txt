@@ -53,6 +53,10 @@ account-dependent social research skills that forbid private accounts, local cre
 README-only placeholder registries
 zip-only skill wrapper repos
 source-owned generated catalogs
+personal Claude Code/Codex plugin marketplaces
+source-owned first-party plugin bundles
+already-merged catalog listings
+marketplace-keyword application repos
 training workflows
 ChatGPT apps, OpenAI Apps SDK examples
 GPT Store listings
