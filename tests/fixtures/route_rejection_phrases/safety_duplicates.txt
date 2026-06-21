@@ -4,6 +4,7 @@ SDK integrations, creator tools
 avatar or world packages
 generated named-skill listing
 repository-config catalogs with prior closed Hermes Tweet or Xquik route
+same target already has an open TweetClaw or adjacent social-provider PR
 voice assistant, speech, meeting
 real-time communications app
 Alexa Skills Store
