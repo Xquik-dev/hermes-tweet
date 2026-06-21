@@ -45,6 +45,7 @@ EXPECTED_CLAUDE_PLUGIN_DESCRIPTION = (
 )
 EXPECTED_CODEX_PLUGIN_KEYWORDS = [*EXPECTED_AGENT_SKILL_MANIFEST_TAGS, "codex-plugin"]
 EXPECTED_AGENT_SKILL_INSTALL = "hermes plugins install Xquik-dev/hermes-tweet --enable"
+EXPECTED_TOPIC_DISCOVERY_KEYWORD = "agent-skill"
 EXPECTED_DASHBOARD_MANIFEST_DESCRIPTION = (
     "Hermes Agent X/Twitter plugin for searching tweets, reading replies, "
     "monitoring X, exporting followers, and approval-gated posting through Xquik."
@@ -469,6 +470,18 @@ def test_agent_skill_manifest_matches_public_package_metadata() -> None:
     assert manifest["repository"] == project["urls"]["Repository"]
     assert set(manifest["keywords"]).issubset(project["keywords"])
     assert "include skill.json" in (ROOT / "MANIFEST.in").read_text().splitlines()
+
+
+def test_agent_skill_manifest_advertises_topic_based_registry_metadata() -> None:
+    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
+    manifest = json.loads((ROOT / "skill.json").read_text())
+    metadata = (ROOT / "docs" / "GITHUB_METADATA.md").read_text()
+    readme = (ROOT / "README.md").read_text()
+
+    assert EXPECTED_TOPIC_DISCOVERY_KEYWORD in pyproject["project"]["keywords"]
+    assert EXPECTED_TOPIC_DISCOVERY_KEYWORD in manifest["keywords"]
+    assert EXPECTED_TOPIC_DISCOVERY_KEYWORD in metadata
+    assert EXPECTED_TOPIC_DISCOVERY_KEYWORD in readme
 
 
 def test_claude_plugin_manifest_matches_public_package_metadata() -> None:

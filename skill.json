@@ -18,6 +18,7 @@
     "openclaw": "hermes plugins install Xquik-dev/hermes-tweet --enable"
   },
   "keywords": [
+    "agent-skill",
     "hermes-agent",
     "hermes-plugin",
     "xquik",
