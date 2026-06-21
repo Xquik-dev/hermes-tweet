@@ -17,6 +17,11 @@ EXPECTED_PUBLIC_PACKAGE_DESCRIPTION = (
     "Native Hermes Agent plugin for X/Twitter automation through Xquik"
 )
 EXPECTED_OPTIONAL_ENV = ["XQUIK_BASE_URL", "HERMES_TWEET_ENABLE_ACTIONS"]
+EXPECTED_SKILL_CAPABILITY_ENV = [
+    "XQUIK_API_KEY",
+    "HERMES_TWEET_ENABLE_ACTIONS",
+    "HERMES_ENABLE_PROJECT_PLUGINS",
+]
 EXPECTED_SKILL_TAGS = [
     "hermes-agent",
     "xquik",
@@ -170,6 +175,23 @@ def require_mapping(value: object) -> dict[str, object]:
 def require_list(value: object) -> list[object]:
     assert isinstance(value, list)
     return cast("list[object]", value)
+
+
+def assert_skill_capabilities(frontmatter: dict[str, object]) -> None:
+    capabilities = require_mapping(frontmatter["capabilities"])
+    shell = require_mapping(capabilities["shell"])
+    network = require_mapping(capabilities["network"])
+    files = require_mapping(capabilities["files"])
+    environment = require_mapping(capabilities["environment"])
+    mcp = require_mapping(capabilities["mcp"])
+
+    assert shell["required"] is False
+    assert network["required"] is True
+    assert files["required"] is False
+    assert environment["required"] is True
+    assert mcp["required"] is False
+    assert require_list(environment["variables"]) == EXPECTED_SKILL_CAPABILITY_ENV
+    assert require_list(capabilities["tools"]) == EXPECTED_TOOLS
 
 
 def normalize_requirement(requirement: str) -> tuple[str, dict[str, object]]:
@@ -417,16 +439,25 @@ def test_plugin_manifests_keep_install_prompt_contract() -> None:
 def test_registry_skill_mirrors_bundled_skill() -> None:
     bundled_skill = ROOT / "hermes_tweet" / "skills" / "hermes-tweet" / "SKILL.md"
     registry_skill = ROOT / "skills" / "hermes-tweet" / "SKILL.md"
+    bundled_text = bundled_skill.read_text()
     pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
     version = pyproject["project"]["version"]
 
-    assert registry_skill.read_text().rstrip() == bundled_skill.read_text().rstrip()
+    assert registry_skill.read_text().rstrip() == bundled_text.rstrip()
+    assert "## Permissions and Capabilities" in bundled_text
+    assert "## Known Risks and Mitigations" in bundled_text
+    assert "## Skill Output" in bundled_text
+    assert "## Release Trust Gate" in bundled_text
+    assert "SkillSpector" in bundled_text
+    assert "skill-card.md" in bundled_text
+    assert "skill.oms.sig" in bundled_text
 
     frontmatter = load_skill_frontmatter(bundled_skill)
     assert frontmatter["name"] == "hermes-tweet"
     assert str(frontmatter["version"]) == version
     assert frontmatter["author"] == "Xquik"
     assert frontmatter["tags"] == EXPECTED_SKILL_TAGS
+    assert_skill_capabilities(frontmatter)
 
     marketplace_metadata = require_mapping(frontmatter["metadata"])
     assert str(marketplace_metadata["version"]) == version
@@ -436,6 +467,7 @@ def test_registry_skill_mirrors_bundled_skill() -> None:
 
 def test_ask_wrapper_skill_matches_public_package_metadata() -> None:
     ask_skill = ROOT / "registries" / "ask" / "hermes-tweet" / "SKILL.md"
+    ask_text = ask_skill.read_text()
     pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
     version = pyproject["project"]["version"]
 
@@ -448,9 +480,14 @@ def test_ask_wrapper_skill_matches_public_package_metadata() -> None:
         "export followers, and gate X actions through Xquik."
     )
     assert frontmatter["tags"] == EXPECTED_SKILL_TAGS
+    assert_skill_capabilities(frontmatter)
 
     ask_metadata = require_mapping(frontmatter["metadata"])
     assert ask_metadata == EXPECTED_ASK_SKILL_METADATA | {"version": version}
+    assert "## Permissions and Trust" in ask_text
+    assert "SkillSpector" in ask_text
+    assert "skill-card.md" in ask_text
+    assert "skill.oms.sig" in ask_text
 
 
 def test_agent_skill_manifest_matches_public_package_metadata() -> None:
