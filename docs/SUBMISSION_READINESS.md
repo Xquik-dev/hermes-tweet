@@ -23,7 +23,7 @@ Do not submit when the target is only a browser-cookie workflow, only a
 TweetClaw route, a generic Xquik MCP server data entry, unrelated to X/Twitter
 or Hermes Agent, archived, or explicitly incompatible with contribution. Missing
 license metadata or an absent root license is review context, not a blocker.
-Note the absence when useful, but reject only explicit incompatible licenses or terms that prohibit outside contributions. Reject personal Claude Code plugin marketplaces, README-only marketplace shells, verified product skill catalogs, or product-owned
+Note the absence when useful, but reject only explicit incompatible licenses or terms that prohibit outside contributions. Reject personal Claude Code plugin marketplaces, README-only marketplace shells, owner-only public Claude Code catalogs whose README says every plugin lives in that owner's repositories, developer-workflow-only marketplaces without social, X/Twitter, Hermes Agent, or external source-repository lanes, verified product skill catalogs, or product-owned
 marketplaces that describe themselves as owner-specific, team-specific, owner-curated, or closed to random additions unless their docs clearly invite third-party Hermes Tweet submissions.
 Reject branded Claude plugin catalogs that describe themselves as the official
 catalog for one vendor, team, or product family. If the catalog says plugin
@@ -42,7 +42,7 @@ target explicitly invites third-party source repositories.
 Do not treat a `third-party`, `vendor`, `upstream`, or `external` directory name
 as an invitation by itself. If the marketplace is branded as one owner's
 official catalog, require contribution docs that explicitly accept unrelated
-external source repositories before submitting Hermes Tweet.
+external source repositories before submitting Hermes Tweet. Reject account-dependent social research skills that forbid private accounts, local credentials, or paid service dependencies.
 Review the contribution license after checking both GitHub metadata and obvious
 root license files such as `LICENSE`, `LICENSE.md`, `COPYING`, or `NOTICE`.
 When metadata is empty but a root license file exists, read it before deciding;

@@ -47,6 +47,9 @@ converted instruction mirrors
 AI-native learning plugin marketplaces
 skill-index import registries
 owner-specific plugin bundles
+owner-only public Claude Code catalogs whose README says every plugin lives in that owner's repositories
+developer-workflow-only marketplaces without social, X/Twitter, Hermes Agent, or external source-repository lanes
+account-dependent social research skills that forbid private accounts, local credentials, or paid service dependencies
 training workflows
 ChatGPT apps, OpenAI Apps SDK examples
 GPT Store listings
