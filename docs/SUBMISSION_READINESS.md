@@ -53,10 +53,8 @@ a seed, source, catalog, or registry file that can be changed by PR.
 Treat generic AI tools, startup, SaaS, creator-economy, content-creator, influencer-marketing, AI marketing-tools, product-launch, and app directories such
 as Product Hunt alternatives, Futurepedia, Toolify, There's An AI For That, or auto-mirrored skill stores that only crawl another upstream catalog as
 crawler or indexer directories unless they expose that PR-editable source.
-Reject prototype marketplace applications whose README documents only API
-calls, local server setup, or monetized publish flows without a committed
-registry seed, catalog file, or source entry. A `curl` publish example is not a
-PR-native submission route.
+Reject prototype marketplace applications whose README documents only API calls, local server setup, or monetized publish flows, plus AI toolkit storefronts, toolhub projects, and agent-tool marketplace scaffolds whose repo only documents application implementations, status documents, roadmaps, or generated UIs without a committed registry seed, catalog file, source entry, PR-editable registry seed, or external source entry.
+`curl` publish example is not a PR-native submission route; storefront pages and product pages are evidence only. Require the canonical source file maintainers edit for third-party listings.
 Reject distro installers, runtime stacks, OS package indexes, package-manager
 recipes, or bundle repos such as Debian packages, Fedora RPMs, Arch AUR,
 Nixpkgs, Guix packages, Snapcraft, Flathub, or winget that only vendor or
@@ -114,11 +112,10 @@ workflow nodes, declarative action groups, prompt-flow components, or
 runtime-specific tool definitions. Treat these as integration targets, not
 Hermes Tweet outreach routes, unless the target exposes a PR-editable catalog
 entry that links to Hermes Tweet's shipped source repository package.
-Reject hosted AI app directories and assistant action galleries such as ChatGPT
-apps, OpenAI Apps SDK examples, GPT Store listings, custom GPT directories, assistant store catalogs, Gemini Gems galleries,
-Poe bot marketplaces, Character.AI bot directories, GPT action directories, MCP UI registries, Vercel AI SDK templates, or LangChain Hub snippets
+Reject hosted AI app directories and assistant action galleries such as ChatGPT apps, OpenAI Apps SDK examples, GPT Store listings, custom GPT directories, assistant store catalogs, Gemini Gems galleries,
+Poe bot marketplaces, Character.AI bot directories, GPT action directories, MCP UI registries, MCP server discovery catalogs, official MCP registry mirrors, upstream server lists, Vercel AI SDK templates, or LangChain Hub snippets
 when they require app manifests, UI widgets, action schemas, custom assistant prompts, bot persona cards, SDK demos, or hub snippets instead
-of a source-linked Hermes Tweet package entry.
+of a source-linked Hermes Tweet package entry, or when Hermes Tweet is not itself an MCP server and the target has no external non-MCP plugin entry surface.
 Reject prompt, evaluation, benchmark leaderboard, eval task gallery, and observability hubs such as LangSmith Hub,
 PromptLayer, Langfuse, Braintrust, promptfoo, or OpenPipe when they only accept
 prompt templates, eval datasets, benchmark tasks, task suites, trace dashboards, eval configs, SDK snippets,
