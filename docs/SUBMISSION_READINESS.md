@@ -87,6 +87,7 @@ file intended for external additions. Topic metadata such as `agent-skills`,
 `claude-code-plugin`, `mcp-server`, or `awesome-list` is discovery evidence
 only; it is not a native submission route without an editable third-party entry
 surface.
+Reject curated public skill catalogs that require maintainer proof or promotion evidence before a skill enters the public tree, registry CLIs whose author flow only discovers topic-tagged source repositories instead of accepting PR-editable source entries, and product-specific skill packs that require their platform access.
 Reject framework-specific plugin marketplaces, IDE agent extension marketplaces,
 single-app tool collections, offline marketplace mirrors, one-plugin product Codex marketplaces, or SDK tool packages
 such as Dify, LangGraph, LlamaIndex, AutoGen, OpenAI Agents SDK, Cline, Roo
