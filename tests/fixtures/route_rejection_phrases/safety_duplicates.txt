@@ -6,6 +6,10 @@ generated named-skill listing
 repository-config catalogs with prior closed Hermes Tweet or Xquik route
 same target already has an open Hermes Tweet PR
 same target already has an open TweetClaw or adjacent social-provider PR
+head-branch PR collision
+PR-create duplicate branch errors
+already exists for the same head branch
+treat a PR creation duplicate error as canonical overlap evidence
 voice assistant, speech, meeting
 real-time communications app
 Alexa Skills Store
