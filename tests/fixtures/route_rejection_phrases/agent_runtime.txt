@@ -67,6 +67,8 @@ Poe bot marketplaces
 Character.AI bot directories
 GPT action directories, MCP UI registries
 MCP server discovery catalogs
+MCP-server-only submit forms
+static MCP seed marketplaces
 official MCP registry mirrors
 upstream server lists
 Vercel AI SDK templates
@@ -74,7 +76,9 @@ LangChain Hub snippets
 app manifests, UI widgets, action schemas
 custom assistant prompts
 bot persona cards
-SDK demos, or hub snippets
+SDK demos, hub snippets, or MCP server packages
+MCP server packages
+external non-MCP plugin entry surface
 prompt, evaluation, benchmark leaderboard, eval task gallery, and observability hubs
 LangSmith Hub, PromptLayer, Langfuse
 Braintrust, promptfoo, or OpenPipe
