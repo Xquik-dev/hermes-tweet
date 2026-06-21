@@ -898,7 +898,7 @@ Before opening or refreshing a submission:
   submissions or maintainer-curated additions, update the existing issue or
   open a new issue instead of opening a direct PR.
 
-If a target already has a live Hermes Tweet entry, do not open another one.
+If a target already has a live Hermes Tweet entry or the same target already has an open Hermes Tweet PR, do not open another one.
 Refresh only when it fixes a concrete merge blocker, stale target-native
 wording, or broken validation evidence.
 
