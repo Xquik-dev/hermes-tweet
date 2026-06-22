@@ -50,6 +50,7 @@ skill graph package registries
 action package marketplaces
 agent skill graph catalogs
 agent tool hub source registries
+assistant extension index manifests
 methodology-owned skill marketplaces
 agent operating system plugin marketplaces
 multi-agent collaboration plugin hubs
