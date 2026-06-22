@@ -393,6 +393,11 @@ GitHub-topic-only discovery CLIs
 VS Code Copilot marketplace publisher extensions
 external-PR-closing plugin marketplaces
 domain-specific skill bundles
+cybersecurity-only skill libraries
+Obsidian-only skill marketplaces
+brand-owned social media pipelines
+first-party-only registry placeholders
+hosted marketplace SEO stubs
 publication tooling, external submission forms
 member-only contribution lanes
 topic-based skill discovery
