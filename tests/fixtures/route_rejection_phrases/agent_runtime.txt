@@ -62,6 +62,11 @@ account-dependent social research skills that forbid private accounts, local cre
 README-only placeholder registries
 zip-only skill wrapper repos
 source-owned generated catalogs
+generated Hermes skill catalogs
+source-list catalog JSON files
+private-beta source-owned skill hubs
+skill provenance sidecar utilities
+personal workbench template catalogs
 personal Claude Code/Codex plugin marketplaces
 source-owned first-party plugin bundles
 already-merged catalog listings
