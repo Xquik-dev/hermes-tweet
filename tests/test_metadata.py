@@ -244,6 +244,12 @@ def find_step(steps: list[object], name: str) -> dict[str, object]:
     raise AssertionError(message)
 
 
+def workflow_job(path: str, job: str) -> dict[str, object]:
+    workflow = load_object_mapping(ROOT / ".github" / "workflows" / path)
+    jobs = require_mapping(workflow["jobs"])
+    return require_mapping(jobs[job])
+
+
 def test_find_step_reports_missing_workflow_step() -> None:
     with pytest.raises(AssertionError, match=r"No workflow step named 'Publish'\."):
         find_step([], "Publish")
@@ -674,6 +680,26 @@ def test_public_repo_ignore_rules_cover_local_artifacts() -> None:
     missing_patterns = sorted(set(EXPECTED_PUBLIC_IGNORE_PATTERNS) - ignore_patterns)
 
     assert missing_patterns == []
+
+
+@pytest.mark.parametrize(
+    ("workflow_path", "job_name"),
+    [
+        ("ci.yml", "check"),
+        ("hol-plugin-scanner.yml", "scan"),
+        ("publish.yml", "build"),
+        ("publish.yml", "publish"),
+    ],
+)
+def test_workflows_run_on_blacksmith_runner(workflow_path: str, job_name: str) -> None:
+    assert workflow_job(workflow_path, job_name)["runs-on"] == BLACKSMITH_RUNNER_LABEL
+
+
+def test_actionlint_allows_blacksmith_runner_label() -> None:
+    config = load_object_mapping(ROOT / ".github" / "actionlint.yaml")
+    self_hosted_runner = require_mapping(config["self-hosted-runner"])
+
+    assert self_hosted_runner["labels"] == [BLACKSMITH_RUNNER_LABEL]
 
 
 def test_publish_workflow_requires_version_matched_release_tag() -> None:
