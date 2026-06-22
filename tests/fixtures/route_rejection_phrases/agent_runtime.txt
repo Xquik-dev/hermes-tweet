@@ -98,6 +98,11 @@ Character.AI bot directories
 GPT action directories, MCP UI registries
 MCP server discovery catalogs
 MCP-server-only submit forms
+protocol conformance registries
+platform-neutral product distribution hubs
+TIP-style manifest schema registries
+single-product marketplace manifests
+capability catalogs
 static MCP seed marketplaces
 official MCP registry mirrors
 upstream server lists

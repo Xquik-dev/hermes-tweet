@@ -118,6 +118,7 @@ Reject hosted AI app directories and assistant action galleries such as ChatGPT 
 Poe bot marketplaces, Character.AI bot directories, GPT action directories, MCP UI registries, MCP server discovery catalogs, MCP-server-only submit forms, static MCP seed marketplaces, official MCP registry mirrors, upstream server lists, Vercel AI SDK templates, or LangChain Hub snippets
 when they require app manifests, UI widgets, action schemas, custom assistant prompts, bot persona cards, SDK demos, hub snippets, or MCP server packages instead
 of a source-linked Hermes Tweet package entry, or when Hermes Tweet is not itself an MCP server and the target has no external non-MCP plugin entry surface.
+Reject protocol conformance registries, platform-neutral product distribution hubs, TIP-style manifest schema registries, and single-product marketplace manifests when they publish one product's adapters, validator schemas, capability catalogs, or install metadata instead of third-party source-linked Hermes Tweet package entries.
 Reject prompt, evaluation, benchmark leaderboard, eval task gallery, and observability hubs such as LangSmith Hub,
 PromptLayer, Langfuse, Braintrust, promptfoo, or OpenPipe when they only accept
 prompt templates, eval datasets, benchmark tasks, task suites, trace dashboards, eval configs, SDK snippets,
