@@ -67,6 +67,12 @@ source-list catalog JSON files
 private-beta source-owned skill hubs
 skill provenance sidecar utilities
 personal workbench template catalogs
+agent blueprint catalogs
+agent starter-kit catalogs
+template-gallery application repos
+AI agent template galleries
+aggregated Claude marketplace indexes
+generated awesome Claude plugin indexes
 personal Claude Code/Codex plugin marketplaces
 source-owned first-party plugin bundles
 already-merged catalog listings
