@@ -108,6 +108,7 @@ HOL_PLUGIN_SCANNER_ACTION_SHA = (
     "hashgraph-online/ai-plugin-scanner-action@7efab6be3cc2e2b020492c77f769963070905d6e"
 )
 ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
+BLACKSMITH_RUNNER_LABEL = "blacksmith-2vcpu-ubuntu-2404"
 HERMES_AGENT_COMPAT_COMMAND = "uv run python scripts/check_hermes_agent_compat.py"
 PUBLIC_SAFETY_COMMAND = "uv run python scripts/check_public_safety.py"
 EXPECTED_PUBLIC_IGNORE_PATTERNS = [
@@ -620,7 +621,7 @@ def test_hol_plugin_scanner_workflow_matches_codex_catalog_requirements() -> Non
 
     jobs = require_mapping(workflow["jobs"])
     scan = require_mapping(jobs["scan"])
-    assert scan["runs-on"] == "ubuntu-latest"
+    assert scan["runs-on"] == BLACKSMITH_RUNNER_LABEL
     steps = require_list(scan["steps"])
     assert find_step(steps, "Checkout")["uses"] == CHECKOUT_ACTION_SHA
 
