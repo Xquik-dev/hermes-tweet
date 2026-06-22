@@ -414,6 +414,7 @@ agent memory pack registries
 OpenHands microagent folders
 hosted MCP directory profile pages
 live catalog MCP wrappers
+live catalog MCP wrappers whose native source repo already closed a Hermes Tweet PR
 `.openhands`, Smithery, Glama, PulseMCP
 Hermes-specific operator guides
 profile playbooks
