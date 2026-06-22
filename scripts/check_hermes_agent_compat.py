@@ -65,7 +65,7 @@ PAGE_CHECKS: Final = (
 SOURCE_CHECKS: Final = (
     SourceCheck(
         path="hermes_cli/plugins.py",
-        expected_sha="25bf83af30277f674e7befeb9dc334e446f8861b",
+        expected_sha="e4d0afd7c8b5316479fe7f89cf47c7a41d85d370",
         required_terms=(
             "ENTRY_POINTS_GROUP",
             "hermes_agent.plugins",

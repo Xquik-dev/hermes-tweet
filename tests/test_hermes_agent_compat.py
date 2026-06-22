@@ -53,6 +53,16 @@ def test_missing_terms_reports_only_absent_terms() -> None:
     assert missing == ["requires_env"]
 
 
+def test_source_checks_track_reviewed_hermes_agent_locks() -> None:
+    locks = {check.path: check.expected_sha for check in compat.SOURCE_CHECKS}
+
+    assert locks == {
+        "hermes_cli/plugins.py": "e4d0afd7c8b5316479fe7f89cf47c7a41d85d370",
+        "tools/registry.py": "7bb92e85f960c2a8552122e04b81d0a82c255bd5",
+        "hermes_cli/plugins_cmd.py": "0a5aa8c0fd03d6f4e34951e5242a469a2d07f331",
+    }
+
+
 def test_check_page_reports_missing_terms() -> None:
     client = FakeClient([FakeResponse(text="plugin.yaml")])
     check = compat.PageCheck(
