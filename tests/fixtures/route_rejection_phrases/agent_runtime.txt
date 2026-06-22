@@ -95,6 +95,7 @@ assistant store catalogs
 Gemini Gems galleries
 Poe bot marketplaces
 Character.AI bot directories
+agent workflow source catalogs
 GPT action directories, MCP UI registries
 MCP server discovery catalogs
 MCP-server-only submit forms
