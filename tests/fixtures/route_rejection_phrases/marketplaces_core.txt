@@ -521,6 +521,7 @@ DaVinci Resolve plugin catalogs
 Final Cut Pro plugin marketplaces
 DAW plugin marketplaces
 podcast app marketplaces
+source-agnostic skill package managers
 audio plugin marketplaces
 HeyGen integrations
 Synthesia app marketplaces
