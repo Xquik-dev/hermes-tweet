@@ -73,6 +73,12 @@ template-gallery application repos
 AI agent template galleries
 aggregated Claude marketplace indexes
 generated awesome Claude plugin indexes
+agent connector registries
+AI agent connector catalogs
+assistant connector registries
+LLM agent connector hubs
+agent integration marketplaces
+connector-registry product repos
 personal Claude Code/Codex plugin marketplaces
 source-owned first-party plugin bundles
 already-merged catalog listings
