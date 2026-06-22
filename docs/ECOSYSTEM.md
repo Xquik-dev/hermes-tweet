@@ -34,6 +34,14 @@ follow-up belong outside the public repository. Use
 | GitHub hermes-plugin topic | <https://github.com/topics/hermes-plugin> |
 | Hermes Eco crawler manifest | <https://github.com/Xquik-dev/hermes-tweet/blob/master/.hermes-eco.json> |
 | Hermes Atlas project page | <https://hermesatlas.com/projects/Xquik-dev/hermes-tweet> |
+| BuildWithClaude Hermes Tweet skill | <https://github.com/davepoon/buildwithclaude/blob/main/plugins/all-skills/skills/hermes-tweet/SKILL.md> |
+| Awesome Claude Hermes Tweet skill page | <https://github.com/JSONbored/awesome-claude/blob/main/content/skills/hermes-tweet-hermes-agent-x-twitter.mdx> |
+| Awesome Codex Plugins Hermes Tweet plugin | <https://github.com/hashgraph-online/awesome-codex-plugins/blob/main/plugins.json> |
+| Awesome AI Plugins Hermes Tweet plugin | <https://github.com/hashgraph-online/awesome-ai-plugins/blob/main/plugins.json> |
+| Awesome Agent Tools Hermes Tweet entry | <https://github.com/Awakehsh/awesome-agent-tools/blob/main/AWESOME.md> |
+| Chat2AnyLLM skill repo config | <https://github.com/Chat2AnyLLM/awesome-repo-configs/blob/main/skill_repos.json> |
+| CorpusIQ Hermes Tweet catalog entry | <https://github.com/CorpusIQ/corpusiq-docs/blob/main/hermes/skills/catalog/communication/hermes-tweet.md> |
+| Awesome Claude Code And Skills Hermes Tweet listing | <https://github.com/GetBindu/awesome-claude-code-and-skills/blob/main/readme.md> |
 | Awesome Hermes Agent plugin listing | <https://github.com/SamurAIGPT/awesome-hermes-agent#plugins> |
 | Gaia Skill Tree Hermes Tweet named skill | <https://github.com/mbtiongson1/gaia-skill-tree/blob/main/registry/named/xquik-dev/hermes-tweet.md> |
 | Claude Skill Registry Hermes Tweet skill | <https://github.com/majiayu000/claude-skill-registry/blob/main/skills/api/hermes-tweet/SKILL.md> |
