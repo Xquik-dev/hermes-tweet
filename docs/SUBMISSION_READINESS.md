@@ -813,7 +813,7 @@ such as Amazon Q Developer, Continue, Sourcegraph Cody, JetBrains Junie, Devin,
 or Tabby when they only accept IDE extensions, editor plugins, workspace
 automation packs, or assistant-specific tool definitions instead of a
 PR-editable Hermes Tweet source package entry.
-Reject local coding-agent command packs, workflow recipes, CLI extension registries, terminal or shell plugin indexes, and rule bundles such as GitHub Copilot Extensions, OpenCode
+Reject local coding-agent command packs, workflow recipes, CLI extension registries, terminal or shell plugin indexes, and rule bundles such as rulepack catalogs, Cursor rule marketplaces, repository instruction catalogs, GitHub Copilot Extensions, OpenCode
 commands, Aider workflows, Goose extensions, Kiro hooks, Amp tools, Oh My Zsh plugins, fish shell plugins, or terminal assistant catalogs when they only accept agent-local prompts, commands, recipes, hooks, shell integrations, or editor workflows instead of a source-linked Hermes Tweet package entry.
 Reject hosted automation, app-action, chat-platform tool/function, and component galleries such as Zapier,
 Pipedream, Activepieces, Composio, Arcade, Toolhouse, Langflow, Open WebUI, LibreChat, Dify, Flowise, or AnythingLLM when the
