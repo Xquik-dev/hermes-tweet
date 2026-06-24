@@ -296,6 +296,9 @@ def test_merge_enablement_guide_requires_complete_pr_coverage() -> None:
     assert "author, head owner, base repository" in normalized_guide
     assert "unresolved review threads" in normalized_guide
     assert "verified `kriptoburak` branches" in guide
+    assert "aggregate `UNKNOWN` mergeability" in guide
+    assert "direct PR read" in guide
+    assert "direct read reports `DIRTY` or `CONFLICTING`" in normalized_guide
     assert "own-repo fallback PR" in guide
 
 

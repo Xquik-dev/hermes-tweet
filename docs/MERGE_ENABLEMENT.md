@@ -47,6 +47,12 @@ blocker is target-side, such as maintainer-only checks, account-credit failures,
 missing required contexts, or unavailable CI logs, record the evidence and avoid
 inventing code changes.
 
+Treat aggregate `UNKNOWN` mergeability as unhandled until a direct PR read
+confirms the current state. If that direct read reports `DIRTY` or
+`CONFLICTING` on a verified `kriptoburak` head branch, repair the branch before
+discovery. If the head branch is not controlled, record the owner, the conflict
+state, and the target-side evidence instead of attempting a repair.
+
 ## Outreach Gate
 
 Open a fresh external PR only after every in-scope open PR is either clean,
