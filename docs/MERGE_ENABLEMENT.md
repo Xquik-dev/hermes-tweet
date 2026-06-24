@@ -54,3 +54,8 @@ repaired, or recorded as target-side blocked. If no eligible external route
 survives crawler-first discovery and direct checks, use an own-repo fallback PR
 that improves future discovery, validation, submission readiness, safety checks,
 or merge enablement.
+
+When a candidate's duplicate PR search is rate-limited or otherwise incomplete,
+record the failed query and do not treat the target as eligible. Continue only
+when the target is already rejected on independent native-fit grounds, such as
+MCP-only registries, product-owned skill taps, or single-product plugin repos.
