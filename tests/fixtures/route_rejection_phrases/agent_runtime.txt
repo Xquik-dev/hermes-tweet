@@ -73,10 +73,6 @@ zip-only skill wrapper repos
 source-owned generated catalogs
 generated Hermes skill catalogs
 source-list catalog JSON files
-generated distribution mirrors
-read-only sync repositories
-catalog-only source-list shells
-manual edits are overwritten
 private-beta source-owned skill hubs
 skill provenance sidecar utilities
 personal workbench template catalogs
@@ -107,6 +103,11 @@ Character.AI bot directories
 GPT action directories, MCP UI registries
 MCP server discovery catalogs
 MCP-server-only submit forms
+protocol conformance registries
+platform-neutral product distribution hubs
+TIP-style manifest schema registries
+single-product marketplace manifests
+capability catalogs
 static MCP seed marketplaces
 official MCP registry mirrors
 upstream server lists
