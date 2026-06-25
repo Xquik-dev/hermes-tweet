@@ -26,6 +26,11 @@ sample agent card
 local demo agent
 discovery API
 plugin function instead of a source-linked
+agent tool registries
+ToolCard and ToolSpec registries
+onchain agent tool registries
+API/MCP/CLI tool metadata
+smart-contract tool manifests
 tenant or fleet skill registries
 database-backed MCP skill registry servers
 runtime/API code without a PR-editable source catalog lane
@@ -99,6 +104,11 @@ Character.AI bot directories
 GPT action directories, MCP UI registries
 MCP server discovery catalogs
 MCP-server-only submit forms
+protocol conformance registries
+platform-neutral product distribution hubs
+TIP-style manifest schema registries
+single-product marketplace manifests
+capability catalogs
 static MCP seed marketplaces
 official MCP registry mirrors
 upstream server lists

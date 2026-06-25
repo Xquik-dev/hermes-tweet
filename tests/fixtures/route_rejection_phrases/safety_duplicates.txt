@@ -393,6 +393,8 @@ GitHub-topic-only discovery CLIs
 VS Code Copilot marketplace publisher extensions
 external-PR-closing plugin marketplaces
 domain-specific skill bundles
+product-owned playbook repositories
+portfolio playbook repositories
 cybersecurity-only skill libraries
 Obsidian-only skill marketplaces
 brand-owned social media pipelines
@@ -549,6 +551,7 @@ public GitHub code search for live `Hermes Tweet`, `hermes-tweet`
 accepted default-branch listing
 record it in `docs/ECOSYSTEM.md`
 opening a duplicate submission
+stale source pin
 SkillX-style seed JSON with an existing open Hermes Tweet seed PR
 personal Claude Code plugin marketplace with an open Hermes Tweet plugin PR
 local `<plugin>/.claude-plugin/plugin.json` inside the target repository
