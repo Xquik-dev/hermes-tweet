@@ -39,8 +39,10 @@ lockfile advisory registries
 package metadata, formulae, crates
 dependency lookup servers
 ecosystem-native package entries
+capability catalogs
 auto-mirrored skill stores that only crawl another upstream catalog
 agent workflow source catalogs
+rulepack catalogs, Cursor rule marketplaces, repository instruction catalogs
 database-backed crowdsourced skill registry servers
 authenticated web/API skill submission queues
 generated distribution mirrors
