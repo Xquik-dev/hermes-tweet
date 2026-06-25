@@ -70,6 +70,7 @@ Reject generated catalog, marketplace, source-registry manifest, or installable
 catalog manifest files, including release-pinned vendor catalog files, unless target docs identify them as the canonical edit
 surface. When a target builds indexes from another source, submit only through
 the documented source file or generator input; skip it when that source cannot carry a target-native Hermes Tweet entry.
+Reject generated distribution mirrors, read-only sync repositories, and catalog-only source-list shells when their README says manual edits are overwritten or all entries are sourced from the maintainer's own upstream repo.
 Treat filename hits such as `catalog.json`, `registry.yaml`, `marketplaces.yml`, seed JSON, or tools YAML as evidence only; submit only when target docs mark that file as the PR-editable source for external source-linked package entries.
 Reject local-snapshot Codex plugin marketplaces and contribution workflows that
 require creating a local `<plugin>/.claude-plugin/plugin.json` inside the target repository or a vendored plugin
