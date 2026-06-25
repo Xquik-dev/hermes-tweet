@@ -899,7 +899,7 @@ Before opening or refreshing a submission:
 
 If a target already has a live Hermes Tweet entry or the same target already has an open Hermes Tweet PR, do not open another one.
 Refresh only when it fixes a concrete merge blocker, stale target-native
-wording, or broken validation evidence.
+wording, stale source pin, or broken validation evidence.
 
 ## Native Wording
 
