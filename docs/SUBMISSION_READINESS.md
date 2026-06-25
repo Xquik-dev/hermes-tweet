@@ -108,11 +108,7 @@ Letta, Semantic Kernel, Pydantic AI, AG2, CAMEL AI, Agno, allenday/a2a-registry,
 ericabouaf/a2a-registry, or Peer-to-Service when they require a runtime-specific tool implementation, adapter class, graph node, agent action, registry server,
 sample agent card, local demo agent, discovery API, or plugin function instead
 of a source-linked Hermes Tweet package entry.
-Reject agent tool registries, ToolCard and ToolSpec registries, onchain agent
-tool registries, and local tool-resolution catalogs when the route accepts
-API/MCP/CLI tool metadata, smart-contract tool manifests, hosted execution
-specs, or runtime adapters instead of Hermes Tweet's shipped source repository
-package.
+Reject agent tool registries, ToolCard and ToolSpec registries, onchain agent tool registries, and local tool-resolution catalogs when the route accepts API/MCP/CLI tool metadata, smart-contract tool manifests, hosted execution specs, or runtime adapters instead of Hermes Tweet's shipped source repository package.
 Reject hosted agent builder, assistant builder, toolgroup, and action-group
 catalogs such as Chainlit, Microsoft PromptFlow, Llama Stack, CopilotKit, Rasa
 CALM, or AWS Bedrock Agents when the route only accepts app-native tools,

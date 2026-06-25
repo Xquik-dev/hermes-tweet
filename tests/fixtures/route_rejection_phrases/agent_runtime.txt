@@ -73,10 +73,6 @@ zip-only skill wrapper repos
 source-owned generated catalogs
 generated Hermes skill catalogs
 source-list catalog JSON files
-generated distribution mirrors
-read-only sync repositories
-catalog-only source-list shells
-manual edits are overwritten
 private-beta source-owned skill hubs
 skill provenance sidecar utilities
 personal workbench template catalogs
