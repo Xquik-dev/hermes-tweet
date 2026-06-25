@@ -108,6 +108,11 @@ Letta, Semantic Kernel, Pydantic AI, AG2, CAMEL AI, Agno, allenday/a2a-registry,
 ericabouaf/a2a-registry, or Peer-to-Service when they require a runtime-specific tool implementation, adapter class, graph node, agent action, registry server,
 sample agent card, local demo agent, discovery API, or plugin function instead
 of a source-linked Hermes Tweet package entry.
+Reject agent tool registries, ToolCard and ToolSpec registries, onchain agent
+tool registries, and local tool-resolution catalogs when the route accepts
+API/MCP/CLI tool metadata, smart-contract tool manifests, hosted execution
+specs, or runtime adapters instead of Hermes Tweet's shipped source repository
+package.
 Reject hosted agent builder, assistant builder, toolgroup, and action-group
 catalogs such as Chainlit, Microsoft PromptFlow, Llama Stack, CopilotKit, Rasa
 CALM, or AWS Bedrock Agents when the route only accepts app-native tools,
@@ -899,8 +904,7 @@ Before opening or refreshing a submission:
   open a new issue instead of opening a direct PR.
 
 If a target already has a live Hermes Tweet entry or the same target already has an open Hermes Tweet PR, do not open another one.
-Refresh only when it fixes a concrete merge blocker, stale target-native
-wording, stale source pin, or broken validation evidence.
+Refresh only when it fixes a concrete merge blocker, stale target-native wording, stale source pin, or broken validation evidence.
 
 ## Native Wording
 
@@ -953,6 +957,4 @@ Public submissions must not include:
 - commands that require production SSH, browser login, manual legal acceptance,
   payment, or secret retrieval
 
-Keep public examples to placeholder environment variable names and documented
-Hermes Tweet settings: `XQUIK_API_KEY`, `XQUIK_BASE_URL`, and
-`HERMES_TWEET_ENABLE_ACTIONS`.
+Keep public examples to placeholder environment variable names and documented Hermes Tweet settings: `XQUIK_API_KEY`, `XQUIK_BASE_URL`, and `HERMES_TWEET_ENABLE_ACTIONS`.

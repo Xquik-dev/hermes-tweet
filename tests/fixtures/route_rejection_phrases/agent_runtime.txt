@@ -26,6 +26,11 @@ sample agent card
 local demo agent
 discovery API
 plugin function instead of a source-linked
+agent tool registries
+ToolCard and ToolSpec registries
+onchain agent tool registries
+API/MCP/CLI tool metadata
+smart-contract tool manifests
 tenant or fleet skill registries
 database-backed MCP skill registry servers
 runtime/API code without a PR-editable source catalog lane
