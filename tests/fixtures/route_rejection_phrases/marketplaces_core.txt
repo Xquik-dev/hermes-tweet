@@ -40,6 +40,8 @@ package metadata, formulae, crates
 dependency lookup servers
 ecosystem-native package entries
 capability catalogs
+generated product skill bundles
+registry tap repos
 auto-mirrored skill stores that only crawl another upstream catalog
 agent workflow source catalogs
 rulepack catalogs, Cursor rule marketplaces, repository instruction catalogs
