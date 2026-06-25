@@ -29,7 +29,12 @@ SAFE_PLACEHOLDERS = (
 )
 PRIVATE_TEXT_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("internal-cost", re.compile(r"\binternal cost\b", re.IGNORECASE)),
+    ("internal-pricing", re.compile(r"\binternal pricing\b", re.IGNORECASE)),
     ("private-vendor", re.compile(r"\bprivate vendor\b", re.IGNORECASE)),
+    (
+        "third-party-api-source",
+        re.compile(r"\bthird[- ]party API sources?\b", re.IGNORECASE),
+    ),
     ("runtime-artifact", re.compile(r"\b(login|write) screenshots?\b", re.IGNORECASE)),
 )
 

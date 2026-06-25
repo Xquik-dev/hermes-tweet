@@ -18,6 +18,11 @@ Write the raw enumeration and audit evidence to distinctive temporary files:
 
 Treat missing pages, partial JSON, API errors, rate limits, or ambiguous caps as
 incomplete coverage. Continue sharding or retrying until the audit is complete.
+Validate shard syntax against a known-positive control, such as the own-repo open
+PR list or a tracked open Hermes Tweet PR URL. If a shard unexpectedly returns
+zero while the control proves open PRs exist, record the failed syntax and rerun
+with explicit GitHub search flags or GraphQL variables before treating the shard
+as empty.
 
 ## Shard Budget Guard
 
@@ -30,6 +35,9 @@ If a shard expands into hundreds of endpoint reads, stop it, save a summary with
 `complete: false`, the reason, and the attempted query family, then rerun with
 narrower exact terms or date-windowed shards. Never treat an aborted broad run as
 coverage proof, even when a later bounded audit succeeds.
+Keep capped broad-shard URLs out of the canonical audit set. Store them as
+failed evidence only, then rebuild the canonical set from uncapped exact Hermes
+Tweet or Hermes Agent shards.
 
 ## Per-PR Audit
 
@@ -46,6 +54,10 @@ Repair controllable blockers only through verified `kriptoburak` branches. If a
 blocker is target-side, such as maintainer-only checks, account-credit failures,
 missing required contexts, or unavailable CI logs, record the evidence and avoid
 inventing code changes.
+When a dirty PR uses a third-party fork or a head owner other than
+`kriptoburak`, treat the conflict as non-controllable even when GitHub reports
+`maintainerCanModify`. Record the head owner and conflict state, then continue
+without pushing to that fork.
 
 Treat aggregate `UNKNOWN` mergeability as unhandled until a direct PR read
 confirms the current state. If that direct read reports `DIRTY` or
@@ -60,3 +72,8 @@ repaired, or recorded as target-side blocked. If no eligible external route
 survives crawler-first discovery and direct checks, use an own-repo fallback PR
 that improves future discovery, validation, submission readiness, safety checks,
 or merge enablement.
+
+When a candidate's duplicate PR search is rate-limited or otherwise incomplete,
+record the failed query and do not treat the target as eligible. Continue only
+when the target is already rejected on independent native-fit grounds, such as
+MCP-only registries, product-owned skill taps, or single-product plugin repos.
