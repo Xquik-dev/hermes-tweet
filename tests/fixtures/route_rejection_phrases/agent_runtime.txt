@@ -33,8 +33,6 @@ API/MCP/CLI tool metadata
 smart-contract tool manifests
 tenant or fleet skill registries
 database-backed MCP skill registry servers
-database-backed crowdsourced skill registry servers
-authenticated web/API skill submission queues
 runtime/API code without a PR-editable source catalog lane
 generated ranked tool datasets, issue-only tool directories
 slash-command plugin packs, command-pack marketplaces
