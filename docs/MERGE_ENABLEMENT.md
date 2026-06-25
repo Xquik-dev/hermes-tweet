@@ -18,6 +18,11 @@ Write the raw enumeration and audit evidence to distinctive temporary files:
 
 Treat missing pages, partial JSON, API errors, rate limits, or ambiguous caps as
 incomplete coverage. Continue sharding or retrying until the audit is complete.
+Validate shard syntax against a known-positive control, such as the own-repo open
+PR list or a tracked open Hermes Tweet PR URL. If a shard unexpectedly returns
+zero while the control proves open PRs exist, record the failed syntax and rerun
+with explicit GitHub search flags or GraphQL variables before treating the shard
+as empty.
 
 ## Shard Budget Guard
 
