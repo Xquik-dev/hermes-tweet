@@ -957,5 +957,4 @@ Public submissions must not include:
 - commands that require production SSH, browser login, manual legal acceptance,
   payment, or secret retrieval
 
-Keep public examples to placeholder environment variable names and documented Hermes Tweet settings:
-`XQUIK_API_KEY`, `XQUIK_BASE_URL`, and `HERMES_TWEET_ENABLE_ACTIONS`.
+Keep public examples to placeholder environment variable names and documented Hermes Tweet settings: `XQUIK_API_KEY`, `XQUIK_BASE_URL`, and `HERMES_TWEET_ENABLE_ACTIONS`.
