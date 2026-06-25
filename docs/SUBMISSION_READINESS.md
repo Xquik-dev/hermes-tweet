@@ -70,6 +70,7 @@ Reject generated catalog, marketplace, source-registry manifest, or installable
 catalog manifest files, including release-pinned vendor catalog files, unless target docs identify them as the canonical edit
 surface. When a target builds indexes from another source, submit only through
 the documented source file or generator input; skip it when that source cannot carry a target-native Hermes Tweet entry.
+Reject generated distribution mirrors, read-only sync repositories, and catalog-only source-list shells when their README says manual edits are overwritten or all entries are sourced from the maintainer's own upstream repo.
 Treat filename hits such as `catalog.json`, `registry.yaml`, `marketplaces.yml`, seed JSON, or tools YAML as evidence only; submit only when target docs mark that file as the PR-editable source for external source-linked package entries.
 Reject local-snapshot Codex plugin marketplaces and contribution workflows that
 require creating a local `<plugin>/.claude-plugin/plugin.json` inside the target repository or a vendored plugin
@@ -107,6 +108,7 @@ Letta, Semantic Kernel, Pydantic AI, AG2, CAMEL AI, Agno, allenday/a2a-registry,
 ericabouaf/a2a-registry, or Peer-to-Service when they require a runtime-specific tool implementation, adapter class, graph node, agent action, registry server,
 sample agent card, local demo agent, discovery API, or plugin function instead
 of a source-linked Hermes Tweet package entry.
+Reject agent tool registries, ToolCard and ToolSpec registries, onchain agent tool registries, and local tool-resolution catalogs when the route accepts API/MCP/CLI tool metadata, smart-contract tool manifests, hosted execution specs, or runtime adapters instead of Hermes Tweet's shipped source repository package.
 Reject hosted agent builder, assistant builder, toolgroup, and action-group
 catalogs such as Chainlit, Microsoft PromptFlow, Llama Stack, CopilotKit, Rasa
 CALM, or AWS Bedrock Agents when the route only accepts app-native tools,
@@ -118,6 +120,7 @@ Reject hosted AI app directories and assistant action galleries such as ChatGPT 
 Poe bot marketplaces, Character.AI bot directories, GPT action directories, MCP UI registries, MCP server discovery catalogs, MCP-server-only submit forms, static MCP seed marketplaces, official MCP registry mirrors, upstream server lists, Vercel AI SDK templates, or LangChain Hub snippets
 when they require app manifests, UI widgets, action schemas, custom assistant prompts, bot persona cards, SDK demos, hub snippets, or MCP server packages instead
 of a source-linked Hermes Tweet package entry, or when Hermes Tweet is not itself an MCP server and the target has no external non-MCP plugin entry surface.
+Reject protocol conformance registries, platform-neutral product distribution hubs, TIP-style manifest schema registries, and single-product marketplace manifests when they publish one product's adapters, validator schemas, capability catalogs, or install metadata instead of third-party source-linked Hermes Tweet package entries.
 Reject prompt, evaluation, benchmark leaderboard, eval task gallery, and observability hubs such as LangSmith Hub,
 PromptLayer, Langfuse, Braintrust, promptfoo, or OpenPipe when they only accept
 prompt templates, eval datasets, benchmark tasks, task suites, trace dashboards, eval configs, SDK snippets,
@@ -823,7 +826,7 @@ expose a PR-editable third-party source repository entry for Hermes Tweet's
 shipped package.
 Reject RPA and no-code automation marketplaces such as UiPath, Robocorp, n8n, Make, or Workato when they only accept bots, community nodes, workflow exports, automation recipes, or task templates instead of a source-linked Hermes Tweet package entry.
 Reject web-agent workflow libraries, browser-agent recipe libraries, automation runbook catalogs, and AI agent recipe collections when they only accept prompt-recipe collections, browser task demos, evaluation trace bundles, or platform-native action recipes instead of a PR-editable third-party Hermes Tweet package entry.
-Reject agent app-store manifests, AI assistant app directory manifests, chatbot app-store source catalogs, agent workflow template galleries, automation workflow marketplaces, workflow example libraries, and workflow-template marketplaces when they only accept app manifests, directory profile metadata, template recipes, workflow examples, or hosted workflow bundles instead of a PR-editable third-party source repository entry for Hermes Tweet.
+Reject agent app-store manifests, AI assistant app directory manifests, chatbot app-store source catalogs, agent workflow source catalogs, agent workflow template galleries, automation workflow marketplaces, workflow example libraries, and workflow-template marketplaces when they only accept app manifests, directory profile metadata, template recipes, workflow examples, generated indexes, or hosted workflow bundles instead of a PR-editable third-party source repository entry for Hermes Tweet.
 Reject prompt-only agent repositories, persona catalogs, system-prompt libraries, converted instruction mirrors, AI-native learning plugin marketplaces, and assistant profile collections when they only accept Markdown prompt files, role cards, usage examples, prompt quality checklists, training workflows, or prompt templates instead of a source-linked Hermes Tweet package entry.
 Reject embedded `.agents`, `.agent`, `.antigravity`, project-template, single-skill Claude templates, brand-specific agent skill packs, and copied skill directories inside application repositories unless the repository itself documents a third-party skill catalog, registry, or contribution lane. Treat those hits as downstream copies or mirrors, not fresh Hermes Tweet submission routes.
 Reject peer Hermes Agent plugin source repositories, plugin examples, showcase repos, and demo plugin repos unless the repository itself documents a PR-editable third-party plugin catalog, registry, or source-list lane. A repo being another Hermes Agent plugin is ecosystem evidence only; do not open Hermes Tweet outreach there unless it can accept a source-linked Hermes Tweet package entry without copying, translating, or repackaging Hermes Tweet.
@@ -898,8 +901,7 @@ Before opening or refreshing a submission:
   open a new issue instead of opening a direct PR.
 
 If a target already has a live Hermes Tweet entry or the same target already has an open Hermes Tweet PR, do not open another one.
-Refresh only when it fixes a concrete merge blocker, stale target-native
-wording, or broken validation evidence.
+Refresh only when it fixes a concrete merge blocker, stale target-native wording, stale source pin, or broken validation evidence.
 
 ## Native Wording
 
@@ -952,6 +954,4 @@ Public submissions must not include:
 - commands that require production SSH, browser login, manual legal acceptance,
   payment, or secret retrieval
 
-Keep public examples to placeholder environment variable names and documented
-Hermes Tweet settings: `XQUIK_API_KEY`, `XQUIK_BASE_URL`, and
-`HERMES_TWEET_ENABLE_ACTIONS`.
+Keep public examples to placeholder environment variable names and documented Hermes Tweet settings: `XQUIK_API_KEY`, `XQUIK_BASE_URL`, and `HERMES_TWEET_ENABLE_ACTIONS`.
