@@ -3,8 +3,6 @@ curated public skill catalogs that require maintainer proof or promotion evidenc
 registry CLIs whose author flow only discovers topic-tagged source repositories
 product-specific skill packs that require their platform access
 product-owned Hermes skill taps
-generated product skill bundles
-registry tap repos
 framework-specific plugin marketplaces, IDE agent extension marketplaces
 single-app tool collections, offline marketplace mirrors
 Dify, LangGraph, LlamaIndex, AutoGen, OpenAI Agents SDK
