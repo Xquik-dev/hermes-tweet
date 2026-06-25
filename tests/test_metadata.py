@@ -103,7 +103,7 @@ EXPECTED_LIVE_ECOSYSTEM_SURFACES = (
     ),
 )
 SETUP_UV_ACTION = "astral-sh/setup-uv@v8.2.0"
-CHECKOUT_ACTION_SHA = "actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10"
+CHECKOUT_ACTION_SHA = "actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0"
 HOL_PLUGIN_SCANNER_ACTION_SHA = (
     "hashgraph-online/ai-plugin-scanner-action@2af72e4dbb706a91c291df233cedc44ee5460065"
 )
