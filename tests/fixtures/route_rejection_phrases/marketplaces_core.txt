@@ -41,6 +41,8 @@ dependency lookup servers
 ecosystem-native package entries
 auto-mirrored skill stores that only crawl another upstream catalog
 agent workflow source catalogs
+database-backed crowdsourced skill registry servers
+authenticated web/API skill submission queues
 generated distribution mirrors
 read-only sync repositories
 catalog-only source-list shells
