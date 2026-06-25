@@ -420,6 +420,11 @@ live catalog MCP wrappers whose native source repo already closed a Hermes Tweet
 `.openhands`, Smithery, Glama, PulseMCP
 Hermes-specific operator guides
 profile playbooks
+owner-specific Codex plugin marketplaces
+single-product Codex plugin marketplaces
+hosted skill-protocol entrypoints
+OpenClaw landing-page apps
+paid-skill storefront shells
 swarm specs
 companion architecture repos
 FrankX/Starlight
