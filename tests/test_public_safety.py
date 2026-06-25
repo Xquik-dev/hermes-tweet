@@ -92,6 +92,17 @@ def test_scan_line_flags_private_public_wording() -> None:
     assert finding_labels(findings) == ["internal-cost", "private-vendor"]
 
 
+def test_scan_line_flags_source_and_pricing_wording() -> None:
+    line = f"Remove third-party API source and {'internal'} pricing wording."
+
+    findings = check_public_safety.scan_line(Path("docs/example.md"), 13, line)
+
+    assert finding_labels(findings) == [
+        "internal-pricing",
+        "third-party-api-source",
+    ]
+
+
 def test_public_safety_scan_includes_agent_instructions() -> None:
     assert "AGENTS.md" in check_public_safety.PUBLIC_TEXT_FILES
 
