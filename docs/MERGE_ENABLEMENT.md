@@ -30,6 +30,9 @@ If a shard expands into hundreds of endpoint reads, stop it, save a summary with
 `complete: false`, the reason, and the attempted query family, then rerun with
 narrower exact terms or date-windowed shards. Never treat an aborted broad run as
 coverage proof, even when a later bounded audit succeeds.
+Keep capped broad-shard URLs out of the canonical audit set. Store them as
+failed evidence only, then rebuild the canonical set from uncapped exact Hermes
+Tweet or Hermes Agent shards.
 
 ## Per-PR Audit
 
