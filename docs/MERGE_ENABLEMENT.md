@@ -49,6 +49,10 @@ Repair controllable blockers only through verified `kriptoburak` branches. If a
 blocker is target-side, such as maintainer-only checks, account-credit failures,
 missing required contexts, or unavailable CI logs, record the evidence and avoid
 inventing code changes.
+When a dirty PR uses a third-party fork or a head owner other than
+`kriptoburak`, treat the conflict as non-controllable even when GitHub reports
+`maintainerCanModify`. Record the head owner and conflict state, then continue
+without pushing to that fork.
 
 ## Outreach Gate
 
