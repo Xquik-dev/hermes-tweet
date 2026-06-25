@@ -59,6 +59,12 @@ When a dirty PR uses a third-party fork or a head owner other than
 `maintainerCanModify`. Record the head owner and conflict state, then continue
 without pushing to that fork.
 
+Treat aggregate `UNKNOWN` mergeability as unhandled until a direct PR read
+confirms the current state. If that direct read reports `DIRTY` or
+`CONFLICTING` on a verified `kriptoburak` head branch, repair the branch before
+discovery. If the head branch is not controlled, record the owner, the conflict
+state, and the target-side evidence instead of attempting a repair.
+
 ## Outreach Gate
 
 Open a fresh external PR only after every in-scope open PR is either clean,
