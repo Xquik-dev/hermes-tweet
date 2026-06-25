@@ -36,7 +36,6 @@ database-backed MCP skill registry servers
 runtime/API code without a PR-editable source catalog lane
 generated ranked tool datasets, issue-only tool directories
 slash-command plugin packs, command-pack marketplaces
-rulepack catalogs, Cursor rule marketplaces, repository instruction catalogs
 hosted agent builder, assistant builder, toolgroup, and action-group
 Chainlit, Microsoft PromptFlow, Llama Stack, CopilotKit, Rasa
 CALM, or AWS Bedrock Agents
@@ -108,7 +107,6 @@ protocol conformance registries
 platform-neutral product distribution hubs
 TIP-style manifest schema registries
 single-product marketplace manifests
-capability catalogs
 static MCP seed marketplaces
 official MCP registry mirrors
 upstream server lists
