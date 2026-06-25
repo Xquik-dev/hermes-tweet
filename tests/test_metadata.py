@@ -103,9 +103,9 @@ EXPECTED_LIVE_ECOSYSTEM_SURFACES = (
     ),
 )
 SETUP_UV_ACTION = "astral-sh/setup-uv@v8.2.0"
-CHECKOUT_ACTION_SHA = "actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10"
+CHECKOUT_ACTION_SHA = "actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0"
 HOL_PLUGIN_SCANNER_ACTION_SHA = (
-    "hashgraph-online/ai-plugin-scanner-action@7efab6be3cc2e2b020492c77f769963070905d6e"
+    "hashgraph-online/ai-plugin-scanner-action@2af72e4dbb706a91c291df233cedc44ee5460065"
 )
 ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
 BLACKSMITH_RUNNER_LABEL = "blacksmith-2vcpu-ubuntu-2404"
