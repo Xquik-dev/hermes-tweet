@@ -86,7 +86,7 @@ generated awesome Claude plugin indexes
 agent connector registries
 AI agent connector catalogs
 assistant connector registries
-LLM agent connector hubs
+LLM agent connector hubs, AI framework connector registry, agent framework adapter catalog, LLM orchestration framework integrations, RAG framework component integrations, workflow AI framework tools registry
 agent integration marketplaces
 connector-registry product repos
 personal Claude Code/Codex plugin marketplaces
