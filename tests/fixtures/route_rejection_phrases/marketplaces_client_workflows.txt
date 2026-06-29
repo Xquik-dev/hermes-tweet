@@ -37,3 +37,7 @@ domain-only SRE skill libraries
 public agent memory vaults
 single-product setup-stack runbooks
 project workbench template catalogs
+community-support skill registries
+moderation agent skill registries
+forum-support agent catalogs
+customer-support agent skill marketplaces
