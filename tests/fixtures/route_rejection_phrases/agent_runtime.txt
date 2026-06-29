@@ -90,7 +90,7 @@ LLM agent connector hubs, agent identity credential plugin registries, AI agent 
 framework-owned `.claude-plugin` marketplace manifests, MCP app builder skill bundles, agent sandbox execution runtimes, code-execution sandbox frameworks, MCP filesystem sandbox servers, agent red-team audit tools, agent benchmark tool directories
 embedded framework examples, owned tool registries, sandbox runtimes, local execution engines, red-team scanners, benchmark harnesses
 agent integration marketplaces, connector-registry product repos
-personal Claude Code/Codex plugin marketplaces, owner-branded memory plugin marketplaces, context-memory Claude plugin marketplaces, topic-auto-indexed Hermes plugin hubs, empty Hermes vault catalogs, coming-soon source-owned plugin marketplaces, personal AI CLI configuration marketplaces
+personal Claude Code/Codex plugin marketplaces, owner-branded memory plugin marketplaces, context-memory Claude plugin marketplaces, topic-auto-indexed Hermes plugin hubs, empty Hermes vault catalogs, coming-soon source-owned plugin marketplaces, personal AI CLI configuration marketplaces, owner-specific AI CLI configuration marketplaces
 source-owned first-party plugin bundles, already-merged catalog listings
 marketplace-keyword application repos
 training workflows
