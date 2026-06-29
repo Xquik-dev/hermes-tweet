@@ -533,6 +533,7 @@ Final Cut Pro plugin marketplaces
 DAW plugin marketplaces
 podcast app marketplaces
 source-agnostic skill package managers
+RagCode skill pack registries
 audio plugin marketplaces
 HeyGen integrations
 Synthesia app marketplaces

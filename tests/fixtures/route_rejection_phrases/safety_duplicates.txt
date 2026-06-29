@@ -429,6 +429,7 @@ seed JSON, or tools YAML
 evidence only
 personal agent memory repositories
 agent memory pack registries
+cross-agent memory plugin marketplaces
 OpenHands microagent folders
 hosted MCP directory profile pages
 live catalog MCP wrappers
@@ -466,6 +467,8 @@ runtime-owned tool schemas
 agent protocol manifests
 capability schemas
 agent governance registries
+AI talent governance registries
+on-chain AI agent registries
 AI policy playbooks
 moderation or safety control catalogs
 MCP registry governance servers
