@@ -299,6 +299,8 @@ def test_merge_enablement_guide_requires_complete_pr_coverage() -> None:
     assert "aggregate `UNKNOWN` mergeability" in guide
     assert "direct PR read" in guide
     assert "direct read reports `DIRTY` or `CONFLICTING`" in normalized_guide
+    assert "prepared fork branch as outreach" in guide
+    assert "record the API error" in guide
     assert "own-repo fallback PR" in guide
 
 

@@ -72,6 +72,9 @@ repaired, or recorded as target-side blocked. If no eligible external route
 survives crawler-first discovery and direct checks, use an own-repo fallback PR
 that improves future discovery, validation, submission readiness, safety checks,
 or merge enablement.
+Do not count a prepared fork branch as outreach. If GitHub rejects PR creation,
+record the API error, keep the branch as proof only, and continue with another
+eligible route or an own-repo fallback PR.
 
 When a candidate's duplicate PR search is rate-limited or otherwise incomplete,
 record the failed query and do not treat the target as eligible. Continue only
