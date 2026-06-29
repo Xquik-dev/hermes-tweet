@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import sys
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Final, cast
@@ -65,7 +66,7 @@ PAGE_CHECKS: Final = (
 SOURCE_CHECKS: Final = (
     SourceCheck(
         path="hermes_cli/plugins.py",
-        expected_sha="e4d0afd7c8b5316479fe7f89cf47c7a41d85d370",
+        expected_sha="d343b077a7a3fdbd91b3cc62dc221992e7cba537",
         required_terms=(
             "ENTRY_POINTS_GROUP",
             "hermes_agent.plugins",
@@ -111,6 +112,14 @@ SOURCE_CHECKS: Final = (
 
 def missing_terms(text: str, required_terms: Sequence[str]) -> list[str]:
     return [term for term in required_terms if term not in text]
+
+
+def github_headers() -> dict[str, str]:
+    headers = {"Accept": "application/vnd.github+json", "User-Agent": USER_AGENT}
+    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    return headers
 
 
 def check_page(client: httpx.Client, check: PageCheck) -> list[str]:
@@ -177,11 +186,10 @@ def check_source(client: httpx.Client, check: SourceCheck) -> list[str]:
 
 
 def run_checks() -> list[str]:
-    headers = {"Accept": "application/vnd.github+json", "User-Agent": USER_AGENT}
     timeout = httpx.Timeout(DOC_TIMEOUT_SECONDS)
     errors: list[str] = []
 
-    with httpx.Client(follow_redirects=True, headers=headers, timeout=timeout) as client:
+    with httpx.Client(follow_redirects=True, headers=github_headers(), timeout=timeout) as client:
         for page_check in PAGE_CHECKS:
             errors.extend(check_page(client, page_check))
         for source_check in SOURCE_CHECKS:
