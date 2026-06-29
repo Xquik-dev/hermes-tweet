@@ -441,6 +441,7 @@ agent capability registries
 tool-vault directories
 tools YAML registries
 catalog drift analyzers
+CLI-publish registry apps with only test fixtures
 internal tool-registry backends
 agent app tool dumps
 toolmirror-style diff tools
