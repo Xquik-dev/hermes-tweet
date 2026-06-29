@@ -65,3 +65,7 @@ agent infrastructure awesome lists
 AI gateway registry proxies
 pre-deployment agent registries
 content-addressed skill registry loadout systems
+Git-backed AI asset registry CLIs with bundled sample assets
+Discord Watchtower agent economy frameworks
+personal chatops Claude plugin bundles
+malformed terms-of-service dump repositories
