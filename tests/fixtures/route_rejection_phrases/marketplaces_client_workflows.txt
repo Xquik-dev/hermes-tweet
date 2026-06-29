@@ -25,6 +25,12 @@ single-plugin harness scaffolders
 agent-hiring relay skills
 OpenClaw-only telemetry plugins
 product-owned optimization skill catalogs
+auto-synced aggregation catalogs
+source-repo-only skill aggregation catalogs
+research-only multi-CLI skill catalogs
+SimpleContext memory plugin registries
+first-party safety observability plugin catalogs
+Hermes workflow orchestration marketplaces
 dialect-only open memory marketplaces
 agent reliability signal exchanges
 agent trust signal registries
