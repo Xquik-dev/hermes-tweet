@@ -574,6 +574,22 @@ equipment data connectors
 field operations workflows
 crop scouting tools
 Claude Code plugin marketplace templates
+developer productivity agent marketplaces
+coding assistant skill registries
+agentic IDE plugin catalogs
+software engineering agent skill directories
+code review agent marketplaces
+pull request agent plugin registries
+developer workflow agent catalogs
+Copilot plugin sync marketplaces
+generated VS Code agent plugin marketplaces
+upstream-only plugin sync mirrors
+personal Codex plugin marketplace catalogs
+owner-owned git-subdir plugin catalogs
+community skill search indexes
+token-efficient skill resolution APIs
+external skill import CLIs
+AI skills registry CLIs without Hermes lanes
 profile-manager curated marketplace apps
 AI product-team agent packs
 team-owned Claude plugin marketplaces
