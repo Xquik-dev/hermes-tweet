@@ -26,10 +26,8 @@ license metadata or an absent root license is review context, not a blocker.
 Note the absence when useful, but reject only explicit incompatible licenses or terms that prohibit outside contributions. Reject personal Claude Code plugin marketplaces, Claude-only plugin marketplace hubs without Hermes Agent lanes, README-only marketplace shells, owner-only public Claude Code catalogs whose README says every plugin lives in that owner's repositories, developer-workflow-only marketplaces without social, X/Twitter, Hermes Agent, or external source-repository lanes, verified product skill catalogs, or product-owned
 marketplaces that describe themselves as owner-specific, team-specific, owner-curated, or closed to random additions unless their docs clearly invite third-party Hermes Tweet submissions.
 Reject branded Claude plugin catalogs that describe themselves as the official
-catalog for one vendor, team, or product family. If the catalog says plugin
-updates flow from that owner's source repositories, treat it as a compatibility
-example, not a third-party submission route, unless the docs explicitly accept
-outside source repositories.
+catalog for one vendor, team, or product family, including owner-branded Claude
+plugin catalogs with owner-owned marketplace manifests. If plugin updates flow from that owner's source repositories or the catalog invites PRs but every plugin, install namespace, or source repository is owner-scoped, treat it as a compatibility example, not a third-party submission route, unless the docs explicitly accept outside source repositories.
 A `source.github` or similar repository-pointer schema is not enough by itself:
 when the marketplace instructions say it is the canonical hub for the owner's
 own skills, reject it unless the contribution docs explicitly invite outside
