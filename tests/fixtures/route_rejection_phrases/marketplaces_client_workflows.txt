@@ -10,3 +10,11 @@ Grounded Intelligence client plugin marketplaces
 team agent workflow builder plugins
 data-space MCP connector plugins
 any-MCP-client product plugin repos
+agent reliability signal exchanges
+agent trust signal registries
+AI agent tool rating registries
+agent tool usage signal APIs
+agent leaderboard registries
+well-known agent tools registries
+open-source AI agent trust leaderboards
+public agent trust score registries
