@@ -7,6 +7,7 @@ workflow builder plugin marketplaces
 AI automation canvas agent registries
 app builder Claude plugin marketplaces
 Grounded Intelligence client plugin marketplaces
+owner-branded Claude plugin catalogs with owner-owned marketplace manifests
 team agent workflow builder plugins
 data-space MCP connector plugins
 any-MCP-client product plugin repos
