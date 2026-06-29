@@ -14,6 +14,9 @@ any-MCP-client product plugin repos
 generated developer-tool MCP hubs
 source-owned translation plugin catalogs
 database-backed MVP marketplace apps without source catalog seeds
+finance-only local skill bundles
+owner-specific MCP wrapper suites
+always-on companion harness plugins
 dialect-only open memory marketplaces
 agent reliability signal exchanges
 agent trust signal registries
