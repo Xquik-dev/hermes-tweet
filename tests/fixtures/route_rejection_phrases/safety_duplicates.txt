@@ -484,10 +484,10 @@ hosted first-party MCP plugin repos
 A2A governance marketplaces
 context-governance playbooks
 Gumloop-style hosted plugins
-agent approval workflow demos
+agent permission guardrail registries and agent approval workflow demos
 live endpoint registrations
 policy templates
-risk-control evidence
+risk-control evidence, permission ceilings, policy-plugin manifests
 owner-specific plugin metadata
 runtime-owned tool catalog metadata
 incident evidence
