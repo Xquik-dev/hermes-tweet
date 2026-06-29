@@ -23,7 +23,7 @@ Do not submit when the target is only a browser-cookie workflow, only a
 TweetClaw route, a generic Xquik MCP server data entry, unrelated to X/Twitter
 or Hermes Agent, archived, or explicitly incompatible with contribution. Missing
 license metadata or an absent root license is review context, not a blocker.
-Note the absence when useful, but reject only explicit incompatible licenses or terms that prohibit outside contributions. Reject personal Claude Code plugin marketplaces, README-only marketplace shells, owner-only public Claude Code catalogs whose README says every plugin lives in that owner's repositories, developer-workflow-only marketplaces without social, X/Twitter, Hermes Agent, or external source-repository lanes, verified product skill catalogs, or product-owned
+Note the absence when useful, but reject only explicit incompatible licenses or terms that prohibit outside contributions. Reject personal Claude Code plugin marketplaces, Claude-only plugin marketplace hubs without Hermes Agent lanes, README-only marketplace shells, owner-only public Claude Code catalogs whose README says every plugin lives in that owner's repositories, developer-workflow-only marketplaces without social, X/Twitter, Hermes Agent, or external source-repository lanes, verified product skill catalogs, or product-owned
 marketplaces that describe themselves as owner-specific, team-specific, owner-curated, or closed to random additions unless their docs clearly invite third-party Hermes Tweet submissions.
 Reject branded Claude plugin catalogs that describe themselves as the official
 catalog for one vendor, team, or product family. If the catalog says plugin
@@ -88,7 +88,7 @@ file intended for external additions. Topic metadata such as `agent-skills`,
 `claude-code-plugin`, `mcp-server`, or `awesome-list` is discovery evidence
 only; it is not a native submission route without an editable third-party entry
 surface.
-Reject curated public skill catalogs that require maintainer proof or promotion evidence before a skill enters the public tree, registry CLIs whose author flow only discovers topic-tagged source repositories instead of accepting PR-editable source entries, and product-specific skill packs that require their platform access. Reject product-owned Hermes skill taps, generated product skill bundles, and registry tap repos when the repository is the install source for one vendor's own skill set and has no PR-editable third-party source-entry lane.
+Reject curated public skill catalogs that require maintainer proof or promotion evidence before a skill enters the public tree, registry CLIs whose author flow only discovers topic-tagged source repositories instead of accepting PR-editable source entries, and product-specific skill packs that require their platform access. Reject product-owned Hermes skill taps, product-owned Hermes skill tap repos, generated product skill bundles, NSFW X/Twitter single-skill source repos, and registry tap repos when the repository is the install source for one vendor's own skill set and has no PR-editable third-party source-entry lane.
 Reject framework-specific plugin marketplaces, IDE agent extension marketplaces,
 single-app tool collections, offline marketplace mirrors, one-plugin product Codex marketplaces, or SDK tool packages
 such as Dify, LangGraph, LlamaIndex, AutoGen, OpenAI Agents SDK, Cline, Roo
