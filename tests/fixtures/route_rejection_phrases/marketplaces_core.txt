@@ -573,3 +573,12 @@ precision agriculture catalogs
 equipment data connectors
 field operations workflows
 crop scouting tools
+Claude Code plugin marketplace templates
+profile-manager curated marketplace apps
+AI product-team agent packs
+team-owned Claude plugin marketplaces
+AI teammate plugin marketplaces
+agent workspace app directories
+agent team command marketplaces
+AI coworker extension catalogs
+autonomous agent team plugin hubs
