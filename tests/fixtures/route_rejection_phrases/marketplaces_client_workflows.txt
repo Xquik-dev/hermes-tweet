@@ -31,3 +31,9 @@ public agent trust score registries
 site-content production skill catalogs
 admin-synced in-app skill libraries
 environment-configured skill ingestion services
+operator runbook packs
+self-setup Hermes starter packs
+domain-only SRE skill libraries
+public agent memory vaults
+single-product setup-stack runbooks
+project workbench template catalogs
