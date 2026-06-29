@@ -113,6 +113,11 @@ vCard, contact-card
 creator landing-page
 supply-chain attack demo marketplaces
 signed-skill registry prototypes
+signed AgentPlane recipe catalogs
+commercial Recipes meta-skill storefronts
+agent commerce API marketplaces
+ClawRecipes marketplace applications
+Claude Code skills marketplaces with unrelated business integration recipes
 marketplace security-awareness landing pages
 toy marketplace-provenance workspaces
 peer X/Twitter agent skill source repos
