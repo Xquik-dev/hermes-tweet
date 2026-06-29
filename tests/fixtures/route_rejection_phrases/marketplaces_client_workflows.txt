@@ -12,6 +12,14 @@ data-space MCP connector plugins
 any-MCP-client product plugin repos
 agent reliability signal exchanges
 agent trust signal registries
+agent provenance registries
+AI agent verification registries
+agent trust badge registries
+agent package provenance catalogs
+AI agent scorecard registries
+agent supply chain scorecard registries
+agent certification marketplaces
+AI agent attestation directories
 AI agent tool rating registries
 agent tool usage signal APIs
 agent leaderboard registries
