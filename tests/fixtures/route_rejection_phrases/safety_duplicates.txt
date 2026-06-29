@@ -119,6 +119,9 @@ peer X/Twitter agent skill source repos
 social-production plugin source repos
 product-specific X/Twitter growth skill repos
 peer X/Twitter CLI or MCP source repos
+Claude-only plugin marketplace hubs without Hermes Agent lanes
+product-owned Hermes skill tap repos
+NSFW X/Twitter single-skill source repos
 bookmark manager catalogs
 web-clipping marketplaces
 Linktree integrations
