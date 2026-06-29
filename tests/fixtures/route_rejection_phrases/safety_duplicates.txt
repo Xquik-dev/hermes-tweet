@@ -112,7 +112,7 @@ email signature
 vCard, contact-card
 creator landing-page
 supply-chain attack demo marketplaces
-signed-skill registry prototypes
+signed-skill registry prototypes and offline-key signed manifest workflows
 signed AgentPlane recipe catalogs
 commercial Recipes meta-skill storefronts
 agent commerce API marketplaces
