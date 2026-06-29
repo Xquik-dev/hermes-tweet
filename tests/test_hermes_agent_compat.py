@@ -53,11 +53,24 @@ def test_missing_terms_reports_only_absent_terms() -> None:
     assert missing == ["requires_env"]
 
 
+def test_github_headers_adds_optional_token(monkeypatch: Any) -> None:
+    monkeypatch.delenv("GITHUB_TOKEN", raising=False)
+    monkeypatch.setenv("GH_TOKEN", "test-token")
+
+    headers = compat.github_headers()
+
+    assert headers == {
+        "Accept": "application/vnd.github+json",
+        "Authorization": "Bearer test-token",
+        "User-Agent": compat.USER_AGENT,
+    }
+
+
 def test_source_checks_track_reviewed_hermes_agent_locks() -> None:
     locks = {check.path: check.expected_sha for check in compat.SOURCE_CHECKS}
 
     assert locks == {
-        "hermes_cli/plugins.py": "e4d0afd7c8b5316479fe7f89cf47c7a41d85d370",
+        "hermes_cli/plugins.py": "d343b077a7a3fdbd91b3cc62dc221992e7cba537",
         "tools/registry.py": "09f8632e29ece8860b1371dc5ea95babf7d4ce0f",
         "hermes_cli/plugins_cmd.py": "0a5aa8c0fd03d6f4e34951e5242a469a2d07f331",
     }

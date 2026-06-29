@@ -451,6 +451,12 @@ capability schemas
 agent governance registries
 AI policy playbooks
 moderation or safety control catalogs
+MCP registry governance servers
+organization-scoped MCP catalog servers
+enterprise AI agent catalog product repos
+AI agent incident corpora
+cloud marketplace-style agent tool catalogs
+catalog-less protocol integration registries
 hosted first-party MCP plugin repos
 A2A governance marketplaces
 context-governance playbooks
@@ -460,6 +466,8 @@ live endpoint registrations
 policy templates
 risk-control evidence
 owner-specific plugin metadata
+runtime-owned tool catalog metadata
+incident evidence
 evaluation guardrails
 PR-editable third-party Hermes Tweet package entry
 contribution rules require measurable community usage
