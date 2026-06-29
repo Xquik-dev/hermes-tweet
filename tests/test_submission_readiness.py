@@ -7,6 +7,7 @@ SUBMISSION_READINESS_PATH = ROOT / "docs" / "SUBMISSION_READINESS.md"
 PHRASE_DIR = ROOT / "tests" / "fixtures" / "route_rejection_phrases"
 EXPECTED_PHRASE_FILES = (
     "agent_runtime.txt",
+    "marketplaces_client_workflows.txt",
     "marketplaces_core.txt",
     "marketplaces_people_governance.txt",
     "marketplaces_specialized.txt",
