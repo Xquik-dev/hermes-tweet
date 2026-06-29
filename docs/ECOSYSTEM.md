@@ -40,7 +40,7 @@ follow-up belong outside the public repository. Use
 | Awesome AI Plugins Hermes Tweet plugin | <https://github.com/hashgraph-online/awesome-ai-plugins/blob/main/plugins.json> |
 | Awesome Agent Tools Hermes Tweet entry | <https://github.com/Awakehsh/awesome-agent-tools/blob/main/AWESOME.md> |
 | Chat2AnyLLM skill repo config | <https://github.com/Chat2AnyLLM/awesome-repo-configs/blob/main/skill_repos.json> |
-| CorpusIQ Hermes Tweet ecosystem entry | <https://github.com/CorpusIQ/corpusiq-docs/blob/main/hermes/ecosystem.md> |
+| CorpusIQ Hermes Tweet ecosystem entry | <https://github.com/CorpusIQ/corpusiq-docs/blob/main/hermes/ecosystem/index.md> |
 | Awesome Claude Code And Skills Hermes Tweet listing | <https://github.com/GetBindu/awesome-claude-code-and-skills/blob/main/readme.md> |
 | Awesome Hermes Agent plugin listing | <https://github.com/SamurAIGPT/awesome-hermes-agent#plugins> |
 | Gaia Skill Tree Hermes Tweet named skill | <https://github.com/mbtiongson1/gaia-skill-tree/blob/main/registry/named/xquik-dev/hermes-tweet.md> |

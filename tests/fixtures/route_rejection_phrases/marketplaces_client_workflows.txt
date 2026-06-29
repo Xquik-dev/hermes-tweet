@@ -20,6 +20,11 @@ database-backed MVP marketplace apps without source catalog seeds
 finance-only local skill bundles
 owner-specific MCP wrapper suites
 always-on companion harness plugins
+ADK-specific agent framework plugin suites
+single-plugin harness scaffolders
+agent-hiring relay skills
+OpenClaw-only telemetry plugins
+product-owned optimization skill catalogs
 dialect-only open memory marketplaces
 agent reliability signal exchanges
 agent trust signal registries
