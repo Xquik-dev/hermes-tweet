@@ -48,6 +48,10 @@ agent leaderboard registries
 well-known agent tools registries
 open-source AI agent trust leaderboards
 public agent trust score registries
+URL-source personal Claude Code marketplaces
+maintainer-only agent-evaluation platform plugin marketplaces
+first-party agent commerce MCP servers
+single-plugin validation marketplaces
 site-content production skill catalogs
 admin-synced in-app skill libraries
 environment-configured skill ingestion services
