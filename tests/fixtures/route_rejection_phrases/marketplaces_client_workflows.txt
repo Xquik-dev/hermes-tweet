@@ -28,3 +28,6 @@ agent leaderboard registries
 well-known agent tools registries
 open-source AI agent trust leaderboards
 public agent trust score registries
+site-content production skill catalogs
+admin-synced in-app skill libraries
+environment-configured skill ingestion services
