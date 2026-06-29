@@ -11,6 +11,9 @@ owner-branded Claude plugin catalogs with owner-owned marketplace manifests
 team agent workflow builder plugins
 data-space MCP connector plugins
 any-MCP-client product plugin repos
+generated developer-tool MCP hubs
+source-owned translation plugin catalogs
+database-backed MVP marketplace apps without source catalog seeds
 dialect-only open memory marketplaces
 agent reliability signal exchanges
 agent trust signal registries
