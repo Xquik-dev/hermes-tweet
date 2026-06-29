@@ -467,8 +467,8 @@ agent app tool dumps
 toolmirror-style diff tools
 organizational LLM tool registry apps
 runtime-owned tool schemas
-agent protocol manifests
-capability schemas
+agent protocol manifests with endpoint URIs
+capability schemas for live agent/tool endpoints
 agent governance registries
 AI talent governance registries
 on-chain AI agent registries
@@ -485,7 +485,7 @@ A2A governance marketplaces
 context-governance playbooks
 Gumloop-style hosted plugins
 agent permission guardrail registries and agent approval workflow demos
-live endpoint registrations
+live agent/tool endpoint registrations
 policy templates
 risk-control evidence, permission ceilings, policy-plugin manifests
 owner-specific plugin metadata
