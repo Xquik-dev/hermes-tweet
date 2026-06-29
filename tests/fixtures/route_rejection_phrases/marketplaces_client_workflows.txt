@@ -73,3 +73,7 @@ framework-aware Agent Skills marketplaces without social or Hermes package lanes
 documentation-only Claude Code skill marketplaces
 code-review Agent Skills marketplaces
 native `SKILL.md`-only contribution lanes
+Aeon-only skill pack registries
+website-specific browser automation skill libraries
+desktop assistant app marketplaces
+browser MCP automation thread catalogs
