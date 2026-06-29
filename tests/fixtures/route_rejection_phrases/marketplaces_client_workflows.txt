@@ -13,6 +13,9 @@ data-space MCP connector plugins
 any-MCP-client product plugin repos
 generated developer-tool MCP hubs
 source-owned translation plugin catalogs
+installer-only Claude marketplace bridges
+official first-party social plugin suites
+accessibility-only developer toolkit marketplaces
 database-backed MVP marketplace apps without source catalog seeds
 finance-only local skill bundles
 owner-specific MCP wrapper suites
