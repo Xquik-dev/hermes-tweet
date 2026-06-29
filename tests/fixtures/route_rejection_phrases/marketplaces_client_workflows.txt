@@ -69,3 +69,7 @@ Git-backed AI asset registry CLIs with bundled sample assets
 Discord Watchtower agent economy frameworks
 personal chatops Claude plugin bundles
 malformed terms-of-service dump repositories
+framework-aware Agent Skills marketplaces without social or Hermes package lanes
+documentation-only Claude Code skill marketplaces
+code-review Agent Skills marketplaces
+native `SKILL.md`-only contribution lanes
