@@ -441,11 +441,14 @@ owner-specific Codex plugin marketplaces
 single-product Codex plugin marketplaces
 hosted skill-protocol entrypoints
 OpenClaw landing-page apps
+Paperclip-only npm plugin hubs
 paid-skill storefront shells
 swarm specs
 companion architecture repos
 FrankX/Starlight
 third-party source/catalog entry
+source-owned workflow recipe hubs
+Telegram bridge plugin marketplaces
 copying, translating, or repackaging it
 owner-operated MCP plugin repositories
 Gumloop-hosted MCP plugin repos
@@ -554,6 +557,8 @@ platform-native action recipes
 agent app-store manifests
 AI assistant app directory manifests
 workflow-template marketplaces
+agent workflow recipe registries
+action recipe catalogs
 prompt-only agent repositories
 persona catalogs
 system-prompt libraries

@@ -58,14 +58,14 @@ agent skill graph catalogs
 agent tool hub source registries
 assistant extension index manifests
 agent capability manifest catalogs
-agent protocol plugin marketplaces
+agent protocol plugin marketplaces, agent protocol bridge catalogs
 methodology-owned skill marketplaces
 agent operating system plugin marketplaces
 multi-agent collaboration plugin hubs
 company-specific data workflow skill marketplaces
 source-owned Codex skill marketplace mirrors
 framework-aware coding skill marketplaces without social or Hermes lanes
-owner-specific plugin bundles
+owner-specific plugin bundles, owner-specific global agent hubs
 owner-only public Claude Code catalogs whose README says every plugin lives in that owner's repositories
 developer-workflow-only marketplaces without social, X/Twitter, Hermes Agent, or external source-repository lanes
 account-dependent social research skills that forbid private accounts, local credentials, or paid service dependencies
