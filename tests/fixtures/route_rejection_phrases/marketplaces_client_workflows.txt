@@ -81,3 +81,7 @@ Aeon-only skill pack registries
 website-specific browser automation skill libraries
 desktop assistant app marketplaces
 browser MCP automation thread catalogs
+GitHub Copilot asset catalogs
+Shopware-specific Claude marketplaces
+CRM app agent-tool projects
+self-hosted AI agent listing apps
