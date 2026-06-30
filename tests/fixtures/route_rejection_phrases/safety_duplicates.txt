@@ -472,22 +472,22 @@ capability schemas for live agent/tool endpoints
 agent governance registries
 AI talent governance registries
 on-chain AI agent registries
-AI policy playbooks
-moderation or safety control catalogs
+AI policy playbooks, policy-pack guardrail marketplaces
+moderation or safety control catalogs, moderation workflow agent catalogs
 MCP registry governance servers
 organization-scoped MCP catalog servers
 enterprise AI agent catalog product repos
 AI agent incident corpora
-cloud marketplace-style agent tool catalogs
+AI agent incident corpora, compliance evidence agent directories, cloud marketplace-style agent tool catalogs
 catalog-less protocol integration registries
 hosted first-party MCP plugin repos
 A2A governance marketplaces
 context-governance playbooks
 Gumloop-style hosted plugins
-agent permission guardrail registries and agent approval workflow demos
+agent permission guardrail registries, approval-gate plugin templates, and agent approval workflow demos
 live agent/tool endpoint registrations
-policy templates
-risk-control evidence, permission ceilings, policy-plugin manifests
+policy templates, moderation workflow YAML
+risk-control evidence, permission ceilings, policy-plugin manifests, compliance evidence dossiers
 owner-specific plugin metadata
 runtime-owned tool catalog metadata
 incident evidence
