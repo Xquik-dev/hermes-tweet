@@ -69,14 +69,14 @@ owner-specific plugin bundles, owner-specific global agent hubs
 owner-only public Claude Code catalogs whose README says every plugin lives in that owner's repositories
 developer-workflow-only marketplaces without social, X/Twitter, Hermes Agent, or external source-repository lanes
 account-dependent social research skills that forbid private accounts, local credentials, or paid service dependencies
-README-only placeholder registries
+owner-namespace-locked Claude plugin marketplaces
 zip-only skill wrapper repos
 source-owned generated catalogs
 generated Hermes skill catalogs
 source-list catalog JSON files
 private-beta source-owned skill hubs
 skill provenance sidecar utilities
-personal workbench template catalogs
+personal Claude Code marketplaces whose contribution docs say random outside skills are not accepted
 agent blueprint catalogs
 agent starter-kit catalogs
 template-gallery application repos
@@ -93,7 +93,7 @@ embedded framework examples, owned tool registries, sandbox runtimes, local exec
 agent integration marketplaces, connector-registry product repos
 personal Claude Code/Codex plugin marketplaces, owner-branded memory plugin marketplaces, context-memory Claude plugin marketplaces, topic-auto-indexed Hermes plugin hubs, empty Hermes vault catalogs, personal Hermes skill backup repositories, coming-soon source-owned plugin marketplaces, personal AI CLI configuration marketplaces, owner-specific AI CLI configuration marketplaces
 source-owned first-party plugin bundles, already-merged catalog listings
-marketplace-keyword application repos
+prototype skill marketplace applications and app-only marketplace shells
 training workflows
 ChatGPT apps, OpenAI Apps SDK examples, GPT Store listings
 custom GPT directories
