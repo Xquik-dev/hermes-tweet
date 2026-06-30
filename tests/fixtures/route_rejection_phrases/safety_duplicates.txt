@@ -419,8 +419,8 @@ hosted marketplace SEO stubs
 publication tooling, external submission forms
 member-only contribution lanes
 topic-based skill discovery
-onboarding docs, and wishlist issues
-issue-first submissions
+onboarding docs, direct-PR-prohibited Hermes awesome lists, and wishlist issues
+direct-PR-prohibited Hermes awesome lists
 maintainer-curated additions
 open a new issue instead of opening a direct PR
 PR-editable registry source file
