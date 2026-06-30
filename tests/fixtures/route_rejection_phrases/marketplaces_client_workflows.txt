@@ -54,6 +54,7 @@ first-party agent commerce MCP servers
 single-plugin validation marketplaces
 site-content production skill catalogs
 admin-synced in-app skill libraries
+PR-closed skill stores
 environment-configured skill ingestion services
 operator runbook packs
 self-setup Hermes starter packs
