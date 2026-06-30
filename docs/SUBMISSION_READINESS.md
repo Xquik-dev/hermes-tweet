@@ -32,7 +32,7 @@ A `source.github` or similar repository-pointer schema is not enough by itself:
 when the marketplace instructions say it is the canonical hub for the owner's
 own skills, reject it unless the contribution docs explicitly invite outside
 source repositories.
-Reject company engineering hubs, internal workflow marketplaces, daily mirrored product skill catalogs, and
+Reject company engineering hubs, internal workflow marketplaces, daily mirrored product skill catalogs, framework-review-only skill packs, and
 single-namespace catalogs whose install commands or plugin metadata are scoped
 to one organization, team, or owner. Open standards, Agent Skills compatibility,
 or Claude marketplace metadata do not make those routes eligible unless the
@@ -45,7 +45,7 @@ Review the contribution license after checking both GitHub metadata and obvious
 root license files such as `LICENSE`, `LICENSE.md`, `COPYING`, or `NOTICE`.
 When metadata is empty but a root license file exists, read it before deciding;
 an absent license alone does not disqualify an otherwise native, non-duplicate, non-spam route.
-Reject crawler, indexer, dialect-only open memory marketplaces, site-content production skill catalogs, admin-synced in-app skill libraries, PR-closed skill stores, and environment-configured skill ingestion services whose submission path is only a hosted claim form, upload UI, or account-gated directory, token-compressed skill file, team-memory sync artifact, hosted memory config, product content workflow, app-private skill body, or locally configured ingest target unless the repository exposes a seed, source, catalog, or registry file that can be changed by PR and can point to a source-linked Hermes Tweet package entry.
+Reject crawler, indexer, dialect-only open memory marketplaces, site-content production skill catalogs, admin-synced in-app skill libraries, app-intake-only skill indexes, PR-closed skill stores, and environment-configured skill ingestion services whose submission path is only a hosted claim form, upload UI, or account-gated directory, token-compressed skill file, team-memory sync artifact, hosted memory config, product content workflow, app-private skill body, or locally configured ingest target unless the repository exposes a seed, source, catalog, or registry file that can be changed by PR and can point to a source-linked Hermes Tweet package entry.
 Treat generic AI tools, startup, SaaS, creator-economy, content-creator, influencer-marketing, AI marketing-tools, product-launch, and app directories such
 as Product Hunt alternatives, Futurepedia, Toolify, There's An AI For That, or auto-mirrored skill stores that only crawl another upstream catalog as
 crawler or indexer directories unless they expose that PR-editable source.
