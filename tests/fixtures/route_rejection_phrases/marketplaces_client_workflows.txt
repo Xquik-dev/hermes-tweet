@@ -54,6 +54,8 @@ first-party agent commerce MCP servers
 single-plugin validation marketplaces
 site-content production skill catalogs
 admin-synced in-app skill libraries
+app-intake-only skill indexes
+framework-review-only skill packs
 PR-closed skill stores
 environment-configured skill ingestion services
 operator runbook packs
