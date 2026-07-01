@@ -15,6 +15,12 @@ EXPECTED_PHRASE_FILES = (
 )
 MAX_SUBMISSION_READINESS_LINES = 960
 MAX_FIXTURE_LINES = 600
+DUPLICATE_SATURATION_PHRASES = (
+    "same target already has an open Hermes Tweet PR",
+    "same target already has an open TweetClaw or adjacent social-provider PR",
+    "head-branch PR collision",
+    "treat a PR creation duplicate error as canonical overlap evidence",
+)
 
 
 def _route_rejection_phrase_paths() -> tuple[Path, ...]:
@@ -49,6 +55,15 @@ def test_route_rejection_phrase_fixtures_stay_explicit() -> None:
         assert all(phrase == phrase.strip() for phrase in phrases)
         assert all("\t" not in phrase for phrase in phrases)
         assert len(phrases) == len(set(phrases))
+
+
+def test_duplicate_saturation_phrases_stay_guarded() -> None:
+    phrases = _route_rejection_phrases()
+    normalized_checklist = " ".join(SUBMISSION_READINESS_PATH.read_text().split())
+
+    for phrase in DUPLICATE_SATURATION_PHRASES:
+        assert phrase in phrases
+        assert phrase in normalized_checklist
 
 
 def test_route_rejection_phrase_fixtures_stay_in_reviewed_buckets() -> None:
