@@ -93,7 +93,7 @@ EXPECTED_LIVE_ECOSYSTEM_SURFACES = (
     ),
     (
         "Awesome Skill Forge Hermes Tweet mirror",
-        "https://github.com/Lord1Egypt/awesome-skill-forge/blob/master/community/"
+        "https://raw.githubusercontent.com/Lord1Egypt/awesome-skill-forge/master/community/"
         "clawhub/h/hermes-tweet/SKILL.md",
     ),
     (

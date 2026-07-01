@@ -131,6 +131,15 @@ def test_public_safety_scan_includes_github_repository_config() -> None:
     assert expected_files <= set(check_public_safety.PUBLIC_TEXT_FILES)
 
 
+def test_public_safety_scan_includes_skill_cards() -> None:
+    expected_files = {
+        "skills/hermes-tweet/skill-card.md",
+        "hermes_tweet/skills/hermes-tweet/skill-card.md",
+    }
+
+    assert expected_files <= set(check_public_safety.PUBLIC_TEXT_FILES)
+
+
 def test_public_link_and_safety_surfaces_stay_aligned() -> None:
     assert check_public_safety.PUBLIC_TEXT_FILES is check_public_links.PUBLIC_LINK_FILES
 
