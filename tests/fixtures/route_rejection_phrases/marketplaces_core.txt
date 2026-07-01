@@ -54,7 +54,7 @@ manual edits are overwritten
 AI toolkit storefronts
 toolhub projects
 agent-tool marketplace scaffolds
-provider scanner directories
+provider scanner directories and service-branded Twitter API skill repos where Hermes Tweet would be an adjacent-provider pitch
 endpoint, env_key, auth_style, and free_limits provider fields
 data warehouse, ETL, reverse ETL
 customer data platform
