@@ -103,6 +103,20 @@ def test_scan_line_flags_source_and_pricing_wording() -> None:
     ]
 
 
+def test_scan_line_flags_runtime_confidentiality_wording() -> None:
+    line = (
+        "Remove raw session material, provider capacity, and fallback mechanics from public copy."
+    )
+
+    findings = check_public_safety.scan_line(Path("docs/example.md"), 17, line)
+
+    assert finding_labels(findings) == [
+        "raw-session-material",
+        "provider-capacity",
+        "fallback-mechanics",
+    ]
+
+
 def test_public_safety_scan_includes_agent_instructions() -> None:
     assert "AGENTS.md" in check_public_safety.PUBLIC_TEXT_FILES
 
