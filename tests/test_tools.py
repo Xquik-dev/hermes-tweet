@@ -159,9 +159,9 @@ def test_read_rejects_query_or_fragment_in_path(monkeypatch: pytest.MonkeyPatch)
         "success": False,
         "error": "Pass query parameters through the query object, not in path.",
     }
-    assert json.loads(
-        call_read({"path": "https://xquik.com/api/v1/account?ignored=true"})
-    ) == expected
+    assert (
+        json.loads(call_read({"path": "https://xquik.com/api/v1/account?ignored=true"})) == expected
+    )
     assert json.loads(call_read({"path": "/api/v1/account#section"})) == expected
 
 
@@ -266,24 +266,30 @@ def test_action_rejects_query_or_fragment_in_path(monkeypatch: pytest.MonkeyPatc
         "success": False,
         "error": "Pass query parameters through the query object, not in path.",
     }
-    assert json.loads(
-        call_action(
-            {
-                "method": "POST",
-                "path": "https://xquik.com/api/v1/x/tweets?debug=true",
-                "reason": "test",
-            }
+    assert (
+        json.loads(
+            call_action(
+                {
+                    "method": "POST",
+                    "path": "https://xquik.com/api/v1/x/tweets?debug=true",
+                    "reason": "test",
+                }
+            )
         )
-    ) == expected
-    assert json.loads(
-        call_action(
-            {
-                "method": "POST",
-                "path": "/api/v1/x/tweets#section",
-                "reason": "test",
-            }
+        == expected
+    )
+    assert (
+        json.loads(
+            call_action(
+                {
+                    "method": "POST",
+                    "path": "/api/v1/x/tweets#section",
+                    "reason": "test",
+                }
+            )
         )
-    ) == expected
+        == expected
+    )
 
 
 def test_action_blocks_account_connection_challenge(monkeypatch: pytest.MonkeyPatch) -> None:
