@@ -45,10 +45,7 @@ def test_catalog_excludes_api_key_admin() -> None:
 
 
 def test_catalog_excludes_account_connection_challenges() -> None:
-    assert (
-        find_endpoint("POST", "/api/v1/x/account-connection-challenges/abc/submit")
-        is None
-    )
+    assert find_endpoint("POST", "/api/v1/x/account-connection-challenges/abc/submit") is None
     results = explore(
         {
             "include_actions": True,

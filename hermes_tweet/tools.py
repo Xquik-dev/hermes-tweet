@@ -9,8 +9,7 @@ from .client import action_enabled, check_api_available, dumps, normalize_query_
 ARGS_ERROR = "Tool arguments must be a JSON object."
 ACTION_REASON_ERROR = "Action reason is required."
 BLOCKED_ACTION_ERROR = (
-    "Endpoint is blocked: account-connection challenges are not callable through "
-    "Hermes Tweet."
+    "Endpoint is blocked: account-connection challenges are not callable through Hermes Tweet."
 )
 BLOCKED_ACTION_ENDPOINTS: tuple[tuple[str, str], ...] = (
     ("POST", "/api/v1/x/account-connection-challenges/{id}/submit"),
@@ -99,14 +98,17 @@ def call_action(args: Any, **_: Any) -> str:
         method = normalize_method(tool_args.get("method"), default="POST")
         path = _text(tool_args.get("path"))
         catalog_path = normalize_path(path)
-        if _is_blocked_action(method, catalog_path):
-            return dumps({"success": False, "error": BLOCKED_ACTION_ERROR})
         endpoint = find_endpoint(method, catalog_path)
-        if endpoint is None:
+        endpoint_error = ""
+        if _is_blocked_action(method, catalog_path):
+            endpoint_error = BLOCKED_ACTION_ERROR
+        elif endpoint is None:
+            endpoint_error = f"Endpoint is not in the Hermes Tweet catalog: {method} {path}"
+        if endpoint_error:
             return dumps(
                 {
                     "success": False,
-                    "error": f"Endpoint is not in the Hermes Tweet catalog: {method} {path}",
+                    "error": endpoint_error,
                 }
             )
         return dumps(
