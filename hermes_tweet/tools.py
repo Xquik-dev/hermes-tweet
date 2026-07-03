@@ -3,11 +3,18 @@ from __future__ import annotations
 from typing import Any, cast
 
 from .catalog import explore as explore_catalog
-from .catalog import find_endpoint, normalize_method, normalize_path
+from .catalog import find_endpoint, matches_path, normalize_method, normalize_path
 from .client import action_enabled, check_api_available, dumps, normalize_query_params, request
 
 ARGS_ERROR = "Tool arguments must be a JSON object."
 ACTION_REASON_ERROR = "Action reason is required."
+BLOCKED_ACTION_ERROR = (
+    "Endpoint is blocked: account-connection challenges are not callable through "
+    "Hermes Tweet."
+)
+BLOCKED_ACTION_ENDPOINTS: tuple[tuple[str, str], ...] = (
+    ("POST", "/api/v1/x/account-connection-challenges/{id}/submit"),
+)
 
 
 def _args(value: Any) -> dict[str, Any] | None:
@@ -24,6 +31,13 @@ def _text(value: Any) -> str:
     if not isinstance(value, str):
         return ""
     return value.strip()
+
+
+def _is_blocked_action(method: str, path: str) -> bool:
+    return any(
+        blocked_method == method and matches_path(blocked_path, path)
+        for blocked_method, blocked_path in BLOCKED_ACTION_ENDPOINTS
+    )
 
 
 def explore(args: Any, **_: Any) -> str:
@@ -85,6 +99,8 @@ def call_action(args: Any, **_: Any) -> str:
         method = normalize_method(tool_args.get("method"), default="POST")
         path = _text(tool_args.get("path"))
         catalog_path = normalize_path(path)
+        if _is_blocked_action(method, catalog_path):
+            return dumps({"success": False, "error": BLOCKED_ACTION_ERROR})
         endpoint = find_endpoint(method, catalog_path)
         if endpoint is None:
             return dumps(

@@ -247,6 +247,27 @@ def test_action_missing_endpoint(monkeypatch: pytest.MonkeyPatch) -> None:
     }
 
 
+def test_action_blocks_account_connection_challenge(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(tools, "action_enabled", lambda: True)
+    monkeypatch.setattr(tools, "request", None)
+
+    result = json.loads(
+        call_action(
+            {
+                "method": "POST",
+                "path": "/api/v1/x/account-connection-challenges/abc/submit",
+                "body": {"code": "123456"},
+                "reason": "connect account",
+            }
+        )
+    )
+
+    assert result == {
+        "success": False,
+        "error": tools.BLOCKED_ACTION_ERROR,
+    }
+
+
 def test_action_requires_reason_when_enabled(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(tools, "action_enabled", lambda: True)
 
