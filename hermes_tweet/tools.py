@@ -93,27 +93,21 @@ def call_action(args: Any, **_: Any) -> str:
         tool_args = _args(args)
         if tool_args is None:
             return _args_error()
+        endpoint_error = ""
         if not action_enabled():
-            return dumps(
-                {
-                    "success": False,
-                    "error": (
-                        "tweet_action is disabled. Set HERMES_TWEET_ENABLE_ACTIONS=true "
-                        "to enable it."
-                    ),
-                }
+            endpoint_error = (
+                "tweet_action is disabled. Set HERMES_TWEET_ENABLE_ACTIONS=true to enable it."
             )
-        if not _text(tool_args.get("reason")):
-            return dumps({"success": False, "error": ACTION_REASON_ERROR})
+        elif not _text(tool_args.get("reason")):
+            endpoint_error = ACTION_REASON_ERROR
         method = normalize_method(tool_args.get("method"), default="POST")
         path = _text(tool_args.get("path"))
         path_error = _path_error(path)
-        if path_error:
-            return dumps({"success": False, "error": path_error})
         catalog_path = normalize_path(path)
         endpoint = find_endpoint(method, catalog_path)
-        endpoint_error = ""
-        if _is_blocked_action(method, catalog_path):
+        if not endpoint_error and path_error:
+            endpoint_error = path_error
+        elif _is_blocked_action(method, catalog_path):
             endpoint_error = BLOCKED_ACTION_ERROR
         elif endpoint is None:
             endpoint_error = f"Endpoint is not in the Hermes Tweet catalog: {method} {path}"
