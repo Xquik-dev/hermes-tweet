@@ -56,6 +56,17 @@ def test_scan_line_reports_secret_labels_without_secret_values() -> None:
     assert token not in rendered_finding
 
 
+def test_scan_line_reports_google_api_key_without_secret_value() -> None:
+    token = "AI" + "za" + ("A" * 32)
+
+    findings = check_public_safety.scan_line(Path("README.md"), 4, f"api_key={token}")
+
+    assert finding_labels(findings) == ["google-api-key"]
+    rendered_finding = check_public_safety.format_finding(findings[0])
+    assert rendered_finding == "README.md:4: google-api-key"
+    assert token not in rendered_finding
+
+
 def test_scan_line_allows_documented_placeholders() -> None:
     placeholder_line = "Set XQUIK_API_KEY=xq_your_key or Authorization: Bearer token."
 

@@ -16,6 +16,7 @@ PUBLIC_TEXT_FILES = PUBLIC_SURFACE_FILES
 SECRET_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("github-token", re.compile(r"gh[pousr]_[A-Za-z0-9_]{20,}")),
     ("openai-key", re.compile(r"sk-[A-Za-z0-9_-]{20,}")),
+    ("google-api-key", re.compile(r"AIza[0-9A-Za-z_-]{20,}")),
     ("aws-access-key", re.compile(r"AKIA[0-9A-Z]{16}")),
     ("private-key", re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----")),
     ("xquik-api-key", re.compile(r"xq_[A-Za-z0-9_-]{12,}")),
