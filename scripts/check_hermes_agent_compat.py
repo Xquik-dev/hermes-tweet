@@ -38,7 +38,7 @@ class SourceContent:
 PAGE_CHECKS: Final = (
     PageCheck(
         name="Build a Hermes Plugin",
-        url="https://hermes-agent.nousresearch.com/docs/guides/build-a-hermes-plugin/",
+        url="https://hermes-agent.nousresearch.com/docs/developer-guide/plugins",
         required_terms=(
             "plugin.yaml",
             "requires_env",
@@ -66,7 +66,7 @@ PAGE_CHECKS: Final = (
 SOURCE_CHECKS: Final = (
     SourceCheck(
         path="hermes_cli/plugins.py",
-        expected_sha="d5e4b3ff8c1c88b22e196c4626599abfbfcb96d1",
+        expected_sha="ea0b8ea2ffe1b6b5c3616f4bc005081a09141337",
         required_terms=(
             "ENTRY_POINTS_GROUP",
             "hermes_agent.plugins",
@@ -82,7 +82,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="tools/registry.py",
-        expected_sha="49c23c3587502ae6a5702d021e139e78a5a50282",
+        expected_sha="35589bd2c849b74cc6628b8779c4db34eda3a7f4",
         required_terms=(
             "check_fn",
             "requires_env",
@@ -93,7 +93,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="hermes_cli/plugins_cmd.py",
-        expected_sha="fc66810489ef5c873d5c5e8269565205328cad39",
+        expected_sha="6a7c39f3e4e014f98201766e980d19c696e1c545",
         required_terms=(
             "_resolve_plugin_key",
             "_resolve_subdir_within",
