@@ -64,6 +64,22 @@ def test_scan_line_allows_documented_placeholders() -> None:
     assert findings == []
 
 
+def test_scan_line_flags_xquik_free_tier_claims() -> None:
+    line = "Add Xquik to this free-tier API catalog with 300 free requests monthly."
+
+    findings = check_public_safety.scan_line(Path("README.md"), 8, line)
+
+    assert finding_labels(findings) == ["xquik-free-tier-claim"]
+
+
+def test_scan_line_allows_xquik_api_key_wording_without_free_claim() -> None:
+    line = "Add Xquik as an API-key managed X/Twitter automation route."
+
+    findings = check_public_safety.scan_line(Path("README.md"), 8, line)
+
+    assert findings == []
+
+
 def test_scan_line_placeholder_does_not_hide_secret_token() -> None:
     token = "ghp_" + ("A" * 24)
     line = f"Set XQUIK_API_KEY=xq_your_key; never publish token={token}."
