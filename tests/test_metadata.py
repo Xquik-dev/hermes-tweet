@@ -786,6 +786,9 @@ def test_ci_workflow_runs_actionlint_before_python_checks() -> None:
 
     hermes_agent_compat_step = find_step(steps, "Hermes Agent compatibility")
     assert hermes_agent_compat_step["run"] == HERMES_AGENT_COMPAT_COMMAND
+    assert require_mapping(hermes_agent_compat_step["env"]) == {
+        "GITHUB_TOKEN": "${{ github.token }}"
+    }
 
     public_safety_step = find_step(steps, "Public safety scan")
     assert public_safety_step["run"] == PUBLIC_SAFETY_COMMAND

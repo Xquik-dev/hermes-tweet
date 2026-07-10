@@ -45,6 +45,8 @@ jobs:
 
       - name: Hermes Agent compatibility
         run: uv run python scripts/check_hermes_agent_compat.py
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Public safety scan
         run: uv run python scripts/check_public_safety.py
