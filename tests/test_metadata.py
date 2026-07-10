@@ -426,6 +426,18 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
     assert "`TweetClaw`, `OpenClaw`, or other adjacent projects" in checklist
 
 
+def test_submission_readiness_blocks_disabled_pr_routes() -> None:
+    checklist = (ROOT / "docs" / "SUBMISSION_READINESS.md").read_text()
+    normalized_checklist = " ".join(checklist.split())
+
+    assert "Before preparing a patch" in normalized_checklist
+    assert "pull-request surface is enabled" in normalized_checklist
+    assert "accepts external fork heads" in normalized_checklist
+    assert "repository's pull-request endpoint" in normalized_checklist
+    assert "fork creation and branch push succeed" in normalized_checklist
+    assert "continue with another eligible target" in normalized_checklist
+
+
 def test_plugin_manifests_keep_install_prompt_contract() -> None:
     root_manifest = load_mapping(ROOT / "plugin.yaml")
     package_manifest = load_mapping(ROOT / "hermes_tweet" / "plugin.yaml")
