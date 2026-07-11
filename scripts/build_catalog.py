@@ -25,6 +25,7 @@ PROHIBITED_STATIC = {
     ("POST", "/api/v1/credits/quick-topup"),
     ("POST", "/api/v1/x/accounts"),
     ("POST", "/api/v1/x/accounts/bulk-retry"),
+    ("POST", "/api/v1/x/account-connection-challenges/{id}/submit"),
 }
 
 PAID_STATIC = {

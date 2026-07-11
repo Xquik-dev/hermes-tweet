@@ -36,6 +36,9 @@ def test_build_skips_prohibited_account_and_support_endpoints(tmp_path: Path) ->
         {
             "/account": {"patch": {"summary": "Update account"}},
             "/support/tickets": {"get": {"summary": "List tickets"}},
+            "/x/account-connection-challenges/{id}/submit": {
+                "post": {"summary": "Submit account challenge"}
+            },
             "/x/tweets/search": {"get": {"summary": "Search tweets"}},
         },
     )
