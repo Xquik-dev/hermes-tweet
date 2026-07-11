@@ -28,6 +28,11 @@ SAFE_PLACEHOLDERS = (
     "xq_test",
     "Bearer token",
 )
+XQUIK_FREE_CLAIM_PATTERN = re.compile(
+    r"\bxquik\b[^\n]*(?:free[- ]tier|free requests?|free monthly|no-cost)"
+    r"|(?:free[- ]tier|free requests?|free monthly|no-cost)[^\n]*\bxquik\b",
+    re.IGNORECASE,
+)
 PRIVATE_TEXT_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("internal-cost", re.compile(r"\binternal cost\b", re.IGNORECASE)),
     ("internal-pricing", re.compile(r"\binternal pricing\b", re.IGNORECASE)),
@@ -40,6 +45,7 @@ PRIVATE_TEXT_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
         re.compile(r"\bthird[- ]party API sources?\b", re.IGNORECASE),
     ),
     ("runtime-artifact", re.compile(r"\b(login|write) screenshots?\b", re.IGNORECASE)),
+    ("xquik-free-tier-claim", XQUIK_FREE_CLAIM_PATTERN),
 )
 
 
