@@ -31,6 +31,9 @@ PRIVATE_TEXT_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("internal-cost", re.compile(r"\binternal cost\b", re.IGNORECASE)),
     ("internal-pricing", re.compile(r"\binternal pricing\b", re.IGNORECASE)),
     ("private-vendor", re.compile(r"\bprivate vendor\b", re.IGNORECASE)),
+    ("raw-session-material", re.compile(r"\braw session material\b", re.IGNORECASE)),
+    ("provider-capacity", re.compile(r"\bprovider capacity\b", re.IGNORECASE)),
+    ("fallback-mechanics", re.compile(r"\bfallback mechanics?\b", re.IGNORECASE)),
     (
         "third-party-api-source",
         re.compile(r"\bthird[- ]party API sources?\b", re.IGNORECASE),

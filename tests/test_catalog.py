@@ -44,6 +44,19 @@ def test_catalog_excludes_api_key_admin() -> None:
     assert find_endpoint("POST", "/api/v1/api-keys") is None
 
 
+def test_catalog_excludes_account_connection_challenges() -> None:
+    assert find_endpoint("POST", "/api/v1/x/account-connection-challenges/abc/submit") is None
+    results = explore(
+        {
+            "include_actions": True,
+            "query": "account-connection-challenges",
+            "limit": 100,
+        }
+    )
+
+    assert results == []
+
+
 def test_explore_hides_actions_by_default() -> None:
     results = explore({"query": "post tweet", "limit": 100})
     assert all(item["action"] is False for item in results)
