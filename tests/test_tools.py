@@ -18,18 +18,22 @@ def test_read_rejects_action_endpoint() -> None:
 
 def test_action_is_disabled_by_default(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.delenv("HERMES_TWEET_ENABLE_ACTIONS", raising=False)
-    result = json.loads(
-        call_action(
-            {
-                "path": "/api/v1/x/tweets",
-                "method": "POST",
-                "body": {"text": "hello"},
-                "reason": "test",
-            }
+    expected = {"success": False, "error": tools.ACTION_DISABLED_ERROR}
+
+    assert (
+        json.loads(
+            call_action(
+                {
+                    "path": "/api/v1/x/tweets",
+                    "method": "POST",
+                    "body": {"text": "hello"},
+                    "reason": "test",
+                }
+            )
         )
+        == expected
     )
-    assert result["success"] is False
-    assert "disabled" in result["error"]
+    assert json.loads(call_action({"path": "/api/v1/missing", "reason": "test"})) == expected
 
 
 def test_explore_returns_json_string() -> None:
