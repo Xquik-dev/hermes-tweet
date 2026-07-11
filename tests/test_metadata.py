@@ -102,10 +102,10 @@ EXPECTED_LIVE_ECOSYSTEM_SURFACES = (
         "clawhub/h/hermes-tweet/SKILL.md",
     ),
 )
-SETUP_UV_ACTION = "astral-sh/setup-uv@v8.2.0"
+SETUP_UV_ACTION = "astral-sh/setup-uv@v8.3.1"
 CHECKOUT_ACTION_SHA = "actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0"
 HOL_PLUGIN_SCANNER_ACTION_SHA = (
-    "hashgraph-online/ai-plugin-scanner-action@696a02cc2345cc0e66a2000468257b9b455fb00c"
+    "hashgraph-online/ai-plugin-scanner-action@a63dd98b7d6497cabad2069e803b450def3b02dc"
 )
 ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
 BLACKSMITH_RUNNER_LABEL = "blacksmith-2vcpu-ubuntu-2404"
