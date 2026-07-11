@@ -66,7 +66,7 @@ def test_collect_public_urls_deduplicates_and_strips_punctuation(
         (
             "See https://github.com/Xquik-dev/hermes-tweet#readme).\n"
             "Duplicate https://github.com/Xquik-dev/hermes-tweet#readme\n"
-            "Docs https://hermes-agent.nousresearch.com/docs/guides/build-a-hermes-plugin/"
+            "Docs https://hermes-agent.nousresearch.com/docs/developer-guide/plugins"
         ),
         encoding="utf-8",
     )
@@ -76,7 +76,7 @@ def test_collect_public_urls_deduplicates_and_strips_punctuation(
 
     assert urls == [
         "https://github.com/Xquik-dev/hermes-tweet#readme",
-        "https://hermes-agent.nousresearch.com/docs/guides/build-a-hermes-plugin/",
+        "https://hermes-agent.nousresearch.com/docs/developer-guide/plugins",
     ]
 
 

@@ -16,6 +16,7 @@ PUBLIC_TEXT_FILES = PUBLIC_SURFACE_FILES
 SECRET_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("github-token", re.compile(r"gh[pousr]_[A-Za-z0-9_]{20,}")),
     ("openai-key", re.compile(r"sk-[A-Za-z0-9_-]{20,}")),
+    ("google-api-key", re.compile(r"AIza[0-9A-Za-z_-]{20,}")),
     ("aws-access-key", re.compile(r"AKIA[0-9A-Z]{16}")),
     ("private-key", re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----")),
     ("xquik-api-key", re.compile(r"xq_[A-Za-z0-9_-]{12,}")),
@@ -27,15 +28,24 @@ SAFE_PLACEHOLDERS = (
     "xq_test",
     "Bearer token",
 )
+XQUIK_FREE_CLAIM_PATTERN = re.compile(
+    r"\bxquik\b[^\n]*(?:free[- ]tier|free requests?|free monthly|no-cost)"
+    r"|(?:free[- ]tier|free requests?|free monthly|no-cost)[^\n]*\bxquik\b",
+    re.IGNORECASE,
+)
 PRIVATE_TEXT_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("internal-cost", re.compile(r"\binternal cost\b", re.IGNORECASE)),
     ("internal-pricing", re.compile(r"\binternal pricing\b", re.IGNORECASE)),
     ("private-vendor", re.compile(r"\bprivate vendor\b", re.IGNORECASE)),
+    ("raw-session-material", re.compile(r"\braw session material\b", re.IGNORECASE)),
+    ("provider-capacity", re.compile(r"\bprovider capacity\b", re.IGNORECASE)),
+    ("fallback-mechanics", re.compile(r"\bfallback mechanics?\b", re.IGNORECASE)),
     (
         "third-party-api-source",
         re.compile(r"\bthird[- ]party API sources?\b", re.IGNORECASE),
     ),
     ("runtime-artifact", re.compile(r"\b(login|write) screenshots?\b", re.IGNORECASE)),
+    ("xquik-free-tier-claim", XQUIK_FREE_CLAIM_PATTERN),
 )
 
 

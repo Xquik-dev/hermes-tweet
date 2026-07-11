@@ -56,10 +56,37 @@ def test_scan_line_reports_secret_labels_without_secret_values() -> None:
     assert token not in rendered_finding
 
 
+def test_scan_line_reports_google_api_key_without_secret_value() -> None:
+    token = "AI" + "za" + ("A" * 32)
+
+    findings = check_public_safety.scan_line(Path("README.md"), 4, f"api_key={token}")
+
+    assert finding_labels(findings) == ["google-api-key"]
+    rendered_finding = check_public_safety.format_finding(findings[0])
+    assert rendered_finding == "README.md:4: google-api-key"
+    assert token not in rendered_finding
+
+
 def test_scan_line_allows_documented_placeholders() -> None:
     placeholder_line = "Set XQUIK_API_KEY=xq_your_key or Authorization: Bearer token."
 
     findings = check_public_safety.scan_line(Path("README.md"), 8, placeholder_line)
+
+    assert findings == []
+
+
+def test_scan_line_flags_xquik_free_tier_claims() -> None:
+    line = "Add Xquik to this free-tier API catalog with 300 free requests monthly."
+
+    findings = check_public_safety.scan_line(Path("README.md"), 8, line)
+
+    assert finding_labels(findings) == ["xquik-free-tier-claim"]
+
+
+def test_scan_line_allows_xquik_api_key_wording_without_free_claim() -> None:
+    line = "Add Xquik as an API-key managed X/Twitter automation route."
+
+    findings = check_public_safety.scan_line(Path("README.md"), 8, line)
 
     assert findings == []
 
@@ -103,6 +130,20 @@ def test_scan_line_flags_source_and_pricing_wording() -> None:
     ]
 
 
+def test_scan_line_flags_runtime_confidentiality_wording() -> None:
+    line = (
+        "Remove raw session material, provider capacity, and fallback mechanics from public copy."
+    )
+
+    findings = check_public_safety.scan_line(Path("docs/example.md"), 17, line)
+
+    assert finding_labels(findings) == [
+        "raw-session-material",
+        "provider-capacity",
+        "fallback-mechanics",
+    ]
+
+
 def test_public_safety_scan_includes_agent_instructions() -> None:
     assert "AGENTS.md" in check_public_safety.PUBLIC_TEXT_FILES
 
@@ -126,6 +167,15 @@ def test_public_safety_scan_includes_github_repository_config() -> None:
         ".github/dependabot.yml",
         ".github/workflows/ci.yml",
         ".github/workflows/publish.yml",
+    }
+
+    assert expected_files <= set(check_public_safety.PUBLIC_TEXT_FILES)
+
+
+def test_public_safety_scan_includes_skill_cards() -> None:
+    expected_files = {
+        "skills/hermes-tweet/skill-card.md",
+        "hermes_tweet/skills/hermes-tweet/skill-card.md",
     }
 
     assert expected_files <= set(check_public_safety.PUBLIC_TEXT_FILES)

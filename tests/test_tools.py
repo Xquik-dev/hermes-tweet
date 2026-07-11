@@ -18,18 +18,22 @@ def test_read_rejects_action_endpoint() -> None:
 
 def test_action_is_disabled_by_default(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.delenv("HERMES_TWEET_ENABLE_ACTIONS", raising=False)
-    result = json.loads(
-        call_action(
-            {
-                "path": "/api/v1/x/tweets",
-                "method": "POST",
-                "body": {"text": "hello"},
-                "reason": "test",
-            }
+    expected = {"success": False, "error": tools.ACTION_DISABLED_ERROR}
+
+    assert (
+        json.loads(
+            call_action(
+                {
+                    "path": "/api/v1/x/tweets",
+                    "method": "POST",
+                    "body": {"text": "hello"},
+                    "reason": "test",
+                }
+            )
         )
+        == expected
     )
-    assert result["success"] is False
-    assert "disabled" in result["error"]
+    assert json.loads(call_action({"path": "/api/v1/missing", "reason": "test"})) == expected
 
 
 def test_explore_returns_json_string() -> None:
@@ -144,14 +148,25 @@ def test_read_normalizes_copied_endpoint_url_before_request(
 
     monkeypatch.setattr(tools, "request", fake_request)
 
-    assert json.loads(
-        call_read({"path": "https://xquik.com/api/v1/account?ignored=true#section"})
-    ) == {
+    assert json.loads(call_read({"path": "https://xquik.com/api/v1/account"})) == {
         "body": None,
         "method": "GET",
         "path": "/api/v1/account",
         "query": None,
     }
+
+
+def test_read_rejects_query_or_fragment_in_path(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(tools, "request", None)
+
+    expected = {
+        "success": False,
+        "error": "Pass query parameters through the query object, not in path.",
+    }
+    assert (
+        json.loads(call_read({"path": "https://xquik.com/api/v1/account?ignored=true"})) == expected
+    )
+    assert json.loads(call_read({"path": "/api/v1/account#section"})) == expected
 
 
 def test_read_rejects_non_catalog_copied_url_before_request(
@@ -244,6 +259,61 @@ def test_action_missing_endpoint(monkeypatch: pytest.MonkeyPatch) -> None:
     assert result == {
         "success": False,
         "error": "Endpoint is not in the Hermes Tweet catalog: POST /api/v1/missing",
+    }
+
+
+def test_action_rejects_query_or_fragment_in_path(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(tools, "action_enabled", lambda: True)
+    monkeypatch.setattr(tools, "request", None)
+
+    expected = {
+        "success": False,
+        "error": "Pass query parameters through the query object, not in path.",
+    }
+    assert (
+        json.loads(
+            call_action(
+                {
+                    "method": "POST",
+                    "path": "https://xquik.com/api/v1/x/tweets?debug=true",
+                    "reason": "test",
+                }
+            )
+        )
+        == expected
+    )
+    assert (
+        json.loads(
+            call_action(
+                {
+                    "method": "POST",
+                    "path": "/api/v1/x/tweets#section",
+                    "reason": "test",
+                }
+            )
+        )
+        == expected
+    )
+
+
+def test_action_blocks_account_connection_challenge(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(tools, "action_enabled", lambda: True)
+    monkeypatch.setattr(tools, "request", None)
+
+    result = json.loads(
+        call_action(
+            {
+                "method": "POST",
+                "path": "/api/v1/x/account-connection-challenges/abc/submit",
+                "body": {"code": "123456"},
+                "reason": "connect account",
+            }
+        )
+    )
+
+    assert result == {
+        "success": False,
+        "error": tools.BLOCKED_ACTION_ERROR,
     }
 
 
@@ -393,7 +463,7 @@ def test_action_normalizes_copied_endpoint_url_before_request(
             {
                 "body": {"text": "hello"},
                 "method": "POST",
-                "path": "https://dashboard.xquik.com/api/v1/x/tweets?ignored=true#section",
+                "path": "https://dashboard.xquik.com/api/v1/x/tweets",
                 "reason": "test",
             }
         )

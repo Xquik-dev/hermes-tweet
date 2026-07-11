@@ -496,7 +496,7 @@ PR-editable third-party Hermes Tweet package entry
 contribution rules require measurable community usage
 minimum star count
 prohibit automated submissions
-paid SaaS-dependent entries
+paid SaaS-dependent entries, require personal use/vouching
 maintainer-curated quality bar
 target's stated threshold
 closed prior Hermes Tweet PR

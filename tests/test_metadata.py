@@ -93,7 +93,7 @@ EXPECTED_LIVE_ECOSYSTEM_SURFACES = (
     ),
     (
         "Awesome Skill Forge Hermes Tweet mirror",
-        "https://github.com/Lord1Egypt/awesome-skill-forge/blob/master/community/"
+        "https://raw.githubusercontent.com/Lord1Egypt/awesome-skill-forge/master/community/"
         "clawhub/h/hermes-tweet/SKILL.md",
     ),
     (
@@ -102,10 +102,10 @@ EXPECTED_LIVE_ECOSYSTEM_SURFACES = (
         "clawhub/h/hermes-tweet/SKILL.md",
     ),
 )
-SETUP_UV_ACTION = "astral-sh/setup-uv@v8.2.0"
+SETUP_UV_ACTION = "astral-sh/setup-uv@v8.3.1"
 CHECKOUT_ACTION_SHA = "actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0"
 HOL_PLUGIN_SCANNER_ACTION_SHA = (
-    "hashgraph-online/ai-plugin-scanner-action@696a02cc2345cc0e66a2000468257b9b455fb00c"
+    "hashgraph-online/ai-plugin-scanner-action@a63dd98b7d6497cabad2069e803b450def3b02dc"
 )
 ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
 BLACKSMITH_RUNNER_LABEL = "blacksmith-2vcpu-ubuntu-2404"
@@ -424,6 +424,18 @@ def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
     assert "title and summary to name `Hermes Tweet` or" in checklist
     assert "Do not submit or refresh routes titled only for `Xquik`" in checklist
     assert "`TweetClaw`, `OpenClaw`, or other adjacent projects" in checklist
+
+
+def test_submission_readiness_blocks_disabled_pr_routes() -> None:
+    checklist = (ROOT / "docs" / "SUBMISSION_READINESS.md").read_text()
+    normalized_checklist = " ".join(checklist.split())
+
+    assert "Before preparing a patch" in normalized_checklist
+    assert "pull-request surface is enabled" in normalized_checklist
+    assert "accepts external fork heads" in normalized_checklist
+    assert "repository's pull-request endpoint" in normalized_checklist
+    assert "fork creation and branch push succeed" in normalized_checklist
+    assert "continue with another eligible target" in normalized_checklist
 
 
 def test_plugin_manifests_keep_install_prompt_contract() -> None:
@@ -786,6 +798,9 @@ def test_ci_workflow_runs_actionlint_before_python_checks() -> None:
 
     hermes_agent_compat_step = find_step(steps, "Hermes Agent compatibility")
     assert hermes_agent_compat_step["run"] == HERMES_AGENT_COMPAT_COMMAND
+    assert require_mapping(hermes_agent_compat_step["env"]) == {
+        "GITHUB_TOKEN": "${{ github.token }}"
+    }
 
     public_safety_step = find_step(steps, "Public safety scan")
     assert public_safety_step["run"] == PUBLIC_SAFETY_COMMAND
