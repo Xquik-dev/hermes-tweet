@@ -17,12 +17,11 @@ these surfaces:
   `.claude-plugin` metadata
 - Codex plugin catalogs that accept source repositories with `.codex-plugin`
   metadata, a root security policy, local icon, and scanner evidence
-- Skill registries, plugin catalogs, awesome lists, or ecosystem directories
+- Skill registries, plugin catalogs, awesome lists, ecosystem directories, or
+  target-native Xquik API, MCP, dashboard, connector, SDK, workflow,
+  observability, automation, example, template, and agent-framework surfaces
 
-Do not submit when the target is only a browser-cookie workflow, only a
-TweetClaw route, a generic Xquik MCP server data entry, unrelated to X/Twitter
-or Hermes Agent, archived, or explicitly incompatible with contribution. Missing
-license metadata or an absent root license is review context, not a blocker.
+Do not submit when the target is only a browser-cookie workflow, only a TweetClaw route, a generic Xquik MCP server data entry with no target-native surface, a README-only dashboard or software backlink, unrelated to X/Twitter, Xquik, or Hermes Agent, archived, or explicitly incompatible with contribution. Missing license metadata or an absent root license is review context, not a blocker.
 Note the absence when useful, but reject only explicit incompatible licenses or terms that prohibit outside contributions. Reject personal Claude Code plugin marketplaces, personal Claude Code marketplaces whose contribution docs say random outside skills are not accepted, Claude-only plugin marketplace hubs without Hermes Agent lanes, README-only marketplace shells, owner-only public Claude Code catalogs whose README says every plugin lives in that owner's repositories, owner-namespace-locked Claude plugin marketplaces, developer-workflow-only marketplaces without social, X/Twitter, Hermes Agent, or external source-repository lanes, verified product skill catalogs, or product-owned
 marketplaces that describe themselves as owner-specific, team-specific, owner-curated, or closed to random additions unless their docs clearly invite third-party Hermes Tweet submissions.
 Reject branded Claude plugin catalogs that describe themselves as the official
