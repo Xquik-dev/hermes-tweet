@@ -1,7 +1,7 @@
 {
   "$schema": "https://context7.com/schema/context7.json",
   "projectTitle": "Hermes Tweet",
-  "description": "Native Hermes Agent plugin for Xquik's X/Twitter API: search, read, publish, monitor, and automate X workflows through structured tools.",
+  "description": "Native Hermes Agent plugin for Xquik's X/Twitter API: search, read, publish, monitor, and automate X workflows through structured tools. Not affiliated with X Corp.",
   "branch": "master",
   "excludeFolders": [".github"],
   "excludeFiles": [
