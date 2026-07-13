@@ -1,7 +1,7 @@
 # Publication Checklist
 
-Hermes Tweet is published as `hermes-tweet` on PyPI and currently released at
-`0.1.6`.
+Hermes Tweet is published as `hermes-tweet` on PyPI. The current public release
+is `0.1.6`; version `0.1.7` is prepared in source.
 
 ## Before GitHub Publication
 
@@ -19,15 +19,15 @@ Hermes Tweet is published as `hermes-tweet` on PyPI and currently released at
 - [x] Build from a clean working tree and run `twine check dist/*`.
 - [x] Verify the wheel contains `plugin.yaml`, `catalog_data.json`, and the
   bundled Hermes skill.
-- [x] Publish through GitHub Actions trusted publishing.
-- [x] Verify PyPI metadata, README rendering, simple index visibility, and a
+- [ ] Publish through GitHub Actions trusted publishing.
+- [ ] Verify PyPI metadata, README rendering, simple index visibility, and a
   fresh install.
 
 ## After Publication
 
-- [x] Install from PyPI in a fresh environment.
-- [x] Run `hermes plugins enable hermes-tweet`.
-- [x] Confirm `tweet_explore`, `tweet_read`, `tweet_action`, `/xstatus`, and
+- [ ] Install from PyPI in a fresh environment.
+- [ ] Run `hermes plugins enable hermes-tweet`.
+- [ ] Confirm `tweet_explore`, `tweet_read`, `tweet_action`, `/xstatus`, and
   `/xtrends` load.
 - [x] Confirm `tweet_action` is blocked unless
   `HERMES_TWEET_ENABLE_ACTIONS=true`.
@@ -80,7 +80,7 @@ If a locked Hermes Agent source SHA changes, review the official diff first,
 then update Hermes Tweet runtime, docs, tests, and the checker lock together.
 
 Latest reviewed locks from July 10, 2026: `hermes_cli/plugins.py`
-`ea0b8ea2ffe1b6b5c3616f4bc005081a09141337`, `tools/registry.py`
+`6ca393fca53c1fd2b3479bed72180fedcc848c88`, `tools/registry.py`
 `9b6611fb407dd17da5aa4ae2ba6a39498af830da`, and
 `hermes_cli/plugins_cmd.py` `6a7c39f3e4e014f98201766e980d19c696e1c545`.
 
@@ -126,5 +126,5 @@ Expected result:
 
 Keep optional signed-in submissions, local-secret smoke tests, pending outreach,
 duplicate checks, and maintainer-blocked directory routes in private operator
-notes. Do not commit those operational notes to the public repository. No
-package release blocker remains after the `0.1.6` release.
+notes. Do not commit those operational notes to the public repository. The
+`0.1.7` tag, trusted publishing workflow, and post-publication checks remain.

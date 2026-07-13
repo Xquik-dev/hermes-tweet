@@ -5,6 +5,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
+import pytest
 import yaml
 
 ROOT = Path(__file__).parents[1]
@@ -96,7 +97,7 @@ def test_build_extracts_parameters_request_body_response_and_payment(
                     ],
                     "requestBody": {"required": True, "description": "Optional JSON body"},
                     "responses": {"200": {"description": "Search result contract"}},
-                    "x-payment-info": {"amount": "150", "intent": "charge"},
+                    "x-payment-info": {"offers": [{"amount": "750", "intent": "charge"}]},
                 },
             }
         },
@@ -109,7 +110,7 @@ def test_build_extracts_parameters_request_body_response_and_payment(
         "category": "tweets",
         "free": False,
         "method": "GET",
-        "mpp": {"intent": "charge", "price": "$0.00015/call"},
+        "mpp": {"intent": "charge", "price": "$0.00075/call"},
         "parameters": [
             {
                 "name": "cursor",
@@ -186,11 +187,31 @@ def test_build_resolves_referenced_parameters_and_skips_unnamed_entries(
     ]
 
 
+def test_build_rejects_payment_metadata_without_a_valid_offer(tmp_path: Path) -> None:
+    source = write_openapi(
+        tmp_path,
+        {
+            "/x/trends": {
+                "get": {
+                    "summary": "X trends",
+                    "x-payment-info": {"offers": []},
+                }
+            }
+        },
+    )
+
+    with pytest.raises(
+        ValueError,
+        match="x-payment-info must include a valid first offer amount",
+    ):
+        build_catalog.build(source)
+
+
 def test_build_defaults_empty_metadata(tmp_path: Path) -> None:
     source = write_openapi(
         tmp_path,
         {
-            "x/trends": {
+            "credits": {
                 "get": {
                     "description": "Trend lookup",
                     "parameters": [{"name": "limit", "schema": {"schema": {"type": "integer"}}}],
@@ -214,6 +235,12 @@ def test_build_defaults_empty_metadata(tmp_path: Path) -> None:
             "description": "",
         }
     ]
-    assert endpoint["path"] == "/api/v1/x/trends"
+    assert endpoint["path"] == "/api/v1/credits"
     assert endpoint["responseShape"] == ""
     assert endpoint["summary"] == "Trend lookup"
+
+
+def test_paid_read_catalog_has_exact_contract() -> None:
+    assert len(build_catalog.PAID_READS) == 33
+    assert ("GET", "/api/v1/x/tweets/{id}") in build_catalog.PAID_READS
+    assert ("GET", "/api/v1/x/users/search") in build_catalog.PAID_READS

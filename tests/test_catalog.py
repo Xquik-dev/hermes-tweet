@@ -116,13 +116,43 @@ def test_explore_filters_catalog() -> None:
             "include_actions": True,
             "method": "GET",
             "mpp": True,
-            "path": "/api/v1/x/tweets/search",
-            "query": "search",
+            "path": "/api/v1/x/tweets/{id}",
+            "query": "tweet",
         }
     )
 
     assert results
-    assert results[0]["path"] == "/api/v1/x/tweets/search"
+    assert results[0]["path"] == "/api/v1/x/tweets/{id}"
+
+
+def test_catalog_matches_paid_read_and_direct_mpp_contract() -> None:
+    paid_reads = explore(
+        {
+            "free": False,
+            "include_actions": True,
+            "method": "GET",
+            "limit": 100,
+        }
+    )
+    direct_mpp = explore(
+        {
+            "include_actions": True,
+            "method": "GET",
+            "mpp": True,
+            "limit": 100,
+        }
+    )
+
+    assert len(paid_reads) == 33
+    assert {item["path"]: item["mpp"]["price"] for item in direct_mpp} == {
+        "/api/v1/trends": "$0.00045/call",
+        "/api/v1/x/articles/{tweetId}": "$0.00075/call",
+        "/api/v1/x/communities/{id}/info": "$0.00015/call",
+        "/api/v1/x/followers/check": "$0.00075/call",
+        "/api/v1/x/trends": "$0.00045/call",
+        "/api/v1/x/tweets/{id}": "$0.00015/call",
+        "/api/v1/x/users/{id}": "$0.00015/call",
+    }
 
 
 def test_explore_filters_catalog_with_copied_url_path() -> None:

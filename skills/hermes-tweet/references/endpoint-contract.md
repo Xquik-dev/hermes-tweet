@@ -57,6 +57,7 @@ After environment changes, reload an active CLI session. For gateway use, run
 
 ## Version History
 
+- 0.1.7: Align prepaid read and direct MPP metadata with the current API.
 - Unreleased: Add marketplace metadata, required sections, and reference docs.
 - Unreleased: Add capability declarations, risk controls, and release gates.
 - 0.1.6: Refresh catalog wording from the current Xquik OpenAPI.

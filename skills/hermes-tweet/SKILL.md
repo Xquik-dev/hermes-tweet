@@ -1,12 +1,12 @@
 ---
 name: hermes-tweet
 description: >-
-  Uses Xquik from Hermes Agent for X research, monitoring, and approval-gated actions. Use when the user requests X data or an approved X action. Trigger with "search X", "monitor X", "post tweet", or "X trends".
+  Uses Xquik from Hermes Agent for X research, monitoring, and approval-gated actions. Not affiliated with X Corp. Use when the user requests X data or an approved X action. Trigger with "search X", "monitor X", "post tweet", or "X trends".
 allowed-tools:
   - tweet_explore
   - tweet_read
   - tweet_action
-version: 0.1.6
+version: 0.1.7
 author: Burak Bayır (@kriptoburak), Xquik
 license: MIT
 compatibility: Requires Hermes Agent plugin support and Xquik API access.
@@ -19,7 +19,7 @@ tags:
   - social-media
   - automation
 metadata:
-  version: 0.1.6
+  version: 0.1.7
   author: Xquik
   tags:
     - hermes-agent

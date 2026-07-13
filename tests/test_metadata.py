@@ -66,14 +66,15 @@ EXPECTED_AGENT_SKILL_MANIFEST_TAGS = [
 ]
 EXPECTED_CLAUDE_PLUGIN_DESCRIPTION = (
     "Native Hermes Agent X/Twitter plugin for Xquik automation with read-first "
-    "workflows and approval-gated actions."
+    "workflows and approval-gated actions. Not affiliated with X Corp."
 )
 EXPECTED_CODEX_PLUGIN_KEYWORDS = [*EXPECTED_AGENT_SKILL_MANIFEST_TAGS, "codex-plugin"]
 EXPECTED_AGENT_SKILL_INSTALL = "hermes plugins install Xquik-dev/hermes-tweet --enable"
 EXPECTED_TOPIC_DISCOVERY_KEYWORD = "agent-skill"
 EXPECTED_DASHBOARD_MANIFEST_DESCRIPTION = (
     "Hermes Agent X/Twitter plugin for searching tweets, reading replies, "
-    "monitoring X, exporting followers, and approval-gated posting through Xquik."
+    "monitoring X, exporting followers, and approval-gated posting through Xquik. "
+    "Not affiliated with X Corp."
 )
 EXPECTED_HERMES_ECO_MANIFEST_NAME = "Hermes Tweet"
 EXPECTED_HERMES_ECO_MANIFEST_TYPE = "integration"
@@ -289,7 +290,7 @@ def test_release_metadata_surfaces_stay_aligned() -> None:
     assert str(load_mapping(ROOT / "hermes_tweet" / "plugin.yaml")["version"]) == version
 
     readme = (ROOT / "README.md").read_text()
-    assert f"/releases/tag/v{version}" in readme
+    assert f"| Prepared source version | `v{version}` |" in readme
     assert EXPECTED_PUBLIC_PACKAGE_DESCRIPTION in readme
     assert EXPECTED_SURFACE_GUIDE_LINK in readme
     assert EXPECTED_INTEGRATION_PATTERNS_LINK in readme
@@ -606,7 +607,7 @@ def test_ask_wrapper_skill_matches_public_package_metadata() -> None:
     assert frontmatter["author"] == "Xquik"
     assert frontmatter["description"] == (
         "Search Twitter/X, read tweet replies, look up users, monitor tweets, "
-        "export followers, and gate X actions through Xquik."
+        "export followers, and gate X actions through Xquik. Not affiliated with X Corp."
     )
     assert frontmatter["tags"] == EXPECTED_SKILL_TAGS
     assert_skill_capabilities(frontmatter)
@@ -627,7 +628,9 @@ def test_agent_skill_manifest_matches_public_package_metadata() -> None:
     assert manifest["name"] == project["name"]
     assert manifest["version"] == project["version"]
     assert manifest["author"] == "Xquik"
-    assert manifest["description"] == "Hermes Agent X/Twitter plugin for Xquik automation"
+    assert manifest["description"] == (
+        "Hermes Agent X/Twitter plugin for Xquik automation. Not affiliated with X Corp."
+    )
     assert manifest["tags"] == EXPECTED_AGENT_SKILL_MANIFEST_TAGS
     assert manifest["dependencies"] == []
     assert manifest["conflicts"] == []

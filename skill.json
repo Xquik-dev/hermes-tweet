@@ -1,7 +1,7 @@
 {
   "name": "hermes-tweet",
-  "version": "0.1.6",
-  "description": "Hermes Agent X/Twitter plugin for Xquik automation",
+  "version": "0.1.7",
+  "description": "Hermes Agent X/Twitter plugin for Xquik automation. Not affiliated with X Corp.",
   "author": "Xquik",
   "tags": [
     "hermes-agent",
