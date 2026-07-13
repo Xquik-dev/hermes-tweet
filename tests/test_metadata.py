@@ -14,7 +14,7 @@ ROOT = Path(__file__).parents[1]
 GUIDE_URL = "https://github.com/Xquik-dev/hermes-tweet#readme"
 EXPECTED_TOOLS = ["tweet_explore", "tweet_read", "tweet_action"]
 EXPECTED_PUBLIC_PACKAGE_DESCRIPTION = (
-    "Native Hermes Agent plugin for X/Twitter automation through Xquik"
+    "Native Hermes Agent plugin for X/Twitter automation through Xquik. Not affiliated with X Corp."
 )
 EXPECTED_OPTIONAL_ENV = ["XQUIK_BASE_URL", "HERMES_TWEET_ENABLE_ACTIONS"]
 EXPECTED_SKILL_CAPABILITY_ENV = [

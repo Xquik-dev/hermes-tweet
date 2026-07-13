@@ -10,7 +10,7 @@ pending submissions, duplicate checks, manual review routes, and maintainer
 follow-up belong outside the public repository. Use
 `docs/SUBMISSION_READINESS.md` before proposing or adding a new public surface.
 
-## Official Surfaces
+## Public Surfaces
 
 | Surface | Link |
 | --- | --- |
