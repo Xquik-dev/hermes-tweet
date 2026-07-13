@@ -42,8 +42,10 @@ PUBLIC_SURFACE_FILES = (
     ".hermes-eco.json",
     "skills/hermes-tweet/SKILL.md",
     "skills/hermes-tweet/skill-card.md",
+    "skills/hermes-tweet/references/endpoint-contract.md",
     "hermes_tweet/skills/hermes-tweet/SKILL.md",
     "hermes_tweet/skills/hermes-tweet/skill-card.md",
+    "hermes_tweet/skills/hermes-tweet/references/endpoint-contract.md",
     "registries/ask/hermes-tweet/SKILL.md",
 )
 

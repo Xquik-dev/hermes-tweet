@@ -82,6 +82,7 @@ hermes_tweet = [
   "plugin.yaml",
   "catalog_data.json",
   "skills/hermes-tweet/SKILL.md",
+  "skills/hermes-tweet/references/*.md",
 ]
 
 [tool.ruff]
