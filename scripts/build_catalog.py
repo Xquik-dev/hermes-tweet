@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import sys
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any, cast
 
@@ -28,7 +29,43 @@ PROHIBITED_STATIC = {
     ("POST", "/api/v1/x/account-connection-challenges/{id}/submit"),
 }
 
-PAID_STATIC = {
+PAID_READS = {
+    ("GET", "/api/v1/trends"),
+    ("GET", "/api/v1/x/articles/{tweetId}"),
+    ("GET", "/api/v1/x/communities/{id}/info"),
+    ("GET", "/api/v1/x/communities/{id}/members"),
+    ("GET", "/api/v1/x/communities/{id}/moderators"),
+    ("GET", "/api/v1/x/communities/{id}/tweets"),
+    ("GET", "/api/v1/x/communities/search"),
+    ("GET", "/api/v1/x/communities/tweets"),
+    ("GET", "/api/v1/x/followers/check"),
+    ("GET", "/api/v1/x/lists/{id}/followers"),
+    ("GET", "/api/v1/x/lists/{id}/members"),
+    ("GET", "/api/v1/x/lists/{id}/tweets"),
+    ("GET", "/api/v1/x/trends"),
+    ("GET", "/api/v1/x/tweets"),
+    ("GET", "/api/v1/x/tweets/{id}"),
+    ("GET", "/api/v1/x/tweets/{id}/favoriters"),
+    ("GET", "/api/v1/x/tweets/{id}/quotes"),
+    ("GET", "/api/v1/x/tweets/{id}/replies"),
+    ("GET", "/api/v1/x/tweets/{id}/retweeters"),
+    ("GET", "/api/v1/x/tweets/{id}/thread"),
+    ("GET", "/api/v1/x/tweets/search"),
+    ("GET", "/api/v1/x/users/{id}"),
+    ("GET", "/api/v1/x/users/{id}/followers"),
+    ("GET", "/api/v1/x/users/{id}/followers-you-know"),
+    ("GET", "/api/v1/x/users/{id}/following"),
+    ("GET", "/api/v1/x/users/{id}/likes"),
+    ("GET", "/api/v1/x/users/{id}/media"),
+    ("GET", "/api/v1/x/users/{id}/mentions"),
+    ("GET", "/api/v1/x/users/{id}/replies"),
+    ("GET", "/api/v1/x/users/{id}/tweets"),
+    ("GET", "/api/v1/x/users/{id}/verified-followers"),
+    ("GET", "/api/v1/x/users/batch"),
+    ("GET", "/api/v1/x/users/search"),
+}
+
+PAID_ENDPOINTS = PAID_READS | {
     ("POST", "/api/v1/x/media/download"),
 }
 
@@ -139,13 +176,16 @@ def _mpp(operation: JsonDict) -> dict[str, str] | None:
     info = _as_dict(operation.get("x-payment-info"))
     if not info:
         return None
-    amount = info.get("amount")
+
     try:
-        price = int(str(amount)) / 1_000_000
-    except ValueError:
-        price = 0
+        offer = _as_dict(_as_list(info.get("offers"))[0])
+        price = Decimal(str(offer["amount"])) / Decimal(1_000_000)
+    except (IndexError, InvalidOperation, KeyError) as error:
+        message = "x-payment-info must include a valid first offer amount"
+        raise ValueError(message) from error
+
     return {
-        "intent": str(info.get("intent", "charge")),
+        "intent": str(offer.get("intent", "charge")),
         "price": f"${price:.5f}/call",
     }
 
@@ -196,7 +236,7 @@ def build(source: Path) -> list[JsonDict]:
                     "action": _action(method, path),
                     "category": _category(operation_dict.get("tags")),
                     "free": "x-payment-info" not in operation_dict
-                    and (method, path) not in PAID_STATIC,
+                    and (method, path) not in PAID_ENDPOINTS,
                     "method": method,
                     "mpp": _mpp(operation_dict),
                     "parameters": _parameters(path_item_dict, operation_dict, parameter_components),
