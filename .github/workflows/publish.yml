@@ -3,38 +3,52 @@ name: Publish
 on:
   release:
     types: [published]
-  workflow_dispatch:
-    inputs:
-      ref:
-        description: "Release tag to publish, such as v0.1.7"
-        required: true
 
 permissions:
   contents: read
 
+concurrency:
+  group: pypi-${{ github.event.release.tag_name }}
+  cancel-in-progress: false
+
 jobs:
   build:
     name: Build distributions
-    runs-on: blacksmith-2vcpu-ubuntu-2404
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
-          ref: ${{ github.event.inputs.ref || github.ref_name }}
+          fetch-depth: 0
+          persist-credentials: false
+          ref: ${{ github.event.release.tag_name }}
+
+      - name: Set up Go
+        uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
+        with:
+          go-version: stable
+          cache: false
+
+      - name: Workflow lint
+        run: go run github.com/rhysd/actionlint/cmd/actionlint@v1.7.12
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v8.3.1
+        uses: astral-sh/setup-uv@f98e06938123ccabd21905ea5d0069192241f9f1 # v8.3.1
+        with:
+          enable-cache: false
 
       - name: Set up Python
         run: uv python install 3.12
 
       - name: Install dependencies
-        run: uv sync --python 3.12 --extra dev
+        run: uv sync --locked --python 3.12 --extra dev
 
       - name: Validate release tag
         env:
-          RELEASE_REF: ${{ github.event.inputs.ref || github.ref_name }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
         run: |
+          git fetch --no-tags origin master:refs/remotes/origin/master
           uv run python - <<'PY'
           from pathlib import Path
           import os
@@ -44,7 +58,7 @@ jobs:
               version = tomllib.load(pyproject_file)["project"]["version"]
 
           expected_ref = f"v{version}"
-          actual_ref = os.environ["RELEASE_REF"]
+          actual_ref = os.environ["RELEASE_TAG"]
           if actual_ref != expected_ref:
               message = (
                   f"Release ref {actual_ref!r} must match "
@@ -52,6 +66,17 @@ jobs:
               )
               raise SystemExit(message)
           PY
+          tag_commit=$(git rev-parse --verify "refs/tags/${RELEASE_TAG}^{commit}")
+          head_commit=$(git rev-parse HEAD)
+          master_commit=$(git rev-parse refs/remotes/origin/master)
+          test "$tag_commit" = "$head_commit" || {
+            echo "Release tag must resolve to the checked-out commit."
+            exit 1
+          }
+          test "$tag_commit" = "$master_commit" || {
+            echo "Release tag must resolve to the protected master tip."
+            exit 1
+          }
 
       - name: Format check
         run: uv run ruff format --check .
@@ -71,6 +96,14 @@ jobs:
       - name: Public safety scan
         run: uv run python scripts/check_public_safety.py
 
+      - name: Public link scan
+        run: uv run python scripts/check_public_links.py
+
+      - name: Hermes Agent compatibility
+        run: uv run python scripts/check_hermes_agent_compat.py
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
       - name: Dependency audit
         run: uv run pip-audit
 
@@ -81,7 +114,7 @@ jobs:
         run: uv run twine check dist/*
 
       - name: Upload distributions
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: distributions
           path: dist/*
@@ -91,21 +124,23 @@ jobs:
   publish:
     name: Publish to PyPI
     needs: build
-    runs-on: blacksmith-2vcpu-ubuntu-2404
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
     environment:
       name: pypi
       url: https://pypi.org/project/hermes-tweet/
     permissions:
       contents: read
-      id-token: write
+      id-token: write # Exchange the release identity for a short-lived PyPI token.
     steps:
       - name: Download distributions
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
           name: distributions
           path: dist
 
       - name: Publish distributions
-        uses: pypa/gh-action-pypi-publish@release/v1
+        uses: pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b # v1.14.0
         with:
+          attestations: true
           packages-dir: dist/
