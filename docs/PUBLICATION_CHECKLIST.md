@@ -14,6 +14,8 @@ is `0.1.6`; version `0.1.7` is prepared in source.
 ## Before PyPI Publication
 
 - [x] Add the PyPI trusted publisher for `Xquik-dev/hermes-tweet`.
+- [x] Restrict the `pypi` environment to release tags matching `v*`.
+- [x] Protect release tags from updates and deletion.
 - [x] Regenerate `hermes_tweet/catalog_data.json` from current Xquik OpenAPI.
 - [x] Run the full quality gate from `AGENTS.md`.
 - [x] Build from a clean working tree and run `twine check dist/*`.
@@ -40,6 +42,10 @@ is `0.1.6`; version `0.1.7` is prepared in source.
   workflow ready for Codex catalog submissions.
 
 ## Release Gate
+
+Publish only from a GitHub release tag that matches the package version and
+resolves to the protected `master` tip. The release workflow has no manual
+dispatch path.
 
 Run these checks before any new package release:
 

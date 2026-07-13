@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import tomllib
 from pathlib import Path
 from typing import cast
@@ -12,6 +13,7 @@ from packaging.utils import canonicalize_name
 
 ROOT = Path(__file__).parents[1]
 GUIDE_URL = "https://github.com/Xquik-dev/hermes-tweet#readme"
+CLAW_HUB_URL = "https://clawhub.ai/xquik/hermes-tweet"
 EXPECTED_TOOLS = ["tweet_explore", "tweet_read", "tweet_action"]
 EXPECTED_PUBLIC_PACKAGE_DESCRIPTION = (
     "Native Hermes Agent plugin for X/Twitter automation through Xquik. Not affiliated with X Corp."
@@ -123,8 +125,12 @@ EXPECTED_LIVE_ECOSYSTEM_SURFACES = (
         "clawhub/h/hermes-tweet/SKILL.md",
     ),
 )
-SETUP_UV_ACTION = "astral-sh/setup-uv@v8.3.1"
+SETUP_UV_ACTION = "astral-sh/setup-uv@f98e06938123ccabd21905ea5d0069192241f9f1"
 CHECKOUT_ACTION_SHA = "actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0"
+SETUP_GO_ACTION_SHA = "actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16"
+UPLOAD_ARTIFACT_ACTION_SHA = "actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a"
+DOWNLOAD_ARTIFACT_ACTION_SHA = "actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c"
+PYPI_PUBLISH_ACTION_SHA = "pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b"
 HOL_PLUGIN_SCANNER_ACTION_SHA = (
     "hashgraph-online/ai-plugin-scanner-action@a63dd98b7d6497cabad2069e803b450def3b02dc"
 )
@@ -717,16 +723,19 @@ def test_hol_plugin_scanner_workflow_matches_codex_catalog_requirements() -> Non
     assert "pull_request" in on_config
     assert require_mapping(on_config["push"])["branches"] == ["master", "main"]
     assert on_config["workflow_dispatch"] is None
-    assert require_mapping(workflow["permissions"]) == {
-        "contents": "read",
-        "security-events": "write",
-    }
+    assert require_mapping(workflow["permissions"]) == {"contents": "read"}
 
     jobs = require_mapping(workflow["jobs"])
     scan = require_mapping(jobs["scan"])
+    assert require_mapping(scan["permissions"]) == {
+        "contents": "read",
+        "security-events": "write",
+    }
     assert scan["runs-on"] == BLACKSMITH_RUNNER_LABEL
     steps = require_list(scan["steps"])
-    assert find_step(steps, "Checkout")["uses"] == CHECKOUT_ACTION_SHA
+    checkout = find_step(steps, "Checkout")
+    assert checkout["uses"] == CHECKOUT_ACTION_SHA
+    assert require_mapping(checkout["with"])["persist-credentials"] is False
 
     scanner = find_step(steps, "HOL Plugin Scanner")
     assert scanner["uses"] == HOL_PLUGIN_SCANNER_ACTION_SHA
@@ -738,6 +747,15 @@ def test_hol_plugin_scanner_workflow_matches_codex_catalog_requirements() -> Non
         "format": "sarif",
         "upload_sarif": True,
     }
+
+
+def test_clawhub_metadata_uses_live_canonical_route() -> None:
+    project = tomllib.loads((ROOT / "pyproject.toml").read_text())["project"]
+    ecosystem = (ROOT / "docs" / "ECOSYSTEM.md").read_text()
+
+    assert project["urls"]["ClawHub"] == CLAW_HUB_URL
+    assert f"<{CLAW_HUB_URL}>" in ecosystem
+    assert "clawhub.ai/skills/hermes-tweet" not in ecosystem
 
 
 def test_plugin_hub_manifest_matches_public_package_metadata() -> None:
@@ -781,15 +799,18 @@ def test_public_repo_ignore_rules_cover_local_artifacts() -> None:
 
 @pytest.mark.parametrize(
     ("workflow_path", "job_name"),
-    [
-        ("ci.yml", "check"),
-        ("hol-plugin-scanner.yml", "scan"),
-        ("publish.yml", "build"),
-        ("publish.yml", "publish"),
-    ],
+    [("ci.yml", "check"), ("hol-plugin-scanner.yml", "scan")],
 )
-def test_workflows_run_on_blacksmith_runner(workflow_path: str, job_name: str) -> None:
+def test_validation_workflows_run_on_blacksmith_runner(
+    workflow_path: str,
+    job_name: str,
+) -> None:
     assert workflow_job(workflow_path, job_name)["runs-on"] == BLACKSMITH_RUNNER_LABEL
+
+
+@pytest.mark.parametrize("job_name", ["build", "publish"])
+def test_publish_workflow_runs_on_github_hosted_runner(job_name: str) -> None:
+    assert workflow_job("publish.yml", job_name)["runs-on"] == "ubuntu-24.04"
 
 
 def test_actionlint_allows_blacksmith_runner_label() -> None:
@@ -799,51 +820,91 @@ def test_actionlint_allows_blacksmith_runner_label() -> None:
     assert self_hosted_runner["labels"] == [BLACKSMITH_RUNNER_LABEL]
 
 
+def test_all_workflow_actions_are_pinned_to_commit_shas() -> None:
+    action_reference = re.compile(r"[^@\s]+@[0-9a-f]{40}")
+
+    for workflow_path in sorted((ROOT / ".github" / "workflows").glob("*.yml")):
+        action_lines = [
+            line.strip()
+            for line in workflow_path.read_text().splitlines()
+            if line.strip().startswith("uses:")
+        ]
+        assert action_lines
+        for action_line in action_lines:
+            action = action_line.removeprefix("uses:").partition("#")[0].strip()
+            assert action_reference.fullmatch(action), (
+                f"Unpinned action in {workflow_path}: {action}"
+            )
+
+
 def test_publish_workflow_requires_version_matched_release_tag() -> None:
     workflow = load_object_mapping(ROOT / ".github" / "workflows" / "publish.yml")
-    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
-    version = pyproject["project"]["version"]
 
     # PyYAML 1.1 treats the GitHub Actions "on" key as boolean true.
     on_config = require_mapping(workflow[True])
     release = require_mapping(on_config["release"])
     assert release["types"] == ["published"]
-
-    workflow_dispatch = require_mapping(on_config["workflow_dispatch"])
-    inputs = require_mapping(workflow_dispatch["inputs"])
-    ref_input = require_mapping(inputs["ref"])
-    assert ref_input["required"] is True
-    assert ref_input["description"] == f"Release tag to publish, such as v{version}"
-    assert "default" not in ref_input
+    assert "workflow_dispatch" not in on_config
 
     jobs = require_mapping(workflow["jobs"])
     build = require_mapping(jobs["build"])
+    assert build["timeout-minutes"] == 30
     build_steps = require_list(build["steps"])
 
     install_uv_step = find_step(build_steps, "Install uv")
     assert install_uv_step["uses"] == SETUP_UV_ACTION
+    assert require_mapping(install_uv_step["with"])["enable-cache"] is False
 
     public_safety_step = find_step(build_steps, "Public safety scan")
     assert public_safety_step["run"] == PUBLIC_SAFETY_COMMAND
 
     checkout_step = find_step(build_steps, "Checkout")
+    assert checkout_step["uses"] == CHECKOUT_ACTION_SHA
     checkout_config = require_mapping(checkout_step["with"])
-    assert checkout_config["ref"] == "${{ github.event.inputs.ref || github.ref_name }}"
+    assert checkout_config == {
+        "fetch-depth": 0,
+        "persist-credentials": False,
+        "ref": "${{ github.event.release.tag_name }}",
+    }
 
     validate_step = find_step(build_steps, "Validate release tag")
     validate_env = require_mapping(validate_step["env"])
-    assert validate_env["RELEASE_REF"] == "${{ github.event.inputs.ref || github.ref_name }}"
+    assert validate_env["RELEASE_TAG"] == "${{ github.event.release.tag_name }}"
 
     validate_script = validate_step["run"]
     assert isinstance(validate_script, str)
     assert "pyproject.toml" in validate_script
     assert 'expected_ref = f"v{version}"' in validate_script
-    assert 'actual_ref = os.environ["RELEASE_REF"]' in validate_script
+    assert 'actual_ref = os.environ["RELEASE_TAG"]' in validate_script
     assert "pyproject version tag" in validate_script
+    assert "refs/tags/${RELEASE_TAG}^{commit}" in validate_script
+    assert "refs/remotes/origin/master" in validate_script
+    assert "protected master tip" in validate_script
+
+    assert find_step(build_steps, "Set up Go")["uses"] == SETUP_GO_ACTION_SHA
+    assert find_step(build_steps, "Workflow lint")["run"] == f"go run {ACTIONLINT_MODULE}"
+    assert find_step(build_steps, "Public link scan")["run"] == (
+        "uv run python scripts/check_public_links.py"
+    )
+    assert find_step(build_steps, "Hermes Agent compatibility")["run"] == (
+        HERMES_AGENT_COMPAT_COMMAND
+    )
+    assert find_step(build_steps, "Upload distributions")["uses"] == (UPLOAD_ARTIFACT_ACTION_SHA)
 
     publish = require_mapping(jobs["publish"])
+    assert publish["timeout-minutes"] == 10
     publish_permissions = require_mapping(publish["permissions"])
     assert publish_permissions == {"contents": "read", "id-token": "write"}
+    publish_steps = require_list(publish["steps"])
+    assert find_step(publish_steps, "Download distributions")["uses"] == (
+        DOWNLOAD_ARTIFACT_ACTION_SHA
+    )
+    publish_step = find_step(publish_steps, "Publish distributions")
+    assert publish_step["uses"] == PYPI_PUBLISH_ACTION_SHA
+    assert require_mapping(publish_step["with"]) == {
+        "attestations": True,
+        "packages-dir": "dist/",
+    }
 
 
 def test_ci_workflow_runs_actionlint_before_python_checks() -> None:
@@ -865,7 +926,7 @@ def test_ci_workflow_runs_actionlint_before_python_checks() -> None:
     assert step_names.index("Public safety scan") < step_names.index("Test with coverage")
 
     setup_go_step = find_step(steps, "Set up Go")
-    assert setup_go_step["uses"] == "actions/setup-go@v6"
+    assert setup_go_step["uses"] == SETUP_GO_ACTION_SHA
     setup_go_config = require_mapping(setup_go_step["with"])
     assert setup_go_config["go-version"] == "stable"
     assert setup_go_config["cache"] is False
@@ -875,6 +936,10 @@ def test_ci_workflow_runs_actionlint_before_python_checks() -> None:
 
     install_uv_step = find_step(steps, "Install uv")
     assert install_uv_step["uses"] == SETUP_UV_ACTION
+
+    checkout_step = find_step(steps, "Checkout")
+    assert checkout_step["uses"] == CHECKOUT_ACTION_SHA
+    assert require_mapping(checkout_step["with"])["persist-credentials"] is False
 
     hermes_agent_compat_step = find_step(steps, "Hermes Agent compatibility")
     assert hermes_agent_compat_step["run"] == HERMES_AGENT_COMPAT_COMMAND

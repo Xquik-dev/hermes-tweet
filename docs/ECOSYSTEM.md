@@ -25,7 +25,7 @@ follow-up belong outside the public repository. Use
 
 | Surface | Link |
 | --- | --- |
-| ClawHub | <https://clawhub.ai/skills/hermes-tweet> |
+| ClawHub | <https://clawhub.ai/xquik/hermes-tweet> |
 | SKILLS.re | <https://skills.re/> |
 | Terminal Skills xquik-twitter skill | <https://github.com/TerminalSkills/skills/blob/main/skills/xquik-twitter/SKILL.md> |
 | Antigravity Awesome Skills Xquik X/Twitter skill | <https://github.com/sickn33/antigravity-awesome-skills/blob/main/skills/x-twitter-scraper/SKILL.md> |
