@@ -175,7 +175,9 @@ def test_public_safety_scan_includes_github_repository_config() -> None:
 def test_public_safety_scan_includes_skill_cards() -> None:
     expected_files = {
         "skills/hermes-tweet/skill-card.md",
+        "skills/hermes-tweet/references/endpoint-contract.md",
         "hermes_tweet/skills/hermes-tweet/skill-card.md",
+        "hermes_tweet/skills/hermes-tweet/references/endpoint-contract.md",
     }
 
     assert expected_files <= set(check_public_safety.PUBLIC_TEXT_FILES)

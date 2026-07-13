@@ -30,6 +30,26 @@ EXPECTED_SKILL_TAGS = [
     "social-media",
     "automation",
 ]
+EXPECTED_MARKETPLACE_SKILL_AUTHOR = "Burak Bay\u0131r (@kriptoburak), Xquik"
+EXPECTED_MARKETPLACE_SKILL_FIELDS = {
+    "name",
+    "description",
+    "allowed-tools",
+    "version",
+    "author",
+    "license",
+    "compatibility",
+    "tags",
+}
+EXPECTED_MARKETPLACE_SKILL_SECTIONS = (
+    "## Overview",
+    "## Prerequisites",
+    "## Instructions",
+    "## Output",
+    "## Error Handling",
+    "## Examples",
+    "## Resources",
+)
 EXPECTED_ASK_SKILL_METADATA = {
     "author": "Xquik",
     "repository": "https://github.com/Xquik-dev/hermes-tweet",
@@ -470,7 +490,9 @@ def test_registry_skill_mirrors_bundled_skill() -> None:
     assert registry_skill.read_text().rstrip() == bundled_text.rstrip()
     assert "## Permissions and Capabilities" in bundled_text
     assert "## Known Risks and Mitigations" in bundled_text
-    assert "## Skill Output" in bundled_text
+    assert "## Output" in bundled_text
+    assert "## Error Handling" in bundled_text
+    assert "## Resources" in bundled_text
     assert "## Release Trust Gate" in bundled_text
     assert "SkillSpector" in bundled_text
     assert "skill-card.md" in bundled_text
@@ -479,7 +501,12 @@ def test_registry_skill_mirrors_bundled_skill() -> None:
     frontmatter = load_skill_frontmatter(bundled_skill)
     assert frontmatter["name"] == "hermes-tweet"
     assert str(frontmatter["version"]) == version
-    assert frontmatter["author"] == "Xquik"
+    assert frontmatter["author"] == EXPECTED_MARKETPLACE_SKILL_AUTHOR
+    assert frontmatter["allowed-tools"] == EXPECTED_TOOLS
+    assert frontmatter["license"] == "MIT"
+    assert frontmatter["compatibility"] == (
+        "Requires Hermes Agent plugin support and Xquik API access."
+    )
     assert frontmatter["tags"] == EXPECTED_SKILL_TAGS
     assert_skill_capabilities(frontmatter)
 
@@ -487,6 +514,56 @@ def test_registry_skill_mirrors_bundled_skill() -> None:
     assert str(marketplace_metadata["version"]) == version
     assert marketplace_metadata["author"] == "Xquik"
     assert marketplace_metadata["tags"] == EXPECTED_SKILL_TAGS
+
+
+@pytest.mark.parametrize(
+    "relative_path",
+    [
+        "skills/hermes-tweet/SKILL.md",
+        "hermes_tweet/skills/hermes-tweet/SKILL.md",
+    ],
+)
+def test_marketplace_skill_contract(relative_path: str) -> None:
+    skill_path = ROOT / relative_path
+    skill_text = skill_path.read_text(encoding="utf-8")
+    frontmatter = load_skill_frontmatter(skill_path)
+
+    assert set(frontmatter) >= EXPECTED_MARKETPLACE_SKILL_FIELDS
+    assert frontmatter["allowed-tools"] == EXPECTED_TOOLS
+    assert frontmatter["author"] == EXPECTED_MARKETPLACE_SKILL_AUTHOR
+    assert "Use when" in str(frontmatter["description"])
+    assert "Trigger with" in str(frontmatter["description"])
+
+    section_positions = [
+        skill_text.index(section) for section in EXPECTED_MARKETPLACE_SKILL_SECTIONS
+    ]
+    assert section_positions == sorted(section_positions)
+
+    required_environment_variables = require_list(frontmatter["required_environment_variables"])
+    assert required_environment_variables == [
+        {
+            "name": "XQUIK_API_KEY",
+            "prompt": "Xquik API key",
+            "help": "Create an API key at https://dashboard.xquik.com",
+            "required_for": ("tweet_read, /xstatus, /xtrends, and authenticated Xquik API calls"),
+        }
+    ]
+
+
+def test_skill_reference_mirrors_bundled_reference() -> None:
+    relative_reference = Path("references") / "endpoint-contract.md"
+    registry_reference = ROOT / "skills" / "hermes-tweet" / relative_reference
+    bundled_reference = ROOT / "hermes_tweet" / "skills" / "hermes-tweet" / relative_reference
+    reference_text = registry_reference.read_text(encoding="utf-8")
+
+    assert bundled_reference.read_text(encoding="utf-8") == reference_text
+    assert "## Tool Matrix" in reference_text
+    assert "## Approval Checklist" in reference_text
+    assert "HERMES_TWEET_ENABLE_ACTIONS=true" in reference_text
+
+    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
+    package_data = pyproject["tool"]["setuptools"]["package-data"]["hermes_tweet"]
+    assert "skills/hermes-tweet/references/*.md" in package_data
 
 
 def test_skill_card_mirrors_bundled_skill_card() -> None:
