@@ -1,7 +1,7 @@
 # Publication Checklist
 
 Hermes Tweet is published as `hermes-tweet` on PyPI. The current public release
-is `0.1.6`; version `0.1.7` is prepared in source.
+is `0.1.7`; version `0.1.8` is prepared in source.
 
 ## Before GitHub Publication
 
@@ -87,7 +87,7 @@ then update Hermes Tweet runtime, docs, tests, and the checker lock together.
 
 Latest reviewed locks from July 10, 2026: `hermes_cli/plugins.py`
 `6ca393fca53c1fd2b3479bed72180fedcc848c88`, `tools/registry.py`
-`9b6611fb407dd17da5aa4ae2ba6a39498af830da`, and
+`354da7123fd7d0acaad8d5ac49870963fce54a5c`, and
 `hermes_cli/plugins_cmd.py` `6a7c39f3e4e014f98201766e980d19c696e1c545`.
 
 Keep the runtime contract aligned with those sources:
@@ -133,4 +133,4 @@ Expected result:
 Keep optional signed-in submissions, local-secret smoke tests, pending outreach,
 duplicate checks, and maintainer-blocked directory routes in private operator
 notes. Do not commit those operational notes to the public repository. The
-`0.1.7` tag, trusted publishing workflow, and post-publication checks remain.
+`0.1.8` tag, trusted publishing workflow, and post-publication checks remain.

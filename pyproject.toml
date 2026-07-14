@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hermes-tweet"
-version = "0.1.7"
+version = "0.1.8"
 description = "Native Hermes Agent plugin for X/Twitter automation through Xquik. Not affiliated with X Corp."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -20,7 +20,6 @@ keywords = [
   "automation",
   "hermes-agent",
   "hermes-plugin",
-  "mcp",
   "social-media",
   "tweet",
   "twitter",

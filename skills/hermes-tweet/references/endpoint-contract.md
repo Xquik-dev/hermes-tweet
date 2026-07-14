@@ -57,6 +57,7 @@ After environment changes, reload an active CLI session. For gateway use, run
 
 ## Version History
 
+- 0.1.8: Clarify the separate Xquik MCP integration and package discovery scope.
 - 0.1.7: Align prepaid read and direct MPP metadata with the current API.
 - Unreleased: Add marketplace metadata, required sections, and reference docs.
 - Unreleased: Add capability declarations, risk controls, and release gates.

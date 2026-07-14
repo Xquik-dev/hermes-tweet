@@ -43,7 +43,8 @@ capability from a Hermes runtime.
 MCP servers:
 Keep them for MCP-native clients and tool schemas. Add Hermes Tweet when the
 user wants a native Hermes plugin with slash commands, bundled skill guidance,
-and Hermes plugin enablement.
+and Hermes plugin enablement. Direct Xquik MCP users should add
+`https://xquik.com/mcp` and complete OAuth 2.1 in their client.
 
 Claude marketplace bridges:
 Keep bridges that install Claude plugin marketplaces from a different agent

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import sys
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
@@ -33,10 +33,11 @@ check_public_links = load_public_links_module()
 @dataclass(frozen=True)
 class FakeResponse:
     status_code: int
+    headers: dict[str, str] = field(default_factory=dict)
 
 
 class FakeClient:
-    def __init__(self, responses: list[int | httpx.HTTPError]) -> None:
+    def __init__(self, responses: list[int | FakeResponse | httpx.HTTPError]) -> None:
         self._responses = responses
         self.requests: list[tuple[str, str]] = []
 
@@ -45,6 +46,9 @@ class FakeClient:
         response = self._responses.pop(0)
         if isinstance(response, httpx.HTTPError):
             raise response
+
+        if isinstance(response, FakeResponse):
+            return response
 
         return FakeResponse(response)
 
@@ -226,6 +230,39 @@ def test_check_public_url_accepts_forbidden_links() -> None:
 
     assert failure is None
     assert client.requests == [("HEAD", "https://example.com/private")]
+
+
+def test_check_public_url_accepts_known_bearer_challenge() -> None:
+    client = FakeClient(
+        [
+            FakeResponse(
+                401,
+                headers={
+                    "www-authenticate": (
+                        'Bearer realm="OAuth", '
+                        'resource_metadata="https://xquik.com/.well-known/'
+                        'oauth-protected-resource/mcp"'
+                    )
+                },
+            )
+        ]
+    )
+
+    failure = check_public_links.check_public_url(client, "https://xquik.com/mcp")
+
+    assert failure is None
+    assert client.requests == [("HEAD", "https://xquik.com/mcp")]
+
+
+def test_check_public_url_rejects_unexpected_unauthorized_response() -> None:
+    client = FakeClient([FakeResponse(401)])
+
+    failure = check_public_links.check_public_url(client, "https://xquik.com/mcp")
+
+    assert failure == check_public_links.LinkFailure(
+        url="https://xquik.com/mcp",
+        reason="HTTP 401",
+    )
 
 
 def test_check_public_url_reports_http_failure() -> None:

@@ -1,6 +1,6 @@
 {
   "name": "hermes-tweet",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Hermes Agent X/Twitter plugin for Xquik automation. Not affiliated with X Corp.",
   "author": "Xquik",
   "tags": [
@@ -31,8 +31,7 @@
     "x-twitter",
     "social-media",
     "automation",
-    "agent-tools",
-    "mcp"
+    "agent-tools"
   ],
   "homepage": "https://github.com/Xquik-dev/hermes-tweet#readme",
   "repository": "https://github.com/Xquik-dev/hermes-tweet"
