@@ -107,7 +107,7 @@ runtime locally.
 | Repository guide | [`github.com/Xquik-dev/hermes-tweet#readme`](https://github.com/Xquik-dev/hermes-tweet#readme) |
 | Context7 | [`context7.com/xquik-dev/hermes-tweet`](https://context7.com/xquik-dev/hermes-tweet) |
 | piwheels | [`hermes-tweet`](https://piwheels.org/project/hermes-tweet/) |
-| Prepared source version | `v0.1.7` |
+| Prepared source version | `v0.1.8` |
 | Supported Python | `>=3.11` |
 | Package format | Wheel and source distribution |
 | Hermes entry point | `hermes-tweet = hermes_tweet` |
@@ -310,5 +310,5 @@ Recommended topics:
 
 `hermes-agent`, `hermes-plugin`, `hermes`, `twitter`, `x-api`,
 `x-automation`, `xquik`, `tweet`, `automation`, `social-media`,
-`social-media-automation`, `ai-agent`, `mcp`, `agent-tools`, `twitter-api`,
+`social-media-automation`, `ai-agent`, `agent-tools`, `twitter-api`,
 `twitter-automation`, `x-twitter`, `social-media-api`, `agent-skill`, `python`

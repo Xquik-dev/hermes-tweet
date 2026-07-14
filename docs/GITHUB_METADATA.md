@@ -31,7 +31,6 @@ automation
 social-media
 social-media-automation
 ai-agent
-mcp
 agent-tools
 twitter-api
 twitter-automation

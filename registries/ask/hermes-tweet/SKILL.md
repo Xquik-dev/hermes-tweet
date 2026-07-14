@@ -1,7 +1,7 @@
 ---
 name: hermes-tweet
 description: Search Twitter/X, read tweet replies, look up users, monitor tweets, export followers, and gate X actions through Xquik. Not affiliated with X Corp.
-version: 0.1.7
+version: 0.1.8
 author: Xquik
 license: MIT
 tags:
@@ -12,7 +12,7 @@ tags:
   - social-media
   - automation
 metadata:
-  version: 0.1.7
+  version: 0.1.8
   author: Xquik
   repository: https://github.com/Xquik-dev/hermes-tweet
   plugin: hermes plugins install Xquik-dev/hermes-tweet --enable
