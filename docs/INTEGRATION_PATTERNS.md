@@ -44,7 +44,16 @@ MCP servers:
 Keep them for MCP-native clients and tool schemas. Add Hermes Tweet when the
 user wants a native Hermes plugin with slash commands, bundled skill guidance,
 and Hermes plugin enablement. Direct Xquik MCP users should add
-`https://xquik.com/mcp` and complete OAuth 2.1 in their client.
+`https://xquik.com/mcp`, then follow the [current client compatibility
+path](https://docs.xquik.com/mcp/overview#client-compatibility). OAuth-capable
+clients complete OAuth 2.1 in their client.
+
+Affected Codex releases discard the RFC 9207 `iss` callback value even though
+Xquik returns it. If Codex reports
+`Authorization server response missing required issuer: expected https://xquik.com`,
+use `XQUIK_API_KEY` through the Codex `bearer_token_env_var` setting. Follow the
+[Codex OAuth troubleshooting guide](https://docs.xquik.com/guides/troubleshooting#codex-oauth-issuer-validation-error)
+and track [openai/codex#31573](https://github.com/openai/codex/issues/31573).
 
 Claude marketplace bridges:
 Keep bridges that install Claude plugin marketplaces from a different agent

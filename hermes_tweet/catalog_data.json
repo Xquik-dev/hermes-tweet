@@ -2193,8 +2193,8 @@
       }
     ],
     "path": "/api/v1/x/tweets/{id}/favoriters",
-    "responseShape": "List of users who liked the tweet",
-    "summary": "List users who liked a tweet"
+    "responseShape": "Visible users who liked the tweet",
+    "summary": "List visible users who liked a tweet"
   },
   {
     "action": true,
