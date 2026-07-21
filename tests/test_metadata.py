@@ -947,7 +947,10 @@ def test_clusterfuzzlite_runs_python_fuzzers_with_restricted_permissions() -> No
     build_script = (ROOT / ".clusterfuzzlite" / "build.sh").read_text()
     assert "pip install" not in build_script
     assert "pyinstaller" in build_script
-    assert "--collect-data hermes_tweet" in build_script
+    assert (
+        '--add-data "${SRC}/hermes-tweet/hermes_tweet/catalog_data.json:hermes_tweet"'
+        in build_script
+    )
     assert '--paths "${SRC}/hermes-tweet"' in build_script
     assert "LLVMFuzzerTestOneInput" in build_script
     fuzzer = (ROOT / "fuzz" / "normalization_fuzzer.py").read_text()

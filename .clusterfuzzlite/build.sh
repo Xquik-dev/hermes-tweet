@@ -5,7 +5,7 @@ for fuzzer in "${SRC}"/hermes-tweet/fuzz/*_fuzzer.py; do
   fuzzer_package="${fuzzer_name}.pkg"
 
   pyinstaller \
-    --collect-data hermes_tweet \
+    --add-data "${SRC}/hermes-tweet/hermes_tweet/catalog_data.json:hermes_tweet" \
     --distpath "${OUT}" \
     --onefile \
     --name "${fuzzer_package}" \
