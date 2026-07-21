@@ -107,7 +107,7 @@ runtime locally.
 | Repository guide | [`github.com/Xquik-dev/hermes-tweet#readme`](https://github.com/Xquik-dev/hermes-tweet#readme) |
 | Context7 | [`context7.com/xquik-dev/hermes-tweet`](https://context7.com/xquik-dev/hermes-tweet) |
 | piwheels | [`hermes-tweet`](https://piwheels.org/project/hermes-tweet/) |
-| Prepared source version | `v0.1.9` |
+| Prepared source version | `v0.1.10` |
 | Supported Python | `>=3.11` |
 | Package format | Wheel and source distribution |
 | Hermes entry point | `hermes-tweet = hermes_tweet` |
@@ -272,27 +272,27 @@ python scripts/build_catalog.py ../xquik/openapi.yaml
 Run checks:
 
 ```bash
-uv run --python 3.12 --extra dev ruff format --check .
-uv run --python 3.12 --extra dev ruff check .
-uv run --python 3.12 --extra dev basedpyright
-uv run --python 3.12 --extra dev pytest --cov=hermes_tweet --cov=tests --cov-report=term-missing --cov-fail-under=100
-uv run --python 3.12 --extra dev bandit -c pyproject.toml -r hermes_tweet scripts
-uv run --python 3.12 --extra dev pip-audit
-uv run --python 3.12 --extra dev python -m build
-uv run --python 3.12 --extra dev twine check dist/*
+uv run --python 3.12 --group dev ruff format --check .
+uv run --python 3.12 --group dev ruff check .
+uv run --python 3.12 --group dev basedpyright
+uv run --python 3.12 --group dev pytest --cov=hermes_tweet --cov=tests --cov-report=term-missing --cov-fail-under=100
+uv run --python 3.12 --group dev bandit -c pyproject.toml -r hermes_tweet scripts
+uv run --python 3.12 --group dev pip-audit
+uv run --python 3.12 --group dev python -m build
+uv run --python 3.12 --group dev twine check dist/*
 ```
 
 For a single local quality gate:
 
 ```bash
-uv run --python 3.12 --extra dev ruff format --check . && \
-uv run --python 3.12 --extra dev ruff check . && \
-uv run --python 3.12 --extra dev basedpyright && \
-uv run --python 3.12 --extra dev pytest --cov=hermes_tweet --cov=tests --cov-report=term-missing --cov-fail-under=100 && \
-uv run --python 3.12 --extra dev bandit -c pyproject.toml -r hermes_tweet scripts && \
-uv run --python 3.12 --extra dev pip-audit && \
-uv run --python 3.12 --extra dev python -m build && \
-uv run --python 3.12 --extra dev twine check dist/*
+uv run --python 3.12 --group dev ruff format --check . && \
+uv run --python 3.12 --group dev ruff check . && \
+uv run --python 3.12 --group dev basedpyright && \
+uv run --python 3.12 --group dev pytest --cov=hermes_tweet --cov=tests --cov-report=term-missing --cov-fail-under=100 && \
+uv run --python 3.12 --group dev bandit -c pyproject.toml -r hermes_tweet scripts && \
+uv run --python 3.12 --group dev pip-audit && \
+uv run --python 3.12 --group dev python -m build && \
+uv run --python 3.12 --group dev twine check dist/*
 ```
 
 ## Relationship To TweetClaw

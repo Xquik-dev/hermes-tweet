@@ -5,17 +5,17 @@ Native Hermes Agent plugin for X automation through Xquik.
 ## Commands
 
 ```bash
-uv run --python 3.12 --extra dev ruff format --check .
-uv run --python 3.12 --extra dev ruff check .
-uv run --python 3.12 --extra dev basedpyright
-uv run --python 3.12 --extra dev pytest --cov=hermes_tweet --cov=tests --cov-report=term-missing --cov-fail-under=100
-uv run --python 3.12 --extra dev bandit -c pyproject.toml -r hermes_tweet scripts
-uv run --python 3.12 --extra dev python scripts/check_public_safety.py
-uv run --python 3.12 --extra dev pip-audit
-uv run --python 3.12 --extra dev python scripts/check_public_links.py
-uv run --python 3.12 --extra dev python scripts/check_hermes_agent_compat.py
-uv run --python 3.12 --extra dev python -m build
-uv run --python 3.12 --extra dev twine check dist/*
+uv run --python 3.12 --group dev ruff format --check .
+uv run --python 3.12 --group dev ruff check .
+uv run --python 3.12 --group dev basedpyright
+uv run --python 3.12 --group dev pytest --cov=hermes_tweet --cov=tests --cov-report=term-missing --cov-fail-under=100
+uv run --python 3.12 --group dev bandit -c pyproject.toml -r hermes_tweet scripts
+uv run --python 3.12 --group dev python scripts/check_public_safety.py
+uv run --python 3.12 --group dev pip-audit
+uv run --python 3.12 --group dev python scripts/check_public_links.py
+uv run --python 3.12 --group dev python scripts/check_hermes_agent_compat.py
+uv run --python 3.12 --group dev python -m build
+uv run --python 3.12 --group dev twine check dist/*
 actionlint .github/workflows/*.yml
 python scripts/build_catalog.py ../xquik/openapi.yaml
 ```

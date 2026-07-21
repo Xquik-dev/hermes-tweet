@@ -418,13 +418,13 @@ wheels = [
 
 [[package]]
 name = "hermes-tweet"
-version = "0.1.9"
+version = "0.1.10"
 source = { editable = "." }
 dependencies = [
     { name = "httpx" },
 ]
 
-[package.optional-dependencies]
+[package.dev-dependencies]
 dev = [
     { name = "bandit" },
     { name = "basedpyright" },
@@ -439,20 +439,21 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [
-    { name = "bandit", extras = ["toml"], marker = "extra == 'dev'", specifier = ">=1.9.4" },
-    { name = "basedpyright", marker = "extra == 'dev'", specifier = ">=1.39.9" },
-    { name = "build", marker = "extra == 'dev'", specifier = ">=1.5.0" },
-    { name = "httpx", specifier = ">=0.28.1,<0.29" },
-    { name = "pip-audit", marker = "extra == 'dev'", specifier = ">=2.10.1" },
-    { name = "pytest", marker = "extra == 'dev'", specifier = ">=9.1.1" },
-    { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=7.1.0" },
-    { name = "pyyaml", marker = "extra == 'dev'", specifier = ">=6.0.3" },
-    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.15.20" },
-    { name = "twine", marker = "extra == 'dev'", specifier = ">=6.2.0" },
-    { name = "types-pyyaml", marker = "extra == 'dev'", specifier = ">=6.0.12.20260518" },
+requires-dist = [{ name = "httpx", specifier = ">=0.28.1,<0.29" }]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "bandit", extras = ["toml"], specifier = ">=1.9.4" },
+    { name = "basedpyright", specifier = ">=1.39.9" },
+    { name = "build", specifier = ">=1.5.0" },
+    { name = "pip-audit", specifier = ">=2.10.1" },
+    { name = "pytest", specifier = ">=9.1.1" },
+    { name = "pytest-cov", specifier = ">=7.1.0" },
+    { name = "pyyaml", specifier = ">=6.0.3" },
+    { name = "ruff", specifier = ">=0.15.20" },
+    { name = "twine", specifier = ">=6.2.0" },
+    { name = "types-pyyaml", specifier = ">=6.0.12.20260518" },
 ]
-provides-extras = ["dev"]
 
 [[package]]
 name = "httpcore"

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hermes-tweet"
-version = "0.1.9"
+version = "0.1.10"
 description = "Native Hermes Agent plugin for X/Twitter automation through Xquik. Not affiliated with X Corp."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -44,7 +44,7 @@ classifiers = [
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
   "bandit[toml]>=1.9.4",
   "basedpyright>=1.39.9",
