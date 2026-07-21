@@ -62,7 +62,7 @@ jobs:
         run: uv run pytest --cov=hermes_tweet --cov=tests --cov-report=term-missing --cov-fail-under=100
 
       - name: Security scan
-        run: uv run bandit -c pyproject.toml -r hermes_tweet scripts
+        run: uv run bandit -c pyproject.toml -r hermes_tweet scripts fuzz
 
       - name: Dependency audit
         run: uv run pip-audit

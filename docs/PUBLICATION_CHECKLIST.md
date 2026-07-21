@@ -1,7 +1,7 @@
 # Publication Checklist
 
 Hermes Tweet is published as `hermes-tweet` on PyPI. The current public release
-is `0.1.9`; version `0.1.10` is prepared in source.
+is `0.1.10`; version `0.1.11` is prepared in source.
 
 ## Before GitHub Publication
 
@@ -54,7 +54,7 @@ uv run --python 3.12 --group dev ruff format --check .
 uv run --python 3.12 --group dev ruff check .
 uv run --python 3.12 --group dev basedpyright
 uv run --python 3.12 --group dev pytest --cov=hermes_tweet --cov=tests --cov-report=term-missing --cov-fail-under=100
-uv run --python 3.12 --group dev bandit -c pyproject.toml -r hermes_tweet scripts
+uv run --python 3.12 --group dev bandit -c pyproject.toml -r hermes_tweet scripts fuzz
 uv run --python 3.12 --group dev python scripts/check_public_safety.py
 uv run --python 3.12 --group dev pip-audit
 uv run --python 3.12 --group dev python scripts/check_public_links.py
@@ -133,4 +133,4 @@ Expected result:
 Keep optional signed-in submissions, local-secret smoke tests, pending outreach,
 duplicate checks, and maintainer-blocked directory routes in private operator
 notes. Do not commit those operational notes to the public repository. The
-`0.1.10` tag, trusted publishing workflow, and post-publication checks remain.
+`0.1.11` tag, trusted publishing workflow, and post-publication checks remain.
