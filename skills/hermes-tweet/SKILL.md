@@ -5,7 +5,7 @@ allowed-tools:
   - tweet_explore
   - tweet_read
   - tweet_action
-version: 0.1.8
+version: 0.1.9
 author: Burak Bayır (@kriptoburak), Xquik
 license: MIT
 compatibility: Requires Hermes Agent plugin support and Xquik API access.
@@ -23,7 +23,7 @@ tags:
   - social-media
   - automation
 metadata:
-  version: 0.1.8
+  version: 0.1.9
   author: Xquik
   tags:
     - hermes-agent
