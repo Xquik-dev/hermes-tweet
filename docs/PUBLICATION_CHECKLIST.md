@@ -1,7 +1,7 @@
 # Publication Checklist
 
 Hermes Tweet is published as `hermes-tweet` on PyPI. The current public release
-is `0.1.7`; version `0.1.8` is prepared in source.
+is `0.1.8`; version `0.1.9` is prepared in source.
 
 ## Before GitHub Publication
 
@@ -133,4 +133,4 @@ Expected result:
 Keep optional signed-in submissions, local-secret smoke tests, pending outreach,
 duplicate checks, and maintainer-blocked directory routes in private operator
 notes. Do not commit those operational notes to the public repository. The
-`0.1.8` tag, trusted publishing workflow, and post-publication checks remain.
+`0.1.9` tag, trusted publishing workflow, and post-publication checks remain.
