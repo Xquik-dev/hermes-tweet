@@ -6,7 +6,12 @@ for fuzzer in "${SRC}"/hermes-tweet/fuzz/*_fuzzer.py; do
   fuzzer_name="$(basename -s .py "${fuzzer}")"
   fuzzer_package="${fuzzer_name}.pkg"
 
-  pyinstaller --distpath "${OUT}" --onefile --name "${fuzzer_package}" "${fuzzer}"
+  pyinstaller \
+    --collect-data hermes_tweet \
+    --distpath "${OUT}" \
+    --onefile \
+    --name "${fuzzer_package}" \
+    "${fuzzer}"
 
   cat >"${OUT}/${fuzzer_name}" <<EOF
 #!/bin/sh
