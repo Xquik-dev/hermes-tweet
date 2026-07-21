@@ -1,7 +1,7 @@
 # Publication Checklist
 
 Hermes Tweet is published as `hermes-tweet` on PyPI. The current public release
-is `0.1.8`; version `0.1.9` is prepared in source.
+is `0.1.9`; version `0.1.10` is prepared in source.
 
 ## Before GitHub Publication
 
@@ -50,17 +50,17 @@ dispatch path.
 Run these checks before any new package release:
 
 ```bash
-uv run --python 3.12 --extra dev ruff format --check .
-uv run --python 3.12 --extra dev ruff check .
-uv run --python 3.12 --extra dev basedpyright
-uv run --python 3.12 --extra dev pytest --cov=hermes_tweet --cov=tests --cov-report=term-missing --cov-fail-under=100
-uv run --python 3.12 --extra dev bandit -c pyproject.toml -r hermes_tweet scripts
-uv run --python 3.12 --extra dev python scripts/check_public_safety.py
-uv run --python 3.12 --extra dev pip-audit
-uv run --python 3.12 --extra dev python scripts/check_public_links.py
-uv run --python 3.12 --extra dev python scripts/check_hermes_agent_compat.py
-uv run --python 3.12 --extra dev python -m build
-uv run --python 3.12 --extra dev twine check dist/*
+uv run --python 3.12 --group dev ruff format --check .
+uv run --python 3.12 --group dev ruff check .
+uv run --python 3.12 --group dev basedpyright
+uv run --python 3.12 --group dev pytest --cov=hermes_tweet --cov=tests --cov-report=term-missing --cov-fail-under=100
+uv run --python 3.12 --group dev bandit -c pyproject.toml -r hermes_tweet scripts
+uv run --python 3.12 --group dev python scripts/check_public_safety.py
+uv run --python 3.12 --group dev pip-audit
+uv run --python 3.12 --group dev python scripts/check_public_links.py
+uv run --python 3.12 --group dev python scripts/check_hermes_agent_compat.py
+uv run --python 3.12 --group dev python -m build
+uv run --python 3.12 --group dev twine check dist/*
 actionlint .github/workflows/*.yml
 ```
 
@@ -79,7 +79,7 @@ Run the compatibility checker before release, outreach, or plugin-facing docs
 updates:
 
 ```bash
-uv run --python 3.12 --extra dev python scripts/check_hermes_agent_compat.py
+uv run --python 3.12 --group dev python scripts/check_hermes_agent_compat.py
 ```
 
 If a locked Hermes Agent source SHA changes, review the official diff first,
@@ -133,4 +133,4 @@ Expected result:
 Keep optional signed-in submissions, local-secret smoke tests, pending outreach,
 duplicate checks, and maintainer-blocked directory routes in private operator
 notes. Do not commit those operational notes to the public repository. The
-`0.1.9` tag, trusted publishing workflow, and post-publication checks remain.
+`0.1.10` tag, trusted publishing workflow, and post-publication checks remain.

@@ -12,7 +12,7 @@ skill directory.
 - Publisher: Xquik
 - Repository: https://github.com/Xquik-dev/hermes-tweet
 - License: MIT
-- Version: 0.1.9
+- Version: 0.1.10
 - Primary skill file: `SKILL.md`
 
 ## Use Case

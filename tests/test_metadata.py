@@ -341,25 +341,22 @@ def test_ecosystem_tracks_validated_live_surfaces() -> None:
         assert f"| {label} | <{url}> |" in ecosystem
 
 
-def test_uv_lock_tracks_dev_dependency_constraints() -> None:
+def test_uv_lock_separates_dev_dependency_constraints() -> None:
     pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
     lockfile = tomllib.loads((ROOT / "uv.lock").read_text())
 
     expected = dict(
-        normalize_requirement(requirement)
-        for requirement in pyproject["project"]["optional-dependencies"]["dev"]
+        normalize_requirement(requirement) for requirement in pyproject["dependency-groups"]["dev"]
     )
     packages = require_list(lockfile["package"])
     package = find_locked_package(packages, "hermes-tweet")
-    requires_dist = require_list(require_mapping(package["metadata"])["requires-dist"])
-    locked: dict[str, dict[str, object]] = {}
-    for requirement in requires_dist:
-        requirement_data = require_mapping(requirement)
-        if requirement_data.get("marker") == "extra == 'dev'":
-            name, metadata = normalize_locked_requirement(requirement_data)
-            locked[name] = metadata
+    metadata = require_mapping(package["metadata"])
+    requires_dev = require_list(require_mapping(metadata["requires-dev"])["dev"])
+    locked = dict(normalize_locked_requirement(require_mapping(item)) for item in requires_dev)
 
     assert locked == expected
+    assert metadata["requires-dist"] == [{"name": "httpx", "specifier": ">=0.28.1,<0.29"}]
+    assert "provides-extras" not in metadata
 
 
 def test_docs_track_current_hermes_agent_surface_release() -> None:
@@ -1020,9 +1017,9 @@ def test_release_gate_runs_hermes_agent_compatibility_checker() -> None:
     agents = (ROOT / "AGENTS.md").read_text()
 
     assert (
-        "uv run --python 3.12 --extra dev python scripts/check_hermes_agent_compat.py" in checklist
+        "uv run --python 3.12 --group dev python scripts/check_hermes_agent_compat.py" in checklist
     )
-    assert "uv run --python 3.12 --extra dev python scripts/check_public_safety.py" in checklist
+    assert "uv run --python 3.12 --group dev python scripts/check_public_safety.py" in checklist
     assert "source SHA changes" in checklist
-    assert "uv run --python 3.12 --extra dev python scripts/check_hermes_agent_compat.py" in agents
-    assert "uv run --python 3.12 --extra dev python scripts/check_public_safety.py" in agents
+    assert "uv run --python 3.12 --group dev python scripts/check_hermes_agent_compat.py" in agents
+    assert "uv run --python 3.12 --group dev python scripts/check_public_safety.py" in agents
