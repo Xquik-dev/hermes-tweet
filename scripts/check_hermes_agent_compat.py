@@ -93,7 +93,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="hermes_cli/plugins_cmd.py",
-        expected_sha="6a7c39f3e4e014f98201766e980d19c696e1c545",
+        expected_sha="f5c57bb88f2bc91b7cbf43abaf7437efa033730a",
         required_terms=(
             "_resolve_plugin_key",
             "_resolve_subdir_within",
