@@ -107,7 +107,7 @@ runtime locally.
 | Repository guide | [`github.com/Xquik-dev/hermes-tweet#readme`](https://github.com/Xquik-dev/hermes-tweet#readme) |
 | Context7 | [`context7.com/xquik-dev/hermes-tweet`](https://context7.com/xquik-dev/hermes-tweet) |
 | piwheels | [`hermes-tweet`](https://piwheels.org/project/hermes-tweet/) |
-| Prepared source version | `v0.1.10` |
+| Prepared source version | `v0.1.11` |
 | Supported Python | `>=3.11` |
 | Package format | Wheel and source distribution |
 | Hermes entry point | `hermes-tweet = hermes_tweet` |
@@ -276,7 +276,7 @@ uv run --python 3.12 --group dev ruff format --check .
 uv run --python 3.12 --group dev ruff check .
 uv run --python 3.12 --group dev basedpyright
 uv run --python 3.12 --group dev pytest --cov=hermes_tweet --cov=tests --cov-report=term-missing --cov-fail-under=100
-uv run --python 3.12 --group dev bandit -c pyproject.toml -r hermes_tweet scripts
+uv run --python 3.12 --group dev bandit -c pyproject.toml -r hermes_tweet scripts fuzz
 uv run --python 3.12 --group dev pip-audit
 uv run --python 3.12 --group dev python -m build
 uv run --python 3.12 --group dev twine check dist/*
@@ -289,7 +289,7 @@ uv run --python 3.12 --group dev ruff format --check . && \
 uv run --python 3.12 --group dev ruff check . && \
 uv run --python 3.12 --group dev basedpyright && \
 uv run --python 3.12 --group dev pytest --cov=hermes_tweet --cov=tests --cov-report=term-missing --cov-fail-under=100 && \
-uv run --python 3.12 --group dev bandit -c pyproject.toml -r hermes_tweet scripts && \
+uv run --python 3.12 --group dev bandit -c pyproject.toml -r hermes_tweet scripts fuzz && \
 uv run --python 3.12 --group dev pip-audit && \
 uv run --python 3.12 --group dev python -m build && \
 uv run --python 3.12 --group dev twine check dist/*

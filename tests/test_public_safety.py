@@ -166,7 +166,12 @@ def test_public_safety_scan_includes_github_repository_config() -> None:
         ".github/FUNDING.yml",
         ".github/dependabot.yml",
         ".github/workflows/ci.yml",
+        ".github/workflows/clusterfuzzlite.yml",
         ".github/workflows/publish.yml",
+        ".clusterfuzzlite/Dockerfile",
+        ".clusterfuzzlite/build.sh",
+        ".clusterfuzzlite/project.yaml",
+        ".dockerignore",
     }
 
     assert expected_files <= set(check_public_safety.PUBLIC_TEXT_FILES)

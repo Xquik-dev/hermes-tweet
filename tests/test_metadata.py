@@ -132,8 +132,12 @@ SETUP_GO_ACTION_SHA = "actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
 UPLOAD_ARTIFACT_ACTION_SHA = "actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a"
 DOWNLOAD_ARTIFACT_ACTION_SHA = "actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c"
 PYPI_PUBLISH_ACTION_SHA = "pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b"
+ATTEST_ACTION_SHA = "actions/attest@f7c74d28b9d84cb8768d0b8ca14a4bac6ef463e6"
 CODEQL_ACTION_SHA = "github/codeql-action/{}@7188fc363630916deb702c7fdcf4e481b751f97a"
 SCORECARD_ACTION_SHA = "ossf/scorecard-action@4eaacf0543bb3f2c246792bd56e8cdeffafb205a"
+CLUSTERFUZZLITE_ACTION_SHA = (
+    "google/clusterfuzzlite/actions/{}@884713a6c30a92e5e8544c39945cd7cb630abcd1"
+)
 HOL_PLUGIN_SCANNER_ACTION_SHA = (
     "hashgraph-online/ai-plugin-scanner-action@a63dd98b7d6497cabad2069e803b450def3b02dc"
 )
@@ -898,6 +902,58 @@ def test_scorecard_workflow_publishes_results_with_restricted_permissions() -> N
     assert upload["uses"] == CODEQL_ACTION_SHA.format("upload-sarif")
 
 
+def test_clusterfuzzlite_runs_python_fuzzers_with_restricted_permissions() -> None:
+    workflow = load_object_mapping(ROOT / ".github" / "workflows" / "clusterfuzzlite.yml")
+    on_config = require_mapping(workflow[True])
+
+    assert "pull_request" in on_config
+    assert "schedule" in on_config
+    assert "workflow_dispatch" in on_config
+    assert workflow["permissions"] == "read-all"
+
+    fuzz = require_mapping(require_mapping(workflow["jobs"])["fuzz"])
+    assert fuzz["runs-on"] == "ubuntu-24.04"
+    assert fuzz["timeout-minutes"] == 30
+    steps = require_list(fuzz["steps"])
+
+    build = find_step(steps, "Build fuzzers")
+    assert build["uses"] == CLUSTERFUZZLITE_ACTION_SHA.format("build_fuzzers")
+    assert require_mapping(build["with"]) == {
+        "language": "python",
+        "github-token": "${{ github.token }}",
+        "sanitizer": "address",
+    }
+
+    run = find_step(steps, "Run fuzzers")
+    assert run["uses"] == CLUSTERFUZZLITE_ACTION_SHA.format("run_fuzzers")
+    assert require_mapping(run["with"]) == {
+        "language": "python",
+        "github-token": "${{ github.token }}",
+        "sanitizer": "address",
+        "fuzz-seconds": "${{ github.event_name == 'pull_request' && '60' || '600' }}",
+        "mode": "${{ github.event_name == 'pull_request' && 'code-change' || 'batch' }}",
+        "output-sarif": False,
+    }
+
+    project = load_object_mapping(ROOT / ".clusterfuzzlite" / "project.yaml")
+    assert project == {"language": "python"}
+    dockerfile = (ROOT / ".clusterfuzzlite" / "Dockerfile").read_text()
+    assert "base-builder-python@sha256:" in dockerfile
+    dockerignore = (ROOT / ".dockerignore").read_text().splitlines()
+    assert dockerignore[0] == "**"
+    assert "!hermes_tweet/**" in dockerignore
+    assert "!fuzz/**" in dockerignore
+    assert "!.clusterfuzzlite/**" in dockerignore
+    build_script = (ROOT / ".clusterfuzzlite" / "build.sh").read_text()
+    assert "python3 -m pip install ." in build_script
+    assert "pyinstaller" in build_script
+    assert "LLVMFuzzerTestOneInput" in build_script
+    fuzzer = (ROOT / "fuzz" / "normalization_fuzzer.py").read_text()
+    compile(fuzzer, "normalization_fuzzer.py", "exec")
+    assert "atheris.Setup" in fuzzer
+    assert "atheris.Fuzz" in fuzzer
+
+
 def test_publish_workflow_requires_version_matched_release_tag() -> None:
     workflow = load_object_mapping(ROOT / ".github" / "workflows" / "publish.yml")
 
@@ -966,6 +1022,35 @@ def test_publish_workflow_requires_version_matched_release_tag() -> None:
         "attestations": True,
         "packages-dir": "dist/",
     }
+
+
+def test_publish_workflow_attests_and_attaches_release_artifacts() -> None:
+    build = workflow_job("publish.yml", "build")
+    assert require_mapping(build["permissions"]) == {
+        "attestations": "write",
+        "contents": "write",
+        "id-token": "write",
+    }
+    build_steps = require_list(build["steps"])
+
+    attest_step = find_step(build_steps, "Attest distributions")
+    assert attest_step["uses"] == ATTEST_ACTION_SHA
+    assert require_mapping(attest_step["with"])["subject-path"] == ("dist/*.whl\ndist/*.tar.gz\n")
+
+    attach_step = find_step(build_steps, "Attach release provenance")
+    assert require_mapping(attach_step["env"]) == {
+        "ATTESTATION_BUNDLE": "${{ steps.attest.outputs.bundle-path }}",
+        "GH_TOKEN": "${{ github.token }}",
+        "RELEASE_TAG": "${{ github.event.release.tag_name }}",
+    }
+    attach_script = attach_step["run"]
+    assert isinstance(attach_script, str)
+    assert "provenance.intoto.jsonl" in attach_script
+    assert "gh release upload" in attach_script
+
+    upload_step = find_step(build_steps, "Upload distributions")
+    assert upload_step["uses"] == UPLOAD_ARTIFACT_ACTION_SHA
+    assert require_mapping(upload_step["with"])["path"] == ("dist/*.whl\ndist/*.tar.gz\n")
 
 
 def test_ci_workflow_runs_actionlint_before_python_checks() -> None:

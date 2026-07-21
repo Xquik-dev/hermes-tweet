@@ -1,6 +1,6 @@
 {
   "name": "hermes-tweet",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Native Hermes Agent X/Twitter plugin for Xquik automation with read-first workflows and approval-gated actions. Not affiliated with X Corp.",
   "author": {
     "name": "Xquik",
