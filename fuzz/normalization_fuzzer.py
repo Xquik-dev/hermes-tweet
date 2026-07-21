@@ -22,8 +22,17 @@ def _require(*, condition: bool, message: str) -> None:
         raise InvariantError(message)
 
 
+def _pick_value(
+    provider: atheris.FuzzedDataProvider,
+    values: tuple[Any, ...],
+) -> Any:
+    index = provider.ConsumeIntInRange(0, len(values) - 1)
+    return values[index]
+
+
 def _query_value(provider: atheris.FuzzedDataProvider) -> Any:
-    return provider.PickValueInList(
+    return _pick_value(
+        provider,
         (
             provider.ConsumeBool(),
             provider.ConsumeInt(8),
@@ -31,7 +40,7 @@ def _query_value(provider: atheris.FuzzedDataProvider) -> Any:
             provider.ConsumeUnicodeNoSurrogates(64),
             None,
             [provider.ConsumeUnicodeNoSurrogates(16)],
-        )
+        ),
     )
 
 
@@ -62,7 +71,7 @@ def test_one_input(data: bytes) -> None:
         provider.ConsumeUnicodeNoSurrogates(32),
         None,
     )
-    normalized_limit = normalize_limit(provider.PickValueInList(limit_values))
+    normalized_limit = normalize_limit(_pick_value(provider, limit_values))
     _require(
         condition=1 <= normalized_limit <= MAX_NORMALIZED_LIMIT,
         message="normalized limits must stay inside the documented range",
