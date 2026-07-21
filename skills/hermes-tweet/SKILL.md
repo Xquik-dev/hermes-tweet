@@ -12,6 +12,7 @@ compatibility: Requires Hermes Agent plugin support and Xquik API access.
 argument-hint: "[X task, endpoint, or approved action]"
 repo: https://github.com/Xquik-dev/hermes-tweet
 homepage: https://github.com/Xquik-dev/hermes-tweet#readme
+commit: c6ebdd7060965dd16a89e8cc12675ff834b5cc94
 languages:
   - en
 tags:

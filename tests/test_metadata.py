@@ -33,6 +33,7 @@ EXPECTED_SKILL_TAGS = [
     "automation",
 ]
 EXPECTED_MARKETPLACE_SKILL_AUTHOR = "Burak Bay\u0131r (@kriptoburak), Xquik"
+EXPECTED_VERIFIED_SKILL_COMMIT = "c6ebdd7060965dd16a89e8cc12675ff834b5cc94"
 EXPECTED_MARKETPLACE_SKILL_FIELDS = {
     "name",
     "description",
@@ -518,6 +519,7 @@ def test_registry_skill_mirrors_bundled_skill() -> None:
     )
     assert frontmatter["repo"] == "https://github.com/Xquik-dev/hermes-tweet"
     assert frontmatter["homepage"] == GUIDE_URL
+    assert frontmatter["commit"] == EXPECTED_VERIFIED_SKILL_COMMIT
     assert frontmatter["languages"] == ["en"]
     assert len(str(frontmatter["description"])) >= 160
     assert frontmatter["tags"] == EXPECTED_SKILL_TAGS
@@ -693,6 +695,7 @@ def test_codex_plugin_manifest_matches_public_package_metadata() -> None:
     assert manifest["license"] == project["license"]
     assert manifest["homepage"] == GUIDE_URL
     assert manifest["repository"] == project["urls"]["Repository"]
+    assert manifest["commit"] == EXPECTED_VERIFIED_SKILL_COMMIT
     assert manifest["verified"] is True
     assert manifest["keywords"] == EXPECTED_CODEX_PLUGIN_KEYWORDS
     assert manifest["skills"] == "./skills/"
