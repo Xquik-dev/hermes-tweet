@@ -1,7 +1,5 @@
 #!/bin/bash -eu
 
-python3 -m pip install .
-
 for fuzzer in "${SRC}"/hermes-tweet/fuzz/*_fuzzer.py; do
   fuzzer_name="$(basename -s .py "${fuzzer}")"
   fuzzer_package="${fuzzer_name}.pkg"
@@ -11,6 +9,7 @@ for fuzzer in "${SRC}"/hermes-tweet/fuzz/*_fuzzer.py; do
     --distpath "${OUT}" \
     --onefile \
     --name "${fuzzer_package}" \
+    --paths "${SRC}/hermes-tweet" \
     "${fuzzer}"
 
   cat >"${OUT}/${fuzzer_name}" <<EOF

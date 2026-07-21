@@ -945,9 +945,10 @@ def test_clusterfuzzlite_runs_python_fuzzers_with_restricted_permissions() -> No
     assert "!fuzz/**" in dockerignore
     assert "!.clusterfuzzlite/**" in dockerignore
     build_script = (ROOT / ".clusterfuzzlite" / "build.sh").read_text()
-    assert "python3 -m pip install ." in build_script
+    assert "pip install" not in build_script
     assert "pyinstaller" in build_script
     assert "--collect-data hermes_tweet" in build_script
+    assert '--paths "${SRC}/hermes-tweet"' in build_script
     assert "LLVMFuzzerTestOneInput" in build_script
     fuzzer = (ROOT / "fuzz" / "normalization_fuzzer.py").read_text()
     compile(fuzzer, "normalization_fuzzer.py", "exec")
