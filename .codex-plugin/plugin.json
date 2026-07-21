@@ -8,6 +8,7 @@
   },
   "homepage": "https://github.com/Xquik-dev/hermes-tweet#readme",
   "repository": "https://github.com/Xquik-dev/hermes-tweet",
+  "verified": true,
   "license": "MIT",
   "keywords": [
     "hermes-agent",
@@ -40,6 +41,10 @@
       "Use Hermes Tweet to prepare an approval-gated X/Twitter action."
     ],
     "brandColor": "#111827",
-    "composerIcon": "./assets/icon.svg"
+    "composerIcon": "./assets/icon.svg",
+    "logo": "./assets/icon.svg",
+    "screenshots": [
+      "./assets/screenshot.svg"
+    ]
   }
 }

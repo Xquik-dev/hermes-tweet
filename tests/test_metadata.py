@@ -516,6 +516,10 @@ def test_registry_skill_mirrors_bundled_skill() -> None:
     assert frontmatter["compatibility"] == (
         "Requires Hermes Agent plugin support and Xquik API access."
     )
+    assert frontmatter["repo"] == "https://github.com/Xquik-dev/hermes-tweet"
+    assert frontmatter["homepage"] == GUIDE_URL
+    assert frontmatter["languages"] == ["en"]
+    assert len(str(frontmatter["description"])) >= 160
     assert frontmatter["tags"] == EXPECTED_SKILL_TAGS
     assert_skill_capabilities(frontmatter)
 
@@ -689,6 +693,7 @@ def test_codex_plugin_manifest_matches_public_package_metadata() -> None:
     assert manifest["license"] == project["license"]
     assert manifest["homepage"] == GUIDE_URL
     assert manifest["repository"] == project["urls"]["Repository"]
+    assert manifest["verified"] is True
     assert manifest["keywords"] == EXPECTED_CODEX_PLUGIN_KEYWORDS
     assert manifest["skills"] == "./skills/"
 
@@ -705,11 +710,25 @@ def test_codex_plugin_manifest_matches_public_package_metadata() -> None:
         "https://github.com/Xquik-dev/hermes-tweet/blob/master/LICENSE"
     )
     assert interface["composerIcon"] == "./assets/icon.svg"
+    assert interface["logo"] == "./assets/icon.svg"
+    assert interface["screenshots"] == ["./assets/screenshot.svg"]
 
     manifest_lines = (ROOT / "MANIFEST.in").read_text().splitlines()
     assert "include .codex-plugin/plugin.json" in manifest_lines
+    assert "include .codexignore" in manifest_lines
     assert "include SECURITY.md" in manifest_lines
     assert "include assets/icon.svg" in manifest_lines
+    assert "include assets/screenshot.svg" in manifest_lines
+
+
+def test_codexignore_blocks_local_and_sensitive_artifacts() -> None:
+    ignored_paths = (ROOT / ".codexignore").read_text().splitlines()
+
+    assert ".env.*" in ignored_paths
+    assert ".venv/" in ignored_paths
+    assert "*.pem" in ignored_paths
+    assert "*.token" in ignored_paths
+    assert "dist/" in ignored_paths
 
 
 def test_root_security_policy_matches_github_security_policy() -> None:
