@@ -88,7 +88,7 @@ then update Hermes Tweet runtime, docs, tests, and the checker lock together.
 Latest reviewed locks from July 10, 2026: `hermes_cli/plugins.py`
 `6ca393fca53c1fd2b3479bed72180fedcc848c88`, `tools/registry.py`
 `354da7123fd7d0acaad8d5ac49870963fce54a5c`, and
-`hermes_cli/plugins_cmd.py` `6a7c39f3e4e014f98201766e980d19c696e1c545`.
+`hermes_cli/plugins_cmd.py` `f5c57bb88f2bc91b7cbf43abaf7437efa033730a`.
 
 Keep the runtime contract aligned with those sources:
 

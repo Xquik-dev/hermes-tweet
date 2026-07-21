@@ -125,12 +125,14 @@ EXPECTED_LIVE_ECOSYSTEM_SURFACES = (
         "clawhub/h/hermes-tweet/SKILL.md",
     ),
 )
-SETUP_UV_ACTION = "astral-sh/setup-uv@f98e06938123ccabd21905ea5d0069192241f9f1"
-CHECKOUT_ACTION_SHA = "actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0"
-SETUP_GO_ACTION_SHA = "actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16"
+SETUP_UV_ACTION = "astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990"
+CHECKOUT_ACTION_SHA = "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1"
+SETUP_GO_ACTION_SHA = "actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e"
 UPLOAD_ARTIFACT_ACTION_SHA = "actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a"
 DOWNLOAD_ARTIFACT_ACTION_SHA = "actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c"
 PYPI_PUBLISH_ACTION_SHA = "pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b"
+CODEQL_ACTION_SHA = "github/codeql-action/{}@7188fc363630916deb702c7fdcf4e481b751f97a"
+SCORECARD_ACTION_SHA = "ossf/scorecard-action@4eaacf0543bb3f2c246792bd56e8cdeffafb205a"
 HOL_PLUGIN_SCANNER_ACTION_SHA = (
     "hashgraph-online/ai-plugin-scanner-action@a63dd98b7d6497cabad2069e803b450def3b02dc"
 )
@@ -835,6 +837,46 @@ def test_all_workflow_actions_are_pinned_to_commit_shas() -> None:
             assert action_reference.fullmatch(action), (
                 f"Unpinned action in {workflow_path}: {action}"
             )
+
+
+def test_codeql_workflow_analyzes_python_with_restricted_permissions() -> None:
+    workflow = load_object_mapping(ROOT / ".github" / "workflows" / "codeql.yml")
+    analyze = require_mapping(require_mapping(workflow["jobs"])["analyze"])
+
+    assert require_mapping(workflow[True])["push"] == {"branches": ["master"]}
+    assert require_mapping(analyze["permissions"]) == {
+        "contents": "read",
+        "security-events": "write",
+    }
+    steps = require_list(analyze["steps"])
+    assert find_step(steps, "Check out source")["uses"] == CHECKOUT_ACTION_SHA
+    initialize = find_step(steps, "Initialize CodeQL")
+    assert initialize["uses"] == CODEQL_ACTION_SHA.format("init")
+    assert require_mapping(initialize["with"]) == {
+        "languages": "python",
+        "build-mode": "none",
+        "queries": "security-extended",
+    }
+    assert find_step(steps, "Analyze")["uses"] == CODEQL_ACTION_SHA.format("analyze")
+
+
+def test_scorecard_workflow_publishes_results_with_restricted_permissions() -> None:
+    workflow = load_object_mapping(ROOT / ".github" / "workflows" / "scorecard.yml")
+    analysis = require_mapping(require_mapping(workflow["jobs"])["analysis"])
+
+    assert workflow["permissions"] == "read-all"
+    assert require_mapping(analysis["permissions"]) == {
+        "contents": "read",
+        "security-events": "write",
+        "id-token": "write",
+    }
+    steps = require_list(analysis["steps"])
+    assert find_step(steps, "Check out source")["uses"] == CHECKOUT_ACTION_SHA
+    scorecard = find_step(steps, "Run analysis")
+    assert scorecard["uses"] == SCORECARD_ACTION_SHA
+    assert require_mapping(scorecard["with"])["publish_results"] is True
+    upload = find_step(steps, "Upload to code scanning")
+    assert upload["uses"] == CODEQL_ACTION_SHA.format("upload-sarif")
 
 
 def test_publish_workflow_requires_version_matched_release_tag() -> None:
