@@ -1,12 +1,14 @@
 include plugin.yaml
 include .claude-plugin/plugin.json
 include .codex-plugin/plugin.json
+include .codexignore
 include skill.json
 include dashboard/manifest.json
 include .hermes-eco.json
 include after-install.md
 include SECURITY.md
 include assets/icon.svg
+include assets/screenshot.svg
 recursive-include hermes_tweet *.yaml *.json
 recursive-include hermes_tweet/skills *.md
 recursive-include tests/fixtures *.txt
