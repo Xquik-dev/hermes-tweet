@@ -945,7 +945,13 @@ def test_clusterfuzzlite_runs_python_fuzzers_with_restricted_permissions() -> No
     assert "!fuzz/**" in dockerignore
     assert "!.clusterfuzzlite/**" in dockerignore
     build_script = (ROOT / ".clusterfuzzlite" / "build.sh").read_text()
-    assert "pip install" not in build_script
+    assert "--require-hashes" in build_script
+    assert "--no-deps" in build_script
+    assert "--only-binary=:all:" in build_script
+    assert "requirements.txt" in build_script
+    fuzz_requirements = (ROOT / ".clusterfuzzlite" / "requirements.txt").read_text()
+    assert "httpx==0.28.1" in fuzz_requirements
+    assert "--hash=sha256:" in fuzz_requirements
     assert "pyinstaller" in build_script
     assert (
         '--add-data "${SRC}/hermes-tweet/hermes_tweet/catalog_data.json:hermes_tweet"'

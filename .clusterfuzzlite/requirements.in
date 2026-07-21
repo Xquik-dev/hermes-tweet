@@ -1,0 +1,2 @@
+# Runtime dependency required by the source modules under fuzzing.
+httpx==0.28.1

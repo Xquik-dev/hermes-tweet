@@ -1,5 +1,13 @@
 #!/bin/bash -eu
 
+python3 -m pip install \
+  --disable-pip-version-check \
+  --no-cache-dir \
+  --no-deps \
+  --only-binary=:all: \
+  --require-hashes \
+  --requirement "${SRC}/hermes-tweet/.clusterfuzzlite/requirements.txt"
+
 for fuzzer in "${SRC}"/hermes-tweet/fuzz/*_fuzzer.py; do
   fuzzer_name="$(basename -s .py "${fuzzer}")"
   fuzzer_package="${fuzzer_name}.pkg"
