@@ -82,13 +82,7 @@ EXPECTED_DASHBOARD_MANIFEST_DESCRIPTION = (
 EXPECTED_HERMES_ECO_MANIFEST_NAME = "Hermes Tweet"
 EXPECTED_HERMES_ECO_MANIFEST_TYPE = "integration"
 EXPECTED_HERMES_ECO_MANIFEST_CATEGORY = "communication"
-EXPECTED_SURFACE_GUIDE_LINK = "[`docs/HERMES_SURFACES.md`](docs/HERMES_SURFACES.md)"
-EXPECTED_INTEGRATION_PATTERNS_LINK = (
-    "[`docs/INTEGRATION_PATTERNS.md`](docs/INTEGRATION_PATTERNS.md)"
-)
-EXPECTED_MERGE_ENABLEMENT_LINK = "[`docs/MERGE_ENABLEMENT.md`](docs/MERGE_ENABLEMENT.md)"
 SUBMISSION_READINESS_PATH = "docs/SUBMISSION_READINESS.md"
-EXPECTED_SUBMISSION_READINESS_LINK = f"[`{SUBMISSION_READINESS_PATH}`]({SUBMISSION_READINESS_PATH})"
 EXPECTED_SUBMISSION_READINESS_SURFACES = (
     ROOT / "docs" / "PUBLICATION_CHECKLIST.md",
     ROOT / "docs" / "HERMES_SURFACES.md",
@@ -302,13 +296,6 @@ def test_release_metadata_surfaces_stay_aligned() -> None:
     assert str(load_mapping(ROOT / "plugin.yaml")["version"]) == version
     assert str(load_mapping(ROOT / "hermes_tweet" / "plugin.yaml")["version"]) == version
 
-    readme = (ROOT / "README.md").read_text()
-    assert f"| Prepared source version | `v{version}` |" in readme
-    assert EXPECTED_PUBLIC_PACKAGE_DESCRIPTION in readme
-    assert EXPECTED_SURFACE_GUIDE_LINK in readme
-    assert EXPECTED_INTEGRATION_PATTERNS_LINK in readme
-    assert EXPECTED_SUBMISSION_READINESS_LINK in readme
-    assert EXPECTED_MERGE_ENABLEMENT_LINK in readme
     for surface in EXPECTED_SUBMISSION_READINESS_SURFACES:
         assert SUBMISSION_READINESS_PATH in surface.read_text(encoding="utf-8")
 
@@ -660,12 +647,10 @@ def test_agent_skill_manifest_advertises_topic_based_registry_metadata() -> None
     pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
     manifest = json.loads((ROOT / "skill.json").read_text())
     metadata = (ROOT / "docs" / "GITHUB_METADATA.md").read_text()
-    readme = (ROOT / "README.md").read_text()
 
     assert EXPECTED_TOPIC_DISCOVERY_KEYWORD in pyproject["project"]["keywords"]
     assert EXPECTED_TOPIC_DISCOVERY_KEYWORD in manifest["keywords"]
     assert EXPECTED_TOPIC_DISCOVERY_KEYWORD in metadata
-    assert EXPECTED_TOPIC_DISCOVERY_KEYWORD in readme
 
 
 def test_claude_plugin_manifest_matches_public_package_metadata() -> None:

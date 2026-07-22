@@ -71,6 +71,38 @@ def build_headers(key: str, *, has_body: bool) -> dict[str, str]:
     return headers
 
 
+def _agent_readable_response(response: httpx.Response) -> bool:
+    content_type = response.headers.get("content-type", "").split(";", 1)[0].lower()
+    return (
+        not content_type
+        or content_type.startswith("text/")
+        or content_type == "application/json"
+        or content_type.endswith("+json")
+    )
+
+
+def _response_payload(response: httpx.Response) -> Any:
+    if response.is_success and not _agent_readable_response(response):
+        return {
+            "success": False,
+            "error": "Binary response unavailable. Download it through the Xquik REST API.",
+            "status_code": response.status_code,
+            "content_type": response.headers.get("content-type", ""),
+        }
+    try:
+        payload = response.json()
+    except ValueError:
+        payload = {"text": response.text}
+    if not response.is_success:
+        return {
+            "success": False,
+            "error": "API request failed.",
+            "status_code": response.status_code,
+            "response": payload,
+        }
+    return payload
+
+
 def request(
     method: Any,
     path: Any,
@@ -102,18 +134,7 @@ def request(
                 json=body,
                 headers=build_headers(key, has_body=body is not None),
             )
-        try:
-            payload = response.json()
-        except ValueError:
-            payload = {"text": response.text}
-        if not response.is_success:
-            return {
-                "success": False,
-                "error": "API request failed.",
-                "status_code": response.status_code,
-                "response": payload,
-            }
-        return payload
+        return _response_payload(response)
     except httpx.HTTPError as exc:
         return {"success": False, "error": str(exc)}
 

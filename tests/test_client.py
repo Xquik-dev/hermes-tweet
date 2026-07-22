@@ -260,6 +260,26 @@ def test_request_returns_text_response(monkeypatch: pytest.MonkeyPatch) -> None:
     }
 
 
+def test_request_rejects_binary_response(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("XQUIK_API_KEY", "xq_test")
+    monkeypatch.setattr(client.httpx, "Client", FakeClient)
+    request = httpx.Request("GET", "https://xquik.com/api/v1/extractions/id/export")
+    FakeClient.response = httpx.Response(
+        200,
+        content=b"binary",
+        headers={"content-type": "application/pdf"},
+        request=request,
+    )
+    FakeClient.error = None
+
+    assert client.request("GET", "/api/v1/extractions/id/export") == {
+        "success": False,
+        "error": "Binary response unavailable. Download it through the Xquik REST API.",
+        "status_code": 200,
+        "content_type": "application/pdf",
+    }
+
+
 def test_request_returns_api_error(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("XQUIK_API_KEY", "xq_test")
     monkeypatch.setattr(client.httpx, "Client", FakeClient)

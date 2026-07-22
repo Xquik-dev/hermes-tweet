@@ -1,6 +1,10 @@
 from __future__ import annotations
 
+import re
+from pathlib import Path
+
 from hermes_tweet.catalog import (
+    ENDPOINTS,
     Endpoint,
     explore,
     find_endpoint,
@@ -8,6 +12,16 @@ from hermes_tweet.catalog import (
     normalize_limit,
     normalize_method,
 )
+
+ROOT = Path(__file__).parents[1]
+
+
+def test_readme_endpoint_count_matches_bundled_catalog() -> None:
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    match = re.search(r"- (\d+) agent-callable Xquik endpoints", readme)
+
+    assert match is not None
+    assert int(match.group(1)) == len(ENDPOINTS)
 
 
 def test_matches_openapi_path_parameters() -> None:
@@ -55,6 +69,10 @@ def test_catalog_excludes_account_connection_challenges() -> None:
     )
 
     assert results == []
+
+
+def test_catalog_excludes_binary_support_downloads() -> None:
+    assert find_endpoint("GET", "/api/v1/support/attachments/att_123") is None
 
 
 def test_explore_hides_actions_by_default() -> None:

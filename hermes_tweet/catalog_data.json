@@ -42,25 +42,6 @@
   },
   {
     "action": false,
-    "category": "subscribe",
-    "free": true,
-    "method": "GET",
-    "mpp": null,
-    "parameters": [
-      {
-        "name": "session_id",
-        "in": "query",
-        "required": true,
-        "type": "string",
-        "description": "Billing session ID returned by the top-up billing flow."
-      }
-    ],
-    "path": "/api/v1/credits/topup/redirect",
-    "responseShape": "",
-    "summary": "Redirect to an active top-up payment page"
-  },
-  {
-    "action": false,
     "category": "composition",
     "free": true,
     "method": "GET",
@@ -434,69 +415,6 @@
     "path": "/api/v1/extractions/{id}/export",
     "responseShape": "Exported file",
     "summary": "Export extraction results"
-  },
-  {
-    "action": true,
-    "category": "guest-wallets",
-    "free": true,
-    "method": "POST",
-    "mpp": null,
-    "parameters": [
-      {
-        "name": "Idempotency-Key",
-        "in": "header",
-        "required": true,
-        "type": "string",
-        "description": "Generate a cryptographically random UUID v4. Reuse it only to retry the same wallet and amount request. Initial wallet creation can recover the API key from this value, so store it as a secret and never log it."
-      },
-      {
-        "name": "body",
-        "in": "body",
-        "required": true,
-        "type": "object",
-        "description": "Confirmed USD amount in cents."
-      }
-    ],
-    "path": "/api/v1/guest-wallets",
-    "responseShape": "Stripe-hosted checkout, guest API key, and API status URL.",
-    "summary": "Create an accountless prepaid wallet checkout"
-  },
-  {
-    "action": false,
-    "category": "guest-wallets",
-    "free": true,
-    "method": "GET",
-    "mpp": null,
-    "parameters": [],
-    "path": "/api/v1/guest-wallets/status",
-    "responseShape": "Guest wallet status without exposing the API key.",
-    "summary": "Get guest wallet and payment status"
-  },
-  {
-    "action": true,
-    "category": "guest-wallets",
-    "free": true,
-    "method": "POST",
-    "mpp": null,
-    "parameters": [
-      {
-        "name": "Idempotency-Key",
-        "in": "header",
-        "required": true,
-        "type": "string",
-        "description": "Generate a cryptographically random UUID v4. Reuse it only to retry the same wallet and amount request. Initial wallet creation can recover the API key from this value, so store it as a secret and never log it."
-      },
-      {
-        "name": "body",
-        "in": "body",
-        "required": true,
-        "type": "object",
-        "description": "Confirmed USD amount in cents."
-      }
-    ],
-    "path": "/api/v1/guest-wallets/topups",
-    "responseShape": "Stripe-hosted checkout and API status URL.",
-    "summary": "Create another guest wallet checkout"
   },
   {
     "action": false,
@@ -1118,6 +1036,13 @@
     "mpp": null,
     "parameters": [
       {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "type": "string",
+        "description": "Generate one unique value for each intended write. Reuse it only when retrying the exact same account, action, target, and payload. A reused key returns the original action. Reusing it with different input returns 409. Replay protection remains active for at least 90 days."
+      },
+      {
         "name": "body",
         "in": "body",
         "required": true,
@@ -1126,7 +1051,7 @@
       }
     ],
     "path": "/api/v1/x/communities",
-    "responseShape": "Community created",
+    "responseShape": "",
     "summary": "Create community"
   },
   {
@@ -1231,6 +1156,13 @@
     "mpp": null,
     "parameters": [
       {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "type": "string",
+        "description": "Generate one unique value for each intended write. Reuse it only when retrying the exact same account, action, target, and payload. A reused key returns the original action. Reusing it with different input returns 409. Replay protection remains active for at least 90 days."
+      },
+      {
         "name": "id",
         "in": "path",
         "required": true,
@@ -1279,6 +1211,13 @@
     "mpp": null,
     "parameters": [
       {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "type": "string",
+        "description": "Generate one unique value for each intended write. Reuse it only when retrying the exact same account, action, target, and payload. A reused key returns the original action. Reusing it with different input returns 409. Replay protection remains active for at least 90 days."
+      },
+      {
         "name": "id",
         "in": "path",
         "required": true,
@@ -1304,6 +1243,13 @@
     "method": "POST",
     "mpp": null,
     "parameters": [
+      {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "type": "string",
+        "description": "Generate one unique value for each intended write. Reuse it only when retrying the exact same account, action, target, and payload. A reused key returns the original action. Reusing it with different input returns 409. Replay protection remains active for at least 90 days."
+      },
       {
         "name": "id",
         "in": "path",
@@ -1423,6 +1369,13 @@
     "mpp": null,
     "parameters": [
       {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "type": "string",
+        "description": "Generate one unique value for each intended write. Reuse it only when retrying the exact same account, action, target, and payload. A reused key returns the original action. Reusing it with different input returns 409. Replay protection remains active for at least 90 days."
+      },
+      {
         "name": "userId",
         "in": "path",
         "required": true,
@@ -1438,7 +1391,7 @@
       }
     ],
     "path": "/api/v1/x/dm/{userId}",
-    "responseShape": "DM sent",
+    "responseShape": "",
     "summary": "Send direct message"
   },
   {
@@ -1632,11 +1585,18 @@
   },
   {
     "action": true,
-    "category": "media",
+    "category": "x-write",
     "free": true,
     "method": "POST",
     "mpp": null,
     "parameters": [
+      {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "type": "string",
+        "description": "Generate one unique value for each intended write. Reuse it only when retrying the exact same account, action, target, and payload. A reused key returns the original action. Reusing it with different input returns 409. Replay protection remains active for at least 90 days."
+      },
       {
         "name": "body",
         "in": "body",
@@ -1646,7 +1606,7 @@
       }
     ],
     "path": "/api/v1/x/media",
-    "responseShape": "Media uploaded",
+    "responseShape": "",
     "summary": "Upload media"
   },
   {
@@ -1702,6 +1662,13 @@
     "mpp": null,
     "parameters": [
       {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "type": "string",
+        "description": "Generate one unique value for each intended write. Reuse it only when retrying the exact same account, action, target, and payload. A reused key returns the original action. Reusing it with different input returns 409. Replay protection remains active for at least 90 days."
+      },
+      {
         "name": "body",
         "in": "body",
         "required": true,
@@ -1721,6 +1688,13 @@
     "mpp": null,
     "parameters": [
       {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "type": "string",
+        "description": "Generate one unique value for each intended write. Reuse it only when retrying the exact same account, action, target, and payload. A reused key returns the original action. Reusing it with different input returns 409. Replay protection remains active for at least 90 days."
+      },
+      {
         "name": "body",
         "in": "body",
         "required": true,
@@ -1739,6 +1713,13 @@
     "method": "PATCH",
     "mpp": null,
     "parameters": [
+      {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "type": "string",
+        "description": "Generate one unique value for each intended write. Reuse it only when retrying the exact same account, action, target, and payload. A reused key returns the original action. Reusing it with different input returns 409. Replay protection remains active for at least 90 days."
+      },
       {
         "name": "body",
         "in": "body",
@@ -1833,6 +1814,13 @@
     "mpp": null,
     "parameters": [
       {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "type": "string",
+        "description": "Generate one unique value for each intended write. Reuse it only when retrying the exact same account, action, target, and payload. A reused key returns the original action. Reusing it with different input returns 409. Replay protection remains active for at least 90 days."
+      },
+      {
         "name": "body",
         "in": "body",
         "required": true,
@@ -1841,7 +1829,7 @@
       }
     ],
     "path": "/api/v1/x/tweets",
-    "responseShape": "Tweet created",
+    "responseShape": "",
     "summary": "Create tweet"
   },
   {
@@ -2123,6 +2111,13 @@
     "mpp": null,
     "parameters": [
       {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "type": "string",
+        "description": "Generate one unique value for each intended write. Reuse it only when retrying the exact same account, action, target, and payload. A reused key returns the original action. Reusing it with different input returns 409. Replay protection remains active for at least 90 days."
+      },
+      {
         "name": "id",
         "in": "path",
         "required": true,
@@ -2204,6 +2199,13 @@
     "mpp": null,
     "parameters": [
       {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "type": "string",
+        "description": "Generate one unique value for each intended write. Reuse it only when retrying the exact same account, action, target, and payload. A reused key returns the original action. Reusing it with different input returns 409. Replay protection remains active for at least 90 days."
+      },
+      {
         "name": "id",
         "in": "path",
         "required": true,
@@ -2229,6 +2231,13 @@
     "method": "POST",
     "mpp": null,
     "parameters": [
+      {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "type": "string",
+        "description": "Generate one unique value for each intended write. Reuse it only when retrying the exact same account, action, target, and payload. A reused key returns the original action. Reusing it with different input returns 409. Replay protection remains active for at least 90 days."
+      },
       {
         "name": "id",
         "in": "path",
@@ -2707,6 +2716,13 @@
     "mpp": null,
     "parameters": [
       {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "type": "string",
+        "description": "Generate one unique value for each intended write. Reuse it only when retrying the exact same account, action, target, and payload. A reused key returns the original action. Reusing it with different input returns 409. Replay protection remains active for at least 90 days."
+      },
+      {
         "name": "id",
         "in": "path",
         "required": true,
@@ -2732,6 +2748,13 @@
     "method": "POST",
     "mpp": null,
     "parameters": [
+      {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "type": "string",
+        "description": "Generate one unique value for each intended write. Reuse it only when retrying the exact same account, action, target, and payload. A reused key returns the original action. Reusing it with different input returns 409. Replay protection remains active for at least 90 days."
+      },
       {
         "name": "id",
         "in": "path",
@@ -2892,6 +2915,13 @@
     "mpp": null,
     "parameters": [
       {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "type": "string",
+        "description": "Generate one unique value for each intended write. Reuse it only when retrying the exact same account, action, target, and payload. A reused key returns the original action. Reusing it with different input returns 409. Replay protection remains active for at least 90 days."
+      },
+      {
         "name": "id",
         "in": "path",
         "required": true,
@@ -2917,6 +2947,13 @@
     "method": "POST",
     "mpp": null,
     "parameters": [
+      {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "type": "string",
+        "description": "Generate one unique value for each intended write. Reuse it only when retrying the exact same account, action, target, and payload. A reused key returns the original action. Reusing it with different input returns 409. Replay protection remains active for at least 90 days."
+      },
       {
         "name": "id",
         "in": "path",
@@ -2948,7 +2985,7 @@
         "in": "path",
         "required": true,
         "type": "string",
-        "description": "User ID or username"
+        "description": "Target user ID or username for follower lookup."
       },
       {
         "name": "cursor",
@@ -3042,7 +3079,7 @@
         "in": "query",
         "required": false,
         "type": "string",
-        "description": "Legacy cursor alias. Prefer cursor."
+        "description": "Deprecated following cursor alias. Prefer cursor."
       },
       {
         "name": "pageSize",
@@ -3709,6 +3746,13 @@
     "mpp": null,
     "parameters": [
       {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "type": "string",
+        "description": "Generate one unique value for each intended write. Reuse it only when retrying the exact same account, action, target, and payload. A reused key returns the original action. Reusing it with different input returns 409. Replay protection remains active for at least 90 days."
+      },
+      {
         "name": "id",
         "in": "path",
         "required": true,
@@ -3739,7 +3783,7 @@
         "in": "path",
         "required": true,
         "type": "string",
-        "description": "X user ID or username"
+        "description": "Target user ID or username for the replies timeline."
       },
       {
         "name": "cursor",
@@ -3760,7 +3804,7 @@
         "in": "query",
         "required": false,
         "type": "boolean",
-        "description": "Include parent tweet for replies"
+        "description": "Include each reply's parent tweet."
       },
       {
         "name": "fromUser",
@@ -4213,7 +4257,7 @@
       }
     ],
     "path": "/api/v1/x/write-actions/{id}",
-    "responseShape": "Write action status",
+    "responseShape": "",
     "summary": "Get write action status"
   }
 ]

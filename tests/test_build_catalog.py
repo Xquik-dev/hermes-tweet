@@ -37,6 +37,11 @@ def test_build_skips_prohibited_account_and_support_endpoints(tmp_path: Path) ->
         {
             "/account": {"patch": {"summary": "Update account"}},
             "/support/tickets": {"get": {"summary": "List tickets"}},
+            "/support/attachments/{id}": {"get": {"summary": "Download support attachment"}},
+            "/credits/topup/redirect": {"get": {"summary": "Start checkout"}},
+            "/guest-wallets": {"post": {"summary": "Create guest wallet"}},
+            "/guest-wallets/status": {"get": {"summary": "Get guest wallet"}},
+            "/guest-wallets/topups": {"post": {"summary": "Top up guest wallet"}},
             "/x/account-connection-challenges/{id}/submit": {
                 "post": {"summary": "Submit account challenge"}
             },
