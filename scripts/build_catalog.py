@@ -22,8 +22,12 @@ PROHIBITED_STATIC = {
     ("POST", "/api/v1/api-keys"),
     ("POST", "/api/v1/subscribe"),
     ("POST", "/api/v1/credits/topup"),
+    ("GET", "/api/v1/credits/topup/redirect"),
     ("GET", "/api/v1/credits/topup/status"),
     ("POST", "/api/v1/credits/quick-topup"),
+    ("POST", "/api/v1/guest-wallets"),
+    ("GET", "/api/v1/guest-wallets/status"),
+    ("POST", "/api/v1/guest-wallets/topups"),
     ("POST", "/api/v1/x/accounts"),
     ("POST", "/api/v1/x/accounts/bulk-retry"),
     ("POST", "/api/v1/x/account-connection-challenges/{id}/submit"),
@@ -193,7 +197,7 @@ def _mpp(operation: JsonDict) -> dict[str, str] | None:
 def _prohibited(method: str, path: str) -> bool:
     if (method, path) in PROHIBITED_STATIC:
         return True
-    if path.startswith("/api/v1/support/tickets"):
+    if path.startswith("/api/v1/support/"):
         return True
     if method == "DELETE" and path.startswith("/api/v1/api-keys/"):
         return True

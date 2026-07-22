@@ -202,9 +202,7 @@ def test_public_surface_registry_has_unique_existing_files() -> None:
 
 def test_copied_catalog_url_rule_stays_in_public_skill_surfaces() -> None:
     expected = "Copied endpoint URLs are accepted only when they resolve to catalog-listed paths."
-    readme_expected = (
-        "Copied endpoint URLs are accepted, but Hermes Tweet matches only catalog-listed\npaths."
-    )
+    readme_expected = "Copied Xquik URLs work when their paths match the catalog."
     integration_expected = (
         "Copied endpoint URLs are fine, but Hermes Tweet matches only catalog-listed\n  paths."
     )
