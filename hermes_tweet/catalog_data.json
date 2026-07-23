@@ -22,12 +22,12 @@
         "in": "body",
         "required": true,
         "type": "object",
-        "description": "Workflow step, topic, goal, and optional style parameters."
+        "description": "Send exactly one workflow step and its required fields."
       }
     ],
     "path": "/api/v1/compose",
-    "responseShape": "Composition result",
-    "summary": "Compose, refine, or score a tweet"
+    "responseShape": "Result for the requested workflow step",
+    "summary": "Build, refine, or check a post draft"
   },
   {
     "action": false,
