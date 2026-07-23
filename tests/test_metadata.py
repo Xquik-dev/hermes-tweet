@@ -133,7 +133,7 @@ CLUSTERFUZZLITE_ACTION_SHA = (
     "google/clusterfuzzlite/actions/{}@884713a6c30a92e5e8544c39945cd7cb630abcd1"
 )
 HOL_PLUGIN_SCANNER_ACTION_SHA = (
-    "hashgraph-online/ai-plugin-scanner-action@a63dd98b7d6497cabad2069e803b450def3b02dc"
+    "hashgraph-online/ai-plugin-scanner-action@8f0a503ca2a70c1968a9a883e11fdff5737b7909"
 )
 ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
 BLACKSMITH_RUNNER_LABEL = "blacksmith-2vcpu-ubuntu-2404"
