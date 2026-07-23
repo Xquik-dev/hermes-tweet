@@ -1,4 +1,4 @@
-# Hermes Tweet
+# Hermes Tweet: X Search, Timelines, Followers & Actions for AI Agents
 
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/13725/badge)](https://www.bestpractices.dev/projects/13725)
 [![CI](https://github.com/Xquik-dev/hermes-tweet/actions/workflows/ci.yml/badge.svg)](https://github.com/Xquik-dev/hermes-tweet/actions/workflows/ci.yml)
@@ -63,6 +63,22 @@ Restart Hermes after changing environment variables.
 Use `tweet_explore` first. Then pass a listed `/api/v1/...` path to the matching tool.
 
 Copied Xquik URLs work when their paths match the catalog.
+
+## Common Agent Tasks
+
+Start with `tweet_explore`. Invoke only the path returned by the catalog.
+
+| Customer Question | Catalog Query | Live Tool |
+| --- | --- | --- |
+| How can an agent search X posts? | `search tweets by query` | `tweet_read` |
+| How can an agent read profile timelines? | `list recent tweets posted by a user` | `tweet_read` |
+| How can an agent export followers? | `run extraction` | `tweet_action` |
+| How can an agent export following accounts? | `run extraction` | `tweet_action` |
+| How can an agent monitor an account? | `create monitor` | `tweet_action` |
+| How can an agent post or reply? | `create tweet` | `tweet_action` |
+
+Set `include_actions` for extraction, monitoring, and writing searches.
+`tweet_action` always follows the approval rules below.
 
 ## Safety
 
