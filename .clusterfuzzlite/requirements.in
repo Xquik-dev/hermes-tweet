@@ -1,2 +1,5 @@
+# SPDX-FileCopyrightText: 2026 Xquik Contributors
+# SPDX-License-Identifier: MIT
+
 # Runtime dependency required by the source modules under fuzzing.
 httpx==0.28.1

@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Xquik Contributors
+# SPDX-License-Identifier: MIT
+
 include plugin.yaml
 include .claude-plugin/plugin.json
 include .codex-plugin/plugin.json
