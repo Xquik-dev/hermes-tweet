@@ -4,24 +4,93 @@
 name: Publish
 
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
+    inputs:
+      release_ref:
+        description: Exact release tag to publish
+        required: true
+        type: string
 
-permissions:
-  contents: read
+permissions: {}
 
 concurrency:
-  group: pypi-${{ github.event.release.tag_name }}
+  group: hermes-release
   cancel-in-progress: false
 
 jobs:
+  prepare:
+    name: Prepare draft release
+    if: github.ref_type == 'branch' && github.ref_name == 'master'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      actions: write # Dispatch the tag-bound publisher.
+      contents: write # Create the exact release tag.
+    steps:
+      - name: Checkout release commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Prepare immutable draft
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release_ref }}
+        run: |
+          set -euo pipefail
+
+          [[ "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z][0-9A-Za-z.-]*)?$ ]]
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          import tomllib
+
+          with Path("pyproject.toml").open("rb") as pyproject_file:
+              version = tomllib.load(pyproject_file)["project"]["version"]
+
+          expected_ref = f"v{version}"
+          actual_ref = os.environ["RELEASE_TAG"]
+          if actual_ref != expected_ref:
+              raise SystemExit(
+                  f"Release ref {actual_ref!r} must match {expected_ref!r}."
+              )
+          PY
+
+          if ! release_json="$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${RELEASE_TAG}" 2>/dev/null)"; then
+            gh release create "$RELEASE_TAG" \
+              --repo "$GITHUB_REPOSITORY" \
+              --target "$GITHUB_SHA" \
+              --title "$RELEASE_TAG" \
+              --generate-notes \
+              --draft
+            release_json="$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${RELEASE_TAG}")"
+          fi
+
+          test "$(jq -r '.draft' <<<"$release_json")" = "true"
+          test "$(jq -r '.target_commitish' <<<"$release_json")" = "$GITHUB_SHA"
+
+          if remote_sha="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${RELEASE_TAG}" --jq '.object.sha' 2>/dev/null)"; then
+            test "$remote_sha" = "$GITHUB_SHA"
+          else
+            gh api --method POST "repos/${GITHUB_REPOSITORY}/git/refs" \
+              -f ref="refs/tags/${RELEASE_TAG}" \
+              -f sha="$GITHUB_SHA" >/dev/null
+          fi
+
+          gh workflow run publish.yml \
+            --repo "$GITHUB_REPOSITORY" \
+            --ref "$RELEASE_TAG" \
+            -f release_ref="$RELEASE_TAG"
+
   build:
     name: Build distributions
+    if: github.ref_type == 'tag'
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     permissions:
       attestations: write # Store signed provenance for release artifacts.
-      contents: write # Attach verified artifacts to the existing GitHub release.
+      contents: read
       id-token: write # Mint the short-lived Sigstore signing identity.
     steps:
       - name: Checkout
@@ -29,7 +98,49 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-          ref: ${{ github.event.release.tag_name }}
+          ref: ${{ github.ref }}
+
+      - name: Validate release tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release_ref }}
+        run: |
+          set -euo pipefail
+
+          test "$GITHUB_REF_TYPE" = "tag"
+          test "$GITHUB_REF_NAME" = "$RELEASE_TAG"
+          git fetch --no-tags origin master:refs/remotes/origin/master
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          import tomllib
+
+          with Path("pyproject.toml").open("rb") as pyproject_file:
+              version = tomllib.load(pyproject_file)["project"]["version"]
+
+          expected_ref = f"v{version}"
+          actual_ref = os.environ["RELEASE_TAG"]
+          if actual_ref != expected_ref:
+              message = (
+                  f"Release ref {actual_ref!r} must match "
+                  f"pyproject version tag {expected_ref!r}."
+              )
+              raise SystemExit(message)
+          PY
+          tag_commit=$(git rev-parse --verify "refs/tags/${RELEASE_TAG}^{commit}")
+          head_commit=$(git rev-parse HEAD)
+          master_commit=$(git rev-parse refs/remotes/origin/master)
+          release_json="$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${RELEASE_TAG}")"
+          test "$(jq -r '.draft' <<<"$release_json")" = "true"
+          test "$(jq -r '.target_commitish' <<<"$release_json")" = "$GITHUB_SHA"
+          test "$tag_commit" = "$head_commit" || {
+            echo "Release tag must resolve to the checked-out commit."
+            exit 1
+          }
+          git merge-base --is-ancestor "$tag_commit" "$master_commit" || {
+            echo "Release tag must resolve to protected master history."
+            exit 1
+          }
 
       - name: Set up Go
         uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
@@ -50,40 +161,6 @@ jobs:
 
       - name: Install dependencies
         run: uv sync --locked --python 3.12 --group dev
-
-      - name: Validate release tag
-        env:
-          RELEASE_TAG: ${{ github.event.release.tag_name }}
-        run: |
-          git fetch --no-tags origin master:refs/remotes/origin/master
-          uv run python - <<'PY'
-          from pathlib import Path
-          import os
-          import tomllib
-
-          with Path("pyproject.toml").open("rb") as pyproject_file:
-              version = tomllib.load(pyproject_file)["project"]["version"]
-
-          expected_ref = f"v{version}"
-          actual_ref = os.environ["RELEASE_TAG"]
-          if actual_ref != expected_ref:
-              message = (
-                  f"Release ref {actual_ref!r} must match "
-                  f"pyproject version tag {expected_ref!r}."
-              )
-              raise SystemExit(message)
-          PY
-          tag_commit=$(git rev-parse --verify "refs/tags/${RELEASE_TAG}^{commit}")
-          head_commit=$(git rev-parse HEAD)
-          master_commit=$(git rev-parse refs/remotes/origin/master)
-          test "$tag_commit" = "$head_commit" || {
-            echo "Release tag must resolve to the checked-out commit."
-            exit 1
-          }
-          test "$tag_commit" = "$master_commit" || {
-            echo "Release tag must resolve to the protected master tip."
-            exit 1
-          }
 
       - name: Format check
         run: uv run ruff format --check .
@@ -133,18 +210,11 @@ jobs:
             dist/*.whl
             dist/*.tar.gz
 
-      - name: Attach release provenance
+      - name: Stage release provenance
         env:
           ATTESTATION_BUNDLE: ${{ steps.attest.outputs.bundle-path }}
-          GH_TOKEN: ${{ github.token }}
-          RELEASE_TAG: ${{ github.event.release.tag_name }}
         run: |
           install -m 0644 "$ATTESTATION_BUNDLE" dist/provenance.intoto.jsonl
-          gh release upload "$RELEASE_TAG" \
-            dist/*.whl \
-            dist/*.tar.gz \
-            dist/provenance.intoto.jsonl \
-            --clobber
 
       - name: Upload distributions
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
@@ -155,6 +225,17 @@ jobs:
             dist/*.tar.gz
           if-no-files-found: error
           retention-days: 7
+
+      - name: Preserve attested release files
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: release-assets
+          path: |
+            dist/*.whl
+            dist/*.tar.gz
+            dist/provenance.intoto.jsonl
+          if-no-files-found: error
+          retention-days: 1
 
   publish:
     name: Publish to PyPI
@@ -179,3 +260,40 @@ jobs:
         with:
           attestations: true
           packages-dir: dist/
+
+  finalize:
+    name: Publish immutable GitHub release
+    needs: publish
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      actions: read # Download this run's attested release files.
+      contents: write # Attach assets and publish the draft.
+    steps:
+      - name: Download attested release files
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
+        with:
+          name: release-assets
+          path: release-assets
+
+      - name: Attach assets and publish draft
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release_ref }}
+        run: |
+          set -euo pipefail
+
+          release_json="$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${RELEASE_TAG}")"
+          test "$(jq -r '.draft' <<<"$release_json")" = "true"
+          test "$(jq -r '.target_commitish' <<<"$release_json")" = "$GITHUB_SHA"
+          gh release upload "$RELEASE_TAG" \
+            release-assets/*.whl \
+            release-assets/*.tar.gz \
+            release-assets/provenance.intoto.jsonl \
+            --repo "$GITHUB_REPOSITORY" \
+            --clobber
+          gh release edit "$RELEASE_TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --draft=false \
+            --latest \
+            --verify-tag

@@ -1,7 +1,7 @@
 # Publication Checklist
 
-Hermes Tweet is published as `hermes-tweet` on PyPI. The current public release
-is `0.1.10`; version `0.1.11` is prepared in source.
+Hermes Tweet is published as `hermes-tweet` on PyPI. Require PyPI and GitHub
+Releases to match protected source. Verify live versions before every release.
 
 ## Before GitHub Publication
 
@@ -21,13 +21,13 @@ is `0.1.10`; version `0.1.11` is prepared in source.
 - [x] Build from a clean working tree and run `twine check dist/*`.
 - [x] Verify the wheel contains `plugin.yaml`, `catalog_data.json`, and the
   bundled Hermes skill.
-- [ ] Publish through GitHub Actions trusted publishing.
-- [ ] Verify PyPI metadata, README rendering, simple index visibility, and a
+- [x] Publish through GitHub Actions trusted publishing.
+- [x] Verify PyPI metadata, README rendering, simple index visibility, and a
   fresh install.
 
 ## After Publication
 
-- [ ] Install from PyPI in a fresh environment.
+- [x] Install from PyPI in a fresh environment.
 - [ ] Run `hermes plugins enable hermes-tweet`.
 - [ ] Confirm `tweet_explore`, `tweet_read`, `tweet_action`, `/xstatus`, and
   `/xtrends` load.
@@ -43,9 +43,14 @@ is `0.1.10`; version `0.1.11` is prepared in source.
 
 ## Release Gate
 
-Publish only from a GitHub release tag that matches the package version and
-resolves to the protected `master` tip. The release workflow has no manual
-dispatch path.
+Merge each version change through protected `master`. Then dispatch the
+`Publish` workflow from `master`. Set `release_ref` to the matching `v*` tag.
+
+The workflow creates a draft release and exact tag. It dispatches a tag-bound
+build for trusted publishing. It attaches signed assets before publication.
+GitHub locks the release only after every publication step succeeds.
+
+Never create or publish the GitHub release manually.
 
 Run these checks before any new package release:
 
@@ -86,10 +91,10 @@ uv run --python 3.12 --group dev python scripts/check_hermes_agent_compat.py
 If a locked Hermes Agent source SHA changes, review the official diff first,
 then update Hermes Tweet runtime, docs, tests, and the checker lock together.
 
-Latest reviewed locks from July 10, 2026: `hermes_cli/plugins.py`
+Latest reviewed locks from July 24, 2026: `hermes_cli/plugins.py`
 `6ca393fca53c1fd2b3479bed72180fedcc848c88`, `tools/registry.py`
 `354da7123fd7d0acaad8d5ac49870963fce54a5c`, and
-`hermes_cli/plugins_cmd.py` `f5c57bb88f2bc91b7cbf43abaf7437efa033730a`.
+`hermes_cli/plugins_cmd.py` `07f2f3198a9b3f641342fee191d4caee79297f78`.
 
 Keep the runtime contract aligned with those sources:
 
@@ -133,5 +138,5 @@ Expected result:
 
 Keep optional signed-in submissions, local-secret smoke tests, pending outreach,
 duplicate checks, and maintainer-blocked directory routes in private operator
-notes. Do not commit those operational notes to the public repository. The
-`0.1.11` tag, trusted publishing workflow, and post-publication checks remain.
+notes. Do not commit those operational notes to the public repository. A new
+package release and post-publication checks remain.

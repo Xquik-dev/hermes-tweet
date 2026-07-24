@@ -955,19 +955,64 @@ def test_clusterfuzzlite_runs_python_fuzzers_with_restricted_permissions() -> No
     assert "atheris.Fuzz" in fuzzer
 
 
-def test_publish_workflow_requires_version_matched_release_tag() -> None:
+def test_publish_workflow_prepares_draft_before_tag_dispatch() -> None:
     workflow = load_object_mapping(ROOT / ".github" / "workflows" / "publish.yml")
 
     # PyYAML 1.1 treats the GitHub Actions "on" key as boolean true.
     on_config = require_mapping(workflow[True])
-    release = require_mapping(on_config["release"])
-    assert release["types"] == ["published"]
-    assert "workflow_dispatch" not in on_config
+    workflow_dispatch = require_mapping(on_config["workflow_dispatch"])
+    inputs = require_mapping(workflow_dispatch["inputs"])
+    assert require_mapping(inputs["release_ref"]) == {
+        "description": "Exact release tag to publish",
+        "required": True,
+        "type": "string",
+    }
+    assert require_mapping(workflow["permissions"]) == {}
+    assert require_mapping(workflow["concurrency"]) == {
+        "group": "hermes-release",
+        "cancel-in-progress": False,
+    }
 
     jobs = require_mapping(workflow["jobs"])
+    prepare = require_mapping(jobs["prepare"])
+    assert prepare["if"] == "github.ref_type == 'branch' && github.ref_name == 'master'"
+    assert prepare["timeout-minutes"] == 10
+    assert require_mapping(prepare["permissions"]) == {
+        "actions": "write",
+        "contents": "write",
+    }
+    prepare_steps = require_list(prepare["steps"])
+    prepare_checkout = find_step(prepare_steps, "Checkout release commit")
+    assert prepare_checkout["uses"] == CHECKOUT_ACTION_SHA
+    assert require_mapping(prepare_checkout["with"]) == {
+        "fetch-depth": 0,
+        "persist-credentials": False,
+    }
+    prepare_draft = find_step(prepare_steps, "Prepare immutable draft")
+    assert require_mapping(prepare_draft["env"]) == {
+        "GH_TOKEN": "${{ github.token }}",
+        "RELEASE_TAG": "${{ inputs.release_ref }}",
+    }
+    prepare_script = prepare_draft["run"]
+    assert isinstance(prepare_script, str)
+    assert "pyproject.toml" in prepare_script
+    assert "gh release create" in prepare_script
+    assert "--generate-notes" in prepare_script
+    assert "--draft" in prepare_script
+    assert "refs/tags/${RELEASE_TAG}" in prepare_script
+    assert "gh workflow run publish.yml" in prepare_script
+    assert '--ref "$RELEASE_TAG"' in prepare_script
+
+
+def test_publish_workflow_requires_version_matched_release_tag() -> None:
+    workflow = load_object_mapping(ROOT / ".github" / "workflows" / "publish.yml")
+    jobs = require_mapping(workflow["jobs"])
     build = require_mapping(jobs["build"])
+    assert build["if"] == "github.ref_type == 'tag'"
     assert build["timeout-minutes"] == 30
     build_steps = require_list(build["steps"])
+    build_step_names = [require_mapping(step)["name"] for step in build_steps]
+    assert build_step_names.index("Validate release tag") < build_step_names.index("Install uv")
 
     install_uv_step = find_step(build_steps, "Install uv")
     assert install_uv_step["uses"] == SETUP_UV_ACTION
@@ -982,22 +1027,31 @@ def test_publish_workflow_requires_version_matched_release_tag() -> None:
     assert checkout_config == {
         "fetch-depth": 0,
         "persist-credentials": False,
-        "ref": "${{ github.event.release.tag_name }}",
+        "ref": "${{ github.ref }}",
     }
 
     validate_step = find_step(build_steps, "Validate release tag")
     validate_env = require_mapping(validate_step["env"])
-    assert validate_env["RELEASE_TAG"] == "${{ github.event.release.tag_name }}"
+    assert validate_env == {
+        "GH_TOKEN": "${{ github.token }}",
+        "RELEASE_TAG": "${{ inputs.release_ref }}",
+    }
 
     validate_script = validate_step["run"]
     assert isinstance(validate_script, str)
+    assert 'test "$GITHUB_REF_TYPE" = "tag"' in validate_script
+    assert 'test "$GITHUB_REF_NAME" = "$RELEASE_TAG"' in validate_script
     assert "pyproject.toml" in validate_script
     assert 'expected_ref = f"v{version}"' in validate_script
     assert 'actual_ref = os.environ["RELEASE_TAG"]' in validate_script
     assert "pyproject version tag" in validate_script
     assert "refs/tags/${RELEASE_TAG}^{commit}" in validate_script
     assert "refs/remotes/origin/master" in validate_script
-    assert "protected master tip" in validate_script
+    assert "git merge-base --is-ancestor" in validate_script
+    assert "protected master history" in validate_script
+    assert "releases/tags/${RELEASE_TAG}" in validate_script
+    assert "'.draft'" in validate_script
+    assert "GITHUB_SHA" in validate_script
 
     assert find_step(build_steps, "Set up Go")["uses"] == SETUP_GO_ACTION_SHA
     assert find_step(build_steps, "Workflow lint")["run"] == f"go run {ACTIONLINT_MODULE}"
@@ -1016,6 +1070,10 @@ def test_publish_workflow_requires_version_matched_release_tag() -> None:
     }
     assert find_step(build_steps, "Upload distributions")["uses"] == (UPLOAD_ARTIFACT_ACTION_SHA)
 
+
+def test_publish_workflow_uses_pypi_trusted_publishing() -> None:
+    workflow = load_object_mapping(ROOT / ".github" / "workflows" / "publish.yml")
+    jobs = require_mapping(workflow["jobs"])
     publish = require_mapping(jobs["publish"])
     assert publish["timeout-minutes"] == 10
     publish_permissions = require_mapping(publish["permissions"])
@@ -1036,7 +1094,7 @@ def test_publish_workflow_attests_and_attaches_release_artifacts() -> None:
     build = workflow_job("publish.yml", "build")
     assert require_mapping(build["permissions"]) == {
         "attestations": "write",
-        "contents": "write",
+        "contents": "read",
         "id-token": "write",
     }
     build_steps = require_list(build["steps"])
@@ -1045,20 +1103,50 @@ def test_publish_workflow_attests_and_attaches_release_artifacts() -> None:
     assert attest_step["uses"] == ATTEST_ACTION_SHA
     assert require_mapping(attest_step["with"])["subject-path"] == ("dist/*.whl\ndist/*.tar.gz\n")
 
-    attach_step = find_step(build_steps, "Attach release provenance")
-    assert require_mapping(attach_step["env"]) == {
+    stage_step = find_step(build_steps, "Stage release provenance")
+    assert require_mapping(stage_step["env"]) == {
         "ATTESTATION_BUNDLE": "${{ steps.attest.outputs.bundle-path }}",
+    }
+    stage_script = stage_step["run"]
+    assert isinstance(stage_script, str)
+    assert "provenance.intoto.jsonl" in stage_script
+    assert "gh release upload" not in stage_script
+
+    upload_step = find_step(build_steps, "Upload distributions")
+    assert upload_step["uses"] == UPLOAD_ARTIFACT_ACTION_SHA
+    assert require_mapping(upload_step["with"])["path"] == ("dist/*.whl\ndist/*.tar.gz\n")
+
+    preserve_step = find_step(build_steps, "Preserve attested release files")
+    assert preserve_step["uses"] == UPLOAD_ARTIFACT_ACTION_SHA
+    assert require_mapping(preserve_step["with"])["path"] == (
+        "dist/*.whl\ndist/*.tar.gz\ndist/provenance.intoto.jsonl\n"
+    )
+
+    finalize = workflow_job("publish.yml", "finalize")
+    assert finalize["needs"] == "publish"
+    assert require_mapping(finalize["permissions"]) == {
+        "actions": "read",
+        "contents": "write",
+    }
+    finalize_steps = require_list(finalize["steps"])
+    download_step = find_step(finalize_steps, "Download attested release files")
+    assert download_step["uses"] == DOWNLOAD_ARTIFACT_ACTION_SHA
+    assert require_mapping(download_step["with"]) == {
+        "name": "release-assets",
+        "path": "release-assets",
+    }
+    attach_step = find_step(finalize_steps, "Attach assets and publish draft")
+    assert require_mapping(attach_step["env"]) == {
         "GH_TOKEN": "${{ github.token }}",
-        "RELEASE_TAG": "${{ github.event.release.tag_name }}",
+        "RELEASE_TAG": "${{ inputs.release_ref }}",
     }
     attach_script = attach_step["run"]
     assert isinstance(attach_script, str)
     assert "provenance.intoto.jsonl" in attach_script
     assert "gh release upload" in attach_script
-
-    upload_step = find_step(build_steps, "Upload distributions")
-    assert upload_step["uses"] == UPLOAD_ARTIFACT_ACTION_SHA
-    assert require_mapping(upload_step["with"])["path"] == ("dist/*.whl\ndist/*.tar.gz\n")
+    assert "gh release edit" in attach_script
+    assert "--draft=false" in attach_script
+    assert "--verify-tag" in attach_script
 
 
 def test_ci_workflow_runs_actionlint_before_python_checks() -> None:
