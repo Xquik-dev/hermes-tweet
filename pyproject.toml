@@ -2,8 +2,8 @@
 # SPDX-License-Identifier: MIT
 
 [build-system]
-requires = ["setuptools>=83.0.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling==1.31.0"]
+build-backend = "hatchling.build"
 
 [project]
 name = "hermes-tweet"
@@ -74,16 +74,29 @@ piwheels = "https://piwheels.org/project/hermes-tweet/"
 [project.entry-points."hermes_agent.plugins"]
 hermes-tweet = "hermes_tweet"
 
-[tool.setuptools]
-packages = ["hermes_tweet", "hermes_tweet.skills"]
-include-package-data = true
+[tool.hatch.build.targets.wheel]
+packages = ["hermes_tweet"]
 
-[tool.setuptools.package-data]
-hermes_tweet = [
-  "plugin.yaml",
-  "catalog_data.json",
-  "skills/hermes-tweet/SKILL.md",
-  "skills/hermes-tweet/references/*.md",
+[tool.hatch.build.targets.sdist]
+include = [
+  "/.claude-plugin",
+  "/.codex-plugin",
+  "/assets",
+  "/dashboard",
+  "/hermes_tweet",
+  "/scripts",
+  "/tests",
+  "/.codexignore",
+  "/.hermes-eco.json",
+  "/LICENSE",
+  "/MANIFEST.in",
+  "/README.md",
+  "/SECURITY.md",
+  "/after-install.md",
+  "/plugin.yaml",
+  "/pyproject.toml",
+  "/skill.json",
+  "/uv.lock",
 ]
 
 [tool.ruff]

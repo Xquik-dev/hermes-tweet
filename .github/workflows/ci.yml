@@ -73,7 +73,12 @@ jobs:
       - name: Dependency audit
         run: uv run pip-audit
 
+      - name: Check reproducible package
+        run: bash scripts/check_reproducible.sh
+
       - name: Build package
+        env:
+          SOURCE_DATE_EPOCH: "946684800"
         run: uv run python -m build
 
       - name: Check package metadata

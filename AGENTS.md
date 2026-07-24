@@ -15,6 +15,7 @@ uv run --python 3.12 --group dev python scripts/check_license_headers.py
 uv run --python 3.12 --group dev pip-audit
 uv run --python 3.12 --group dev python scripts/check_public_links.py
 uv run --python 3.12 --group dev python scripts/check_hermes_agent_compat.py
+uv run --python 3.12 --group dev bash scripts/check_reproducible.sh
 uv run --python 3.12 --group dev python -m build
 uv run --python 3.12 --group dev twine check dist/*
 actionlint .github/workflows/*.yml
