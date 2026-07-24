@@ -140,6 +140,8 @@ HOL_PLUGIN_SCANNER_ACTION_SHA = (
 )
 ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
 BLACKSMITH_RUNNER_LABEL = "blacksmith-2vcpu-ubuntu-2404"
+REPRODUCIBLE_BUILD_COMMAND = "bash scripts/check_reproducible.sh"
+REPRODUCIBLE_BUILD_EPOCH = "946684800"
 HERMES_AGENT_COMPAT_COMMAND = "uv run python scripts/check_hermes_agent_compat.py"
 PUBLIC_SAFETY_COMMAND = "uv run python scripts/check_public_safety.py"
 EXPECTED_PUBLIC_IGNORE_PATTERNS = [
@@ -568,8 +570,8 @@ def test_skill_reference_mirrors_bundled_reference() -> None:
     assert "HERMES_TWEET_ENABLE_ACTIONS=true" in reference_text
 
     pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
-    package_data = pyproject["tool"]["setuptools"]["package-data"]["hermes_tweet"]
-    assert "skills/hermes-tweet/references/*.md" in package_data
+    wheel_packages = pyproject["tool"]["hatch"]["build"]["targets"]["wheel"]["packages"]
+    assert wheel_packages == ["hermes_tweet"]
 
 
 def test_skill_card_mirrors_bundled_skill_card() -> None:
@@ -1005,6 +1007,13 @@ def test_publish_workflow_requires_version_matched_release_tag() -> None:
     assert find_step(build_steps, "Hermes Agent compatibility")["run"] == (
         HERMES_AGENT_COMPAT_COMMAND
     )
+    assert find_step(build_steps, "Check reproducible package")["run"] == (
+        REPRODUCIBLE_BUILD_COMMAND
+    )
+    build_package_step = find_step(build_steps, "Build package")
+    assert require_mapping(build_package_step["env"]) == {
+        "SOURCE_DATE_EPOCH": REPRODUCIBLE_BUILD_EPOCH
+    }
     assert find_step(build_steps, "Upload distributions")["uses"] == (UPLOAD_ARTIFACT_ACTION_SHA)
 
     publish = require_mapping(jobs["publish"])
@@ -1095,6 +1104,12 @@ def test_ci_workflow_runs_actionlint_before_python_checks() -> None:
     public_safety_step = find_step(steps, "Public safety scan")
     assert public_safety_step["run"] == PUBLIC_SAFETY_COMMAND
 
+    assert find_step(steps, "Check reproducible package")["run"] == (REPRODUCIBLE_BUILD_COMMAND)
+    build_package_step = find_step(steps, "Build package")
+    assert require_mapping(build_package_step["env"]) == {
+        "SOURCE_DATE_EPOCH": REPRODUCIBLE_BUILD_EPOCH
+    }
+
 
 def test_release_gate_runs_hermes_agent_compatibility_checker() -> None:
     checklist = (ROOT / "docs" / "PUBLICATION_CHECKLIST.md").read_text()
@@ -1107,3 +1122,6 @@ def test_release_gate_runs_hermes_agent_compatibility_checker() -> None:
     assert "source SHA changes" in checklist
     assert "uv run --python 3.12 --group dev python scripts/check_hermes_agent_compat.py" in agents
     assert "uv run --python 3.12 --group dev python scripts/check_public_safety.py" in agents
+    reproducible_command = "uv run --python 3.12 --group dev bash scripts/check_reproducible.sh"
+    assert reproducible_command in checklist
+    assert reproducible_command in agents
