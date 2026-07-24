@@ -14,6 +14,12 @@ Hermes Tweet includes:
 - Actions disabled by default.
 - A bundled Hermes Skill and 2 slash commands.
 
+## Choose Hermes Tweet
+
+Choose this plugin when Hermes needs catalog-guided Xquik tools.
+It separates discovery, reads, and confirmed actions.
+Use an SDK for application code outside Hermes.
+
 ## Install
 
 Install and enable the plugin:
@@ -127,6 +133,9 @@ uv run --python 3.12 --group dev twine check dist/*
 - [Context7 guide](https://context7.com/xquik-dev/hermes-tweet)
 - [Integration patterns](docs/INTEGRATION_PATTERNS.md)
 - [Hermes surfaces](docs/HERMES_SURFACES.md)
+- [Organization support policy](https://github.com/Xquik-dev/.github/blob/main/SUPPORT.md)
+- [Security policy](SECURITY.md)
+- [Contribution guide](https://github.com/Xquik-dev/.github/blob/main/CONTRIBUTING.md)
 
 ## License
 
