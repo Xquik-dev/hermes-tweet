@@ -996,9 +996,14 @@ def test_publish_workflow_prepares_draft_before_tag_dispatch() -> None:
     prepare_script = prepare_draft["run"]
     assert isinstance(prepare_script, str)
     assert "pyproject.toml" in prepare_script
+    assert 'gh release view "$RELEASE_TAG"' in prepare_script
+    assert "--json isDraft,tagName,targetCommitish" in prepare_script
     assert "gh release create" in prepare_script
     assert "--generate-notes" in prepare_script
     assert "--draft" in prepare_script
+    assert "'.isDraft'" in prepare_script
+    assert "'.tagName'" in prepare_script
+    assert "'.targetCommitish'" in prepare_script
     assert "refs/tags/${RELEASE_TAG}" in prepare_script
     assert "gh workflow run publish.yml" in prepare_script
     assert '--ref "$RELEASE_TAG"' in prepare_script
@@ -1049,8 +1054,11 @@ def test_publish_workflow_requires_version_matched_release_tag() -> None:
     assert "refs/remotes/origin/master" in validate_script
     assert "git merge-base --is-ancestor" in validate_script
     assert "protected master history" in validate_script
-    assert "releases/tags/${RELEASE_TAG}" in validate_script
-    assert "'.draft'" in validate_script
+    assert 'gh release view "$RELEASE_TAG"' in validate_script
+    assert "--json isDraft,tagName,targetCommitish" in validate_script
+    assert "'.isDraft'" in validate_script
+    assert "'.tagName'" in validate_script
+    assert "'.targetCommitish'" in validate_script
     assert "GITHUB_SHA" in validate_script
 
     assert find_step(build_steps, "Set up Go")["uses"] == SETUP_GO_ACTION_SHA
@@ -1142,6 +1150,11 @@ def test_publish_workflow_attests_and_attaches_release_artifacts() -> None:
     }
     attach_script = attach_step["run"]
     assert isinstance(attach_script, str)
+    assert 'gh release view "$RELEASE_TAG"' in attach_script
+    assert "--json isDraft,tagName,targetCommitish" in attach_script
+    assert "'.isDraft'" in attach_script
+    assert "'.tagName'" in attach_script
+    assert "'.targetCommitish'" in attach_script
     assert "provenance.intoto.jsonl" in attach_script
     assert "gh release upload" in attach_script
     assert "gh release edit" in attach_script
