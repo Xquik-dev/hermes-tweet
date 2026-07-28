@@ -57,18 +57,50 @@ jobs:
               )
           PY
 
-          if ! release_json="$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${RELEASE_TAG}" 2>/dev/null)"; then
+          if ! release_json="$(
+            gh api --paginate --slurp \
+              "repos/${GITHUB_REPOSITORY}/releases?per_page=100" \
+              2>/dev/null |
+              jq -ce --arg tag "$RELEASE_TAG" '
+                [.[][] | select(.tag_name == $tag)]
+                | if length == 1 then
+                    {
+                      isDraft: .[0].draft,
+                      tagName: .[0].tag_name,
+                      targetCommitish: .[0].target_commitish
+                    }
+                  else
+                    empty
+                  end
+              '
+          )"; then
             gh release create "$RELEASE_TAG" \
               --repo "$GITHUB_REPOSITORY" \
               --target "$GITHUB_SHA" \
               --title "$RELEASE_TAG" \
               --generate-notes \
               --draft
-            release_json="$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${RELEASE_TAG}")"
+            release_json="$(
+              gh api --paginate --slurp \
+                "repos/${GITHUB_REPOSITORY}/releases?per_page=100" |
+                jq -ce --arg tag "$RELEASE_TAG" '
+                  [.[][] | select(.tag_name == $tag)]
+                  | if length == 1 then
+                      {
+                        isDraft: .[0].draft,
+                        tagName: .[0].tag_name,
+                        targetCommitish: .[0].target_commitish
+                      }
+                    else
+                      empty
+                    end
+                '
+            )"
           fi
 
-          test "$(jq -r '.draft' <<<"$release_json")" = "true"
-          test "$(jq -r '.target_commitish' <<<"$release_json")" = "$GITHUB_SHA"
+          test "$(jq -r '.isDraft' <<<"$release_json")" = "true"
+          test "$(jq -r '.tagName' <<<"$release_json")" = "$RELEASE_TAG"
+          test "$(jq -r '.targetCommitish' <<<"$release_json")" = "$GITHUB_SHA"
 
           if remote_sha="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${RELEASE_TAG}" --jq '.object.sha' 2>/dev/null)"; then
             test "$remote_sha" = "$GITHUB_SHA"
@@ -130,9 +162,25 @@ jobs:
           tag_commit=$(git rev-parse --verify "refs/tags/${RELEASE_TAG}^{commit}")
           head_commit=$(git rev-parse HEAD)
           master_commit=$(git rev-parse refs/remotes/origin/master)
-          release_json="$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${RELEASE_TAG}")"
-          test "$(jq -r '.draft' <<<"$release_json")" = "true"
-          test "$(jq -r '.target_commitish' <<<"$release_json")" = "$GITHUB_SHA"
+          release_json="$(
+            gh api --paginate --slurp \
+              "repos/${GITHUB_REPOSITORY}/releases?per_page=100" |
+              jq -ce --arg tag "$RELEASE_TAG" '
+                [.[][] | select(.tag_name == $tag)]
+                | if length == 1 then
+                    {
+                      isDraft: .[0].draft,
+                      tagName: .[0].tag_name,
+                      targetCommitish: .[0].target_commitish
+                    }
+                  else
+                    empty
+                  end
+              '
+          )"
+          test "$(jq -r '.isDraft' <<<"$release_json")" = "true"
+          test "$(jq -r '.tagName' <<<"$release_json")" = "$RELEASE_TAG"
+          test "$(jq -r '.targetCommitish' <<<"$release_json")" = "$GITHUB_SHA"
           test "$tag_commit" = "$head_commit" || {
             echo "Release tag must resolve to the checked-out commit."
             exit 1
@@ -283,9 +331,25 @@ jobs:
         run: |
           set -euo pipefail
 
-          release_json="$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${RELEASE_TAG}")"
-          test "$(jq -r '.draft' <<<"$release_json")" = "true"
-          test "$(jq -r '.target_commitish' <<<"$release_json")" = "$GITHUB_SHA"
+          release_json="$(
+            gh api --paginate --slurp \
+              "repos/${GITHUB_REPOSITORY}/releases?per_page=100" |
+              jq -ce --arg tag "$RELEASE_TAG" '
+                [.[][] | select(.tag_name == $tag)]
+                | if length == 1 then
+                    {
+                      isDraft: .[0].draft,
+                      tagName: .[0].tag_name,
+                      targetCommitish: .[0].target_commitish
+                    }
+                  else
+                    empty
+                  end
+              '
+          )"
+          test "$(jq -r '.isDraft' <<<"$release_json")" = "true"
+          test "$(jq -r '.tagName' <<<"$release_json")" = "$RELEASE_TAG"
+          test "$(jq -r '.targetCommitish' <<<"$release_json")" = "$GITHUB_SHA"
           gh release upload "$RELEASE_TAG" \
             release-assets/*.whl \
             release-assets/*.tar.gz \
