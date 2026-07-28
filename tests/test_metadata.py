@@ -996,8 +996,10 @@ def test_publish_workflow_prepares_draft_before_tag_dispatch() -> None:
     prepare_script = prepare_draft["run"]
     assert isinstance(prepare_script, str)
     assert "pyproject.toml" in prepare_script
-    assert 'gh release view "$RELEASE_TAG"' in prepare_script
-    assert "--json isDraft,tagName,targetCommitish" in prepare_script
+    assert "gh api --paginate --slurp" in prepare_script
+    assert "releases?per_page=100" in prepare_script
+    assert 'jq -ce --arg tag "$RELEASE_TAG"' in prepare_script
+    assert ".tag_name == $tag" in prepare_script
     assert "gh release create" in prepare_script
     assert "--generate-notes" in prepare_script
     assert "--draft" in prepare_script
@@ -1054,8 +1056,10 @@ def test_publish_workflow_requires_version_matched_release_tag() -> None:
     assert "refs/remotes/origin/master" in validate_script
     assert "git merge-base --is-ancestor" in validate_script
     assert "protected master history" in validate_script
-    assert 'gh release view "$RELEASE_TAG"' in validate_script
-    assert "--json isDraft,tagName,targetCommitish" in validate_script
+    assert "gh api --paginate --slurp" in validate_script
+    assert "releases?per_page=100" in validate_script
+    assert 'jq -ce --arg tag "$RELEASE_TAG"' in validate_script
+    assert ".tag_name == $tag" in validate_script
     assert "'.isDraft'" in validate_script
     assert "'.tagName'" in validate_script
     assert "'.targetCommitish'" in validate_script
@@ -1150,8 +1154,10 @@ def test_publish_workflow_attests_and_attaches_release_artifacts() -> None:
     }
     attach_script = attach_step["run"]
     assert isinstance(attach_script, str)
-    assert 'gh release view "$RELEASE_TAG"' in attach_script
-    assert "--json isDraft,tagName,targetCommitish" in attach_script
+    assert "gh api --paginate --slurp" in attach_script
+    assert "releases?per_page=100" in attach_script
+    assert 'jq -ce --arg tag "$RELEASE_TAG"' in attach_script
+    assert ".tag_name == $tag" in attach_script
     assert "'.isDraft'" in attach_script
     assert "'.tagName'" in attach_script
     assert "'.targetCommitish'" in attach_script

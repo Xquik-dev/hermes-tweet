@@ -58,10 +58,21 @@ jobs:
           PY
 
           if ! release_json="$(
-            gh release view "$RELEASE_TAG" \
-              --repo "$GITHUB_REPOSITORY" \
-              --json isDraft,tagName,targetCommitish \
-              2>/dev/null
+            gh api --paginate --slurp \
+              "repos/${GITHUB_REPOSITORY}/releases?per_page=100" \
+              2>/dev/null |
+              jq -ce --arg tag "$RELEASE_TAG" '
+                [.[][] | select(.tag_name == $tag)]
+                | if length == 1 then
+                    {
+                      isDraft: .[0].draft,
+                      tagName: .[0].tag_name,
+                      targetCommitish: .[0].target_commitish
+                    }
+                  else
+                    empty
+                  end
+              '
           )"; then
             gh release create "$RELEASE_TAG" \
               --repo "$GITHUB_REPOSITORY" \
@@ -70,9 +81,20 @@ jobs:
               --generate-notes \
               --draft
             release_json="$(
-              gh release view "$RELEASE_TAG" \
-                --repo "$GITHUB_REPOSITORY" \
-                --json isDraft,tagName,targetCommitish
+              gh api --paginate --slurp \
+                "repos/${GITHUB_REPOSITORY}/releases?per_page=100" |
+                jq -ce --arg tag "$RELEASE_TAG" '
+                  [.[][] | select(.tag_name == $tag)]
+                  | if length == 1 then
+                      {
+                        isDraft: .[0].draft,
+                        tagName: .[0].tag_name,
+                        targetCommitish: .[0].target_commitish
+                      }
+                    else
+                      empty
+                    end
+                '
             )"
           fi
 
@@ -141,9 +163,20 @@ jobs:
           head_commit=$(git rev-parse HEAD)
           master_commit=$(git rev-parse refs/remotes/origin/master)
           release_json="$(
-            gh release view "$RELEASE_TAG" \
-              --repo "$GITHUB_REPOSITORY" \
-              --json isDraft,tagName,targetCommitish
+            gh api --paginate --slurp \
+              "repos/${GITHUB_REPOSITORY}/releases?per_page=100" |
+              jq -ce --arg tag "$RELEASE_TAG" '
+                [.[][] | select(.tag_name == $tag)]
+                | if length == 1 then
+                    {
+                      isDraft: .[0].draft,
+                      tagName: .[0].tag_name,
+                      targetCommitish: .[0].target_commitish
+                    }
+                  else
+                    empty
+                  end
+              '
           )"
           test "$(jq -r '.isDraft' <<<"$release_json")" = "true"
           test "$(jq -r '.tagName' <<<"$release_json")" = "$RELEASE_TAG"
@@ -299,9 +332,20 @@ jobs:
           set -euo pipefail
 
           release_json="$(
-            gh release view "$RELEASE_TAG" \
-              --repo "$GITHUB_REPOSITORY" \
-              --json isDraft,tagName,targetCommitish
+            gh api --paginate --slurp \
+              "repos/${GITHUB_REPOSITORY}/releases?per_page=100" |
+              jq -ce --arg tag "$RELEASE_TAG" '
+                [.[][] | select(.tag_name == $tag)]
+                | if length == 1 then
+                    {
+                      isDraft: .[0].draft,
+                      tagName: .[0].tag_name,
+                      targetCommitish: .[0].target_commitish
+                    }
+                  else
+                    empty
+                  end
+              '
           )"
           test "$(jq -r '.isDraft' <<<"$release_json")" = "true"
           test "$(jq -r '.tagName' <<<"$release_json")" = "$RELEASE_TAG"
