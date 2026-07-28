@@ -92,7 +92,7 @@ If a locked Hermes Agent source SHA changes, review the official diff first,
 then update Hermes Tweet runtime, docs, tests, and the checker lock together.
 
 Latest reviewed locks from July 28, 2026: `hermes_cli/plugins.py`
-`d706ca1a468b9406fd8e53449b560a245eb6609e`, `tools/registry.py`
+`8dd02a1bdf5ec52382f305048718242abe02360e`, `tools/registry.py`
 `354da7123fd7d0acaad8d5ac49870963fce54a5c`, and
 `hermes_cli/plugins_cmd.py` `8bc1edd9d05ed64e130c21e58ebcdb5e67a5aea3`.
 
