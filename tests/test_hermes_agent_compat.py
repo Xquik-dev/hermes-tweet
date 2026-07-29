@@ -74,8 +74,8 @@ def test_source_checks_track_reviewed_hermes_agent_locks() -> None:
 
     assert locks == {
         "hermes_cli/plugins.py": "8dd02a1bdf5ec52382f305048718242abe02360e",
-        "tools/registry.py": "354da7123fd7d0acaad8d5ac49870963fce54a5c",
-        "hermes_cli/plugins_cmd.py": "8bc1edd9d05ed64e130c21e58ebcdb5e67a5aea3",
+        "tools/registry.py": "ede7c487dd9d88d2b3a8e45f07d747f31effdb2e",
+        "hermes_cli/plugins_cmd.py": "04b66380d55ba490e3087d76a9b7ea35cd406fc4",
     }
 
 

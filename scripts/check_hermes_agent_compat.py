@@ -85,7 +85,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="tools/registry.py",
-        expected_sha="354da7123fd7d0acaad8d5ac49870963fce54a5c",
+        expected_sha="ede7c487dd9d88d2b3a8e45f07d747f31effdb2e",
         required_terms=(
             "check_fn",
             "requires_env",
@@ -96,7 +96,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="hermes_cli/plugins_cmd.py",
-        expected_sha="8bc1edd9d05ed64e130c21e58ebcdb5e67a5aea3",
+        expected_sha="04b66380d55ba490e3087d76a9b7ea35cd406fc4",
         required_terms=(
             "_resolve_plugin_key",
             "_resolve_subdir_within",
