@@ -74,6 +74,19 @@ def test_catalog_excludes_account_connection_challenges() -> None:
     assert results == []
 
 
+def test_catalog_excludes_account_connection_attempts() -> None:
+    assert find_endpoint("GET", "/api/v1/x/account-connection-attempts/xatt_123") is None
+    results = explore(
+        {
+            "include_actions": True,
+            "query": "account-connection-attempts",
+            "limit": 100,
+        }
+    )
+
+    assert results == []
+
+
 def test_catalog_excludes_binary_support_downloads() -> None:
     assert find_endpoint("GET", "/api/v1/support/attachments/att_123") is None
 

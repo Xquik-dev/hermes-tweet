@@ -33,6 +33,7 @@ PROHIBITED_STATIC = {
     ("POST", "/api/v1/guest-wallets/topups"),
     ("POST", "/api/v1/x/accounts"),
     ("POST", "/api/v1/x/accounts/bulk-retry"),
+    ("GET", "/api/v1/x/account-connection-attempts/{id}"),
     ("POST", "/api/v1/x/account-connection-challenges/{id}/submit"),
 }
 
