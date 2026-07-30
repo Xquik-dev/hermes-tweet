@@ -85,7 +85,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="tools/registry.py",
-        expected_sha="ede7c487dd9d88d2b3a8e45f07d747f31effdb2e",
+        expected_sha="fb760b519e9ae6f64060acc886518088d5c72886",
         required_terms=(
             "check_fn",
             "requires_env",

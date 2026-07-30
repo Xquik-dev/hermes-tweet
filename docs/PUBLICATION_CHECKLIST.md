@@ -93,7 +93,7 @@ then update Hermes Tweet runtime, docs, tests, and the checker lock together.
 
 Latest reviewed locks from July 29, 2026: `hermes_cli/plugins.py`
 `8dd02a1bdf5ec52382f305048718242abe02360e`, `tools/registry.py`
-`ede7c487dd9d88d2b3a8e45f07d747f31effdb2e`, and
+`fb760b519e9ae6f64060acc886518088d5c72886`, and
 `hermes_cli/plugins_cmd.py` `04b66380d55ba490e3087d76a9b7ea35cd406fc4`.
 
 Reviewed changes reject cross-server tool-name collisions and make plugin Git
