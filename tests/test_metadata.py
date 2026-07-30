@@ -123,14 +123,14 @@ EXPECTED_LIVE_ECOSYSTEM_SURFACES = (
         "clawhub/h/hermes-tweet/SKILL.md",
     ),
 )
-SETUP_UV_ACTION = "astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990"
+SETUP_UV_ACTION = "astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9"
 CHECKOUT_ACTION_SHA = "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1"
 SETUP_GO_ACTION_SHA = "actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e"
 UPLOAD_ARTIFACT_ACTION_SHA = "actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a"
 DOWNLOAD_ARTIFACT_ACTION_SHA = "actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c"
-PYPI_PUBLISH_ACTION_SHA = "pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b"
+PYPI_PUBLISH_ACTION_SHA = "pypa/gh-action-pypi-publish@ba38be9e461d3875417946c167d0b5f3d385a247"
 ATTEST_ACTION_SHA = "actions/attest@f7c74d28b9d84cb8768d0b8ca14a4bac6ef463e6"
-CODEQL_ACTION_SHA = "github/codeql-action/{}@7188fc363630916deb702c7fdcf4e481b751f97a"
+CODEQL_ACTION_SHA = "github/codeql-action/{}@e0647621c2984b5ed2f768cb892365bf2a616ad1"
 SCORECARD_ACTION_SHA = "ossf/scorecard-action@4eaacf0543bb3f2c246792bd56e8cdeffafb205a"
 CLUSTERFUZZLITE_ACTION_SHA = (
     "google/clusterfuzzlite/actions/{}@884713a6c30a92e5e8544c39945cd7cb630abcd1"
