@@ -129,9 +129,9 @@ SETUP_GO_ACTION_SHA = "actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
 UPLOAD_ARTIFACT_ACTION_SHA = "actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a"
 DOWNLOAD_ARTIFACT_ACTION_SHA = "actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c"
 PYPI_PUBLISH_ACTION_SHA = "pypa/gh-action-pypi-publish@ba38be9e461d3875417946c167d0b5f3d385a247"
-ATTEST_ACTION_SHA = "actions/attest@f7c74d28b9d84cb8768d0b8ca14a4bac6ef463e6"
-CODEQL_ACTION_SHA = "github/codeql-action/{}@e0647621c2984b5ed2f768cb892365bf2a616ad1"
-SCORECARD_ACTION_SHA = "ossf/scorecard-action@4eaacf0543bb3f2c246792bd56e8cdeffafb205a"
+ATTEST_ACTION_SHA = "actions/attest@508db95dd578ae2727ebd6217d5ba78e4fbda05d"
+CODEQL_ACTION_SHA = "github/codeql-action/{}@5595ccaf912efad79be6eef63a5619ff05969be3"
+SCORECARD_ACTION_SHA = "ossf/scorecard-action@2d1146689b8cda280b9bc96326124645441f03bc"
 CLUSTERFUZZLITE_ACTION_SHA = (
     "google/clusterfuzzlite/actions/{}@884713a6c30a92e5e8544c39945cd7cb630abcd1"
 )
