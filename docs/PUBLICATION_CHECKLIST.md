@@ -91,12 +91,13 @@ uv run --python 3.12 --group dev python scripts/check_hermes_agent_compat.py
 If a locked Hermes Agent source SHA changes, review the official diff first,
 then update Hermes Tweet runtime, docs, tests, and the checker lock together.
 
-Latest reviewed locks from August 11, 2026: `hermes_cli/plugins.py`
-`13ea0a32269a845e8dc6d16f76076a2d552ead15`, `tools/registry.py`
-`fc5f98ec23bf824a18b96e3583940577d9a5b9f1`, and
-`hermes_cli/plugins_cmd.py` `968b775191ea3f100b1bcdec9856ab695839eebb`.
+Latest reviewed locks from August 13, 2026: `hermes_cli/plugins.py`
+`947a6e990e71c9f1bdbda02a565f74c45e2c412c`, `tools/registry.py`
+`081040911499f8bb7e5a947e9c85b5e459fd3dd0`, and
+`hermes_cli/plugins_cmd.py` `1a8c41006c42ba1a5f83204f7292dc2b2c9ba5b9`.
 
-Reviewed changes add portable plugins and bound tool errors.
+Reviewed changes preserve v1 manifests and registration APIs.
+They add v2 metadata, capability consent, bounded errors, and safer updates.
 
 Keep the runtime contract aligned with those sources:
 

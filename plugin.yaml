@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT
 
 name: hermes-tweet
-version: 0.1.11
+version: 0.1.12
 description: "Native Hermes Agent plugin for X/Twitter automation through Xquik. Not affiliated with X Corp."
 author: Xquik
 requires_env:

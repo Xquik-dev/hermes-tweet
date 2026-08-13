@@ -206,7 +206,7 @@
         "in": "query",
         "required": true,
         "type": "string",
-        "description": "Export output format"
+        "description": "Export output format. PDF entry exports include up to 10,000 rows. Other entry formats include up to 100,000 rows."
       },
       {
         "name": "type",
@@ -327,6 +327,13 @@
     "mpp": null,
     "parameters": [
       {
+        "name": "dry_run",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Return a cost estimate without creating or running an extraction."
+      },
+      {
         "name": "body",
         "in": "body",
         "required": true,
@@ -335,7 +342,7 @@
       }
     ],
     "path": "/api/v1/extractions",
-    "responseShape": "Extraction started",
+    "responseShape": "Dry-run estimate",
     "summary": "Run extraction"
   },
   {
@@ -384,6 +391,34 @@
         "required": false,
         "type": "string",
         "description": "Cursor for keyset pagination from prior response next_cursor"
+      },
+      {
+        "name": "outputMode",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Select compact, full, or raw-compatible result fields."
+      },
+      {
+        "name": "outputPreset",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Keep enrichment nested or merge it into each result."
+      },
+      {
+        "name": "fieldStyle",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Preserve source keys or convert result field names."
+      },
+      {
+        "name": "includeRaw",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Use outputMode=raw instead."
       }
     ],
     "path": "/api/v1/extractions/{id}",
@@ -410,6 +445,132 @@
         "required": true,
         "type": "string",
         "description": "Export file format"
+      },
+      {
+        "name": "minFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum follower count."
+      },
+      {
+        "name": "maxFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum follower count."
+      },
+      {
+        "name": "minFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum following count."
+      },
+      {
+        "name": "maxFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum following count."
+      },
+      {
+        "name": "minPosts",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum post count."
+      },
+      {
+        "name": "maxPosts",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum post count."
+      },
+      {
+        "name": "minLikes",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum like count."
+      },
+      {
+        "name": "minReplies",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum reply count."
+      },
+      {
+        "name": "minRetweets",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum repost count."
+      },
+      {
+        "name": "minViews",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum view count."
+      },
+      {
+        "name": "hasDescription",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Require a non-empty description."
+      },
+      {
+        "name": "hasLocation",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Require a non-empty location."
+      },
+      {
+        "name": "hasMedia",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Require media."
+      },
+      {
+        "name": "verified",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Filter by verified status."
+      },
+      {
+        "name": "lang",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Filter by language code."
+      },
+      {
+        "name": "search",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Search exported result text."
+      },
+      {
+        "name": "sinceDate",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Include results on or after this date."
+      },
+      {
+        "name": "untilDate",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Include results on or before this date."
       }
     ],
     "path": "/api/v1/extractions/{id}/export",
@@ -1094,7 +1255,7 @@
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Maximum items requested from this page (1-100, default 20). The response can contain fewer items because the source returned fewer, filters removed items, or remaining credits cover fewer results. Keep requesting next_cursor while has_next_page is true, even when a page is empty. The deprecated limit and count aliases remain accepted."
+        "description": "Maximum page items (1-100, default 20). Source, filters, or credits can reduce results. Continue while has_next_page is true. Deprecated limit and count aliases remain accepted."
       }
     ],
     "path": "/api/v1/x/communities/search",
@@ -1141,7 +1302,7 @@
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Maximum items requested from this page (1-100, default 20). The response can contain fewer items because the source returned fewer, filters removed items, or remaining credits cover fewer results. Keep requesting next_cursor while has_next_page is true, even when a page is empty. The deprecated limit and count aliases remain accepted."
+        "description": "Maximum page items (1-100, default 20). Source, filters, or credits can reduce results. Continue while has_next_page is true. Deprecated limit and count aliases remain accepted."
       }
     ],
     "path": "/api/v1/x/communities/tweets",
@@ -1296,6 +1457,104 @@
         "required": false,
         "type": "integer",
         "description": "Items per page (20-200, default 20). This is an upper bound for paid authenticated calls: remaining credits can reduce the returned page size, and zero affordable results returns 402 insufficient_credits."
+      },
+      {
+        "name": "minFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum follower count. Filtering happens before billing."
+      },
+      {
+        "name": "maxFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum follower count. Missing counts pass this maximum."
+      },
+      {
+        "name": "minFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum following count."
+      },
+      {
+        "name": "maxFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum following count."
+      },
+      {
+        "name": "minStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum post count. minPosts is also accepted."
+      },
+      {
+        "name": "maxStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum post count. maxPosts is also accepted."
+      },
+      {
+        "name": "minAccountAgeDays",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum account age in whole days."
+      },
+      {
+        "name": "verifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return verified profiles."
+      },
+      {
+        "name": "verifiedType",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the verification type exactly, ignoring case."
+      },
+      {
+        "name": "hasWebsite",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a website."
+      },
+      {
+        "name": "hasLocation",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a location."
+      },
+      {
+        "name": "bioContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match any comma-separated or line-separated bio term, ignoring case."
+      },
+      {
+        "name": "locationContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a location substring, ignoring case."
+      },
+      {
+        "name": "usernameContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a username substring, ignoring case."
       }
     ],
     "path": "/api/v1/x/communities/{id}/members",
@@ -1322,6 +1581,104 @@
         "required": false,
         "type": "string",
         "description": "Pagination cursor for community moderators"
+      },
+      {
+        "name": "minFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum follower count. Filtering happens before billing."
+      },
+      {
+        "name": "maxFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum follower count. Missing counts pass this maximum."
+      },
+      {
+        "name": "minFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum following count."
+      },
+      {
+        "name": "maxFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum following count."
+      },
+      {
+        "name": "minStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum post count. minPosts is also accepted."
+      },
+      {
+        "name": "maxStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum post count. maxPosts is also accepted."
+      },
+      {
+        "name": "minAccountAgeDays",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum account age in whole days."
+      },
+      {
+        "name": "verifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return verified profiles."
+      },
+      {
+        "name": "verifiedType",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the verification type exactly, ignoring case."
+      },
+      {
+        "name": "hasWebsite",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a website."
+      },
+      {
+        "name": "hasLocation",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a location."
+      },
+      {
+        "name": "bioContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match any comma-separated or line-separated bio term, ignoring case."
+      },
+      {
+        "name": "locationContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a location substring, ignoring case."
+      },
+      {
+        "name": "usernameContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a username substring, ignoring case."
       }
     ],
     "path": "/api/v1/x/communities/{id}/moderators",
@@ -1354,7 +1711,7 @@
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Maximum items requested from this page (1-100, default 20). The response can contain fewer items because the source returned fewer, filters removed items, or remaining credits cover fewer results. Keep requesting next_cursor while has_next_page is true, even when a page is empty. The deprecated limit and count aliases remain accepted."
+        "description": "Maximum page items (1-100, default 20). Source, filters, or credits can reduce results. Continue while has_next_page is true. Deprecated limit and count aliases remain accepted."
       }
     ],
     "path": "/api/v1/x/communities/{id}/tweets",
@@ -1489,7 +1846,105 @@
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Maximum user profiles requested from this page (20-200, default 200). The response can contain fewer profiles because the source returned fewer or remaining credits cover fewer results. Keep requesting next_cursor while has_next_page is true. The deprecated limit and count aliases remain accepted."
+        "description": "Maximum user profiles requested from this page (20-200, default 200). Source, filters, or credits can return fewer profiles. Automatic coverage can prefetch across independent views. Response shape, page size, and per-returned-profile billing stay unchanged. Keep requesting next_cursor while has_next_page is true. Deprecated limit and count aliases remain accepted."
+      },
+      {
+        "name": "minFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum follower count. Filtering happens before billing."
+      },
+      {
+        "name": "maxFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum follower count. Missing counts pass this maximum."
+      },
+      {
+        "name": "minFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum following count."
+      },
+      {
+        "name": "maxFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum following count."
+      },
+      {
+        "name": "minStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum post count. minPosts is also accepted."
+      },
+      {
+        "name": "maxStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum post count. maxPosts is also accepted."
+      },
+      {
+        "name": "minAccountAgeDays",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum account age in whole days."
+      },
+      {
+        "name": "verifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return verified profiles."
+      },
+      {
+        "name": "verifiedType",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the verification type exactly, ignoring case."
+      },
+      {
+        "name": "hasWebsite",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a website."
+      },
+      {
+        "name": "hasLocation",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a location."
+      },
+      {
+        "name": "bioContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match any comma-separated or line-separated bio term, ignoring case."
+      },
+      {
+        "name": "locationContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a location substring, ignoring case."
+      },
+      {
+        "name": "usernameContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a username substring, ignoring case."
       }
     ],
     "path": "/api/v1/x/lists/{id}/followers",
@@ -1523,6 +1978,104 @@
         "required": false,
         "type": "integer",
         "description": "Members per page (20-200, default 20)"
+      },
+      {
+        "name": "minFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum follower count. Filtering happens before billing."
+      },
+      {
+        "name": "maxFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum follower count. Missing counts pass this maximum."
+      },
+      {
+        "name": "minFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum following count."
+      },
+      {
+        "name": "maxFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum following count."
+      },
+      {
+        "name": "minStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum post count. minPosts is also accepted."
+      },
+      {
+        "name": "maxStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum post count. maxPosts is also accepted."
+      },
+      {
+        "name": "minAccountAgeDays",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum account age in whole days."
+      },
+      {
+        "name": "verifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return verified profiles."
+      },
+      {
+        "name": "verifiedType",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the verification type exactly, ignoring case."
+      },
+      {
+        "name": "hasWebsite",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a website."
+      },
+      {
+        "name": "hasLocation",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a location."
+      },
+      {
+        "name": "bioContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match any comma-separated or line-separated bio term, ignoring case."
+      },
+      {
+        "name": "locationContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a location substring, ignoring case."
+      },
+      {
+        "name": "usernameContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a username substring, ignoring case."
       }
     ],
     "path": "/api/v1/x/lists/{id}/members",
@@ -1555,7 +2108,7 @@
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Maximum items requested from this page (1-100, default 20). The response can contain fewer items because the source returned fewer, filters removed items, or remaining credits cover fewer results. Keep requesting next_cursor while has_next_page is true, even when a page is empty. The deprecated limit and count aliases remain accepted."
+        "description": "Maximum page items (1-100, default 20). Source, filters, or credits can reduce results. Continue while has_next_page is true. Deprecated limit and count aliases remain accepted."
       },
       {
         "name": "sinceTime",
@@ -1803,7 +2356,7 @@
       }
     ],
     "path": "/api/v1/x/tweets",
-    "responseShape": "List of tweets",
+    "responseShape": "Requested tweets in request order. Partial successful reads recheck unresolved IDs once.",
     "summary": "Get multiple tweets by IDs"
   },
   {
@@ -1844,7 +2397,7 @@
         "in": "query",
         "required": true,
         "type": "string",
-        "description": "Search query (keywords,"
+        "description": "Query, Tweet ID, or status URL. Valid inline bounds apply per page."
       },
       {
         "name": "queryType",
@@ -1854,32 +2407,39 @@
         "description": "Sort order - Latest (chronological) or Top (engagement-ranked)"
       },
       {
+        "name": "mode",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Omit mode for resumable maximum coverage. Standard keeps legacy pagination. Coverage returns diagnostics once and rejects cursors."
+      },
+      {
         "name": "cursor",
         "in": "query",
         "required": false,
         "type": "string",
-        "description": "Pagination cursor from previous response"
+        "description": "Cursor from the previous response. Xquik cursors resume automatic coverage. Existing unprefixed cursors keep legacy standard behavior."
       },
       {
         "name": "sinceTime",
         "in": "query",
         "required": false,
         "type": "string",
-        "description": "ISO 8601 timestamp - only return tweets after this time"
+        "description": "Inclusive ISO bound."
       },
       {
         "name": "untilTime",
         "in": "query",
         "required": false,
         "type": "string",
-        "description": "ISO 8601 timestamp - only return tweets before this time"
+        "description": "Exclusive ISO bound."
       },
       {
         "name": "limit",
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Max tweets to return (server paginates internally). Omit for single page (~20). This is an upper bound for paid authenticated calls: remaining credits can reduce the returned page size, and zero affordable results returns 402 insufficient_credits."
+        "description": "Result upper bound. Omit it for the existing 20-row page size. Explicit coverage defaults to 2000 and allows 10000. For paid requests, remaining credits can reduce results. Zero affordable results returns 402."
       },
       {
         "name": "fromUser",
@@ -1957,6 +2517,139 @@
         "required": false,
         "type": "integer",
         "description": "Minimum quote count threshold."
+      },
+      {
+        "name": "minViews",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum view count threshold."
+      },
+      {
+        "name": "minBookmarks",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum bookmark count threshold."
+      },
+      {
+        "name": "maxFaves",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum likes threshold. maxLikes is also accepted."
+      },
+      {
+        "name": "maxRetweets",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum retweets threshold."
+      },
+      {
+        "name": "maxReplies",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum replies threshold."
+      },
+      {
+        "name": "maxQuotes",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum quotes threshold."
+      },
+      {
+        "name": "blueVerifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return tweets from Blue-verified authors."
+      },
+      {
+        "name": "cardName",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the Tweet card name."
+      },
+      {
+        "name": "source",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the source application."
+      },
+      {
+        "name": "excludeSource",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Exclude a source application."
+      },
+      {
+        "name": "geocode",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match latitude, longitude, and radius."
+      },
+      {
+        "name": "sinceId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Return Tweets newer than this Tweet ID."
+      },
+      {
+        "name": "maxId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Return Tweets older than this Tweet ID."
+      },
+      {
+        "name": "near",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a place name."
+      },
+      {
+        "name": "within",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Set the radius for the near filter."
+      },
+      {
+        "name": "withinTime",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match Tweets inside a recent time window."
+      },
+      {
+        "name": "nativeRetweets",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return native reposts."
+      },
+      {
+        "name": "safe",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Enable the safe-search filter."
+      },
+      {
+        "name": "news",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return news results."
       },
       {
         "name": "verifiedOnly",
@@ -2184,7 +2877,105 @@
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Maximum user profiles requested from this page (20-200, default 200). The response can contain fewer profiles because the source returned fewer or remaining credits cover fewer results. Keep requesting next_cursor while has_next_page is true. The deprecated limit and count aliases remain accepted."
+        "description": "Maximum user profiles requested from this page (20-200, default 200). Source, filters, or credits can return fewer profiles. Automatic coverage can prefetch across independent views. Response shape, page size, and per-returned-profile billing stay unchanged. Keep requesting next_cursor while has_next_page is true. Deprecated limit and count aliases remain accepted."
+      },
+      {
+        "name": "minFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum follower count. Filtering happens before billing."
+      },
+      {
+        "name": "maxFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum follower count. Missing counts pass this maximum."
+      },
+      {
+        "name": "minFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum following count."
+      },
+      {
+        "name": "maxFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum following count."
+      },
+      {
+        "name": "minStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum post count. minPosts is also accepted."
+      },
+      {
+        "name": "maxStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum post count. maxPosts is also accepted."
+      },
+      {
+        "name": "minAccountAgeDays",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum account age in whole days."
+      },
+      {
+        "name": "verifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return verified profiles."
+      },
+      {
+        "name": "verifiedType",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the verification type exactly, ignoring case."
+      },
+      {
+        "name": "hasWebsite",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a website."
+      },
+      {
+        "name": "hasLocation",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a location."
+      },
+      {
+        "name": "bioContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match any comma-separated or line-separated bio term, ignoring case."
+      },
+      {
+        "name": "locationContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a location substring, ignoring case."
+      },
+      {
+        "name": "usernameContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a username substring, ignoring case."
       }
     ],
     "path": "/api/v1/x/tweets/{id}/favoriters",
@@ -2283,7 +3074,7 @@
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Maximum items requested from this page (1-100, default 20). The response can contain fewer items because the source returned fewer, filters removed items, or remaining credits cover fewer results. Keep requesting next_cursor while has_next_page is true, even when a page is empty. The deprecated limit and count aliases remain accepted."
+        "description": "Maximum page items (1-100, default 20). Source, filters, or credits can reduce results. Continue while has_next_page is true. Deprecated limit and count aliases remain accepted."
       },
       {
         "name": "sinceTime",
@@ -2382,6 +3173,139 @@
         "required": false,
         "type": "integer",
         "description": "Minimum quote count threshold."
+      },
+      {
+        "name": "minViews",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum view count threshold."
+      },
+      {
+        "name": "minBookmarks",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum bookmark count threshold."
+      },
+      {
+        "name": "maxFaves",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum likes threshold. maxLikes is also accepted."
+      },
+      {
+        "name": "maxRetweets",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum retweets threshold."
+      },
+      {
+        "name": "maxReplies",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum replies threshold."
+      },
+      {
+        "name": "maxQuotes",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum quotes threshold."
+      },
+      {
+        "name": "blueVerifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return tweets from Blue-verified authors."
+      },
+      {
+        "name": "cardName",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the Tweet card name."
+      },
+      {
+        "name": "source",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the source application."
+      },
+      {
+        "name": "excludeSource",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Exclude a source application."
+      },
+      {
+        "name": "geocode",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match latitude, longitude, and radius."
+      },
+      {
+        "name": "sinceId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Return Tweets newer than this Tweet ID."
+      },
+      {
+        "name": "maxId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Return Tweets older than this Tweet ID."
+      },
+      {
+        "name": "near",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a place name."
+      },
+      {
+        "name": "within",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Set the radius for the near filter."
+      },
+      {
+        "name": "withinTime",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match Tweets inside a recent time window."
+      },
+      {
+        "name": "nativeRetweets",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return native reposts."
+      },
+      {
+        "name": "safe",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Enable the safe-search filter."
+      },
+      {
+        "name": "news",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return news results."
       },
       {
         "name": "verifiedOnly",
@@ -2505,14 +3429,70 @@
         "in": "query",
         "required": false,
         "type": "string",
-        "description": "Pagination cursor for tweet replies"
+        "description": "Cursor from the previous response. Xquik cursors resume automatic coverage. Existing unprefixed cursors keep legacy standard behavior."
+      },
+      {
+        "name": "mode",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Optional advanced override. Omit mode for automatic maximum direct reply coverage with pagination. Standard keeps legacy pagination. Complete returns direct and nested replies with diagnostics, scope, depth, sorting, and original-post controls."
+      },
+      {
+        "name": "limit",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "With mode=complete, maximum combined direct and nested reply rows (1-25000, default 25000). Otherwise this remains the deprecated pageSize alias and accepts only 1-100."
       },
       {
         "name": "pageSize",
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Maximum items requested from this page (1-100, default 20). The response can contain fewer items because the source returned fewer, filters removed items, or remaining credits cover fewer results. Keep requesting next_cursor while has_next_page is true, even when a page is empty. The deprecated limit and count aliases remain accepted."
+        "description": "Maximum direct replies per automatic or standard page (1-100, default 20). Omit pageSize with mode=complete. Generated pageSize=20 and the exact default filter bundle are ignored in complete mode. Continue while has_next_page is true. Deprecated limit and count aliases remain accepted outside complete mode."
+      },
+      {
+        "name": "scope",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Select all replies, direct replies, or nested replies."
+      },
+      {
+        "name": "maxDepth",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum reply depth from the source post."
+      },
+      {
+        "name": "sort",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Sort the selected replies before applying limit."
+      },
+      {
+        "name": "excludeOriginalAuthor",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Exclude replies written by the source-post author."
+      },
+      {
+        "name": "includeOriginalPost",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Include the source post and count it toward limit."
+      },
+      {
+        "name": "hasMediaOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return replies containing media."
       },
       {
         "name": "sinceTime",
@@ -2604,6 +3584,139 @@
         "required": false,
         "type": "integer",
         "description": "Minimum quote count threshold."
+      },
+      {
+        "name": "minViews",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum view count threshold."
+      },
+      {
+        "name": "minBookmarks",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum bookmark count threshold."
+      },
+      {
+        "name": "maxFaves",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum likes threshold. maxLikes is also accepted."
+      },
+      {
+        "name": "maxRetweets",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum retweets threshold."
+      },
+      {
+        "name": "maxReplies",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum replies threshold."
+      },
+      {
+        "name": "maxQuotes",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum quotes threshold."
+      },
+      {
+        "name": "blueVerifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return tweets from Blue-verified authors."
+      },
+      {
+        "name": "cardName",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the Tweet card name."
+      },
+      {
+        "name": "source",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the source application."
+      },
+      {
+        "name": "excludeSource",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Exclude a source application."
+      },
+      {
+        "name": "geocode",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match latitude, longitude, and radius."
+      },
+      {
+        "name": "sinceId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Return Tweets newer than this Tweet ID."
+      },
+      {
+        "name": "maxId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Return Tweets older than this Tweet ID."
+      },
+      {
+        "name": "near",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a place name."
+      },
+      {
+        "name": "within",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Set the radius for the near filter."
+      },
+      {
+        "name": "withinTime",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match Tweets inside a recent time window."
+      },
+      {
+        "name": "nativeRetweets",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return native reposts."
+      },
+      {
+        "name": "safe",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Enable the safe-search filter."
+      },
+      {
+        "name": "news",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return news results."
       },
       {
         "name": "verifiedOnly",
@@ -2800,7 +3913,105 @@
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Maximum user profiles requested from this page (20-200, default 200). The response can contain fewer profiles because the source returned fewer or remaining credits cover fewer results. Keep requesting next_cursor while has_next_page is true. The deprecated limit and count aliases remain accepted."
+        "description": "Maximum user profiles requested from this page (20-200, default 200). Source, filters, or credits can return fewer profiles. Automatic coverage can prefetch across independent views. Response shape, page size, and per-returned-profile billing stay unchanged. Keep requesting next_cursor while has_next_page is true. Deprecated limit and count aliases remain accepted."
+      },
+      {
+        "name": "minFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum follower count. Filtering happens before billing."
+      },
+      {
+        "name": "maxFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum follower count. Missing counts pass this maximum."
+      },
+      {
+        "name": "minFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum following count."
+      },
+      {
+        "name": "maxFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum following count."
+      },
+      {
+        "name": "minStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum post count. minPosts is also accepted."
+      },
+      {
+        "name": "maxStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum post count. maxPosts is also accepted."
+      },
+      {
+        "name": "minAccountAgeDays",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum account age in whole days."
+      },
+      {
+        "name": "verifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return verified profiles."
+      },
+      {
+        "name": "verifiedType",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the verification type exactly, ignoring case."
+      },
+      {
+        "name": "hasWebsite",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a website."
+      },
+      {
+        "name": "hasLocation",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a location."
+      },
+      {
+        "name": "bioContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match any comma-separated or line-separated bio term, ignoring case."
+      },
+      {
+        "name": "locationContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a location substring, ignoring case."
+      },
+      {
+        "name": "usernameContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a username substring, ignoring case."
       }
     ],
     "path": "/api/v1/x/tweets/{id}/retweeters",
@@ -2833,7 +4044,7 @@
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Maximum items requested from this page (1-100, default 20). The response can contain fewer items because the source returned fewer, filters removed items, or remaining credits cover fewer results. Keep requesting next_cursor while has_next_page is true, even when a page is empty. The deprecated limit and count aliases remain accepted."
+        "description": "Maximum page items (1-100, default 20). Source, filters, or credits can reduce results. Continue while has_next_page is true. Deprecated limit and count aliases remain accepted."
       }
     ],
     "path": "/api/v1/x/tweets/{id}/thread",
@@ -2879,6 +4090,104 @@
         "required": false,
         "type": "string",
         "description": "Pagination cursor for user search"
+      },
+      {
+        "name": "minFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum follower count. Filtering happens before billing."
+      },
+      {
+        "name": "maxFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum follower count. Missing counts pass this maximum."
+      },
+      {
+        "name": "minFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum following count."
+      },
+      {
+        "name": "maxFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum following count."
+      },
+      {
+        "name": "minStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum post count. minPosts is also accepted."
+      },
+      {
+        "name": "maxStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum post count. maxPosts is also accepted."
+      },
+      {
+        "name": "minAccountAgeDays",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum account age in whole days."
+      },
+      {
+        "name": "verifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return verified profiles."
+      },
+      {
+        "name": "verifiedType",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the verification type exactly, ignoring case."
+      },
+      {
+        "name": "hasWebsite",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a website."
+      },
+      {
+        "name": "hasLocation",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a location."
+      },
+      {
+        "name": "bioContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match any comma-separated or line-separated bio term, ignoring case."
+      },
+      {
+        "name": "locationContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a location substring, ignoring case."
+      },
+      {
+        "name": "usernameContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a username substring, ignoring case."
       }
     ],
     "path": "/api/v1/x/users/search",
@@ -2992,7 +4301,14 @@
         "in": "query",
         "required": false,
         "type": "string",
-        "description": "Pagination cursor for followers list"
+        "description": "Cursor from the previous response. Xquik cursors resume automatic coverage. Existing unprefixed cursors keep legacy standard behavior."
+      },
+      {
+        "name": "mode",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Omit mode for resumable maximum coverage. Standard keeps legacy pagination. Coverage returns diagnostics once and rejects cursors."
       },
       {
         "name": "after",
@@ -3006,14 +4322,112 @@
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Maximum user profiles requested from this page (20-200, default 200). The response can contain fewer profiles because the source returned fewer or remaining credits cover fewer results. Keep requesting next_cursor while has_next_page is true. The deprecated limit and count aliases remain accepted."
+        "description": "Maximum user profiles requested from this page (20-200, default 200). Source, filters, or credits can return fewer profiles. Automatic coverage can prefetch across independent views. Response shape, page size, and per-returned-profile billing stay unchanged. Keep requesting next_cursor while has_next_page is true. Deprecated limit and count aliases remain accepted."
+      },
+      {
+        "name": "minFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum follower count. Filtering happens before billing."
+      },
+      {
+        "name": "maxFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum follower count. Missing counts pass this maximum."
+      },
+      {
+        "name": "minFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum following count."
+      },
+      {
+        "name": "maxFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum following count."
+      },
+      {
+        "name": "minStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum post count. minPosts is also accepted."
+      },
+      {
+        "name": "maxStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum post count. maxPosts is also accepted."
+      },
+      {
+        "name": "minAccountAgeDays",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum account age in whole days."
+      },
+      {
+        "name": "verifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return verified profiles."
+      },
+      {
+        "name": "verifiedType",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the verification type exactly, ignoring case."
+      },
+      {
+        "name": "hasWebsite",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a website."
+      },
+      {
+        "name": "hasLocation",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a location."
+      },
+      {
+        "name": "bioContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match any comma-separated or line-separated bio term, ignoring case."
+      },
+      {
+        "name": "locationContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a location substring, ignoring case."
+      },
+      {
+        "name": "usernameContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a username substring, ignoring case."
       },
       {
         "name": "limit",
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Legacy integer page size alias for following lists. Prefer pageSize."
+        "description": "Legacy page-size alias outside explicit coverage mode. Coverage accepts 1-10000. Prefer pageSize."
       }
     ],
     "path": "/api/v1/x/users/{id}/followers",
@@ -3046,7 +4460,105 @@
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Maximum user profiles requested from this page (20-200, default 200). The response can contain fewer profiles because the source returned fewer or remaining credits cover fewer results. Keep requesting next_cursor while has_next_page is true. The deprecated limit and count aliases remain accepted."
+        "description": "Maximum user profiles requested from this page (20-200, default 200). Source, filters, or credits can return fewer profiles. Automatic coverage can prefetch across independent views. Response shape, page size, and per-returned-profile billing stay unchanged. Keep requesting next_cursor while has_next_page is true. Deprecated limit and count aliases remain accepted."
+      },
+      {
+        "name": "minFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum follower count. Filtering happens before billing."
+      },
+      {
+        "name": "maxFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum follower count. Missing counts pass this maximum."
+      },
+      {
+        "name": "minFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum following count."
+      },
+      {
+        "name": "maxFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum following count."
+      },
+      {
+        "name": "minStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum post count. minPosts is also accepted."
+      },
+      {
+        "name": "maxStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum post count. maxPosts is also accepted."
+      },
+      {
+        "name": "minAccountAgeDays",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum account age in whole days."
+      },
+      {
+        "name": "verifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return verified profiles."
+      },
+      {
+        "name": "verifiedType",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the verification type exactly, ignoring case."
+      },
+      {
+        "name": "hasWebsite",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a website."
+      },
+      {
+        "name": "hasLocation",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a location."
+      },
+      {
+        "name": "bioContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match any comma-separated or line-separated bio term, ignoring case."
+      },
+      {
+        "name": "locationContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a location substring, ignoring case."
+      },
+      {
+        "name": "usernameContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a username substring, ignoring case."
       }
     ],
     "path": "/api/v1/x/users/{id}/followers-you-know",
@@ -3072,7 +4584,14 @@
         "in": "query",
         "required": false,
         "type": "string",
-        "description": "Pagination cursor for following list"
+        "description": "Cursor from the previous response. Xquik cursors resume automatic coverage. Existing unprefixed cursors keep legacy standard behavior."
+      },
+      {
+        "name": "mode",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Omit mode for resumable maximum coverage. Standard keeps legacy pagination. Coverage returns diagnostics once and rejects cursors."
       },
       {
         "name": "after",
@@ -3086,14 +4605,112 @@
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Maximum user profiles requested from this page (20-200, default 200). The response can contain fewer profiles because the source returned fewer or remaining credits cover fewer results. Keep requesting next_cursor while has_next_page is true. The deprecated limit and count aliases remain accepted."
+        "description": "Maximum user profiles requested from this page (20-200, default 200). Source, filters, or credits can return fewer profiles. Automatic coverage can prefetch across independent views. Response shape, page size, and per-returned-profile billing stay unchanged. Keep requesting next_cursor while has_next_page is true. Deprecated limit and count aliases remain accepted."
+      },
+      {
+        "name": "minFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum follower count. Filtering happens before billing."
+      },
+      {
+        "name": "maxFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum follower count. Missing counts pass this maximum."
+      },
+      {
+        "name": "minFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum following count."
+      },
+      {
+        "name": "maxFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum following count."
+      },
+      {
+        "name": "minStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum post count. minPosts is also accepted."
+      },
+      {
+        "name": "maxStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum post count. maxPosts is also accepted."
+      },
+      {
+        "name": "minAccountAgeDays",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum account age in whole days."
+      },
+      {
+        "name": "verifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return verified profiles."
+      },
+      {
+        "name": "verifiedType",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the verification type exactly, ignoring case."
+      },
+      {
+        "name": "hasWebsite",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a website."
+      },
+      {
+        "name": "hasLocation",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a location."
+      },
+      {
+        "name": "bioContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match any comma-separated or line-separated bio term, ignoring case."
+      },
+      {
+        "name": "locationContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a location substring, ignoring case."
+      },
+      {
+        "name": "usernameContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a username substring, ignoring case."
       },
       {
         "name": "limit",
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Legacy page size alias. Prefer pageSize."
+        "description": "Legacy page-size alias outside explicit coverage mode. Coverage accepts 1-10000. Prefer pageSize."
       }
     ],
     "path": "/api/v1/x/users/{id}/following",
@@ -3126,7 +4743,7 @@
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Maximum items requested from this page (1-100, default 20). The response can contain fewer items because the source returned fewer, filters removed items, or remaining credits cover fewer results. Keep requesting next_cursor while has_next_page is true, even when a page is empty. The deprecated limit and count aliases remain accepted."
+        "description": "Maximum page items (1-100, default 20). Source, filters, or credits can reduce results. Continue while has_next_page is true. Deprecated limit and count aliases remain accepted."
       },
       {
         "name": "fromUser",
@@ -3204,6 +4821,139 @@
         "required": false,
         "type": "integer",
         "description": "Minimum quote count threshold."
+      },
+      {
+        "name": "minViews",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum view count threshold."
+      },
+      {
+        "name": "minBookmarks",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum bookmark count threshold."
+      },
+      {
+        "name": "maxFaves",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum likes threshold. maxLikes is also accepted."
+      },
+      {
+        "name": "maxRetweets",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum retweets threshold."
+      },
+      {
+        "name": "maxReplies",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum replies threshold."
+      },
+      {
+        "name": "maxQuotes",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum quotes threshold."
+      },
+      {
+        "name": "blueVerifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return tweets from Blue-verified authors."
+      },
+      {
+        "name": "cardName",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the Tweet card name."
+      },
+      {
+        "name": "source",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the source application."
+      },
+      {
+        "name": "excludeSource",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Exclude a source application."
+      },
+      {
+        "name": "geocode",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match latitude, longitude, and radius."
+      },
+      {
+        "name": "sinceId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Return Tweets newer than this Tweet ID."
+      },
+      {
+        "name": "maxId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Return Tweets older than this Tweet ID."
+      },
+      {
+        "name": "near",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a place name."
+      },
+      {
+        "name": "within",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Set the radius for the near filter."
+      },
+      {
+        "name": "withinTime",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match Tweets inside a recent time window."
+      },
+      {
+        "name": "nativeRetweets",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return native reposts."
+      },
+      {
+        "name": "safe",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Enable the safe-search filter."
+      },
+      {
+        "name": "news",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return news results."
       },
       {
         "name": "verifiedOnly",
@@ -3334,7 +5084,7 @@
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Maximum items requested from this page (1-100, default 20). The response can contain fewer items because the source returned fewer, filters removed items, or remaining credits cover fewer results. Keep requesting next_cursor while has_next_page is true, even when a page is empty. The deprecated limit and count aliases remain accepted."
+        "description": "Maximum page items (1-100, default 20). Source, filters, or credits can reduce results. Continue while has_next_page is true. Deprecated limit and count aliases remain accepted."
       },
       {
         "name": "fromUser",
@@ -3412,6 +5162,139 @@
         "required": false,
         "type": "integer",
         "description": "Minimum quote count threshold."
+      },
+      {
+        "name": "minViews",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum view count threshold."
+      },
+      {
+        "name": "minBookmarks",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum bookmark count threshold."
+      },
+      {
+        "name": "maxFaves",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum likes threshold. maxLikes is also accepted."
+      },
+      {
+        "name": "maxRetweets",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum retweets threshold."
+      },
+      {
+        "name": "maxReplies",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum replies threshold."
+      },
+      {
+        "name": "maxQuotes",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum quotes threshold."
+      },
+      {
+        "name": "blueVerifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return tweets from Blue-verified authors."
+      },
+      {
+        "name": "cardName",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the Tweet card name."
+      },
+      {
+        "name": "source",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the source application."
+      },
+      {
+        "name": "excludeSource",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Exclude a source application."
+      },
+      {
+        "name": "geocode",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match latitude, longitude, and radius."
+      },
+      {
+        "name": "sinceId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Return Tweets newer than this Tweet ID."
+      },
+      {
+        "name": "maxId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Return Tweets older than this Tweet ID."
+      },
+      {
+        "name": "near",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a place name."
+      },
+      {
+        "name": "within",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Set the radius for the near filter."
+      },
+      {
+        "name": "withinTime",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match Tweets inside a recent time window."
+      },
+      {
+        "name": "nativeRetweets",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return native reposts."
+      },
+      {
+        "name": "safe",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Enable the safe-search filter."
+      },
+      {
+        "name": "news",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return news results."
       },
       {
         "name": "verifiedOnly",
@@ -3542,7 +5425,7 @@
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Maximum items requested from this page (1-100, default 20). The response can contain fewer items because the source returned fewer, filters removed items, or remaining credits cover fewer results. Keep requesting next_cursor while has_next_page is true, even when a page is empty. The deprecated limit and count aliases remain accepted."
+        "description": "Maximum page items (1-100, default 20). Source, filters, or credits can reduce results. Continue while has_next_page is true. Deprecated limit and count aliases remain accepted."
       },
       {
         "name": "sinceTime",
@@ -3634,6 +5517,139 @@
         "required": false,
         "type": "integer",
         "description": "Minimum quote count threshold."
+      },
+      {
+        "name": "minViews",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum view count threshold."
+      },
+      {
+        "name": "minBookmarks",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum bookmark count threshold."
+      },
+      {
+        "name": "maxFaves",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum likes threshold. maxLikes is also accepted."
+      },
+      {
+        "name": "maxRetweets",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum retweets threshold."
+      },
+      {
+        "name": "maxReplies",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum replies threshold."
+      },
+      {
+        "name": "maxQuotes",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum quotes threshold."
+      },
+      {
+        "name": "blueVerifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return tweets from Blue-verified authors."
+      },
+      {
+        "name": "cardName",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the Tweet card name."
+      },
+      {
+        "name": "source",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the source application."
+      },
+      {
+        "name": "excludeSource",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Exclude a source application."
+      },
+      {
+        "name": "geocode",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match latitude, longitude, and radius."
+      },
+      {
+        "name": "sinceId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Return Tweets newer than this Tweet ID."
+      },
+      {
+        "name": "maxId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Return Tweets older than this Tweet ID."
+      },
+      {
+        "name": "near",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a place name."
+      },
+      {
+        "name": "within",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Set the radius for the near filter."
+      },
+      {
+        "name": "withinTime",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match Tweets inside a recent time window."
+      },
+      {
+        "name": "nativeRetweets",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return native reposts."
+      },
+      {
+        "name": "safe",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Enable the safe-search filter."
+      },
+      {
+        "name": "news",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return news results."
       },
       {
         "name": "verifiedOnly",
@@ -3790,14 +5806,14 @@
         "in": "query",
         "required": false,
         "type": "string",
-        "description": "Pagination cursor for user replies"
+        "description": "Cursor from the previous response. Xquik cursors resume automatic coverage. Existing unprefixed cursors keep legacy standard behavior."
       },
       {
         "name": "pageSize",
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Maximum items requested from this page (1-100, default 20). The response can contain fewer items because the source returned fewer, filters removed items, or remaining credits cover fewer results. Keep requesting next_cursor while has_next_page is true, even when a page is empty. The deprecated limit and count aliases remain accepted."
+        "description": "Maximum page items (1-100, default 20). Source, filters, or credits can reduce results. Continue while has_next_page is true. Deprecated limit and count aliases remain accepted."
       },
       {
         "name": "includeParentTweet",
@@ -3882,6 +5898,139 @@
         "required": false,
         "type": "integer",
         "description": "Minimum quote count threshold."
+      },
+      {
+        "name": "minViews",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum view count threshold."
+      },
+      {
+        "name": "minBookmarks",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum bookmark count threshold."
+      },
+      {
+        "name": "maxFaves",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum likes threshold. maxLikes is also accepted."
+      },
+      {
+        "name": "maxRetweets",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum retweets threshold."
+      },
+      {
+        "name": "maxReplies",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum replies threshold."
+      },
+      {
+        "name": "maxQuotes",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum quotes threshold."
+      },
+      {
+        "name": "blueVerifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return tweets from Blue-verified authors."
+      },
+      {
+        "name": "cardName",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the Tweet card name."
+      },
+      {
+        "name": "source",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the source application."
+      },
+      {
+        "name": "excludeSource",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Exclude a source application."
+      },
+      {
+        "name": "geocode",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match latitude, longitude, and radius."
+      },
+      {
+        "name": "sinceId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Return Tweets newer than this Tweet ID."
+      },
+      {
+        "name": "maxId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Return Tweets older than this Tweet ID."
+      },
+      {
+        "name": "near",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a place name."
+      },
+      {
+        "name": "within",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Set the radius for the near filter."
+      },
+      {
+        "name": "withinTime",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match Tweets inside a recent time window."
+      },
+      {
+        "name": "nativeRetweets",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return native reposts."
+      },
+      {
+        "name": "safe",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Enable the safe-search filter."
+      },
+      {
+        "name": "news",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return news results."
       },
       {
         "name": "verifiedOnly",
@@ -4005,14 +6154,14 @@
         "in": "query",
         "required": false,
         "type": "string",
-        "description": "Pagination cursor for user tweets"
+        "description": "Cursor from the previous response. Xquik cursors resume automatic coverage. Existing unprefixed cursors keep legacy standard behavior."
       },
       {
         "name": "pageSize",
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Maximum items requested from this page (1-100, default 20). The response can contain fewer items because the source returned fewer, filters removed items, or remaining credits cover fewer results. Keep requesting next_cursor while has_next_page is true, even when a page is empty. The deprecated limit and count aliases remain accepted."
+        "description": "Maximum page items (1-100, default 20). Source, filters, or credits can reduce results. Continue while has_next_page is true. Deprecated limit and count aliases remain accepted."
       },
       {
         "name": "includeReplies",
@@ -4104,6 +6253,139 @@
         "required": false,
         "type": "integer",
         "description": "Minimum quote count threshold."
+      },
+      {
+        "name": "minViews",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum view count threshold."
+      },
+      {
+        "name": "minBookmarks",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum bookmark count threshold."
+      },
+      {
+        "name": "maxFaves",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum likes threshold. maxLikes is also accepted."
+      },
+      {
+        "name": "maxRetweets",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum retweets threshold."
+      },
+      {
+        "name": "maxReplies",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum replies threshold."
+      },
+      {
+        "name": "maxQuotes",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum quotes threshold."
+      },
+      {
+        "name": "blueVerifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return tweets from Blue-verified authors."
+      },
+      {
+        "name": "cardName",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the Tweet card name."
+      },
+      {
+        "name": "source",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the source application."
+      },
+      {
+        "name": "excludeSource",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Exclude a source application."
+      },
+      {
+        "name": "geocode",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match latitude, longitude, and radius."
+      },
+      {
+        "name": "sinceId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Return Tweets newer than this Tweet ID."
+      },
+      {
+        "name": "maxId",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Return Tweets older than this Tweet ID."
+      },
+      {
+        "name": "near",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a place name."
+      },
+      {
+        "name": "within",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Set the radius for the near filter."
+      },
+      {
+        "name": "withinTime",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match Tweets inside a recent time window."
+      },
+      {
+        "name": "nativeRetweets",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return native reposts."
+      },
+      {
+        "name": "safe",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Enable the safe-search filter."
+      },
+      {
+        "name": "news",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return news results."
       },
       {
         "name": "verifiedOnly",
@@ -4227,14 +6509,133 @@
         "in": "query",
         "required": false,
         "type": "string",
-        "description": "Pagination cursor for verified followers"
+        "description": "Cursor from the previous response. Xquik cursors resume automatic coverage. Existing unprefixed cursors keep legacy standard behavior."
+      },
+      {
+        "name": "mode",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Omit mode for resumable maximum coverage. Standard keeps legacy pagination. Coverage returns diagnostics once and rejects cursors."
+      },
+      {
+        "name": "after",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Legacy cursor alias. Prefer cursor."
       },
       {
         "name": "pageSize",
         "in": "query",
         "required": false,
         "type": "integer",
-        "description": "Maximum user profiles requested from this page (20-200, default 200). The response can contain fewer profiles because the source returned fewer or remaining credits cover fewer results. Keep requesting next_cursor while has_next_page is true. The deprecated limit and count aliases remain accepted."
+        "description": "Maximum user profiles requested from this page (20-200, default 200). Source, filters, or credits can return fewer profiles. Automatic coverage can prefetch across independent views. Response shape, page size, and per-returned-profile billing stay unchanged. Keep requesting next_cursor while has_next_page is true. Deprecated limit and count aliases remain accepted."
+      },
+      {
+        "name": "minFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum follower count. Filtering happens before billing."
+      },
+      {
+        "name": "maxFollowers",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum follower count. Missing counts pass this maximum."
+      },
+      {
+        "name": "minFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum following count."
+      },
+      {
+        "name": "maxFollowing",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum following count."
+      },
+      {
+        "name": "minStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum post count. minPosts is also accepted."
+      },
+      {
+        "name": "maxStatuses",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Maximum post count. maxPosts is also accepted."
+      },
+      {
+        "name": "minAccountAgeDays",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Minimum account age in whole days."
+      },
+      {
+        "name": "verifiedOnly",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return verified profiles."
+      },
+      {
+        "name": "verifiedType",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match the verification type exactly, ignoring case."
+      },
+      {
+        "name": "hasWebsite",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a website."
+      },
+      {
+        "name": "hasLocation",
+        "in": "query",
+        "required": false,
+        "type": "boolean",
+        "description": "Only return profiles with a location."
+      },
+      {
+        "name": "bioContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match any comma-separated or line-separated bio term, ignoring case."
+      },
+      {
+        "name": "locationContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a location substring, ignoring case."
+      },
+      {
+        "name": "usernameContains",
+        "in": "query",
+        "required": false,
+        "type": "string",
+        "description": "Match a username substring, ignoring case."
+      },
+      {
+        "name": "limit",
+        "in": "query",
+        "required": false,
+        "type": "integer",
+        "description": "Legacy page-size alias outside explicit coverage mode. Coverage accepts 1-10000. Prefer pageSize."
       }
     ],
     "path": "/api/v1/x/users/{id}/verified-followers",
