@@ -1003,6 +1003,10 @@ def test_publish_workflow_prepares_draft_before_tag_dispatch() -> None:
     assert "gh release create" in prepare_script
     assert "--generate-notes" in prepare_script
     assert "--draft" in prepare_script
+    assert all(
+        fragment in prepare_script
+        for fragment in ("for attempt in 1 2 3 4 5", 'sleep "$attempt"', 'test -n "$release_json"')
+    )
     assert "'.isDraft'" in prepare_script
     assert "'.tagName'" in prepare_script
     assert "'.targetCommitish'" in prepare_script
@@ -1059,6 +1063,10 @@ def test_publish_workflow_requires_version_matched_release_tag() -> None:
     assert "gh api --paginate --slurp" in validate_script
     assert "releases?per_page=100" in validate_script
     assert 'jq -ce --arg tag "$RELEASE_TAG"' in validate_script
+    assert all(
+        fragment in validate_script
+        for fragment in ("for attempt in 1 2 3 4 5", 'sleep "$attempt"', 'test -n "$release_json"')
+    )
     assert ".tag_name == $tag" in validate_script
     assert "'.isDraft'" in validate_script
     assert "'.tagName'" in validate_script
