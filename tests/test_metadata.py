@@ -1106,7 +1106,7 @@ def test_publish_workflow_attests_and_attaches_release_artifacts() -> None:
     build = workflow_job("publish.yml", "build")
     assert require_mapping(build["permissions"]) == {
         "attestations": "write",
-        "contents": "read",
+        "contents": "write",
         "id-token": "write",
     }
     build_steps = require_list(build["steps"])

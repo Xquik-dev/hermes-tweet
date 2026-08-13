@@ -122,7 +122,7 @@ jobs:
     timeout-minutes: 30
     permissions:
       attestations: write # Store signed provenance for release artifacts.
-      contents: read
+      contents: write # Read the unpublished draft prepared for this exact tag.
       id-token: write # Mint the short-lived Sigstore signing identity.
     steps:
       - name: Checkout
