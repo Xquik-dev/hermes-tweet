@@ -265,7 +265,8 @@ def main() -> int:
         return 2
     source = Path(sys.argv[1]).resolve()
     data = build(source)
-    OUTPUT.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    serialized = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
+    OUTPUT.write_text(serialized + "\n", encoding="utf-8")
     print(f"Wrote {len(data)} endpoints to {OUTPUT}")
     return 0
 

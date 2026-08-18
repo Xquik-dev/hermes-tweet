@@ -91,13 +91,13 @@ uv run --python 3.12 --group dev python scripts/check_hermes_agent_compat.py
 If a locked Hermes Agent source SHA changes, review the official diff first,
 then update Hermes Tweet runtime, docs, tests, and the checker lock together.
 
-Latest reviewed locks from August 13, 2026: `hermes_cli/plugins.py`
-`947a6e990e71c9f1bdbda02a565f74c45e2c412c`, `tools/registry.py`
+Latest reviewed locks from August 18, 2026: `hermes_cli/plugins.py`
+`9ef8e47d06901b978be25b16a2c7a2b6500f3f63`, `tools/registry.py`
 `081040911499f8bb7e5a947e9c85b5e459fd3dd0`, and
-`hermes_cli/plugins_cmd.py` `1a8c41006c42ba1a5f83204f7292dc2b2c9ba5b9`.
+`hermes_cli/plugins_cmd.py` `6f7446620ed341ab5b6f07f98018f28ccb6b89e3`.
 
-Reviewed changes preserve v1 manifests and registration APIs.
-They add v2 metadata, capability consent, bounded errors, and safer updates.
+Reviewed changes preserve manifest and registration APIs. They add entry-point
+capabilities, install-time security scans, and new isolated plugin hooks.
 
 Keep the runtime contract aligned with those sources:
 
@@ -112,6 +112,7 @@ Keep the runtime contract aligned with those sources:
 - Install docs explain that user and PyPI entry-point plugins are opt-in and
   need `--enable`, `hermes plugins enable hermes-tweet`, or an explicit
   `plugins.enabled` entry.
+- Install docs explain Hermes may warn or block after its security scan.
 - Local project-plugin docs mention `HERMES_ENABLE_PROJECT_PLUGINS=true` only
   for trusted repositories.
 - User-facing docs keep at least one concrete Hermes Agent workflow section for

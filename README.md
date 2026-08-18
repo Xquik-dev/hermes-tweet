@@ -28,6 +28,9 @@ Install and enable the plugin:
 hermes plugins install Xquik-dev/hermes-tweet --enable
 ```
 
+Hermes scans plugins during install and update. Review any warning before
+continuing. A dangerous verdict blocks installation or disables an update.
+
 Or install the PyPI package into Hermes:
 
 ```bash
