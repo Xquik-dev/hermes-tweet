@@ -144,7 +144,7 @@ CLUSTERFUZZLITE_ACTION_SHA = (
     "google/clusterfuzzlite/actions/{}@884713a6c30a92e5e8544c39945cd7cb630abcd1"
 )
 HOL_PLUGIN_SCANNER_ACTION_SHA = (
-    "hashgraph-online/ai-plugin-scanner-action@8f0a503ca2a70c1968a9a883e11fdff5737b7909"
+    "hashgraph-online/ai-plugin-scanner-action@55616c962cf86368423f7673b2ecdfdbe613d1af"
 )
 ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
 BLACKSMITH_RUNNER_LABEL = "blacksmith-2vcpu-ubuntu-2404"
@@ -748,8 +748,7 @@ def test_hol_plugin_scanner_workflow_matches_codex_catalog_requirements() -> Non
     assert on_config["workflow_dispatch"] is None
     assert require_mapping(workflow["permissions"]) == {"contents": "read"}
 
-    jobs = require_mapping(workflow["jobs"])
-    scan = require_mapping(jobs["scan"])
+    scan = require_mapping(require_mapping(workflow["jobs"])["scan"])
     assert require_mapping(scan["permissions"]) == {
         "contents": "read",
         "security-events": "write",
