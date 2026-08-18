@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT
 
 [build-system]
-requires = ["hatchling==1.31.0"]
+requires = ["hatchling==1.32.0"]
 build-backend = "hatchling.build"
 
 [project]
