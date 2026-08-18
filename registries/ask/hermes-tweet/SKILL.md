@@ -56,6 +56,8 @@ hermes plugins install Xquik-dev/hermes-tweet --enable
 hermes tools list
 ```
 
+Review Hermes security-scan warnings. Dangerous plugins are blocked.
+
 Set `XQUIK_API_KEY` in the Hermes runtime environment before using authenticated
 read or action tools. Do not paste the key into chat.
 

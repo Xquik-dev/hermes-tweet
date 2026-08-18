@@ -100,13 +100,17 @@ EXPECTED_LIVE_ECOSYSTEM_SURFACES = (
     ),
     (
         "Claude Skill Registry Hermes Tweet skill",
-        "https://github.com/majiayu000/claude-skill-registry/blob/main/skills/api/"
-        "hermes-tweet/SKILL.md",
+        (
+            "https://github.com/majiayu000/claude-skill-registry/blob/main/skills/api/"
+            "hermes-tweet/SKILL.md"
+        ),
     ),
     (
         "Claude Skill Registry Data Hermes Tweet archive",
-        "https://github.com/majiayu000/claude-skill-registry-data/blob/main/api/"
-        "hermes-tweet/SKILL.md",
+        (
+            "https://github.com/majiayu000/claude-skill-registry-data/blob/main/api/"
+            "hermes-tweet/SKILL.md"
+        ),
     ),
     (
         "Freya Hermes Tweet skill install example",
@@ -114,13 +118,17 @@ EXPECTED_LIVE_ECOSYSTEM_SURFACES = (
     ),
     (
         "Awesome Skill Forge Hermes Tweet mirror",
-        "https://raw.githubusercontent.com/Lord1Egypt/awesome-skill-forge/master/community/"
-        "clawhub/h/hermes-tweet/SKILL.md",
+        (
+            "https://raw.githubusercontent.com/Lord1Egypt/awesome-skill-forge/master/community/"
+            "clawhub/h/hermes-tweet/SKILL.md"
+        ),
     ),
     (
         "RA-Skills Hermes Tweet mirror",
-        "https://github.com/Lord1Egypt/RA-Skills/blob/master/skills/community/"
-        "clawhub/h/hermes-tweet/SKILL.md",
+        (
+            "https://github.com/Lord1Egypt/RA-Skills/blob/master/skills/community/"
+            "clawhub/h/hermes-tweet/SKILL.md"
+        ),
     ),
 )
 SETUP_UV_ACTION = "astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9"

@@ -94,6 +94,7 @@ permissions.
 
 - Install and enable the plugin with
   `hermes plugins install Xquik-dev/hermes-tweet --enable`.
+- Review Hermes security-scan warnings. Dangerous plugins are blocked.
 - Configure `XQUIK_API_KEY` on the Hermes runtime host for authenticated reads.
   `tweet_explore` remains available without the key or network access.
 - Leave `HERMES_TWEET_ENABLE_ACTIONS` unset or false unless the workflow needs
