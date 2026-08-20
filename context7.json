@@ -1,7 +1,7 @@
 {
   "$schema": "https://context7.com/schema/context7.json",
   "projectTitle": "Hermes Tweet",
-  "description": "Hermes Agent plugin for Twitter API search, replies, monitoring, follower exports, and approved X actions through Xquik. Not affiliated with X Corp.",
+  "description": "Hermes Agent plugin for Twitter search, monitoring, follower exports & approved X actions. Not affiliated with X Corp.",
   "branch": "master",
   "excludeFolders": [".github"],
   "excludeFiles": [

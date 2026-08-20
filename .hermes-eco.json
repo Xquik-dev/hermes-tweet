@@ -3,7 +3,7 @@
   "resource_type": "integration",
   "type": "integration",
   "primary_category": "communication",
-  "description": "Hermes Agent plugin for Twitter search, tweet replies, monitoring, follower exports, and approved X actions through Xquik. Not affiliated with X Corp.",
+  "description": "Hermes Agent plugin for Twitter search, monitoring, follower exports & approved X actions. Not affiliated with X Corp.",
   "author": "Xquik",
   "repository": "https://github.com/Xquik-dev/hermes-tweet",
   "homepage": "https://github.com/Xquik-dev/hermes-tweet#readme",

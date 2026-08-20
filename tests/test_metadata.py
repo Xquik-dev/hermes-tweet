@@ -19,8 +19,8 @@ GUIDE_URL = "https://github.com/Xquik-dev/hermes-tweet#readme"
 CLAW_HUB_URL = "https://clawhub.ai/xquik/hermes-tweet"
 EXPECTED_TOOLS = ["tweet_explore", "tweet_read", "tweet_action"]
 EXPECTED_PUBLIC_PACKAGE_DESCRIPTION = (
-    "Hermes Agent plugin for Twitter search, tweet monitoring, follower exports, "
-    "and approved X actions through Xquik. Not affiliated with X Corp."
+    "Hermes Agent plugin for Twitter search, monitoring, follower exports & "
+    "approved X actions. Not affiliated with X Corp."
 )
 EXPECTED_OPTIONAL_ENV = ["XQUIK_BASE_URL", "HERMES_TWEET_ENABLE_ACTIONS"]
 EXPECTED_SKILL_CAPABILITY_ENV = [
@@ -72,16 +72,15 @@ EXPECTED_AGENT_SKILL_MANIFEST_TAGS = [
     "automation",
 ]
 EXPECTED_CLAUDE_PLUGIN_DESCRIPTION = (
-    "Hermes Agent plugin for Twitter search, monitoring, and approved X actions "
-    "through Xquik. Not affiliated with X Corp."
+    "Hermes Agent plugin for Twitter search, monitoring, follower exports & "
+    "approved X actions. Not affiliated with X Corp."
 )
 EXPECTED_CODEX_PLUGIN_KEYWORDS = [*EXPECTED_AGENT_SKILL_MANIFEST_TAGS, "codex-plugin"]
 EXPECTED_AGENT_SKILL_INSTALL = "hermes plugins install Xquik-dev/hermes-tweet --enable"
 EXPECTED_TOPIC_DISCOVERY_KEYWORD = "agent-skill"
 EXPECTED_DASHBOARD_MANIFEST_DESCRIPTION = (
-    "Hermes Agent plugin for Twitter search, tweet replies, monitoring, follower "
-    "exports, and approved X actions through Xquik. "
-    "Not affiliated with X Corp."
+    "Hermes Agent plugin for Twitter search, monitoring, follower exports & "
+    "approved X actions. Not affiliated with X Corp."
 )
 EXPECTED_HERMES_ECO_MANIFEST_NAME = "Hermes Tweet"
 EXPECTED_HERMES_ECO_MANIFEST_TYPE = "integration"
@@ -556,8 +555,8 @@ def test_ask_wrapper_skill_matches_public_package_metadata() -> None:
     assert str(frontmatter["version"]) == version
     assert frontmatter["author"] == "Xquik"
     assert frontmatter["description"] == (
-        "Search Twitter/X, read tweet replies, look up users, monitor tweets, "
-        "export followers, and gate X actions through Xquik. Not affiliated with X Corp."
+        "Search Twitter/X, read replies, find users, monitor accounts, export "
+        "followers & gate X actions through Xquik. Not affiliated with X Corp."
     )
     assert frontmatter["tags"] == EXPECTED_SKILL_TAGS
     assert_skill_capabilities(frontmatter)
@@ -579,8 +578,8 @@ def test_agent_skill_manifest_matches_public_package_metadata() -> None:
     assert manifest["version"] == project["version"]
     assert manifest["author"] == "Xquik"
     assert manifest["description"] == (
-        "Hermes Agent plugin for Twitter search, tweet monitoring, and approved X "
-        "actions through Xquik. Not affiliated with X Corp."
+        "Hermes Agent plugin for Twitter search, monitoring, follower exports & "
+        "approved X actions. Not affiliated with X Corp."
     )
     assert manifest["tags"] == EXPECTED_AGENT_SKILL_MANIFEST_TAGS
     assert manifest["dependencies"] == []
