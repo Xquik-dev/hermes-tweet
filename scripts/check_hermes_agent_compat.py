@@ -69,7 +69,7 @@ PAGE_CHECKS: Final = (
 SOURCE_CHECKS: Final = (
     SourceCheck(
         path="hermes_cli/plugins.py",
-        expected_sha="9ef8e47d06901b978be25b16a2c7a2b6500f3f63",
+        expected_sha="2493d8f21eddc0617d04e9ee48812846086eade4",
         required_terms=(
             "ENTRY_POINTS_GROUP",
             "discover_entrypoint_manifests",
@@ -97,7 +97,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="hermes_cli/plugins_cmd.py",
-        expected_sha="6f7446620ed341ab5b6f07f98018f28ccb6b89e3",
+        expected_sha="912d93208d2169f2a51bff4dc8b6fed1dfd204c0",
         required_terms=(
             "_resolve_plugin_key",
             "_scan_plugin_tree",
@@ -132,13 +132,13 @@ def check_page(client: httpx.Client, check: PageCheck) -> list[str]:
         response = client.get(check.url)
         response.raise_for_status()
     except httpx.HTTPError as error:
-        return [f"{check.name}: {error.__class__.__name__}"]
+        return [f"{check.name} check failed. Retry after {error.__class__.__name__}."]
 
     missing = missing_terms(response.text, check.required_terms)
     if missing:
-        return [f"{check.name}: missing terms {', '.join(missing)}"]
+        return [f"{check.name} is outdated. Add these terms: {', '.join(missing)}"]
 
-    print(f"docs ok: {check.name} {check.url}")
+    print(f"Docs verified. {check.name} {check.url}")
     return []
 
 
@@ -148,23 +148,23 @@ def read_source(client: httpx.Client, path: str) -> tuple[SourceContent | None, 
         response = client.get(api_url)
         response.raise_for_status()
     except httpx.HTTPError as error:
-        return None, [f"{path}: metadata fetch failed with {error.__class__.__name__}"]
+        return None, [f"Metadata fetch failed for {path}. Retry after {error.__class__.__name__}."]
 
     payload = response.json()
     if not isinstance(payload, dict):
-        return None, [f"{path}: GitHub content response was not an object"]
+        return None, [f"Invalid GitHub response for {path}. Expected an object."]
 
     mapping = cast("dict[str, object]", payload)
     sha = mapping.get("sha")
     download_url = mapping.get("download_url")
     if not isinstance(sha, str) or not isinstance(download_url, str):
-        return None, [f"{path}: GitHub content response missed sha or download_url"]
+        return None, [f"Incomplete GitHub response for {path}. Expected sha and download_url."]
 
     try:
         raw_response = client.get(download_url)
         raw_response.raise_for_status()
     except httpx.HTTPError as error:
-        return None, [f"{path}: source fetch failed with {error.__class__.__name__}"]
+        return None, [f"Source fetch failed for {path}. Retry after {error.__class__.__name__}."]
 
     return SourceContent(sha=sha, text=raw_response.text), []
 
@@ -177,16 +177,16 @@ def check_source(client: httpx.Client, check: SourceCheck) -> list[str]:
     if content.sha != check.expected_sha:
         return [
             (
-                f"{check.path}: source sha changed from {check.expected_sha} "
-                f"to {content.sha}. Review official Hermes Agent changes before updating this lock."
+                f"Source changed for {check.path}: {check.expected_sha} to {content.sha}. "
+                "Review the official Hermes Agent diff before updating this lock."
             )
         ]
 
     missing = missing_terms(content.text, check.required_terms)
     if missing:
-        return [f"{check.path}: missing terms {', '.join(missing)}"]
+        return [f"{check.path} is outdated. Add these terms: {', '.join(missing)}"]
 
-    print(f"source ok: {check.path} {content.sha}")
+    print(f"Source verified. {check.path} {content.sha}")
     return []
 
 
@@ -206,12 +206,12 @@ def run_checks() -> list[str]:
 def main() -> int:
     errors = run_checks()
     if errors:
-        print("Hermes Agent compatibility gate failed.")
+        print("Hermes Agent compatibility failed. Review each item below.")
         for error in errors:
             print(error)
         return 1
 
-    print("Hermes Agent compatibility gate passed.")
+    print("Hermes Agent compatibility passed.")
     return 0
 
 

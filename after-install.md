@@ -1,4 +1,4 @@
-# Hermes Tweet Installed
+# Hermes Tweet installed
 
 Hermes Tweet is enabled as the `hermes-tweet` toolset.
 
@@ -36,7 +36,7 @@ operations:
 export HERMES_TWEET_ENABLE_ACTIONS=false
 ```
 
-Quick smoke test:
+Run this smoke test:
 
 ```bash
 hermes -z "Use tweet_explore, then read /api/v1/account. Do not call tweet_action." --toolsets hermes-tweet
@@ -45,7 +45,7 @@ hermes -z "Use tweet_explore, then read /api/v1/account. Do not call tweet_actio
 Use catalog-listed `/api/v1/...` paths from `tweet_explore`. Copied endpoint
 URLs are accepted only when they resolve to catalog-listed paths.
 
-Expected behavior:
+Expect this behavior:
 
 - `tweet_explore` loads without an API call.
 - `tweet_read` works when `XQUIK_API_KEY` is set.
@@ -53,6 +53,6 @@ Expected behavior:
 - `tweet_action` stays hidden or returns a disabled error unless
   `HERMES_TWEET_ENABLE_ACTIONS=true`.
 
-For Hermes v0.12.0, do not use `hermes -z "/xstatus"` as a slash-command smoke
+For Hermes Agent v0.16.0, do not use `hermes -z "/xstatus"` as a slash-command smoke
 test. One-shot `-z` treats that text as a model prompt. Verify slash commands in
 an active CLI or gateway session, or through the plugin registry tests.

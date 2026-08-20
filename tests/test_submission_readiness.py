@@ -7,84 +7,29 @@ from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
 SUBMISSION_READINESS_PATH = ROOT / "docs" / "SUBMISSION_READINESS.md"
-PHRASE_DIR = ROOT / "tests" / "fixtures" / "route_rejection_phrases"
-EXPECTED_PHRASE_FILES = (
-    "agent_runtime.txt",
-    "marketplaces_client_workflows.txt",
-    "marketplaces_core.txt",
-    "marketplaces_people_governance.txt",
-    "marketplaces_specialized.txt",
-    "safety_duplicates.txt",
-)
-MAX_SUBMISSION_READINESS_LINES = 960
-MAX_FIXTURE_LINES = 600
-DUPLICATE_SATURATION_PHRASES = (
-    "same target already has an open Hermes Tweet PR",
-    "same target already has an open TweetClaw or adjacent social-provider PR",
-    "head-branch PR collision",
-    "treat a PR creation duplicate error as canonical overlap evidence",
+MAX_SUBMISSION_READINESS_LINES = 180
+REQUIRED_RULES = (
+    "without copying, translating, or repackaging it",
+    "pull-request feature is enabled and accepts external fork heads",
+    "canonical, PR-editable source",
+    "explicit incompatible license or unsigned legal agreement blocks submission",
+    "live listing, open proposal, closed submission, duplicate head branch",
+    "adjacent Xquik entry saturates a generic catalog lane",
+    "must name `Hermes Tweet` or `hermes-tweet`",
+    "copied endpoint URLs resolve only to catalog-listed `/api/v1/...` paths",
+    "Run every target-required check",
+    "Never publish",
 )
 
 
-def _route_rejection_phrase_paths() -> tuple[Path, ...]:
-    return tuple(sorted(PHRASE_DIR.glob("*.txt")))
+def test_submission_readiness_keeps_each_gate() -> None:
+    checklist = " ".join(SUBMISSION_READINESS_PATH.read_text().split())
+
+    for rule in REQUIRED_RULES:
+        assert rule in checklist
 
 
-def _route_rejection_phrases() -> tuple[str, ...]:
-    phrases: list[str] = []
-    for path in _route_rejection_phrase_paths():
-        phrases.extend(phrase for phrase in path.read_text().splitlines() if phrase)
-    return tuple(phrases)
-
-
-def test_submission_readiness_rejects_adjacent_marketplace_routes() -> None:
-    normalized_checklist = " ".join(SUBMISSION_READINESS_PATH.read_text().split())
-
-    for phrase in _route_rejection_phrases():
-        assert phrase in normalized_checklist
-
-
-def test_submission_readiness_stays_below_quality_boundary() -> None:
+def test_submission_readiness_stays_concise() -> None:
     line_count = len(SUBMISSION_READINESS_PATH.read_text().splitlines())
 
     assert line_count <= MAX_SUBMISSION_READINESS_LINES
-
-
-def test_route_rejection_phrase_fixtures_stay_explicit() -> None:
-    for path in _route_rejection_phrase_paths():
-        phrases = path.read_text().splitlines()
-
-        assert all(phrase for phrase in phrases)
-        assert all(phrase == phrase.strip() for phrase in phrases)
-        assert all("\t" not in phrase for phrase in phrases)
-        assert len(phrases) == len(set(phrases))
-
-
-def test_duplicate_saturation_phrases_stay_guarded() -> None:
-    phrases = _route_rejection_phrases()
-    normalized_checklist = " ".join(SUBMISSION_READINESS_PATH.read_text().split())
-
-    for phrase in DUPLICATE_SATURATION_PHRASES:
-        assert phrase in phrases
-        assert phrase in normalized_checklist
-
-
-def test_route_rejection_phrase_fixtures_stay_in_reviewed_buckets() -> None:
-    fixture_names = tuple(path.name for path in _route_rejection_phrase_paths())
-
-    assert fixture_names == EXPECTED_PHRASE_FILES
-
-
-def test_route_rejection_phrase_fixture_directory_stays_flat() -> None:
-    entries = tuple(sorted(PHRASE_DIR.iterdir()))
-    entry_names = tuple(path.name for path in entries)
-
-    assert entry_names == EXPECTED_PHRASE_FILES
-    assert all(path.is_file() for path in entries)
-
-
-def test_route_rejection_phrase_fixtures_stay_split() -> None:
-    for path in _route_rejection_phrase_paths():
-        line_count = len(path.read_text().splitlines())
-
-        assert line_count <= MAX_FIXTURE_LINES

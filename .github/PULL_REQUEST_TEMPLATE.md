@@ -12,7 +12,7 @@
 - [ ] `uv run --python 3.12 --group dev twine check dist/*`
 - [ ] `actionlint .github/workflows/*.yml`
 
-## Public Safety
+## Public safety
 
 - [ ] No secrets, tokens, cookies, private screenshots, or private implementation details.
 - [ ] Write-like endpoints remain gated.

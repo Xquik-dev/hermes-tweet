@@ -47,15 +47,18 @@ def test_explore_returns_json_string() -> None:
 
 def test_explore_returns_error(monkeypatch: pytest.MonkeyPatch) -> None:
     def fail(_args: dict[str, object]) -> list[dict[str, object]]:
-        raise ValueError("broken")
+        raise ValueError("simulated failure")
 
     monkeypatch.setattr(tools, "explore_catalog", fail)
 
-    assert json.loads(explore({})) == {"success": False, "error": "broken"}
+    assert json.loads(explore({})) == {
+        "success": False,
+        "error": tools.TOOL_FAILURE_ERROR,
+    }
 
 
 def test_handlers_reject_non_object_arguments() -> None:
-    error = {"success": False, "error": "Tool arguments must be a JSON object."}
+    error = {"success": False, "error": "Invalid tool arguments. Pass a JSON object."}
 
     assert json.loads(explore([])) == error
     assert json.loads(call_read(None)) == error
@@ -66,7 +69,7 @@ def test_read_missing_endpoint() -> None:
     result = json.loads(call_read({"path": "/api/v1/missing"}))
     assert result == {
         "success": False,
-        "error": "Endpoint is not in the Hermes Tweet catalog: GET /api/v1/missing",
+        "error": "Endpoint unavailable. Choose a catalog-listed route: GET /api/v1/missing",
     }
 
 
@@ -134,7 +137,7 @@ def test_read_normalizes_path_values(monkeypatch: pytest.MonkeyPatch) -> None:
     }
     assert json.loads(call_read({"path": None})) == {
         "success": False,
-        "error": "Endpoint is not in the Hermes Tweet catalog: GET ",
+        "error": "Endpoint unavailable. Choose a catalog-listed route: GET ",
     }
 
 
@@ -164,7 +167,7 @@ def test_read_rejects_query_or_fragment_in_path(monkeypatch: pytest.MonkeyPatch)
 
     expected = {
         "success": False,
-        "error": "Pass query parameters through the query object, not in path.",
+        "error": "Query parameters misplaced. Pass them through the query object.",
     }
     assert (
         json.loads(call_read({"path": "https://xquik.com/api/v1/account?ignored=true"})) == expected
@@ -179,7 +182,10 @@ def test_read_rejects_non_catalog_copied_url_before_request(
 
     assert json.loads(call_read({"path": "https://xquik.com/not-api/account"})) == {
         "success": False,
-        "error": "Endpoint is not in the Hermes Tweet catalog: GET https://xquik.com/not-api/account",
+        "error": (
+            "Endpoint unavailable. Choose a catalog-listed route: "
+            "GET https://xquik.com/not-api/account"
+        ),
     }
 
 
@@ -236,13 +242,13 @@ def test_read_ignores_empty_query_after_normalization(monkeypatch: pytest.Monkey
 
 def test_read_returns_handler_error(monkeypatch: pytest.MonkeyPatch) -> None:
     def fail(_method: str, _path: str) -> object:
-        raise ValueError("catalog failed")
+        raise ValueError("simulated catalog failure")
 
     monkeypatch.setattr(tools, "find_endpoint", fail)
 
     assert json.loads(call_read({"path": "/api/v1/account"})) == {
         "success": False,
-        "error": "catalog failed",
+        "error": tools.TOOL_FAILURE_ERROR,
     }
 
 
@@ -261,7 +267,7 @@ def test_action_missing_endpoint(monkeypatch: pytest.MonkeyPatch) -> None:
 
     assert result == {
         "success": False,
-        "error": "Endpoint is not in the Hermes Tweet catalog: POST /api/v1/missing",
+        "error": "Endpoint unavailable. Choose a catalog-listed route: POST /api/v1/missing",
     }
 
 
@@ -271,7 +277,7 @@ def test_action_rejects_query_or_fragment_in_path(monkeypatch: pytest.MonkeyPatc
 
     expected = {
         "success": False,
-        "error": "Pass query parameters through the query object, not in path.",
+        "error": "Query parameters misplaced. Pass them through the query object.",
     }
     assert (
         json.loads(
@@ -323,7 +329,10 @@ def test_action_blocks_account_connection_challenge(monkeypatch: pytest.MonkeyPa
 def test_action_requires_reason_when_enabled(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(tools, "action_enabled", lambda: True)
 
-    error = {"success": False, "error": "Action reason is required."}
+    error = {
+        "success": False,
+        "error": "Action reason missing. Add a user-visible reason.",
+    }
 
     assert json.loads(call_action({"path": "/api/v1/x/tweets", "method": "POST"})) == error
     assert (
@@ -495,7 +504,7 @@ def test_action_rejects_non_catalog_copied_url_before_request(
     ) == {
         "success": False,
         "error": (
-            "Endpoint is not in the Hermes Tweet catalog: "
+            "Endpoint unavailable. Choose a catalog-listed route: "
             "POST https://dashboard.xquik.com/not-api/tweet"
         ),
     }
@@ -503,13 +512,13 @@ def test_action_rejects_non_catalog_copied_url_before_request(
 
 def test_action_returns_handler_error(monkeypatch: pytest.MonkeyPatch) -> None:
     def fail() -> bool:
-        raise ValueError("env failed")
+        raise ValueError("simulated environment failure")
 
     monkeypatch.setattr(tools, "action_enabled", fail)
 
     assert json.loads(call_action({"path": "/api/v1/x/tweets", "method": "POST"})) == {
         "success": False,
-        "error": "env failed",
+        "error": tools.TOOL_FAILURE_ERROR,
     }
 
 

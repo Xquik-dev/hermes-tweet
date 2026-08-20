@@ -73,9 +73,9 @@ def test_source_checks_track_reviewed_hermes_agent_locks() -> None:
     locks = {check.path: check.expected_sha for check in compat.SOURCE_CHECKS}
 
     assert locks == {
-        "hermes_cli/plugins.py": "9ef8e47d06901b978be25b16a2c7a2b6500f3f63",
+        "hermes_cli/plugins.py": "2493d8f21eddc0617d04e9ee48812846086eade4",
         "tools/registry.py": "081040911499f8bb7e5a947e9c85b5e459fd3dd0",
-        "hermes_cli/plugins_cmd.py": "6f7446620ed341ab5b6f07f98018f28ccb6b89e3",
+        "hermes_cli/plugins_cmd.py": "912d93208d2169f2a51bff4dc8b6fed1dfd204c0",
     }
 
 
@@ -89,7 +89,7 @@ def test_check_page_reports_missing_terms() -> None:
 
     errors = compat.check_page(client, check)
 
-    assert errors == ["Plugin docs: missing terms requires_env"]
+    assert errors == ["Plugin docs is outdated. Add these terms: requires_env"]
     assert client.urls == ["https://example.com/docs"]
 
 
@@ -128,8 +128,8 @@ def test_check_source_reports_sha_drift() -> None:
 
     assert errors == [
         (
-            "tools/registry.py: source sha changed from old-sha to new-sha. "
-            "Review official Hermes Agent changes before updating this lock."
+            "Source changed for tools/registry.py: old-sha to new-sha. "
+            "Review the official Hermes Agent diff before updating this lock."
         )
     ]
 
@@ -151,4 +151,4 @@ def test_check_source_reports_missing_terms_after_sha_match() -> None:
 
     errors = compat.check_source(client, check)
 
-    assert errors == ["tools/registry.py: missing terms check_fn"]
+    assert errors == ["tools/registry.py is outdated. Add these terms: check_fn"]

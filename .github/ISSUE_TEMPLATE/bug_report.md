@@ -1,25 +1,24 @@
 ---
-name: Bug Report
+name: Bug report
 about: Report a Hermes Tweet bug
-title: "[Bug]: "
+title: "[Bug] "
 labels: bug
 assignees: ""
 ---
 
-## What Happened?
+## What happened?
 
-## Expected Behavior
+## Expected behavior
 
 ## Environment
 
-- Hermes Agent version:
-- Hermes Tweet version:
-- Python version:
-- Install method:
+- **Hermes Agent version.**
+- **Hermes Tweet version.**
+- **Python version.**
+- **Install method.**
 
 ## Reproduction
 
-## Logs Or Error Output
+## Logs or error output
 
 Do not paste API keys, cookies, tokens, or private account data.
-

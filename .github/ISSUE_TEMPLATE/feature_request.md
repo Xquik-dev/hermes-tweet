@@ -1,16 +1,15 @@
 ---
-name: Feature Request
+name: Feature request
 about: Suggest a Hermes Tweet improvement
-title: "[Feature]: "
+title: "[Feature] "
 labels: enhancement
 assignees: ""
 ---
 
-## Use Case
+## Use case
 
-## Proposed Behavior
+## Proposed behavior
 
-## Alternatives Considered
+## Alternatives considered
 
-## Additional Context
-
+## Additional context

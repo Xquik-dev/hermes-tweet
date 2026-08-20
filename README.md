@@ -1,10 +1,11 @@
-# Hermes Tweet: X Search, Timelines, Followers & Actions for AI Agents
+# Hermes Tweet: Twitter search, timelines, followers & approved X actions
 
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/13725/badge)](https://www.bestpractices.dev/projects/13725)
 [![CI](https://github.com/Xquik-dev/hermes-tweet/actions/workflows/ci.yml/badge.svg)](https://github.com/Xquik-dev/hermes-tweet/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/hermes-tweet.svg)](https://pypi.org/project/hermes-tweet/)
 
-Add native Xquik tools to [Hermes Agent](https://github.com/NousResearch/hermes-agent).
+Add Twitter API search, monitoring, and approved X actions to
+[Hermes Agent](https://github.com/NousResearch/hermes-agent).
 
 Hermes Tweet includes:
 
@@ -14,10 +15,10 @@ Hermes Tweet includes:
 - Actions disabled by default.
 - A bundled Hermes Skill and 2 slash commands.
 
-## Choose Hermes Tweet
+## When to use Hermes Tweet
 
-Choose this plugin when Hermes needs catalog-guided Xquik tools.
-It separates discovery, reads, and confirmed actions.
+Choose this plugin when Hermes needs X/Twitter search, reads, or monitoring.
+It separates endpoint discovery, reads, and approved actions.
 Use an SDK for application code outside Hermes.
 
 ## Install
@@ -73,11 +74,11 @@ Use `tweet_explore` first. Then pass a listed `/api/v1/...` path to the matching
 
 Copied Xquik URLs work when their paths match the catalog.
 
-## Common Agent Tasks
+## Common Twitter API tasks
 
 Start with `tweet_explore`. Invoke only the path returned by the catalog.
 
-| Customer Question | Catalog Query | Live Tool |
+| User question | Catalog query | Tool |
 | --- | --- | --- |
 | How can an agent search X posts? | `search tweets by query` | `tweet_read` |
 | How can an agent read profile timelines? | `list recent tweets posted by a user` | `tweet_read` |
@@ -101,14 +102,14 @@ Set `include_actions` for extraction, monitoring, and writing searches.
 
 Without an API key, Hermes exposes only `tweet_explore`.
 
-## Slash Commands
+## Slash commands
 
 | Command | Purpose |
 | --- | --- |
 | `/xstatus` | Show Xquik account and usage status. |
 | `/xtrends` | Show current X trends. |
 
-## Develop
+## Development
 
 Regenerate the catalog from the canonical OpenAPI schema:
 
@@ -136,7 +137,7 @@ uv run --python 3.12 --group dev twine check dist/*
 - [Xquik authentication](https://xquik.com/auth.md)
 - [Context7 guide](https://context7.com/xquik-dev/hermes-tweet)
 - [Integration patterns](docs/INTEGRATION_PATTERNS.md)
-- [Hermes surfaces](docs/HERMES_SURFACES.md)
+- [Hermes runtime hosts](docs/HERMES_SURFACES.md)
 - [Organization support policy](https://github.com/Xquik-dev/.github/blob/main/SUPPORT.md)
 - [Security policy](SECURITY.md)
 - [Contribution guide](https://github.com/Xquik-dev/.github/blob/main/CONTRIBUTING.md)

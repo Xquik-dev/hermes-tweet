@@ -189,7 +189,7 @@ def _mpp(operation: JsonDict) -> dict[str, str] | None:
         offer = _as_dict(_as_list(info.get("offers"))[0])
         price = Decimal(str(offer["amount"])) / Decimal(1_000_000)
     except (IndexError, InvalidOperation, KeyError) as error:
-        message = "x-payment-info must include a valid first offer amount"
+        message = "Invalid x-payment-info. Add a valid first offer amount."
         raise ValueError(message) from error
 
     return {

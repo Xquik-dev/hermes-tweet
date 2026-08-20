@@ -1,4 +1,4 @@
-# GitHub Metadata
+# GitHub metadata
 
 Use this metadata when creating or refreshing the public GitHub repository.
 Before reusing it for public submissions, validate the target with
@@ -6,15 +6,15 @@ Before reusing it for public submissions, validate the target with
 
 ## Repository
 
-- Owner: `Xquik-dev`
-- Name: `hermes-tweet`
-- Visibility: public
-- Homepage: `https://github.com/Xquik-dev/hermes-tweet#readme`
+- **Owner.** `Xquik-dev`
+- **Name.** `hermes-tweet`
+- **Visibility.** Public
+- **Homepage.** `https://github.com/Xquik-dev/hermes-tweet#readme`
 
 ## Description
 
-Native Hermes Agent plugin for X/Twitter automation through Xquik. Not
-affiliated with X Corp.
+Hermes Agent plugin for Twitter search, tweet monitoring, follower exports, and
+approved X actions through Xquik. Not affiliated with X Corp.
 
 ## Topics
 
@@ -40,7 +40,7 @@ agent-skill
 python
 ```
 
-## SEO Phrases
+## SEO phrases
 
 - Hermes Agent Twitter plugin
 - Hermes Agent X plugin

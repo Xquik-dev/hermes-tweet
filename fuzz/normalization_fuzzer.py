@@ -60,11 +60,11 @@ def test_one_input(data: bytes) -> None:
     normalized_method = normalize_method(method)
     _require(
         condition=normalized_method == normalized_method.strip().upper(),
-        message="normalized methods must be stripped and uppercase",
+        message="Normalized methods must be stripped and uppercase.",
     )
     _require(
         condition=bool(normalized_method),
-        message="normalized methods must not be empty",
+        message="Normalized methods must not be empty.",
     )
 
     limit_values: tuple[Any, ...] = (
@@ -77,14 +77,14 @@ def test_one_input(data: bytes) -> None:
     normalized_limit = normalize_limit(_pick_value(provider, limit_values))
     _require(
         condition=1 <= normalized_limit <= MAX_NORMALIZED_LIMIT,
-        message="normalized limits must stay inside the documented range",
+        message="Normalized limits must stay inside the documented range.",
     )
 
     template = f"/api/v1/items/{{id}}/{_safe_segment(provider)}"
     concrete = f"/api/v1/items/{_safe_segment(provider)}/{_safe_segment(provider)}"
     _require(
         condition=isinstance(matches_path(template, concrete), bool),
-        message="path matching must always return a boolean",
+        message="Path matching must always return a boolean.",
     )
 
     query = {
@@ -95,11 +95,11 @@ def test_one_input(data: bytes) -> None:
     if normalized_query is not None:
         _require(
             condition=all(key and key == key.strip() for key in normalized_query),
-            message="query keys must be nonempty and stripped",
+            message="Query keys must be nonempty and stripped.",
         )
         _require(
             condition=all(isinstance(value, str) for value in normalized_query.values()),
-            message="query values must be normalized to strings",
+            message="Query values must be normalized to strings.",
         )
 
     explored = explore(
@@ -112,7 +112,7 @@ def test_one_input(data: bytes) -> None:
     )
     _require(
         condition=len(explored) <= normalized_limit,
-        message="catalog exploration must honor the normalized limit",
+        message="Catalog exploration must honor the normalized limit.",
     )
 
     payload = {
@@ -122,7 +122,7 @@ def test_one_input(data: bytes) -> None:
     }
     _require(
         condition=json.loads(dumps(payload)) == payload,
-        message="serialized payloads must round-trip without loss",
+        message="Serialized payloads must round-trip without loss.",
     )
 
 
