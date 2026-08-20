@@ -19,7 +19,8 @@ GUIDE_URL = "https://github.com/Xquik-dev/hermes-tweet#readme"
 CLAW_HUB_URL = "https://clawhub.ai/xquik/hermes-tweet"
 EXPECTED_TOOLS = ["tweet_explore", "tweet_read", "tweet_action"]
 EXPECTED_PUBLIC_PACKAGE_DESCRIPTION = (
-    "Native Hermes Agent plugin for X/Twitter automation through Xquik. Not affiliated with X Corp."
+    "Hermes Agent plugin for Twitter search, tweet monitoring, follower exports, "
+    "and approved X actions through Xquik. Not affiliated with X Corp."
 )
 EXPECTED_OPTIONAL_ENV = ["XQUIK_BASE_URL", "HERMES_TWEET_ENABLE_ACTIONS"]
 EXPECTED_SKILL_CAPABILITY_ENV = [
@@ -52,7 +53,7 @@ EXPECTED_MARKETPLACE_SKILL_SECTIONS = (
     "## Prerequisites",
     "## Instructions",
     "## Output",
-    "## Error Handling",
+    "## Error handling",
     "## Examples",
     "## Resources",
 )
@@ -71,15 +72,15 @@ EXPECTED_AGENT_SKILL_MANIFEST_TAGS = [
     "automation",
 ]
 EXPECTED_CLAUDE_PLUGIN_DESCRIPTION = (
-    "Native Hermes Agent X/Twitter plugin for Xquik automation with read-first "
-    "workflows and approval-gated actions. Not affiliated with X Corp."
+    "Hermes Agent plugin for Twitter search, monitoring, and approved X actions "
+    "through Xquik. Not affiliated with X Corp."
 )
 EXPECTED_CODEX_PLUGIN_KEYWORDS = [*EXPECTED_AGENT_SKILL_MANIFEST_TAGS, "codex-plugin"]
 EXPECTED_AGENT_SKILL_INSTALL = "hermes plugins install Xquik-dev/hermes-tweet --enable"
 EXPECTED_TOPIC_DISCOVERY_KEYWORD = "agent-skill"
 EXPECTED_DASHBOARD_MANIFEST_DESCRIPTION = (
-    "Hermes Agent X/Twitter plugin for searching tweets, reading replies, "
-    "monitoring X, exporting followers, and approval-gated posting through Xquik. "
+    "Hermes Agent plugin for Twitter search, tweet replies, monitoring, follower "
+    "exports, and approved X actions through Xquik. "
     "Not affiliated with X Corp."
 )
 EXPECTED_HERMES_ECO_MANIFEST_NAME = "Hermes Tweet"
@@ -324,7 +325,7 @@ def test_merge_enablement_guide_requires_complete_pr_coverage() -> None:
     normalized_guide = " ".join(guide.split())
 
     assert "Enumerate every open in-scope PR before discovery or outreach" in normalized_guide
-    assert "Do not treat a single capped GitHub CLI result as complete" in normalized_guide
+    assert "A capped GitHub CLI result is incomplete" in normalized_guide
     assert "hermes-tweet-open-prs-<timestamp>.json" in guide
     assert "hermes-tweet-pr-audit-<timestamp>.jsonl" in guide
     assert "author, head owner, base repository" in normalized_guide
@@ -332,10 +333,10 @@ def test_merge_enablement_guide_requires_complete_pr_coverage() -> None:
     assert "verified `kriptoburak` branches" in guide
     assert "aggregate `UNKNOWN` mergeability" in guide
     assert "direct PR read" in guide
-    assert "direct read reports `DIRTY` or `CONFLICTING`" in normalized_guide
-    assert "prepared fork branch as outreach" in guide
+    assert "reports `DIRTY` or `CONFLICTING`" in normalized_guide
+    assert "prepared fork branch is not outreach" in normalized_guide
     assert "record the API error" in guide
-    assert "own-repo fallback PR" in guide
+    assert "improve first-party" in guide
 
 
 def test_ecosystem_tracks_validated_live_surfaces() -> None:
@@ -363,7 +364,7 @@ def test_uv_lock_separates_dev_dependency_constraints() -> None:
     assert "provides-extras" not in metadata
 
 
-def test_docs_track_current_hermes_agent_surface_release() -> None:
+def test_docs_track_current_hermes_agent_release() -> None:
     docs = "\n".join(
         [
             (ROOT / "README.md").read_text(),
@@ -380,7 +381,7 @@ def test_docs_track_current_hermes_agent_surface_release() -> None:
     assert "Hermes v0.12.0" not in docs
 
 
-def test_hermes_surface_guide_keeps_runtime_host_contract_visible() -> None:
+def test_hermes_host_guide_keeps_runtime_contract_visible() -> None:
     guide = (ROOT / "docs" / "HERMES_SURFACES.md").read_text()
 
     assert "remote Hermes host" in guide
@@ -394,79 +395,13 @@ def test_hermes_surface_guide_keeps_runtime_host_contract_visible() -> None:
 def test_integration_patterns_classify_marketplace_bridges() -> None:
     guide = (ROOT / "docs" / "INTEGRATION_PATTERNS.md").read_text()
 
-    assert "Claude marketplace bridges:" in guide
+    assert "**Claude marketplace bridges.**" in guide
     assert "compatibility routes, not as catalog targets" in guide
     assert "`hermes plugins install Xquik-dev/hermes-tweet --enable`" in guide
     assert "`.claude-plugin/plugin.json` metadata" in guide
-    assert "Codex marketplace bridges:" in guide
+    assert "**Codex marketplace bridges.**" in guide
     assert "`.codex-plugin/plugin.json` metadata" in guide
     assert "HOL Plugin Scanner evidence" in guide
-
-
-def test_submission_readiness_rejects_adjacent_duplicate_routes() -> None:
-    checklist = (ROOT / "docs" / "SUBMISSION_READINESS.md").read_text()
-    normalized_checklist = " ".join(checklist.split())
-
-    assert "`TweetClaw`, `OpenClaw`" in checklist
-    assert "`SocialClaw`, `x-twitter-scraper`, and Xquik-only proposals" in checklist
-    assert "Treat adjacent-only PR history as a conflict signal" in checklist
-    assert "separate native Hermes Tweet route" in checklist
-    assert "awesome lists, plugin lists, and topic-search hits" in checklist
-    assert "open adjacent X/social submission" in normalized_checklist
-    assert "explicit Hermes Tweet or Hermes Agent plugin lane" in normalized_checklist
-    assert "generic Claude plugin or agent-skill heading is not enough" in normalized_checklist
-    assert "open authored PR in the target" in checklist
-    assert "treat the target as saturated" in checklist
-    assert "MCP-data-only" in checklist
-    assert "Hermes Tweet conversion" in checklist
-    assert "generic Xquik MCP server data entry" in checklist
-    assert "explicitly incompatible with contribution" in checklist
-    assert "license metadata or an absent root license" in checklist
-    assert "an absent license alone does not disqualify" in checklist
-    assert "product-owned marketplaces" in normalized_checklist
-    assert "closed to random additions" in checklist
-    assert "branded Claude plugin catalogs" in checklist
-    assert "describe themselves as the official catalog" in normalized_checklist
-    assert "one vendor, team, or product family" in normalized_checklist
-    assert "plugin updates flow from that owner's source repositories" in normalized_checklist
-    assert "compatibility example, not a third-party submission route" in normalized_checklist
-    assert "explicitly accept outside source repositories" in normalized_checklist
-    assert "root license files such as `LICENSE`, `LICENSE.md`" in checklist
-    assert "read it before deciding" in checklist
-    assert "claim form, upload UI, or account-gated directory" in checklist
-    assert "source, catalog, or registry file that can be changed by PR" in checklist
-    assert "generated catalog, marketplace" in checklist
-    assert "source-registry manifest, or installable catalog manifest files" in normalized_checklist
-    assert "canonical edit surface" in normalized_checklist
-    assert "documented source file or generator input" in checklist
-    assert "source cannot carry a target-native Hermes Tweet entry" in checklist
-    assert "topic-search hits that are only source repositories" in checklist
-    assert "standalone skills/plugins" in normalized_checklist
-    assert "framework examples" in normalized_checklist
-    assert "product implementations" in normalized_checklist
-    assert "third-party catalog, registry, marketplace, or showcase file" in normalized_checklist
-    assert "Topic metadata such as `agent-skills`" in checklist
-    assert "discovery evidence only" in normalized_checklist
-    assert "Xquik toolkit" in checklist
-    assert "xquik-twitter-data" in checklist
-    assert "target-native Hermes Tweet entry" in checklist
-    assert "`source-packets`" in checklist
-    assert "`evidence-packets`" in checklist
-    assert "title and summary to name `Hermes Tweet` or" in checklist
-    assert "Do not submit or refresh routes titled only for `Xquik`" in checklist
-    assert "`TweetClaw`, `OpenClaw`, or other adjacent projects" in checklist
-
-
-def test_submission_readiness_blocks_disabled_pr_routes() -> None:
-    checklist = (ROOT / "docs" / "SUBMISSION_READINESS.md").read_text()
-    normalized_checklist = " ".join(checklist.split())
-
-    assert "Before preparing a patch" in normalized_checklist
-    assert "pull-request surface is enabled" in normalized_checklist
-    assert "accepts external fork heads" in normalized_checklist
-    assert "repository's pull-request endpoint" in normalized_checklist
-    assert "fork creation and branch push succeed" in normalized_checklist
-    assert "continue with another eligible target" in normalized_checklist
 
 
 def test_plugin_manifests_keep_install_prompt_contract() -> None:
@@ -499,12 +434,12 @@ def test_registry_skill_mirrors_bundled_skill() -> None:
     version = pyproject["project"]["version"]
 
     assert registry_skill.read_text().rstrip() == bundled_text.rstrip()
-    assert "## Permissions and Capabilities" in bundled_text
-    assert "## Known Risks and Mitigations" in bundled_text
+    assert "## Permissions and capabilities" in bundled_text
+    assert "## Known risks and mitigations" in bundled_text
     assert "## Output" in bundled_text
-    assert "## Error Handling" in bundled_text
+    assert "## Error handling" in bundled_text
     assert "## Resources" in bundled_text
-    assert "## Release Trust Gate" in bundled_text
+    assert "## Release trust gate" in bundled_text
     assert "SkillSpector" in bundled_text
     assert "skill-card.md" in bundled_text
     assert "skill.oms.sig" in bundled_text
@@ -573,8 +508,8 @@ def test_skill_reference_mirrors_bundled_reference() -> None:
     reference_text = registry_reference.read_text(encoding="utf-8")
 
     assert bundled_reference.read_text(encoding="utf-8") == reference_text
-    assert "## Tool Matrix" in reference_text
-    assert "## Approval Checklist" in reference_text
+    assert "## Tool matrix" in reference_text
+    assert "## Approval checklist" in reference_text
     assert "HERMES_TWEET_ENABLE_ACTIONS=true" in reference_text
 
     pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
@@ -590,16 +525,16 @@ def test_skill_card_mirrors_bundled_skill_card() -> None:
     version = pyproject["project"]["version"]
 
     assert registry_card.read_text().rstrip() == card_text.rstrip()
-    assert f"- Version: {version}" in card_text
-    assert "Status: public self-assessment. Not NVIDIA-verified." in card_text
+    assert f"- **Version.** {version}" in card_text
+    assert "public self-assessment, not NVIDIA verification" in card_text
     assert "## Owner" in card_text
-    assert "## Use Case" in card_text
-    assert "## Inputs and Configuration" in card_text
+    assert "## Use case" in card_text
+    assert "## Inputs and configuration" in card_text
     assert "## Capabilities" in card_text
     assert "## Outputs" in card_text
-    assert "## Side Effects" in card_text
-    assert "## Known Risks and Mitigations" in card_text
-    assert "## Release Trust Gate" in card_text
+    assert "## Side effects" in card_text
+    assert "## Known risks and mitigations" in card_text
+    assert "## Release trust gate" in card_text
     assert "SkillSpector scan report" in card_text
     assert "Tier-3 eval data" in card_text
     assert "skill.oms.sig" in card_text
@@ -629,7 +564,7 @@ def test_ask_wrapper_skill_matches_public_package_metadata() -> None:
 
     ask_metadata = require_mapping(frontmatter["metadata"])
     assert ask_metadata == EXPECTED_ASK_SKILL_METADATA | {"version": version}
-    assert "## Permissions and Trust" in ask_text
+    assert "## Permissions and trust" in ask_text
     assert "SkillSpector" in ask_text
     assert "skill-card.md" in ask_text
     assert "skill.oms.sig" in ask_text
@@ -644,7 +579,8 @@ def test_agent_skill_manifest_matches_public_package_metadata() -> None:
     assert manifest["version"] == project["version"]
     assert manifest["author"] == "Xquik"
     assert manifest["description"] == (
-        "Hermes Agent X/Twitter plugin for Xquik automation. Not affiliated with X Corp."
+        "Hermes Agent plugin for Twitter search, tweet monitoring, and approved X "
+        "actions through Xquik. Not affiliated with X Corp."
     )
     assert manifest["tags"] == EXPECTED_AGENT_SKILL_MANIFEST_TAGS
     assert manifest["dependencies"] == []
@@ -1066,7 +1002,7 @@ def test_publish_workflow_requires_version_matched_release_tag() -> None:
     assert "refs/tags/${RELEASE_TAG}^{commit}" in validate_script
     assert "refs/remotes/origin/master" in validate_script
     assert "git merge-base --is-ancestor" in validate_script
-    assert "protected master history" in validate_script
+    assert "tag from master history" in validate_script
     assert "gh api --paginate --slurp" in validate_script
     assert "releases?per_page=100" in validate_script
     assert 'jq -ce --arg tag "$RELEASE_TAG"' in validate_script

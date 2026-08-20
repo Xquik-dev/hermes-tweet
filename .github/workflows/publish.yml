@@ -184,11 +184,11 @@ jobs:
           test "$(jq -r '.tagName' <<<"$release_json")" = "$RELEASE_TAG"
           test "$(jq -r '.targetCommitish' <<<"$release_json")" = "$GITHUB_SHA"
           test "$tag_commit" = "$head_commit" || {
-            echo "Release tag must resolve to the checked-out commit."
+            echo "Release tag mismatch. Use a tag for the checked-out commit."
             exit 1
           }
           git merge-base --is-ancestor "$tag_commit" "$master_commit" || {
-            echo "Release tag must resolve to protected master history."
+            echo "Unprotected release tag. Use a tag from master history."
             exit 1
           }
 

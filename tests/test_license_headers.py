@@ -147,5 +147,7 @@ def test_main_rejects_arguments(capsys: pytest.CaptureFixture[str]) -> None:
     captured = capsys.readouterr()
 
     assert result == 1
-    assert captured.out == "check_license_headers.py does not accept arguments\n"
+    assert captured.out == (
+        "Arguments unsupported. Run check_license_headers.py without arguments.\n"
+    )
     assert captured.err == ""

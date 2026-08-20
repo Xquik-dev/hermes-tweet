@@ -1,9 +1,9 @@
-# Publication Checklist
+# Publication checklist
 
 Hermes Tweet is published as `hermes-tweet` on PyPI. Require PyPI and GitHub
 Releases to match protected source. Verify live versions before every release.
 
-## Before GitHub Publication
+## Before GitHub publication
 
 - [x] Set repository description from `docs/GITHUB_METADATA.md`.
 - [x] Add recommended GitHub topics from `docs/GITHUB_METADATA.md`.
@@ -11,7 +11,7 @@ Releases to match protected source. Verify live versions before every release.
 - [x] Enable secret scanning and push protection.
 - [x] Confirm branch protection requires CI.
 
-## Before PyPI Publication
+## Before PyPI publication
 
 - [x] Add the PyPI trusted publisher for `Xquik-dev/hermes-tweet`.
 - [x] Restrict the `pypi` environment to release tags matching `v*`.
@@ -25,7 +25,7 @@ Releases to match protected source. Verify live versions before every release.
 - [x] Verify PyPI metadata, README rendering, simple index visibility, and a
   fresh install.
 
-## After Publication
+## After publication
 
 - [x] Install from PyPI in a fresh environment.
 - [ ] Run `hermes plugins enable hermes-tweet`.
@@ -35,13 +35,13 @@ Releases to match protected source. Verify live versions before every release.
   `HERMES_TWEET_ENABLE_ACTIONS=true`.
 - [x] Confirm PyPI, piwheels, ClawHub, first-party docs, Context7, DeepWiki,
   and accepted ecosystem listings show current public metadata.
-- [x] Maintain accepted public ecosystem surfaces in `docs/ECOSYSTEM.md`.
+- [x] Maintain accepted public listings in `docs/ECOSYSTEM.md`.
 - [x] Use `docs/SUBMISSION_READINESS.md` before public skill, plugin, catalog,
   registry, awesome-list, or integration submissions.
 - [x] Keep Codex plugin metadata, root security policy, local icon, and scanner
   workflow ready for Codex catalog submissions.
 
-## Release Gate
+## Release gate
 
 Merge each version change through protected `master`. Then dispatch the
 `Publish` workflow from `master`. Set `release_ref` to the matching `v*` tag.
@@ -70,7 +70,7 @@ uv run --python 3.12 --group dev twine check dist/*
 actionlint .github/workflows/*.yml
 ```
 
-## Hermes Agent Compatibility Gate
+## Hermes Agent compatibility gate
 
 Before changing plugin registration, manifests, install docs, or release
 metadata, verify the current official Hermes Agent plugin docs and source:
@@ -91,13 +91,12 @@ uv run --python 3.12 --group dev python scripts/check_hermes_agent_compat.py
 If a locked Hermes Agent source SHA changes, review the official diff first,
 then update Hermes Tweet runtime, docs, tests, and the checker lock together.
 
-Latest reviewed locks from August 18, 2026: `hermes_cli/plugins.py`
-`9ef8e47d06901b978be25b16a2c7a2b6500f3f63`, `tools/registry.py`
+Latest reviewed locks from August 20, 2026: `hermes_cli/plugins.py`
+`2493d8f21eddc0617d04e9ee48812846086eade4`, `tools/registry.py`
 `081040911499f8bb7e5a947e9c85b5e459fd3dd0`, and
-`hermes_cli/plugins_cmd.py` `6f7446620ed341ab5b6f07f98018f28ccb6b89e3`.
+`hermes_cli/plugins_cmd.py` `912d93208d2169f2a51bff4dc8b6fed1dfd204c0`.
 
-Reviewed changes preserve manifest and registration APIs. They add entry-point
-capabilities, install-time security scans, and new isolated plugin hooks.
+Reviewed changes preserve manifest and registration APIs.
 
 Keep the runtime contract aligned with those sources:
 
@@ -119,7 +118,7 @@ Keep the runtime contract aligned with those sources:
   social listening, launch monitoring, support triage, research, audits, and
   controlled publishing.
 
-## Runtime Smoke Test
+## Runtime smoke test
 
 Use a local secret store or ephemeral environment variable. Never paste an API
 key into chat, commits, PRs, issues, or logs.
@@ -138,7 +137,7 @@ Expected result:
   explicitly enabled.
 - `/xstatus` and `/xtrends` are registered slash commands.
 
-## Manual Operator Actions
+## Manual operator actions
 
 Keep optional signed-in submissions, local-secret smoke tests, pending outreach,
 duplicate checks, and maintainer-blocked directory routes in private operator

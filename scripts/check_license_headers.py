@@ -71,7 +71,7 @@ def format_finding(finding: LicenseHeaderFinding) -> str:
 
 def main(argv: Sequence[str] | None = None) -> int:
     if argv:
-        print("check_license_headers.py does not accept arguments")
+        print("Arguments unsupported. Run check_license_headers.py without arguments.")
         return 1
 
     source_files = select_source_files()

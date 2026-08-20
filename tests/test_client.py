@@ -70,15 +70,15 @@ def test_request_validates_path(monkeypatch: pytest.MonkeyPatch) -> None:
 
     assert client.request("GET", "/bad") == {
         "success": False,
-        "error": "Path must start with /api/v1/",
+        "error": "Invalid path. Start it with /api/v1/",
     }
     assert client.request("GET", "/api/v1/account?x=1") == {
         "success": False,
-        "error": "Pass query parameters through the query object, not in the path.",
+        "error": "Query parameters misplaced. Pass them through the query object.",
     }
     assert client.request("GET", "https://xquik.com/api/v1/account") == {
         "success": False,
-        "error": "Path must start with /api/v1/",
+        "error": "Invalid path. Start it with /api/v1/",
     }
 
 
@@ -87,7 +87,7 @@ def test_request_requires_api_key(monkeypatch: pytest.MonkeyPatch) -> None:
 
     assert client.request("GET", "/api/v1/account") == {
         "success": False,
-        "error": "XQUIK_API_KEY is not configured.",
+        "error": "API key missing. Set XQUIK_API_KEY in the runtime environment.",
     }
 
 
@@ -245,7 +245,7 @@ def test_request_rejects_malformed_path(monkeypatch: pytest.MonkeyPatch) -> None
 
     assert client.request("GET", None) == {
         "success": False,
-        "error": "Path must start with /api/v1/",
+        "error": "Invalid path. Start it with /api/v1/",
     }
 
 
@@ -277,7 +277,7 @@ def test_request_rejects_binary_response(monkeypatch: pytest.MonkeyPatch) -> Non
 
     assert client.request("GET", "/api/v1/extractions/id/export") == {
         "success": False,
-        "error": "Binary response unavailable. Download it through the Xquik REST API.",
+        "error": "Binary response unavailable. Use the Xquik REST API to download it.",
         "status_code": 200,
         "content_type": "application/pdf",
     }
@@ -291,7 +291,7 @@ def test_request_returns_api_error(monkeypatch: pytest.MonkeyPatch) -> None:
 
     assert client.request("GET", "/api/v1/account") == {
         "success": False,
-        "error": "API request failed.",
+        "error": "API request failed. Review the status and response.",
         "status_code": 402,
         "response": {"error": "insufficient_credits"},
     }
@@ -305,7 +305,7 @@ def test_request_returns_http_error(monkeypatch: pytest.MonkeyPatch) -> None:
 
     assert client.request("GET", "/api/v1/account") == {
         "success": False,
-        "error": "network down",
+        "error": "Network request failed. Check the connection and retry.",
     }
 
 

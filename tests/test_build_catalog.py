@@ -213,7 +213,7 @@ def test_build_rejects_payment_metadata_without_a_valid_offer(tmp_path: Path) ->
 
     with pytest.raises(
         ValueError,
-        match="x-payment-info must include a valid first offer amount",
+        match=r"Invalid x-payment-info\. Add a valid first offer amount\.",
     ):
         build_catalog.build(source)
 

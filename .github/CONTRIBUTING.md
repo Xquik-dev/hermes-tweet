@@ -9,7 +9,7 @@ Thanks for improving Hermes Tweet.
 3. Run the full local quality gate from `AGENTS.md`.
 4. Keep public docs accurate and avoid private implementation details.
 
-## Pull Requests
+## Pull requests
 
 - Explain the user-facing behavior change.
 - Include tests for code changes.
