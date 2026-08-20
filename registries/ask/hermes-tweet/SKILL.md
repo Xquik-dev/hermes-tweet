@@ -1,7 +1,7 @@
 ---
 name: hermes-tweet
-description: Search Twitter/X, read tweet replies, look up users, monitor tweets, export followers, and gate X actions through Xquik. Not affiliated with X Corp.
-version: 0.1.12
+description: Search Twitter/X, read replies, find users, monitor accounts, export followers & gate X actions through Xquik. Not affiliated with X Corp.
+version: 0.1.13
 author: Xquik
 license: MIT
 tags:
@@ -12,7 +12,7 @@ tags:
   - social-media
   - automation
 metadata:
-  version: 0.1.12
+  version: 0.1.13
   author: Xquik
   repository: https://github.com/Xquik-dev/hermes-tweet
   plugin: hermes plugins install Xquik-dev/hermes-tweet --enable
@@ -65,12 +65,12 @@ read or action tools. Do not paste the key into chat.
 
 Use Hermes Tweet for:
 
-- scrape/search tweets or search Twitter/X
-- read tweet replies and tweet details
-- look up users and public profiles
-- monitor tweets or accounts
-- export followers and following lists
-- post tweets/replies, send DMs, or automate X actions after explicit approval
+- Search tweets or Twitter/X.
+- Read tweet replies and details.
+- Find users and public profiles.
+- Monitor tweets or accounts.
+- Export followers and following lists.
+- Post, reply, send DMs, or automate X after explicit approval.
 
 ## Choose a tool
 

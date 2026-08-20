@@ -13,8 +13,8 @@ Before reusing it for public submissions, validate the target with
 
 ## Description
 
-Hermes Agent plugin for Twitter search, tweet monitoring, follower exports, and
-approved X actions through Xquik. Not affiliated with X Corp.
+Hermes Agent plugin for Twitter search, monitoring, follower exports & approved
+X actions. Not affiliated with X Corp.
 
 ## Topics
 
@@ -39,16 +39,3 @@ social-media-api
 agent-skill
 python
 ```
-
-## SEO phrases
-
-- Hermes Agent Twitter plugin
-- Hermes Agent X plugin
-- Hermes X automation
-- Hermes Twitter automation
-- Xquik Hermes plugin
-- social media automation for AI agents
-- Hermes Agent social listening plugin
-- Hermes Agent launch monitoring
-- Hermes Agent support triage for X
-- Hermes Agent controlled X publishing

@@ -21,7 +21,7 @@ ROOT = Path(__file__).parents[1]
 
 def test_readme_endpoint_count_matches_bundled_catalog() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    match = re.search(r"- (\d+) agent-callable Xquik endpoints", readme)
+    match = re.search(r"Explore (\d+) OpenAPI-generated endpoints", readme)
 
     assert match is not None
     assert int(match.group(1)) == len(ENDPOINTS)
