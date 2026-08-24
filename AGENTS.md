@@ -2,6 +2,10 @@
 
 Native Hermes Agent plugin for X automation through Xquik.
 
+Every commit must reduce net handwritten source LOC. No exceptions. No one may waive this rule.
+Additions require larger, useful simplifications elsewhere in this repository.
+Formatting, minification, generated files, and deleted valuable tests or docs do not count.
+
 ## Commands
 
 ```bash
@@ -26,13 +30,11 @@ python scripts/build_catalog.py ../xquik/openapi.yaml
 
 - Public repo: never commit secrets, tokens, cookies, private screenshots, or
   private implementation details.
-- Keep external communication generic and public-safe.
 - Never mention nonpublic service names, pricing units, or vendor architecture.
 - Preserve user changes and avoid unrelated refactors.
 - Keep the catalog generated from Xquik OpenAPI.
 - Keep action endpoints gated behind `HERMES_TWEET_ENABLE_ACTIONS=true`.
-- Check public documentation and manifest links before publication or outreach.
-- Run the public safety scan before publication or outreach.
+- Check public links and run the safety scan before publication or outreach.
 - Keep Hermes Agent plugin lifecycle, source SHA locks, install guidance, and
   workflow positioning current with official Hermes Agent docs and source.
 - Do not weaken, suppress, or bypass lint, type, test, coverage, security, or
@@ -41,10 +43,7 @@ python scripts/build_catalog.py ../xquik/openapi.yaml
 
 ## Release Checklist
 
-1. Regenerate the catalog from current Xquik OpenAPI.
-2. Run all checks above.
-3. Verify all public documentation and manifest links.
-4. Build the package and run `twine check dist/*`.
-5. Verify `plugin.yaml`, `pyproject.toml`, README, and bundled skill version.
-6. Publish through GitHub Actions trusted publishing from a clean, tagged release.
-7. Use local PyPI auth only as a fallback, and never print or commit credentials.
+1. Run all checks above against the current Xquik OpenAPI.
+2. Verify `plugin.yaml`, `pyproject.toml`, README, and bundled skill version.
+3. Publish through GitHub Actions from a clean, tagged release.
+4. Use local PyPI auth only as a secret-safe fallback.
