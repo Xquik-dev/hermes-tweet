@@ -22,7 +22,6 @@ uv run --python 3.12 --group dev python scripts/check_hermes_agent_compat.py
 uv run --python 3.12 --group dev bash scripts/check_reproducible.sh
 uv run --python 3.12 --group dev python -m build
 uv run --python 3.12 --group dev twine check dist/*
-actionlint .github/workflows/*.yml
 python scripts/build_catalog.py ../xquik/openapi.yaml
 ```
 
@@ -40,10 +39,16 @@ python scripts/build_catalog.py ../xquik/openapi.yaml
 - Do not weaken, suppress, or bypass lint, type, test, coverage, security, or
   package checks.
 - Run the simplify skill after changing code.
+- Apply `/unslop` to every output: messages, PRs, docs, comments, and commit
+  messages.
+- Never use GitHub Actions and never use GitHub trusted publishing. Do not add
+  or extend workflow files; remove the existing ones once publishing runs from
+  a local release runner.
 
 ## Release Checklist
 
 1. Run all checks above against the current Xquik OpenAPI.
 2. Verify `plugin.yaml`, `pyproject.toml`, README, and bundled skill version.
-3. Publish through GitHub Actions from a clean, tagged release.
-4. Use local PyPI auth only as a secret-safe fallback.
+3. Publish from a clean, tagged release on a local or authorized release
+   runner, with the PyPI token read from the macOS Keychain inside the publish
+   command. Never print or commit credentials.
