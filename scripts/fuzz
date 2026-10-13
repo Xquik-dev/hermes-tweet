@@ -32,21 +32,23 @@ fi
   exit 1
 }
 export PATH="$HOME/.local/bin:$PATH"
-fuzz_python=(
-  uv run --no-project --python 3.13 --with atheris==3.1.0
-  --with-requirements .clusterfuzzlite/requirements.txt python
-)
-sanitizer="$("${fuzz_python[@]}" -c 'import atheris, pathlib; print(pathlib.Path(atheris.path()) / "asan_with_fuzzer.so")')"
+evidence="$(mktemp -d)"
+mkdir "$evidence/corpus"
+echo "Fuzz evidence is in $evidence"
+# The sanitizer runtime is preloaded into Python alone. Preloaded into uv, it can
+# crash uv before Python starts, so the interpreter comes from an environment made first.
+uv venv --quiet --python 3.13 "$evidence/venv"
+uv pip install --quiet --python "$evidence/venv" atheris==3.1.0 \
+  --requirement .clusterfuzzlite/requirements.txt
+fuzz_python="$evidence/venv/bin/python"
+sanitizer="$("$fuzz_python" -c 'import atheris, pathlib; print(pathlib.Path(atheris.path()) / "asan_with_fuzzer.so")')"
 [[ -f "$sanitizer" ]] || {
   echo "Atheris AddressSanitizer runtime is missing. Check the atheris install, then rerun." >&2
   exit 1
 }
 # A crashing sanitizer can print without end, so the log stops at 10 MB and the run fails.
 log_limit=10485760
-evidence="$(mktemp -d)"
-mkdir "$evidence/corpus"
-echo "Fuzz evidence is in $evidence"
 LD_PRELOAD="$sanitizer" ASAN_OPTIONS=detect_leaks=0:symbolize=1 PYTHONPATH="$PWD" \
-  "${fuzz_python[@]}" "$harness" "$evidence/corpus" \
+  "$fuzz_python" "$harness" "$evidence/corpus" \
   "-max_total_time=$seconds" -max_len=4096 -rss_limit_mb=2048 -timeout=60 "-artifact_prefix=$evidence/" 2>&1 |
   head -c "$log_limit" | tee "$evidence/run.log"
