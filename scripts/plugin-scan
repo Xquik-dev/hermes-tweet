@@ -8,8 +8,8 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-scanner_version="2.0.1116"
-scanner_sha256="40d40308484e49b438c6ef47a7794ab6aac617914447174f80fe4578911cdcb3"
+scanner_version="3.12.1"
+scanner_sha256="a9dcc88b156d1c1bde6e6ca3473b056efc9172335dd05fbe6a18c6a2655f9e64"
 
 workspace="$(mktemp -d "${TMPDIR:-/tmp}/hermes-tweet-plugin-scan.XXXXXX")"
 trap 'rm -rf -- "${workspace:?}"' EXIT
