@@ -52,6 +52,10 @@ PyPI. It compares the PyPI files with the local build. Only then it pushes the
 `bin/release-local --dry-run` previews a release. It uploads, tags, and
 releases nothing.
 
+PyPI has no trusted publisher for `hermes-tweet`. A maintainer's PyPI token is
+the only way it publishes. `bin/release-local` reads that token from the
+Keychain item that `PYPI_KEYCHAIN_SERVICE` names.
+
 Never create or publish the GitHub release manually.
 
 Run these checks before any new package release:
