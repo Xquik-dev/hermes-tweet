@@ -22,5 +22,9 @@ uv venv --quiet --python 3.12 "$workspace/venv"
 uv pip install --quiet --python "$workspace/venv" --no-deps --require-hashes \
   --requirement "$workspace/requirements.txt"
 uv pip install --quiet --python "$workspace/venv" "plugin-scanner==$scanner_version"
-"$workspace/venv/bin/plugin-scanner" scan . --format text --profile default \
+# The scanner and its dependencies are third-party code, so they run without
+# the maintainer's environment variables and with an empty home folder.
+mkdir "$workspace/home"
+env -i HOME="$workspace/home" PATH="$PATH" TMPDIR="$workspace" \
+  "$workspace/venv/bin/plugin-scanner" scan . --format text --profile default \
   --min-score 80 --fail-on-severity high --cisco-skill-scan auto

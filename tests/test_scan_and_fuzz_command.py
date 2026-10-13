@@ -19,7 +19,8 @@ STUB = r"""uv() {
  case "$1 $2" in
   'venv --quiet')
    mkdir -p "$5/bin"
-   printf '#!/bin/sh\necho "scanner $*" >> "$EVENTS"\nexit "$SCAN_EXIT"\n' > "$5/bin/plugin-scanner"
+   printf '#!/bin/sh\necho "scanner $*" >> "%s"\nenv >> "%s"\nexit %s\n' \
+    "$EVENTS" "$SCANNER_ENVIRONMENT" "$SCAN_EXIT" > "$5/bin/plugin-scanner"
    chmod +x "$5/bin/plugin-scanner"
    echo "venv $3 $4" >> "$EVENTS";;
   'pip install')
@@ -68,6 +69,8 @@ def run_script(
             **os.environ,
             "EVENTS": str(events),
             "SCAN_EXIT": scan_exit,
+            "SCANNER_ENVIRONMENT": str(tmp_path / "scanner-environment"),
+            "GITHUB_TOKEN": "isolated-fixture-token",
             "TMPDIR": str(tmp_path),
             "XQUIK_FUZZ_HOST": host,
         },
@@ -85,6 +88,11 @@ def test_plugin_scan_pins_the_scanner_and_returns_its_result(
     status, events, _ = run_script(tmp_path, "scripts/plugin-scan", [], "", scan_exit)
     assert status == int(scan_exit)
     assert events == SCAN
+    names = {
+        line.partition("=")[0]
+        for line in (tmp_path / "scanner-environment").read_text().splitlines()
+    }
+    assert names - {"PWD", "SHLVL", "_", "OLDPWD"} == {"HOME", "PATH", "TMPDIR"}
 
 
 @pytest.mark.parametrize(
