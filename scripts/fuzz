@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# SPDX-FileCopyrightText: 2026 Xquik Contributors
+# SPDX-License-Identifier: MIT
+#
+# Fuzzes the input normalization with Atheris and AddressSanitizer.
+# Usage: scripts/fuzz [seconds]
+# It runs for 60 seconds unless told otherwise. Pass 600 for the longer nightly run.
+# Atheris needs Linux x86_64. Elsewhere, set XQUIK_FUZZ_HOST to an authorized
+# Linux SSH runner, and the script copies the source there and runs on it.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+harness="fuzz/normalization_fuzzer.py"
+seconds="${1:-60}"
+[[ "$seconds" =~ ^[1-9][0-9]*$ ]] || {
+  echo "Invalid duration. Pass a whole number of seconds, such as 600." >&2
+  exit 2
+}
+
+if [[ -n "${XQUIK_FUZZ_HOST:-}" ]]; then
+  [[ "$XQUIK_FUZZ_HOST" =~ ^[a-zA-Z0-9][a-zA-Z0-9@._-]*$ ]] || {
+    echo "Invalid SSH host. Set XQUIK_FUZZ_HOST to a host name or user@host." >&2
+    exit 2
+  }
+  tar --exclude='__pycache__' -czf - hermes_tweet fuzz scripts/fuzz .clusterfuzzlite/requirements.txt |
+    ssh -- "$XQUIK_FUZZ_HOST" 'set -eu; umask 077; work=$(mktemp -d); echo "Remote fuzz source is $work" >&2; tar -xzf - -C "$work"; cd "$work"; unset XQUIK_FUZZ_HOST; bash scripts/fuzz '"$seconds"
+  exit
+fi
+
+[[ "$(uname -s) $(uname -m)" == "Linux x86_64" ]] || {
+  echo "Use Linux x86_64 or set XQUIK_FUZZ_HOST to an authorized Linux SSH runner." >&2
+  exit 1
+}
+export PATH="$HOME/.local/bin:$PATH"
+fuzz_python=(
+  uv run --no-project --python 3.13 --with atheris==3.1.0
+  --with-requirements .clusterfuzzlite/requirements.txt python
+)
+sanitizer="$("${fuzz_python[@]}" -c 'import atheris, pathlib; print(pathlib.Path(atheris.path()) / "asan_with_fuzzer.so")')"
+[[ -f "$sanitizer" ]] || {
+  echo "Atheris AddressSanitizer runtime is missing. Check the atheris install, then rerun." >&2
+  exit 1
+}
+evidence="$(mktemp -d)"
+mkdir "$evidence/corpus"
+echo "Fuzz evidence is in $evidence"
+LD_PRELOAD="$sanitizer" ASAN_OPTIONS=detect_leaks=0:symbolize=1 PYTHONPATH="$PWD" \
+  "${fuzz_python[@]}" "$harness" "$evidence/corpus" \
+  "-max_total_time=$seconds" -max_len=4096 -rss_limit_mb=2048 -timeout=60 "-artifact_prefix=$evidence/" 2>&1 |
+  tee "$evidence/run.log"

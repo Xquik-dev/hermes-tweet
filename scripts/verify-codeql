@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# SPDX-FileCopyrightText: 2026 Xquik Contributors
+# SPDX-License-Identifier: MIT
+#
+# Fails unless the SARIF report shows 1 complete CodeQL run with no findings.
+# A finding of any level fails.
+# Usage: scripts/verify-codeql <report.sarif>
+set -euo pipefail
+
+report="$1"
+extracted_files="py/diagnostics/successfully-extracted-files"
+
+fail() {
+  echo "$1" >&2
+  exit 1
+}
+
+# Succeeds when the jq filter is true for the report.
+holds() {
+  jq -e "$1" "$report" >/dev/null 2>&1
+}
+
+holds '.version == "2.1.0" and (.runs | type == "array" and length == 1)' ||
+  fail "Expected 1 SARIF 2.1.0 run."
+holds '.runs[0].results | type == "array"' || fail "CodeQL report lacks results."
+findings="$(jq '.runs[0].results | length' "$report")"
+if ((findings > 0)); then
+  jq -r '.runs[0].results[] | .locations[0].physicalLocation as $place |
+    "\(.ruleId) \($place.artifactLocation.uri // "unknown file"):\($place.region.startLine // 0) \(.message.text // "")"' \
+    "$report" >&2
+  fail "CodeQL found $findings finding(s). Fix each one."
+fi
+holds '.runs[0].invocations | type == "array" and length > 0' || fail "CodeQL report lacks invocations."
+holds 'all(.runs[0].invocations[]; .executionSuccessful == true)' || fail "CodeQL invocation failed."
+holds 'all(.runs[0].invocations[]; .toolExecutionNotifications | type == "array" and length > 0)' ||
+  fail "CodeQL report lacks diagnostics."
+holds 'all(.runs[0].invocations[].toolExecutionNotifications[]; .level == "none" or .level == "note")' ||
+  fail "CodeQL diagnostic needs review."
+extracted="$(jq --arg id "$extracted_files" \
+  '[.runs[0].invocations[].toolExecutionNotifications[] | select(.descriptor.id == $id)] | length' "$report")"
+((extracted > 0)) || fail "CodeQL did not confirm extracted Python files."
+echo "CodeQL finished with no findings. Extracted Python entries $extracted."

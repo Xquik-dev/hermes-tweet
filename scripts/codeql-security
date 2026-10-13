@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# SPDX-FileCopyrightText: 2026 Xquik Contributors
+# SPDX-License-Identifier: MIT
+#
+# Analyzes the Python source with CodeQL's security-extended queries and fails
+# on any finding.
+# Usage: scripts/codeql-security [--version]
+# --version checks the CodeQL CLI and prints its version without analyzing.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+minimum_version=2.27.0
+codeql="${XQUIK_CODEQL_BIN:-$(command -v codeql || true)}"
+[[ -x "$codeql" ]] || {
+  echo "CodeQL CLI is missing. Install it with brew install --cask codeql, then rerun." >&2
+  exit 1
+}
+command -v jq >/dev/null || {
+  echo "jq is missing. Install it with brew install jq, then rerun." >&2
+  exit 1
+}
+version="$("$codeql" version --format=terse)"
+[[ "$(printf '%s\n' "$minimum_version" "$version" | sort -V | head -n 1)" == "$minimum_version" ]] || {
+  echo "CodeQL CLI $version is older than $minimum_version. Run brew upgrade --cask codeql." >&2
+  exit 1
+}
+if [[ "${1:-}" == --version ]]; then
+  echo "$version"
+  exit
+fi
+echo "CodeQL CLI $version"
+report="$(mktemp -d "${TMPDIR:-/tmp}/hermes-tweet-codeql.XXXXXX")"
+trap 'rm -rf -- "${report:?}"' EXIT
+"$codeql" database create "$report/database" --language=python --build-mode=none \
+  --source-root="$PWD" --threads=2
+"$codeql" database analyze --download "$report/database" \
+  codeql/python-queries@1.8.10:codeql-suites/python-security-extended.qls \
+  --format=sarifv2.1.0 --output="$report/report.sarif" --threads=2
+bash scripts/verify-codeql "$report/report.sarif"

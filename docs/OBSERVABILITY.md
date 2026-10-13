@@ -29,13 +29,13 @@ commands.
 - Dashboard-only admin, billing, credit top-up, support-ticket, API-key, and
   account re-authentication endpoints are omitted from the catalog.
 
-## CI checks
+## Local checks
 
-Public CI runs workflow linting, formatting, linting, type checking, tests,
-coverage, security scan, dependency audit, package build, and package metadata
+`bin/check-local` runs formatting, linting, type checking, tests, coverage,
+security scans, dependency audit, package build, and package metadata
 validation.
-The release workflow uses current artifact actions so trusted-publishing runs
-stay ahead of GitHub Actions runtime deprecations.
+Maintainers run it before each merge. `bin/release-local` runs it again before
+each release.
 
 ## Runtime smoke test
 
