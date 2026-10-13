@@ -375,6 +375,16 @@ def test_plugin_manifests_keep_install_prompt_contract() -> None:
     ]
 
 
+def test_plugin_needs_nothing_installed_by_hermes() -> None:
+    project = require_mapping(tomllib.loads((ROOT / "pyproject.toml").read_text())["project"])
+
+    # Hermes resolves a plugin's whole pyproject.toml, dev group included, against its own
+    # exact pins, and it refused this plugin for that. An external runtime skips that step.
+    # It is honest only while httpx, which Hermes core ships, stays the 1 runtime dependency.
+    assert load_mapping(ROOT / "plugin.yaml")["python_runtime"] == "external"
+    assert project["dependencies"] == ["httpx>=0.28.1,<0.29"]
+
+
 def test_registry_skill_mirrors_bundled_skill() -> None:
     bundled_skill = ROOT / "hermes_tweet" / "skills" / "hermes-tweet" / "SKILL.md"
     registry_skill = ROOT / "skills" / "hermes-tweet" / "SKILL.md"

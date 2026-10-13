@@ -26,10 +26,13 @@ hermes plugins install Xquik-dev/hermes-tweet --enable
 Hermes scans plugins during install and update. Review any warning before
 continuing. A dangerous verdict blocks installation or disables an update.
 
-Or install the PyPI package into Hermes:
+Hermes installs no extra Python package for this plugin. Hermes core already
+ships `httpx`, its only dependency.
+
+If you manage the Hermes Python environment yourself, add the `hermes-tweet`
+PyPI package to it. Then enable the plugin:
 
 ```bash
-uv pip install --python ~/.hermes/hermes-agent/venv/bin/python hermes-tweet
 hermes plugins enable hermes-tweet
 ```
 

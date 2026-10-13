@@ -18,10 +18,13 @@ hermes plugins enable hermes-tweet
 hermes plugins list
 ```
 
-Install the published Python package into the Hermes Python environment:
+Hermes installs no extra Python package for this plugin. Hermes core already
+ships `httpx`, its only dependency.
+
+If you manage the Hermes Python environment yourself, add the published Python
+package to it. Then enable the plugin:
 
 ```bash
-uv pip install --python ~/.hermes/hermes-agent/venv/bin/python hermes-tweet
 hermes plugins enable hermes-tweet
 ```
 

@@ -109,6 +109,8 @@ Keep the runtime contract aligned with those sources:
 - Tool handlers accept future Hermes context keyword arguments, catch
   exceptions, and return JSON strings.
 - Bundled skills continue to register through `ctx.register_skill`.
+- `plugin.yaml` declares `python_runtime: external`, and `httpx` stays the only
+  runtime dependency, so Hermes admits the plugin without a dependency step.
 - Install docs explain that user and PyPI entry-point plugins are opt-in and
   need `--enable`, `hermes plugins enable hermes-tweet`, or an explicit
   `plugins.enabled` entry.
