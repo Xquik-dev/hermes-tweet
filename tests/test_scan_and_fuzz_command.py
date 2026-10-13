@@ -46,8 +46,8 @@ export -f uv uname ssh
 runner=$1; shift
 bash "$runner" "$@"
 """
-SCANNER = "plugin-scanner==2.0.1116"
-DIGEST = "40d40308484e49b438c6ef47a7794ab6aac617914447174f80fe4578911cdcb3"
+SCANNER = "plugin-scanner==3.12.1"
+DIGEST = "a9dcc88b156d1c1bde6e6ca3473b056efc9172335dd05fbe6a18c6a2655f9e64"
 SCANNED = (
     "scanner scan . --format text --profile default "
     "--min-score 80 --fail-on-severity high --cisco-skill-scan auto"
