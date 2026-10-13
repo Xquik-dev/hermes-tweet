@@ -19,10 +19,14 @@ if TYPE_CHECKING:
 ROOT = Path(__file__).parents[1]
 HTTP_BAD_REQUEST = 400
 HTTP_FORBIDDEN = 403
+HTTP_TOO_MANY_REQUESTS = 429
 HTTP_METHOD_NOT_ALLOWED = 405
 HTTP_UNAUTHORIZED = 401
 PUBLIC_LINK_FILES = PUBLIC_SURFACE_FILES
 AUTHENTICATED_PUBLIC_URLS = frozenset({"https://xquik.com/mcp"})
+# A host that answers with one of these is up and refuses this scanner.
+# Neither answer says the link is dead.
+SCANNER_REFUSALS = frozenset({HTTP_FORBIDDEN, HTTP_TOO_MANY_REQUESTS})
 TRAILING_URL_PUNCTUATION = ".,;:!?)'"
 URL_PATTERN = re.compile(r'https?://[^\s\]\\)<>"`]+')
 USER_AGENT = "HermesTweetLinkCheck/1.0"
@@ -65,7 +69,7 @@ def check_public_url(client: httpx.Client, url: str) -> LinkFailure | None:
             continue
 
         status_code = response.status_code
-        if status_code < HTTP_BAD_REQUEST or status_code == HTTP_FORBIDDEN:
+        if status_code < HTTP_BAD_REQUEST or status_code in SCANNER_REFUSALS:
             return None
         if status_code == HTTP_UNAUTHORIZED and url in AUTHENTICATED_PUBLIC_URLS:
             challenge = response.headers.get("www-authenticate", "")

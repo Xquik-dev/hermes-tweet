@@ -7,12 +7,10 @@ import importlib.util
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import TYPE_CHECKING, Any
+from typing import Any
 
 import httpx
-
-if TYPE_CHECKING:
-    import pytest
+import pytest
 
 ROOT = Path(__file__).parents[1]
 SCRIPTS_DIR = ROOT / "scripts"
@@ -230,8 +228,9 @@ def test_check_public_url_reports_last_request_error() -> None:
     assert client.requests == [("HEAD", "https://example.com"), ("GET", "https://example.com")]
 
 
-def test_check_public_url_accepts_forbidden_links() -> None:
-    client = FakeClient([403])
+@pytest.mark.parametrize("status", [403, 429])
+def test_check_public_url_accepts_a_live_host_that_refuses_the_scanner(status: int) -> None:
+    client = FakeClient([status])
 
     failure = check_public_links.check_public_url(client, "https://example.com/private")
 
