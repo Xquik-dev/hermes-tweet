@@ -71,6 +71,8 @@ fi
 step "Reading the version from pyproject.toml."
 version="$(uv version --short)"
 tag="v$version"
+notes="$(awk -v heading="## $version" '$0 == heading { found = 1; next } found && /^## / { exit } found { print }' CHANGELOG.md)"
+[[ "$notes" =~ [^[:space:]] ]] || fail "Add a ## $version section to CHANGELOG.md, then rerun."
 
 step "Checking that origin has no $tag tag."
 tag_status=0
@@ -166,8 +168,8 @@ step "Creating annotated tag $tag at $revision and pushing it to origin."
 git tag -a "$tag" -m "Release $version" "$revision"
 git push origin "refs/tags/$tag"
 
-step "Creating GitHub release $tag with both distributions and generated notes."
-gh release create "$tag" "${files[@]}" --repo "$repository" --verify-tag --title "$tag" --generate-notes --latest ||
+step "Creating GitHub release $tag with both distributions and the CHANGELOG.md section."
+printf '%s\n' "$notes" | gh release create "$tag" "${files[@]}" --repo "$repository" --verify-tag --title "$tag" --notes-file - --latest ||
   fail "Tag $tag is on origin, but the GitHub release failed. Create it with gh release create $tag --verify-tag."
 
 echo "Released $package $version as $tag."
