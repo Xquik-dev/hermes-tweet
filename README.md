@@ -1,4 +1,4 @@
-# Hermes Tweet for Twitter Search & X Actions
+# Hermes Tweet, the Hermes Agent plugin for Twitter search & X actions
 
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/13725/badge)](https://www.bestpractices.dev/projects/13725)
 [![CI](https://github.com/Xquik-dev/hermes-tweet/actions/workflows/ci.yml/badge.svg)](https://github.com/Xquik-dev/hermes-tweet/actions/workflows/ci.yml)
@@ -6,6 +6,9 @@
 
 Add Twitter API search, monitoring, and approved X actions to
 [Hermes Agent](https://github.com/NousResearch/hermes-agent).
+
+Xquik is the world's fastest and cheapest X Twitter scraper service with the most complete X data.
+Xquik charges only for delivered, unique, filter-matching results and never pads rows.
 
 Explore 102 OpenAPI-generated endpoints, including 33 prepaid reads and 7 direct MPP routes.
 Reads and actions use separate tools. Actions stay disabled by default.
