@@ -59,7 +59,8 @@ gh() {
    [ "$3 ${4##*/} ${5##*/}" = "v1.2.3 $RELEASE_FILES" ] || exit 99
    shift 5
    [ "$*" = "--repo Xquik-dev/hermes-tweet $RELEASE_OPTIONS" ] || exit 99
-   record "release v1.2.3";;
+   record "release v1.2.3"
+   cat > "$RELEASE_NOTES";;
   *) exit 99;;
  esac
 }
@@ -106,7 +107,11 @@ NO_ITEM_NAME = (
     "release-local: PYPI_KEYCHAIN_SERVICE is unset. "
     "Set it to the Keychain item that holds the PyPI token, then run bin/release-local again."
 )
+NOTES = "# Changelog\n\n## 1.2.3\n\n- Added.\n\n"
+OLD_NOTES = "## 1.2.2\n\n- Old.\n"
+NO_NOTES = "release-local: Add a ## 1.2.3 section to CHANGELOG.md, then rerun."
 REFUSALS: list[tuple[list[str], str, str, tuple[int, str]]] = [
+    ([], "no-notes", "404", (1, NO_NOTES)),
     ([], "dirty", "404", (1, "release-local: Commit or remove local changes, then rerun.")),
     (
         ["--dry-run"],
@@ -138,8 +143,10 @@ def run_release(
     checks = project / "bin/check-local"
     checks.write_text(CHECKS)
     checks.chmod(0o755)
-    events = tmp_path / "events"
+    (project / "CHANGELOG.md").write_text(OLD_NOTES if case == "no-notes" else NOTES + OLD_NOTES)
+    events, notes = tmp_path / "events", tmp_path / "notes"
     events.touch()
+    notes.touch()
     environment = {
         key: value for key, value in os.environ.items() if key != "PYPI_KEYCHAIN_SERVICE"
     }
@@ -150,7 +157,8 @@ def run_release(
         RELEASE_UPLOADED="other" if case == "mismatch" else "fixture",
         RELEASE_RETRY_SECONDS="0",
         RELEASE_FILES="hermes_tweet-1.2.3-py3-none-any.whl hermes_tweet-1.2.3.tar.gz",
-        RELEASE_OPTIONS="--verify-tag --title v1.2.3 --generate-notes --latest",
+        RELEASE_OPTIONS="--verify-tag --title v1.2.3 --notes-file - --latest",
+        RELEASE_NOTES=str(notes),
     )
     if service is not None:
         environment["PYPI_KEYCHAIN_SERVICE"] = service
@@ -164,6 +172,8 @@ def run_release(
     output = result.stdout + result.stderr
     assert "isolated-fixture-token" not in output
     assert PUBLISHER not in output
+    released = "release v1.2.3" in events.read_text().splitlines()
+    assert notes.read_text() == ("\n- Added.\n" if released else "")
     return result.returncode, events.read_text().splitlines(), output.splitlines()[-1]
 
 

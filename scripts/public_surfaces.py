@@ -31,6 +31,7 @@ PUBLIC_SURFACE_FILES = (
     ".codex-plugin/plugin.json",
     ".codexignore",
     ".dockerignore",
+    "CHANGELOG.md",
     "CODE_OF_CONDUCT.md",
     "README.md",
     "SECURITY.md",
