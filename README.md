@@ -1,7 +1,6 @@
 # Hermes Tweet for Twitter Search & X Actions
 
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/13725/badge)](https://www.bestpractices.dev/projects/13725)
-[![CI](https://github.com/Xquik-dev/hermes-tweet/actions/workflows/ci.yml/badge.svg)](https://github.com/Xquik-dev/hermes-tweet/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/hermes-tweet.svg)](https://pypi.org/project/hermes-tweet/)
 
 Add Twitter API search, monitoring, and approved X actions to
@@ -27,10 +26,13 @@ hermes plugins install Xquik-dev/hermes-tweet --enable
 Hermes scans plugins during install and update. Review any warning before
 continuing. A dangerous verdict blocks installation or disables an update.
 
-Or install the PyPI package into Hermes:
+Hermes installs no extra Python package for this plugin. Hermes core already
+ships `httpx`, its only dependency.
+
+If you manage the Hermes Python environment yourself, add the `hermes-tweet`
+PyPI package to it. Then enable the plugin:
 
 ```bash
-uv pip install --python ~/.hermes/hermes-agent/venv/bin/python hermes-tweet
 hermes plugins enable hermes-tweet
 ```
 

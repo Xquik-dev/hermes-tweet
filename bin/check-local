@@ -1,0 +1,163 @@
+#!/usr/bin/env bash
+# SPDX-FileCopyrightText: 2026 Xquik Contributors
+# SPDX-License-Identifier: MIT
+#
+# Runs every repository check in order and stops at the first failure.
+# Usage: bin/check-local [--no-status]
+# CodeQL and jq are mandatory, so install them with brew install --cask codeql
+# and brew install jq.
+# When the tree is clean and GitHub has HEAD, the result is posted to HEAD
+# as the xquik-local-checks commit status, through the gh login of whoever
+# runs this script. The status text lists only the checks that passed in
+# this run. --no-status skips posting.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+repository="Xquik-dev/hermes-tweet"
+status_context="xquik-local-checks"
+python_version="3.12"
+
+post_commit_status=true
+for argument in "$@"; do
+  case "$argument" in
+    --no-status) post_commit_status=false ;;
+    *)
+      echo "check-local: unknown option $argument. Use --no-status or no option." >&2
+      exit 2
+      ;;
+  esac
+done
+
+status_commit=""
+if ! $post_commit_status; then
+  echo "==> Commit status not posted because --no-status was passed."
+elif ! command -v gh >/dev/null; then
+  echo "==> Commit status not posted because the GitHub CLI is not installed."
+elif [[ -n "$(git status --porcelain)" ]]; then
+  echo "==> Commit status not posted because the tree has uncommitted changes."
+elif ! gh api --silent "repos/$repository/commits/$(git rev-parse HEAD)" >/dev/null 2>&1; then
+  echo "==> Commit status not posted because GitHub does not have HEAD, or gh is signed out. Push first."
+else
+  status_commit="$(git rev-parse HEAD)"
+fi
+
+# Posts the commit status. A failed post prints a warning and keeps the check result.
+post_status() {
+  local state="$1" description="${2:0:139}"
+  gh api --silent "repos/$repository/statuses/$status_commit" \
+    -f state="$state" -f context="$status_context" -f description="$description" >/dev/null 2>&1 ||
+    echo "check-local: could not post the $state $status_context status. Run gh auth status." >&2
+}
+
+workspace="$(mktemp -d "${TMPDIR:-/tmp}/hermes-tweet-check-local.XXXXXX")"
+current_check="Setup"
+passed=()
+summary=""
+
+on_exit() {
+  local status=$?
+  if [[ -n "$status_commit" ]]; then
+    if ((status == 0)) && [[ -n "$summary" ]]; then
+      post_status success "Passed $summary"
+    else
+      post_status failure "Failed at $current_check."
+    fi
+  fi
+  rm -rf -- "${workspace:?}"
+}
+trap on_exit EXIT
+
+if [[ -n "$status_commit" ]]; then
+  echo "==> Posting a pending $status_context status to ${status_commit:0:12}."
+  post_status pending "Running lint, types, safety, tests, audit, build, plugin scan & CodeQL."
+fi
+
+# A missing or outdated CodeQL CLI fails here, before the slower checks run.
+current_check="CodeQL CLI"
+codeql_version="$(bash scripts/codeql-security --version)"
+
+# Runs 1 check and records its label for the status. On failure, prints the
+# check name and the next step, then exits. An empty label records nothing.
+run_check() {
+  local label="$1" name="$2" next_step="$3"
+  shift 3
+  current_check="$name"
+  echo "==> $name"
+  "$@" || {
+    local status=$?
+    echo "check-local: $name failed. $next_step" >&2
+    exit "$status"
+  }
+  [[ -z "$label" ]] || passed+=("$label")
+}
+
+# Runs a command on Python 3.12, in an environment made for this run.
+on_python() {
+  UV_PYTHON="$python_version" UV_PROJECT_ENVIRONMENT="$workspace/venv" "$@"
+}
+
+run_locked() {
+  on_python uv run --no-sync "$@"
+}
+
+# The checker sends its token to every host it reads, so it runs without one.
+check_compatibility() {
+  (
+    unset GITHUB_TOKEN GH_TOKEN
+    run_locked python scripts/check_hermes_agent_compat.py
+  )
+}
+
+run_tests() {
+  run_locked pytest --cov=hermes_tweet --cov=tests --cov-report=term-missing --cov-fail-under=100 2>&1 |
+    tee "$workspace/tests.log"
+}
+
+# Shell functions run without errexit inside run_check, so this one chains its commands with &&.
+build_and_check_metadata() {
+  SOURCE_DATE_EPOCH=946684800 run_locked python -m build --outdir "$workspace/dist" &&
+    run_locked twine check "$workspace"/dist/*
+}
+
+run_check "" "Install locked dependencies on Python $python_version" \
+  "Install uv and check network access, or update uv.lock, then rerun." \
+  on_python uv sync --locked --group dev
+run_check "format" "Format check" \
+  "Run uv run ruff format . to repair the files listed above." run_locked ruff format --check .
+run_check "lint" "Lint" "Fix the Ruff findings above." run_locked ruff check .
+run_check "types" "Type check" "Fix the basedpyright errors above." run_locked basedpyright
+run_check "compatibility" "Hermes Agent compatibility" \
+  "Review the Hermes Agent changes named above, then update the lock in scripts/check_hermes_agent_compat.py." \
+  check_compatibility
+run_check "safety" "Public safety scan" \
+  "Rewrite the text named above so it describes public behavior only." \
+  run_locked python scripts/check_public_safety.py
+run_check "licenses" "License header check" \
+  "Add the SPDX notices to the files named above." run_locked python scripts/check_license_headers.py
+run_check "" "Tests with 100% coverage" "Fix the failing tests or the coverage gaps above." run_tests
+test_summary="$(sed -nE 's/^=+ ([0-9]+ passed).*/\1/p' "$workspace/tests.log" | tail -n 1)"
+passed+=("tests${test_summary:+ ($test_summary)}")
+run_check "Bandit" "Security scan with Bandit" \
+  "Fix the Bandit findings above." run_locked bandit -c pyproject.toml -r hermes_tweet scripts fuzz
+run_check "audit" "Dependency audit" \
+  "Upgrade each dependency named above in uv.lock." run_locked pip-audit
+run_check "" "Reproducible package" \
+  "Fix the reproducibility or package content error above." on_python bash scripts/check_reproducible.sh
+run_check "build" "Package build and metadata" \
+  "Fix the build or metadata error above." build_and_check_metadata
+run_check "plugin scan" "Plugin scan with a minimum score of 80" \
+  "Fix the scanner findings above, then rerun." bash scripts/plugin-scan
+run_check "CodeQL $codeql_version" "Static analysis with CodeQL $codeql_version security-extended queries" \
+  "Fix the CodeQL findings above, then rerun." bash scripts/codeql-security
+
+echo "==> Fuzzing runs separately, because bash scripts/fuzz needs Linux x86_64 or XQUIK_FUZZ_HOST."
+current_check="Final tree check"
+if [[ -n "$status_commit" ]]; then
+  [[ "$(git rev-parse HEAD)" == "$status_commit" && -z "$(git status --porcelain)" ]] || {
+    echo "check-local: the tree changed during the checks. Commit or remove the changes, then rerun." >&2
+    exit 1
+  }
+fi
+printf -v joined '%s, ' "${passed[@]}"
+summary="${joined%, }."
+echo "All local checks passed. They were $summary"

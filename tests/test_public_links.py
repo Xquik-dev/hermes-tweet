@@ -94,7 +94,6 @@ def test_public_link_scan_includes_github_community_docs() -> None:
         ".github/ISSUE_TEMPLATE/feature_request.md",
         ".github/PULL_REQUEST_TEMPLATE.md",
         ".github/SECURITY.md",
-        "AGENTS.md",
         "CODE_OF_CONDUCT.md",
     }
 
@@ -105,9 +104,9 @@ def test_public_link_scan_includes_github_repository_config() -> None:
     expected_files = {
         ".github/FUNDING.yml",
         ".github/dependabot.yml",
-        ".github/workflows/ci.yml",
-        ".github/workflows/clusterfuzzlite.yml",
-        ".github/workflows/publish.yml",
+        "bin/check-local",
+        "bin/release-local",
+        "scripts/plugin-scan",
         ".clusterfuzzlite/Dockerfile",
         ".clusterfuzzlite/build.sh",
         ".clusterfuzzlite/project.yaml",

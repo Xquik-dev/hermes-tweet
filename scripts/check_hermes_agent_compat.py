@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import os
 import sys
 from dataclasses import dataclass
@@ -14,7 +15,11 @@ if TYPE_CHECKING:
     from collections.abc import Sequence
 
 USER_AGENT: Final = "HermesTweetHermesAgentCompat/1.0"
-GITHUB_CONTENT_URL: Final = "https://api.github.com/repos/NousResearch/hermes-agent/contents"
+LATEST_RELEASE_URL: Final = "https://api.github.com/repos/NousResearch/hermes-agent/releases/latest"
+SOURCE_URL: Final = "https://raw.githubusercontent.com/NousResearch/hermes-agent"
+# The lock below was reviewed against this Hermes Agent release.
+REVIEWED_RELEASE: Final = "v0.21.7"
+DEVELOPMENT_BRANCH: Final = "main"
 DOC_TIMEOUT_SECONDS: Final = 30.0
 
 
@@ -30,6 +35,13 @@ class SourceCheck:
     path: str
     expected_sha: str
     required_terms: tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class CorePinCheck:
+    path: str
+    required_pin: str
+    next_step: str
 
 
 @dataclass(frozen=True)
@@ -69,7 +81,7 @@ PAGE_CHECKS: Final = (
 SOURCE_CHECKS: Final = (
     SourceCheck(
         path="hermes_cli/plugins.py",
-        expected_sha="b88640df9abb13a52d4eb9aa2cfee9ca11d66847",
+        expected_sha="a652179cd4a7a3ac04fe7eb2a0377de6a6dfbc58",
         required_terms=(
             "ENTRY_POINTS_GROUP",
             "discover_entrypoint_manifests",
@@ -78,38 +90,93 @@ SOURCE_CHECKS: Final = (
             "HERMES_ENABLE_PROJECT_PLUGINS",
             "HERMES_SAFE_MODE",
             "def register_tool",
-            "def register_skill",
             "def register_command",
+            "from hermes_cli.plugins_content import",
+            "register_skill",
             "requires_env",
             "check_fn",
         ),
     ),
     SourceCheck(
+        path="hermes_cli/plugins_content.py",
+        expected_sha="92b8d79f5440e58d421a6018d4c6d12e9aef107b",
+        required_terms=(
+            "def register_skill",
+            "SKILL.md not found",
+            "skill_namespace",
+        ),
+    ),
+    SourceCheck(
         path="tools/registry.py",
-        expected_sha="bf6d52f2ee637a56bf1b6d24d5f13e3dbbd0dd92",
+        expected_sha="30ec01a9f31f66ff159024aec3ccc3a57249ba62",
         required_terms=(
             "check_fn",
             "requires_env",
             "get_definitions",
             "dispatch",
             "json.dumps",
+            "_kwargs_accepted_by",
         ),
     ),
     SourceCheck(
         path="hermes_cli/plugins_cmd.py",
-        expected_sha="912d93208d2169f2a51bff4dc8b6fed1dfd204c0",
+        expected_sha="517521e1c6488f44cf39e4b5f88be91c598fc0a7",
         required_terms=(
             "_resolve_plugin_key",
             "_scan_plugin_tree",
             "_resolve_subdir_within",
-            "nested category plugins",
+            "_tri_state_flag",
             "requires_env",
-            "--enable",
-            "--no-enable",
             "plugins.enabled",
             "enable",
             "disable",
             "install",
+        ),
+    ),
+    SourceCheck(
+        path="hermes_cli/plugins_cmd_install.py",
+        expected_sha="2aee13fdd3fbfe3b7c3299de4819aa9e114bd3e1",
+        required_terms=(
+            "def cmd_install",
+            "_prompt_plugin_env_vars",
+            "_install_plugin_python_deps",
+            "declares Python dependencies",
+            "yes_deps",
+            "no_deps",
+        ),
+    ),
+    SourceCheck(
+        path="hermes_cli/subcommands/plugins.py",
+        expected_sha="fe703ee56eeee778d14a5ee25401eba1e3f665e3",
+        required_terms=(
+            "--enable",
+            "--no-enable",
+            "--force",
+            "--yes-deps",
+            "--no-deps",
+        ),
+    ),
+    SourceCheck(
+        path="pm/plugin_declarations.py",
+        expected_sha="210cabe36b29b87272cdda0add85174c17809f6d",
+        required_terms=(
+            "python_runtime",
+            "external",
+            "is_member",
+            "project.dependencies",
+        ),
+    ),
+)
+
+# plugin.yaml declares an external Python runtime, so Hermes installs nothing for this plugin.
+# That holds only while Hermes core ships the httpx release line this plugin needs.
+CORE_PIN_CHECKS: Final = (
+    CorePinCheck(
+        path="pyproject.toml",
+        required_pin='"httpx[socks]==0.28.',
+        next_step=(
+            "Hermes Agent core no longer pins httpx 0.28. "
+            "Review the httpx range in pyproject.toml and python_runtime in plugin.yaml."
         ),
     ),
 )
@@ -142,42 +209,52 @@ def check_page(client: httpx.Client, check: PageCheck) -> list[str]:
     return []
 
 
-def read_source(client: httpx.Client, path: str) -> tuple[SourceContent | None, list[str]]:
-    api_url = f"{GITHUB_CONTENT_URL}/{path}?ref=main"
+def blob_sha(content: bytes) -> str:
+    """Return the Git blob hash of a file, which is what the lock records."""
+    header = f"blob {len(content)}\0".encode()
+    return hashlib.sha1(header + content, usedforsecurity=False).hexdigest()
+
+
+def latest_release(client: httpx.Client) -> tuple[str | None, list[str]]:
+    """Return the tag of the latest Hermes Agent release. Only this request carries a token."""
     try:
-        response = client.get(api_url)
+        response = client.get(LATEST_RELEASE_URL, headers=github_headers())
         response.raise_for_status()
     except httpx.HTTPError as error:
-        return None, [f"Metadata fetch failed for {path}. Retry after {error.__class__.__name__}."]
+        return None, [f"Release lookup failed. Retry after {error.__class__.__name__}."]
 
     payload = response.json()
-    if not isinstance(payload, dict):
-        return None, [f"Invalid GitHub response for {path}. Expected an object."]
+    tag = cast("dict[str, object]", payload).get("tag_name") if isinstance(payload, dict) else None
+    if not isinstance(tag, str) or not tag:
+        return None, ["Invalid GitHub response for the latest release. Expected tag_name."]
 
-    mapping = cast("dict[str, object]", payload)
-    sha = mapping.get("sha")
-    download_url = mapping.get("download_url")
-    if not isinstance(sha, str) or not isinstance(download_url, str):
-        return None, [f"Incomplete GitHub response for {path}. Expected sha and download_url."]
+    return tag, []
 
+
+def read_source(
+    client: httpx.Client, path: str, ref: str
+) -> tuple[SourceContent | None, list[str]]:
     try:
-        raw_response = client.get(download_url)
-        raw_response.raise_for_status()
+        response = client.get(f"{SOURCE_URL}/{ref}/{path}")
+        response.raise_for_status()
     except httpx.HTTPError as error:
-        return None, [f"Source fetch failed for {path}. Retry after {error.__class__.__name__}."]
+        return None, [
+            f"Source fetch failed for {path} at {ref}. Retry after {error.__class__.__name__}."
+        ]
 
-    return SourceContent(sha=sha, text=raw_response.text), []
+    return SourceContent(sha=blob_sha(response.content), text=response.text), []
 
 
-def check_source(client: httpx.Client, check: SourceCheck) -> list[str]:
-    content, errors = read_source(client, check.path)
+def check_source(client: httpx.Client, check: SourceCheck, release: str) -> list[str]:
+    content, errors = read_source(client, check.path, release)
     if content is None:
         return errors
 
     if content.sha != check.expected_sha:
         return [
             (
-                f"Source changed for {check.path}: {check.expected_sha} to {content.sha}. "
+                f"Source changed for {check.path} in Hermes Agent {release}: "
+                f"{check.expected_sha} to {content.sha}. "
                 "Review the official Hermes Agent diff before updating this lock."
             )
         ]
@@ -186,25 +263,75 @@ def check_source(client: httpx.Client, check: SourceCheck) -> list[str]:
     if missing:
         return [f"{check.path} is outdated. Add these terms: {', '.join(missing)}"]
 
-    print(f"Source verified. {check.path} {content.sha}")
+    print(f"Source verified. {check.path} {release} {content.sha}")
     return []
 
 
-def run_checks() -> list[str]:
-    timeout = httpx.Timeout(DOC_TIMEOUT_SECONDS)
+def check_core_pin(client: httpx.Client, check: CorePinCheck, release: str) -> list[str]:
+    content, errors = read_source(client, check.path, release)
+    if content is None:
+        return errors
+
+    if check.required_pin not in content.text:
+        return [check.next_step]
+
+    print(f"Core pin verified. {check.path} {release} {check.required_pin}")
+    return []
+
+
+def development_warnings(client: httpx.Client) -> list[str]:
+    """Say what the development branch already changed. A warning never fails the run."""
+    warnings: list[str] = []
+    for source_check in SOURCE_CHECKS:
+        content, errors = read_source(client, source_check.path, DEVELOPMENT_BRANCH)
+        if content is None:
+            warnings.extend(errors)
+        elif content.sha != source_check.expected_sha:
+            warnings.append(
+                f"Upstream {DEVELOPMENT_BRANCH} changed {source_check.path} to {content.sha}. "
+                "The next Hermes Agent release may need a review."
+            )
+    for core_pin_check in CORE_PIN_CHECKS:
+        content, errors = read_source(client, core_pin_check.path, DEVELOPMENT_BRANCH)
+        if content is None:
+            warnings.extend(errors)
+        elif core_pin_check.required_pin not in content.text:
+            warnings.append(
+                f"Upstream {DEVELOPMENT_BRANCH} dropped the pin {core_pin_check.required_pin}. "
+                "The next Hermes Agent release may need a review."
+            )
+    return warnings
+
+
+def run_checks(client: httpx.Client) -> tuple[list[str], list[str]]:
+    """Return the failures and the warnings. The gate is the latest Hermes Agent release."""
     errors: list[str] = []
+    for page_check in PAGE_CHECKS:
+        errors.extend(check_page(client, page_check))
 
-    with httpx.Client(follow_redirects=True, headers=github_headers(), timeout=timeout) as client:
-        for page_check in PAGE_CHECKS:
-            errors.extend(check_page(client, page_check))
-        for source_check in SOURCE_CHECKS:
-            errors.extend(check_source(client, source_check))
+    release, release_errors = latest_release(client)
+    if release is None:
+        return [*errors, *release_errors], []
 
-    return errors
+    if release != REVIEWED_RELEASE:
+        print(f"Hermes Agent {release} is newer than the reviewed {REVIEWED_RELEASE}.")
+    for source_check in SOURCE_CHECKS:
+        errors.extend(check_source(client, source_check, release))
+    for core_pin_check in CORE_PIN_CHECKS:
+        errors.extend(check_core_pin(client, core_pin_check, release))
+
+    return errors, development_warnings(client)
 
 
 def main() -> int:
-    errors = run_checks()
+    timeout = httpx.Timeout(DOC_TIMEOUT_SECONDS)
+    with httpx.Client(
+        follow_redirects=True, headers={"User-Agent": USER_AGENT}, timeout=timeout
+    ) as client:
+        errors, warnings = run_checks(client)
+
+    for warning in warnings:
+        print(f"Warning. {warning}")
     if errors:
         print("Hermes Agent compatibility failed. Review each item below.")
         for error in errors:

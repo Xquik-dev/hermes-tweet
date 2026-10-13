@@ -147,10 +147,6 @@ def test_scan_line_flags_runtime_confidentiality_wording() -> None:
     ]
 
 
-def test_public_safety_scan_includes_agent_instructions() -> None:
-    assert "AGENTS.md" in check_public_safety.PUBLIC_TEXT_FILES
-
-
 def test_public_safety_scan_includes_github_community_docs() -> None:
     expected_files = {
         ".github/CONTRIBUTING.md",
@@ -168,9 +164,9 @@ def test_public_safety_scan_includes_github_repository_config() -> None:
     expected_files = {
         ".github/FUNDING.yml",
         ".github/dependabot.yml",
-        ".github/workflows/ci.yml",
-        ".github/workflows/clusterfuzzlite.yml",
-        ".github/workflows/publish.yml",
+        "bin/check-local",
+        "bin/release-local",
+        "scripts/plugin-scan",
         ".clusterfuzzlite/Dockerfile",
         ".clusterfuzzlite/build.sh",
         ".clusterfuzzlite/project.yaml",

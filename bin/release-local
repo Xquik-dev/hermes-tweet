@@ -1,0 +1,175 @@
+#!/usr/bin/env bash
+# SPDX-FileCopyrightText: 2026 Xquik Contributors
+# SPDX-License-Identifier: MIT
+#
+# Publishes the version in pyproject.toml to PyPI from a maintainer's Mac,
+# then pushes its v<version> tag and creates the GitHub release.
+# Usage: bin/release-local [--dry-run]
+# PYPI_KEYCHAIN_SERVICE names the macOS Keychain item that holds the PyPI token.
+# --dry-run runs every step except the upload, the tag, and the GitHub release.
+# It never reads the Keychain, so it needs no PYPI_KEYCHAIN_SERVICE. It also
+# runs on any clean commit, so a preview can run before a change lands.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+dry_run=false
+for argument in "$@"; do
+  case "$argument" in
+    --dry-run) dry_run=true ;;
+    *)
+      echo "release-local: unknown option $argument. Use --dry-run or no option." >&2
+      exit 2
+      ;;
+  esac
+done
+
+repository="Xquik-dev/hermes-tweet"
+package="hermes-tweet"
+pypi_api="https://pypi.org/pypi"
+keychain_service="${PYPI_KEYCHAIN_SERVICE:-}"
+
+step() { echo "==> $1"; }
+fail() {
+  echo "release-local: $1" >&2
+  exit 1
+}
+
+# Reads the PyPI token from the Keychain item named by PYPI_KEYCHAIN_SERVICE.
+# Messages never name the item, because release output gets pasted in public.
+read_token() {
+  security find-generic-password -s "$keychain_service" "$@" 2>/dev/null ||
+    fail "The Keychain has no item named by PYPI_KEYCHAIN_SERVICE. Add the PyPI token under that name, then run bin/release-local again."
+}
+
+step "Checking tools and the GitHub sign-in."
+for tool in git uv gh curl shasum security; do
+  command -v "$tool" >/dev/null || fail "Install $tool, then rerun."
+done
+gh auth status >/dev/null 2>&1 || fail "Sign in with gh auth login, then rerun."
+if $dry_run; then
+  step "This is a dry run, so the PyPI token is not read from the Keychain."
+else
+  step "Checking the Keychain item named by PYPI_KEYCHAIN_SERVICE."
+  [[ -n "$keychain_service" ]] ||
+    fail "PYPI_KEYCHAIN_SERVICE is unset. Set it to the Keychain item that holds the PyPI token, then run bin/release-local again."
+  read_token >/dev/null
+fi
+
+step "Checking for a clean tree."
+[[ "$(git remote get-url origin)" == *"$repository"* ]] || fail "Point origin at $repository, then rerun."
+[[ -z "$(git status --porcelain)" ]] || fail "Commit or remove local changes, then rerun."
+revision="$(git rev-parse HEAD)"
+if $dry_run; then
+  step "This is a dry run, so the branch is not compared with origin/master."
+else
+  step "Checking that master equals origin/master."
+  [[ "$(git symbolic-ref --quiet --short HEAD || true)" == master ]] || fail "Switch to master, then rerun."
+  git fetch --quiet origin master
+  [[ "$revision" == "$(git rev-parse origin/master)" ]] || fail "Make master equal to origin/master, then rerun."
+fi
+
+step "Reading the version from pyproject.toml."
+version="$(uv version --short)"
+tag="v$version"
+notes="$(awk -v heading="## $version" '$0 == heading { found = 1; next } found && /^## / { exit } found { print }' CHANGELOG.md)"
+[[ "$notes" =~ [^[:space:]] ]] || fail "Add a ## $version section to CHANGELOG.md, then rerun."
+
+step "Checking that origin has no $tag tag."
+tag_status=0
+git ls-remote --exit-code --tags origin "refs/tags/$tag" >/dev/null || tag_status=$?
+case "$tag_status" in
+  0) fail "Tag $tag already exists on origin. Bump the version in pyproject.toml, then rerun." ;;
+  2) ;;
+  *) fail "Could not read tags from origin. Check GitHub access, then rerun." ;;
+esac
+if git rev-parse --quiet --verify "refs/tags/$tag" >/dev/null; then
+  fail "Local tag $tag is not on origin. Delete it with git tag -d $tag, then rerun."
+fi
+
+step "Running bin/check-local."
+bin/check-local
+[[ -z "$(git status --porcelain)" && "$(git rev-parse HEAD)" == "$revision" ]] ||
+  fail "The checks changed the tree. Review and commit the changes, then rerun."
+
+artifacts="$PWD/dist/releases/$revision"
+files=("$artifacts/hermes_tweet-$version-py3-none-any.whl" "$artifacts/hermes_tweet-$version.tar.gz")
+step "Checking every public link."
+uv run --locked --group dev python scripts/check_public_links.py
+
+step "Building the wheel and source archive in dist/releases/$revision."
+SOURCE_DATE_EPOCH=946684800 uv run --locked --group dev python -m build --outdir "$artifacts"
+built=("$artifacts"/*)
+[[ "${#built[@]}" -eq 2 && -f "${files[0]}" && -f "${files[1]}" ]] ||
+  fail "dist/releases/$revision holds other files. Move them out, then rerun."
+
+step "Checking package metadata with twine."
+uv run --locked --group dev twine check "${files[@]}"
+
+# Succeeds when PyPI lists the SHA-256 digest of both local files.
+pypi_matches_build() {
+  local metadata file digest
+  metadata="$(curl --silent --fail --max-time 30 "$pypi_api/$package/$version/json")" || return 1
+  for file in "${files[@]}"; do
+    digest="$(shasum -a 256 "$file" | cut -d ' ' -f 1)" || return 1
+    grep -Eq "\"sha256\": *\"$digest\"" <<<"$metadata" || return 1
+  done
+}
+
+step "Checking whether PyPI already has $package $version."
+pypi_status="$(curl --silent --output /dev/null --write-out '%{http_code}' --max-time 30 "$pypi_api/$package/$version/json")" ||
+  fail "Could not reach PyPI. Check network access, then rerun."
+on_pypi=true
+case "$pypi_status" in
+  200)
+    step "PyPI already has $package $version, so the upload is skipped."
+    ;;
+  404)
+    if $dry_run; then
+      on_pypi=false
+      step "PyPI has no $package $version yet. The dry run skips the upload."
+    else
+      step "Uploading to PyPI with the token from the Keychain item named by PYPI_KEYCHAIN_SERVICE."
+      (
+        UV_PUBLISH_TOKEN=$(read_token -w)
+        export UV_PUBLISH_TOKEN
+        uv publish \
+          --publish-url https://upload.pypi.org/legacy/ \
+          --check-url https://pypi.org/simple/ \
+          "${files[@]}"
+      )
+    fi
+    ;;
+  *)
+    fail "PyPI returned HTTP $pypi_status. Retry later."
+    ;;
+esac
+
+if $on_pypi; then
+  step "Comparing the PyPI files with the local build."
+  for attempt in 1 2 3 4 5; do
+    if pypi_matches_build; then
+      break
+    fi
+    ((attempt < 5)) || fail "PyPI files differ from this build or are not visible yet. Compare them before tagging."
+    step "PyPI is not ready yet. Retrying in ${RELEASE_RETRY_SECONDS:-30} seconds."
+    sleep "${RELEASE_RETRY_SECONDS:-30}"
+  done
+else
+  step "The dry run skips the comparison with PyPI, because nothing was uploaded."
+fi
+
+if $dry_run; then
+  step "The dry run skips tag $tag and the GitHub release."
+  echo "Dry run finished for $package $version. Nothing was uploaded, tagged, or released."
+  exit 0
+fi
+
+step "Creating annotated tag $tag at $revision and pushing it to origin."
+git tag -a "$tag" -m "Release $version" "$revision"
+git push origin "refs/tags/$tag"
+
+step "Creating GitHub release $tag with both distributions and the CHANGELOG.md section."
+printf '%s\n' "$notes" | gh release create "$tag" "${files[@]}" --repo "$repository" --verify-tag --title "$tag" --notes-file - --latest ||
+  fail "Tag $tag is on origin, but the GitHub release failed. Create it with gh release create $tag --verify-tag."
+
+echo "Released $package $version as $tag."

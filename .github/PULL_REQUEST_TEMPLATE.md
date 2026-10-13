@@ -10,7 +10,7 @@
 - [ ] `uv run --python 3.12 --group dev pip-audit`
 - [ ] `uv run --python 3.12 --group dev python -m build`
 - [ ] `uv run --python 3.12 --group dev twine check dist/*`
-- [ ] `actionlint .github/workflows/*.yml`
+- [ ] `bin/check-local`
 
 ## Public safety
 

@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import json
-import re
 import tomllib
 from pathlib import Path
 from typing import cast
@@ -99,13 +98,6 @@ EXPECTED_LIVE_ECOSYSTEM_SURFACES = (
         "https://github.com/open-jarvis/OpenJarvis/blob/main/docs/user-guide/skills.md",
     ),
     (
-        "Claude Skill Registry Hermes Tweet skill",
-        (
-            "https://github.com/majiayu000/claude-skill-registry/blob/main/skills/api/"
-            "hermes-tweet/SKILL.md"
-        ),
-    ),
-    (
         "Claude Skill Registry Data Hermes Tweet archive",
         (
             "https://github.com/majiayu000/claude-skill-registry-data/blob/main/api/"
@@ -131,27 +123,6 @@ EXPECTED_LIVE_ECOSYSTEM_SURFACES = (
         ),
     ),
 )
-SETUP_UV_ACTION = "astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9"
-CHECKOUT_ACTION_SHA = "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1"
-SETUP_GO_ACTION_SHA = "actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e"
-UPLOAD_ARTIFACT_ACTION_SHA = "actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a"
-DOWNLOAD_ARTIFACT_ACTION_SHA = "actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c"
-PYPI_PUBLISH_ACTION_SHA = "pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33"
-ATTEST_ACTION_SHA = "actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6"
-CODEQL_ACTION_SHA = "github/codeql-action/{}@5595ccaf912efad79be6eef63a5619ff05969be3"
-SCORECARD_ACTION_SHA = "ossf/scorecard-action@2d1146689b8cda280b9bc96326124645441f03bc"
-CLUSTERFUZZLITE_ACTION_SHA = (
-    "google/clusterfuzzlite/actions/{}@884713a6c30a92e5e8544c39945cd7cb630abcd1"
-)
-HOL_PLUGIN_SCANNER_ACTION_SHA = (
-    "hashgraph-online/ai-plugin-scanner-action@55616c962cf86368423f7673b2ecdfdbe613d1af"
-)
-ACTIONLINT_MODULE = "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12"
-BLACKSMITH_RUNNER_LABEL = "blacksmith-2vcpu-ubuntu-2404"
-REPRODUCIBLE_BUILD_COMMAND = "bash scripts/check_reproducible.sh"
-REPRODUCIBLE_BUILD_EPOCH = "946684800"
-HERMES_AGENT_COMPAT_COMMAND = "uv run python scripts/check_hermes_agent_compat.py"
-PUBLIC_SAFETY_COMMAND = "uv run python scripts/check_public_safety.py"
 EXPECTED_PUBLIC_IGNORE_PATTERNS = [
     ".env",
     ".env.*",
@@ -273,27 +244,6 @@ def load_skill_frontmatter(path: Path) -> dict[str, object]:
     data = yaml.safe_load(frontmatter)
     assert isinstance(data, dict)
     return cast("dict[str, object]", data)
-
-
-def find_step(steps: list[object], name: str) -> dict[str, object]:
-    for step in steps:
-        step_mapping = require_mapping(step)
-        if step_mapping.get("name") == name:
-            return step_mapping
-
-    message = f"No workflow step named {name!r}."
-    raise AssertionError(message)
-
-
-def workflow_job(path: str, job: str) -> dict[str, object]:
-    workflow = load_object_mapping(ROOT / ".github" / "workflows" / path)
-    jobs = require_mapping(workflow["jobs"])
-    return require_mapping(jobs[job])
-
-
-def test_find_step_reports_missing_workflow_step() -> None:
-    with pytest.raises(AssertionError, match=r"No workflow step named 'Publish'\."):
-        find_step([], "Publish")
 
 
 def test_find_locked_package_reports_missing_package() -> None:
@@ -423,6 +373,16 @@ def test_plugin_manifests_keep_install_prompt_contract() -> None:
             "secret": True,
         }
     ]
+
+
+def test_plugin_needs_nothing_installed_by_hermes() -> None:
+    project = require_mapping(tomllib.loads((ROOT / "pyproject.toml").read_text())["project"])
+
+    # Hermes resolves a plugin's whole pyproject.toml, dev group included, against its own
+    # exact pins, and it refused this plugin for that. An external runtime skips that step.
+    # It is honest only while httpx, which Hermes core ships, stays the 1 runtime dependency.
+    assert load_mapping(ROOT / "plugin.yaml")["python_runtime"] == "external"
+    assert project["dependencies"] == ["httpx>=0.28.1,<0.29"]
 
 
 def test_registry_skill_mirrors_bundled_skill() -> None:
@@ -674,38 +634,6 @@ def test_root_security_policy_matches_github_security_policy() -> None:
     ).read_text().rstrip()
 
 
-def test_hol_plugin_scanner_workflow_matches_codex_catalog_requirements() -> None:
-    workflow = load_object_mapping(ROOT / ".github" / "workflows" / "hol-plugin-scanner.yml")
-
-    on_config = require_mapping(workflow[True])
-    assert "pull_request" in on_config
-    assert require_mapping(on_config["push"])["branches"] == ["master", "main"]
-    assert on_config["workflow_dispatch"] is None
-    assert require_mapping(workflow["permissions"]) == {"contents": "read"}
-
-    scan = require_mapping(require_mapping(workflow["jobs"])["scan"])
-    assert require_mapping(scan["permissions"]) == {
-        "contents": "read",
-        "security-events": "write",
-    }
-    assert scan["runs-on"] == BLACKSMITH_RUNNER_LABEL
-    steps = require_list(scan["steps"])
-    checkout = find_step(steps, "Checkout")
-    assert checkout["uses"] == CHECKOUT_ACTION_SHA
-    assert require_mapping(checkout["with"])["persist-credentials"] is False
-
-    scanner = find_step(steps, "HOL Plugin Scanner")
-    assert scanner["uses"] == HOL_PLUGIN_SCANNER_ACTION_SHA
-    assert require_mapping(scanner["with"]) == {
-        "plugin_dir": ".",
-        "mode": "scan",
-        "min_score": 80,
-        "fail_on_severity": "high",
-        "format": "sarif",
-        "upload_sarif": True,
-    }
-
-
 def test_clawhub_metadata_uses_live_canonical_route() -> None:
     project = tomllib.loads((ROOT / "pyproject.toml").read_text())["project"]
     ecosystem = (ROOT / "docs" / "ECOSYSTEM.md").read_text()
@@ -754,119 +682,11 @@ def test_public_repo_ignore_rules_cover_local_artifacts() -> None:
     assert missing_patterns == []
 
 
-@pytest.mark.parametrize(
-    ("workflow_path", "job_name"),
-    [("ci.yml", "check"), ("hol-plugin-scanner.yml", "scan")],
-)
-def test_validation_workflows_run_on_blacksmith_runner(
-    workflow_path: str,
-    job_name: str,
-) -> None:
-    assert workflow_job(workflow_path, job_name)["runs-on"] == BLACKSMITH_RUNNER_LABEL
+def test_repository_has_no_github_actions_workflows() -> None:
+    assert not (ROOT / ".github" / "workflows").exists()
 
 
-@pytest.mark.parametrize("job_name", ["build", "publish"])
-def test_publish_workflow_runs_on_github_hosted_runner(job_name: str) -> None:
-    assert workflow_job("publish.yml", job_name)["runs-on"] == "ubuntu-24.04"
-
-
-def test_actionlint_allows_blacksmith_runner_label() -> None:
-    config = load_object_mapping(ROOT / ".github" / "actionlint.yaml")
-    self_hosted_runner = require_mapping(config["self-hosted-runner"])
-
-    assert self_hosted_runner["labels"] == [BLACKSMITH_RUNNER_LABEL]
-
-
-def test_all_workflow_actions_are_pinned_to_commit_shas() -> None:
-    action_reference = re.compile(r"[^@\s]+@[0-9a-f]{40}")
-
-    for workflow_path in sorted((ROOT / ".github" / "workflows").glob("*.yml")):
-        action_lines = [
-            line.strip()
-            for line in workflow_path.read_text().splitlines()
-            if line.strip().startswith("uses:")
-        ]
-        assert action_lines
-        for action_line in action_lines:
-            action = action_line.removeprefix("uses:").partition("#")[0].strip()
-            assert action_reference.fullmatch(action), (
-                f"Unpinned action in {workflow_path}: {action}"
-            )
-
-
-def test_codeql_workflow_analyzes_python_with_restricted_permissions() -> None:
-    workflow = load_object_mapping(ROOT / ".github" / "workflows" / "codeql.yml")
-    analyze = require_mapping(require_mapping(workflow["jobs"])["analyze"])
-
-    assert require_mapping(workflow[True])["push"] == {"branches": ["master"]}
-    assert require_mapping(analyze["permissions"]) == {
-        "contents": "read",
-        "security-events": "write",
-    }
-    steps = require_list(analyze["steps"])
-    assert find_step(steps, "Check out source")["uses"] == CHECKOUT_ACTION_SHA
-    initialize = find_step(steps, "Initialize CodeQL")
-    assert initialize["uses"] == CODEQL_ACTION_SHA.format("init")
-    assert require_mapping(initialize["with"]) == {
-        "languages": "python",
-        "build-mode": "none",
-        "queries": "security-extended",
-    }
-    assert find_step(steps, "Analyze")["uses"] == CODEQL_ACTION_SHA.format("analyze")
-
-
-def test_scorecard_workflow_publishes_results_with_restricted_permissions() -> None:
-    workflow = load_object_mapping(ROOT / ".github" / "workflows" / "scorecard.yml")
-    analysis = require_mapping(require_mapping(workflow["jobs"])["analysis"])
-
-    assert workflow["permissions"] == "read-all"
-    assert require_mapping(analysis["permissions"]) == {
-        "contents": "read",
-        "security-events": "write",
-        "id-token": "write",
-    }
-    steps = require_list(analysis["steps"])
-    assert find_step(steps, "Check out source")["uses"] == CHECKOUT_ACTION_SHA
-    scorecard = find_step(steps, "Run analysis")
-    assert scorecard["uses"] == SCORECARD_ACTION_SHA
-    assert require_mapping(scorecard["with"])["publish_results"] is True
-    upload = find_step(steps, "Upload to code scanning")
-    assert upload["uses"] == CODEQL_ACTION_SHA.format("upload-sarif")
-
-
-def test_clusterfuzzlite_runs_python_fuzzers_with_restricted_permissions() -> None:
-    workflow = load_object_mapping(ROOT / ".github" / "workflows" / "clusterfuzzlite.yml")
-    on_config = require_mapping(workflow[True])
-
-    assert "pull_request" in on_config
-    assert "schedule" in on_config
-    assert "workflow_dispatch" in on_config
-    assert workflow["permissions"] == "read-all"
-
-    fuzz = require_mapping(require_mapping(workflow["jobs"])["fuzz"])
-    assert fuzz["runs-on"] == "ubuntu-24.04"
-    assert fuzz["timeout-minutes"] == 30
-    steps = require_list(fuzz["steps"])
-
-    build = find_step(steps, "Build fuzzers")
-    assert build["uses"] == CLUSTERFUZZLITE_ACTION_SHA.format("build_fuzzers")
-    assert require_mapping(build["with"]) == {
-        "language": "python",
-        "github-token": "${{ github.token }}",
-        "sanitizer": "address",
-    }
-
-    run = find_step(steps, "Run fuzzers")
-    assert run["uses"] == CLUSTERFUZZLITE_ACTION_SHA.format("run_fuzzers")
-    assert require_mapping(run["with"]) == {
-        "language": "python",
-        "github-token": "${{ github.token }}",
-        "sanitizer": "address",
-        "fuzz-seconds": "${{ github.event_name == 'pull_request' && '60' || '600' }}",
-        "mode": "${{ github.event_name == 'pull_request' && 'code-change' || 'batch' }}",
-        "output-sarif": False,
-    }
-
+def test_fuzz_harness_builds_from_pinned_dependencies() -> None:
     project = load_object_mapping(ROOT / ".clusterfuzzlite" / "project.yaml")
     assert project == {"language": "python"}
     dockerfile = (ROOT / ".clusterfuzzlite" / "Dockerfile").read_text()
@@ -897,288 +717,13 @@ def test_clusterfuzzlite_runs_python_fuzzers_with_restricted_permissions() -> No
     assert "atheris.Fuzz" in fuzzer
 
 
-def test_publish_workflow_prepares_draft_before_tag_dispatch() -> None:
-    workflow = load_object_mapping(ROOT / ".github" / "workflows" / "publish.yml")
-
-    # PyYAML 1.1 treats the GitHub Actions "on" key as boolean true.
-    on_config = require_mapping(workflow[True])
-    workflow_dispatch = require_mapping(on_config["workflow_dispatch"])
-    inputs = require_mapping(workflow_dispatch["inputs"])
-    assert require_mapping(inputs["release_ref"]) == {
-        "description": "Exact release tag to publish",
-        "required": True,
-        "type": "string",
-    }
-    assert require_mapping(workflow["permissions"]) == {}
-    assert require_mapping(workflow["concurrency"]) == {
-        "group": "hermes-release",
-        "cancel-in-progress": False,
-    }
-
-    jobs = require_mapping(workflow["jobs"])
-    prepare = require_mapping(jobs["prepare"])
-    assert prepare["if"] == "github.ref_type == 'branch' && github.ref_name == 'master'"
-    assert prepare["timeout-minutes"] == 10
-    assert require_mapping(prepare["permissions"]) == {
-        "actions": "write",
-        "contents": "write",
-    }
-    prepare_steps = require_list(prepare["steps"])
-    prepare_checkout = find_step(prepare_steps, "Checkout release commit")
-    assert prepare_checkout["uses"] == CHECKOUT_ACTION_SHA
-    assert require_mapping(prepare_checkout["with"]) == {
-        "fetch-depth": 0,
-        "persist-credentials": False,
-    }
-    prepare_draft = find_step(prepare_steps, "Prepare immutable draft")
-    assert require_mapping(prepare_draft["env"]) == {
-        "GH_TOKEN": "${{ github.token }}",
-        "RELEASE_TAG": "${{ inputs.release_ref }}",
-    }
-    prepare_script = prepare_draft["run"]
-    assert isinstance(prepare_script, str)
-    assert "pyproject.toml" in prepare_script
-    assert "gh api --paginate --slurp" in prepare_script
-    assert "releases?per_page=100" in prepare_script
-    assert 'jq -ce --arg tag "$RELEASE_TAG"' in prepare_script
-    assert ".tag_name == $tag" in prepare_script
-    assert "gh release create" in prepare_script
-    assert "--generate-notes" in prepare_script
-    assert "--draft" in prepare_script
-    assert all(
-        fragment in prepare_script
-        for fragment in ("for attempt in 1 2 3 4 5", 'sleep "$attempt"', 'test -n "$release_json"')
-    )
-    assert "'.isDraft'" in prepare_script
-    assert "'.tagName'" in prepare_script
-    assert "'.targetCommitish'" in prepare_script
-    assert "refs/tags/${RELEASE_TAG}" in prepare_script
-    assert "gh workflow run publish.yml" in prepare_script
-    assert '--ref "$RELEASE_TAG"' in prepare_script
-
-
-def test_publish_workflow_requires_version_matched_release_tag() -> None:
-    workflow = load_object_mapping(ROOT / ".github" / "workflows" / "publish.yml")
-    jobs = require_mapping(workflow["jobs"])
-    build = require_mapping(jobs["build"])
-    assert build["if"] == "github.ref_type == 'tag'"
-    assert build["timeout-minutes"] == 30
-    build_steps = require_list(build["steps"])
-    build_step_names = [require_mapping(step)["name"] for step in build_steps]
-    assert build_step_names.index("Validate release tag") < build_step_names.index("Install uv")
-
-    install_uv_step = find_step(build_steps, "Install uv")
-    assert install_uv_step["uses"] == SETUP_UV_ACTION
-    assert require_mapping(install_uv_step["with"])["enable-cache"] is False
-
-    public_safety_step = find_step(build_steps, "Public safety scan")
-    assert public_safety_step["run"] == PUBLIC_SAFETY_COMMAND
-
-    checkout_step = find_step(build_steps, "Checkout")
-    assert checkout_step["uses"] == CHECKOUT_ACTION_SHA
-    checkout_config = require_mapping(checkout_step["with"])
-    assert checkout_config == {
-        "fetch-depth": 0,
-        "persist-credentials": False,
-        "ref": "${{ github.ref }}",
-    }
-
-    validate_step = find_step(build_steps, "Validate release tag")
-    validate_env = require_mapping(validate_step["env"])
-    assert validate_env == {
-        "GH_TOKEN": "${{ github.token }}",
-        "RELEASE_TAG": "${{ inputs.release_ref }}",
-    }
-
-    validate_script = validate_step["run"]
-    assert isinstance(validate_script, str)
-    assert 'test "$GITHUB_REF_TYPE" = "tag"' in validate_script
-    assert 'test "$GITHUB_REF_NAME" = "$RELEASE_TAG"' in validate_script
-    assert "pyproject.toml" in validate_script
-    assert 'expected_ref = f"v{version}"' in validate_script
-    assert 'actual_ref = os.environ["RELEASE_TAG"]' in validate_script
-    assert "pyproject version tag" in validate_script
-    assert "refs/tags/${RELEASE_TAG}^{commit}" in validate_script
-    assert "refs/remotes/origin/master" in validate_script
-    assert "git merge-base --is-ancestor" in validate_script
-    assert "tag from master history" in validate_script
-    assert "gh api --paginate --slurp" in validate_script
-    assert "releases?per_page=100" in validate_script
-    assert 'jq -ce --arg tag "$RELEASE_TAG"' in validate_script
-    assert all(
-        fragment in validate_script
-        for fragment in ("for attempt in 1 2 3 4 5", 'sleep "$attempt"', 'test -n "$release_json"')
-    )
-    assert ".tag_name == $tag" in validate_script
-    assert "'.isDraft'" in validate_script
-    assert "'.tagName'" in validate_script
-    assert "'.targetCommitish'" in validate_script
-    assert "GITHUB_SHA" in validate_script
-
-    assert find_step(build_steps, "Set up Go")["uses"] == SETUP_GO_ACTION_SHA
-    assert find_step(build_steps, "Workflow lint")["run"] == f"go run {ACTIONLINT_MODULE}"
-    assert find_step(build_steps, "Public link scan")["run"] == (
-        "uv run python scripts/check_public_links.py"
-    )
-    assert find_step(build_steps, "Hermes Agent compatibility")["run"] == (
-        HERMES_AGENT_COMPAT_COMMAND
-    )
-    assert find_step(build_steps, "Check reproducible package")["run"] == (
-        REPRODUCIBLE_BUILD_COMMAND
-    )
-    build_package_step = find_step(build_steps, "Build package")
-    assert require_mapping(build_package_step["env"]) == {
-        "SOURCE_DATE_EPOCH": REPRODUCIBLE_BUILD_EPOCH
-    }
-    assert find_step(build_steps, "Upload distributions")["uses"] == (UPLOAD_ARTIFACT_ACTION_SHA)
-
-
-def test_publish_workflow_uses_pypi_trusted_publishing() -> None:
-    workflow = load_object_mapping(ROOT / ".github" / "workflows" / "publish.yml")
-    jobs = require_mapping(workflow["jobs"])
-    publish = require_mapping(jobs["publish"])
-    assert publish["timeout-minutes"] == 10
-    publish_permissions = require_mapping(publish["permissions"])
-    assert publish_permissions == {"contents": "read", "id-token": "write"}
-    publish_steps = require_list(publish["steps"])
-    assert find_step(publish_steps, "Download distributions")["uses"] == (
-        DOWNLOAD_ARTIFACT_ACTION_SHA
-    )
-    publish_step = find_step(publish_steps, "Publish distributions")
-    assert publish_step["uses"] == PYPI_PUBLISH_ACTION_SHA
-    assert require_mapping(publish_step["with"]) == {
-        "attestations": True,
-        "packages-dir": "dist/",
-    }
-
-
-def test_publish_workflow_attests_and_attaches_release_artifacts() -> None:
-    build = workflow_job("publish.yml", "build")
-    assert require_mapping(build["permissions"]) == {
-        "attestations": "write",
-        "contents": "write",
-        "id-token": "write",
-    }
-    build_steps = require_list(build["steps"])
-
-    attest_step = find_step(build_steps, "Attest distributions")
-    assert attest_step["uses"] == ATTEST_ACTION_SHA
-    assert require_mapping(attest_step["with"])["subject-path"] == ("dist/*.whl\ndist/*.tar.gz\n")
-
-    stage_step = find_step(build_steps, "Stage release provenance")
-    assert require_mapping(stage_step["env"]) == {
-        "ATTESTATION_BUNDLE": "${{ steps.attest.outputs.bundle-path }}",
-    }
-    stage_script = stage_step["run"]
-    assert isinstance(stage_script, str)
-    assert "provenance.intoto.jsonl" in stage_script
-    assert "gh release upload" not in stage_script
-
-    upload_step = find_step(build_steps, "Upload distributions")
-    assert upload_step["uses"] == UPLOAD_ARTIFACT_ACTION_SHA
-    assert require_mapping(upload_step["with"])["path"] == ("dist/*.whl\ndist/*.tar.gz\n")
-
-    preserve_step = find_step(build_steps, "Preserve attested release files")
-    assert preserve_step["uses"] == UPLOAD_ARTIFACT_ACTION_SHA
-    assert require_mapping(preserve_step["with"])["path"] == (
-        "dist/*.whl\ndist/*.tar.gz\ndist/provenance.intoto.jsonl\n"
-    )
-
-    finalize = workflow_job("publish.yml", "finalize")
-    assert finalize["needs"] == "publish"
-    assert require_mapping(finalize["permissions"]) == {
-        "actions": "read",
-        "contents": "write",
-    }
-    finalize_steps = require_list(finalize["steps"])
-    download_step = find_step(finalize_steps, "Download attested release files")
-    assert download_step["uses"] == DOWNLOAD_ARTIFACT_ACTION_SHA
-    assert require_mapping(download_step["with"]) == {
-        "name": "release-assets",
-        "path": "release-assets",
-    }
-    attach_step = find_step(finalize_steps, "Attach assets and publish draft")
-    assert require_mapping(attach_step["env"]) == {
-        "GH_TOKEN": "${{ github.token }}",
-        "RELEASE_TAG": "${{ inputs.release_ref }}",
-    }
-    attach_script = attach_step["run"]
-    assert isinstance(attach_script, str)
-    assert "gh api --paginate --slurp" in attach_script
-    assert "releases?per_page=100" in attach_script
-    assert 'jq -ce --arg tag "$RELEASE_TAG"' in attach_script
-    assert ".tag_name == $tag" in attach_script
-    assert "'.isDraft'" in attach_script
-    assert "'.tagName'" in attach_script
-    assert "'.targetCommitish'" in attach_script
-    assert "provenance.intoto.jsonl" in attach_script
-    assert "gh release upload" in attach_script
-    assert "gh release edit" in attach_script
-    assert "--draft=false" in attach_script
-    assert "--verify-tag" in attach_script
-
-
-def test_ci_workflow_runs_actionlint_before_python_checks() -> None:
-    workflow = load_object_mapping(ROOT / ".github" / "workflows" / "ci.yml")
-
-    # PyYAML 1.1 treats the GitHub Actions "on" key as boolean true.
-    on_config = require_mapping(workflow[True])
-    assert "pull_request" in on_config
-    assert "workflow_dispatch" in on_config
-
-    jobs = require_mapping(workflow["jobs"])
-    check = require_mapping(jobs["check"])
-    steps = require_list(check["steps"])
-
-    step_names = [require_mapping(step)["name"] for step in steps]
-    assert step_names.index("Workflow lint") < step_names.index("Install uv")
-    assert step_names.index("Workflow lint") < step_names.index("Test with coverage")
-    assert step_names.index("Hermes Agent compatibility") < step_names.index("Test with coverage")
-    assert step_names.index("Public safety scan") < step_names.index("Test with coverage")
-
-    setup_go_step = find_step(steps, "Set up Go")
-    assert setup_go_step["uses"] == SETUP_GO_ACTION_SHA
-    setup_go_config = require_mapping(setup_go_step["with"])
-    assert setup_go_config["go-version"] == "stable"
-    assert setup_go_config["cache"] is False
-
-    workflow_lint_step = find_step(steps, "Workflow lint")
-    assert workflow_lint_step["run"] == f"go run {ACTIONLINT_MODULE}"
-
-    install_uv_step = find_step(steps, "Install uv")
-    assert install_uv_step["uses"] == SETUP_UV_ACTION
-
-    checkout_step = find_step(steps, "Checkout")
-    assert checkout_step["uses"] == CHECKOUT_ACTION_SHA
-    assert require_mapping(checkout_step["with"])["persist-credentials"] is False
-
-    hermes_agent_compat_step = find_step(steps, "Hermes Agent compatibility")
-    assert hermes_agent_compat_step["run"] == HERMES_AGENT_COMPAT_COMMAND
-    assert require_mapping(hermes_agent_compat_step["env"]) == {
-        "GITHUB_TOKEN": "${{ github.token }}"
-    }
-
-    public_safety_step = find_step(steps, "Public safety scan")
-    assert public_safety_step["run"] == PUBLIC_SAFETY_COMMAND
-
-    assert find_step(steps, "Check reproducible package")["run"] == (REPRODUCIBLE_BUILD_COMMAND)
-    build_package_step = find_step(steps, "Build package")
-    assert require_mapping(build_package_step["env"]) == {
-        "SOURCE_DATE_EPOCH": REPRODUCIBLE_BUILD_EPOCH
-    }
-
-
 def test_release_gate_runs_hermes_agent_compatibility_checker() -> None:
     checklist = (ROOT / "docs" / "PUBLICATION_CHECKLIST.md").read_text()
-    agents = (ROOT / "AGENTS.md").read_text()
 
     assert (
         "uv run --python 3.12 --group dev python scripts/check_hermes_agent_compat.py" in checklist
     )
     assert "uv run --python 3.12 --group dev python scripts/check_public_safety.py" in checklist
     assert "source SHA changes" in checklist
-    assert "uv run --python 3.12 --group dev python scripts/check_hermes_agent_compat.py" in agents
-    assert "uv run --python 3.12 --group dev python scripts/check_public_safety.py" in agents
     reproducible_command = "uv run --python 3.12 --group dev bash scripts/check_reproducible.sh"
     assert reproducible_command in checklist
-    assert reproducible_command in agents
