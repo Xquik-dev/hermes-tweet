@@ -73,10 +73,47 @@ def test_source_checks_track_reviewed_hermes_agent_locks() -> None:
     locks = {check.path: check.expected_sha for check in compat.SOURCE_CHECKS}
 
     assert locks == {
-        "hermes_cli/plugins.py": "b88640df9abb13a52d4eb9aa2cfee9ca11d66847",
-        "tools/registry.py": "bf6d52f2ee637a56bf1b6d24d5f13e3dbbd0dd92",
-        "hermes_cli/plugins_cmd.py": "912d93208d2169f2a51bff4dc8b6fed1dfd204c0",
+        "hermes_cli/plugins.py": "a652179cd4a7a3ac04fe7eb2a0377de6a6dfbc58",
+        "hermes_cli/plugins_content.py": "92b8d79f5440e58d421a6018d4c6d12e9aef107b",
+        "tools/registry.py": "30ec01a9f31f66ff159024aec3ccc3a57249ba62",
+        "hermes_cli/plugins_cmd.py": "ad061ca6772c0f5629d365bb7c406cfb23556f41",
+        "hermes_cli/plugins_cmd_install.py": "2aee13fdd3fbfe3b7c3299de4819aa9e114bd3e1",
+        "hermes_cli/subcommands/plugins.py": "fe703ee56eeee778d14a5ee25401eba1e3f665e3",
+        "pm/plugin_declarations.py": "210cabe36b29b87272cdda0add85174c17809f6d",
     }
+
+
+HTTPX_MOVED = (
+    "Hermes Agent core no longer pins httpx 0.28. "
+    "Review the httpx range in pyproject.toml and python_runtime in plugin.yaml."
+)
+
+
+def core_pin_responses(text: str) -> list[FakeResponse]:
+    payload = {"sha": "any-sha", "download_url": "https://raw.example.test/pyproject.toml"}
+    return [FakeResponse(payload=payload), FakeResponse(text=text)]
+
+
+def test_core_pin_check_passes_while_hermes_ships_the_httpx_line(capsys: Any) -> None:
+    client = FakeClient(core_pin_responses('dependencies = ["httpx[socks]==0.28.1"]'))
+
+    assert compat.check_core_pin(client, compat.CORE_PIN_CHECKS[0]) == []
+    assert capsys.readouterr().out == 'Core pin verified. pyproject.toml "httpx[socks]==0.28.\n'
+    assert client.urls[0].endswith("/contents/pyproject.toml?ref=main")
+
+
+def test_core_pin_check_fails_when_hermes_moves_httpx() -> None:
+    client = FakeClient(core_pin_responses('dependencies = ["httpx[socks]==0.29.0"]'))
+
+    assert compat.check_core_pin(client, compat.CORE_PIN_CHECKS[0]) == [HTTPX_MOVED]
+
+
+def test_core_pin_check_reports_an_unreadable_file() -> None:
+    client = FakeClient([FakeResponse(payload=[])])
+
+    assert compat.check_core_pin(client, compat.CORE_PIN_CHECKS[0]) == [
+        "Invalid GitHub response for pyproject.toml. Expected an object."
+    ]
 
 
 def test_check_page_reports_missing_terms() -> None:

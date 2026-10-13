@@ -43,7 +43,6 @@ Use `docs/SUBMISSION_READINESS.md` before proposing a new listing.
 | Awesome Claude Code And Skills Hermes Tweet listing | <https://github.com/GetBindu/awesome-claude-code-and-skills/blob/main/readme.md> |
 | Awesome Hermes Agent plugin listing | <https://github.com/SamurAIGPT/awesome-hermes-agent#plugins> |
 | Gaia Skill Tree Hermes Tweet named skill | <https://github.com/mbtiongson1/gaia-skill-tree/blob/main/registry/named/xquik-dev/hermes-tweet.md> |
-| Claude Skill Registry Hermes Tweet skill | <https://github.com/majiayu000/claude-skill-registry/blob/main/skills/api/hermes-tweet/SKILL.md> |
 | Claude Skill Registry Data Hermes Tweet archive | <https://github.com/majiayu000/claude-skill-registry-data/blob/main/api/hermes-tweet/SKILL.md> |
 | Awesome Hermes Use Cases X social automation use case | <https://github.com/aliaihub/awesome-hermes-usecases/blob/main/usecases/x-social-automation-toolset.md> |
 | Learn Hermes Agent skill-system tutorial | <https://github.com/longyunfeigu/learn-hermes-agent/blob/main/docs/en/s08-skill-system.md> |

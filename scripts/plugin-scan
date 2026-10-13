@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# SPDX-FileCopyrightText: 2026 Xquik Contributors
+# SPDX-License-Identifier: MIT
+#
+# Scans this plugin with the pinned plugin scanner that the Codex catalog asks for.
+# It fails on a score below 80 and on any finding of high severity or above.
+# Usage: scripts/plugin-scan
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+scanner_version="2.0.1116"
+scanner_sha256="40d40308484e49b438c6ef47a7794ab6aac617914447174f80fe4578911cdcb3"
+
+workspace="$(mktemp -d "${TMPDIR:-/tmp}/hermes-tweet-plugin-scan.XXXXXX")"
+trap 'rm -rf -- "${workspace:?}"' EXIT
+printf 'plugin-scanner==%s --hash=sha256:%s\n' "$scanner_version" "$scanner_sha256" \
+  >"$workspace/requirements.txt"
+
+uv venv --quiet --python 3.12 "$workspace/venv"
+# The install fails unless the scanner wheel matches the digest above.
+# Its dependencies install afterwards.
+uv pip install --quiet --python "$workspace/venv" --no-deps --require-hashes \
+  --requirement "$workspace/requirements.txt"
+uv pip install --quiet --python "$workspace/venv" "plugin-scanner==$scanner_version"
+# The scanner and its dependencies are third-party code, so they run without
+# the maintainer's environment variables and with an empty home folder.
+mkdir "$workspace/home"
+env -i HOME="$workspace/home" PATH="$PATH" TMPDIR="$workspace" \
+  "$workspace/venv/bin/plugin-scanner" scan . --format text --profile default \
+  --min-score 80 --fail-on-severity high --cisco-skill-scan auto

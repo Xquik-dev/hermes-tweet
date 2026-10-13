@@ -9,19 +9,18 @@ Releases to match protected source. Verify live versions before every release.
 - [x] Add recommended GitHub topics from `docs/GITHUB_METADATA.md`.
 - [x] Enable issues, Actions, Dependabot alerts, and security updates.
 - [x] Enable secret scanning and push protection.
-- [x] Confirm branch protection requires CI.
+- [x] Confirm branch protection requires the `xquik-local-checks` status.
 
 ## Before PyPI publication
 
-- [x] Add the PyPI trusted publisher for `Xquik-dev/hermes-tweet`.
-- [x] Restrict the `pypi` environment to release tags matching `v*`.
+- [x] Store the PyPI token where `bin/release-local` reads it.
 - [x] Protect release tags from updates and deletion.
 - [x] Regenerate `hermes_tweet/catalog_data.json` from current Xquik OpenAPI.
-- [x] Run the full quality gate from `AGENTS.md`.
+- [x] Run `bin/check-local`.
 - [x] Build from a clean working tree and run `twine check dist/*`.
 - [x] Verify the wheel contains `plugin.yaml`, `catalog_data.json`, and the
   bundled Hermes skill.
-- [x] Publish through GitHub Actions trusted publishing.
+- [x] Publish with `bin/release-local`.
 - [x] Verify PyPI metadata, README rendering, simple index visibility, and a
   fresh install.
 
@@ -43,12 +42,15 @@ Releases to match protected source. Verify live versions before every release.
 
 ## Release gate
 
-Merge each version change through protected `master`. Then dispatch the
-`Publish` workflow from `master`. Set `release_ref` to the matching `v*` tag.
+Merge each version change through protected `master`. Then run
+`bin/release-local` on a clean `master`.
 
-The workflow creates a draft release and exact tag. It dispatches a tag-bound
-build for trusted publishing. It attaches signed assets before publication.
-GitHub locks the release only after every publication step succeeds.
+It runs `bin/check-local`, checks every public link, builds, and uploads to
+PyPI. It compares the PyPI files with the local build. Only then it pushes the
+`v*` tag and creates the GitHub release with both distributions.
+
+`bin/release-local --dry-run` previews a release. It uploads, tags, and
+releases nothing.
 
 Never create or publish the GitHub release manually.
 
@@ -67,7 +69,6 @@ uv run --python 3.12 --group dev python scripts/check_hermes_agent_compat.py
 uv run --python 3.12 --group dev bash scripts/check_reproducible.sh
 uv run --python 3.12 --group dev python -m build
 uv run --python 3.12 --group dev twine check dist/*
-actionlint .github/workflows/*.yml
 ```
 
 ## Hermes Agent compatibility gate
@@ -108,6 +109,8 @@ Keep the runtime contract aligned with those sources:
 - Tool handlers accept future Hermes context keyword arguments, catch
   exceptions, and return JSON strings.
 - Bundled skills continue to register through `ctx.register_skill`.
+- `plugin.yaml` declares `python_runtime: external`, and `httpx` stays the only
+  runtime dependency, so Hermes admits the plugin without a dependency step.
 - Install docs explain that user and PyPI entry-point plugins are opt-in and
   need `--enable`, `hermes plugins enable hermes-tweet`, or an explicit
   `plugins.enabled` entry.

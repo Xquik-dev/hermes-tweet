@@ -6,7 +6,7 @@ Thanks for improving Hermes Tweet.
 
 1. Install dependencies with `uv sync --python 3.12 --group dev`.
 2. Make focused changes.
-3. Run the full local quality gate from `AGENTS.md`.
+3. Run `bin/check-local`. It runs every check a change must pass.
 4. Keep public docs accurate and avoid private implementation details.
 
 ## Pull requests

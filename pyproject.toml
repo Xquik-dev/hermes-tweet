@@ -82,6 +82,7 @@ include = [
   "/.claude-plugin",
   "/.codex-plugin",
   "/assets",
+  "/bin",
   "/dashboard",
   "/hermes_tweet",
   "/scripts",
@@ -125,6 +126,8 @@ ignore = [
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*.py" = ["D105", "D107", "EM101", "PLR2004", "S101", "TRY003"]
 "scripts/**/*.py" = ["T201"]
+# Script tests start this repository's own scripts with fixed arguments.
+"tests/test_*_command.py" = ["S603"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["hermes_tweet"]

@@ -33,6 +33,13 @@ class SourceCheck:
 
 
 @dataclass(frozen=True)
+class CorePinCheck:
+    path: str
+    required_pin: str
+    next_step: str
+
+
+@dataclass(frozen=True)
 class SourceContent:
     sha: str
     text: str
@@ -69,7 +76,7 @@ PAGE_CHECKS: Final = (
 SOURCE_CHECKS: Final = (
     SourceCheck(
         path="hermes_cli/plugins.py",
-        expected_sha="b88640df9abb13a52d4eb9aa2cfee9ca11d66847",
+        expected_sha="a652179cd4a7a3ac04fe7eb2a0377de6a6dfbc58",
         required_terms=(
             "ENTRY_POINTS_GROUP",
             "discover_entrypoint_manifests",
@@ -78,38 +85,93 @@ SOURCE_CHECKS: Final = (
             "HERMES_ENABLE_PROJECT_PLUGINS",
             "HERMES_SAFE_MODE",
             "def register_tool",
-            "def register_skill",
             "def register_command",
+            "from hermes_cli.plugins_content import",
+            "register_skill",
             "requires_env",
             "check_fn",
         ),
     ),
     SourceCheck(
+        path="hermes_cli/plugins_content.py",
+        expected_sha="92b8d79f5440e58d421a6018d4c6d12e9aef107b",
+        required_terms=(
+            "def register_skill",
+            "SKILL.md not found",
+            "skill_namespace",
+        ),
+    ),
+    SourceCheck(
         path="tools/registry.py",
-        expected_sha="bf6d52f2ee637a56bf1b6d24d5f13e3dbbd0dd92",
+        expected_sha="30ec01a9f31f66ff159024aec3ccc3a57249ba62",
         required_terms=(
             "check_fn",
             "requires_env",
             "get_definitions",
             "dispatch",
             "json.dumps",
+            "_kwargs_accepted_by",
         ),
     ),
     SourceCheck(
         path="hermes_cli/plugins_cmd.py",
-        expected_sha="912d93208d2169f2a51bff4dc8b6fed1dfd204c0",
+        expected_sha="ad061ca6772c0f5629d365bb7c406cfb23556f41",
         required_terms=(
             "_resolve_plugin_key",
             "_scan_plugin_tree",
             "_resolve_subdir_within",
-            "nested category plugins",
+            "_tri_state_flag",
             "requires_env",
-            "--enable",
-            "--no-enable",
             "plugins.enabled",
             "enable",
             "disable",
             "install",
+        ),
+    ),
+    SourceCheck(
+        path="hermes_cli/plugins_cmd_install.py",
+        expected_sha="2aee13fdd3fbfe3b7c3299de4819aa9e114bd3e1",
+        required_terms=(
+            "def cmd_install",
+            "_prompt_plugin_env_vars",
+            "_install_plugin_python_deps",
+            "declares Python dependencies",
+            "yes_deps",
+            "no_deps",
+        ),
+    ),
+    SourceCheck(
+        path="hermes_cli/subcommands/plugins.py",
+        expected_sha="fe703ee56eeee778d14a5ee25401eba1e3f665e3",
+        required_terms=(
+            "--enable",
+            "--no-enable",
+            "--force",
+            "--yes-deps",
+            "--no-deps",
+        ),
+    ),
+    SourceCheck(
+        path="pm/plugin_declarations.py",
+        expected_sha="210cabe36b29b87272cdda0add85174c17809f6d",
+        required_terms=(
+            "python_runtime",
+            "external",
+            "is_member",
+            "project.dependencies",
+        ),
+    ),
+)
+
+# plugin.yaml declares an external Python runtime, so Hermes installs nothing for this plugin.
+# That holds only while Hermes core ships the httpx release line this plugin needs.
+CORE_PIN_CHECKS: Final = (
+    CorePinCheck(
+        path="pyproject.toml",
+        required_pin='"httpx[socks]==0.28.',
+        next_step=(
+            "Hermes Agent core no longer pins httpx 0.28. "
+            "Review the httpx range in pyproject.toml and python_runtime in plugin.yaml."
         ),
     ),
 )
@@ -190,6 +252,18 @@ def check_source(client: httpx.Client, check: SourceCheck) -> list[str]:
     return []
 
 
+def check_core_pin(client: httpx.Client, check: CorePinCheck) -> list[str]:
+    content, errors = read_source(client, check.path)
+    if content is None:
+        return errors
+
+    if check.required_pin not in content.text:
+        return [check.next_step]
+
+    print(f"Core pin verified. {check.path} {check.required_pin}")
+    return []
+
+
 def run_checks() -> list[str]:
     timeout = httpx.Timeout(DOC_TIMEOUT_SECONDS)
     errors: list[str] = []
@@ -199,6 +273,8 @@ def run_checks() -> list[str]:
             errors.extend(check_page(client, page_check))
         for source_check in SOURCE_CHECKS:
             errors.extend(check_source(client, source_check))
+        for core_pin_check in CORE_PIN_CHECKS:
+            errors.extend(check_core_pin(client, core_pin_check))
 
     return errors
 
