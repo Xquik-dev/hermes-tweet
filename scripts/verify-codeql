@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 # SPDX-FileCopyrightText: 2026 Xquik Contributors
 # SPDX-License-Identifier: MIT
-#
-# Fails unless the SARIF report shows 1 complete CodeQL run with no findings.
-# A finding of any level fails.
-# Usage: scripts/verify-codeql <report.sarif>
 set -euo pipefail
 
 report="$1"
@@ -15,7 +11,6 @@ fail() {
   exit 1
 }
 
-# Succeeds when the jq filter is true for the report.
 holds() {
   jq -e "$1" "$report" >/dev/null 2>&1
 }

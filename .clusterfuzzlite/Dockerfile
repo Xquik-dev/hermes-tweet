@@ -7,5 +7,4 @@ COPY . ${SRC}/hermes-tweet
 WORKDIR ${SRC}/hermes-tweet
 COPY .clusterfuzzlite/build.sh ${SRC}/build.sh
 
-# This image builds fuzzers and exits. It never serves health-checkable traffic.
 HEALTHCHECK NONE

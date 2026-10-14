@@ -17,7 +17,6 @@ if TYPE_CHECKING:
 USER_AGENT: Final = "HermesTweetHermesAgentCompat/1.0"
 LATEST_RELEASE_URL: Final = "https://api.github.com/repos/NousResearch/hermes-agent/releases/latest"
 SOURCE_URL: Final = "https://raw.githubusercontent.com/NousResearch/hermes-agent"
-# The lock below was reviewed against this Hermes Agent release.
 REVIEWED_RELEASE: Final = "v0.22.0"
 DEVELOPMENT_BRANCH: Final = "main"
 DOC_TIMEOUT_SECONDS: Final = 30.0
@@ -168,8 +167,6 @@ SOURCE_CHECKS: Final = (
     ),
 )
 
-# plugin.yaml declares an external Python runtime, so Hermes installs nothing for this plugin.
-# That holds only while Hermes core ships the httpx release line this plugin needs.
 CORE_PIN_CHECKS: Final = (
     CorePinCheck(
         path="pyproject.toml",
@@ -210,13 +207,11 @@ def check_page(client: httpx.Client, check: PageCheck) -> list[str]:
 
 
 def blob_sha(content: bytes) -> str:
-    """Return the Git blob hash of a file, which is what the lock records."""
     header = f"blob {len(content)}\0".encode()
     return hashlib.sha1(header + content, usedforsecurity=False).hexdigest()
 
 
 def latest_release(client: httpx.Client) -> tuple[str | None, list[str]]:
-    """Return the tag of the latest Hermes Agent release. Only this request carries a token."""
     try:
         response = client.get(LATEST_RELEASE_URL, headers=github_headers())
         response.raise_for_status()
@@ -280,7 +275,6 @@ def check_core_pin(client: httpx.Client, check: CorePinCheck, release: str) -> l
 
 
 def development_warnings(client: httpx.Client) -> list[str]:
-    """Say what the development branch already changed. A warning never fails the run."""
     warnings: list[str] = []
     for source_check in SOURCE_CHECKS:
         content, errors = read_source(client, source_check.path, DEVELOPMENT_BRANCH)
@@ -304,7 +298,6 @@ def development_warnings(client: httpx.Client) -> list[str]:
 
 
 def run_checks(client: httpx.Client) -> tuple[list[str], list[str]]:
-    """Return the failures and the warnings. The gate is the latest Hermes Agent release."""
     errors: list[str] = []
     for page_check in PAGE_CHECKS:
         errors.extend(check_page(client, page_check))

@@ -1,15 +1,6 @@
 #!/usr/bin/env bash
 # SPDX-FileCopyrightText: 2026 Xquik Contributors
 # SPDX-License-Identifier: MIT
-#
-# Runs every repository check in order and stops at the first failure.
-# Usage: bin/check-local [--no-status]
-# CodeQL and jq are mandatory, so install them with brew install --cask codeql
-# and brew install jq.
-# When the tree is clean and GitHub has HEAD, the result is posted to HEAD
-# as the xquik-local-checks commit status, through the gh login of whoever
-# runs this script. The status text lists only the checks that passed in
-# this run. --no-status skips posting.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -41,7 +32,6 @@ else
   status_commit="$(git rev-parse HEAD)"
 fi
 
-# Posts the commit status. A failed post prints a warning and keeps the check result.
 post_status() {
   local state="$1" description="${2:0:139}"
   gh api --silent "repos/$repository/statuses/$status_commit" \
@@ -72,12 +62,9 @@ if [[ -n "$status_commit" ]]; then
   post_status pending "Running lint, types, safety, tests, audit, build, plugin scan & CodeQL."
 fi
 
-# A missing or outdated CodeQL CLI fails here, before the slower checks run.
 current_check="CodeQL CLI"
 codeql_version="$(bash scripts/codeql-security --version)"
 
-# Runs 1 check and records its label for the status. On failure, prints the
-# check name and the next step, then exits. An empty label records nothing.
 run_check() {
   local label="$1" name="$2" next_step="$3"
   shift 3
@@ -91,7 +78,6 @@ run_check() {
   [[ -z "$label" ]] || passed+=("$label")
 }
 
-# Runs a command on Python 3.12, in an environment made for this run.
 on_python() {
   UV_PYTHON="$python_version" UV_PROJECT_ENVIRONMENT="$workspace/venv" "$@"
 }
@@ -100,7 +86,6 @@ run_locked() {
   on_python uv run --no-sync "$@"
 }
 
-# The checker sends its token to every host it reads, so it runs without one.
 check_compatibility() {
   (
     unset GITHUB_TOKEN GH_TOKEN
@@ -113,7 +98,7 @@ run_tests() {
     tee "$workspace/tests.log"
 }
 
-# Shell functions run without errexit inside run_check, so this one chains its commands with &&.
+# Shell functions run without errexit inside run_check, so this one chains its commands with &&. https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html
 build_and_check_metadata() {
   SOURCE_DATE_EPOCH=946684800 run_locked python -m build --outdir "$workspace/dist" &&
     run_locked twine check "$workspace"/dist/*

@@ -25,7 +25,7 @@ for fuzzer in "${SRC}"/hermes-tweet/fuzz/*_fuzzer.py; do
 
   cat >"${OUT}/${fuzzer_name}" <<EOF
 #!/bin/sh
-# LLVMFuzzerTestOneInput
+# LLVMFuzzerTestOneInput https://google.github.io/oss-fuzz/getting-started/new-project-guide/python-lang/
 this_dir=\$(dirname "\$0")
 exec "\${this_dir}/${fuzzer_package}" "\$@"
 EOF

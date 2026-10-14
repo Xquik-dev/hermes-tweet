@@ -13,10 +13,6 @@ import pytest
 
 ROOT = Path(__file__).parents[1]
 BASH = shutil.which("bash") or "/bin/bash"
-# The uv stub records each call. It builds a scanner that records its own call.
-# It also builds a Python that answers the sanitizer question and records its fuzz call.
-# The uname stub reports the system the test names, so no real fuzzer starts here.
-# The ssh stub records the remote command and discards the source it is sent.
 STUB = r"""uv() {
  [ -z "${LD_PRELOAD:-}" ] || echo "uv ran with a preload" >> "$EVENTS"
  case "$1 $2" in
@@ -58,7 +54,6 @@ SCAN = [
     f"dependencies {SCANNER}",
     SCANNED,
 ]
-# A host of this name makes the stubs report Linux x86_64 with no runner set.
 LINUX = "this-machine-is-linux"
 FUZZ_OPTIONS = "-max_len=4096 -rss_limit_mb=2048 -timeout=60 -artifact_prefix=<evidence>/"
 NOT_LINUX = "Use Linux x86_64 or set XQUIK_FUZZ_HOST to an authorized Linux SSH runner."
