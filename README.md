@@ -20,7 +20,7 @@ Choose an SDK for application code.
 
 ## Install
 
-Install and enable the plugin:
+Install and enable the plugin.
 
 ```bash
 hermes plugins install Xquik-dev/hermes-tweet --enable
@@ -33,13 +33,13 @@ Hermes installs no extra Python package for this plugin. Hermes core already
 ships `httpx`, its only dependency.
 
 If you manage the Hermes Python environment yourself, add the `hermes-tweet`
-PyPI package to it. Then enable the plugin:
+PyPI package to it. Then enable the plugin.
 
 ```bash
 hermes plugins enable hermes-tweet
 ```
 
-Install a local checkout:
+Install a local checkout with this command.
 
 ```bash
 hermes plugins install file:///absolute/path/to/hermes-tweet --force --enable
@@ -47,13 +47,13 @@ hermes plugins install file:///absolute/path/to/hermes-tweet --force --enable
 
 ## Configure
 
-Create an API key in Xquik. Then set:
+Create an API key in Xquik. Then set it in your environment.
 
 ```bash
 export XQUIK_API_KEY="xq_..."
 ```
 
-Optional settings:
+These settings are optional.
 
 ```bash
 export XQUIK_BASE_URL="https://xquik.com"
@@ -111,13 +111,13 @@ Without an API key, Hermes exposes only `tweet_explore`.
 
 ## Development
 
-Regenerate the catalog from the canonical OpenAPI schema:
+Regenerate the catalog from the canonical OpenAPI schema.
 
 ```bash
 python scripts/build_catalog.py ../xquik/openapi.yaml
 ```
 
-Run all checks:
+Run all checks.
 
 ```bash
 uv run --python 3.12 --group dev ruff format --check .

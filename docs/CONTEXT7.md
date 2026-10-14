@@ -5,13 +5,13 @@ on install, auth, safe tool use, and smoke tests for coding agents.
 
 ## Install
 
-Install from the public GitHub repository:
+Install from the public GitHub repository.
 
 ```bash
 hermes plugins install Xquik-dev/hermes-tweet --enable
 ```
 
-Hermes plugins are opt-in. If the plugin was installed without `--enable`, run:
+Hermes plugins are opt-in. If you installed the plugin without `--enable`, run this command.
 
 ```bash
 hermes plugins enable hermes-tweet
@@ -22,7 +22,7 @@ Hermes installs no extra Python package for this plugin. Hermes core already
 ships `httpx`, its only dependency.
 
 If you manage the Hermes Python environment yourself, add the published Python
-package to it. Then enable the plugin:
+package to it. Then enable the plugin.
 
 ```bash
 hermes plugins enable hermes-tweet
@@ -38,13 +38,13 @@ also runs the Hermes runtime locally.
 
 ## Configure
 
-Create an API key in the Xquik dashboard and set it in the runtime environment:
+Create an API key in the Xquik dashboard. Set it in the runtime environment.
 
 ```bash
 export XQUIK_API_KEY="xq_..."
 ```
 
-Optional settings:
+These settings are optional.
 
 ```bash
 export XQUIK_BASE_URL="https://xquik.com"
@@ -98,7 +98,7 @@ hermes tools list
 hermes -z "Use tweet_explore, then read /api/v1/account. Do not call tweet_action." --toolsets hermes-tweet
 ```
 
-Expected result:
+Expect these results.
 
 - `tweet_explore` finds endpoints without using the API key.
 - `tweet_read` can read `/api/v1/account` after `XQUIK_API_KEY` is set.

@@ -6,7 +6,7 @@ translating, or repackaging it.
 
 ## Confirm the fit
 
-The target must document a native route for at least one of these entries:
+The target must document a native route for at least one of these entries.
 
 - Hermes Agent plugins or Skills
 - X/Twitter search, monitoring, or approved publishing tools
@@ -16,7 +16,7 @@ The target must document a native route for at least one of these entries:
   entries
 - framework integrations backed by a working, tested adapter
 
-Reject a target when any condition below applies:
+Reject a target when any condition below applies.
 
 - Its repository only implements a marketplace, crawler, registry server, or
   hosted submission form.
@@ -46,7 +46,7 @@ is review context, not an automatic rejection. Check common root files such as
 
 ## Check the native route
 
-Before preparing a change, verify all of these conditions:
+Before you prepare a change, verify all of these conditions.
 
 - Contribution docs invite third-party source repositories.
 - The pull-request feature is enabled and accepts external fork heads.
@@ -65,13 +65,13 @@ container, package, or example solely to create a catalog entry.
 
 ## Prevent duplicates
 
-Search before editing:
+Search these places before you edit.
 
 - the target README, docs, manifests, examples, indexes, Skills, and catalogs
 - open and closed pull requests and issues
 - public GitHub code results for `Hermes Tweet`, `hermes-tweet`, `Xquik`, and
   the repository URL
-- adjacent names: `TweetClaw`, `OpenClaw`, `SocialClaw`,
+- the adjacent names `TweetClaw`, `OpenClaw`, `SocialClaw`,
   `x-twitter-scraper`, `source-packets`, and `evidence-packets`
 - upstream sources for translated, generated, or mirrored lists
 
@@ -94,7 +94,7 @@ The title, summary, slug, and added text must name `Hermes Tweet` or
 `hermes-tweet`. Do not title a Hermes Tweet submission only for Xquik,
 TweetClaw, OpenClaw, an MCP data entry, or a handoff packet.
 
-Use direct wording that matches the target:
+Use direct wording that matches the target.
 
 - Hermes Agent Twitter plugin
 - Hermes Agent X plugin
@@ -109,7 +109,7 @@ platform rules, or removes user approval.
 
 ## Validate the change
 
-Run every target-required check. When available, also run:
+Run every target-required check. When available, also run these checks.
 
 - target tests, linters, manifest checks, and catalog generators
 - `git diff --check`
@@ -126,12 +126,12 @@ validation comments that already contain current evidence.
 
 ## Protect public data
 
-Never publish:
+Never publish these items.
 
 - API keys, cookies, tokens, private account data, screenshots, or raw logs
 - nonpublic services, providers, pricing units, capacity, or routing details
 - commands that require production access, browser login, payment, or secret
   retrieval
 
-Public examples may name only documented settings: `XQUIK_API_KEY`,
+Public examples may name only the documented settings `XQUIK_API_KEY`,
 `XQUIK_BASE_URL`, and `HERMES_TWEET_ENABLE_ACTIONS`.

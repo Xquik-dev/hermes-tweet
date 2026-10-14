@@ -1,19 +1,19 @@
 # Hermes Tweet installed
 
-Hermes Tweet installs as the `hermes-tweet` toolset. If you skipped `--enable`, run:
+Hermes Tweet installs as the `hermes-tweet` toolset. If you skipped `--enable`, run these commands.
 
 ```bash
 hermes plugins enable hermes-tweet
 hermes plugins list
 ```
 
-Set your Xquik API key before using read tools:
+Set your Xquik API key before you use read tools.
 
 ```bash
 export XQUIK_API_KEY="xq_..."
 ```
 
-For persistent Hermes sessions, add it to `~/.hermes/.env`:
+For persistent Hermes sessions, add it to `~/.hermes/.env`.
 
 ```bash
 XQUIK_API_KEY=xq_...
@@ -22,13 +22,13 @@ XQUIK_API_KEY=xq_...
 After editing `~/.hermes/.env`, reload the CLI or restart gateway and cron sessions.
 Without `XQUIK_API_KEY`, Hermes exposes only `tweet_explore` from this plugin.
 
-Keep actions disabled unless you intend to allow account changes:
+Keep actions disabled unless you intend to allow account changes.
 
 ```bash
 export HERMES_TWEET_ENABLE_ACTIONS=false
 ```
 
-Run this smoke test:
+Run this smoke test.
 
 ```bash
 hermes -z "Use tweet_explore, then read /api/v1/account. Do not call tweet_action." --toolsets hermes-tweet
@@ -37,7 +37,7 @@ hermes -z "Use tweet_explore, then read /api/v1/account. Do not call tweet_actio
 Use catalog-listed `/api/v1/...` paths from `tweet_explore`. Copied endpoint
 URLs are accepted only when they resolve to catalog-listed paths.
 
-Expect:
+Expect these results.
 
 - `tweet_explore` loads without an API call.
 - `tweet_read` works when `XQUIK_API_KEY` is set.
