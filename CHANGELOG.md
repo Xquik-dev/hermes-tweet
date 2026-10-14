@@ -3,6 +3,14 @@
 Earlier releases are listed on the
 [GitHub releases page](https://github.com/Xquik-dev/hermes-tweet/releases).
 
+## 0.1.16
+
+- Verified on Hermes Agent v0.22.0. The plugin installs, enables and loads its
+  3 tools, 2 commands and the bundled Skill there, as it does on v0.21.7.
+- The README links the other Xquik tools by name. PyPI shows the new README
+  with this release.
+- No behavior changes from 0.1.15.
+
 ## 0.1.15
 
 - The README, the docs and both copies of the bundled Hermes Skill read
