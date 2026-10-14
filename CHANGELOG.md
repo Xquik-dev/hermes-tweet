@@ -3,6 +3,13 @@
 Earlier releases are listed on the
 [GitHub releases page](https://github.com/Xquik-dev/hermes-tweet/releases).
 
+## 0.1.15
+
+- The README, the docs and both copies of the bundled Hermes Skill read
+  without colons or semicolons in their sentences. PyPI shows the new README
+  with this release.
+- No behavior changes from 0.1.14.
+
 ## 0.1.14
 
 - Fix enabling on Hermes Agent v0.21.7. Hermes installed the plugin but left it
