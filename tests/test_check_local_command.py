@@ -12,8 +12,6 @@ import pytest
 
 ROOT = Path(__file__).parents[1]
 BASH = shutil.which("bash") or "/bin/bash"
-# The stub scripts record their run and fail when CHECK_CASE names it.
-# The CodeQL stub also answers --version.
 SCRIPT = r"""#!/usr/bin/env bash
 name=$(basename "$0")
 if [ "${1:-}" = --version ]; then
@@ -25,7 +23,6 @@ printf '%s\n' "$name" >> "$CHECK_EVENTS"
 [ "$CHECK_CASE$name" != changedcodeql-security ] || touch "$CHECK_DIRTY"
 [ "$CHECK_CASE" != "$name" ]
 """
-# The stubs record each check as an event and fail the one CHECK_CASE names.
 STUB = r"""record() {
  printf '%s\n' "$1" >> "$CHECK_EVENTS"
  [ "$CHECK_CASE" != "$1" ]
@@ -115,7 +112,6 @@ PASSED = (
     "format, lint, types, compatibility, safety, licenses, tests (183 passed), Bandit, audit, "
     "build, plugin scan, CodeQL 2.27.2."
 )
-# check-local runs these tests with the uv variables set, so the stubs start without them.
 INHERITED = ("UV_PYTHON", "UV_PROJECT_ENVIRONMENT")
 
 

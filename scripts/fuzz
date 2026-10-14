@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 # SPDX-FileCopyrightText: 2026 Xquik Contributors
 # SPDX-License-Identifier: MIT
-#
-# Fuzzes the input normalization with Atheris and AddressSanitizer.
-# Usage: scripts/fuzz [seconds]
-# It runs for 60 seconds unless told otherwise. Pass 600 for the longer nightly run.
-# Atheris needs Linux x86_64. Elsewhere, set XQUIK_FUZZ_HOST to an authorized
-# Linux SSH runner, and the script copies the source there and runs on it.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -35,8 +29,6 @@ export PATH="$HOME/.local/bin:$PATH"
 evidence="$(mktemp -d)"
 mkdir "$evidence/corpus"
 echo "Fuzz evidence is in $evidence"
-# The sanitizer runtime is preloaded into Python alone. Preloaded into uv, it can
-# crash uv before Python starts, so the interpreter comes from an environment made first.
 uv venv --quiet --python 3.13 "$evidence/venv"
 uv pip install --quiet --python "$evidence/venv" atheris==3.1.0 \
   --requirement .clusterfuzzlite/requirements.txt
@@ -46,7 +38,6 @@ sanitizer="$("$fuzz_python" -c 'import atheris, pathlib; print(pathlib.Path(athe
   echo "Atheris AddressSanitizer runtime is missing. Check the atheris install, then rerun." >&2
   exit 1
 }
-# A crashing sanitizer can print without end, so the log stops at 10 MB and the run fails.
 log_limit=10485760
 LD_PRELOAD="$sanitizer" ASAN_OPTIONS=detect_leaks=0:symbolize=1 PYTHONPATH="$PWD" \
   "$fuzz_python" "$harness" "$evidence/corpus" \

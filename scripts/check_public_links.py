@@ -24,8 +24,6 @@ HTTP_METHOD_NOT_ALLOWED = 405
 HTTP_UNAUTHORIZED = 401
 PUBLIC_LINK_FILES = PUBLIC_SURFACE_FILES
 AUTHENTICATED_PUBLIC_URLS = frozenset({"https://xquik.com/mcp"})
-# A host that answers with one of these is up and refuses this scanner.
-# Neither answer says the link is dead.
 SCANNER_REFUSALS = frozenset({HTTP_FORBIDDEN, HTTP_TOO_MANY_REQUESTS})
 TRAILING_URL_PUNCTUATION = ".,;:!?)'"
 URL_PATTERN = re.compile(r'https?://[^\s\]\\)<>"`]+')

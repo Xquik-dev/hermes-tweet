@@ -1,14 +1,6 @@
 #!/usr/bin/env bash
 # SPDX-FileCopyrightText: 2026 Xquik Contributors
 # SPDX-License-Identifier: MIT
-#
-# Publishes the version in pyproject.toml to PyPI from a maintainer's Mac,
-# then pushes its v<version> tag and creates the GitHub release.
-# Usage: bin/release-local [--dry-run]
-# PYPI_KEYCHAIN_SERVICE names the macOS Keychain item that holds the PyPI token.
-# --dry-run runs every step except the upload, the tag, and the GitHub release.
-# It never reads the Keychain, so it needs no PYPI_KEYCHAIN_SERVICE. It also
-# runs on any clean commit, so a preview can run before a change lands.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -34,8 +26,6 @@ fail() {
   exit 1
 }
 
-# Reads the PyPI token from the Keychain item named by PYPI_KEYCHAIN_SERVICE.
-# Messages never name the item, because release output gets pasted in public.
 read_token() {
   security find-generic-password -s "$keychain_service" "$@" 2>/dev/null ||
     fail "The Keychain has no item named by PYPI_KEYCHAIN_SERVICE. Add the PyPI token under that name, then run bin/release-local again."
@@ -105,7 +95,6 @@ built=("$artifacts"/*)
 step "Checking package metadata with twine."
 uv run --locked --group dev twine check "${files[@]}"
 
-# Succeeds when PyPI lists the SHA-256 digest of both local files.
 pypi_matches_build() {
   local metadata file digest
   metadata="$(curl --silent --fail --max-time 30 "$pypi_api/$package/$version/json")" || return 1

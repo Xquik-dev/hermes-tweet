@@ -17,7 +17,7 @@ MAX_NORMALIZED_LIMIT = 100
 
 
 class InvariantError(RuntimeError):
-    """Report a normalization invariant broken by generated input."""
+    pass
 
 
 def _require(*, condition: bool, message: str) -> None:

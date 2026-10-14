@@ -93,7 +93,6 @@ def test_source_checks_track_reviewed_hermes_agent_locks() -> None:
     }
 
 
-# Git gives these hashes for a file that holds "hello" and a newline, and for an empty file.
 HELLO = "hello\n"
 HELLO_SHA = "ce013625030ba8dba906f756967f9e9ca394464a"
 EMPTY_SHA = "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"

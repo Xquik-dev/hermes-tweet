@@ -1,0 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Xquik Contributors
+# SPDX-License-Identifier: MIT
+name: xquik/no-code-comments
+version: 0.0.0
+dependencies:
+  codeql/python-all: 7.2.5
