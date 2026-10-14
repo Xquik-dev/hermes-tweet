@@ -20,8 +20,8 @@ CI-style smoke tests. The difference is where the Hermes runtime executes.
   `hermes plugins enable hermes-tweet` after installation.
 - Confirm `hermes plugins list` shows `hermes-tweet` as enabled.
 - Confirm `hermes tools list` shows the `hermes-tweet` toolset.
-- Use `tweet_explore` first; it does not need `XQUIK_API_KEY`.
-- Use only catalog-listed paths; copied endpoint URLs must resolve to one.
+- Use `tweet_explore` first. It does not need `XQUIK_API_KEY`.
+- Use only catalog-listed paths, as copied endpoint URLs must resolve to one.
 - Use `docs/SUBMISSION_READINESS.md` before proposing Hermes Tweet to public
   Skill, plugin, catalog, registry, awesome-list, or integration listings.
 - Set `XQUIK_API_KEY` only on the host that executes plugin tools.
@@ -38,7 +38,7 @@ CI-style smoke tests. The difference is where the Hermes runtime executes.
 - Pasting API keys into prompts, issues, PR comments, or tool arguments. Use the
   runtime environment or `~/.hermes/.env`.
 - Testing slash commands with one-shot `hermes -z "/xstatus"`. Use an active
-  CLI, TUI, Desktop, or gateway session for `/xstatus` and `/xtrends`; use
+  CLI, TUI, Desktop, or gateway session for `/xstatus` and `/xtrends`. Use
   `hermes -z` for tool-call probes.
 - Treating install as enablement. Hermes discovers third-party plugins before
   it executes them, so enablement is a separate step unless `--enable` was used.

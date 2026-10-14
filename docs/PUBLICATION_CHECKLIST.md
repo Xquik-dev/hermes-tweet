@@ -58,7 +58,7 @@ Keychain item that `PYPI_KEYCHAIN_SERVICE` names.
 
 Never create or publish the GitHub release manually.
 
-Run these checks before any new package release:
+Run these checks before any new package release.
 
 ```bash
 uv run --python 3.12 --group dev ruff format --check .
@@ -78,7 +78,7 @@ uv run --python 3.12 --group dev twine check dist/*
 ## Hermes Agent compatibility gate
 
 Before changing plugin registration, manifests, install docs, or release
-metadata, verify the current official Hermes Agent plugin docs and source:
+metadata, verify the current official Hermes Agent plugin docs and source.
 
 - [Build a Hermes Plugin](https://hermes-agent.nousresearch.com/docs/developer-guide/plugins)
 - [Plugins feature guide](https://hermes-agent.nousresearch.com/docs/user-guide/features/plugins/)
@@ -87,7 +87,7 @@ metadata, verify the current official Hermes Agent plugin docs and source:
 - [`hermes_cli/plugins_cmd.py`](https://github.com/NousResearch/hermes-agent/blob/main/hermes_cli/plugins_cmd.py)
 
 Run the compatibility checker before release, outreach, or plugin-facing docs
-updates:
+updates.
 
 ```bash
 uv run --python 3.12 --group dev python scripts/check_hermes_agent_compat.py
@@ -96,14 +96,14 @@ uv run --python 3.12 --group dev python scripts/check_hermes_agent_compat.py
 If a locked Hermes Agent source SHA changes, review the official diff first,
 then update Hermes Tweet runtime, docs, tests, and the checker lock together.
 
-Latest reviewed locks from August 20, 2026: `hermes_cli/plugins.py`
+The latest reviewed locks date from August 20, 2026. They are `hermes_cli/plugins.py`
 `2493d8f21eddc0617d04e9ee48812846086eade4`, `tools/registry.py`
 `081040911499f8bb7e5a947e9c85b5e459fd3dd0`, and
 `hermes_cli/plugins_cmd.py` `912d93208d2169f2a51bff4dc8b6fed1dfd204c0`.
 
 Reviewed changes preserve manifest and registration APIs.
 
-Keep the runtime contract aligned with those sources:
+Keep the runtime contract aligned with those sources.
 
 - `plugin.yaml` keeps the rich `XQUIK_API_KEY` `requires_env` installer prompt.
 - `tweet_explore` stays ungated and makes no network call.
@@ -135,7 +135,7 @@ hermes tools list
 hermes -z "Use tweet_explore, then read /api/v1/account. Do not call tweet_action." --toolsets hermes-tweet
 ```
 
-Expected result:
+Expect these results.
 
 - `tweet_explore` loads without an API call.
 - Copied endpoint URLs resolve only to catalog-listed `/api/v1/...` paths.

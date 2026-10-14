@@ -49,7 +49,7 @@ Tweet plugin for X/Twitter automation through Xquik.
 
 ## Install
 
-Install the native plugin in Hermes Agent:
+Install the native plugin in Hermes Agent.
 
 ```bash
 hermes plugins install Xquik-dev/hermes-tweet --enable
@@ -63,7 +63,7 @@ read or action tools. Do not paste the key into chat.
 
 ## When to use Hermes Tweet
 
-Use Hermes Tweet for:
+Use Hermes Tweet for these tasks.
 
 - Search tweets or Twitter/X.
 - Read tweet replies and details.

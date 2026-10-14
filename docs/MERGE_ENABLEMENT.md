@@ -8,7 +8,7 @@ Enumerate every open in-scope PR before discovery or outreach. A capped GitHub
 CLI result is incomplete. Use paginated GraphQL or search API queries. Split
 capped results by author, head owner, base repository, keyword, date, and state.
 
-Write the enumeration and audit evidence to unique temporary files:
+Write the enumeration and audit evidence to unique temporary files.
 
 - `/tmp/hermes-tweet-open-prs-<timestamp>.json`
 - `/tmp/hermes-tweet-pr-audit-<timestamp>.jsonl`
@@ -30,7 +30,7 @@ query does not prove coverage. Keep capped URLs out of the final audit set.
 
 ## Audit each pull request
 
-For each verified PR URL, read:
+For each verified PR URL, read these items.
 
 - mergeability and conflict status
 - status checks and commit statuses

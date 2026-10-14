@@ -7,7 +7,7 @@ replace every local X/Twitter tool.
 ## Role
 
 Hermes Tweet is the Hermes Agent plugin for X/Twitter work through Xquik. Use it
-when a task needs:
+when a task needs any of these.
 
 - a Hermes plugin entry point from PyPI or GitHub
 - `tweet_explore` catalog discovery before tool calls
@@ -97,7 +97,7 @@ Skip archived repos, demos, product wrappers, mirrors, and MCP-only adapters.
 
 ## Submission wording
 
-Use wording like:
+Use phrases like these.
 
 - optional Hermes Agent backend for X/Twitter reads
 - Hermes Agent X/Twitter tools

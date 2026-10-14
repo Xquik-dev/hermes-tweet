@@ -39,14 +39,14 @@ each release.
 
 ## Runtime smoke test
 
-Use this check after installing or updating Hermes Tweet:
+Use this check after you install or update Hermes Tweet.
 
 ```bash
 hermes tools list
 hermes -z "Use tweet_explore, then read /api/v1/account. Do not call tweet_action." --toolsets hermes-tweet
 ```
 
-Record only sanitized outcomes:
+Record only sanitized outcomes.
 
 - Catalog exploration succeeded.
 - Copied endpoint URLs resolved only to catalog-listed `/api/v1/...` paths.
@@ -57,7 +57,7 @@ Record only sanitized outcomes:
 - `/xstatus` and `/xtrends` were registered.
 
 Hermes one-shot runs cannot verify slash-command registration through
-`hermes -z "/xstatus"` or `hermes -z "/xtrends"`; that text can
+`hermes -z "/xstatus"` or `hermes -z "/xtrends"`. That text can
 route as a model prompt. Verify slash-command registration in an active CLI,
 TUI, Desktop, or gateway session, or through the plugin registry tests. Use
 one-shot `hermes -z` for tool-call probes such as `tweet_explore` and

@@ -68,7 +68,7 @@ Use `docs/SUBMISSION_READINESS.md` before proposing a new listing.
 
 ## Public wording
 
-Use these concrete phrases in public docs when they match the workflow:
+Use these concrete phrases in public docs when they match the workflow.
 
 - Hermes Agent Twitter plugin
 - Hermes Agent X plugin
