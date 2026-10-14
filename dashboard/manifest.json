@@ -2,6 +2,6 @@
   "name": "hermes-tweet",
   "label": "Hermes Tweet",
   "description": "Hermes Agent plugin for Twitter search, monitoring, follower exports & approved X actions. Not affiliated with X Corp.",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "slots": ["tools"]
 }
