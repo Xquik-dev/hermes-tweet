@@ -18,7 +18,7 @@ USER_AGENT: Final = "HermesTweetHermesAgentCompat/1.0"
 LATEST_RELEASE_URL: Final = "https://api.github.com/repos/NousResearch/hermes-agent/releases/latest"
 SOURCE_URL: Final = "https://raw.githubusercontent.com/NousResearch/hermes-agent"
 # The lock below was reviewed against this Hermes Agent release.
-REVIEWED_RELEASE: Final = "v0.21.7"
+REVIEWED_RELEASE: Final = "v0.22.0"
 DEVELOPMENT_BRANCH: Final = "main"
 DOC_TIMEOUT_SECONDS: Final = 30.0
 
@@ -120,7 +120,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="hermes_cli/plugins_cmd.py",
-        expected_sha="517521e1c6488f44cf39e4b5f88be91c598fc0a7",
+        expected_sha="ad061ca6772c0f5629d365bb7c406cfb23556f41",
         required_terms=(
             "_resolve_plugin_key",
             "_scan_plugin_tree",

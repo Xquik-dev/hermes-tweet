@@ -81,12 +81,12 @@ def test_github_headers_adds_optional_token(monkeypatch: Any) -> None:
 def test_source_checks_track_reviewed_hermes_agent_locks() -> None:
     locks = {check.path: check.expected_sha for check in compat.SOURCE_CHECKS}
 
-    assert compat.REVIEWED_RELEASE == "v0.21.7"
+    assert compat.REVIEWED_RELEASE == "v0.22.0"
     assert locks == {
         "hermes_cli/plugins.py": "a652179cd4a7a3ac04fe7eb2a0377de6a6dfbc58",
         "hermes_cli/plugins_content.py": "92b8d79f5440e58d421a6018d4c6d12e9aef107b",
         "tools/registry.py": "30ec01a9f31f66ff159024aec3ccc3a57249ba62",
-        "hermes_cli/plugins_cmd.py": "517521e1c6488f44cf39e4b5f88be91c598fc0a7",
+        "hermes_cli/plugins_cmd.py": "ad061ca6772c0f5629d365bb7c406cfb23556f41",
         "hermes_cli/plugins_cmd_install.py": "2aee13fdd3fbfe3b7c3299de4819aa9e114bd3e1",
         "hermes_cli/subcommands/plugins.py": "fe703ee56eeee778d14a5ee25401eba1e3f665e3",
         "pm/plugin_declarations.py": "210cabe36b29b87272cdda0add85174c17809f6d",
@@ -225,19 +225,19 @@ def test_run_checks_gates_on_the_latest_release_and_only_warns_about_main(
         f"{SOURCE}/main/pyproject.toml",
     ]
     assert capsys.readouterr().out.splitlines()[0] == (
-        "Hermes Agent v9.9.9 is newer than the reviewed v0.21.7."
+        "Hermes Agent v9.9.9 is newer than the reviewed v0.22.0."
     )
 
 
 def test_run_checks_fails_when_the_latest_release_changes_a_locked_file(monkeypatch: Any) -> None:
     pin_checks(monkeypatch, (locked("tools/registry.py", HELLO_SHA, "hello"),), core_pins=False)
-    client = FakeClient([release("v0.21.7"), FakeResponse(text=""), FakeResponse(text=HELLO)])
+    client = FakeClient([release("v0.22.0"), FakeResponse(text=""), FakeResponse(text=HELLO)])
 
     errors, warnings = compat.run_checks(client)
 
     assert errors == [
         (
-            f"Source changed for tools/registry.py in Hermes Agent v0.21.7: {HELLO_SHA} to "
+            f"Source changed for tools/registry.py in Hermes Agent v0.22.0: {HELLO_SHA} to "
             f"{EMPTY_SHA}. Review the official Hermes Agent diff before updating this lock."
         )
     ]
