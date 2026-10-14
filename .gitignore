@@ -121,3 +121,4 @@ screenshots/
 .tmp/
 tmp/
 temp/
+.claude/worktrees/
