@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 USER_AGENT: Final = "HermesTweetHermesAgentCompat/1.0"
 LATEST_RELEASE_URL: Final = "https://api.github.com/repos/NousResearch/hermes-agent/releases/latest"
 SOURCE_URL: Final = "https://raw.githubusercontent.com/NousResearch/hermes-agent"
-REVIEWED_RELEASE: Final = "v0.22.1"
+REVIEWED_RELEASE: Final = "v0.22.2"
 DEVELOPMENT_BRANCH: Final = "main"
 DOC_TIMEOUT_SECONDS: Final = 30.0
 
@@ -80,7 +80,7 @@ PAGE_CHECKS: Final = (
 SOURCE_CHECKS: Final = (
     SourceCheck(
         path="hermes_cli/plugins.py",
-        expected_sha="c68e50f606db08c55df6b1e3a334ffae3f5c1b10",
+        expected_sha="a652179cd4a7a3ac04fe7eb2a0377de6a6dfbc58",
         required_terms=(
             "ENTRY_POINTS_GROUP",
             "discover_entrypoint_manifests",
@@ -107,7 +107,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="tools/registry.py",
-        expected_sha="131a8c7dc63418d11ef62b89bebcd3c9a712ab8e",
+        expected_sha="30ec01a9f31f66ff159024aec3ccc3a57249ba62",
         required_terms=(
             "check_fn",
             "requires_env",
