@@ -279,7 +279,7 @@ def test_merge_enablement_guide_requires_complete_pr_coverage() -> None:
     assert "hermes-tweet-pr-audit-<timestamp>.jsonl" in guide
     assert "author, head owner, base repository" in normalized_guide
     assert "unresolved review threads" in normalized_guide
-    assert "verified `kriptoburak` branches" in guide
+    assert "verified `burak-bayir` branches" in guide
     assert "aggregate `UNKNOWN` mergeability" in guide
     assert "direct PR read" in guide
     assert "reports `DIRTY` or `CONFLICTING`" in normalized_guide

@@ -39,16 +39,16 @@ For each verified PR URL, read these items.
 - comments from maintainers and review bots
 - head branch owner, fork owner, and branch drift
 
-Repair controllable blockers only through verified `kriptoburak` branches.
+Repair controllable blockers only through verified `burak-bayir` branches.
 Record maintainer-only checks, account failures, missing contexts, or unavailable
 CI logs. Do not invent code changes for those blockers. When a dirty PR uses a
 third-party fork or a head owner other than
-`kriptoburak`, treat the conflict as non-controllable even when GitHub reports
+`burak-bayir`, treat the conflict as non-controllable even when GitHub reports
 `maintainerCanModify`. Record the head owner and conflict state, then continue
 without pushing to that fork.
 
 Verify aggregate `UNKNOWN` mergeability with a direct PR read. If it reports `DIRTY` or
-`CONFLICTING` on a verified `kriptoburak` head branch, repair the branch before
+`CONFLICTING` on a verified `burak-bayir` head branch, repair the branch before
 discovery. If the head branch is not controlled, record the owner, the conflict
 state, and the target-side evidence instead of attempting a repair.
 
@@ -57,7 +57,7 @@ state, and the target-side evidence instead of attempting a repair.
 When a submission adds Hermes Tweet install instructions, verify every changed
 snippet uses `hermes plugins install Xquik-dev/hermes-tweet --enable` or includes
 an immediate `hermes plugins enable hermes-tweet` follow-up. Treat review
-threads about missing enablement as controllable on verified `kriptoburak`
+threads about missing enablement as controllable on verified `burak-bayir`
 branches, because an installed but disabled plugin leaves the advertised
 `hermes-tweet` tools unavailable.
 
