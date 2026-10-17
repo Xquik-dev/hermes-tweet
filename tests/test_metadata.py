@@ -35,7 +35,7 @@ EXPECTED_SKILL_TAGS = [
     "social-media",
     "automation",
 ]
-EXPECTED_MARKETPLACE_SKILL_AUTHOR = "Burak Bay\u0131r (@kriptoburak), Xquik"
+EXPECTED_MARKETPLACE_SKILL_AUTHOR = "Burak Bay\u0131r (@burak-bayir), Xquik"
 EXPECTED_VERIFIED_SKILL_COMMIT = "c6ebdd7060965dd16a89e8cc12675ff834b5cc94"
 EXPECTED_MARKETPLACE_SKILL_FIELDS = {
     "name",
