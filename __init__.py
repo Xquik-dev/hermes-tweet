@@ -3,7 +3,9 @@
 
 from __future__ import annotations
 
-if __package__:
+from typing import TYPE_CHECKING
+
+if __package__ and not TYPE_CHECKING:
     from .hermes_tweet import register
 else:
     from hermes_tweet import register

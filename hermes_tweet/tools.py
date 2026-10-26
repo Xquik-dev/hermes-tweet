@@ -3,11 +3,16 @@
 
 from __future__ import annotations
 
-from typing import Any, cast
-
 from .catalog import explore as explore_catalog
 from .catalog import find_endpoint, matches_path, normalize_method, normalize_path
-from .client import action_enabled, check_api_available, dumps, normalize_query_params, request
+from .client import (
+    action_enabled,
+    check_api_available,
+    dumps,
+    is_mapping,
+    normalize_query_params,
+    request,
+)
 
 ARGS_ERROR = "Invalid tool arguments. Pass a JSON object."
 ACTION_REASON_ERROR = "Action reason missing. Add a user-visible reason."
@@ -24,17 +29,17 @@ BLOCKED_ACTION_ENDPOINTS: tuple[tuple[str, str], ...] = (
 )
 
 
-def _args(value: Any) -> dict[str, Any] | None:
-    if not isinstance(value, dict):
+def _args(value: object) -> dict[str, object] | None:
+    if not is_mapping(value):
         return None
-    return cast("dict[str, Any]", value)
+    return {key: item for key, item in value.items() if isinstance(key, str)}
 
 
 def _args_error() -> str:
     return dumps({"success": False, "error": ARGS_ERROR})
 
 
-def _text(value: Any) -> str:
+def _text(value: object) -> str:
     if not isinstance(value, str):
         return ""
     return value.strip()
@@ -53,7 +58,7 @@ def _is_blocked_action(method: str, path: str) -> bool:
     )
 
 
-def _validate_action(tool_args: dict[str, Any]) -> tuple[str, str, str]:
+def _validate_action(tool_args: dict[str, object]) -> tuple[str, str, str]:
     if not action_enabled():
         return "", "", ACTION_DISABLED_ERROR
     if not _text(tool_args.get("reason")):
@@ -74,7 +79,7 @@ def _validate_action(tool_args: dict[str, Any]) -> tuple[str, str, str]:
     return method, catalog_path, ""
 
 
-def explore(args: Any, **_: Any) -> str:
+def explore(args: object, **_: object) -> str:
     try:
         tool_args = _args(args)
         if tool_args is None:
@@ -84,7 +89,7 @@ def explore(args: Any, **_: Any) -> str:
         return dumps({"success": False, "error": TOOL_FAILURE_ERROR})
 
 
-def call_read(args: Any, **_: Any) -> str:
+def call_read(args: object, **_: object) -> str:
     try:
         tool_args = _args(args)
         if tool_args is None:
@@ -116,7 +121,7 @@ def call_read(args: Any, **_: Any) -> str:
         return dumps({"success": False, "error": TOOL_FAILURE_ERROR})
 
 
-def call_action(args: Any, **_: Any) -> str:
+def call_action(args: object, **_: object) -> str:
     try:
         tool_args = _args(args)
         if tool_args is None:
@@ -136,12 +141,12 @@ def call_action(args: Any, **_: Any) -> str:
         return dumps({"success": False, "error": TOOL_FAILURE_ERROR})
 
 
-def xstatus(raw_args: Any = "") -> str:
+def xstatus(raw_args: object = "") -> str:
     _ = raw_args
     return call_read({"path": "/api/v1/account"})
 
 
-def xtrends(raw_args: Any = "") -> str:
+def xtrends(raw_args: object = "") -> str:
     category = _text(raw_args)
     query = {"category": category} if category else None
     return call_read({"path": "/api/v1/x/trends", "query": query})

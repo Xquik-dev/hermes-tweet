@@ -3,34 +3,20 @@
 
 from __future__ import annotations
 
-import importlib.util
-import sys
-from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING
 
 import pytest
 import yaml
+from scripts import build_catalog
 
-ROOT = Path(__file__).parents[1]
-
-
-def load_build_catalog_module() -> Any:
-    module_path = ROOT / "scripts" / "build_catalog.py"
-    spec = importlib.util.spec_from_file_location("build_catalog", module_path)
-    assert spec is not None
-    assert spec.loader is not None
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[spec.name] = module
-    spec.loader.exec_module(module)
-    return module
-
-
-build_catalog = load_build_catalog_module()
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 def write_openapi(tmp_path: Path, paths: dict[str, object]) -> Path:
     source = tmp_path / "openapi.yaml"
-    source.write_text(yaml.safe_dump({"paths": paths}), encoding="utf-8")
+    document: dict[str, object] = {"paths": paths}
+    source.write_text(yaml.safe_dump(document), encoding="utf-8")
     return source
 
 
@@ -155,35 +141,31 @@ def test_build_resolves_referenced_parameters_and_skips_unnamed_entries(
     tmp_path: Path,
 ) -> None:
     source = tmp_path / "openapi.yaml"
-    source.write_text(
-        yaml.safe_dump(
-            {
-                "components": {
-                    "parameters": {
-                        "Cursor": {
-                            "name": "cursor",
-                            "in": "query",
-                            "description": "Pagination cursor",
-                            "schema": {"type": "string"},
-                        }
-                    }
-                },
-                "paths": {
-                    "/x/tweets/search": {
-                        "get": {
-                            "summary": "Search tweets",
-                            "parameters": [
-                                {"$ref": "#/components/parameters/Cursor"},
-                                {"$ref": "#/components/parameters/Missing"},
-                                {},
-                            ],
-                        }
-                    }
-                },
+    document: dict[str, object] = {
+        "components": {
+            "parameters": {
+                "Cursor": {
+                    "name": "cursor",
+                    "in": "query",
+                    "description": "Pagination cursor",
+                    "schema": {"type": "string"},
+                }
             }
-        ),
-        encoding="utf-8",
-    )
+        },
+        "paths": {
+            "/x/tweets/search": {
+                "get": {
+                    "summary": "Search tweets",
+                    "parameters": [
+                        {"$ref": "#/components/parameters/Cursor"},
+                        {"$ref": "#/components/parameters/Missing"},
+                        {},
+                    ],
+                }
+            }
+        },
+    }
+    source.write_text(yaml.safe_dump(document), encoding="utf-8")
 
     [endpoint] = build_catalog.build(source)
 
@@ -255,3 +237,21 @@ def test_paid_read_catalog_has_exact_contract() -> None:
     assert len(build_catalog.PAID_READS) == 33
     assert ("GET", "/api/v1/x/tweets/{id}") in build_catalog.PAID_READS
     assert ("GET", "/api/v1/x/users/search") in build_catalog.PAID_READS
+
+
+def test_build_ignores_keys_that_are_not_text(tmp_path: Path) -> None:
+    source = write_openapi(
+        tmp_path,
+        {
+            "/x/trends": {
+                "get": {
+                    "summary": "X trends",
+                    "responses": {200: {"description": "Unquoted status"}},
+                }
+            }
+        },
+    )
+
+    [endpoint] = build_catalog.build(source)
+
+    assert endpoint["responseShape"] == ""

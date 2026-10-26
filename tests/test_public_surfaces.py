@@ -3,29 +3,13 @@
 
 from __future__ import annotations
 
-import importlib.util
 import re
-import sys
 from pathlib import Path
-from typing import Any
 
 import pytest
+from scripts import public_surfaces
 
 ROOT = Path(__file__).parents[1]
-
-
-def load_public_surfaces_module() -> Any:
-    module_path = ROOT / "scripts" / "public_surfaces.py"
-    spec = importlib.util.spec_from_file_location("public_surfaces", module_path)
-    assert spec is not None
-    assert spec.loader is not None
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[spec.name] = module
-    spec.loader.exec_module(module)
-    return module
-
-
-public_surfaces = load_public_surfaces_module()
 
 
 def test_default_public_surface_selection_uses_registry() -> None:

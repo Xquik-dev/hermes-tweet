@@ -9,22 +9,35 @@ import re
 import sys
 import types
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING
 
 from hermes_tweet import register
 from hermes_tweet.tools import action_enabled, check_api_available
 
+if TYPE_CHECKING:
+    from typing import Unpack
+
+    from hermes_tweet import ToolRegistration
+    from hermes_tweet.client import JsonValue
+
+
+def lookup(value: JsonValue, *keys: str) -> JsonValue:
+    for key in keys:
+        assert isinstance(value, dict)
+        value = value[key]
+    return value
+
 
 class DummyContext:
     def __init__(self) -> None:
-        self.tools: list[dict[str, Any]] = []
-        self.commands: list[dict[str, Any]] = []
+        self.tools: list[ToolRegistration] = []
+        self.commands: list[dict[str, object]] = []
         self.skills: list[tuple[str, Path]] = []
 
-    def register_tool(self, **kwargs: Any) -> None:
+    def register_tool(self, **kwargs: Unpack[ToolRegistration]) -> None:
         self.tools.append(kwargs)
 
-    def register_command(self, name: str, **kwargs: Any) -> None:
+    def register_command(self, name: str, **kwargs: object) -> None:
         self.commands.append({"name": name, **kwargs})
 
     def register_skill(self, name: str, skill_md: Path) -> None:
@@ -65,38 +78,38 @@ def test_register_keeps_official_hermes_plugin_gates_aligned() -> None:
     assert "requires_env" not in explore
     assert explore["schema"]["name"] == "tweet_explore"
     assert explore["is_async"] is False
-    explore_parameters = explore["schema"]["parameters"]
+    explore_properties = lookup(explore["schema"], "parameters", "properties")
     for filter_name in ("query", "category", "path"):
-        assert explore_parameters["properties"][filter_name]["minLength"] == 1
-        assert explore_parameters["properties"][filter_name]["pattern"] == "\\S"
+        assert lookup(explore_properties, filter_name, "minLength") == 1
+        assert lookup(explore_properties, filter_name, "pattern") == "\\S"
 
-    assert read["check_fn"] is check_api_available
-    assert read["requires_env"] == ["XQUIK_API_KEY"]
+    assert read.get("check_fn") is check_api_available
+    assert read.get("requires_env") == ["XQUIK_API_KEY"]
     assert read["schema"]["name"] == "tweet_read"
     assert read["is_async"] is False
-    read_parameters = read["schema"]["parameters"]
-    assert read_parameters["properties"]["path"]["minLength"] == len("/api/v1/")
-    assert read_parameters["properties"]["path"]["pattern"] == (
-        "^(?:/api/v1/|https?://[^/]+/api/v1/)"
-    )
-    assert "copied API URL" in read_parameters["properties"]["path"]["description"]
-    assert read_parameters["properties"]["query"]["propertyNames"] == nonblank_property_names
+    read_properties = lookup(read["schema"], "parameters", "properties")
+    read_path_description = lookup(read_properties, "path", "description")
+    assert lookup(read_properties, "path", "minLength") == len("/api/v1/")
+    assert lookup(read_properties, "path", "pattern") == "^(?:/api/v1/|https?://[^/]+/api/v1/)"
+    assert isinstance(read_path_description, str)
+    assert "copied API URL" in read_path_description
+    assert lookup(read_properties, "query", "propertyNames") == nonblank_property_names
 
-    assert action["check_fn"] is action_enabled
-    assert action["requires_env"] == ["XQUIK_API_KEY", "HERMES_TWEET_ENABLE_ACTIONS"]
+    assert action.get("check_fn") is action_enabled
+    assert action.get("requires_env") == ["XQUIK_API_KEY", "HERMES_TWEET_ENABLE_ACTIONS"]
     assert action["schema"]["name"] == "tweet_action"
     assert action["is_async"] is False
-    action_parameters = action["schema"]["parameters"]
-    assert action_parameters["required"] == ["path", "reason"]
-    assert action_parameters["properties"]["path"]["minLength"] == len("/api/v1/")
-    assert action_parameters["properties"]["path"]["pattern"] == (
-        "^(?:/api/v1/|https?://[^/]+/api/v1/)"
-    )
-    assert "copied API URL" in action_parameters["properties"]["path"]["description"]
-    assert action_parameters["properties"]["query"]["propertyNames"] == nonblank_property_names
-    assert action_parameters["properties"]["method"]["default"] == "POST"
-    assert action_parameters["properties"]["reason"]["minLength"] == 1
-    assert action_parameters["properties"]["reason"]["pattern"] == "\\S"
+    action_properties = lookup(action["schema"], "parameters", "properties")
+    action_path_description = lookup(action_properties, "path", "description")
+    assert lookup(action["schema"], "parameters", "required") == ["path", "reason"]
+    assert lookup(action_properties, "path", "minLength") == len("/api/v1/")
+    assert lookup(action_properties, "path", "pattern") == "^(?:/api/v1/|https?://[^/]+/api/v1/)"
+    assert isinstance(action_path_description, str)
+    assert "copied API URL" in action_path_description
+    assert lookup(action_properties, "query", "propertyNames") == nonblank_property_names
+    assert lookup(action_properties, "method", "default") == "POST"
+    assert lookup(action_properties, "reason", "minLength") == 1
+    assert lookup(action_properties, "reason", "pattern") == "\\S"
 
 
 def test_registered_path_schema_allows_only_api_paths_and_urls() -> None:
@@ -106,8 +119,10 @@ def test_registered_path_schema_allows_only_api_paths_and_urls() -> None:
 
     tools = {tool["name"]: tool for tool in ctx.tools}
     for tool_name in ("tweet_read", "tweet_action"):
-        path_schema = tools[tool_name]["schema"]["parameters"]["properties"]["path"]
-        pattern = re.compile(path_schema["pattern"])
+        path_schema = lookup(tools[tool_name]["schema"], "parameters", "properties", "path")
+        pattern_source = lookup(path_schema, "pattern")
+        assert isinstance(pattern_source, str)
+        pattern = re.compile(pattern_source)
 
         assert pattern.search("/api/v1/account") is not None
         assert pattern.search("https://xquik.com/api/v1/account") is not None
@@ -122,7 +137,7 @@ def test_registered_tool_handlers_accept_future_hermes_context_kwargs() -> None:
 
     for tool in ctx.tools:
         parameters = inspect.signature(tool["handler"]).parameters.values()
-        assert any(parameter.kind is inspect.Parameter.VAR_KEYWORD for parameter in parameters)
+        assert any(parameter.kind is parameter.VAR_KEYWORD for parameter in parameters)
 
 
 def test_root_entrypoint_loads_as_hermes_directory_plugin() -> None:
@@ -153,7 +168,8 @@ def test_root_entrypoint_loads_as_hermes_directory_plugin() -> None:
         sys.modules[module_prefix] = module
         spec.loader.exec_module(module)
 
-        assert callable(module.register)
+        loaded: object = getattr(module, "register", None)
+        assert callable(loaded)
     finally:
         sys.path = previous_path
         for module_name in list(sys.modules):

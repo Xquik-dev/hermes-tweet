@@ -3,13 +3,16 @@
 
 from __future__ import annotations
 
-from typing import Any, Self
+from typing import TYPE_CHECKING, Self
 
 import httpx
 import pytest
 
 from hermes_tweet import client
 from hermes_tweet.client import build_headers
+
+if TYPE_CHECKING:
+    from hermes_tweet.client import JsonValue
 
 
 def test_build_headers_uses_x_api_key_for_xquik_keys() -> None:
@@ -94,7 +97,7 @@ def test_request_requires_api_key(monkeypatch: pytest.MonkeyPatch) -> None:
 class FakeClient:
     response: httpx.Response | None = None
     error: httpx.HTTPError | None = None
-    last_request: dict[str, Any] | None = None
+    last_request: dict[str, object] | None = None
 
     def __init__(self, timeout: float) -> None:
         self.timeout = timeout
@@ -105,7 +108,7 @@ class FakeClient:
     def __exit__(self, *args: object) -> None:
         return None
 
-    def request(self, **kwargs: Any) -> httpx.Response:
+    def request(self, **kwargs: object) -> httpx.Response:
         FakeClient.last_request = kwargs
         if FakeClient.error is not None:
             raise FakeClient.error
@@ -115,7 +118,7 @@ class FakeClient:
 
 
 def _response(
-    status_code: int, *, json_data: dict[str, Any] | None = None, text: str = ""
+    status_code: int, *, json_data: dict[str, JsonValue] | None = None, text: str = ""
 ) -> httpx.Response:
     request = httpx.Request("GET", "https://xquik.com/api/v1/account")
     if json_data is None:
@@ -125,7 +128,7 @@ def _response(
 
 def test_request_returns_json_response(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("XQUIK_API_KEY", "xq_test")
-    monkeypatch.setattr(client.httpx, "Client", FakeClient)
+    monkeypatch.setattr(httpx, "Client", FakeClient)
     FakeClient.response = _response(200, json_data={"ok": True})
     FakeClient.error = None
 
@@ -136,7 +139,7 @@ def test_request_returns_json_response(monkeypatch: pytest.MonkeyPatch) -> None:
 
 def test_request_ignores_empty_query(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("XQUIK_API_KEY", "xq_test")
-    monkeypatch.setattr(client.httpx, "Client", FakeClient)
+    monkeypatch.setattr(httpx, "Client", FakeClient)
     FakeClient.response = _response(200, json_data={"ok": True})
     FakeClient.error = None
 
@@ -147,7 +150,7 @@ def test_request_ignores_empty_query(monkeypatch: pytest.MonkeyPatch) -> None:
 
 def test_request_normalizes_query_params(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("XQUIK_API_KEY", "xq_test")
-    monkeypatch.setattr(client.httpx, "Client", FakeClient)
+    monkeypatch.setattr(httpx, "Client", FakeClient)
     FakeClient.response = _response(200, json_data={"ok": True})
     FakeClient.error = None
 
@@ -181,7 +184,7 @@ def test_request_ignores_empty_query_after_normalization(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     monkeypatch.setenv("XQUIK_API_KEY", "xq_test")
-    monkeypatch.setattr(client.httpx, "Client", FakeClient)
+    monkeypatch.setattr(httpx, "Client", FakeClient)
     FakeClient.response = _response(200, json_data={"ok": True})
     FakeClient.error = None
 
@@ -196,7 +199,7 @@ def test_request_ignores_empty_query_after_normalization(
 
 def test_request_normalizes_path_whitespace(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("XQUIK_API_KEY", "xq_test")
-    monkeypatch.setattr(client.httpx, "Client", FakeClient)
+    monkeypatch.setattr(httpx, "Client", FakeClient)
     FakeClient.response = _response(200, json_data={"ok": True})
     FakeClient.error = None
 
@@ -207,7 +210,7 @@ def test_request_normalizes_path_whitespace(monkeypatch: pytest.MonkeyPatch) -> 
 
 def test_request_normalizes_method_whitespace(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("XQUIK_API_KEY", "xq_test")
-    monkeypatch.setattr(client.httpx, "Client", FakeClient)
+    monkeypatch.setattr(httpx, "Client", FakeClient)
     FakeClient.response = _response(200, json_data={"ok": True})
     FakeClient.error = None
 
@@ -218,7 +221,7 @@ def test_request_normalizes_method_whitespace(monkeypatch: pytest.MonkeyPatch) -
 
 def test_request_defaults_blank_method_to_get(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("XQUIK_API_KEY", "xq_test")
-    monkeypatch.setattr(client.httpx, "Client", FakeClient)
+    monkeypatch.setattr(httpx, "Client", FakeClient)
     FakeClient.response = _response(200, json_data={"ok": True})
     FakeClient.error = None
 
@@ -231,7 +234,7 @@ def test_request_defaults_malformed_method_to_get(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     monkeypatch.setenv("XQUIK_API_KEY", "xq_test")
-    monkeypatch.setattr(client.httpx, "Client", FakeClient)
+    monkeypatch.setattr(httpx, "Client", FakeClient)
     FakeClient.response = _response(200, json_data={"ok": True})
     FakeClient.error = None
 
@@ -251,7 +254,7 @@ def test_request_rejects_malformed_path(monkeypatch: pytest.MonkeyPatch) -> None
 
 def test_request_returns_text_response(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("XQUIK_API_KEY", "token")
-    monkeypatch.setattr(client.httpx, "Client", FakeClient)
+    monkeypatch.setattr(httpx, "Client", FakeClient)
     FakeClient.response = _response(200, text="plain")
     FakeClient.error = None
 
@@ -265,7 +268,7 @@ def test_request_returns_text_response(monkeypatch: pytest.MonkeyPatch) -> None:
 
 def test_request_rejects_binary_response(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("XQUIK_API_KEY", "xq_test")
-    monkeypatch.setattr(client.httpx, "Client", FakeClient)
+    monkeypatch.setattr(httpx, "Client", FakeClient)
     request = httpx.Request("GET", "https://xquik.com/api/v1/extractions/id/export")
     FakeClient.response = httpx.Response(
         200,
@@ -285,7 +288,7 @@ def test_request_rejects_binary_response(monkeypatch: pytest.MonkeyPatch) -> Non
 
 def test_request_returns_api_error(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("XQUIK_API_KEY", "xq_test")
-    monkeypatch.setattr(client.httpx, "Client", FakeClient)
+    monkeypatch.setattr(httpx, "Client", FakeClient)
     FakeClient.response = _response(402, json_data={"error": "insufficient_credits"})
     FakeClient.error = None
 
@@ -299,7 +302,7 @@ def test_request_returns_api_error(monkeypatch: pytest.MonkeyPatch) -> None:
 
 def test_request_returns_http_error(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("XQUIK_API_KEY", "xq_test")
-    monkeypatch.setattr(client.httpx, "Client", FakeClient)
+    monkeypatch.setattr(httpx, "Client", FakeClient)
     FakeClient.response = None
     FakeClient.error = httpx.ConnectError("network down")
 
@@ -311,7 +314,7 @@ def test_request_returns_http_error(monkeypatch: pytest.MonkeyPatch) -> None:
 
 def test_request_rethrows_unexpected_fake_setup(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("XQUIK_API_KEY", "xq_test")
-    monkeypatch.setattr(client.httpx, "Client", FakeClient)
+    monkeypatch.setattr(httpx, "Client", FakeClient)
     FakeClient.response = None
     FakeClient.error = None
 

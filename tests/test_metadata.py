@@ -6,12 +6,15 @@ from __future__ import annotations
 import json
 import tomllib
 from pathlib import Path
-from typing import cast
+from typing import TYPE_CHECKING, TypeGuard
 
 import pytest
 import yaml
 from packaging.requirements import Requirement
 from packaging.utils import canonicalize_name
+
+if TYPE_CHECKING:
+    from collections.abc import Callable, Mapping
 
 ROOT = Path(__file__).parents[1]
 GUIDE_URL = "https://github.com/Xquik-dev/hermes-tweet#readme"
@@ -168,29 +171,40 @@ EXPECTED_PUBLIC_IGNORE_PATTERNS = [
 ]
 
 
-def load_mapping(path: Path) -> dict[str, object]:
-    data = yaml.safe_load(path.read_text())
-    assert isinstance(data, dict)
-    return cast("dict[str, object]", data)
+_load_json: Callable[[str], object] = json.loads
+_load_toml: Callable[[str], dict[str, object]] = tomllib.loads
+_load_yaml: Callable[[str], object] = yaml.safe_load
 
 
-def load_object_mapping(path: Path) -> dict[object, object]:
-    data = yaml.safe_load(path.read_text())
-    assert isinstance(data, dict)
-    return cast("dict[object, object]", data)
+def is_mapping(value: object) -> TypeGuard[Mapping[object, object]]:
+    return isinstance(value, dict)
 
 
-def require_mapping(value: object) -> dict[str, object]:
-    assert isinstance(value, dict)
-    return cast("dict[str, object]", value)
+def is_list(value: object) -> TypeGuard[list[object]]:
+    return isinstance(value, list)
+
+
+def require_mapping(value: object) -> Mapping[object, object]:
+    assert is_mapping(value)
+    return value
 
 
 def require_list(value: object) -> list[object]:
-    assert isinstance(value, list)
-    return cast("list[object]", value)
+    assert is_list(value)
+    return value
 
 
-def assert_skill_capabilities(frontmatter: dict[str, object]) -> None:
+def lookup(value: object, *keys: str) -> object:
+    for key in keys:
+        value = require_mapping(value)[key]
+    return value
+
+
+def load_mapping(path: Path) -> Mapping[object, object]:
+    return require_mapping(_load_yaml(path.read_text()))
+
+
+def assert_skill_capabilities(frontmatter: Mapping[object, object]) -> None:
     capabilities = require_mapping(frontmatter["capabilities"])
     shell = require_mapping(capabilities["shell"])
     network = require_mapping(capabilities["network"])
@@ -207,7 +221,8 @@ def assert_skill_capabilities(frontmatter: dict[str, object]) -> None:
     assert require_list(capabilities["tools"]) == EXPECTED_TOOLS
 
 
-def normalize_requirement(requirement: str) -> tuple[str, dict[str, object]]:
+def normalize_requirement(requirement: object) -> tuple[str, dict[str, object]]:
+    assert isinstance(requirement, str)
     parsed = Requirement(requirement)
     return (
         canonicalize_name(parsed.name),
@@ -227,7 +242,7 @@ def normalize_locked_requirement(requirement: object) -> tuple[str, dict[str, ob
     )
 
 
-def find_locked_package(packages: list[object], name: str) -> dict[str, object]:
+def find_locked_package(packages: list[object], name: str) -> Mapping[object, object]:
     for package in packages:
         package_data = require_mapping(package)
         if package_data["name"] == name:
@@ -237,13 +252,11 @@ def find_locked_package(packages: list[object], name: str) -> dict[str, object]:
     raise AssertionError(message)
 
 
-def load_skill_frontmatter(path: Path) -> dict[str, object]:
+def load_skill_frontmatter(path: Path) -> Mapping[object, object]:
     content = path.read_text()
     assert content.startswith("---\n")
     _, frontmatter, _ = content.split("---", 2)
-    data = yaml.safe_load(frontmatter)
-    assert isinstance(data, dict)
-    return cast("dict[str, object]", data)
+    return require_mapping(_load_yaml(frontmatter))
 
 
 def test_find_locked_package_reports_missing_package() -> None:
@@ -252,17 +265,17 @@ def test_find_locked_package_reports_missing_package() -> None:
 
 
 def test_release_metadata_surfaces_stay_aligned() -> None:
-    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
-    version = pyproject["project"]["version"]
+    pyproject = _load_toml((ROOT / "pyproject.toml").read_text())
+    version = lookup(pyproject, "project", "version")
 
-    assert pyproject["project"]["description"] == EXPECTED_PUBLIC_PACKAGE_DESCRIPTION
+    assert lookup(pyproject, "project", "description") == EXPECTED_PUBLIC_PACKAGE_DESCRIPTION
     assert str(load_mapping(ROOT / "plugin.yaml")["version"]) == version
     assert str(load_mapping(ROOT / "hermes_tweet" / "plugin.yaml")["version"]) == version
 
     for surface in EXPECTED_SUBMISSION_READINESS_SURFACES:
         assert SUBMISSION_READINESS_PATH in surface.read_text(encoding="utf-8")
 
-    urls = pyproject["project"]["urls"]
+    urls = require_mapping(lookup(pyproject, "project", "urls"))
     assert urls["Homepage"] == GUIDE_URL
     assert urls["Documentation"] == GUIDE_URL
     assert urls["Repository"] == "https://github.com/Xquik-dev/hermes-tweet"
@@ -296,11 +309,12 @@ def test_ecosystem_tracks_validated_live_surfaces() -> None:
 
 
 def test_uv_lock_separates_dev_dependency_constraints() -> None:
-    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
-    lockfile = tomllib.loads((ROOT / "uv.lock").read_text())
+    pyproject = _load_toml((ROOT / "pyproject.toml").read_text())
+    lockfile = _load_toml((ROOT / "uv.lock").read_text())
 
     expected = dict(
-        normalize_requirement(requirement) for requirement in pyproject["dependency-groups"]["dev"]
+        normalize_requirement(requirement)
+        for requirement in require_list(lookup(pyproject, "dependency-groups", "dev"))
     )
     packages = require_list(lockfile["package"])
     package = find_locked_package(packages, "hermes-tweet")
@@ -376,7 +390,7 @@ def test_plugin_manifests_keep_install_prompt_contract() -> None:
 
 
 def test_plugin_needs_nothing_installed_by_hermes() -> None:
-    project = require_mapping(tomllib.loads((ROOT / "pyproject.toml").read_text())["project"])
+    project = require_mapping(_load_toml((ROOT / "pyproject.toml").read_text())["project"])
 
     assert load_mapping(ROOT / "plugin.yaml")["python_runtime"] == "external"
     assert project["dependencies"] == ["httpx>=0.28.1,<0.29"]
@@ -386,8 +400,8 @@ def test_registry_skill_mirrors_bundled_skill() -> None:
     bundled_skill = ROOT / "hermes_tweet" / "skills" / "hermes-tweet" / "SKILL.md"
     registry_skill = ROOT / "skills" / "hermes-tweet" / "SKILL.md"
     bundled_text = bundled_skill.read_text()
-    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
-    version = pyproject["project"]["version"]
+    pyproject = _load_toml((ROOT / "pyproject.toml").read_text())
+    version = lookup(pyproject, "project", "version")
 
     assert registry_skill.read_text().rstrip() == bundled_text.rstrip()
     assert "## Permissions and capabilities" in bundled_text
@@ -468,8 +482,8 @@ def test_skill_reference_mirrors_bundled_reference() -> None:
     assert "## Approval checklist" in reference_text
     assert "HERMES_TWEET_ENABLE_ACTIONS=true" in reference_text
 
-    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
-    wheel_packages = pyproject["tool"]["hatch"]["build"]["targets"]["wheel"]["packages"]
+    pyproject = _load_toml((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
+    wheel_packages = lookup(pyproject, "tool", "hatch", "build", "targets", "wheel", "packages")
     assert wheel_packages == ["hermes_tweet"]
 
 
@@ -477,8 +491,8 @@ def test_skill_card_mirrors_bundled_skill_card() -> None:
     registry_card = ROOT / "skills" / "hermes-tweet" / "skill-card.md"
     bundled_card = ROOT / "hermes_tweet" / "skills" / "hermes-tweet" / "skill-card.md"
     card_text = bundled_card.read_text()
-    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
-    version = pyproject["project"]["version"]
+    pyproject = _load_toml((ROOT / "pyproject.toml").read_text())
+    version = lookup(pyproject, "project", "version")
 
     assert registry_card.read_text().rstrip() == card_text.rstrip()
     assert f"- **Version.** {version}" in card_text
@@ -504,8 +518,8 @@ def test_skill_card_mirrors_bundled_skill_card() -> None:
 def test_ask_wrapper_skill_matches_public_package_metadata() -> None:
     ask_skill = ROOT / "registries" / "ask" / "hermes-tweet" / "SKILL.md"
     ask_text = ask_skill.read_text()
-    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
-    version = pyproject["project"]["version"]
+    pyproject = _load_toml((ROOT / "pyproject.toml").read_text())
+    version = lookup(pyproject, "project", "version")
 
     frontmatter = load_skill_frontmatter(ask_skill)
     assert frontmatter["name"] == "hermes-tweet"
@@ -527,9 +541,9 @@ def test_ask_wrapper_skill_matches_public_package_metadata() -> None:
 
 
 def test_agent_skill_manifest_matches_public_package_metadata() -> None:
-    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
-    project = pyproject["project"]
-    manifest = json.loads((ROOT / "skill.json").read_text())
+    pyproject = _load_toml((ROOT / "pyproject.toml").read_text())
+    project = require_mapping(pyproject["project"])
+    manifest = require_mapping(_load_json((ROOT / "skill.json").read_text()))
 
     assert manifest["name"] == project["name"]
     assert manifest["version"] == project["version"]
@@ -543,25 +557,27 @@ def test_agent_skill_manifest_matches_public_package_metadata() -> None:
     assert manifest["conflicts"] == []
     assert manifest["install"] == {"openclaw": EXPECTED_AGENT_SKILL_INSTALL}
     assert manifest["homepage"] == GUIDE_URL
-    assert manifest["repository"] == project["urls"]["Repository"]
-    assert set(manifest["keywords"]).issubset(project["keywords"])
+    assert manifest["repository"] == lookup(project, "urls", "Repository")
+    assert set(require_list(manifest["keywords"])).issubset(require_list(project["keywords"]))
     assert "include skill.json" in (ROOT / "MANIFEST.in").read_text().splitlines()
 
 
 def test_agent_skill_manifest_advertises_topic_based_registry_metadata() -> None:
-    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
-    manifest = json.loads((ROOT / "skill.json").read_text())
+    pyproject = _load_toml((ROOT / "pyproject.toml").read_text())
+    manifest = require_mapping(_load_json((ROOT / "skill.json").read_text()))
     metadata = (ROOT / "docs" / "GITHUB_METADATA.md").read_text()
 
-    assert EXPECTED_TOPIC_DISCOVERY_KEYWORD in pyproject["project"]["keywords"]
-    assert EXPECTED_TOPIC_DISCOVERY_KEYWORD in manifest["keywords"]
+    assert EXPECTED_TOPIC_DISCOVERY_KEYWORD in require_list(
+        lookup(pyproject, "project", "keywords")
+    )
+    assert EXPECTED_TOPIC_DISCOVERY_KEYWORD in require_list(manifest["keywords"])
     assert EXPECTED_TOPIC_DISCOVERY_KEYWORD in metadata
 
 
 def test_claude_plugin_manifest_matches_public_package_metadata() -> None:
-    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
-    project = pyproject["project"]
-    manifest = json.loads((ROOT / ".claude-plugin" / "plugin.json").read_text())
+    pyproject = _load_toml((ROOT / "pyproject.toml").read_text())
+    project = require_mapping(pyproject["project"])
+    manifest = require_mapping(_load_json((ROOT / ".claude-plugin" / "plugin.json").read_text()))
 
     assert manifest["name"] == project["name"]
     assert manifest["version"] == project["version"]
@@ -569,15 +585,15 @@ def test_claude_plugin_manifest_matches_public_package_metadata() -> None:
     assert manifest["author"] == {"name": "Xquik", "url": "https://github.com/Xquik-dev"}
     assert manifest["license"] == project["license"]
     assert manifest["homepage"] == GUIDE_URL
-    assert manifest["repository"] == project["urls"]["Repository"]
+    assert manifest["repository"] == lookup(project, "urls", "Repository")
     assert manifest["keywords"] == EXPECTED_AGENT_SKILL_MANIFEST_TAGS
     assert "include .claude-plugin/plugin.json" in (ROOT / "MANIFEST.in").read_text().splitlines()
 
 
 def test_codex_plugin_manifest_matches_public_package_metadata() -> None:
-    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
-    project = pyproject["project"]
-    manifest = json.loads((ROOT / ".codex-plugin" / "plugin.json").read_text())
+    pyproject = _load_toml((ROOT / "pyproject.toml").read_text())
+    project = require_mapping(pyproject["project"])
+    manifest = require_mapping(_load_json((ROOT / ".codex-plugin" / "plugin.json").read_text()))
 
     assert manifest["name"] == project["name"]
     assert manifest["version"] == project["version"]
@@ -585,7 +601,7 @@ def test_codex_plugin_manifest_matches_public_package_metadata() -> None:
     assert manifest["author"] == {"name": "Xquik", "url": "https://github.com/Xquik-dev"}
     assert manifest["license"] == project["license"]
     assert manifest["homepage"] == GUIDE_URL
-    assert manifest["repository"] == project["urls"]["Repository"]
+    assert manifest["repository"] == lookup(project, "urls", "Repository")
     assert manifest["commit"] == EXPECTED_VERIFIED_SKILL_COMMIT
     assert manifest["verified"] is True
     assert manifest["keywords"] == EXPECTED_CODEX_PLUGIN_KEYWORDS
@@ -632,18 +648,18 @@ def test_root_security_policy_matches_github_security_policy() -> None:
 
 
 def test_clawhub_metadata_uses_live_canonical_route() -> None:
-    project = tomllib.loads((ROOT / "pyproject.toml").read_text())["project"]
+    project = _load_toml((ROOT / "pyproject.toml").read_text())["project"]
     ecosystem = (ROOT / "docs" / "ECOSYSTEM.md").read_text()
 
-    assert project["urls"]["ClawHub"] == CLAW_HUB_URL
+    assert lookup(project, "urls", "ClawHub") == CLAW_HUB_URL
     assert f"<{CLAW_HUB_URL}>" in ecosystem
     assert "clawhub.ai/skills/hermes-tweet" not in ecosystem
 
 
 def test_plugin_hub_manifest_matches_public_package_metadata() -> None:
-    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
-    project = pyproject["project"]
-    manifest = json.loads((ROOT / "dashboard" / "manifest.json").read_text())
+    pyproject = _load_toml((ROOT / "pyproject.toml").read_text())
+    project = require_mapping(pyproject["project"])
+    manifest = require_mapping(_load_json((ROOT / "dashboard" / "manifest.json").read_text()))
 
     assert manifest["name"] == project["name"]
     assert manifest["label"] == "Hermes Tweet"
@@ -654,9 +670,9 @@ def test_plugin_hub_manifest_matches_public_package_metadata() -> None:
 
 
 def test_hermes_eco_manifest_matches_public_package_metadata() -> None:
-    pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
-    project = pyproject["project"]
-    manifest = json.loads((ROOT / ".hermes-eco.json").read_text())
+    pyproject = _load_toml((ROOT / "pyproject.toml").read_text())
+    project = require_mapping(pyproject["project"])
+    manifest = require_mapping(_load_json((ROOT / ".hermes-eco.json").read_text()))
 
     assert manifest["name"] == EXPECTED_HERMES_ECO_MANIFEST_NAME
     assert manifest["resource_type"] == EXPECTED_HERMES_ECO_MANIFEST_TYPE
@@ -664,7 +680,7 @@ def test_hermes_eco_manifest_matches_public_package_metadata() -> None:
     assert manifest["primary_category"] == EXPECTED_HERMES_ECO_MANIFEST_CATEGORY
     assert manifest["description"] == EXPECTED_DASHBOARD_MANIFEST_DESCRIPTION
     assert manifest["author"] == "Xquik"
-    assert manifest["repository"] == project["urls"]["Repository"]
+    assert manifest["repository"] == lookup(project, "urls", "Repository")
     assert manifest["homepage"] == GUIDE_URL
     assert manifest["license"] == project["license"]
     assert manifest["tags"] == EXPECTED_AGENT_SKILL_MANIFEST_TAGS
@@ -684,7 +700,7 @@ def test_repository_has_no_github_actions_workflows() -> None:
 
 
 def test_fuzz_harness_builds_from_pinned_dependencies() -> None:
-    project = load_object_mapping(ROOT / ".clusterfuzzlite" / "project.yaml")
+    project = load_mapping(ROOT / ".clusterfuzzlite" / "project.yaml")
     assert project == {"language": "python"}
     dockerfile = (ROOT / ".clusterfuzzlite" / "Dockerfile").read_text()
     assert "base-builder-python@sha256:" in dockerfile

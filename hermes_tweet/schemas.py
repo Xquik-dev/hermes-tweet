@@ -3,11 +3,16 @@
 
 from __future__ import annotations
 
-_METHOD_ENUM = ["GET", "POST", "PATCH", "PUT", "DELETE"]
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .client import JsonValue
+
+_METHOD_ENUM: list[JsonValue] = ["GET", "POST", "PATCH", "PUT", "DELETE"]
 _API_PATH_PATTERN = r"^(?:/api/v1/|https?://[^/]+/api/v1/)"
 _API_PATH_DESCRIPTION = "Use a /api/v1/... path or copied API URL with that path prefix."
 
-TWEET_EXPLORE = {
+TWEET_EXPLORE: dict[str, JsonValue] = {
     "name": "tweet_explore",
     "description": (
         "Search the bundled Xquik endpoint catalog before other calls. "
@@ -60,7 +65,7 @@ TWEET_EXPLORE = {
     },
 }
 
-TWEET_READ = {
+TWEET_READ: dict[str, JsonValue] = {
     "name": "tweet_read",
     "description": (
         "Call one catalog-listed read-only Xquik endpoint from tweet_explore. "
@@ -87,7 +92,7 @@ TWEET_READ = {
     },
 }
 
-TWEET_ACTION = {
+TWEET_ACTION: dict[str, JsonValue] = {
     "name": "tweet_action",
     "description": (
         "Call one catalog-listed Xquik write or private-read endpoint. "

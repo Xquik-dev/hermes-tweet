@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import re
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from hermes_tweet.catalog import (
     ENDPOINTS,
@@ -16,7 +17,16 @@ from hermes_tweet.catalog import (
     normalize_method,
 )
 
+if TYPE_CHECKING:
+    from hermes_tweet.client import JsonValue
+
 ROOT = Path(__file__).parents[1]
+
+
+def mpp_price(endpoint: dict[str, JsonValue]) -> JsonValue:
+    mpp = endpoint["mpp"]
+    assert isinstance(mpp, dict)
+    return mpp["price"]
 
 
 def test_readme_endpoint_count_matches_bundled_catalog() -> None:
@@ -178,7 +188,7 @@ def test_catalog_matches_paid_read_and_direct_mpp_contract() -> None:
     )
 
     assert len(paid_reads) == 33
-    assert {item["path"]: item["mpp"]["price"] for item in direct_mpp} == {
+    assert {item["path"]: mpp_price(item) for item in direct_mpp} == {
         "/api/v1/trends": "$0.00045/call",
         "/api/v1/x/articles/{tweetId}": "$0.00075/call",
         "/api/v1/x/communities/{id}/info": "$0.00015/call",

@@ -9,10 +9,12 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import TYPE_CHECKING
 
-from public_surfaces import PUBLIC_SURFACE_FILES, select_public_surface_files
-
 if TYPE_CHECKING:
     from collections.abc import Iterable, Sequence
+
+    from scripts.public_surfaces import PUBLIC_SURFACE_FILES, select_public_surface_files
+else:
+    from public_surfaces import PUBLIC_SURFACE_FILES, select_public_surface_files
 
 ROOT = Path(__file__).parents[1]
 PUBLIC_TEXT_FILES = PUBLIC_SURFACE_FILES
