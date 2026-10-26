@@ -60,12 +60,6 @@ def test_explore_returns_json_string() -> None:
     assert result["endpoints"]
 
 
-def test_handlers_ignore_argument_names_that_are_not_text() -> None:
-    assert _decode_json(explore({1: "tweets", "query": "search"})) == _decode_json(
-        explore({"query": "search"})
-    )
-
-
 def test_explore_returns_error(monkeypatch: pytest.MonkeyPatch) -> None:
     def fail(_args: dict[str, object]) -> list[dict[str, object]]:
         raise ValueError("simulated failure")

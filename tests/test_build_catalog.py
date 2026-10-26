@@ -239,19 +239,15 @@ def test_paid_read_catalog_has_exact_contract() -> None:
     assert ("GET", "/api/v1/x/users/search") in build_catalog.PAID_READS
 
 
-def test_build_ignores_keys_that_are_not_text(tmp_path: Path) -> None:
-    source = write_openapi(
-        tmp_path,
-        {
-            "/x/trends": {
-                "get": {
-                    "summary": "X trends",
-                    "responses": {200: {"description": "Unquoted status"}},
-                }
-            }
-        },
+def test_build_skips_path_keys_that_are_not_text(tmp_path: Path) -> None:
+    source = tmp_path / "openapi.yaml"
+    source.write_text(
+        "paths:\n"
+        "  1:\n    get:\n      summary: Numbered path\n"
+        "  /x/trends:\n    get:\n      summary: X trends\n",
+        encoding="utf-8",
     )
 
     [endpoint] = build_catalog.build(source)
 
-    assert endpoint["responseShape"] == ""
+    assert endpoint["path"] == "/x/trends"

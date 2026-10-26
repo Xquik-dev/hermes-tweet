@@ -177,6 +177,14 @@ def test_success_status_lists_the_checks_that_passed(tmp_path: Path) -> None:
     assert report[-1] == f"All local checks passed. They were {PASSED}"
 
 
+def test_any_expression_fails_the_mypy_step(tmp_path: Path) -> None:
+    status, events, report = run_checks(tmp_path, "any")
+    assert status != 0
+    assert events == CHECKS[: CHECKS.index("mypy") + 1]
+    assert report[:2] == [PENDING, "failure: Failed at Type check with mypy."]
+    assert "Total 1 10 90.00%" in report
+
+
 @pytest.mark.parametrize(
     "comment",
     [

@@ -29,11 +29,15 @@ logger = logging.getLogger(__name__)
 TOOLSET = "hermes-tweet"
 
 
+class ToolHandler(Protocol):
+    def __call__(self, args: object, **kwargs: object) -> str: ...
+
+
 class ToolRegistration(TypedDict):
     name: str
     toolset: str
     schema: dict[str, JsonValue]
-    handler: Callable[[object], str]
+    handler: ToolHandler
     is_async: bool
     description: str
     emoji: str
@@ -108,4 +112,4 @@ def register(ctx: PluginContext) -> None:
     )
 
 
-__all__ = ["PluginContext", "ToolRegistration", "register"]
+__all__ = ["PluginContext", "ToolHandler", "ToolRegistration", "register"]

@@ -7,26 +7,10 @@ import json
 import sys
 from typing import TYPE_CHECKING, TypeVar
 
+import atheris
+
 if TYPE_CHECKING:
     from collections.abc import Callable
-    from contextlib import AbstractContextManager
-
-    class _FuzzedDataProvider:
-        ConsumeBool: Callable[[], bool]
-        ConsumeFloat: Callable[[], float]
-        ConsumeInt: Callable[[int], int]
-        ConsumeIntInRange: Callable[[int, int], int]
-        ConsumeUnicodeNoSurrogates: Callable[[int], str]
-
-    class _Atheris:
-        FuzzedDataProvider: Callable[[bytes], _FuzzedDataProvider]
-        Fuzz: Callable[[], None]
-        Setup: Callable[[list[str], Callable[[bytes], None]], list[str]]
-        instrument_imports: Callable[[], AbstractContextManager[object, None]]
-
-    atheris = _Atheris()
-else:
-    import atheris
 
 with atheris.instrument_imports():
     from hermes_tweet.catalog import explore, matches_path, normalize_limit, normalize_method
@@ -48,14 +32,14 @@ def _require(*, condition: bool, message: str) -> None:
 
 
 def _pick_value(
-    provider: _FuzzedDataProvider,
+    provider: atheris.FuzzedDataProvider,
     values: tuple[_T, ...],
 ) -> _T:
     index = provider.ConsumeIntInRange(0, len(values) - 1)
     return values[index]
 
 
-def _query_value(provider: _FuzzedDataProvider) -> object:
+def _query_value(provider: atheris.FuzzedDataProvider) -> object:
     return _pick_value(
         provider,
         (
@@ -69,7 +53,7 @@ def _query_value(provider: _FuzzedDataProvider) -> object:
     )
 
 
-def _safe_segment(provider: _FuzzedDataProvider) -> str:
+def _safe_segment(provider: atheris.FuzzedDataProvider) -> str:
     segment = provider.ConsumeUnicodeNoSurrogates(32)
     for reserved in "/[]?#":
         segment = segment.replace(reserved, "_")
