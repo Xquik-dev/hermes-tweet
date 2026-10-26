@@ -250,4 +250,4 @@ def test_build_skips_path_keys_that_are_not_text(tmp_path: Path) -> None:
 
     [endpoint] = build_catalog.build(source)
 
-    assert endpoint["path"] == "/x/trends"
+    assert endpoint["path"] == "/api/v1/x/trends"
