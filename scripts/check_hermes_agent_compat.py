@@ -20,7 +20,7 @@ if TYPE_CHECKING:
 USER_AGENT: Final = "HermesTweetHermesAgentCompat/1.0"
 LATEST_RELEASE_URL: Final = "https://api.github.com/repos/NousResearch/hermes-agent/releases/latest"
 SOURCE_URL: Final = "https://raw.githubusercontent.com/NousResearch/hermes-agent"
-REVIEWED_RELEASE: Final = "v0.22.2"
+REVIEWED_RELEASE: Final = "v0.22.5"
 DEVELOPMENT_BRANCH: Final = "main"
 DOC_TIMEOUT_SECONDS: Final = 30.0
 
@@ -99,7 +99,7 @@ PAGE_CHECKS: Final = (
 SOURCE_CHECKS: Final = (
     SourceCheck(
         path="hermes_cli/plugins.py",
-        expected_sha="a652179cd4a7a3ac04fe7eb2a0377de6a6dfbc58",
+        expected_sha="14e13ab00e3a289b53b9cc32b813ce120079fc23",
         required_terms=(
             "ENTRY_POINTS_GROUP",
             "discover_entrypoint_manifests",
@@ -126,7 +126,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="tools/registry.py",
-        expected_sha="30ec01a9f31f66ff159024aec3ccc3a57249ba62",
+        expected_sha="bc6e1ab7688a17e11d70e1ef992dbf7fb42418c4",
         required_terms=(
             "check_fn",
             "requires_env",
@@ -138,7 +138,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="hermes_cli/plugins_cmd.py",
-        expected_sha="ad061ca6772c0f5629d365bb7c406cfb23556f41",
+        expected_sha="d8c3533252807498b790a967f8ffeffc75621b4a",
         required_terms=(
             "_resolve_plugin_key",
             "_scan_plugin_tree",
@@ -153,7 +153,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="hermes_cli/plugins_cmd_install.py",
-        expected_sha="2aee13fdd3fbfe3b7c3299de4819aa9e114bd3e1",
+        expected_sha="ded3fef3d44ec1808d23335e1a5c068add9e4fa8",
         required_terms=(
             "def cmd_install",
             "_prompt_plugin_env_vars",
@@ -165,7 +165,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="hermes_cli/subcommands/plugins.py",
-        expected_sha="fe703ee56eeee778d14a5ee25401eba1e3f665e3",
+        expected_sha="26a0eec6469eddeee7dbd331dbd39c02eb103c49",
         required_terms=(
             "--enable",
             "--no-enable",
@@ -176,11 +176,11 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="pm/plugin_declarations.py",
-        expected_sha="210cabe36b29b87272cdda0add85174c17809f6d",
+        expected_sha="9c65c5130e268e41ec65c8d030c8c169007c4277",
         required_terms=(
             "python_runtime",
             "external",
-            "is_member",
+            "installs_packages",
             "project.dependencies",
         ),
     ),
