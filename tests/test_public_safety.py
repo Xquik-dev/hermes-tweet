@@ -3,10 +3,10 @@
 
 from __future__ import annotations
 
-import importlib.util
-import sys
 from pathlib import Path
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING
+
+from scripts import check_public_links, check_public_safety
 
 if TYPE_CHECKING:
     from collections.abc import Iterable
@@ -14,37 +14,9 @@ if TYPE_CHECKING:
     import pytest
 
 ROOT = Path(__file__).parents[1]
-SCRIPTS_DIR = ROOT / "scripts"
-sys.path.insert(0, str(SCRIPTS_DIR))
 
 
-def load_public_safety_module() -> Any:
-    module_path = ROOT / "scripts" / "check_public_safety.py"
-    spec = importlib.util.spec_from_file_location("check_public_safety", module_path)
-    assert spec is not None
-    assert spec.loader is not None
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[spec.name] = module
-    spec.loader.exec_module(module)
-    return module
-
-
-def load_public_links_module() -> Any:
-    module_path = ROOT / "scripts" / "check_public_links.py"
-    spec = importlib.util.spec_from_file_location("check_public_links_for_safety", module_path)
-    assert spec is not None
-    assert spec.loader is not None
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[spec.name] = module
-    spec.loader.exec_module(module)
-    return module
-
-
-check_public_safety = load_public_safety_module()
-check_public_links = load_public_links_module()
-
-
-def finding_labels(findings: list[Any]) -> list[str]:
+def finding_labels(findings: list[check_public_safety.PublicSafetyFinding]) -> list[str]:
     return [finding.label for finding in findings]
 
 
@@ -254,7 +226,9 @@ def test_public_safety_main_accepts_targeted_files(
 ) -> None:
     scanned_files: tuple[str, ...] = ()
 
-    def fake_scan_public_files(files: Iterable[str]) -> list[Any]:
+    def fake_scan_public_files(
+        files: Iterable[str],
+    ) -> list[check_public_safety.PublicSafetyFinding]:
         nonlocal scanned_files
         scanned_files = tuple(files)
         return []
@@ -276,7 +250,9 @@ def test_public_safety_main_reports_targeted_findings(
 ) -> None:
     finding = check_public_safety.PublicSafetyFinding(Path("README.md"), 1, "github-token")
 
-    def fake_scan_public_files(files: Iterable[str]) -> list[Any]:
+    def fake_scan_public_files(
+        files: Iterable[str],
+    ) -> list[check_public_safety.PublicSafetyFinding]:
         assert tuple(files) == ("README.md",)
         return [finding]
 

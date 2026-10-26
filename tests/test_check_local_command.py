@@ -12,6 +12,7 @@ import pytest
 
 ROOT = Path(__file__).parents[1]
 BASH = shutil.which("bash") or "/bin/bash"
+GIT = shutil.which("git") or "/usr/bin/git"
 SCRIPT = r"""#!/usr/bin/env bash
 name=$(basename "$0")
 if [ "${1:-}" = --version ]; then
@@ -32,6 +33,9 @@ git() {
  case "$1 $2" in
   'rev-parse HEAD') echo abc123;;
   'status --porcelain') if dirty; then echo ' M README.md'; fi;;
+  'grep -nP')
+   printf '%s\n' ignores >> "$CHECK_EVENTS"
+   command git "$@";;
   *) exit 99;;
  esac
 }
@@ -51,8 +55,14 @@ uv() {
  case "$*" in
   'sync --locked --group dev') record sync;;
   'run --no-sync ruff format --check .') record format;;
-  'run --no-sync ruff check .') record lint;;
+  'run --no-sync ruff check --ignore-noqa .') record lint;;
   'run --no-sync basedpyright') record types;;
+  'run --no-sync mypy --any-exprs-report '*)
+   mkdir -p "$5"
+   anys=0
+   [ "$CHECK_CASE" != any ] || anys=1
+   printf 'Total %s 10 90.00%%\n' "$anys" > "$5/any-exprs.txt"
+   record mypy;;
   'run --no-sync python scripts/check_hermes_agent_compat.py')
    record "compatibility with token ${GITHUB_TOKEN:-none} ${GH_TOKEN:-none}";;
   'run --no-sync python scripts/check_public_safety.py') record safety;;
@@ -77,7 +87,9 @@ CHECKS = [
     "sync",
     "format",
     "lint",
+    "ignores",
     "types",
+    "mypy",
     COMPATIBILITY,
     "safety",
     "licenses",
@@ -95,6 +107,7 @@ FAILURES = [
     ("format", "Format check"),
     ("lint", "Lint"),
     ("types", "Type check"),
+    ("mypy", "Type check with mypy"),
     (COMPATIBILITY, "Hermes Agent compatibility"),
     ("safety", "Public safety scan"),
     ("licenses", "License header check"),
@@ -115,10 +128,15 @@ PASSED = (
 INHERITED = ("UV_PYTHON", "UV_PROJECT_ENVIRONMENT")
 
 
-def run_checks(tmp_path: Path, case: str, *arguments: str) -> tuple[int, list[str], list[str]]:
+def run_checks(
+    tmp_path: Path, case: str, *arguments: str, source: str = ""
+) -> tuple[int, list[str], list[str]]:
     project = tmp_path / "project"
     for folder in ("bin", "scripts"):
         (project / folder).mkdir(parents=True)
+    subprocess.run([GIT, "init", "-q", str(project)], check=True)
+    if source:
+        (project / "probe.py").write_text(source)
     runner = project / "bin/check-local"
     runner.write_bytes((ROOT / "bin/check-local").read_bytes())
     for name in ("codeql-security", "plugin-scan", "check_reproducible.sh"):
@@ -159,13 +177,37 @@ def test_success_status_lists_the_checks_that_passed(tmp_path: Path) -> None:
     assert report[-1] == f"All local checks passed. They were {PASSED}"
 
 
-@pytest.mark.parametrize(("ran", "failure"), list(enumerate(FAILURES, start=1)))
-def test_failed_check_posts_failure_and_stops(
-    tmp_path: Path, ran: int, failure: tuple[str, str]
-) -> None:
+def test_any_expression_fails_the_mypy_step(tmp_path: Path) -> None:
+    status, events, report = run_checks(tmp_path, "any")
+    assert status != 0
+    assert events == CHECKS[: CHECKS.index("mypy") + 1]
+    assert report[:2] == [PENDING, "failure: Failed at Type check with mypy."]
+    assert "Total 1 10 90.00%" in report
+
+
+@pytest.mark.parametrize(
+    "comment",
+    [
+        "type: ignore[assignment]",
+        "pyright: ignore[reportAssignmentType]",
+        "mypy: ignore-errors",
+        "pyright: basic",
+    ],
+)
+def test_type_checker_comments_fail_the_build(tmp_path: Path, comment: str) -> None:
+    line = f'x: int = "a"  # {comment}'
+    status, events, report = run_checks(tmp_path, "ready", source=f"{line}\n")
+    assert status == 1
+    assert events == CHECKS[: CHECKS.index("ignores") + 1]
+    assert report[:2] == [PENDING, "failure: Failed at Type checker comments."]
+    assert f"probe.py:1:{line}" in report
+
+
+@pytest.mark.parametrize("failure", FAILURES)
+def test_failed_check_posts_failure_and_stops(tmp_path: Path, failure: tuple[str, str]) -> None:
     status, events, report = run_checks(tmp_path, failure[0])
     assert status != 0
-    assert events == CHECKS[:ran]
+    assert events == CHECKS[: CHECKS.index(failure[0]) + 1]
     assert report[:2] == [PENDING, f"failure: Failed at {failure[1]}."]
 
 

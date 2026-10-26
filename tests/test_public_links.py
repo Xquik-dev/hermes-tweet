@@ -3,32 +3,14 @@
 
 from __future__ import annotations
 
-import importlib.util
-import sys
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any
 
 import httpx
 import pytest
+from scripts import check_public_links
 
 ROOT = Path(__file__).parents[1]
-SCRIPTS_DIR = ROOT / "scripts"
-sys.path.insert(0, str(SCRIPTS_DIR))
-
-
-def load_public_links_module() -> Any:
-    module_path = ROOT / "scripts" / "check_public_links.py"
-    spec = importlib.util.spec_from_file_location("check_public_links", module_path)
-    assert spec is not None
-    assert spec.loader is not None
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[spec.name] = module
-    spec.loader.exec_module(module)
-    return module
-
-
-check_public_links = load_public_links_module()
 
 
 @dataclass(frozen=True)
@@ -64,7 +46,7 @@ def test_strip_trailing_url_punctuation_keeps_url_body() -> None:
 
 def test_collect_public_urls_deduplicates_and_strips_punctuation(
     tmp_path: Path,
-    monkeypatch: Any,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     public_doc = tmp_path / "README.md"
     public_doc.write_text(
@@ -117,7 +99,7 @@ def test_public_link_scan_includes_github_repository_config() -> None:
 def test_main_accepts_targeted_public_files(
     capsys: pytest.CaptureFixture[str],
     tmp_path: Path,
-    monkeypatch: Any,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     public_doc = tmp_path / "README.md"
     public_doc.write_text("Docs https://example.com/readme", encoding="utf-8")
@@ -125,7 +107,7 @@ def test_main_accepts_targeted_public_files(
     ignored_doc.write_text("Docs https://example.com/ignored", encoding="utf-8")
     checked_urls: list[str] = []
 
-    def fake_check_public_links(urls: list[str]) -> list[Any]:
+    def fake_check_public_links(urls: list[str]) -> list[check_public_links.LinkFailure]:
         checked_urls.extend(urls)
         return []
 
@@ -144,12 +126,12 @@ def test_main_accepts_targeted_public_files(
 def test_main_reports_targeted_link_failures(
     capsys: pytest.CaptureFixture[str],
     tmp_path: Path,
-    monkeypatch: Any,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     public_doc = tmp_path / "README.md"
     public_doc.write_text("Docs https://example.com/missing", encoding="utf-8")
 
-    def fake_check_public_links(urls: list[str]) -> list[Any]:
+    def fake_check_public_links(urls: list[str]) -> list[check_public_links.LinkFailure]:
         assert urls == ["https://example.com/missing"]
         return [
             check_public_links.LinkFailure(

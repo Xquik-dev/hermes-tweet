@@ -7,16 +7,21 @@ import json
 import sys
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
-from typing import Any, cast
+from typing import TYPE_CHECKING, TypeGuard
 
 import yaml
+
+if TYPE_CHECKING:
+    from collections.abc import Callable, Mapping
 
 METHODS = {"get", "post", "put", "patch", "delete"}
 API_PREFIX = "/api/v1"
 EXPECTED_ARG_COUNT = 2
 OUTPUT = Path(__file__).resolve().parents[1] / "hermes_tweet" / "catalog_data.json"
 
-JsonDict = dict[str, Any]
+JsonDict = dict[str, object]
+
+_load_yaml: Callable[[str], object] = yaml.safe_load
 
 PROHIBITED_STATIC = {
     ("PATCH", "/api/v1/account"),
@@ -88,12 +93,22 @@ ACTION_PREFIXES = (
 )
 
 
+def _is_mapping(value: object) -> TypeGuard[Mapping[object, object]]:
+    return isinstance(value, dict)
+
+
+def _is_list(value: object) -> TypeGuard[list[object]]:
+    return isinstance(value, list)
+
+
 def _as_dict(value: object) -> JsonDict:
-    return cast("JsonDict", value) if isinstance(value, dict) else {}
+    if not _is_mapping(value):
+        return {}
+    return {key: item for key, item in value.items() if isinstance(key, str)}
 
 
 def _as_list(value: object) -> list[object]:
-    return cast("list[object]", value) if isinstance(value, list) else []
+    return value if _is_list(value) else []
 
 
 def _full_path(path: str) -> str:
@@ -217,7 +232,7 @@ def _action(method: str, path: str) -> bool:
 
 
 def build(source: Path) -> list[JsonDict]:
-    spec = _as_dict(cast("object", yaml.safe_load(source.read_text(encoding="utf-8"))))
+    spec = _as_dict(_load_yaml(source.read_text(encoding="utf-8")))
     paths = _as_dict(spec.get("paths"))
     components = _as_dict(spec.get("components"))
     parameter_components = _as_dict(components.get("parameters"))

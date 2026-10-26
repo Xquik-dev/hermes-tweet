@@ -5,15 +5,21 @@ from __future__ import annotations
 
 import json
 import sys
-from typing import Any
+from typing import TYPE_CHECKING, TypeVar
 
 import atheris
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
 with atheris.instrument_imports():
     from hermes_tweet.catalog import explore, matches_path, normalize_limit, normalize_method
     from hermes_tweet.client import dumps, normalize_query_params
 
 MAX_NORMALIZED_LIMIT = 100
+
+_T = TypeVar("_T")
+_decode_json: Callable[[str], object] = json.loads
 
 
 class InvariantError(RuntimeError):
@@ -27,13 +33,13 @@ def _require(*, condition: bool, message: str) -> None:
 
 def _pick_value(
     provider: atheris.FuzzedDataProvider,
-    values: tuple[Any, ...],
-) -> Any:
+    values: tuple[_T, ...],
+) -> _T:
     index = provider.ConsumeIntInRange(0, len(values) - 1)
     return values[index]
 
 
-def _query_value(provider: atheris.FuzzedDataProvider) -> Any:
+def _query_value(provider: atheris.FuzzedDataProvider) -> object:
     return _pick_value(
         provider,
         (
@@ -67,7 +73,7 @@ def test_one_input(data: bytes) -> None:
         message="Normalized methods must not be empty.",
     )
 
-    limit_values: tuple[Any, ...] = (
+    limit_values: tuple[object, ...] = (
         provider.ConsumeBool(),
         provider.ConsumeInt(8),
         provider.ConsumeFloat(),
@@ -83,7 +89,7 @@ def test_one_input(data: bytes) -> None:
     template = f"/api/v1/items/{{id}}/{_safe_segment(provider)}"
     concrete = f"/api/v1/items/{_safe_segment(provider)}/{_safe_segment(provider)}"
     _require(
-        condition=isinstance(matches_path(template, concrete), bool),
+        condition=type(matches_path(template, concrete)) is bool,
         message="Path matching must always return a boolean.",
     )
 
@@ -98,7 +104,7 @@ def test_one_input(data: bytes) -> None:
             message="Query keys must be nonempty and stripped.",
         )
         _require(
-            condition=all(isinstance(value, str) for value in normalized_query.values()),
+            condition=all(type(value) is str for value in normalized_query.values()),
             message="Query values must be normalized to strings.",
         )
 
@@ -121,7 +127,7 @@ def test_one_input(data: bytes) -> None:
         "segments": [template, concrete],
     }
     _require(
-        condition=json.loads(dumps(payload)) == payload,
+        condition=_decode_json(dumps(payload)) == payload,
         message="Serialized payloads must round-trip without loss.",
     )
 

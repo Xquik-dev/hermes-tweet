@@ -3,35 +3,16 @@
 
 from __future__ import annotations
 
-import importlib.util
-import sys
+import json
 from dataclasses import dataclass
-from pathlib import Path
-from typing import Any
 
 import pytest
-
-ROOT = Path(__file__).parents[1]
-
-
-def load_compat_module() -> Any:
-    module_path = ROOT / "scripts" / "check_hermes_agent_compat.py"
-    spec = importlib.util.spec_from_file_location("check_hermes_agent_compat", module_path)
-    assert spec is not None
-    assert spec.loader is not None
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[spec.name] = module
-    spec.loader.exec_module(module)
-    return module
-
-
-compat = load_compat_module()
+from scripts import check_hermes_agent_compat as compat
 
 
 @dataclass(frozen=True)
 class FakeResponse:
     text: str = ""
-    payload: object | None = None
 
     @property
     def content(self) -> bytes:
@@ -39,9 +20,6 @@ class FakeResponse:
 
     def raise_for_status(self) -> None:
         return None
-
-    def json(self) -> object:
-        return self.payload
 
 
 class FakeClient:
@@ -65,7 +43,7 @@ def test_missing_terms_reports_only_absent_terms() -> None:
     assert missing == ["requires_env"]
 
 
-def test_github_headers_adds_optional_token(monkeypatch: Any) -> None:
+def test_github_headers_adds_optional_token(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.delenv("GITHUB_TOKEN", raising=False)
     monkeypatch.setenv("GH_TOKEN", "test-token")
 
@@ -81,15 +59,15 @@ def test_github_headers_adds_optional_token(monkeypatch: Any) -> None:
 def test_source_checks_track_reviewed_hermes_agent_locks() -> None:
     locks = {check.path: check.expected_sha for check in compat.SOURCE_CHECKS}
 
-    assert compat.REVIEWED_RELEASE == "v0.22.2"
+    assert compat.REVIEWED_RELEASE == "v0.22.5"
     assert locks == {
-        "hermes_cli/plugins.py": "a652179cd4a7a3ac04fe7eb2a0377de6a6dfbc58",
+        "hermes_cli/plugins.py": "14e13ab00e3a289b53b9cc32b813ce120079fc23",
         "hermes_cli/plugins_content.py": "92b8d79f5440e58d421a6018d4c6d12e9aef107b",
-        "tools/registry.py": "30ec01a9f31f66ff159024aec3ccc3a57249ba62",
-        "hermes_cli/plugins_cmd.py": "ad061ca6772c0f5629d365bb7c406cfb23556f41",
-        "hermes_cli/plugins_cmd_install.py": "2aee13fdd3fbfe3b7c3299de4819aa9e114bd3e1",
-        "hermes_cli/subcommands/plugins.py": "fe703ee56eeee778d14a5ee25401eba1e3f665e3",
-        "pm/plugin_declarations.py": "210cabe36b29b87272cdda0add85174c17809f6d",
+        "tools/registry.py": "bc6e1ab7688a17e11d70e1ef992dbf7fb42418c4",
+        "hermes_cli/plugins_cmd.py": "d8c3533252807498b790a967f8ffeffc75621b4a",
+        "hermes_cli/plugins_cmd_install.py": "ded3fef3d44ec1808d23335e1a5c068add9e4fa8",
+        "hermes_cli/subcommands/plugins.py": "26a0eec6469eddeee7dbd331dbd39c02eb103c49",
+        "pm/plugin_declarations.py": "9c65c5130e268e41ec65c8d030c8c169007c4277",
     }
 
 
@@ -106,14 +84,20 @@ PIN = '"httpx[socks]==0.28.'
 
 
 def release(tag: str) -> FakeResponse:
-    return FakeResponse(payload={"tag_name": tag})
+    payload = {"tag_name": tag}
+    return FakeResponse(text=json.dumps(payload))
 
 
-def locked(path: str, expected_sha: str, *terms: str) -> Any:
+def locked(path: str, expected_sha: str, *terms: str) -> compat.SourceCheck:
     return compat.SourceCheck(path=path, expected_sha=expected_sha, required_terms=terms)
 
 
-def pin_checks(monkeypatch: Any, source_checks: tuple[Any, ...], *, core_pins: bool) -> None:
+def pin_checks(
+    monkeypatch: pytest.MonkeyPatch,
+    source_checks: tuple[compat.SourceCheck, ...],
+    *,
+    core_pins: bool,
+) -> None:
     monkeypatch.setattr(compat, "PAGE_CHECKS", ())
     monkeypatch.setattr(compat, "SOURCE_CHECKS", source_checks)
     monkeypatch.setattr(compat, "CORE_PIN_CHECKS", compat.CORE_PIN_CHECKS if core_pins else ())
@@ -134,7 +118,9 @@ def test_read_source_fetches_the_file_at_a_ref() -> None:
     assert client.urls == [f"{SOURCE}/v1.2.3/hermes_cli/plugins.py"]
 
 
-def test_latest_release_reads_the_tag_and_alone_carries_the_token(monkeypatch: Any) -> None:
+def test_latest_release_reads_the_tag_and_alone_carries_the_token(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     monkeypatch.setenv("GITHUB_TOKEN", "test-token")
     client = FakeClient([release("v1.2.3"), FakeResponse(text=HELLO)])
 
@@ -147,7 +133,7 @@ def test_latest_release_reads_the_tag_and_alone_carries_the_token(monkeypatch: A
 
 @pytest.mark.parametrize("payload", [[], {}, {"tag_name": ""}, {"tag_name": 7}])
 def test_latest_release_reports_an_unusable_answer(payload: object) -> None:
-    client = FakeClient([FakeResponse(payload=payload)])
+    client = FakeClient([FakeResponse(text=json.dumps(payload))])
 
     assert compat.latest_release(client) == (
         None,
@@ -177,7 +163,9 @@ def test_check_source_reports_missing_terms_after_sha_match() -> None:
     assert errors == ["tools/registry.py is outdated. Add these terms: check_fn"]
 
 
-def test_core_pin_check_passes_while_hermes_ships_the_httpx_line(capsys: Any) -> None:
+def test_core_pin_check_passes_while_hermes_ships_the_httpx_line(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
     client = FakeClient([FakeResponse(text='dependencies = ["httpx[socks]==0.28.1"]')])
 
     assert compat.check_core_pin(client, compat.CORE_PIN_CHECKS[0], "v1.2.3") == []
@@ -192,7 +180,7 @@ def test_core_pin_check_fails_when_hermes_moves_httpx() -> None:
 
 
 def test_run_checks_gates_on_the_latest_release_and_only_warns_about_main(
-    monkeypatch: Any, capsys: Any
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
 ) -> None:
     pin_checks(monkeypatch, (locked("tools/registry.py", HELLO_SHA, "hello"),), core_pins=True)
     client = FakeClient(
@@ -224,11 +212,13 @@ def test_run_checks_gates_on_the_latest_release_and_only_warns_about_main(
         f"{SOURCE}/main/pyproject.toml",
     ]
     assert capsys.readouterr().out.splitlines()[0] == (
-        "Hermes Agent v9.9.9 is newer than the reviewed v0.22.2."
+        "Hermes Agent v9.9.9 is newer than the reviewed v0.22.5."
     )
 
 
-def test_run_checks_fails_when_the_latest_release_changes_a_locked_file(monkeypatch: Any) -> None:
+def test_run_checks_fails_when_the_latest_release_changes_a_locked_file(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     pin_checks(monkeypatch, (locked("tools/registry.py", HELLO_SHA, "hello"),), core_pins=False)
     client = FakeClient([release("v0.22.0"), FakeResponse(text=""), FakeResponse(text=HELLO)])
 
@@ -243,9 +233,9 @@ def test_run_checks_fails_when_the_latest_release_changes_a_locked_file(monkeypa
     assert warnings == []
 
 
-def test_run_checks_stops_when_the_release_lookup_fails(monkeypatch: Any) -> None:
+def test_run_checks_stops_when_the_release_lookup_fails(monkeypatch: pytest.MonkeyPatch) -> None:
     pin_checks(monkeypatch, (locked("tools/registry.py", HELLO_SHA),), core_pins=False)
-    client = FakeClient([FakeResponse(payload=[])])
+    client = FakeClient([FakeResponse(text="[]")])
 
     assert compat.run_checks(client) == (
         ["Invalid GitHub response for the latest release. Expected tag_name."],

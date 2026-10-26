@@ -10,13 +10,28 @@ from hermes_tweet import tools
 from hermes_tweet.tools import call_action, call_read, explore
 
 if TYPE_CHECKING:
+    from collections.abc import Callable
+
     import pytest
+
+    from hermes_tweet.client import JsonValue
+
+_decode_json: Callable[[str], JsonValue] = json.loads
+OK_RESPONSE = '{"ok": true}'
+
+
+def decode_object(text: str) -> dict[str, JsonValue]:
+    result = _decode_json(text)
+    assert isinstance(result, dict)
+    return result
 
 
 def test_read_rejects_action_endpoint() -> None:
-    result = json.loads(call_read({"path": "/api/v1/x/accounts"}))
+    result = decode_object(call_read({"path": "/api/v1/x/accounts"}))
+    error = result["error"]
     assert result["success"] is False
-    assert "tweet_action" in result["error"]
+    assert isinstance(error, str)
+    assert "tweet_action" in error
 
 
 def test_action_is_disabled_by_default(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -24,7 +39,7 @@ def test_action_is_disabled_by_default(monkeypatch: pytest.MonkeyPatch) -> None:
     expected = {"success": False, "error": tools.ACTION_DISABLED_ERROR}
 
     assert (
-        json.loads(
+        _decode_json(
             call_action(
                 {
                     "path": "/api/v1/x/tweets",
@@ -36,11 +51,11 @@ def test_action_is_disabled_by_default(monkeypatch: pytest.MonkeyPatch) -> None:
         )
         == expected
     )
-    assert json.loads(call_action({"path": "/api/v1/missing", "reason": "test"})) == expected
+    assert _decode_json(call_action({"path": "/api/v1/missing", "reason": "test"})) == expected
 
 
 def test_explore_returns_json_string() -> None:
-    result = json.loads(explore({"query": "search"}))
+    result = decode_object(explore({"query": "search"}))
     assert result["success"] is True
     assert result["endpoints"]
 
@@ -51,7 +66,7 @@ def test_explore_returns_error(monkeypatch: pytest.MonkeyPatch) -> None:
 
     monkeypatch.setattr(tools, "explore_catalog", fail)
 
-    assert json.loads(explore({})) == {
+    assert _decode_json(explore({})) == {
         "success": False,
         "error": tools.TOOL_FAILURE_ERROR,
     }
@@ -60,13 +75,13 @@ def test_explore_returns_error(monkeypatch: pytest.MonkeyPatch) -> None:
 def test_handlers_reject_non_object_arguments() -> None:
     error = {"success": False, "error": "Invalid tool arguments. Pass a JSON object."}
 
-    assert json.loads(explore([])) == error
-    assert json.loads(call_read(None)) == error
-    assert json.loads(call_action("bad")) == error
+    assert _decode_json(explore([])) == error
+    assert _decode_json(call_read(None)) == error
+    assert _decode_json(call_action("bad")) == error
 
 
 def test_read_missing_endpoint() -> None:
-    result = json.loads(call_read({"path": "/api/v1/missing"}))
+    result = _decode_json(call_read({"path": "/api/v1/missing"}))
     assert result == {
         "success": False,
         "error": "Endpoint unavailable. Choose a catalog-listed route: GET /api/v1/missing",
@@ -84,7 +99,7 @@ def test_read_success(monkeypatch: pytest.MonkeyPatch) -> None:
 
     monkeypatch.setattr(tools, "request", fake_request)
 
-    result = json.loads(
+    result = _decode_json(
         call_read(
             {
                 "path": "/api/v1/x/tweets/search",
@@ -129,13 +144,13 @@ def test_read_normalizes_path_values(monkeypatch: pytest.MonkeyPatch) -> None:
 
     monkeypatch.setattr(tools, "request", fake_request)
 
-    assert json.loads(call_read({"path": " /api/v1/account "})) == {
+    assert _decode_json(call_read({"path": " /api/v1/account "})) == {
         "body": None,
         "method": "GET",
         "path": "/api/v1/account",
         "query": None,
     }
-    assert json.loads(call_read({"path": None})) == {
+    assert _decode_json(call_read({"path": None})) == {
         "success": False,
         "error": "Endpoint unavailable. Choose a catalog-listed route: GET ",
     }
@@ -154,7 +169,7 @@ def test_read_normalizes_copied_endpoint_url_before_request(
 
     monkeypatch.setattr(tools, "request", fake_request)
 
-    assert json.loads(call_read({"path": "https://xquik.com/api/v1/account"})) == {
+    assert _decode_json(call_read({"path": "https://xquik.com/api/v1/account"})) == {
         "body": None,
         "method": "GET",
         "path": "/api/v1/account",
@@ -170,9 +185,10 @@ def test_read_rejects_query_or_fragment_in_path(monkeypatch: pytest.MonkeyPatch)
         "error": "Query parameters misplaced. Pass them through the query object.",
     }
     assert (
-        json.loads(call_read({"path": "https://xquik.com/api/v1/account?ignored=true"})) == expected
+        _decode_json(call_read({"path": "https://xquik.com/api/v1/account?ignored=true"}))
+        == expected
     )
-    assert json.loads(call_read({"path": "/api/v1/account#section"})) == expected
+    assert _decode_json(call_read({"path": "/api/v1/account#section"})) == expected
 
 
 def test_read_rejects_non_catalog_copied_url_before_request(
@@ -180,7 +196,7 @@ def test_read_rejects_non_catalog_copied_url_before_request(
 ) -> None:
     monkeypatch.setattr(tools, "request", None)
 
-    assert json.loads(call_read({"path": "https://xquik.com/not-api/account"})) == {
+    assert _decode_json(call_read({"path": "https://xquik.com/not-api/account"})) == {
         "success": False,
         "error": (
             "Endpoint unavailable. Choose a catalog-listed route: "
@@ -200,7 +216,7 @@ def test_read_success_without_query_dict(monkeypatch: pytest.MonkeyPatch) -> Non
 
     monkeypatch.setattr(tools, "request", fake_request)
 
-    assert json.loads(call_read({"path": "/api/v1/account", "query": []})) == {
+    assert _decode_json(call_read({"path": "/api/v1/account", "query": []})) == {
         "body": None,
         "method": "GET",
         "path": "/api/v1/account",
@@ -219,7 +235,7 @@ def test_read_ignores_empty_query_after_normalization(monkeypatch: pytest.Monkey
 
     monkeypatch.setattr(tools, "request", fake_request)
 
-    assert json.loads(
+    assert _decode_json(
         call_read(
             {
                 "path": "/api/v1/account",
@@ -246,7 +262,7 @@ def test_read_returns_handler_error(monkeypatch: pytest.MonkeyPatch) -> None:
 
     monkeypatch.setattr(tools, "find_endpoint", fail)
 
-    assert json.loads(call_read({"path": "/api/v1/account"})) == {
+    assert _decode_json(call_read({"path": "/api/v1/account"})) == {
         "success": False,
         "error": tools.TOOL_FAILURE_ERROR,
     }
@@ -255,7 +271,7 @@ def test_read_returns_handler_error(monkeypatch: pytest.MonkeyPatch) -> None:
 def test_action_missing_endpoint(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(tools, "action_enabled", lambda: True)
 
-    result = json.loads(
+    result = _decode_json(
         call_action(
             {
                 "method": "POST",
@@ -280,7 +296,7 @@ def test_action_rejects_query_or_fragment_in_path(monkeypatch: pytest.MonkeyPatc
         "error": "Query parameters misplaced. Pass them through the query object.",
     }
     assert (
-        json.loads(
+        _decode_json(
             call_action(
                 {
                     "method": "POST",
@@ -292,7 +308,7 @@ def test_action_rejects_query_or_fragment_in_path(monkeypatch: pytest.MonkeyPatc
         == expected
     )
     assert (
-        json.loads(
+        _decode_json(
             call_action(
                 {
                     "method": "POST",
@@ -309,7 +325,7 @@ def test_action_blocks_account_connection_challenge(monkeypatch: pytest.MonkeyPa
     monkeypatch.setattr(tools, "action_enabled", lambda: True)
     monkeypatch.setattr(tools, "request", None)
 
-    result = json.loads(
+    result = _decode_json(
         call_action(
             {
                 "method": "POST",
@@ -334,13 +350,13 @@ def test_action_requires_reason_when_enabled(monkeypatch: pytest.MonkeyPatch) ->
         "error": "Action reason missing. Add a user-visible reason.",
     }
 
-    assert json.loads(call_action({"path": "/api/v1/x/tweets", "method": "POST"})) == error
+    assert _decode_json(call_action({"path": "/api/v1/x/tweets", "method": "POST"})) == error
     assert (
-        json.loads(call_action({"path": "/api/v1/x/tweets", "method": "POST", "reason": "  "}))
+        _decode_json(call_action({"path": "/api/v1/x/tweets", "method": "POST", "reason": "  "}))
         == error
     )
     assert (
-        json.loads(call_action({"path": "/api/v1/x/tweets", "method": "POST", "reason": None}))
+        _decode_json(call_action({"path": "/api/v1/x/tweets", "method": "POST", "reason": None}))
         == error
     )
 
@@ -357,7 +373,7 @@ def test_action_success(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(tools, "action_enabled", lambda: True)
     monkeypatch.setattr(tools, "request", fake_request)
 
-    result = json.loads(
+    result = _decode_json(
         call_action(
             {
                 "body": {"text": "hello"},
@@ -391,7 +407,7 @@ def test_action_defaults_missing_or_malformed_method_to_post(
     monkeypatch.setattr(tools, "action_enabled", lambda: True)
     monkeypatch.setattr(tools, "request", fake_request)
 
-    assert json.loads(
+    assert _decode_json(
         call_action(
             {
                 "body": {"text": "hello"},
@@ -406,7 +422,7 @@ def test_action_defaults_missing_or_malformed_method_to_post(
         "query": None,
     }
 
-    result = json.loads(
+    result = _decode_json(
         call_action(
             {
                 "body": {"text": "hello"},
@@ -437,7 +453,7 @@ def test_action_normalizes_path_values(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(tools, "action_enabled", lambda: True)
     monkeypatch.setattr(tools, "request", fake_request)
 
-    result = json.loads(
+    result = _decode_json(
         call_action(
             {
                 "body": {"text": "hello"},
@@ -470,7 +486,7 @@ def test_action_normalizes_copied_endpoint_url_before_request(
     monkeypatch.setattr(tools, "action_enabled", lambda: True)
     monkeypatch.setattr(tools, "request", fake_request)
 
-    assert json.loads(
+    assert _decode_json(
         call_action(
             {
                 "body": {"text": "hello"},
@@ -493,7 +509,7 @@ def test_action_rejects_non_catalog_copied_url_before_request(
     monkeypatch.setattr(tools, "action_enabled", lambda: True)
     monkeypatch.setattr(tools, "request", None)
 
-    assert json.loads(
+    assert _decode_json(
         call_action(
             {
                 "method": "POST",
@@ -516,7 +532,7 @@ def test_action_returns_handler_error(monkeypatch: pytest.MonkeyPatch) -> None:
 
     monkeypatch.setattr(tools, "action_enabled", fail)
 
-    assert json.loads(call_action({"path": "/api/v1/x/tweets", "method": "POST"})) == {
+    assert _decode_json(call_action({"path": "/api/v1/x/tweets", "method": "POST"})) == {
         "success": False,
         "error": tools.TOOL_FAILURE_ERROR,
     }
@@ -527,13 +543,13 @@ def test_slash_commands(monkeypatch: pytest.MonkeyPatch) -> None:
 
     def fake_call_read(args: dict[str, object]) -> str:
         calls.append(args)
-        return json.dumps({"ok": True})
+        return OK_RESPONSE
 
     monkeypatch.setattr(tools, "call_read", fake_call_read)
 
-    assert tools.xstatus(None) == '{"ok": true}'
-    assert tools.xtrends(" tech ") == '{"ok": true}'
-    assert tools.xtrends(None) == '{"ok": true}'
+    assert tools.xstatus(None) == OK_RESPONSE
+    assert tools.xtrends(" tech ") == OK_RESPONSE
+    assert tools.xtrends(None) == OK_RESPONSE
     assert calls == [
         {"path": "/api/v1/account"},
         {"path": "/api/v1/x/trends", "query": {"category": "tech"}},

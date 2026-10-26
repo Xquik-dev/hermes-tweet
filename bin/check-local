@@ -98,6 +98,18 @@ run_tests() {
     tee "$workspace/tests.log"
 }
 
+# mypy allows an Any expression assigned to an annotated name, so the build also fails on each Any its report counts. https://mypy.readthedocs.io/en/stable/command_line.html#cmdoption-mypy-disallow-any-expr
+check_mypy() {
+  run_locked mypy --any-exprs-report "$workspace/types" &&
+    awk '$2 ~ /^[1-9]/ { print } $1 == "Total" { total = $2 } END { exit total != "0" }' "$workspace/types/any-exprs.txt"
+}
+
+# mypy has no setting that turns its ignore and inline config comments off, so the build rejects them and pyright's. https://mypy.readthedocs.io/en/stable/common_issues.html#spurious-errors-and-locally-silencing-the-checker
+no_type_checker_comments() {
+  git grep -nP --untracked '#\s*((mypy|pyright):|type:\s*ignore)' -- '*.py' '*.pyi'
+  (($? == 1))
+}
+
 # Shell functions run without errexit inside run_check, so this one chains its commands with &&. https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html
 build_and_check_metadata() {
   SOURCE_DATE_EPOCH=946684800 run_locked python -m build --outdir "$workspace/dist" &&
@@ -109,8 +121,11 @@ run_check "" "Install locked dependencies on Python $python_version" \
   on_python uv sync --locked --group dev
 run_check "format" "Format check" \
   "Run uv run ruff format . to repair the files listed above." run_locked ruff format --check .
-run_check "lint" "Lint" "Fix the Ruff findings above." run_locked ruff check .
+run_check "lint" "Lint" "Fix the Ruff findings above." run_locked ruff check --ignore-noqa .
+run_check "" "Type checker comments" \
+  "Remove the comments listed above and fix the type errors they hide." no_type_checker_comments
 run_check "types" "Type check" "Fix the basedpyright errors above." run_locked basedpyright
+run_check "" "Type check with mypy" "Fix the mypy errors and the Any counts listed above." check_mypy
 run_check "compatibility" "Hermes Agent compatibility" \
   "Review the Hermes Agent changes named above, then update the lock in scripts/check_hermes_agent_compat.py." \
   check_compatibility

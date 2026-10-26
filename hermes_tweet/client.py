@@ -6,14 +6,21 @@ from __future__ import annotations
 import json
 import os
 from math import isfinite
-from typing import Any, cast
+from typing import TYPE_CHECKING, TypeAlias, TypeGuard
 from urllib.parse import urljoin
 
 import httpx
 
+if TYPE_CHECKING:
+    from collections.abc import Callable, Mapping
+
+JsonValue: TypeAlias = str | int | float | bool | list["JsonValue"] | dict[str, "JsonValue"] | None
+
 API_V1_PREFIX = "/api/v1/"
 DEFAULT_BASE_URL = "https://xquik.com"
 TIMEOUT_SECONDS = 30.0
+
+_decode_json: Callable[[bytes], JsonValue] = json.loads
 
 
 def _env_text(name: str, default: str = "") -> str:
@@ -24,17 +31,21 @@ def _env_text(name: str, default: str = "") -> str:
     return normalized or default
 
 
-def _request_text(value: Any) -> str:
+def _request_text(value: object) -> str:
     if not isinstance(value, str):
         return ""
     return value.strip()
 
 
-def normalize_query_params(value: Any) -> dict[str, str] | None:
-    if not isinstance(value, dict):
+def is_mapping(value: object) -> TypeGuard[Mapping[object, object]]:
+    return isinstance(value, dict)
+
+
+def normalize_query_params(value: object) -> dict[str, str] | None:
+    if not is_mapping(value):
         return None
     output: dict[str, str] = {}
-    for key, item in cast("dict[object, object]", value).items():
+    for key, item in value.items():
         if not isinstance(key, str):
             continue
         normalized_key = key.strip()
@@ -74,8 +85,13 @@ def build_headers(key: str, *, has_body: bool) -> dict[str, str]:
     return headers
 
 
+def _content_type(response: httpx.Response) -> str:
+    headers: Mapping[str, str] = response.headers
+    return headers.get("content-type", "")
+
+
 def _agent_readable_response(response: httpx.Response) -> bool:
-    content_type = response.headers.get("content-type", "").split(";", 1)[0].lower()
+    content_type = _content_type(response).split(";", 1)[0].lower()
     return (
         not content_type
         or content_type.startswith("text/")
@@ -84,16 +100,16 @@ def _agent_readable_response(response: httpx.Response) -> bool:
     )
 
 
-def _response_payload(response: httpx.Response) -> Any:
+def _response_payload(response: httpx.Response) -> JsonValue:
     if response.is_success and not _agent_readable_response(response):
         return {
             "success": False,
             "error": "Binary response unavailable. Use the Xquik REST API to download it.",
             "status_code": response.status_code,
-            "content_type": response.headers.get("content-type", ""),
+            "content_type": _content_type(response),
         }
     try:
-        payload = response.json()
+        payload: JsonValue = _decode_json(response.content)
     except ValueError:
         payload = {"text": response.text}
     if not response.is_success:
@@ -107,11 +123,11 @@ def _response_payload(response: httpx.Response) -> Any:
 
 
 def request(
-    method: Any,
-    path: Any,
-    query: Any = None,
-    body: Any | None = None,
-) -> Any:
+    method: object,
+    path: object,
+    query: object = None,
+    body: object = None,
+) -> JsonValue:
     normalized_method = _request_text(method).upper() or "GET"
     normalized_path = _request_text(path)
     params = normalize_query_params(query)
@@ -151,5 +167,5 @@ def request(
         }
 
 
-def dumps(data: Any) -> str:
+def dumps(data: object) -> str:
     return json.dumps(data, ensure_ascii=False, separators=(",", ":"))

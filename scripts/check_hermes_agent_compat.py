@@ -4,22 +4,41 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import os
 import sys
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Final, cast
+from typing import TYPE_CHECKING, Final, Protocol
 
 import httpx
 
 if TYPE_CHECKING:
-    from collections.abc import Sequence
+    from collections.abc import Callable, Sequence
+
+    from hermes_tweet.client import JsonValue
 
 USER_AGENT: Final = "HermesTweetHermesAgentCompat/1.0"
 LATEST_RELEASE_URL: Final = "https://api.github.com/repos/NousResearch/hermes-agent/releases/latest"
 SOURCE_URL: Final = "https://raw.githubusercontent.com/NousResearch/hermes-agent"
-REVIEWED_RELEASE: Final = "v0.22.2"
+REVIEWED_RELEASE: Final = "v0.22.5"
 DEVELOPMENT_BRANCH: Final = "main"
 DOC_TIMEOUT_SECONDS: Final = 30.0
+
+_decode_json: Callable[[bytes], JsonValue] = json.loads
+
+
+class SourceResponse(Protocol):
+    @property
+    def text(self) -> str: ...
+
+    @property
+    def content(self) -> bytes: ...
+
+    def raise_for_status(self) -> object: ...
+
+
+class SourceClient(Protocol):
+    def get(self, url: str, *, headers: dict[str, str] | None = None) -> SourceResponse: ...
 
 
 @dataclass(frozen=True)
@@ -80,7 +99,7 @@ PAGE_CHECKS: Final = (
 SOURCE_CHECKS: Final = (
     SourceCheck(
         path="hermes_cli/plugins.py",
-        expected_sha="a652179cd4a7a3ac04fe7eb2a0377de6a6dfbc58",
+        expected_sha="14e13ab00e3a289b53b9cc32b813ce120079fc23",
         required_terms=(
             "ENTRY_POINTS_GROUP",
             "discover_entrypoint_manifests",
@@ -107,7 +126,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="tools/registry.py",
-        expected_sha="30ec01a9f31f66ff159024aec3ccc3a57249ba62",
+        expected_sha="bc6e1ab7688a17e11d70e1ef992dbf7fb42418c4",
         required_terms=(
             "check_fn",
             "requires_env",
@@ -119,7 +138,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="hermes_cli/plugins_cmd.py",
-        expected_sha="ad061ca6772c0f5629d365bb7c406cfb23556f41",
+        expected_sha="d8c3533252807498b790a967f8ffeffc75621b4a",
         required_terms=(
             "_resolve_plugin_key",
             "_scan_plugin_tree",
@@ -134,7 +153,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="hermes_cli/plugins_cmd_install.py",
-        expected_sha="2aee13fdd3fbfe3b7c3299de4819aa9e114bd3e1",
+        expected_sha="ded3fef3d44ec1808d23335e1a5c068add9e4fa8",
         required_terms=(
             "def cmd_install",
             "_prompt_plugin_env_vars",
@@ -146,7 +165,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="hermes_cli/subcommands/plugins.py",
-        expected_sha="fe703ee56eeee778d14a5ee25401eba1e3f665e3",
+        expected_sha="26a0eec6469eddeee7dbd331dbd39c02eb103c49",
         required_terms=(
             "--enable",
             "--no-enable",
@@ -157,11 +176,11 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="pm/plugin_declarations.py",
-        expected_sha="210cabe36b29b87272cdda0add85174c17809f6d",
+        expected_sha="9c65c5130e268e41ec65c8d030c8c169007c4277",
         required_terms=(
             "python_runtime",
             "external",
-            "is_member",
+            "installs_packages",
             "project.dependencies",
         ),
     ),
@@ -191,7 +210,7 @@ def github_headers() -> dict[str, str]:
     return headers
 
 
-def check_page(client: httpx.Client, check: PageCheck) -> list[str]:
+def check_page(client: SourceClient, check: PageCheck) -> list[str]:
     try:
         response = client.get(check.url)
         response.raise_for_status()
@@ -211,15 +230,15 @@ def blob_sha(content: bytes) -> str:
     return hashlib.sha1(header + content, usedforsecurity=False).hexdigest()
 
 
-def latest_release(client: httpx.Client) -> tuple[str | None, list[str]]:
+def latest_release(client: SourceClient) -> tuple[str | None, list[str]]:
     try:
         response = client.get(LATEST_RELEASE_URL, headers=github_headers())
         response.raise_for_status()
     except httpx.HTTPError as error:
         return None, [f"Release lookup failed. Retry after {error.__class__.__name__}."]
 
-    payload = response.json()
-    tag = cast("dict[str, object]", payload).get("tag_name") if isinstance(payload, dict) else None
+    payload = _decode_json(response.content)
+    tag = payload.get("tag_name") if isinstance(payload, dict) else None
     if not isinstance(tag, str) or not tag:
         return None, ["Invalid GitHub response for the latest release. Expected tag_name."]
 
@@ -227,7 +246,7 @@ def latest_release(client: httpx.Client) -> tuple[str | None, list[str]]:
 
 
 def read_source(
-    client: httpx.Client, path: str, ref: str
+    client: SourceClient, path: str, ref: str
 ) -> tuple[SourceContent | None, list[str]]:
     try:
         response = client.get(f"{SOURCE_URL}/{ref}/{path}")
@@ -240,7 +259,7 @@ def read_source(
     return SourceContent(sha=blob_sha(response.content), text=response.text), []
 
 
-def check_source(client: httpx.Client, check: SourceCheck, release: str) -> list[str]:
+def check_source(client: SourceClient, check: SourceCheck, release: str) -> list[str]:
     content, errors = read_source(client, check.path, release)
     if content is None:
         return errors
@@ -262,7 +281,7 @@ def check_source(client: httpx.Client, check: SourceCheck, release: str) -> list
     return []
 
 
-def check_core_pin(client: httpx.Client, check: CorePinCheck, release: str) -> list[str]:
+def check_core_pin(client: SourceClient, check: CorePinCheck, release: str) -> list[str]:
     content, errors = read_source(client, check.path, release)
     if content is None:
         return errors
@@ -274,7 +293,7 @@ def check_core_pin(client: httpx.Client, check: CorePinCheck, release: str) -> l
     return []
 
 
-def development_warnings(client: httpx.Client) -> list[str]:
+def development_warnings(client: SourceClient) -> list[str]:
     warnings: list[str] = []
     for source_check in SOURCE_CHECKS:
         content, errors = read_source(client, source_check.path, DEVELOPMENT_BRANCH)
@@ -297,7 +316,7 @@ def development_warnings(client: httpx.Client) -> list[str]:
     return warnings
 
 
-def run_checks(client: httpx.Client) -> tuple[list[str], list[str]]:
+def run_checks(client: SourceClient) -> tuple[list[str], list[str]]:
     errors: list[str] = []
     for page_check in PAGE_CHECKS:
         errors.extend(check_page(client, page_check))
