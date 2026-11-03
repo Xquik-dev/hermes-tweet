@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 import sys
+import time
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Final, Protocol
 
@@ -20,11 +21,14 @@ if TYPE_CHECKING:
 USER_AGENT: Final = "HermesTweetHermesAgentCompat/1.0"
 LATEST_RELEASE_URL: Final = "https://api.github.com/repos/NousResearch/hermes-agent/releases/latest"
 SOURCE_URL: Final = "https://raw.githubusercontent.com/NousResearch/hermes-agent"
-REVIEWED_RELEASE: Final = "v0.22.5"
+REVIEWED_RELEASE: Final = "v0.22.6"
 DEVELOPMENT_BRANCH: Final = "main"
 DOC_TIMEOUT_SECONDS: Final = 30.0
+RETRY_DELAYS_SECONDS: Final = (2.0, 8.0)
+TOO_MANY_REQUESTS: Final = 429
 
 _decode_json: Callable[[bytes], JsonValue] = json.loads
+_sleep: Callable[[float], None] = time.sleep
 
 
 class SourceResponse(Protocol):
@@ -99,7 +103,7 @@ PAGE_CHECKS: Final = (
 SOURCE_CHECKS: Final = (
     SourceCheck(
         path="hermes_cli/plugins.py",
-        expected_sha="14e13ab00e3a289b53b9cc32b813ce120079fc23",
+        expected_sha="eda71a0ee43c89d18e9b9b076deb39a606d6c9f4",
         required_terms=(
             "ENTRY_POINTS_GROUP",
             "discover_entrypoint_manifests",
@@ -117,16 +121,16 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="hermes_cli/plugins_content.py",
-        expected_sha="92b8d79f5440e58d421a6018d4c6d12e9aef107b",
+        expected_sha="eee86d6ad0ee3c5e4a42cdf7bafeb06066a76520",
         required_terms=(
             "def register_skill",
             "SKILL.md not found",
-            "skill_namespace",
+            "else self.manifest.name",
         ),
     ),
     SourceCheck(
         path="tools/registry.py",
-        expected_sha="bc6e1ab7688a17e11d70e1ef992dbf7fb42418c4",
+        expected_sha="f272b26bc09766b2d1cb84060f6ac2a14abe166a",
         required_terms=(
             "check_fn",
             "requires_env",
@@ -138,7 +142,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="hermes_cli/plugins_cmd.py",
-        expected_sha="d8c3533252807498b790a967f8ffeffc75621b4a",
+        expected_sha="8bfd8af47c2247a86d0094b92fc87a2b478b9bcc",
         required_terms=(
             "_resolve_plugin_key",
             "_scan_plugin_tree",
@@ -153,7 +157,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="hermes_cli/plugins_cmd_install.py",
-        expected_sha="ded3fef3d44ec1808d23335e1a5c068add9e4fa8",
+        expected_sha="1ec9c0f203c5df6beba92e18324a273aea395bb4",
         required_terms=(
             "def cmd_install",
             "_prompt_plugin_env_vars",
@@ -210,12 +214,40 @@ def github_headers() -> dict[str, str]:
     return headers
 
 
+def transient(error: httpx.HTTPError) -> bool:
+    if isinstance(error, httpx.HTTPStatusError):
+        response = error.response
+        return response.status_code == TOO_MANY_REQUESTS or response.is_server_error
+    return isinstance(error, httpx.TransportError)
+
+
+def failure(error: httpx.HTTPError) -> str:
+    if isinstance(error, httpx.HTTPStatusError):
+        return f"HTTP {error.response.status_code}"
+    return error.__class__.__name__
+
+
+def fetch(client: SourceClient, url: str, headers: dict[str, str] | None = None) -> SourceResponse:
+    for delay in RETRY_DELAYS_SECONDS:
+        try:
+            response = client.get(url, headers=headers)
+            response.raise_for_status()
+        except httpx.HTTPError as error:
+            if not transient(error):
+                raise
+            _sleep(delay)
+        else:
+            return response
+    response = client.get(url, headers=headers)
+    response.raise_for_status()
+    return response
+
+
 def check_page(client: SourceClient, check: PageCheck) -> list[str]:
     try:
-        response = client.get(check.url)
-        response.raise_for_status()
+        response = fetch(client, check.url)
     except httpx.HTTPError as error:
-        return [f"{check.name} check failed. Retry after {error.__class__.__name__}."]
+        return [f"{check.name} check failed. Retry after {failure(error)}."]
 
     missing = missing_terms(response.text, check.required_terms)
     if missing:
@@ -232,10 +264,9 @@ def blob_sha(content: bytes) -> str:
 
 def latest_release(client: SourceClient) -> tuple[str | None, list[str]]:
     try:
-        response = client.get(LATEST_RELEASE_URL, headers=github_headers())
-        response.raise_for_status()
+        response = fetch(client, LATEST_RELEASE_URL, github_headers())
     except httpx.HTTPError as error:
-        return None, [f"Release lookup failed. Retry after {error.__class__.__name__}."]
+        return None, [f"Release lookup failed. Retry after {failure(error)}."]
 
     payload = _decode_json(response.content)
     tag = payload.get("tag_name") if isinstance(payload, dict) else None
@@ -249,12 +280,9 @@ def read_source(
     client: SourceClient, path: str, ref: str
 ) -> tuple[SourceContent | None, list[str]]:
     try:
-        response = client.get(f"{SOURCE_URL}/{ref}/{path}")
-        response.raise_for_status()
+        response = fetch(client, f"{SOURCE_URL}/{ref}/{path}")
     except httpx.HTTPError as error:
-        return None, [
-            f"Source fetch failed for {path} at {ref}. Retry after {error.__class__.__name__}."
-        ]
+        return None, [f"Source fetch failed for {path} at {ref}. Retry after {failure(error)}."]
 
     return SourceContent(sha=blob_sha(response.content), text=response.text), []
 

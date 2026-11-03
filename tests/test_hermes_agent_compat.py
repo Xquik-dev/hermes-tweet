@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 
+import httpx
 import pytest
 from scripts import check_hermes_agent_compat as compat
 
@@ -59,13 +60,13 @@ def test_github_headers_adds_optional_token(monkeypatch: pytest.MonkeyPatch) -> 
 def test_source_checks_track_reviewed_hermes_agent_locks() -> None:
     locks = {check.path: check.expected_sha for check in compat.SOURCE_CHECKS}
 
-    assert compat.REVIEWED_RELEASE == "v0.22.5"
+    assert compat.REVIEWED_RELEASE == "v0.22.6"
     assert locks == {
-        "hermes_cli/plugins.py": "14e13ab00e3a289b53b9cc32b813ce120079fc23",
-        "hermes_cli/plugins_content.py": "92b8d79f5440e58d421a6018d4c6d12e9aef107b",
-        "tools/registry.py": "bc6e1ab7688a17e11d70e1ef992dbf7fb42418c4",
-        "hermes_cli/plugins_cmd.py": "d8c3533252807498b790a967f8ffeffc75621b4a",
-        "hermes_cli/plugins_cmd_install.py": "ded3fef3d44ec1808d23335e1a5c068add9e4fa8",
+        "hermes_cli/plugins.py": "eda71a0ee43c89d18e9b9b076deb39a606d6c9f4",
+        "hermes_cli/plugins_content.py": "eee86d6ad0ee3c5e4a42cdf7bafeb06066a76520",
+        "tools/registry.py": "f272b26bc09766b2d1cb84060f6ac2a14abe166a",
+        "hermes_cli/plugins_cmd.py": "8bfd8af47c2247a86d0094b92fc87a2b478b9bcc",
+        "hermes_cli/plugins_cmd_install.py": "1ec9c0f203c5df6beba92e18324a273aea395bb4",
         "hermes_cli/subcommands/plugins.py": "26a0eec6469eddeee7dbd331dbd39c02eb103c49",
         "pm/plugin_declarations.py": "9c65c5130e268e41ec65c8d030c8c169007c4277",
     }
@@ -212,7 +213,7 @@ def test_run_checks_gates_on_the_latest_release_and_only_warns_about_main(
         f"{SOURCE}/main/pyproject.toml",
     ]
     assert capsys.readouterr().out.splitlines()[0] == (
-        "Hermes Agent v9.9.9 is newer than the reviewed v0.22.5."
+        "Hermes Agent v9.9.9 is newer than the reviewed v0.22.6."
     )
 
 
@@ -242,3 +243,67 @@ def test_run_checks_stops_when_the_release_lookup_fails(monkeypatch: pytest.Monk
         [],
     )
     assert client.urls == [LATEST]
+
+
+class StatusClient:
+    def __init__(self, outcomes: list[int | httpx.HTTPError]) -> None:
+        self._outcomes = outcomes
+        self.urls: list[str] = []
+
+    def get(self, url: str, headers: dict[str, str] | None = None) -> httpx.Response:
+        self.urls.append(url)
+        outcome = self._outcomes.pop(0)
+        if isinstance(outcome, httpx.HTTPError):
+            raise outcome
+        return httpx.Response(
+            outcome, text=HELLO, request=httpx.Request("GET", url, headers=headers)
+        )
+
+
+def record_sleeps(monkeypatch: pytest.MonkeyPatch) -> list[float]:
+    recorded: list[float] = []
+    monkeypatch.setattr(compat, "_sleep", recorded.append, raising=False)
+    return recorded
+
+
+REGISTRY_AT_V1 = f"{SOURCE}/v1.0.0/tools/registry.py"
+
+
+@pytest.mark.parametrize("first", [429, 503, httpx.ConnectError("refused")])
+def test_read_source_retries_a_transient_failure(
+    monkeypatch: pytest.MonkeyPatch, first: int | httpx.HTTPError
+) -> None:
+    sleeps = record_sleeps(monkeypatch)
+    client = StatusClient([first, 200])
+
+    assert compat.read_source(client, "tools/registry.py", "v1.0.0") == (
+        compat.SourceContent(sha=HELLO_SHA, text=HELLO),
+        [],
+    )
+    assert sleeps == [2.0]
+    assert client.urls == [REGISTRY_AT_V1, REGISTRY_AT_V1]
+
+
+def test_read_source_names_the_last_status_once_retries_run_out(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    sleeps = record_sleeps(monkeypatch)
+    client = StatusClient([429, 502, 500])
+
+    assert compat.read_source(client, "tools/registry.py", "v1.0.0") == (
+        None,
+        ["Source fetch failed for tools/registry.py at v1.0.0. Retry after HTTP 500."],
+    )
+    assert sleeps == [2.0, 8.0]
+
+
+def test_read_source_does_not_retry_a_missing_file(monkeypatch: pytest.MonkeyPatch) -> None:
+    sleeps = record_sleeps(monkeypatch)
+    client = StatusClient([404])
+
+    assert compat.read_source(client, "tools/registry.py", "v1.0.0") == (
+        None,
+        ["Source fetch failed for tools/registry.py at v1.0.0. Retry after HTTP 404."],
+    )
+    assert sleeps == []
+    assert client.urls == [REGISTRY_AT_V1]
