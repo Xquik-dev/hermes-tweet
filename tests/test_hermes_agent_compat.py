@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 
+import httpx
 import pytest
 from scripts import check_hermes_agent_compat as compat
 
@@ -242,3 +243,67 @@ def test_run_checks_stops_when_the_release_lookup_fails(monkeypatch: pytest.Monk
         [],
     )
     assert client.urls == [LATEST]
+
+
+class StatusClient:
+    def __init__(self, outcomes: list[int | httpx.HTTPError]) -> None:
+        self._outcomes = outcomes
+        self.urls: list[str] = []
+
+    def get(self, url: str, headers: dict[str, str] | None = None) -> httpx.Response:
+        self.urls.append(url)
+        outcome = self._outcomes.pop(0)
+        if isinstance(outcome, httpx.HTTPError):
+            raise outcome
+        return httpx.Response(
+            outcome, text=HELLO, request=httpx.Request("GET", url, headers=headers)
+        )
+
+
+def record_sleeps(monkeypatch: pytest.MonkeyPatch) -> list[float]:
+    recorded: list[float] = []
+    monkeypatch.setattr(compat, "_sleep", recorded.append, raising=False)
+    return recorded
+
+
+REGISTRY_AT_V1 = f"{SOURCE}/v1.0.0/tools/registry.py"
+
+
+@pytest.mark.parametrize("first", [429, 503, httpx.ConnectError("refused")])
+def test_read_source_retries_a_transient_failure(
+    monkeypatch: pytest.MonkeyPatch, first: int | httpx.HTTPError
+) -> None:
+    sleeps = record_sleeps(monkeypatch)
+    client = StatusClient([first, 200])
+
+    assert compat.read_source(client, "tools/registry.py", "v1.0.0") == (
+        compat.SourceContent(sha=HELLO_SHA, text=HELLO),
+        [],
+    )
+    assert sleeps == [2.0]
+    assert client.urls == [REGISTRY_AT_V1, REGISTRY_AT_V1]
+
+
+def test_read_source_names_the_last_status_once_retries_run_out(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    sleeps = record_sleeps(monkeypatch)
+    client = StatusClient([429, 502, 500])
+
+    assert compat.read_source(client, "tools/registry.py", "v1.0.0") == (
+        None,
+        ["Source fetch failed for tools/registry.py at v1.0.0. Retry after HTTP 500."],
+    )
+    assert sleeps == [2.0, 8.0]
+
+
+def test_read_source_does_not_retry_a_missing_file(monkeypatch: pytest.MonkeyPatch) -> None:
+    sleeps = record_sleeps(monkeypatch)
+    client = StatusClient([404])
+
+    assert compat.read_source(client, "tools/registry.py", "v1.0.0") == (
+        None,
+        ["Source fetch failed for tools/registry.py at v1.0.0. Retry after HTTP 404."],
+    )
+    assert sleeps == []
+    assert client.urls == [REGISTRY_AT_V1]

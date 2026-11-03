@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 import sys
+import time
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Final, Protocol
 
@@ -23,8 +24,11 @@ SOURCE_URL: Final = "https://raw.githubusercontent.com/NousResearch/hermes-agent
 REVIEWED_RELEASE: Final = "v0.22.6"
 DEVELOPMENT_BRANCH: Final = "main"
 DOC_TIMEOUT_SECONDS: Final = 30.0
+RETRY_DELAYS_SECONDS: Final = (2.0, 8.0)
+TOO_MANY_REQUESTS: Final = 429
 
 _decode_json: Callable[[bytes], JsonValue] = json.loads
+_sleep: Callable[[float], None] = time.sleep
 
 
 class SourceResponse(Protocol):
@@ -210,12 +214,40 @@ def github_headers() -> dict[str, str]:
     return headers
 
 
+def transient(error: httpx.HTTPError) -> bool:
+    if isinstance(error, httpx.HTTPStatusError):
+        response = error.response
+        return response.status_code == TOO_MANY_REQUESTS or response.is_server_error
+    return isinstance(error, httpx.TransportError)
+
+
+def failure(error: httpx.HTTPError) -> str:
+    if isinstance(error, httpx.HTTPStatusError):
+        return f"HTTP {error.response.status_code}"
+    return error.__class__.__name__
+
+
+def fetch(client: SourceClient, url: str, headers: dict[str, str] | None = None) -> SourceResponse:
+    for delay in RETRY_DELAYS_SECONDS:
+        try:
+            response = client.get(url, headers=headers)
+            response.raise_for_status()
+        except httpx.HTTPError as error:
+            if not transient(error):
+                raise
+            _sleep(delay)
+        else:
+            return response
+    response = client.get(url, headers=headers)
+    response.raise_for_status()
+    return response
+
+
 def check_page(client: SourceClient, check: PageCheck) -> list[str]:
     try:
-        response = client.get(check.url)
-        response.raise_for_status()
+        response = fetch(client, check.url)
     except httpx.HTTPError as error:
-        return [f"{check.name} check failed. Retry after {error.__class__.__name__}."]
+        return [f"{check.name} check failed. Retry after {failure(error)}."]
 
     missing = missing_terms(response.text, check.required_terms)
     if missing:
@@ -232,10 +264,9 @@ def blob_sha(content: bytes) -> str:
 
 def latest_release(client: SourceClient) -> tuple[str | None, list[str]]:
     try:
-        response = client.get(LATEST_RELEASE_URL, headers=github_headers())
-        response.raise_for_status()
+        response = fetch(client, LATEST_RELEASE_URL, github_headers())
     except httpx.HTTPError as error:
-        return None, [f"Release lookup failed. Retry after {error.__class__.__name__}."]
+        return None, [f"Release lookup failed. Retry after {failure(error)}."]
 
     payload = _decode_json(response.content)
     tag = payload.get("tag_name") if isinstance(payload, dict) else None
@@ -249,12 +280,9 @@ def read_source(
     client: SourceClient, path: str, ref: str
 ) -> tuple[SourceContent | None, list[str]]:
     try:
-        response = client.get(f"{SOURCE_URL}/{ref}/{path}")
-        response.raise_for_status()
+        response = fetch(client, f"{SOURCE_URL}/{ref}/{path}")
     except httpx.HTTPError as error:
-        return None, [
-            f"Source fetch failed for {path} at {ref}. Retry after {error.__class__.__name__}."
-        ]
+        return None, [f"Source fetch failed for {path} at {ref}. Retry after {failure(error)}."]
 
     return SourceContent(sha=blob_sha(response.content), text=response.text), []
 
