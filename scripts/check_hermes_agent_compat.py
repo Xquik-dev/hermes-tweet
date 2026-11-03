@@ -20,7 +20,7 @@ if TYPE_CHECKING:
 USER_AGENT: Final = "HermesTweetHermesAgentCompat/1.0"
 LATEST_RELEASE_URL: Final = "https://api.github.com/repos/NousResearch/hermes-agent/releases/latest"
 SOURCE_URL: Final = "https://raw.githubusercontent.com/NousResearch/hermes-agent"
-REVIEWED_RELEASE: Final = "v0.22.5"
+REVIEWED_RELEASE: Final = "v0.22.6"
 DEVELOPMENT_BRANCH: Final = "main"
 DOC_TIMEOUT_SECONDS: Final = 30.0
 
@@ -99,7 +99,7 @@ PAGE_CHECKS: Final = (
 SOURCE_CHECKS: Final = (
     SourceCheck(
         path="hermes_cli/plugins.py",
-        expected_sha="14e13ab00e3a289b53b9cc32b813ce120079fc23",
+        expected_sha="eda71a0ee43c89d18e9b9b076deb39a606d6c9f4",
         required_terms=(
             "ENTRY_POINTS_GROUP",
             "discover_entrypoint_manifests",
@@ -117,16 +117,16 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="hermes_cli/plugins_content.py",
-        expected_sha="92b8d79f5440e58d421a6018d4c6d12e9aef107b",
+        expected_sha="eee86d6ad0ee3c5e4a42cdf7bafeb06066a76520",
         required_terms=(
             "def register_skill",
             "SKILL.md not found",
-            "skill_namespace",
+            "else self.manifest.name",
         ),
     ),
     SourceCheck(
         path="tools/registry.py",
-        expected_sha="bc6e1ab7688a17e11d70e1ef992dbf7fb42418c4",
+        expected_sha="f272b26bc09766b2d1cb84060f6ac2a14abe166a",
         required_terms=(
             "check_fn",
             "requires_env",
@@ -138,7 +138,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="hermes_cli/plugins_cmd.py",
-        expected_sha="d8c3533252807498b790a967f8ffeffc75621b4a",
+        expected_sha="8bfd8af47c2247a86d0094b92fc87a2b478b9bcc",
         required_terms=(
             "_resolve_plugin_key",
             "_scan_plugin_tree",
@@ -153,7 +153,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="hermes_cli/plugins_cmd_install.py",
-        expected_sha="ded3fef3d44ec1808d23335e1a5c068add9e4fa8",
+        expected_sha="1ec9c0f203c5df6beba92e18324a273aea395bb4",
         required_terms=(
             "def cmd_install",
             "_prompt_plugin_env_vars",
