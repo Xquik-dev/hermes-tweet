@@ -60,15 +60,15 @@ def test_github_headers_adds_optional_token(monkeypatch: pytest.MonkeyPatch) -> 
 def test_source_checks_track_reviewed_hermes_agent_locks() -> None:
     locks = {check.path: check.expected_sha for check in compat.SOURCE_CHECKS}
 
-    assert compat.REVIEWED_RELEASE == "v0.22.6"
+    assert compat.REVIEWED_RELEASE == "v0.22.7"
     assert locks == {
         "hermes_cli/plugins.py": "eda71a0ee43c89d18e9b9b076deb39a606d6c9f4",
         "hermes_cli/plugins_content.py": "eee86d6ad0ee3c5e4a42cdf7bafeb06066a76520",
-        "tools/registry.py": "f272b26bc09766b2d1cb84060f6ac2a14abe166a",
+        "tools/registry.py": "99e8d3d4580580e9a5fe48e779cc6ae8c9dfbf9c",
         "hermes_cli/plugins_cmd.py": "8bfd8af47c2247a86d0094b92fc87a2b478b9bcc",
         "hermes_cli/plugins_cmd_install.py": "1ec9c0f203c5df6beba92e18324a273aea395bb4",
         "hermes_cli/subcommands/plugins.py": "26a0eec6469eddeee7dbd331dbd39c02eb103c49",
-        "pm/plugin_declarations.py": "9c65c5130e268e41ec65c8d030c8c169007c4277",
+        "pm/plugin_declarations.py": "0ea73c02e67cdf2c565cedec731d09695a175b28",
     }
 
 
@@ -213,7 +213,7 @@ def test_run_checks_gates_on_the_latest_release_and_only_warns_about_main(
         f"{SOURCE}/main/pyproject.toml",
     ]
     assert capsys.readouterr().out.splitlines()[0] == (
-        "Hermes Agent v9.9.9 is newer than the reviewed v0.22.6."
+        "Hermes Agent v9.9.9 is newer than the reviewed v0.22.7."
     )
 
 
