@@ -78,6 +78,7 @@ EXPECTED_CLAUDE_PLUGIN_DESCRIPTION = (
     "approved X actions. Not affiliated with X Corp."
 )
 EXPECTED_CODEX_PLUGIN_KEYWORDS = [*EXPECTED_AGENT_SKILL_MANIFEST_TAGS, "codex-plugin"]
+EXPECTED_AGENT_PLUGINS_SCHEMA = "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json"
 EXPECTED_AGENT_SKILL_INSTALL = "hermes plugins install Xquik-dev/hermes-tweet --enable"
 EXPECTED_TOPIC_DISCOVERY_KEYWORD = "agent-skill"
 EXPECTED_DASHBOARD_MANIFEST_DESCRIPTION = (
@@ -579,6 +580,7 @@ def test_claude_plugin_manifest_matches_public_package_metadata() -> None:
     project = require_mapping(pyproject["project"])
     manifest = require_mapping(_load_json((ROOT / ".claude-plugin" / "plugin.json").read_text()))
 
+    assert manifest["$schema"] == EXPECTED_AGENT_PLUGINS_SCHEMA
     assert manifest["name"] == project["name"]
     assert manifest["version"] == project["version"]
     assert manifest["description"] == EXPECTED_CLAUDE_PLUGIN_DESCRIPTION
