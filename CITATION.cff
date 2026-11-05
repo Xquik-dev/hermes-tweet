@@ -1,0 +1,24 @@
+# SPDX-FileCopyrightText: 2026 Xquik Contributors
+# SPDX-License-Identifier: MIT
+
+cff-version: 1.2.0
+message: If you use Hermes Tweet, the Hermes Agent Twitter plugin, cite it using this metadata.
+title: Hermes Tweet, the Hermes Agent Twitter plugin
+type: software
+abstract: >-
+  Hermes Agent Twitter plugin & skill for Xquik. Search tweets, monitor
+  accounts, export followers & run approved X automation from Hermes Agent.
+authors:
+  - name: Xquik
+    website: https://xquik.com
+url: https://github.com/Xquik-dev/hermes-tweet
+repository-code: https://github.com/Xquik-dev/hermes-tweet
+license: MIT
+keywords:
+  - Xquik
+  - Hermes Agent
+  - Hermes Twitter
+  - Twitter bot
+  - Twitter automation
+  - Twitter monitor
+  - scrape tweets

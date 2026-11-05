@@ -9,33 +9,34 @@ Before reusing it for public submissions, validate the target with
 - **Owner.** `Xquik-dev`
 - **Name.** `hermes-tweet`
 - **Visibility.** Public
-- **Homepage.** `https://github.com/Xquik-dev/hermes-tweet#readme`
+- **Homepage.** `https://docs.xquik.com/guides/hermes-tweet`
 
 ## Description
 
-Hermes Agent plugin for Twitter search, monitoring, follower exports & approved
-X actions. Not affiliated with X Corp.
+Hermes Agent Twitter plugin & skill. A Twitter bot for tweet search, monitor
+alerts, follower exports & X automation. Not affiliated with X Corp.
 
 ## Topics
 
 ```text
 hermes-agent
 hermes-plugin
-hermes
+hermes-twitter
+hermes-agent-plugin
+hermes-skill
+agent-skill
+twitter-bot
+twitter-automation
+twitter-monitor
+twitter-api
 twitter
 x-api
 x-automation
-xquik
-tweet
-automation
-social-media
-social-media-automation
+tweet-search
+follower-export
 ai-agent
 agent-tools
-twitter-api
-twitter-automation
-x-twitter
-social-media-api
-agent-skill
 python
+xquik
+twitter-scraper
 ```
