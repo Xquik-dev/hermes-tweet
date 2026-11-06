@@ -48,7 +48,7 @@ Search tweets about "AI agents" from the last day.
 Set `include_actions` for extraction, monitoring, and writing searches.
 `tweet_action` always follows the approval rules below.
 
-Next, read the [Hermes Tweet guide](https://docs.xquik.com/guides/hermes-tweet), the [integration patterns](docs/INTEGRATION_PATTERNS.md) or the [Hermes runtime hosts](docs/HERMES_SURFACES.md).
+Next, read the [Hermes Tweet guide](https://docs.xquik.com/guides/hermes-tweet) or the [integration patterns](docs/INTEGRATION_PATTERNS.md).
 
 <!-- trust:start -->
 
@@ -190,6 +190,7 @@ Hermes Tweet calls that API, not the official X API.
 - [Xquik API reference](https://docs.xquik.com/api-reference/overview)
 - [Xquik authentication](https://xquik.com/auth.md)
 - [Context7 guide](https://context7.com/xquik-dev/hermes-tweet)
+- [Hermes runtime hosts](docs/HERMES_SURFACES.md)
 - [Organization support policy](https://github.com/Xquik-dev/.github/blob/main/SUPPORT.md)
 - [Security policy](SECURITY.md)
 - [Contribution guide](https://github.com/Xquik-dev/.github/blob/main/CONTRIBUTING.md)
@@ -197,7 +198,8 @@ Hermes Tweet calls that API, not the official X API.
 ## More Xquik tools
 
 - [X (Twitter) scraper API & Twitter MCP server](https://github.com/Xquik-dev/x-twitter-scraper) with REST, MCP & Skill setup.
-- Twitter API SDKs for [TypeScript](https://github.com/Xquik-dev/x-twitter-scraper-typescript), [Python](https://github.com/Xquik-dev/x-twitter-scraper-python), [Go](https://github.com/Xquik-dev/x-twitter-scraper-go), [Ruby](https://github.com/Xquik-dev/x-twitter-scraper-ruby), [Java](https://github.com/Xquik-dev/x-twitter-scraper-java), [Kotlin](https://github.com/Xquik-dev/x-twitter-scraper-kotlin), [C#](https://github.com/Xquik-dev/x-twitter-scraper-csharp) & [PHP](https://github.com/Xquik-dev/x-twitter-scraper-php).
+- Twitter API SDKs for [TypeScript](https://github.com/Xquik-dev/x-twitter-scraper-typescript), [Python](https://github.com/Xquik-dev/x-twitter-scraper-python), [Go](https://github.com/Xquik-dev/x-twitter-scraper-go) & [Ruby](https://github.com/Xquik-dev/x-twitter-scraper-ruby).
+- Twitter API SDKs for [Java](https://github.com/Xquik-dev/x-twitter-scraper-java), [Kotlin](https://github.com/Xquik-dev/x-twitter-scraper-kotlin), [C#](https://github.com/Xquik-dev/x-twitter-scraper-csharp) & [PHP](https://github.com/Xquik-dev/x-twitter-scraper-php).
 - [Twitter CLI & X CLI](https://github.com/Xquik-dev/x-twitter-scraper-cli) for terminal workflows.
 - [Twitter advanced search operators](https://github.com/Xquik-dev/x-twitter-advanced-search) with tested examples.
 - [Xquik X API & Twitter scraper](https://xquik.com) and the [Twitter API documentation](https://docs.xquik.com/api-reference/overview).
