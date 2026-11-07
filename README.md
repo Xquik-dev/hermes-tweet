@@ -9,7 +9,9 @@ Xquik charges only for delivered, unique, filter-matching results and never pads
 Xquik is independent and not affiliated with X Corp.
 
 <!-- trust:win:start -->
-The Xquik REST API read 45 tweets per second at $0.15 per 1,000 on 2026-10-15. The fastest of 4 rival Actors read 12.5 per second. The cheapest cost $0.173 per 1,000. [Compare each run](https://xquik.com/benchmarks#benchmark-x-tweet-scraper).
+
+The Xquik REST API read 45 tweets per second on 2026-10-15. That cost $0.15 per 1,000. The fastest of 4 rival Actors read 12.5 per second. The cheapest cost $0.173 per 1,000. [Compare each run](https://xquik.com/benchmarks#benchmark-x-tweet-scraper).
+
 <!-- trust:win:end -->
 
 ## Install the Hermes Twitter plugin
@@ -59,12 +61,12 @@ Next, read the [Hermes Tweet guide](https://docs.xquik.com/guides/hermes-tweet) 
 [![hermes-tweet Skill installs on skills.sh](https://img.shields.io/endpoint?url=https%3A%2F%2Fxquik.com%2Fbadges%2Fskills-hermes-tweet.json)](https://skills.sh/xquik-dev/hermes-tweet)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/13725/badge)](https://www.bestpractices.dev/projects/13725)
 
-- 3,000+ downloads of hermes-tweet on PyPI ([source](https://pypistats.org/packages/hermes-tweet)) <!-- trust:pypi-hermes-tweet 3048 -->
-- 1,200+ downloads of hermes-tweet on ClawHub ([source](https://clawhub.ai/xquik/skills/hermes-tweet)) <!-- trust:clawhub-hermes-tweet 1256 -->
+- 3,000+ downloads of hermes-tweet on PyPI ([source](https://pypistats.org/packages/hermes-tweet)) <!-- trust:pypi-hermes-tweet 3049 -->
+- 1,200+ downloads of hermes-tweet on ClawHub ([source](https://clawhub.ai/xquik/skills/hermes-tweet)) <!-- trust:clawhub-hermes-tweet 1257 -->
 - 7 installs of this repo's Skills on skills.sh ([source](https://skills.sh/xquik-dev/hermes-tweet)) <!-- trust:skills-hermes-tweet 7 -->
 - This repo meets the OpenSSF Best Practices passing criteria ([source](https://www.bestpractices.dev/projects/13725)) <!-- trust:openssf-hermes-tweet 1 -->
 
-Checked on 2026-11-06. See each number with its date & source on [xquik.com/benchmarks](https://xquik.com/benchmarks) or as [JSON](https://xquik.com/trust.json).
+Checked on 2026-11-07. See each number with its date & source on [xquik.com/benchmarks](https://xquik.com/benchmarks) or as [JSON](https://xquik.com/trust.json).
 
 <!-- trust:end -->
 
