@@ -1,9 +1,9 @@
-# Hermes Tweet, the Hermes Twitter Plugin for Search & X Actions
+# Hermes Tweet, the Hermes Twitter Plugin for Search & X (Twitter) Actions
 
 Use this Hermes Twitter plugin by Xquik to search tweets & monitor accounts.
 Explore 102 OpenAPI-generated endpoints, including 33 prepaid reads and 7 direct MPP routes.
 
-Xquik is the world's fastest and cheapest X Twitter scraper service with the most complete X data.
+Xquik is the world's fastest and cheapest X (Twitter) scraper service with the most complete X (Twitter) data.
 Most other Apify Actors charge before filtering or deduplication.
 Xquik charges only for delivered, unique, filter-matching results and never pads rows.
 Xquik is independent and not affiliated with X Corp.
@@ -38,7 +38,7 @@ Search tweets about "AI agents" from the last day.
 
 | Task | Catalog query | Tool |
 | --- | --- | --- |
-| Search X posts | `search tweets by query` | `tweet_read` |
+| Search X (Twitter) posts | `search tweets by query` | `tweet_read` |
 | Read profile timelines | `list recent tweets posted by a user` | `tweet_read` |
 | Export followers | `run extraction` | `tweet_action` |
 | Export following accounts | `run extraction` | `tweet_action` |
@@ -68,7 +68,7 @@ Checked on 2026-11-06. See each number with its date & source on [xquik.com/benc
 
 <!-- trust:end -->
 
-## Monitor a Twitter account from Hermes
+## Monitor an X (Twitter) account from Hermes
 
 Turn on actions, restart Hermes, then ask for a monitor.
 Hermes calls `tweet_explore` for `create monitor`, then `tweet_action` after your approval.
@@ -112,7 +112,7 @@ Copied Xquik URLs work when their paths match the catalog.
 | Command | Purpose |
 | --- | --- |
 | `/xstatus` | Show Xquik account and usage status. |
-| `/xtrends` | Show current X trends. |
+| `/xtrends` | Show current X (Twitter) trends. |
 
 ## Other install paths
 
@@ -175,10 +175,10 @@ bin/check-local
 
 ## Questions
 
-### Do I need an X developer account?
+### Do I need an X (Twitter) developer account?
 
 No. Public reads need only an Xquik API key.
-Private reads & X account actions need a connected X account.
+Private reads & X (Twitter) account actions need a connected account.
 
 ### Is Hermes Tweet the official X API?
 
