@@ -13,7 +13,7 @@ Before reusing it for public submissions, validate the target with
 
 ## Description
 
-Hermes Agent Twitter plugin, a Twitter bot for X automation, monitors & tweet
+Hermes Twitter plugin for Hermes Agent, a Twitter bot for monitors, automation &
 search. Not affiliated with X Corp.
 
 ## Topics
