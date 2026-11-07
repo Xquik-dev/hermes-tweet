@@ -1,4 +1,4 @@
-# Hermes Tweet, the Hermes Agent Plugin for Twitter Search & X Actions
+# Hermes Tweet, the Hermes Twitter Plugin for Search & X Actions
 
 Use this Hermes Twitter plugin by Xquik to search tweets & monitor accounts.
 Explore 102 OpenAPI-generated endpoints, including 33 prepaid reads and 7 direct MPP routes.
