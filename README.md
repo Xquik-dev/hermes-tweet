@@ -1,4 +1,4 @@
-# Hermes Tweet, the Hermes Twitter Plugin for Search & X (Twitter) Actions
+# Hermes Tweet, the Hermes X (Twitter) Agent Plugin for Search & Actions
 
 Use this Hermes Twitter plugin by Xquik to search tweets & monitor accounts.
 Explore 102 OpenAPI-generated endpoints, including 33 prepaid reads and 7 direct MPP routes.
@@ -29,7 +29,7 @@ Set it in your environment, then restart Hermes.
 export XQUIK_API_KEY="xq_..."
 ```
 
-## Common Twitter API tasks
+## Common X (Twitter) API tasks
 
 Ask Hermes in plain words.
 It calls `tweet_explore`, then the tool the catalog names.
@@ -61,12 +61,12 @@ Next, read the [Hermes Tweet guide](https://docs.xquik.com/guides/hermes-tweet) 
 [![hermes-tweet Skill installs on skills.sh](https://img.shields.io/endpoint?url=https%3A%2F%2Fxquik.com%2Fbadges%2Fskills-hermes-tweet.json)](https://skills.sh/xquik-dev/hermes-tweet)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/13725/badge)](https://www.bestpractices.dev/projects/13725)
 
-- 3,000+ downloads of hermes-tweet on PyPI ([source](https://pypistats.org/packages/hermes-tweet)) <!-- trust:pypi-hermes-tweet 3049 -->
-- 1,200+ downloads of hermes-tweet on ClawHub ([source](https://clawhub.ai/xquik/skills/hermes-tweet)) <!-- trust:clawhub-hermes-tweet 1257 -->
+- 3,000+ downloads of hermes-tweet on PyPI ([source](https://pypistats.org/packages/hermes-tweet)) <!-- trust:pypi-hermes-tweet 3054 -->
+- 1,200+ downloads of hermes-tweet on ClawHub ([source](https://clawhub.ai/xquik/skills/hermes-tweet)) <!-- trust:clawhub-hermes-tweet 1266 -->
 - 7 installs of this repo's Skills on skills.sh ([source](https://skills.sh/xquik-dev/hermes-tweet)) <!-- trust:skills-hermes-tweet 7 -->
 - This repo meets the OpenSSF Best Practices passing criteria ([source](https://www.bestpractices.dev/projects/13725)) <!-- trust:openssf-hermes-tweet 1 -->
 
-Checked on 2026-11-07. See each number with its date & source on [xquik.com/benchmarks](https://xquik.com/benchmarks) or as [JSON](https://xquik.com/trust.json).
+Checked on 2026-11-08. See each number with its date & source on [xquik.com/benchmarks](https://xquik.com/benchmarks) or as [JSON](https://xquik.com/trust.json).
 
 <!-- trust:end -->
 
@@ -83,7 +83,7 @@ export HERMES_TWEET_ENABLE_ACTIONS="true"
 Monitor @NASA for new posts and show me each one.
 ```
 
-## Run a Twitter bot & X automation with approval
+## Run a Twitter bot & X (Twitter) automation with approval
 
 Posts, replies and follower exports run through `tweet_action`.
 The bundled skill asks for your approval before each action.
@@ -199,12 +199,12 @@ Hermes Tweet calls that API, not the official X API.
 
 ## More Xquik tools
 
-- [X (Twitter) scraper API & Twitter MCP server](https://github.com/Xquik-dev/x-twitter-scraper) with REST, MCP & Skill setup.
-- Twitter API SDKs for [TypeScript](https://github.com/Xquik-dev/x-twitter-scraper-typescript), [Python](https://github.com/Xquik-dev/x-twitter-scraper-python), [Go](https://github.com/Xquik-dev/x-twitter-scraper-go) & [Ruby](https://github.com/Xquik-dev/x-twitter-scraper-ruby).
-- Twitter API SDKs for [Java](https://github.com/Xquik-dev/x-twitter-scraper-java), [Kotlin](https://github.com/Xquik-dev/x-twitter-scraper-kotlin), [C#](https://github.com/Xquik-dev/x-twitter-scraper-csharp) & [PHP](https://github.com/Xquik-dev/x-twitter-scraper-php).
+- [X (Twitter) scraper API & X (Twitter) MCP server](https://github.com/Xquik-dev/x-twitter-scraper) with REST, MCP & Skill setup.
+- X (Twitter) API SDKs for [TypeScript](https://github.com/Xquik-dev/x-twitter-scraper-typescript), [Python](https://github.com/Xquik-dev/x-twitter-scraper-python), [Go](https://github.com/Xquik-dev/x-twitter-scraper-go) & [Ruby](https://github.com/Xquik-dev/x-twitter-scraper-ruby).
+- X (Twitter) API SDKs for [Java](https://github.com/Xquik-dev/x-twitter-scraper-java), [Kotlin](https://github.com/Xquik-dev/x-twitter-scraper-kotlin), [C#](https://github.com/Xquik-dev/x-twitter-scraper-csharp) & [PHP](https://github.com/Xquik-dev/x-twitter-scraper-php).
 - [Twitter CLI & X CLI](https://github.com/Xquik-dev/x-twitter-scraper-cli) for terminal workflows.
 - [Twitter advanced search operators](https://github.com/Xquik-dev/x-twitter-advanced-search) with tested examples.
-- [Xquik X API & Twitter scraper](https://xquik.com) and the [Twitter API documentation](https://docs.xquik.com/api-reference/overview).
+- [Xquik X API & Twitter scraper](https://xquik.com) and the [X (Twitter) API documentation](https://docs.xquik.com/api-reference/overview).
 
 ## License
 
