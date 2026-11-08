@@ -21,7 +21,7 @@ if TYPE_CHECKING:
 USER_AGENT: Final = "HermesTweetHermesAgentCompat/1.0"
 LATEST_RELEASE_URL: Final = "https://api.github.com/repos/NousResearch/hermes-agent/releases/latest"
 SOURCE_URL: Final = "https://raw.githubusercontent.com/NousResearch/hermes-agent"
-REVIEWED_RELEASE: Final = "v0.22.7"
+REVIEWED_RELEASE: Final = "v0.23.0"
 DEVELOPMENT_BRANCH: Final = "main"
 DOC_TIMEOUT_SECONDS: Final = 30.0
 RETRY_DELAYS_SECONDS: Final = (2.0, 8.0)
@@ -142,7 +142,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="hermes_cli/plugins_cmd.py",
-        expected_sha="8bfd8af47c2247a86d0094b92fc87a2b478b9bcc",
+        expected_sha="86dc544d5acbce3ea94a5afaf7074c363b9b1fdf",
         required_terms=(
             "_resolve_plugin_key",
             "_scan_plugin_tree",
@@ -157,7 +157,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="hermes_cli/plugins_cmd_install.py",
-        expected_sha="1ec9c0f203c5df6beba92e18324a273aea395bb4",
+        expected_sha="0a04ee4c128c72e1fac8864f3e5395568ba389b0",
         required_terms=(
             "def cmd_install",
             "_prompt_plugin_env_vars",
@@ -169,7 +169,7 @@ SOURCE_CHECKS: Final = (
     ),
     SourceCheck(
         path="hermes_cli/subcommands/plugins.py",
-        expected_sha="26a0eec6469eddeee7dbd331dbd39c02eb103c49",
+        expected_sha="a7691513d1db4edc158421dee73eb55282ffba34",
         required_terms=(
             "--enable",
             "--no-enable",
