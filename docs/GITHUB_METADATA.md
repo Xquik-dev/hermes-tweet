@@ -13,8 +13,8 @@ Before reusing it for public submissions, validate the target with
 
 ## Description
 
-Hermes Agent Twitter plugin & skill. A Twitter bot for tweet search, monitor
-alerts, follower exports & X automation. Not affiliated with X Corp.
+Hermes Twitter plugin for Hermes Agent, a Twitter bot for monitors, automation &
+search. Not affiliated with X Corp.
 
 ## Topics
 
